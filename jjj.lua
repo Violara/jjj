@@ -564,7 +564,7 @@ local function Notify(title, context)
 end
 ]]
 
-local DrRayLibrary = loadstring(game:HttpGet("https://raw.githubusercontent.com/AZYsGithub/DrRay-UI-Library/main/DrRay.lua"))()
+local DrRayLibrary = loadstring(game:HttpGet("https://raw.githubusercontent.com/Yumiara/Asset/main/XUMINANU.lua"))()
 local window = DrRayLibrary:Load("The Mimic Script v.UP2FV", "Default")
 
 
@@ -741,6 +741,7 @@ MAIN.newButton("Set Lantern Range", "Hold lantern first", function()
         end
     end
 end)
+--[[
 MAIN.newToggle("Fly", "", false, function(Value)
     if Value then
         FLYING = Value
@@ -848,6 +849,7 @@ MAIN.newToggle("Fly", "", false, function(Value)
         FLYING = Value
     end
 end)
+]]
 MAIN.newButton("Virtual Lantern", "Can't hold | Virtual | Can be see in Inventory", function()
     for _,v in pairs(game:GetService("ReplicatedStorage"):GetDescendants()) do
         if v.Parent.Name == "SkinsInfo" then
