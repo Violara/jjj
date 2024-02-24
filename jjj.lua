@@ -850,6 +850,7 @@ MAIN.newToggle("Fly", "", false, function(Value)
     end
 end)
 ]]
+--[[
 MAIN.newButton("Virtual Lantern", "Can't hold | Virtual | Can be see in Inventory", function()
     for _,v in pairs(game:GetService("ReplicatedStorage"):GetDescendants()) do
         if v.Parent.Name == "SkinsInfo" then
@@ -7368,3 +7369,4 @@ end
 textButton77.MouseButton1Click:Connect(onButtonClick2)
 finishload = true
 getgenv().FinishLoad = true
+]]
