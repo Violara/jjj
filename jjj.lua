@@ -564,7 +564,7 @@ local function Notify(title, context)
 end
 ]]
 
-local DrRayLibrary = loadstring(game:HttpGet("https://raw.githubusercontent.com/Yumiara/Asset/main/XUMINANU.lua"))()
+local DrRayLibrary = loadstring(game:HttpGet("https://raw.githubusercontent.com/AZYsGithub/DrRay-UI-Library/main/DrRay.lua"))()
 local window = DrRayLibrary:Load("The Mimic Script v.UP2FV", "Default")
 
 
