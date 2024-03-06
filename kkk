@@ -4564,11 +4564,18 @@ pcall(function()
                     Setting.DMGAura4 = true
                     Setting.WaitBRUH = true
                     Setting.PauseAutoEqu = false
-                    repeat
-                        MobHumP = workspace.Enemies:FindFirstChild("Terrorshark").HumanoidRootPart.Position
-                        tpwithnewtpbyme(MobHumP.X + Setting.AutoFarmPosX, MobHumP.Y + Setting.AutoFarmPosY, MobHumP.Z + Setting.AutoFarmPosZ, tonumber(Setting.TeleportSpeedAutoFarm))
-                        task.wait()
-                    until not workspace.Enemies:FindFirstChild("Terrorshark")
+                    task.wait(0.165)
+                    for _, v in pairs(workspace.Enemies:GetChildren()) do
+                        if v and v:FindFirstChild("Humanoid") and v.Humanoid.Health ~= 0 then
+                            if v:FindFirstChild("HumanoidRootPart") then
+                                repeat
+                                    MobHumP = v.HumanoidRootPart.Position
+                                    tpwithnewtpbyme(MobHumP.X + Setting.AutoFarmPosX, MobHumP.Y + Setting.AutoFarmPosY, MobHumP.Z + Setting.AutoFarmPosZ, tonumber(Setting.TeleportSpeedAutoFarm))
+                                    task.wait()
+                                until not v:FindFirstChild("Health") or (v:FindFirstChild("Health") and v.Health == 0) or not Setting.AutoSeaEvent or table.find(Setting.IgnoreSeaEventList, "SeaBeast")
+                            end
+                        end
+                    end
                     task.wait()
                     for _, v in pairs(workspace.Boats:GetChildren()) do
                         if v and v:FindFirstChild("Owner") and tostring(v.Owner.Value) == tostring(game.Players.LocalPlayer.Name) then
