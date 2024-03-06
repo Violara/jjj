@@ -4660,8 +4660,9 @@ pcall(function()
                     TpShipToLevel()
                 end
                 if game.Players.LocalPlayer.Character.Humanoid.Sit then
-                    repeat task.wait() until (not game.Players.LocalPlayer.Character.Humanoid.Sit and not Setting.WaitBRUH) or not Setting.AutoSeaEvent
+                    repeat task.wait() until (not game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") or (game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") and not game.Players.LocalPlayer.Character.Humanoid.Sit and not Setting.WaitBRUH)) or not Setting.AutoSeaEvent
                 end
+                repeat task.wait() until player:FindFirstChild("Humanoid")
             end
         end
     end)()
