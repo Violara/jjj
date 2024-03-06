@@ -268,7 +268,6 @@ local CoreGui = game.CoreGui
 local PlayerGui = player.PlayerGui
 local CommF = ReplicatedStorage.Remotes.CommF_
 local CommE = ReplicatedStorage.Remotes.CommE
-local IgnoreSeaEventList = {}
 local WeaponBackpack = {}
 local AllBossNameSea1 = {"Saber Expert", "The Saw", "Greybeard", "The Gorilla King", "Bobby", "Yeti", "Mob Leader", "Vice Admiral", "Warden", "Chief Warden", "Swan", "Magma Admiral", "Fishman Lord", "Wysper", "Thunder God", "Cyborg"}
 if not isfolder("Setting") then
@@ -373,8 +372,9 @@ if isfolder("Setting") and not isfile("Setting/setting.json") then
         SelectSeaLevel = "4",
         AutoSeaEvent = false,
         SelectShipISeaEvent = "PirateSloop",
+        IgnoreSeaEventList = {"gay"},
         DMGAura4 = false,
-        PauseAutoEqu = false,
+        WaitBRUH = false,
         chestcollect = 0,
         AutoNormalChest = false,
         AutoDetailChest = false,
@@ -2754,6 +2754,7 @@ for i=1,#mobs do local v = mobs[i]
         local IsAlly = IsPlayer and CollectionService:HasTag(IsPlayer,"Ally"..Client.Name)
         if not IsAlly then
             CurrentAllMob[#CurrentAllMob + 1] = v
+            repeat task.wait() until player.Character:FindFirstChild("HumanoidRootPart")
             if not nearbymon and (v.HumanoidRootPart.Position - player.Character.HumanoidRootPart.Position).Magnitude <= 65 then
                 nearbymon = true
             end
@@ -3068,7 +3069,7 @@ pcall(function()
         repeat task.wait() until finishload
         while task.wait() do
             pcall(function()
-                float = Setting.AutoFarmLevel or Setting.AutoMaterial or Setting.AuraMaterialType1 or Setting.AutoRaceV2 or Setting.AutoRaceV3 or Setting.AutoRaceV4 or Setting.AutoSea2 or Setting.TpToFruit or Setting.AutoRaid or Setting.AutoBartilo or Setting.TeleportToNextIsland or Setting.AutoRichManMission or Setting.AutoFarmObservation or Setting.AutoFarmObservationHop or Setting.AutoBone or Setting.AutoFarmAura or Setting.AutoFarmSelectMob or Setting.AutoFarmSelectBoss or Setting.AutoRengoku or Setting.AutoTwinHooks or Setting.AutoTwinHooksHop or Setting.AutoSharkSaw or Setting.AutoSharkSawHop or Setting.AutoWardensSword or Setting.AutoWardensSwordHop or Setting.AutoGravityCane or Setting.AutoGravityCaneHop or Setting.AutoLongsword or Setting.AutoLongswordHop or Setting.AutoJitte or Setting.AutoJitteHop or Setting.AutoBuddySword or Setting.AutoBuddySwordHop or Setting.AutoHallowScythe or Setting.AutoHallowScytheHop or Setting.AutoDarkDagger or Setting.AutoDarkDaggerHop or Setting.AutoYama or Setting.AutoDragonTrident or Setting.AutoDragonTridentHop or Setting.AutoPole or Setting.AutoPoleHop or Setting.AutoSaberHop or Setting.AutoCanvander or Setting.AutoCanvanderHop or Setting.AutoFarmGunMastery or Setting.AutoFarmFruitMastery
+                float = Setting.AutoFarmLevel or Setting.AutoMaterial or Setting.AuraMaterialType1 or Setting.AutoRaceV2 or Setting.AutoRaceV3 or Setting.AutoRaceV4 or Setting.AutoSea2 or Setting.TpToFruit or Setting.AutoRaid or Setting.AutoBartilo or Setting.TeleportToNextIsland or Setting.AutoRichManMission or Setting.AutoFarmObservation or Setting.AutoFarmObservationHop or Setting.AutoBone or Setting.AutoFarmAura or Setting.AutoFarmSelectMob or Setting.AutoFarmSelectBoss or Setting.AutoRengoku or Setting.AutoTwinHooks or Setting.AutoTwinHooksHop or Setting.AutoSharkSaw or Setting.AutoSharkSawHop or Setting.AutoWardensSword or Setting.AutoWardensSwordHop or Setting.AutoGravityCane or Setting.AutoGravityCaneHop or Setting.AutoLongsword or Setting.AutoLongswordHop or Setting.AutoJitte or Setting.AutoJitteHop or Setting.AutoBuddySword or Setting.AutoBuddySwordHop or Setting.AutoHallowScythe or Setting.AutoHallowScytheHop or Setting.AutoDarkDagger or Setting.AutoDarkDaggerHop or Setting.AutoYama or Setting.AutoDragonTrident or Setting.AutoDragonTridentHop or Setting.AutoPole or Setting.AutoPoleHop or Setting.AutoSaberHop or Setting.AutoCanvander or Setting.AutoCanvanderHop or Setting.AutoFarmGunMastery or Setting.AutoFarmFruitMastery or Setting.WaitBRUH
                 NeedAttacking = Setting.AutoFarmLevel or Setting.AutoMaterial or Setting.AuraMaterialType1 or Setting.AutoRaceV2 or Setting.AutoRaceV3 or Setting.AutoRaceV4 or Setting.AutoSea2 or Setting.DMGAura or Setting.DMGAura2 or Setting.DMGAura3 or Setting.DMGAura4 or Setting.AutoBartilo or Setting.AutoRichManMission or Setting.AutoBone or Setting.AutoFarmAura or Setting.AutoFarmSelectMob or Setting.AutoFarmSelectBoss or Setting.AutoRengoku or Setting.AutoTwinHooks or Setting.AutoTwinHooksHop or Setting.AutoSharkSaw or Setting.AutoSharkSawHop or Setting.AutoWardensSword or Setting.AutoWardensSwordHop or Setting.AutoGravityCane or Setting.AutoGravityCaneHop or Setting.AutoLongsword or Setting.AutoLongswordHop or Setting.AutoJitte or Setting.AutoJitteHop or Setting.AutoBuddySword or Setting.AutoBuddySwordHop or Setting.AutoHallowScythe or Setting.AutoHallowScytheHop or Setting.AutoDarkDagger or Setting.AutoDarkDaggerHop or Setting.AutoYama or Setting.AutoDragonTrident or Setting.AutoDragonTridentHop or Setting.AutoPole or Setting.AutoPoleHop or Setting.AutoSaberHop or Setting.AutoCanvander or Setting.AutoCanvanderHop or Setting.AutoFarmGunMastery or Setting.AutoFarmFruitMastery
                 KillAuraS = Setting.AutoRaid or Setting.KillAura
                 BringMob = Setting.BringMob or Setting.BringMob2 or Setting.BringMob3
@@ -4557,34 +4558,64 @@ pcall(function()
                 if workspace.Enemies:FindFirstChild("Shark") and not table.find(Setting.IgnoreSeaEventList, "Shark") then
                     Setting.DMGAura4 = true
                     Setting.WaitBRUH = true
+                    Setting.PauseAutoEqu = false
                 end
                 task.wait()
                 if workspace.Enemies:FindFirstChild("Terrorshark") and not table.find(Setting.IgnoreSeaEventList, "Terrorshark") then
                     Setting.DMGAura4 = true
                     Setting.WaitBRUH = true
+                    Setting.PauseAutoEqu = false
+                    task.wait(0.165)
+                    for _, v in pairs(workspace.Enemies:GetChildren()) do
+                        if v and v:FindFirstChild("Humanoid") and v.Humanoid.Health ~= 0 then
+                            if v:FindFirstChild("HumanoidRootPart") then
+                                repeat
+                                    MobHumP = v.HumanoidRootPart.Position
+                                    tpwithnewtpbyme(MobHumP.X + Setting.AutoFarmPosX, MobHumP.Y + Setting.AutoFarmPosY, MobHumP.Z + Setting.AutoFarmPosZ, tonumber(Setting.TeleportSpeedAutoFarm))
+                                    task.wait()
+                                until not v:FindFirstChild("Health") or (v:FindFirstChild("Health") and v.Health == 0) or not Setting.AutoSeaEvent or table.find(Setting.IgnoreSeaEventList, "SeaBeast")
+                            end
+                        end
+                    end
+                    task.wait()
+                    for _, v in pairs(workspace.Boats:GetChildren()) do
+                        if v and v:FindFirstChild("Owner") and tostring(v.Owner.Value) == tostring(game.Players.LocalPlayer.Name) then
+                            tpwithnewtpbyme2(v.VehicleSeat.CFrame, tonumber(Setting.TeleportSpeedAutoFarm))
+                            task.wait()
+                            repeat
+                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.VehicleSeat.CFrame
+                                task.wait()
+                            until not v or game.Players.LocalPlayer.Character.Humanoid.Sit
+                        end
+                    end
+                    task.wait()
                 end
                 task.wait()
                 if workspace.Enemies:FindFirstChild("Piranha") and not table.find(Setting.IgnoreSeaEventList, "Piranha") then
                     Setting.DMGAura4 = true
                     Setting.WaitBRUH = true
+                    Setting.PauseAutoEqu = false
                 end
                 task.wait()
                 if workspace.Enemies:FindFirstChild("Fish Crew Member") and not table.find(Setting.IgnoreSeaEventList, "Fish Crew Member") then
                     Setting.DMGAura4 = true
                     Setting.WaitBRUH = true
+                    Setting.PauseAutoEqu = false
                 end
                 task.wait()
                 if #game:GetService("Workspace").SeaBeasts:GetChildren() > 0 and not table.find(Setting.IgnoreSeaEventList, "SeaBeast") then
-                    Setting.DMGAura4 = false
+                    Setting.DMGAura4 = true
                     Setting.WaitBRUH = true
+                    Setting.PauseAutoEqu = true
                     game.Players.LocalPlayer.Character.Humanoid.Sit = false
                     EquipWeapon(game:GetService("Players").LocalPlayer.Data.DevilFruit.Value)
                     task.wait()
                     for _, v in pairs(workspace.SeaBeasts:GetChildren()) do
-                        if v and v:FindFirstChild("Humanoid") and v.Humanoid.Health ~= 0 then
+                        if v and v:FindFirstChild("Health") and v.Health ~= 0 then
                             if v:FindFirstChild("HumanoidRootPart") then
                                 repeat
                                     Setting.UseSkill = true
+                                    Setting.PauseAutoEqu = true
                                     EquipWeapon(game:GetService("Players").LocalPlayer.Data.DevilFruit.Value)
                                     MobHumP = v.HumanoidRootPart.Position
                                     Setting.PosMobMasteryFruit = MobHumP
@@ -4595,7 +4626,7 @@ pcall(function()
                                     task.wait(0.15)
                                     UseSkillMelee()
                                     task.wait()
-                                until v.Humanoid.Health == 0 or not Setting.AutoSeaEvent or table.find(Setting.IgnoreSeaEventList, "SeaBeast")
+                                until not v:FindFirstChild("Health") or (v:FindFirstChild("Health") and v.Health == 0) or not Setting.AutoSeaEvent or table.find(Setting.IgnoreSeaEventList, "SeaBeast")
                             end
                         end
                     end
@@ -4612,10 +4643,13 @@ pcall(function()
                     end
                     task.wait()
                     Setting.UseSkill = false
+                    Setting.PauseAutoEqu = false
                 end
+                task.wait()
                 if not workspace.Enemies:FindFirstChild("Shark") and not workspace.Enemies:FindFirstChild("Terrorshark") and not workspace.Enemies:FindFirstChild("Piranha") and not workspace.Enemies:FindFirstChild("Fish Crew Member") and #game:GetService("Workspace").SeaBeasts:GetChildren() == 0 then
                     Setting.DMGAura4 = false
                     Setting.WaitBRUH = false
+                    Setting.PauseAutoEqu = false
                 end
             end
         end
@@ -4634,8 +4668,10 @@ pcall(function()
                     TpShipToLevel()
                 end
                 if game.Players.LocalPlayer.Character.Humanoid.Sit then
-                    repeat task.wait() until (not game.Players.LocalPlayer.Character.Humanoid.Sit and not Setting.WaitBRUH) or not Setting.AutoSeaEvent
+                    repeat task.wait() until (not game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") or (player:FindFirstChild("Humanoid") and player.Humanoid.Health == 0) or (game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") and not game.Players.LocalPlayer.Character.Humanoid.Sit and not Setting.WaitBRUH)) or not Setting.AutoSeaEvent
                 end
+                repeat task.wait() until player:FindFirstChild("Humanoid") and player.Humanoid.Health > 0
+                task.wait(0.365)
             end
         end
     end)()
