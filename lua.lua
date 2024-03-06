@@ -373,6 +373,8 @@ if isfolder("Setting") and not isfile("Setting/setting.json") then
         SelectSeaLevel = "4",
         AutoSeaEvent = false,
         SelectShipISeaEvent = "PirateSloop",
+        DMGAura4 = false,
+        PauseAutoEqu = false,
         chestcollect = 0,
         AutoNormalChest = false,
         AutoDetailChest = false,
@@ -3067,7 +3069,7 @@ pcall(function()
         while task.wait() do
             pcall(function()
                 float = Setting.AutoFarmLevel or Setting.AutoMaterial or Setting.AuraMaterialType1 or Setting.AutoRaceV2 or Setting.AutoRaceV3 or Setting.AutoRaceV4 or Setting.AutoSea2 or Setting.TpToFruit or Setting.AutoRaid or Setting.AutoBartilo or Setting.TeleportToNextIsland or Setting.AutoRichManMission or Setting.AutoFarmObservation or Setting.AutoFarmObservationHop or Setting.AutoBone or Setting.AutoFarmAura or Setting.AutoFarmSelectMob or Setting.AutoFarmSelectBoss or Setting.AutoRengoku or Setting.AutoTwinHooks or Setting.AutoTwinHooksHop or Setting.AutoSharkSaw or Setting.AutoSharkSawHop or Setting.AutoWardensSword or Setting.AutoWardensSwordHop or Setting.AutoGravityCane or Setting.AutoGravityCaneHop or Setting.AutoLongsword or Setting.AutoLongswordHop or Setting.AutoJitte or Setting.AutoJitteHop or Setting.AutoBuddySword or Setting.AutoBuddySwordHop or Setting.AutoHallowScythe or Setting.AutoHallowScytheHop or Setting.AutoDarkDagger or Setting.AutoDarkDaggerHop or Setting.AutoYama or Setting.AutoDragonTrident or Setting.AutoDragonTridentHop or Setting.AutoPole or Setting.AutoPoleHop or Setting.AutoSaberHop or Setting.AutoCanvander or Setting.AutoCanvanderHop or Setting.AutoFarmGunMastery or Setting.AutoFarmFruitMastery
-                NeedAttacking = Setting.AutoFarmLevel or Setting.AutoMaterial or Setting.AuraMaterialType1 or Setting.AutoRaceV2 or Setting.AutoRaceV3 or Setting.AutoRaceV4 or Setting.AutoSea2 or Setting.DMGAura or Setting.DMGAura2 or Setting.DMGAura3 or Setting.AutoBartilo or Setting.AutoRichManMission or Setting.AutoBone or Setting.AutoFarmAura or Setting.AutoFarmSelectMob or Setting.AutoFarmSelectBoss or Setting.AutoRengoku or Setting.AutoTwinHooks or Setting.AutoTwinHooksHop or Setting.AutoSharkSaw or Setting.AutoSharkSawHop or Setting.AutoWardensSword or Setting.AutoWardensSwordHop or Setting.AutoGravityCane or Setting.AutoGravityCaneHop or Setting.AutoLongsword or Setting.AutoLongswordHop or Setting.AutoJitte or Setting.AutoJitteHop or Setting.AutoBuddySword or Setting.AutoBuddySwordHop or Setting.AutoHallowScythe or Setting.AutoHallowScytheHop or Setting.AutoDarkDagger or Setting.AutoDarkDaggerHop or Setting.AutoYama or Setting.AutoDragonTrident or Setting.AutoDragonTridentHop or Setting.AutoPole or Setting.AutoPoleHop or Setting.AutoSaberHop or Setting.AutoCanvander or Setting.AutoCanvanderHop or Setting.AutoFarmGunMastery or Setting.AutoFarmFruitMastery
+                NeedAttacking = Setting.AutoFarmLevel or Setting.AutoMaterial or Setting.AuraMaterialType1 or Setting.AutoRaceV2 or Setting.AutoRaceV3 or Setting.AutoRaceV4 or Setting.AutoSea2 or Setting.DMGAura or Setting.DMGAura2 or Setting.DMGAura3 or Setting.DMGAura4 or Setting.AutoBartilo or Setting.AutoRichManMission or Setting.AutoBone or Setting.AutoFarmAura or Setting.AutoFarmSelectMob or Setting.AutoFarmSelectBoss or Setting.AutoRengoku or Setting.AutoTwinHooks or Setting.AutoTwinHooksHop or Setting.AutoSharkSaw or Setting.AutoSharkSawHop or Setting.AutoWardensSword or Setting.AutoWardensSwordHop or Setting.AutoGravityCane or Setting.AutoGravityCaneHop or Setting.AutoLongsword or Setting.AutoLongswordHop or Setting.AutoJitte or Setting.AutoJitteHop or Setting.AutoBuddySword or Setting.AutoBuddySwordHop or Setting.AutoHallowScythe or Setting.AutoHallowScytheHop or Setting.AutoDarkDagger or Setting.AutoDarkDaggerHop or Setting.AutoYama or Setting.AutoDragonTrident or Setting.AutoDragonTridentHop or Setting.AutoPole or Setting.AutoPoleHop or Setting.AutoSaberHop or Setting.AutoCanvander or Setting.AutoCanvanderHop or Setting.AutoFarmGunMastery or Setting.AutoFarmFruitMastery
                 KillAuraS = Setting.AutoRaid or Setting.KillAura
                 BringMob = Setting.BringMob or Setting.BringMob2 or Setting.BringMob3
                 IsWeaponBusy = Setting.AutoBuddySword or Setting.AutoBuddySwordHop or Setting.AutoTwinHooks or Setting.AutoTwinHooksHop
@@ -4628,9 +4630,12 @@ pcall(function()
                     task.wait(0.256)
                 end
                 task.wait()
-                TpShipToLevel()
-                task.wait()
-                repeat task.wait() until (not game.Players.LocalPlayer.Character.Humanoid.Sit and not Setting.WaitBRUH) or not Setting.AutoSeaEvent
+                if game.Players.LocalPlayer.Character.Humanoid.Sit then
+                    TpShipToLevel()
+                end
+                if game.Players.LocalPlayer.Character.Humanoid.Sit then
+                    repeat task.wait() until (not game.Players.LocalPlayer.Character.Humanoid.Sit and not Setting.WaitBRUH) or not Setting.AutoSeaEvent
+                end
             end
         end
     end)()
