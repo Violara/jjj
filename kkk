@@ -4598,12 +4598,12 @@ pcall(function()
                 if #game:GetService("Workspace").SeaBeasts:GetChildren() > 0 and not table.find(Setting.IgnoreSeaEventList, "SeaBeast") then
                     Setting.DMGAura4 = true
                     Setting.WaitBRUH = true
-                    Setting.PauseAutoEqu = false
+                    Setting.PauseAutoEqu = true
                     game.Players.LocalPlayer.Character.Humanoid.Sit = false
                     EquipWeapon(game:GetService("Players").LocalPlayer.Data.DevilFruit.Value)
                     task.wait()
                     for _, v in pairs(workspace.SeaBeasts:GetChildren()) do
-                        if v and v:FindFirstChild("Humanoid") and v.Humanoid.Health ~= 0 then
+                        if v and v:FindFirstChild("Health") and v.Health ~= 0 then
                             if v:FindFirstChild("HumanoidRootPart") then
                                 repeat
                                     Setting.UseSkill = true
@@ -4618,7 +4618,7 @@ pcall(function()
                                     task.wait(0.15)
                                     UseSkillMelee()
                                     task.wait()
-                                until v.Humanoid.Health == 0 or not Setting.AutoSeaEvent or table.find(Setting.IgnoreSeaEventList, "SeaBeast")
+                                until not v:FindFirstChild("Health") or (v:FindFirstChild("Health") and v.Health == 0) or not Setting.AutoSeaEvent or table.find(Setting.IgnoreSeaEventList, "SeaBeast")
                             end
                         end
                     end
