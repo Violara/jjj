@@ -2754,7 +2754,7 @@ for i=1,#mobs do local v = mobs[i]
         local IsAlly = IsPlayer and CollectionService:HasTag(IsPlayer,"Ally"..Client.Name)
         if not IsAlly then
             CurrentAllMob[#CurrentAllMob + 1] = v
-            if not nearbymon and (v.HumanoidRootPart.Position - player.Character.HumanoidRootPart.Position).Magnitude <= 65 then
+            if not nearbymon and (player.Character:FindFirstChild("HumanoidRootPart") and (v.HumanoidRootPart.Position - player.Character.HumanoidRootPart.Position).Magnitude <= 65) then
                 nearbymon = true
             end
         end
@@ -2765,14 +2765,14 @@ if nearbymon then
     local Players = Players:GetPlayers()
     for i=1,#Enemies do local v = Enemies[i]
         local Human = v:FindFirstChildOfClass("Humanoid")
-        if Human and Human.RootPart and Human.Health > 0 and (v.HumanoidRootPart.Position - player.Character.HumanoidRootPart.Position).Magnitude <= 65 then
+        if Human and Human.RootPart and Human.Health > 0 and (player.Character:FindFirstChild("HumanoidRootPart") and (v.HumanoidRootPart.Position - player.Character.HumanoidRootPart.Position).Magnitude <= 65) then
             canHits[#canHits+1] = Human.RootPart
         end
     end
     for i=1,#Players do local v = Players[i].Character
         if not Players[i]:GetAttribute("PvpDisabled") and v and v ~= Client.Character then
             local Human = v:FindFirstChildOfClass("Humanoid")
-            if Human and Human.RootPart and Human.Health > 0 and (v.HumanoidRootPart.Position - player.Character.HumanoidRootPart.Position).Magnitude <= 65 then
+            if Human and Human.RootPart and Human.Health > 0 and (player.Character:FindFirstChild("HumanoidRootPart") and (v.HumanoidRootPart.Position - player.Character.HumanoidRootPart.Position).Magnitude <= 65) then
                 canHits[#canHits+1] = Human.RootPart
             end
         end
