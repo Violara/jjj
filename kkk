@@ -314,8 +314,19 @@ if isfolder("Setting") and not isfile("Setting/setting.json") then
         FruitToStore = nil,
         TpToFruit = false,
         CancelTpToFruit = false,
+        BringFruit = false,
+        AutoRandomFruit = false,
+        AutoStoreFruit = false,
+        AutoDropFruit = false,
+        SelectFruitToSnipe = false,
         AutoSea2 = false,
         RemoveAnim = false,
+        StatsValue = 1,
+        MeleeStats = false,
+        DefenseStats = false,
+        SwordStats = false,
+        GunStats = false,
+        BloxFruitStats = false,
         YourRace = nil,
         YourRace2 = nil,
         AutoRaceV2 = false,
@@ -372,13 +383,18 @@ if isfolder("Setting") and not isfile("Setting/setting.json") then
         SelectSeaLevel = "4",
         AutoSeaEvent = false,
         SelectShipISeaEvent = "PirateSloop",
-        IgnoreSeaEventList = {"gay"},
+        IgnoreSeaEventList = {"nil", "nil"},
         DMGAura4 = false,
         WaitBRUH = false,
+        ToggleWalkSpeed = false,
+        WalkSpeedSet = 16,
+        ToggleJumpPower = false,
+        JumpPowerSet = 52,
         chestcollect = 0,
         AutoNormalChest = false,
         AutoDetailChest = false,
-        StackableSetting = false,
+        StackableSetting = true,
+        CurrentTargetIsland = nil,
     }
     allowtoserialized = true
 elseif isfolder("Setting") and isfile("Setting/setting.json") then
@@ -1262,18 +1278,141 @@ local function TpOfTpTab()
                     CommF:InvokeServer("requestEntrance",Vector3.new(-6508.5581054688, 89.034996032715, -132.83953857422))
                 end
             end
-        elseif SelectTpSpot == "Value" then
+        end
+    elseif Third_World then
+        if SelectTpSpot == "Mansion" then
             if InstanceTp then
-                CFrameTargetTp = CFrame.new(Value)
+                if Setting.UnlockPortal then
+                    CommF:InvokeServer("requestEntrance",Vector3.new(-12471.169921875, 374.94024658203, -7551.677734375))
+                    task.wait(0.5)
+                end
             else
-                CFrameTargetTp = CFrame.new(Value)
-                if (CFrameTargetTp.Position - player.Character.HumanoidRootPart.Position).Magnitude > 20000 then
-                    CommF:InvokeServer("requestEntrance",Vector3.new(-6508.5581054688, 89.034996032715, -132.83953857422))
+                if Setting.UnlockPortal then
+                    CommF:InvokeServer("requestEntrance",Vector3.new(-12471.169921875, 374.94024658203, -7551.677734375))
+                    task.wait(0.5)
+                end
+            end
+        elseif SelectTpSpot == "Port Town" then
+            if InstanceTp then
+                CFrameTargetTp = CFrame.new(-435.68109130859, 189.69866943359, 5551.0756835938)
+            else
+                CFrameTargetTp = CFrame.new(-435.68109130859, 189.69866943359, 5551.0756835938)
+                if (Vector3.new(-435.68109130859, 189.69866943359, 5551.0756835938) - player.Character.HumanoidRootPart.Position).Magnitude > 9000 then
+                    if Setting.UnlockPortal then
+                        CommF:InvokeServer("requestEntrance", Vector3.new(5748.7587890625, 610.44982910156, -267.81704711914))
+                        task.wait(0.5)
+                    end
+                end
+            end
+        elseif SelectTpSpot == "Great Tree" then
+            if InstanceTp then
+                CFrameTargetTp = CFrame.new(2198.0063476563, 128.71075439453, -7109.5043945313)
+            else
+                CFrameTargetTp = CFrame.new(2198.0063476563, 128.71075439453, -7109.5043945313)
+                if (Vector3.new(2198.0063476563, 128.71075439453, -7109.5043945313) - player.Character.HumanoidRootPart.Position).Magnitude > 11500 then
+                    if Setting.UnlockPortal then
+                        CommF:InvokeServer("requestEntrance", Vector3.new(5748.7587890625, 610.44982910156, -267.81704711914))
+                        task.wait(0.5)
+                    end
+                end
+            end
+        elseif SelectTpSpot == "Castle On The Sea" then
+            if InstanceTp then
+                CFrameTargetTp = CFrame.new(-5072.08984375, 314.5412902832, -3151.1098632812)
+                if Setting.UnlockPortal then
+                    CommF:InvokeServer("requestEntrance",Vector3.new(-5072.08984375, 314.5412902832, -3151.1098632812))
+                    task.wait(0.5)
+                end
+            else
+                CFrameTargetTp = CFrame.new(-5072.08984375, 314.5412902832, -3151.1098632812)
+                if Setting.UnlockPortal then
+                    CommF:InvokeServer("requestEntrance",Vector3.new(-5072.08984375, 314.5412902832, -3151.1098632812))
+                    task.wait(0.5)
+                end
+            end
+        elseif SelectTpSpot == "MiniSky" then
+            if InstanceTp then
+                CFrameTargetTp = CFrame.new(-260.65557861328, 49325.8046875, -35253.5703125)
+            else
+                CFrameTargetTp = CFrame.new(-260.65557861328, 49325.8046875, -35253.5703125)
+            end
+        elseif SelectTpSpot == "Hydra Island" then
+            if InstanceTp then
+                CFrameTargetTp = CFrame.new(5748.7587890625, 610.44982910156, -267.81704711914)
+                if Setting.UnlockPortal then
+                    CommF:InvokeServer("requestEntrance", Vector3.new(5748.7587890625, 610.44982910156, -267.81704711914))
+                    task.wait(0.5)
+                end
+            else
+                CFrameTargetTp = CFrame.new(5748.7587890625, 610.44982910156, -267.81704711914)
+                if Setting.UnlockPortal then
+                    CommF:InvokeServer("requestEntrance", Vector3.new(5748.7587890625, 610.44982910156, -267.81704711914))
+                    task.wait(0.5)
+                end
+            end
+        elseif SelectTpSpot == "Floating Turtle" then
+            if InstanceTp then
+                CFrameTargetTp = CFrame.new(-12471.169921875, 374.94024658203, -7551.677734375)
+                if Setting.UnlockPortal then
+                    CommF:InvokeServer("requestEntrance",Vector3.new(-12471.169921875, 374.94024658203, -7551.677734375))
+                    task.wait(0.5)
+                end
+            else
+                CFrameTargetTp = CFrame.new(-12471.169921875, 374.94024658203, -7551.677734375)
+                if Setting.UnlockPortal then
+                    CommF:InvokeServer("requestEntrance",Vector3.new(-12471.169921875, 374.94024658203, -7551.677734375))
+                    task.wait(0.5)
+                end
+            end
+        elseif SelectTpSpot == "Haunted Castle" then
+            if InstanceTp then
+                CFrameTargetTp = CFrame.new(-9709.30762, 204.695892, 6044.04688)
+            else
+                CFrameTargetTp = CFrame.new(-9709.30762, 204.695892, 6044.04688)
+                if Setting.UnlockPortal then
+                    if (Vector3.new(2198.0063476563, 128.71075439453, -7109.5043945313) - player.Character.HumanoidRootPart.Position).Magnitude > 9000 then
+                        CommF:InvokeServer("requestEntrance",Vector3.new(-5072.08984375, 314.5412902832, -3151.1098632812))
+                        task.wait(0.5)
+                    end
+                end
+            end
+        elseif SelectTpSpot == "Ice Cream Island" then
+            if InstanceTp then
+                CFrameTargetTp = CFrame.new(-821.35913085938, 65.845329284668, -10965.2578125)
+            else
+                CFrameTargetTp = CFrame.new(-821.35913085938, 65.845329284668, -10965.2578125)
+                if Setting.UnlockPortal then
+                    if (Vector3.new(-821.35913085938, 65.845329284668, -10965.2578125) - player.Character.HumanoidRootPart.Position).Magnitude > 10000 then
+                        CommF:InvokeServer("requestEntrance",Vector3.new(-5072.08984375, 314.5412902832, -3151.1098632812))
+                        task.wait(0.5)
+                    end
+                end
+            end
+        elseif SelectTpSpot == "Peanut Island" then
+            if InstanceTp then
+                CFrameTargetTp = CFrame.new(-2104.453125, 38.129974365234, -10194.0078125)
+            else
+                CFrameTargetTp = CFrame.new(-2104.453125, 38.129974365234, -10194.0078125)
+                if Setting.UnlockPortal then
+                    if (Vector3.new(-2104.453125, 38.129974365234, -10194.0078125) - player.Character.HumanoidRootPart.Position).Magnitude > 10000 then
+                        CommF:InvokeServer("requestEntrance",Vector3.new(-5072.08984375, 314.5412902832, -3151.1098632812))
+                        task.wait(0.5)
+                    end
+                end
+            end
+        elseif SelectTpSpot == "Peanut Island" then
+            if InstanceTp then
+                CFrameTargetTp = CFrame.new(-2017.4874267578125, 36.85276412963867, -12027.53515625)
+            else
+                CFrameTargetTp = CFrame.new(-2017.4874267578125, 36.85276412963867, -12027.53515625)
+                if Setting.UnlockPortal then
+                    if (Vector3.new(-2017.4874267578125, 36.85276412963867, -12027.53515625) - player.Character.HumanoidRootPart.Position).Magnitude > 10500 then
+                        CommF:InvokeServer("requestEntrance",Vector3.new(-5072.08984375, 314.5412902832, -3151.1098632812))
+                        task.wait(0.5)
+                    end
                 end
             end
         end
-    elseif Third_World then
-
     end
 end
 local function CheckLevel()
@@ -1668,6 +1807,14 @@ local function CheckLevel()
             NameMon = "Pirate Millionaire"
             CFrameQ = CFrame.new(-289.61752319336, 43.819011688232, 5580.0903320313)
             CFrameMon = CFrame.new(-435.68109130859, 189.69866943359, 5551.0756835938)
+            if (CFrameMon.Position - player.Character.HumanoidRootPart.Position).Magnitude > 9000 then
+                if Setting.UnlockPortal then
+                    if (Setting.Castletophydra.Position - player.Character.HumanoidRootPart.Position).Magnitude <= 8 then
+                        CommF:InvokeServer("requestEntrance", Vector3.new(5748.7587890625, 610.44982910156, -267.81704711914))
+                        task.wait(0.5)
+                    end
+                end
+            end
         elseif ((Lv == 1525 or Lv <= 1574) and not Setting.AutoFarmSelectMob) or (Setting.AutoFarmSelectMob and tostring(Setting.SelectMob) == "Pistol Billionaire") then -- Pistol Billoonaire
             Ms = "Pistol Billionaire [Lv. 1525]"
             NameQuest = "PiratePortQuest"
@@ -1675,6 +1822,14 @@ local function CheckLevel()
             NameMon = "Pistol Billionaire"
             CFrameQ = CFrame.new(-289.61752319336, 43.819011688232, 5580.0903320313)
             CFrameMon = CFrame.new(-236.53652954102, 217.46676635742, 6006.0883789063)
+            if (CFrameMon.Position - player.Character.HumanoidRootPart.Position).Magnitude > 9000 then
+                if Setting.UnlockPortal then
+                    if (Setting.Castletophydra.Position - player.Character.HumanoidRootPart.Position).Magnitude <= 8 then
+                        CommF:InvokeServer("requestEntrance", Vector3.new(5748.7587890625, 610.44982910156, -267.81704711914))
+                        task.wait(0.5)
+                    end
+                end
+            end
         elseif ((Lv == 1575 or Lv <= 1599) and not Setting.AutoFarmSelectMob) or (Setting.AutoFarmSelectMob and tostring(Setting.SelectMob) == "Dragon Crew Warrior") then -- Dragon Crew Warrior
             Ms = "Dragon Crew Warrior [Lv. 1575]"
             NameQuest = "AmazonQuest"
@@ -1682,6 +1837,14 @@ local function CheckLevel()
             NameMon = "Dragon Crew Warrior"
             CFrameQ = CFrame.new(5833.1147460938, 51.60498046875, -1103.0693359375)
             CFrameMon = CFrame.new(6301.9975585938, 104.77153015137, -1082.6075439453)
+            if (CFrameMon.Position - player.Character.HumanoidRootPart.Position).Magnitude > 4000 then
+                if Setting.UnlockPortal then
+                    if (Setting.Castletophydra.Position - player.Character.HumanoidRootPart.Position).Magnitude <= 8 then
+                        CommF:InvokeServer("requestEntrance", Vector3.new(5748.7587890625, 610.44982910156, -267.81704711914))
+                        task.wait(0.5)
+                    end
+                end
+            end
         elseif ((Lv == 1600 or Lv <= 1624) and not Setting.AutoFarmSelectMob) or (Setting.AutoFarmSelectMob and tostring(Setting.SelectMob) == "Dragon Crew Archer") then -- Dragon Crew Archer
             Ms = "Dragon Crew Archer [Lv. 1600]"
             NameQuest = "AmazonQuest"
@@ -1689,6 +1852,14 @@ local function CheckLevel()
             NameMon = "Dragon Crew Archer"
             CFrameQ = CFrame.new(5833.1147460938, 51.60498046875, -1103.0693359375)
             CFrameMon = CFrame.new(6831.1171875, 441.76708984375, 446.58615112305)
+            if (CFrameMon.Position - player.Character.HumanoidRootPart.Position).Magnitude > 4000 then
+                if Setting.UnlockPortal then
+                    if (Setting.Castletophydra.Position - player.Character.HumanoidRootPart.Position).Magnitude <= 8 then
+                        CommF:InvokeServer("requestEntrance", Vector3.new(5748.7587890625, 610.44982910156, -267.81704711914))
+                        task.wait(0.5)
+                    end
+                end
+            end
         elseif ((Lv == 1625 or Lv <= 1649) and not Setting.AutoFarmSelectMob) or (Setting.AutoFarmSelectMob and tostring(Setting.SelectMob) == "Female Islander") then -- Female Islander
             Ms = "Female Islander [Lv. 1625]"
             NameQuest = "AmazonQuest2"
@@ -1696,6 +1867,14 @@ local function CheckLevel()
             NameMon = "Female Islander"
             CFrameQ = CFrame.new(5446.8793945313, 601.62945556641, 749.45672607422)
             CFrameMon = CFrame.new(5792.5166015625, 848.14392089844, 1084.1818847656)
+            if (CFrameMon.Position - player.Character.HumanoidRootPart.Position).Magnitude > 4000 then
+                if Setting.UnlockPortal then
+                    if (Setting.Castletophydra.Position - player.Character.HumanoidRootPart.Position).Magnitude <= 8 then
+                        CommF:InvokeServer("requestEntrance", Vector3.new(5748.7587890625, 610.44982910156, -267.81704711914))
+                        task.wait(0.5)
+                    end
+                end
+            end
         elseif ((Lv == 1650 or Lv <= 1699) and not Setting.AutoFarmSelectMob) or (Setting.AutoFarmSelectMob and tostring(Setting.SelectMob) == "Giant Islander") then -- Giant Islander
             Ms = "Giant Islander [Lv. 1650]"
             NameQuest = "AmazonQuest2"
@@ -1703,6 +1882,14 @@ local function CheckLevel()
             NameMon = "Giant Islander"
             CFrameQ = CFrame.new(5446.8793945313, 601.62945556641, 749.45672607422)
             CFrameMon = CFrame.new(5009.5068359375, 664.11071777344, -40.960144042969)
+            if (CFrameMon.Position - player.Character.HumanoidRootPart.Position).Magnitude > 4000 then
+                if Setting.UnlockPortal then
+                    if (Setting.Castletophydra.Position - player.Character.HumanoidRootPart.Position).Magnitude <= 8 then
+                        CommF:InvokeServer("requestEntrance", Vector3.new(5748.7587890625, 610.44982910156, -267.81704711914))
+                        task.wait(0.5)
+                    end
+                end
+            end
         elseif ((Lv == 1700 or Lv <= 1724) and not Setting.AutoFarmSelectMob) or (Setting.AutoFarmSelectMob and tostring(Setting.SelectMob) == "Marine Commodore") then -- Marine Commodore
             Ms = "Marine Commodore [Lv. 1700]"
             NameQuest = "MarineTreeIsland"
@@ -1710,6 +1897,14 @@ local function CheckLevel()
             NameMon = "Marine Commodore"
             CFrameQ = CFrame.new(2179.98828125, 28.731239318848, -6740.0551757813)
             CFrameMon = CFrame.new(2198.0063476563, 128.71075439453, -7109.5043945313)
+            if (CFrameMon.Position - player.Character.HumanoidRootPart.Position).Magnitude > 11500 then
+                if Setting.UnlockPortal then
+                    if (Setting.Castletophydra.Position - player.Character.HumanoidRootPart.Position).Magnitude <= 8 then
+                        CommF:InvokeServer("requestEntrance", Vector3.new(5748.7587890625, 610.44982910156, -267.81704711914))
+                        task.wait(0.5)
+                    end
+                end
+            end
         elseif ((Lv == 1725 or Lv <= 1774) and not Setting.AutoFarmSelectMob) or (Setting.AutoFarmSelectMob and tostring(Setting.SelectMob) == "Marine Rear Admiral") then -- Marine Rear Admiral
             Ms = "Marine Rear Admiral [Lv. 1725]"
             NameQuest = "MarineTreeIsland"
@@ -1717,6 +1912,14 @@ local function CheckLevel()
             NameMon = "Marine Rear Admiral"
             CFrameQ = CFrame.new(2179.98828125, 28.731239318848, -6740.0551757813)
             CFrameMon = CFrame.new(3294.3142089844, 385.41125488281, -7048.6342773438)
+            if (CFrameMon.Position - player.Character.HumanoidRootPart.Position).Magnitude > 11500 then
+                if Setting.UnlockPortal then
+                    if (Setting.Castletophydra.Position - player.Character.HumanoidRootPart.Position).Magnitude <= 8 then
+                        CommF:InvokeServer("requestEntrance", Vector3.new(5748.7587890625, 610.44982910156, -267.81704711914))
+                        task.wait(0.5)
+                    end
+                end
+            end
         elseif ((Lv == 1775 or Lv <= 1799) and not Setting.AutoFarmSelectMob) or (Setting.AutoFarmSelectMob and tostring(Setting.SelectMob) == "Fishman Raider") then -- Fishman Raide
             Ms = "Fishman Raider [Lv. 1775]"
             NameQuest = "DeepForestIsland3"
@@ -1724,6 +1927,14 @@ local function CheckLevel()
             NameMon = "Fishman Raider"
             CFrameQ = CFrame.new(-10582.759765625, 331.78845214844, -8757.666015625)
             CFrameMon = CFrame.new(-10553.268554688, 521.38439941406, -8176.9458007813)
+            if (CFrameMon.Position - player.Character.HumanoidRootPart.Position).Magnitude > 5000 then
+                if Setting.UnlockPortal then
+                    if (Setting.CastlePostoMansion.Position - player.Character.HumanoidRootPart.Position).Magnitude <= 8 then
+                        CommF:InvokeServer("requestEntrance",Vector3.new(-12471.169921875, 374.94024658203, -7551.677734375))
+                        task.wait(0.5)
+                    end
+                end
+            end
         elseif ((Lv == 1800 or Lv <= 1824) and not Setting.AutoFarmSelectMob) or (Setting.AutoFarmSelectMob and tostring(Setting.SelectMob) == "Fishman Captain") then -- Fishman Captain
             Ms = "Fishman Captain [Lv. 1800]"
             NameQuest = "DeepForestIsland3"
@@ -1731,6 +1942,14 @@ local function CheckLevel()
             NameMon = "Fishman Captain"
             CFrameQ = CFrame.new(-10583.099609375, 331.78845214844, -8759.4638671875)
             CFrameMon = CFrame.new(-10789.401367188, 427.18637084961, -9131.4423828125)
+            if (CFrameMon.Position - player.Character.HumanoidRootPart.Position).Magnitude > 5000 then
+                if Setting.UnlockPortal then
+                    if (Setting.CastlePostoMansion.Position - player.Character.HumanoidRootPart.Position).Magnitude <= 8 then
+                        CommF:InvokeServer("requestEntrance",Vector3.new(-12471.169921875, 374.94024658203, -7551.677734375))
+                        task.wait(0.5)
+                    end
+                end
+            end
         elseif ((Lv == 1825 or Lv <= 1849) and not Setting.AutoFarmSelectMob) or (Setting.AutoFarmSelectMob and tostring(Setting.SelectMob) == "Forest Pirate") then -- Forest Pirate
             Ms = "Forest Pirate [Lv. 1825]"
             NameQuest = "DeepForestIsland"
@@ -1738,6 +1957,14 @@ local function CheckLevel()
             NameMon = "Forest Pirate"
             CFrameQ = CFrame.new(-13232.662109375, 332.40396118164, -7626.4819335938)
             CFrameMon = CFrame.new(-13489.397460938, 400.30349731445, -7770.251953125)
+            if (CFrameMon.Position - player.Character.HumanoidRootPart.Position).Magnitude > 5000 then
+                if Setting.UnlockPortal then
+                    if (Setting.CastlePostoMansion.Position - player.Character.HumanoidRootPart.Position).Magnitude <= 8 then
+                        CommF:InvokeServer("requestEntrance",Vector3.new(-12471.169921875, 374.94024658203, -7551.677734375))
+                        task.wait(0.5)
+                    end
+                end
+            end
         elseif ((Lv == 1850 or Lv <= 1899) and not Setting.AutoFarmSelectMob) or (Setting.AutoFarmSelectMob and tostring(Setting.SelectMob) == "Mythological Pirate") then -- Mythological Pirate
             Ms = "Mythological Pirate [Lv. 1850]"
             NameQuest = "DeepForestIsland"
@@ -1745,6 +1972,14 @@ local function CheckLevel()
             NameMon = "Mythological Pirate"
             CFrameQ = CFrame.new(-13232.662109375, 332.40396118164, -7626.4819335938)
             CFrameMon = CFrame.new(-13508.616210938, 582.46228027344, -6985.3037109375)
+            if (CFrameMon.Position - player.Character.HumanoidRootPart.Position).Magnitude > 5000 then
+                if Setting.UnlockPortal then
+                    if (Setting.CastlePostoMansion.Position - player.Character.HumanoidRootPart.Position).Magnitude <= 8 then
+                        CommF:InvokeServer("requestEntrance",Vector3.new(-12471.169921875, 374.94024658203, -7551.677734375))
+                        task.wait(0.5)
+                    end
+                end
+            end
         elseif ((Lv >= 1900 and Lv <= 1924) and not Setting.AutoFarmSelectMob) or (Setting.AutoFarmSelectMob and tostring(Setting.SelectMob) == "Jungle Pirate") then -- Jungle Pirate
             Ms = "Jungle Pirate [Lv. 1900]"
             NameQuest = "DeepForestIsland2"
@@ -1752,6 +1987,14 @@ local function CheckLevel()
             NameMon = "Jungle Pirate"
             CFrameQ = CFrame.new(-12682.096679688, 390.88653564453, -9902.1240234375)
             CFrameMon = CFrame.new(-12267.103515625, 459.75262451172, -10277.200195313)
+            if (CFrameMon.Position - player.Character.HumanoidRootPart.Position).Magnitude > 5000 then
+                if Setting.UnlockPortal then
+                    if (Setting.CastlePostoMansion.Position - player.Character.HumanoidRootPart.Position).Magnitude <= 8 then
+                        CommF:InvokeServer("requestEntrance",Vector3.new(-12471.169921875, 374.94024658203, -7551.677734375))
+                        task.wait(0.5)
+                    end
+                end
+            end
         elseif ((Lv >= 1925 and Lv <= 1974) and not Setting.AutoFarmSelectMob) or (Setting.AutoFarmSelectMob and tostring(Setting.SelectMob) == "Musketeer Pirate") then -- Musketeer Pirate
             Ms = "Musketeer Pirate [Lv. 1925]"
             NameQuest = "DeepForestIsland2"
@@ -1759,6 +2002,14 @@ local function CheckLevel()
             NameMon = "Musketeer Pirate"
             CFrameQ = CFrame.new(-12682.096679688, 390.88653564453, -9902.1240234375)
             CFrameMon = CFrame.new(-13291.5078125, 520.47338867188, -9904.638671875)
+            if (CFrameMon.Position - player.Character.HumanoidRootPart.Position).Magnitude > 5000 then
+                if Setting.UnlockPortal then
+                    if (Setting.CastlePostoMansion.Position - player.Character.HumanoidRootPart.Position).Magnitude <= 8 then
+                        CommF:InvokeServer("requestEntrance",Vector3.new(-12471.169921875, 374.94024658203, -7551.677734375))
+                        task.wait(0.5)
+                    end
+                end
+            end
         elseif ((Lv >= 1975 and Lv <= 1999) and not Setting.AutoFarmSelectMob) or (Setting.AutoFarmSelectMob and tostring(Setting.SelectMob) == "Reborn Skeleton") then -- Reborn Skeleton
             Ms = "Musketeer Pirate [Lv. 1925]"
             NameQuest = "DeepForestIsland2"
@@ -1766,6 +2017,14 @@ local function CheckLevel()
             NameMon = "Musketeer Pirate"
             CFrameQ = CFrame.new(-12682.096679688, 390.88653564453, -9902.1240234375)
             CFrameMon = CFrame.new(-13291.5078125, 520.47338867188, -9904.638671875)
+            if (CFrameMon.Position - player.Character.HumanoidRootPart.Position).Magnitude > 5000 then
+                if Setting.UnlockPortal then
+                    if (Setting.CastlePostoMansion.Position - player.Character.HumanoidRootPart.Position).Magnitude <= 8 then
+                        CommF:InvokeServer("requestEntrance",Vector3.new(-12471.169921875, 374.94024658203, -7551.677734375))
+                        task.wait(0.5)
+                    end
+                end
+            end
         elseif ((Lv >= 2000 and Lv <= 2024) and not Setting.AutoFarmSelectMob) or (Setting.AutoFarmSelectMob and tostring(Setting.SelectMob) == "Living Zombie") then -- Living Zombie
             Ms = "Living Zombie [Lv. 2000]"
             NameQuest = "HauntedQuest1"
@@ -1773,6 +2032,14 @@ local function CheckLevel()
             NameMon = "Living Zombie"
             CFrameQ = CFrame.new(-9480.80762, 142.130661, 5566.37305)
             CFrameMon = CFrame.new(-10103.7529, 238.565979, 6179.75977)
+            if (CFrameMon.Position - player.Character.HumanoidRootPart.Position).Magnitude > 9000 then
+                if Setting.UnlockPortal then
+                    if (Setting.MansiontoCastlePos.Position - player.Character.HumanoidRootPart.Position).Magnitude <= 8 then
+                        CommF:InvokeServer("requestEntrance",Vector3.new(-5072.08984375, 314.5412902832, -3151.1098632812))
+                        task.wait(0.5)
+                    end
+                end
+            end
         elseif ((Lv >= 2025 and Lv <= 2049) and not Setting.AutoFarmSelectMob) or (Setting.AutoFarmSelectMob and tostring(Setting.SelectMob) == "Demonic Soul") then -- Demonic Soul
             Ms = "Demonic Soul [Lv. 2025]"
             NameQuest = "HauntedQuest1"
@@ -1780,6 +2047,14 @@ local function CheckLevel()
             NameMon = "Demonic Souls"
             CFrameQ = CFrame.new(-9515.39551, 172.266037, 6078.89746)
             CFrameMon = CFrame.new(-9709.30762, 204.695892, 6044.04688)
+            if (CFrameMon.Position - player.Character.HumanoidRootPart.Position).Magnitude > 9000 then
+                if Setting.UnlockPortal then
+                    if (Setting.MansiontoCastlePos.Position - player.Character.HumanoidRootPart.Position).Magnitude <= 8 then
+                        CommF:InvokeServer("requestEntrance",Vector3.new(-5072.08984375, 314.5412902832, -3151.1098632812))
+                        task.wait(0.5)
+                    end
+                end
+            end
         elseif ((Lv >= 2050 and Lv <= 2074) and not Setting.AutoFarmSelectMob) or (Setting.AutoFarmSelectMob and tostring(Setting.SelectMob) == "Posessed Mummy") then -- Posessed Mummy
             Ms = "Posessed Mummy [Lv. 2050]"
             NameQuest = "HauntedQuest2"
@@ -1787,6 +2062,14 @@ local function CheckLevel()
             NameMon = "Posessed Mummys"
             CFrameQ = CFrame.new(-9515.39551, 172.266037, 6078.89746)
             CFrameMon = CFrame.new(-9554.11035, 65.6141663, 6041.73584)
+            if (CFrameMon.Position - player.Character.HumanoidRootPart.Position).Magnitude > 9000 then
+                if Setting.UnlockPortal then
+                    if (Setting.MansiontoCastlePos.Position - player.Character.HumanoidRootPart.Position).Magnitude <= 8 then
+                        CommF:InvokeServer("requestEntrance",Vector3.new(-5072.08984375, 314.5412902832, -3151.1098632812))
+                        task.wait(0.5)
+                    end
+                end
+            end
         elseif ((Lv >= 2075 and Lv <= 2099) and not Setting.AutoFarmSelectMob) or (Setting.AutoFarmSelectMob and tostring(Setting.SelectMob) == "Peanut Scout") then -- Peanut Scout
             Ms = "Peanut Scout [Lv. 2075]"
             NameQuest = "PeanutQuest1"
@@ -1794,6 +2077,14 @@ local function CheckLevel()
             NameMon = "Peanut Scout"
             CFrameQ = CFrame.new(-2104.453125, 38.129974365234, -10194.0078125)
             CFrameMon = CFrame.new(-2068.0949707031, 76.512603759766, -10117.150390625)
+            if (CFrameMon.Position - player.Character.HumanoidRootPart.Position).Magnitude > 10000 then
+                if Setting.UnlockPortal then
+                    if (Setting.MansiontoCastlePos.Position - player.Character.HumanoidRootPart.Position).Magnitude <= 8 then
+                        CommF:InvokeServer("requestEntrance",Vector3.new(-5072.08984375, 314.5412902832, -3151.1098632812))
+                        task.wait(0.5)
+                    end
+                end
+            end
         elseif ((Lv >= 2100 and Lv <= 2124) and not Setting.AutoFarmSelectMob) or (Setting.AutoFarmSelectMob and tostring(Setting.SelectMob) == "Peanut President") then -- Peanut President
             Ms = "Peanut President [Lv. 2100]"
             NameQuest = "PeanutQuest2"
@@ -1924,6 +2215,18 @@ local function SVHop()
             end
             task.wait(5)
         until StopAllHop
+    end
+end
+local function tp(x, y, z)
+    if player.Character:FindFirstChild("HumanoidRootPart") then
+        player.Character.HumanoidRootPart.CFrame = CFrame.new(x, y, z)
+        task.wait()
+    end
+end
+local function tp2(xyz)
+    if player.Character:FindFirstChild("HumanoidRootPart") then
+        player.Character.HumanoidRootPart.CFrame = xyz.Position
+        task.wait()
     end
 end
 local function tpwithnewtpbyme(a,b,c,speedoftpNTP)
@@ -2075,6 +2378,15 @@ function EquipMelee()
 		end
 	end
 end
+function EquipSword()
+	for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+		if v:IsA("Tool") then
+			if v.ToolTip == "Sword" then
+				game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
+			end
+		end
+	end
+end
 local function StopTeleport()
     STOPTP.TextColor3  = Color3.fromRGB(0, 255, 0)
     Setting.BREAKALLTHISSHITHAHAHAHAHA = true
@@ -2211,6 +2523,21 @@ local function CheckAndClearWeapon()
                 else
                     if game:GetService("ReplicatedStorage"):FindFirstChild("Cake Queen") and Setting.StackableSetting then
                         tpwithnewtpbyme2(ReplicatedStorage:FindFirstChild("Cake Queen").HumanoidRootPart.CFrame * CFrame.new(0,30,0), tonumber(Setting.TeleportSpeedAutoFarm))
+                        task.wait(0.675)
+                        for _,v in pairs(workspace.Enemies:GetChildren()) do
+                            if v and v.Name == tostring("Cake Queen") and Setting.StackableSetting then
+                                if v:FindFirstChild("Humanoid") and v.Humanoid.Health ~= 0 and Setting.AutoBuddySword and Setting.StackableSetting then
+                                    Setting.TryNumOfthis1 = 0
+                                    repeat
+                                        repeat task.wait() until player.Character:FindFirstChild("Humanoid")
+                                        MobHumP = v.HumanoidRootPart.Position
+                                        tpwithnewtpbyme(MobHumP.X + Setting.AutoFarmPosX, MobHumP.Y + Setting.AutoFarmPosY, MobHumP.Z + Setting.AutoFarmPosZ, tonumber(Setting.TeleportSpeedAutoFarm))
+                                        wait()
+                                        Setting.TryNumOfthis1 = Setting.TryNumOfthis1 + 1
+                                    until v.Humanoid.Health == 0 or not Setting.AutoBuddySword or Setting.TryNumOfthis1 == 30000 or not Setting.StackableSetting
+                                end
+                            end
+                        end
                     end
                 end
             end)
@@ -2236,6 +2563,21 @@ local function CheckAndClearWeapon()
                 else
                     if game:GetService("ReplicatedStorage"):FindFirstChild("The Saw") and Setting.StackableSetting then
                         tpwithnewtpbyme2(ReplicatedStorage:FindFirstChild("The Saw").HumanoidRootPart.CFrame * CFrame.new(0,30,0), tonumber(Setting.TeleportSpeedAutoFarm))
+                        task.wait(0.675)
+                        for _,v in pairs(workspace.Enemies:GetChildren()) do
+                            if v and v.Name == tostring("The Saw") and Setting.StackableSetting then
+                                if v:FindFirstChild("Humanoid") and v.Humanoid.Health ~= 0 and Setting.AutoSharkSaw and Setting.StackableSetting then
+                                    Setting.TryNumOfthis1 = 0
+                                    repeat
+                                        repeat task.wait() until player.Character:FindFirstChild("Humanoid")
+                                        MobHumP = v.HumanoidRootPart.Position
+                                        tpwithnewtpbyme(MobHumP.X + Setting.AutoFarmPosX, MobHumP.Y + Setting.AutoFarmPosY, MobHumP.Z + Setting.AutoFarmPosZ, tonumber(Setting.TeleportSpeedAutoFarm))
+                                        wait()
+                                        Setting.TryNumOfthis1 = Setting.TryNumOfthis1 + 1
+                                    until v.Humanoid.Health == 0 or not Setting.AutoSharkSaw or Setting.TryNumOfthis1 == 30000 or not Setting.StackableSetting
+                                end
+                            end
+                        end
                     end
                 end
             end)
@@ -2261,6 +2603,21 @@ local function CheckAndClearWeapon()
                 else
                     if game:GetService("ReplicatedStorage"):FindFirstChild("Chief Warden") and Setting.StackableSetting then
                         tpwithnewtpbyme2(ReplicatedStorage:FindFirstChild("Chief Warden").HumanoidRootPart.CFrame * CFrame.new(0,30,0), tonumber(Setting.TeleportSpeedAutoFarm))
+                        task.wait(0.675)
+                        for _,v in pairs(workspace.Enemies:GetChildren()) do
+                            if v and v.Name == tostring("Chief Warden") and Setting.StackableSetting then
+                                if v:FindFirstChild("Humanoid") and v.Humanoid.Health ~= 0 and Setting.AutoWardensSword and Setting.StackableSetting then
+                                    Setting.TryNumOfthis1 = 0
+                                    repeat
+                                        repeat task.wait() until player.Character:FindFirstChild("Humanoid")
+                                        MobHumP = v.HumanoidRootPart.Position
+                                        tpwithnewtpbyme(MobHumP.X + Setting.AutoFarmPosX, MobHumP.Y + Setting.AutoFarmPosY, MobHumP.Z + Setting.AutoFarmPosZ, tonumber(Setting.TeleportSpeedAutoFarm))
+                                        wait()
+                                        Setting.TryNumOfthis1 = Setting.TryNumOfthis1 + 1
+                                    until v.Humanoid.Health == 0 or not Setting.AutoWardensSword or Setting.TryNumOfthis1 == 30000 or not Setting.StackableSetting
+                                end
+                            end
+                        end
                     end
                 end
             end)
@@ -2286,6 +2643,21 @@ local function CheckAndClearWeapon()
                 else
                     if game:GetService("ReplicatedStorage"):FindFirstChild("Fajita") and Setting.StackableSetting then
                         tpwithnewtpbyme2(ReplicatedStorage:FindFirstChild("Fajita").HumanoidRootPart.CFrame * CFrame.new(0,30,0), tonumber(Setting.TeleportSpeedAutoFarm))
+                        task.wait(0.675)
+                        for _,v in pairs(workspace.Enemies:GetChildren()) do
+                            if v and v.Name == tostring("Fajita") and Setting.StackableSetting then
+                                if v:FindFirstChild("Humanoid") and v.Humanoid.Health ~= 0 and Setting.AutoGravityCane and Setting.StackableSetting then
+                                    Setting.TryNumOfthis1 = 0
+                                    repeat
+                                        repeat task.wait() until player.Character:FindFirstChild("Humanoid")
+                                        MobHumP = v.HumanoidRootPart.Position
+                                        tpwithnewtpbyme(MobHumP.X + Setting.AutoFarmPosX, MobHumP.Y + Setting.AutoFarmPosY, MobHumP.Z + Setting.AutoFarmPosZ, tonumber(Setting.TeleportSpeedAutoFarm))
+                                        wait()
+                                        Setting.TryNumOfthis1 = Setting.TryNumOfthis1 + 1
+                                    until v.Humanoid.Health == 0 or not Setting.AutoGravityCane or Setting.TryNumOfthis1 == 30000 and Setting.StackableSetting
+                                end
+                            end
+                        end
                     end
                 end
             end)
@@ -2311,6 +2683,21 @@ local function CheckAndClearWeapon()
                 else
                     if game:GetService("ReplicatedStorage"):FindFirstChild("Diamond") and Setting.StackableSetting then
                         tpwithnewtpbyme2(ReplicatedStorage:FindFirstChild("Diamond").HumanoidRootPart.CFrame * CFrame.new(0,30,0), tonumber(Setting.TeleportSpeedAutoFarm))
+                        task.wait(0.675)
+                        for _,v in pairs(workspace.Enemies:GetChildren()) do
+                            if v and v.Name == tostring("Diamond") and Setting.StackableSetting then
+                                if v:FindFirstChild("Humanoid") and v.Humanoid.Health ~= 0 and Setting.AutoLongsword and Setting.StackableSetting then
+                                    Setting.TryNumOfthis1 = 0
+                                    repeat
+                                        repeat task.wait() until player.Character:FindFirstChild("Humanoid")
+                                        MobHumP = v.HumanoidRootPart.Position
+                                        tpwithnewtpbyme(MobHumP.X + Setting.AutoFarmPosX, MobHumP.Y + Setting.AutoFarmPosY, MobHumP.Z + Setting.AutoFarmPosZ, tonumber(Setting.TeleportSpeedAutoFarm))
+                                        wait()
+                                        Setting.TryNumOfthis1 = Setting.TryNumOfthis1 + 1
+                                    until v.Humanoid.Health == 0 or not Setting.AutoLongsword or Setting.TryNumOfthis1 == 30000 or not Setting.StackableSetting
+                                end
+                            end
+                        end
                     end
                 end
             end)
@@ -2336,6 +2723,21 @@ local function CheckAndClearWeapon()
                 else
                     if game:GetService("ReplicatedStorage"):FindFirstChild("Smoke Admiral") and Setting.StackableSetting then
                         tpwithnewtpbyme2(ReplicatedStorage:FindFirstChild("Smoke Admiral").HumanoidRootPart.CFrame * CFrame.new(0,30,0), tonumber(Setting.TeleportSpeedAutoFarm))
+                        task.wait(0.675)
+                        for _,v in pairs(workspace.Enemies:GetChildren()) do
+                            if v and v.Name == tostring("Smoke Admiral") and Setting.StackableSetting then
+                                if v:FindFirstChild("Humanoid") and v.Humanoid.Health ~= 0 and Setting.AutoJitte and Setting.StackableSetting then
+                                    Setting.TryNumOfthis1 = 0
+                                    repeat
+                                        repeat task.wait() until player.Character:FindFirstChild("Humanoid")
+                                        MobHumP = v.HumanoidRootPart.Position
+                                        tpwithnewtpbyme(MobHumP.X + Setting.AutoFarmPosX, MobHumP.Y + Setting.AutoFarmPosY, MobHumP.Z + Setting.AutoFarmPosZ, tonumber(Setting.TeleportSpeedAutoFarm))
+                                        wait()
+                                        Setting.TryNumOfthis1 = Setting.TryNumOfthis1 + 1
+                                    until v.Humanoid.Health == 0 or not Setting.AutoJitte or Setting.TryNumOfthis1 == 30000 or not Setting.StackableSetting
+                                end
+                            end
+                        end
                     end
                 end
             end)
@@ -2361,6 +2763,21 @@ local function CheckAndClearWeapon()
                 else
                     if game:GetService("ReplicatedStorage"):FindFirstChild("Tide Keeper") and Setting.StackableSetting then
                         tpwithnewtpbyme2(ReplicatedStorage:FindFirstChild("Tide Keeper").HumanoidRootPart.CFrame * CFrame.new(0,30,0), tonumber(Setting.TeleportSpeedAutoFarm))
+                        task.wait(0.675)
+                        for _,v in pairs(workspace.Enemies:GetChildren()) do
+                            if v and v.Name == tostring("Tide Keeper") and Setting.StackableSetting then
+                                if v:FindFirstChild("Humanoid") and v.Humanoid.Health ~= 0 and Setting.AutoDragonTrident and Setting.StackableSetting then
+                                    Setting.TryNumOfthis1 = 0
+                                    repeat
+                                        repeat task.wait() until player.Character:FindFirstChild("Humanoid")
+                                        MobHumP = v.HumanoidRootPart.Position
+                                        tpwithnewtpbyme(MobHumP.X + Setting.AutoFarmPosX, MobHumP.Y + Setting.AutoFarmPosY, MobHumP.Z + Setting.AutoFarmPosZ, tonumber(Setting.TeleportSpeedAutoFarm))
+                                        wait()
+                                        Setting.TryNumOfthis1 = Setting.TryNumOfthis1 + 1
+                                    until v.Humanoid.Health == 0 or not Setting.AutoDragonTrident or Setting.TryNumOfthis1 == 30000  or not Setting.StackableSetting
+                                end
+                            end
+                        end
                     end
                 end
             end)
@@ -2386,6 +2803,21 @@ local function CheckAndClearWeapon()
                 else
                     if game:GetService("ReplicatedStorage"):FindFirstChild("Thunder God") and Setting.StackableSetting then
                         tpwithnewtpbyme2(ReplicatedStorage:FindFirstChild("Thunder God").HumanoidRootPart.CFrame * CFrame.new(0,30,0), tonumber(Setting.TeleportSpeedAutoFarm))
+                        task.wait(0.675)
+                        for _,v in pairs(workspace.Enemies:GetChildren()) do
+                            if v and v.Name == tostring("Thunder God") and Setting.StackableSetting then
+                                if v:FindFirstChild("Humanoid") and v.Humanoid.Health ~= 0 and Setting.AutoPole then
+                                    Setting.TryNumOfthis1 = 0
+                                    repeat
+                                        repeat task.wait() until player.Character:FindFirstChild("Humanoid")
+                                        MobHumP = v.HumanoidRootPart.Position
+                                        tpwithnewtpbyme(MobHumP.X + Setting.AutoFarmPosX, MobHumP.Y + Setting.AutoFarmPosY, MobHumP.Z + Setting.AutoFarmPosZ, tonumber(Setting.TeleportSpeedAutoFarm))
+                                        wait()
+                                        Setting.TryNumOfthis1 = Setting.TryNumOfthis1 + 1
+                                    until v.Humanoid.Health == 0 or not Setting.AutoPole or Setting.TryNumOfthis1 == 30000 or not Setting.StackableSetting
+                                end
+                            end
+                        end
                     end
                 end
             end)
@@ -2476,6 +2908,21 @@ local function CheckAndClearWeapon()
                 else
                     if game:GetService("ReplicatedStorage"):FindFirstChild("Saber Expert") and Setting.StackableSetting then
                         tpwithnewtpbyme2(ReplicatedStorage:FindFirstChild("Saber Expert").HumanoidRootPart.CFrame * CFrame.new(0,30,0), tonumber(Setting.TeleportSpeedAutoFarm))
+                        task.wait(0.675)
+                        for _,v in pairs(workspace.Enemies:GetChildren()) do
+                            if v and v.Name == tostring("Saber Expert") and Setting.StackableSetting then
+                                if v:FindFirstChild("Humanoid") and v.Humanoid.Health ~= 0 and Setting.AutoSaber and Setting.StackableSetting then
+                                    Setting.TryNumOfthis1 = 0
+                                    repeat
+                                        repeat task.wait() until player.Character:FindFirstChild("Humanoid")
+                                        MobHumP = v.HumanoidRootPart.Position
+                                        tpwithnewtpbyme(MobHumP.X + Setting.AutoFarmPosX, MobHumP.Y + Setting.AutoFarmPosY, MobHumP.Z + Setting.AutoFarmPosZ, tonumber(Setting.TeleportSpeedAutoFarm))
+                                        wait()
+                                        Setting.TryNumOfthis1 = Setting.TryNumOfthis1 + 1
+                                    until v.Humanoid.Health == 0 or not Setting.AutoSaber or Setting.TryNumOfthis1 == 30000 or not Setting.StackableSetting
+                                end
+                            end
+                        end
                     end
                 end
             end)
@@ -2501,6 +2948,21 @@ local function CheckAndClearWeapon()
                 else
                     if game:GetService("ReplicatedStorage"):FindFirstChild("Beautiful Pirate") and Setting.StackableSetting then
                         tpwithnewtpbyme2(ReplicatedStorage:FindFirstChild("Beautiful Pirate").HumanoidRootPart.CFrame * CFrame.new(0,30,0), tonumber(Setting.TeleportSpeedAutoFarm))
+                        task.wait(0.675)
+                        for _,v in pairs(workspace.Enemies:GetChildren()) do
+                            if v and v.Name == tostring("Beautiful Pirate") and Setting.StackableSetting then
+                                if v:FindFirstChild("Humanoid") and v.Humanoid.Health ~= 0 and Setting.AutoCanvander and Setting.StackableSetting then
+                                    Setting.TryNumOfthis1 = 0
+                                    repeat
+                                        repeat task.wait() until player.Character:FindFirstChild("Humanoid")
+                                        MobHumP = v.HumanoidRootPart.Position
+                                        tpwithnewtpbyme(MobHumP.X + Setting.AutoFarmPosX, MobHumP.Y + Setting.AutoFarmPosY, MobHumP.Z + Setting.AutoFarmPosZ, tonumber(Setting.TeleportSpeedAutoFarm))
+                                        wait()
+                                        Setting.TryNumOfthis1 = Setting.TryNumOfthis1 + 1
+                                    until v.Humanoid.Health == 0 or not Setting.AutoCanvander or Setting.TryNumOfthis1 == 30000 or not Setting.StackableSetting
+                                end
+                            end
+                        end
                     end
                 end
             end)
@@ -3068,7 +3530,7 @@ pcall(function()
         repeat task.wait() until finishload
         while task.wait() do
             pcall(function()
-                float = Setting.AutoFarmLevel or Setting.AutoMaterial or Setting.AuraMaterialType1 or Setting.AutoRaceV2 or Setting.AutoRaceV3 or Setting.AutoRaceV4 or Setting.AutoSea2 or Setting.TpToFruit or Setting.AutoRaid or Setting.AutoBartilo or Setting.TeleportToNextIsland or Setting.AutoRichManMission or Setting.AutoFarmObservation or Setting.AutoFarmObservationHop or Setting.AutoBone or Setting.AutoFarmAura or Setting.AutoFarmSelectMob or Setting.AutoFarmSelectBoss or Setting.AutoRengoku or Setting.AutoTwinHooks or Setting.AutoTwinHooksHop or Setting.AutoSharkSaw or Setting.AutoSharkSawHop or Setting.AutoWardensSword or Setting.AutoWardensSwordHop or Setting.AutoGravityCane or Setting.AutoGravityCaneHop or Setting.AutoLongsword or Setting.AutoLongswordHop or Setting.AutoJitte or Setting.AutoJitteHop or Setting.AutoBuddySword or Setting.AutoBuddySwordHop or Setting.AutoHallowScythe or Setting.AutoHallowScytheHop or Setting.AutoDarkDagger or Setting.AutoDarkDaggerHop or Setting.AutoYama or Setting.AutoDragonTrident or Setting.AutoDragonTridentHop or Setting.AutoPole or Setting.AutoPoleHop or Setting.AutoSaberHop or Setting.AutoCanvander or Setting.AutoCanvanderHop or Setting.AutoFarmGunMastery or Setting.AutoFarmFruitMastery or Setting.WaitBRUH
+                float = Setting.ToggleFloat or Setting.AutoFarmLevel or Setting.AutoMaterial or Setting.AuraMaterialType1 or Setting.AutoRaceV2 or Setting.AutoRaceV3 or Setting.AutoRaceV4 or Setting.AutoSea2 or Setting.TpToFruit or Setting.AutoRaid or Setting.AutoBartilo or Setting.TeleportToNextIsland or Setting.AutoRichManMission or Setting.AutoFarmObservation or Setting.AutoFarmObservationHop or Setting.AutoBone or Setting.AutoFarmAura or Setting.AutoFarmSelectMob or Setting.AutoFarmSelectBoss or Setting.AutoRengoku or Setting.AutoTwinHooks or Setting.AutoTwinHooksHop or Setting.AutoSharkSaw or Setting.AutoSharkSawHop or Setting.AutoWardensSword or Setting.AutoWardensSwordHop or Setting.AutoGravityCane or Setting.AutoGravityCaneHop or Setting.AutoLongsword or Setting.AutoLongswordHop or Setting.AutoJitte or Setting.AutoJitteHop or Setting.AutoBuddySword or Setting.AutoBuddySwordHop or Setting.AutoHallowScythe or Setting.AutoHallowScytheHop or Setting.AutoDarkDagger or Setting.AutoDarkDaggerHop or Setting.AutoYama or Setting.AutoDragonTrident or Setting.AutoDragonTridentHop or Setting.AutoPole or Setting.AutoPoleHop or Setting.AutoSaberHop or Setting.AutoCanvander or Setting.AutoCanvanderHop or Setting.AutoFarmGunMastery or Setting.AutoFarmFruitMastery or Setting.WaitBRUH
                 NeedAttacking = Setting.AutoFarmLevel or Setting.AutoMaterial or Setting.AuraMaterialType1 or Setting.AutoRaceV2 or Setting.AutoRaceV3 or Setting.AutoRaceV4 or Setting.AutoSea2 or Setting.DMGAura or Setting.DMGAura2 or Setting.DMGAura3 or Setting.DMGAura4 or Setting.AutoBartilo or Setting.AutoRichManMission or Setting.AutoBone or Setting.AutoFarmAura or Setting.AutoFarmSelectMob or Setting.AutoFarmSelectBoss or Setting.AutoRengoku or Setting.AutoTwinHooks or Setting.AutoTwinHooksHop or Setting.AutoSharkSaw or Setting.AutoSharkSawHop or Setting.AutoWardensSword or Setting.AutoWardensSwordHop or Setting.AutoGravityCane or Setting.AutoGravityCaneHop or Setting.AutoLongsword or Setting.AutoLongswordHop or Setting.AutoJitte or Setting.AutoJitteHop or Setting.AutoBuddySword or Setting.AutoBuddySwordHop or Setting.AutoHallowScythe or Setting.AutoHallowScytheHop or Setting.AutoDarkDagger or Setting.AutoDarkDaggerHop or Setting.AutoYama or Setting.AutoDragonTrident or Setting.AutoDragonTridentHop or Setting.AutoPole or Setting.AutoPoleHop or Setting.AutoSaberHop or Setting.AutoCanvander or Setting.AutoCanvanderHop or Setting.AutoFarmGunMastery or Setting.AutoFarmFruitMastery
                 KillAuraS = Setting.AutoRaid or Setting.KillAura
                 BringMob = Setting.BringMob or Setting.BringMob2 or Setting.BringMob3
@@ -3934,6 +4396,96 @@ coroutine.wrap(function()
         end
     end
 end)()
+coroutine.wrap(function()
+    repeat task.wait() until finishload
+    while task.wait() do
+        if Setting.AutoRaceV4 then
+            if game:GetService("Players").LocalPlayer.Data.Race.Value == "Human" and Setting.AutoRaceV4 then
+                for _,v in pairs(workspace.Enemies:GetChildren()) do
+                    if v then
+                        if v:FindFirstChild("Humanoid") and v.Humanoid.Health ~= 0 and Options.AutoRaceV4.Value then
+                            Setting.TryNumOfthis1 = 0
+                            repeat
+                                repeat task.wait() until game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
+                                Setting.PauseAutoEqu = false
+                                MobHumP = v.HumanoidRootPart.Position
+                                tpwithnewtpbyme(MobHumP.X + Setting.AutoFarmPosX, MobHumP.Y + Setting.AutoFarmPosY, MobHumP.Z + Setting.AutoFarmPosZ, 10)
+                                wait()
+                                Setting.TryNumOfthis1 = Setting.TryNumOfthis1 + 1
+                            until v.Humanoid.Health == 0 or not Options.AutoRaceV4.Value or Setting.TryNumOfthis1 == 2000
+                        end
+                    end
+                end
+            elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Skypiea" and Setting.AutoRaceV4 then
+                for i,v in pairs(game:GetService("Workspace").Map.SkyTrial.Model:GetDescendants()) do
+                    if v.Name == "snowisland_Cylinder.081" then
+                        tpwithnewtpbyme2(v.CFrame * CFrame.new(0,0,0), 5)
+                        player.Character.CFrame = v.CFrame * CFrame.new(0,0,0)
+                    end
+                end
+            elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Fishman" then
+                Setting.PauseAutoEqu = true
+                game.Players.LocalPlayer.Character.Humanoid.Sit = false
+                EquipWeapon(game:GetService("Players").LocalPlayer.Data.DevilFruit.Value)
+                task.wait()
+                for _, v in pairs(workspace.SeaBeasts:GetChildren()) do
+                    if v and v:FindFirstChild("Health") and v.Health ~= 0 then
+                        if v:FindFirstChild("HumanoidRootPart") then
+                            repeat
+                                Setting.UseSkill = true
+                                Setting.PauseAutoEqu = true
+                                EquipWeapon(game:GetService("Players").LocalPlayer.Data.DevilFruit.Value)
+                                MobHumP = v.HumanoidRootPart.Position
+                                Setting.PosMobMasteryFruit = MobHumP
+                                tpwithnewtpbyme(MobHumP.X + Setting.AutoFarmPosX, MobHumP.Y + Setting.AutoFarmPosY, MobHumP.Z + Setting.AutoFarmPosZ, tonumber(Setting.TeleportSpeedAutoFarm))
+                                UseSkill()
+                                task.wait()
+                                EquipMelee()
+                                task.wait(0.15)
+                                UseSkillMelee()
+                                task.wait()
+                                EquipSword()
+                                task.wait(0.15)
+                                UseSkillMelee()
+                            until not v:FindFirstChild("Health") or (v:FindFirstChild("Health") and v.Health == 0) or not Setting.AutoSeaEvent or table.find(Setting.IgnoreSeaEventList, "SeaBeast")
+                        end
+                    end
+                end
+                task.wait()
+                Setting.PauseAutoEqu = false
+                Setting.UseSkill = false
+            elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Cyborg" and Setting.AutoRaceV4 then
+                tpwithnewtpbyme(CFrame.new(28654, 14898.7832), 5)
+            elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Ghoul" and Setting.AutoRaceV4 then
+                for _,v in pairs(workspace.Enemies:GetChildren()) do
+                    if v then
+                        if v:FindFirstChild("Humanoid") and v.Humanoid.Health ~= 0 and Options.AutoRaceV4.Value then
+                            Setting.TryNumOfthis1 = 0
+                            repeat
+                                repeat task.wait() until game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
+                                Setting.PauseAutoEqu = false
+                                MobHumP = v.HumanoidRootPart.Position
+                                tpwithnewtpbyme(MobHumP.X + Setting.AutoFarmPosX, MobHumP.Y + Setting.AutoFarmPosY, MobHumP.Z + Setting.AutoFarmPosZ, 10)
+                                wait()
+                                Setting.TryNumOfthis1 = Setting.TryNumOfthis1 + 1
+                            until v.Humanoid.Health == 0 or not Options.AutoRaceV4.Value or Setting.TryNumOfthis1 == 2000
+                        end
+                    end
+                end
+            elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Mink" and Setting.AutoRaceV4 then
+                for i,v in pairs(game:GetService("Workspace"):GetDescendants()) do
+                    if v.Name == "StartPoint" then
+                        tpwithnewtpbyme2(v.CFrame * CFrame.new(0,3,0), 5) 
+                        task.wait()
+                        player.Character.CFrame = v.CFrame * CFrame.new(0,3,0)
+                   end
+                end
+            end
+        end
+    end
+end)()
+
+--
 pcall(function()
     coroutine.wrap(function()
         repeat task.wait() until finishload
@@ -4625,6 +5177,9 @@ pcall(function()
                                     task.wait(0.15)
                                     UseSkillMelee()
                                     task.wait()
+                                    EquipSword()
+                                    task.wait(0.15)
+                                    UseSkillMelee()
                                 until not v:FindFirstChild("Health") or (v:FindFirstChild("Health") and v.Health == 0) or not Setting.AutoSeaEvent or table.find(Setting.IgnoreSeaEventList, "SeaBeast")
                             end
                         end
@@ -4667,7 +5222,7 @@ pcall(function()
                     TpShipToLevel()
                 end
                 if game.Players.LocalPlayer.Character.Humanoid.Sit then
-                    repeat task.wait() until (not game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") or (player:FindFirstChild("Humanoid") and player.Humanoid.Health == 0) or (game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") and not game.Players.LocalPlayer.Character.Humanoid.Sit and not Setting.WaitBRUH)) or not Setting.AutoSeaEvent
+                    repeat task.wait() until (not game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") or (player.Character:FindFirstChild("Humanoid") and player.Character.Humanoid.Health == 0) or (game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") and not game.Players.LocalPlayer.Character.Humanoid.Sit and not Setting.WaitBRUH)) or not Setting.AutoSeaEvent
                 end
                 repeat task.wait() until player:FindFirstChild("Humanoid") and player.Humanoid.Health > 0
                 task.wait(0.365)
@@ -4951,11 +5506,11 @@ pcall(function()
 end)
 
 pcall(function()
-    local function onButtonClick()
+    function onButtonClick()
         Window.Minimized = not Window.Minimized
         Window.Root.Visible = not Window.Minimized
     end
-    local function onButtonClick2()
+    function onButtonClick2()
         StopAllHop = true
         STOPHOP.TextColor3  = Color3.fromRGB(0, 255, 0)
         task.wait(10)
@@ -5072,7 +5627,7 @@ do
     --AutoFarm Tabss
     WeaponBackpack = {tostring(Setting.SelectWeapon)}
     Tabs.AutoFarmTab:AddSection("Select Weapon")
-    local SelectWeapon = Tabs.AutoFarmTab:AddDropdown("SelectWeapon", {
+    SelectWeapon = Tabs.AutoFarmTab:AddDropdown("SelectWeapon", {
         Title = "Select Weapon",
         Values = WeaponBackpack,
         Multi = false,
@@ -5107,7 +5662,7 @@ do
         AutoFarmLevelWithSea2:OnChanged(function()
             Setting.AutoSea2 = Options.AutoFarmLevelWithSea2.Value
         end)
-        AutoFarmLevelWithSea22 = Tabs.AutoFarmTab:AddToggle("AutoFarmLevelWithSea22", {Title = "Auto Sea 2 (Normal)", Default = false })
+        AutoFarmLevelWithSea22 = Tabs.AutoFarmTab:AddToggle("AutoFarmLevelWithSea22", {Title = "Auto Sea 2 (Normal)", Default = Setting.AutoFarmLevelWithSea22 })
 
         AutoFarmLevelWithSea22:OnChanged(function()
             if Options.AutoFarmLevelWithSea22.Value then
@@ -5188,7 +5743,7 @@ do
     end
     task.wait()
     if Old_World then
-        local SelectMob = Tabs.AutoFarmTab:AddDropdown("SelectMob", {
+        SelectMob = Tabs.AutoFarmTab:AddDropdown("SelectMob", {
             Title = "Select Mob",
             Values = {"Bandit", "Monkey", "Gorilla", "Pirate", "Brute", "Desert Bandit", "Desert Officer", "Snow Bandit", "Snowman", "Chief Petty Officer", "Sky Bandit", "Dark Master", "Prisoner", "Dangerous Prisoner", "Toga Warrior", "Gladiator", "Military Soldier", "Fishman Warrior", "Fishman Commando", "God's Guard", "Shanda", "Royal Squad", "Royal Soldier", "Galley Pirate"},
             Multi = false,
@@ -5200,7 +5755,7 @@ do
 
         
     elseif New_World then
-        local SelectMob = Tabs.AutoFarmTab:AddDropdown("SelectMob", {
+        SelectMob = Tabs.AutoFarmTab:AddDropdown("SelectMob", {
             Title = "Select Mob",
             Values = {"Raider", "Mercenary", "Swan Pirate", "Factory Staff", "Marine Lieutenant", "Marine Captain", "Zombie", "Vampire", "Snow Trooper", "Winter Warrior", "Lab Subordinate", "Horned Warrior", "Magma Ninja", "Lava Pirate", "Ship Deckhand", "Ship Engineer", "Ship Steward", "Ship Officer", "Arctic Warrior", "Snow Lurker", "Sea Soldier", "Water Fighter"},
             Multi = false,
@@ -5210,7 +5765,7 @@ do
             Setting.SelectMob = Options.SelectMob.Value
         end)
     elseif Third_World then
-        local SelectMob = Tabs.AutoFarmTab:AddDropdown("SelectMob", {
+        SelectMob = Tabs.AutoFarmTab:AddDropdown("SelectMob", {
             Title = "Select Mob",
             Values = {"Pirate Millionaire", "Pistol Billionaire", "Dragon Crew Warrior", "Dragon Crew Archer", "Female Islander", "Giant Islander", "Marine Commodore", "Marine Rear Admiral", "Fishman Raider", "Fishman Captain", "Forest Pirate", "Mythological Pirate", "Jungle Pirate", "Musketeer Pirate", "Musketeer Pirate", "Living Zombie", "Demonic Souls", "Posessed Mummys", "Peanut Scout", "Peanut Presidents", "Ice Cream Chefs", "Ice Cream Commanders", "Cookie Crafters"},
             Multi = false,
@@ -5242,7 +5797,7 @@ do
     AutoFarmSelectBoss:OnChanged(function()
         Setting.AutoFarmSelectBoss = Options.AutoFarmSelectBoss.Value
     end)
-    AutoFarmAllBoss = Tabs.AutoFarmTab:AddToggle("AutoFarmAllBoss", {Title = "Auto Farm All Boss", Default = false })
+    AutoFarmAllBoss = Tabs.AutoFarmTab:AddToggle("AutoFarmAllBoss", {Title = "Auto Farm All Boss", Default = Setting.AutoFarmAllBoss })
 
     AutoFarmAllBoss:OnChanged(function()
         Setting.AutoFarmAllBoss = Options.AutoFarmAllBoss.Value
@@ -5335,7 +5890,7 @@ do
         Setting.AutoLegendarySwordHop = Options.AutoLegendarySwordHop.Value
     end)
     Tabs.WeaponTab:AddSection("Sword #1")
-    AutoRengoku = Tabs.WeaponTab:AddToggle("AutoRengoku", {Title = "Auto Rengoku", Default = false })
+    AutoRengoku = Tabs.WeaponTab:AddToggle("AutoRengoku", {Title = "Auto Rengoku", Default = Setting.AutoRengoku })
 
     AutoRengoku:OnChanged(function()
         Setting.AutoRengoku = Options.AutoRengoku.Value
@@ -5495,7 +6050,7 @@ do
         Title = "Buy",
         Description = "",
         Callback = function()
-            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("RaidsNpc", "Select", tostring(Setting.SelectedRaid))
+            CommF:InvokeServer("RaidsNpc", "Select", tostring(Setting.SelectedRaid))
         end
     })
     KillAura = Tabs.RaidT:AddToggle("KillAura", {Title = "Kill Aura", Default = false })
@@ -5535,35 +6090,49 @@ do
     end)
 
     Tabs.StatsT:AddSection("Auto Stats")
-    MeleeStats = Tabs.StatsT:AddToggle("MeleeStats", {Title = "Melee", Default = false })
+    StatsValue = Tabs.StatsT:AddInput("StatsValue", {
+        Title = "Point",
+        Default = tostring(Setting.StatsValue),
+        Placeholder = "Placeholder",
+        Numeric = true,
+        Finished = false,
+        Callback = function(Value)
+            Setting.StatsValue = Value
+        end
+    })
+
+    StatsValue:OnChanged(function()
+        Setting.StatsValue = StatsValue.Value
+    end)
+    MeleeStats = Tabs.StatsT:AddToggle("MeleeStats", {Title = "Melee", Default = Setting.MeleeStats })
     MeleeStats:OnChanged(function()
         while Options.MeleeStats.Value do
             CommF:InvokeServer("AddPoint", "Melee", tonumber(Setting.StatsValue))
             task.wait()
         end
     end)
-    DefenseStats = Tabs.StatsT:AddToggle("DefenseStats", {Title = "Defense", Default = false })
+    DefenseStats = Tabs.StatsT:AddToggle("DefenseStats", {Title = "Defense", Default = Setting.DefenseStats })
     DefenseStats:OnChanged(function()
         while Options.DefenseStats.Value do
             CommF:InvokeServer("AddPoint", "Melee", tonumber(Setting.StatsValue))
             task.wait()
         end
     end)
-    SwordStats = Tabs.StatsT:AddToggle("SwordStats", {Title = "Sword", Default = false })
+    SwordStats = Tabs.StatsT:AddToggle("SwordStats", {Title = "Sword", Default = Setting.SwordStats })
     SwordStats:OnChanged(function()
         while Options.SwordStats.Value do
             CommF:InvokeServer("AddPoint", "Sword", tonumber(Setting.StatsValue))
             task.wait()
         end
     end)
-    GunStats = Tabs.StatsT:AddToggle("GunStats", {Title = "Gun", Default = false })
+    GunStats = Tabs.StatsT:AddToggle("GunStats", {Title = "Gun", Default = Setting.GunStats })
     GunStats:OnChanged(function()
         while Options.GunStats.Value do
             CommF:InvokeServer("AddPoint", "Gun", tonumber(Setting.StatsValue))
             task.wait()
         end
     end)
-    BloxFruitStats = Tabs.StatsT:AddToggle("BloxFruitStats", {Title = "Blox Fruit", Default = false })
+    BloxFruitStats = Tabs.StatsT:AddToggle("BloxFruitStats", {Title = "Blox Fruit", Default = Setting.BloxFruitStats })
     BloxFruitStats:OnChanged(function()
         while Options.BloxFruitStats.Value do
             CommF:InvokeServer("AddPoint", "Demon Fruit", tonumber(Setting.StatsValue))
@@ -5572,7 +6141,7 @@ do
     end)
 
     Tabs.FruitT:AddSection("Main")
-    BringFruit = Tabs.FruitT:AddToggle("BringFruit", {Title = "Bring Fruit", Default = false })
+    BringFruit = Tabs.FruitT:AddToggle("BringFruit", {Title = "Bring Fruit", Default = Setting.BringFruit })
 
     BringFruit:OnChanged(function()
         Setting.BringFruit = Options.BringFruit.Value
@@ -5582,7 +6151,7 @@ do
     TeleportFruit:OnChanged(function()
         Setting.TpToFruit = Options.TeleportFruit.Value
     end)
-    AutoRandomFruit = Tabs.FruitT:AddToggle("AutoRandomFruit", {Title = "Auto Spin Fruit", Default = false })
+    AutoRandomFruit = Tabs.FruitT:AddToggle("AutoRandomFruit", {Title = "Auto Spin Fruit", Default = Setting.AutoRandomFruit })
 
     AutoRandomFruit:OnChanged(function()
         while Options.AutoRandomFruit.Value do
@@ -5591,7 +6160,7 @@ do
         end
     end)
 
-    AutoStoreFruit = Tabs.FruitT:AddToggle("AutoStoreFruit", {Title = "Auto Store Fruit", Default = false })
+    AutoStoreFruit = Tabs.FruitT:AddToggle("AutoStoreFruit", {Title = "Auto Store Fruit", Default = Setting.AutoStoreFruit })
 
     AutoStoreFruit:OnChanged(function()
         while Options.AutoStoreFruit.Value do
@@ -5622,7 +6191,7 @@ do
             task.wait()
         end
     end)
-    AutoDropFruit = Tabs.FruitT:AddToggle("AutoDropFruit", {Title = "Auto Drop Fruit", Default = false })
+    AutoDropFruit = Tabs.FruitT:AddToggle("AutoDropFruit", {Title = "Auto Drop Fruit", Default = Setting.AutoDropFruit })
 
     AutoDropFruit:OnChanged(function()
         while Options.AutoDropFruit.Value do
@@ -5673,35 +6242,75 @@ do
         Setting.AutoStoreSelectFruit = Options.AutoStoreSelectFruit.Value
     end)
     Tabs.FruitT:AddSection("Snipe")
+    FruitList = {
+        "Bomb-Bomb",
+        "Spike-Spike",
+        "Chop-Chop",
+        "Spring-Spring",
+        "Kilo-Kilo",
+        "Spin-Spin",
+        "Bird: Falcon",
+        "Smoke-Smoke",
+        "Flame-Flame",
+        "Ice-Ice",
+        "Sand-Sand",
+        "Dark-Dark",
+        "Revive-Revive",
+        "Diamond-Diamond",
+        "Light-Light",
+        "Love-Love",
+        "Rubber-Rubber",
+        "Barrier-Barrier",
+        "Magma-Magma",
+        "Door-Door",
+        "Quake-Quake",
+        "Human-Human: Buddha",
+        "String-String",
+        "Bird-Bird: Phoenix",
+        "Rumble-Rumble",
+        "Paw-Paw",
+        "Gravity-Gravity",
+        "Dough-Dough",
+        "Venom-Venom",
+        "Shadow-Shadow",
+        "Control-Control",
+        "Soul-Soul",
+        "Dragon-Dragon",
+        "Leopard-Leopard"
+    }
     SelectFruitToSnipe = Tabs.FruitT:AddDropdown("SelectFruitToSnipe", {
         Title = "Select Fruit",
-        Values = {"gay"},
+        Values = FruitList,
         Multi = false,
         Default = 1,
     })
     SelectFruitToSnipe:OnChanged(function(Value)
         Setting.SelectFruitToSnipe = Options.SelectFruitToSnipe.Value
     end)
-
     Tabs.FruitT:AddButton({
         Title = "Snipe",
         Description = "AHAHAHA",
         Callback = function()
-            
+            CommF:InvokeServer("GetFruits")
+            CommF:InvokeServer("PurchaseRawFruit", tostring(Setting.SelectFruitToSnipe))
         end
     })
 
     AutoSnipeFruit = Tabs.FruitT:AddToggle("AutoSnipeFruit", {Title = "Auto Snipe Fruit", Default = false })
 
     AutoSnipeFruit:OnChanged(function()
-        Setting.AutoSnipeFruit = Options.AutoSnipeFruit.Value
+        while Options.AutoSnipeFruit.Value do
+            CommF:InvokeServer("GetFruits")
+            CommF:InvokeServer("PurchaseRawFruit", tostring(Setting.SelectFruitToSnipe))
+            task.wait(5)
+        end
     end)
 
     Tabs.MirageARaceT:AddSection("Mirage")
     Tabs.MirageARaceT:AddSection("Auto")
     SelectBoatForMirageIsland = Tabs.MirageARaceT:AddDropdown("SelectBoatForMirageIsland", {
         Title = "Select Boat",
-        Values = {"gay"},
+        Values = {"PirateSloop", "Enforcer", "RocketBoost", "Dinghy", "PirateBasic", "PirateBrigade"},
         Multi = false,
         Default = 1,
     })
@@ -5722,7 +6331,7 @@ do
     Tabs.MirageARaceT:AddSection("Maunal")
     SelectBoatForAutoSpawn = Tabs.MirageARaceT:AddDropdown("SelectBoatForAutoSpawn", {
         Title = "Select Boat",
-        Values = {"gay"},
+        Values = {"PirateSloop", "Enforcer", "RocketBoost", "Dinghy", "PirateBasic", "PirateBrigade"},
         Multi = false,
         Default = 1,
     })
@@ -5762,15 +6371,6 @@ do
         Setting.AutoRaceV3 = Options.AutoRaceV3.Value
     end)
     Tabs.MirageARaceT:AddSection("Race V4")
-    YourRace2 = Tabs.MirageARaceT:AddDropdown("YourRace2", {
-        Title = "Select Race",
-        Values = {"Mink", "Sky", "Fish", "Human", "Ghoul", "Cyborg"},
-        Multi = false,
-        Default = 1,
-    })
-    YourRace2:OnChanged(function(Value)
-        Setting.YourRace2 = Value
-    end)
     AutoRaceV4 = Tabs.MirageARaceT:AddToggle("AutoRaceV4", {Title = "Auto Evo Race V4", Default = false })
 
     AutoRaceV4:OnChanged(function()
@@ -5780,14 +6380,19 @@ do
         Title = "Teleport To Temple Of Time",
         Description = "",
         Callback = function()
-            
+            CommF:InvokeServer("requestEntrance",Vector3.new(28282.5703125, 14896.8505859375, 105.1042709350586))
         end
     })
     Tabs.MirageARaceT:AddButton({
         Title = "Teleport To Clock",
         Description = "",
         Callback = function()
-            
+            if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - Vector3.new(28282.5703125, 14896.8505859375, 105.1042709350586)).Magnitude > 1000 then
+                CommF:InvokeServer("requestEntrance",Vector3.new(28282.5703125, 14896.8505859375, 105.1042709350586))
+            elseif (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - Vector3.new(28282.5703125, 14896.8505859375, 105.1042709350586)).Magnitude < 1000 then
+                wait(0.5)
+                Teleport(CFrame.new(28973.0879, 14889.9756, -120.298691))
+            end
         end
     })
     Tabs.MirageARaceT:AddButton({
@@ -5801,7 +6406,23 @@ do
         Title = "Teleport To Your Race Gate",
         Description = "",
         Callback = function()
-            
+            if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - Vector3.new(28282.5703125, 14896.8505859375, 105.1042709350586)).Magnitude > 1000 then
+                CommF:InvokeServer("requestEntrance",Vector3.new(28282.5703125, 14896.8505859375, 105.1042709350586))
+            elseif (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - Vector3.new(28282.5703125, 14896.8505859375, 105.1042709350586)).Magnitude < 1000 then
+                if game:GetService("Players").LocalPlayer.Data.Race.Value == "Fishman" then
+                    tpwithnewtpbyme2(CFrame.new(28224.056640625, 14889.4267578125, -210.5872039794922), 5)
+                elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Human" then
+                    tpwithnewtpbyme2(CFrame.new(29237.294921875, 14889.4267578125, -206.94955444335938), 5)
+                elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Cyborg" then
+                    tpwithnewtpbyme2(CFrame.new(28492.4140625, 14894.4267578125, -422.1100158691406), 5)
+                elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Skypiea" then
+                    tpwithnewtpbyme2(CFrame.new(28967.408203125, 14918.0751953125, 234.31198120117188), 5)
+                elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Ghoul" then
+                    tpwithnewtpbyme2(CFrame.new(28672.720703125, 14889.1279296875, 454.5961608886719), 5)
+                elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Mink" then
+                    tpwithnewtpbyme2(CFrame.new(29020.66015625, 14889.4267578125, -379.2682800292969), 5)
+                end
+            end
         end
     })
     Tabs.SeaEventT:AddSection("Ship")
@@ -5841,16 +6462,15 @@ do
     SelectIgnoreEvent = Tabs.SeaEventT:AddDropdown("SelectIgnoreEvent", {
         Title = "Select Ignore Events",
         Description = "",
-        Values = {"gay", "gay2", "gay3"},
+        Values = {"Piranha", "Fish Crew Member", "SeaBeast", "Shark", "Terrorshark"},
         Multi = true,
-        Default = {"gay", "gay2"},
+        Default = {"nil", "nil"},
     })
     SelectIgnoreEvent:OnChanged(function(Value)
-        local Values = {}
+        Setting.IgnoreSeaEventList = {}
         for Value, State in next, Value do
-            table.insert(Values, Value)
+            table.insert(Setting.IgnoreSeaEventList, Value)
         end
-        print("Mutlidropdown changed:", table.concat(Values, ", "))
     end)
     SelectSeaLevel = Tabs.SeaEventT:AddDropdown("SelectSeaLevel", {
         Title = "Select Levels",
@@ -5899,12 +6519,12 @@ do
         Max = 360,
         Rounding = 1,
         Callback = function(Value)
-            
+            Setting.WalkSpeedSet = tonumber(Value)
         end
     })
 
     WalkSpeedSlider:OnChanged(function(Value)
-        
+        Setting.WalkSpeedSet = tonumber(Value)
     end)
     JumpPowerSlider = Tabs.PlayerTab:AddSlider("JumpPowerSlider", {
         Title = "JumpPower",
@@ -5914,12 +6534,12 @@ do
         Max = 360,
         Rounding = 1,
         Callback = function(Value)
-            
+            Setting.JumpPowerSet = tonumber(Value)
         end
     })
 
     JumpPowerSlider:OnChanged(function(Value)
-        
+        Setting.JumpPowerSet = tonumber(Value)
     end)
     FpsCapSlider = Tabs.PlayerTab:AddSlider("FpsCapSlider", {
         Title = "Fps Cap",
@@ -5946,15 +6566,155 @@ do
     ToggleJumpPower:OnChanged(function()
         Setting.ToggleJumpPower = Options.ToggleJumpPower.Value
     end)
+    while task.wait(0.5) do
+        if Settng.ToggleWalkSpeed then
+            if player.Character.HumanoidRootPart.WalkSpeed ~= tonumber(Setting.WalkSpeedSet) then
+                player.Character.HumanoidRootPart:GetPropertyChangedSignal("WalkSpeed"):Connect(function()
+                    if Settng.ToggleWalkSpeed then
+                        player.Character.HumanoidRootPart.WalkSpeed = tonumber(Setting.WalkSpeedSet)
+                    end
+                end)
+            end
+        end
+    end
+    while task.wait(0.5) do
+        if Settng.ToggleJumpPower then
+            if player.Character.HumanoidRootPart.JumpPower ~= tonumber(Setting.JumpPowerSet) then
+                player.Character.HumanoidRootPart:GetPropertyChangedSignal("JumpPower"):Connect(function()
+                    if Settng.ToggleJumpPower then
+                        player.Character.HumanoidRootPart.JumpPower = tonumber(Setting.JumpPowerSet)
+                    end
+                end)
+            end
+        end
+    end
     ToggleFly = Tabs.PlayerTab:AddToggle("ToggleFly", {Title = "Fly", Default = false })
 
     ToggleFly:OnChanged(function()
         Setting.ToggleFly = Options.ToggleFly.Value
+        if Setting.ToggleFly then
+            FLYING = Setting.ToggleFly
+            while not cmdlp or not cmdlp.Character or not cmdlp.Character:FindFirstChild('HumanoidRootPart') or not cmdlp.Character:FindFirstChild('Humanoid') or not cmdm do
+                wait()
+            end
+    
+            local T = cmdlp.Character.HumanoidRootPart
+            local SPEED = 0
+    
+            function FLY()
+                local BG = Instance.new('BodyGyro', T)
+                local BV = Instance.new('BodyVelocity', T)
+                BG.P = 9e4
+                BG.maxTorque = Vector3.new(9e9, 9e9, 9e9)
+                BG.cframe = T.CFrame
+                BV.velocity = Vector3.new(0, 0, 0)
+                BV.maxForce = Vector3.new(9e9, 9e9, 9e9)
+    
+                spawn(function()
+                    while FLYING do
+                        if CONTROL.L + CONTROL.R ~= 0 or CONTROL.F + CONTROL.B ~= 0 or CONTROL.Q + CONTROL.E ~= 0 then
+                            SPEED = 50
+                        elseif not (CONTROL.L + CONTROL.R ~= 0 or CONTROL.F + CONTROL.B ~= 0 or CONTROL.Q + CONTROL.E ~= 0) and SPEED ~= 0 then
+                            SPEED = 0
+                        end
+    
+                        if (CONTROL.L + CONTROL.R) ~= 0 or (CONTROL.F + CONTROL.B) ~= 0 or (CONTROL.Q + CONTROL.E) ~= 0 then
+                            BV.velocity = ((workspace.CurrentCamera.CoordinateFrame.lookVector * (CONTROL.F + CONTROL.B)) + ((workspace.CurrentCamera.CoordinateFrame * CFrame.new(CONTROL.L + CONTROL.R, (CONTROL.F + CONTROL.B + CONTROL.Q + CONTROL.E) * 0.2, 0).p) - workspace.CurrentCamera.CoordinateFrame.p)) * SPEED
+                        else
+                            BV.velocity = Vector3.new(0, 0, 0)
+                        end
+    
+                        BG.cframe = workspace.CurrentCamera.CoordinateFrame
+                        wait()
+                    end
+    
+                    CONTROL = {F = 0, B = 0, L = 0, R = 0, Q = 0, E = 0}
+                    SPEED = 0
+    
+                    BG:Destroy()
+                    BV:Destroy()
+                    cmdlp.Character.Humanoid.PlatformStand = false
+                end)
+            end
+    
+            cmdm.KeyDown:connect(function(KEY)
+                if KEY:lower() == 'w' then
+                    if vfly then
+                        CONTROL.F = speedofthevfly
+                    else
+                        CONTROL.F = speedofthefly
+                    end
+                elseif KEY:lower() == 's' then
+                    if vfly then
+                        CONTROL.B = -speedofthevfly
+                    else
+                        CONTROL.B = -speedofthefly
+                    end
+                elseif KEY:lower() == 'a' then
+                    if vfly then
+                        CONTROL.L = -speedofthevfly
+                    else
+                        CONTROL.L = -speedofthefly
+                    end
+                elseif KEY:lower() == 'd' then
+                    if vfly then
+                        CONTROL.R = speedofthevfly
+                    else
+                        CONTROL.R = speedofthefly
+                    end
+                elseif KEY:lower() == 'y' then
+                    if vfly then
+                        CONTROL.Q = speedofthevfly * 2
+                    else
+                        CONTROL.Q = speedofthefly * 2
+                    end
+                elseif KEY:lower() == 't' then
+                    if vfly then
+                        CONTROL.E = -speedofthevfly * 2
+                    else
+                        CONTROL.E = -speedofthefly * 2
+                    end
+                end
+            end)
+    
+            cmdm.KeyUp:connect(function(KEY)
+                if KEY:lower() == 'w' then
+                    CONTROL.F = 0
+                elseif KEY:lower() == 's' then
+                    CONTROL.B = 0
+                elseif KEY:lower() == 'a' then
+                    CONTROL.L = 0
+                elseif KEY:lower() == 'd' then
+                    CONTROL.R = 0
+                elseif KEY:lower() == 'y' then
+                    CONTROL.Q = 0
+                elseif KEY:lower() == 't' then
+                    CONTROL.E = 0
+                end
+            end)
+    
+            FLY()
+        else
+            FLYING = Setting.ToggleFly
+        end
     end)
-    ToggleNoClip = Tabs.PlayerTab:AddToggle("ToggleNoClip", {Title = "NoClip", Default = false })
+    ToggleNoClip = Tabs.PlayerTab:AddToggle("ToggleNoClip", {Title = "NoClip", Default = Setting.ToggleNoClip })
 
     ToggleNoClip:OnChanged(function()
         Setting.ToggleNoClip = Options.ToggleNoClip.Value
+        if Setting.ToggleNoClip then
+            for _,v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
+                if v:IsA('BasePart') and v.CanCollide and v.Name ~= floatName then
+                    v.CanCollide = false
+                end
+            end
+        else
+            for _,v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
+                if v:IsA('BasePart') and v.CanCollide and v.Name ~= floatName then
+                    v.CanCollide = true
+                end
+            end
+        end
     end)
     ToggleFloat = Tabs.PlayerTab:AddToggle("ToggleFloat", {Title = "Float", Default = false })
 
@@ -5966,18 +6726,18 @@ do
     ToggleDMGAura:OnChanged(function()
         Setting.ToggleDMGAura = Options.ToggleDMGAura.Value
     end)
-    Tabs.Main:AddButton({
+    Tabs.PlayerTab:AddButton({
         Title = "Change To Pirate",
         Description = "",
         Callback = function()
-            
+            CommF:InvokeServer("SetTeam","Pirates") 
         end
     })
-    Tabs.Main:AddButton({
+    Tabs.PlayerTab:AddButton({
         Title = "Change To Marine",
         Description = "",
         Callback = function()
-            
+            CommF:InvokeServer("SetTeam","Marines") 
         end
     })
     Tabs.PlayerTab:AddSection("Aim")
@@ -5988,7 +6748,7 @@ do
         Default = 1,
     })
     SelectPlayerToAim:OnChanged(function(Value)
-        
+        Setting.SelectPlayerToAim = tostring(Value)
     end)
     ToggleAimBotSkill = Tabs.PlayerTab:AddToggle("ToggleAimBotSkill", {Title = "Aimbot Skill", Default = false })
 
@@ -6008,7 +6768,7 @@ do
         Default = 1,
     })
     SelectPlayerToAutoBounty:OnChanged(function(Value)
-        
+        Setting.SelectPlayerToAutoBounty = tostring(Value)
     end)
     AutoKillSelectedPlayer = Tabs.PlayerTab:AddToggle("AutoKillSelectedPlayer", {Title = "Auto Kill Selected Player", Default = false })
 
@@ -6173,7 +6933,7 @@ do
     elseif Third_World then
         WhereToTp = Tabs.TpTab:AddDropdown("WhereToTp", {
             Title = "Select Location",
-            Values = {"gay"},
+            Values = {"Mansion", "Port Town", "Great Tree", "Castle On The Sea", "MiniSky", "Hydra Island", "Floating Turtle", "Haunted Castle", "Ice Cream Island", "Peanut Island", "Cake Island"},
             Multi = false,
             Default = 1,
         })
@@ -6189,15 +6949,19 @@ do
             TpOfTpTab()
             task.wait(0.175)
             if InstanceTp then
-                game.Players.LocalPlayer.Character:SetPrimaryPartCFrame(CFrameTargetTp)
-                wait()
-                game.Players.LocalPlayer.Character.Humanoid.Health = 0
-                repeat task.wait() until game.Players.LocalPlayer.Character.Humanoid
-                game.Players.LocalPlayer.Character:SetPrimaryPartCFrame(CFrameTargetTp)
-                game.Players.LocalPlayer.Character:SetPrimaryPartCFrame(CFrameTargetTp)
-                game.Players.LocalPlayer.Character:SetPrimaryPartCFrame(CFrameTargetTp)
+                if (CFrameTargetTp.Position - player.Character.HumanoidRootPart.Position).Magnitude > 100 then
+                    game.Players.LocalPlayer.Character:SetPrimaryPartCFrame(CFrameTargetTp)
+                    wait()
+                    game.Players.LocalPlayer.Character.Humanoid.Health = 0
+                    repeat task.wait() until game.Players.LocalPlayer.Character.Humanoid
+                    game.Players.LocalPlayer.Character:SetPrimaryPartCFrame(CFrameTargetTp)
+                    game.Players.LocalPlayer.Character:SetPrimaryPartCFrame(CFrameTargetTp)
+                    game.Players.LocalPlayer.Character:SetPrimaryPartCFrame(CFrameTargetTp)
+                end
             else
-                tpwithnewtpbyme2(CFrameTargetTp, 5)
+                if (CFrameTargetTp.Position - player.Character.HumanoidRootPart.Position).Magnitude > 100 then
+                    tpwithnewtpbyme2(CFrameTargetTp, 5)
+                end
             end
         end
     })
@@ -6807,7 +7571,7 @@ if allowtoserialized then
 end
 task.wait(5)
 finishload = true
-
+ 
 
 
 
