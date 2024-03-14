@@ -269,6 +269,22 @@ local PlayerGui = player.PlayerGui
 local CommF = ReplicatedStorage.Remotes.CommF_
 local CommE = ReplicatedStorage.Remotes.CommE
 local WeaponBackpack = {}
+local CONTROL = {F = 0, B = 0, L = 0, R = 0, Q = 0, E = 0}
+uis = game:GetService("UserInputService")
+local FLYING = false
+local cmdp = game:GetService("Players")
+local cmdlp = cmdp.LocalPlayer
+local player = cmdlp
+local cmdl = game:GetService("Lighting")
+local cmdrs = game:GetService("ReplicatedStorage")
+local cmdrs2 = game:GetService("RunService")
+local cmdts = game:GetService("TweenService")
+local cmdvu = game:GetService("VirtualUser")
+local cmduis = game:GetService("UserInputService")
+local Mouses = cmdlp:GetMouse()
+cmdm = Mouses
+speedofthevfly = 1
+speedofthefly = 1
 local AllBossNameSea1 = {"Saber Expert", "The Saw", "Greybeard", "The Gorilla King", "Bobby", "Yeti", "Mob Leader", "Vice Admiral", "Warden", "Chief Warden", "Swan", "Magma Admiral", "Fishman Lord", "Wysper", "Thunder God", "Cyborg"}
 if not isfolder("Setting") then
     makefolder("Setting")
@@ -6566,30 +6582,32 @@ do
     ToggleJumpPower:OnChanged(function()
         Setting.ToggleJumpPower = Options.ToggleJumpPower.Value
     end)
-    while task.wait(0.5) do
-        if Setting.ToggleWalkSpeed then
-            if player.Character.HumanoidRootPart.WalkSpeed ~= tonumber(Setting.WalkSpeedSet) then
-                player.Character.HumanoidRootPart:GetPropertyChangedSignal("WalkSpeed"):Connect(function()
-                    if Setting.ToggleWalkSpeed then
-                        player.Character.HumanoidRootPart.WalkSpeed = tonumber(Setting.WalkSpeedSet)
-                    end
-                end)
-                player.Character.HumanoidRootPart.WalkSpeed = 1
+    coroutine.wrap(function()
+        while task.wait(0.5) do
+            if Setting.ToggleWalkSpeed then
+                if player.Character.Humanoid.WalkSpeed ~= tonumber(Setting.WalkSpeedSet) then
+                    player.Character.Humanoid:GetPropertyChangedSignal("WalkSpeed"):Connect(function()
+                        if Setting.ToggleWalkSpeed then
+                            player.Character.Humanoid.WalkSpeed = tonumber(Setting.WalkSpeedSet)
+                        end
+                    end)
+                    player.Character.Humanoid.WalkSpeed = 1
+                end
             end
         end
-    end
-    while task.wait(0.5) do
-        if Setting.ToggleJumpPower then
-            if player.Character.HumanoidRootPart.JumpPower ~= tonumber(Setting.JumpPowerSet) then
-                player.Character.HumanoidRootPart:GetPropertyChangedSignal("JumpPower"):Connect(function()
-                    if Setting.ToggleJumpPower then
-                        player.Character.HumanoidRootPart.JumpPower = tonumber(Setting.JumpPowerSet)
-                    end
-                end)
-                player.Character.HumanoidRootPart.JumpPower = 1
+        while task.wait(0.5) do
+            if Setting.ToggleJumpPower then
+                if player.Character.Humanoid.JumpPower ~= tonumber(Setting.JumpPowerSet) then
+                    player.Character.Humanoid:GetPropertyChangedSignal("JumpPower"):Connect(function()
+                        if Setting.ToggleJumpPower then
+                            player.Character.Humanoid.JumpPower = tonumber(Setting.JumpPowerSet)
+                        end
+                    end)
+                    player.Character.Humanoid.JumpPower = 1
+                end
             end
         end
-    end
+    end)()
     ToggleFly = Tabs.PlayerTab:AddToggle("ToggleFly", {Title = "Fly", Default = false })
 
     ToggleFly:OnChanged(function()
