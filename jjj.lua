@@ -6389,7 +6389,7 @@ do
         Callback = function()
             if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - Vector3.new(28282.5703125, 14896.8505859375, 105.1042709350586)).Magnitude > 1000 then
                 CommF:InvokeServer("requestEntrance",Vector3.new(28282.5703125, 14896.8505859375, 105.1042709350586))
-            elseif (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - PosTemplete.Position).Magnitude < 1000 then
+            elseif (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - Vector3.new(28282.5703125, 14896.8505859375, 105.1042709350586)).Magnitude < 1000 then
                 wait(0.5)
                 Teleport(CFrame.new(28973.0879, 14889.9756, -120.298691))
             end
@@ -6406,20 +6406,20 @@ do
         Title = "Teleport To Your Race Gate",
         Description = "",
         Callback = function()
-            if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - Vector3.new(28282.5703125, 14896.8505859375, 105.1042709350586)).Magnitude > 1000 then
+            if (player.Character.HumanoidRootPart.Position - Vector3.new(28282.5703125, 14896.8505859375, 105.1042709350586)).Magnitude > 1000 then
                 CommF:InvokeServer("requestEntrance",Vector3.new(28282.5703125, 14896.8505859375, 105.1042709350586))
-            elseif (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - PosTemplete.Position).Magnitude < 1000 then
-                if game:GetService("Players").LocalPlayer.Data.Race.Value == "Fishman" then
+            elseif (player.Character.HumanoidRootPart.Position - Vector3.new(28282.5703125, 14896.8505859375, 105.1042709350586)).Magnitude < 1000 then
+                if player.Data.Race.Value == "Fishman" then
                     tpwithnewtpbyme2(CFrame.new(28224.056640625, 14889.4267578125, -210.5872039794922), 5)
-                elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Human" then
+                elseif player.Data.Race.Value == "Human" then
                     tpwithnewtpbyme2(CFrame.new(29237.294921875, 14889.4267578125, -206.94955444335938), 5)
-                elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Cyborg" then
+                elseif player.Data.Race.Value == "Cyborg" then
                     tpwithnewtpbyme2(CFrame.new(28492.4140625, 14894.4267578125, -422.1100158691406), 5)
-                elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Skypiea" then
+                elseif player.Data.Race.Value == "Skypiea" then
                     tpwithnewtpbyme2(CFrame.new(28967.408203125, 14918.0751953125, 234.31198120117188), 5)
-                elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Ghoul" then
+                elseif player.Data.Race.Value == "Ghoul" then
                     tpwithnewtpbyme2(CFrame.new(28672.720703125, 14889.1279296875, 454.5961608886719), 5)
-                elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Mink" then
+                elseif player.Data.Race.Value == "Mink" then
                     tpwithnewtpbyme2(CFrame.new(29020.66015625, 14889.4267578125, -379.2682800292969), 5)
                 end
             end
@@ -6471,7 +6471,6 @@ do
         for Value, State in next, Value do
             table.insert(Setting.IgnoreSeaEventList, Value)
         end
-        print("Mutlidropdown changed:", table.concat(Values, ", "))
     end)
     SelectSeaLevel = Tabs.SeaEventT:AddDropdown("SelectSeaLevel", {
         Title = "Select Levels",
@@ -6567,28 +6566,32 @@ do
     ToggleJumpPower:OnChanged(function()
         Setting.ToggleJumpPower = Options.ToggleJumpPower.Value
     end)
-    while task.wait(0.5) do
-        if Settng.ToggleWalkSpeed then
-            if player.Character.HumanoidRootPart.WalkSpeed ~= tonumber(Setting.WalkSpeedSet) then
-                player.Character.HumanoidRootPart:GetPropertyChangedSignal("WalkSpeed"):Connect(function()
-                    if Settng.ToggleWalkSpeed then
-                        player.Character.HumanoidRootPart.WalkSpeed = tonumber(Setting.WalkSpeedSet)
-                    end
-                end)
+    coroutine.wrap(function()
+        while task.wait(0.5) do
+            if Setting.ToggleWalkSpeed then
+                if player.Character.HumanoidRootPart.WalkSpeed ~= tonumber(Setting.WalkSpeedSet) then
+                    player.Character.HumanoidRootPart:GetPropertyChangedSignal("WalkSpeed"):Connect(function()
+                        if Setting.ToggleWalkSpeed then
+                            player.Character.HumanoidRootPart.WalkSpeed = tonumber(Setting.WalkSpeedSet)
+                        end
+                    end)
+                    player.Character.HumanoidRootPart.WalkSpeed = 1
+                end
             end
         end
-    end
-    while task.wait(0.5) do
-        if Settng.ToggleJumpPower then
-            if player.Character.HumanoidRootPart.JumpPower ~= tonumber(Setting.JumpPowerSet) then
-                player.Character.HumanoidRootPart:GetPropertyChangedSignal("JumpPower"):Connect(function()
-                    if Settng.ToggleJumpPower then
-                        player.Character.HumanoidRootPart.JumpPower = tonumber(Setting.JumpPowerSet)
-                    end
-                end)
+        while task.wait(0.5) do
+            if Setting.ToggleJumpPower then
+                if player.Character.HumanoidRootPart.JumpPower ~= tonumber(Setting.JumpPowerSet) then
+                    player.Character.HumanoidRootPart:GetPropertyChangedSignal("JumpPower"):Connect(function()
+                        if Setting.ToggleJumpPower then
+                            player.Character.HumanoidRootPart.JumpPower = tonumber(Setting.JumpPowerSet)
+                        end
+                    end)
+                    player.Character.HumanoidRootPart.JumpPower = 1
+                end
             end
         end
-    end
+    end)()
     ToggleFly = Tabs.PlayerTab:AddToggle("ToggleFly", {Title = "Fly", Default = false })
 
     ToggleFly:OnChanged(function()
