@@ -269,6 +269,8 @@ local PlayerGui = player.PlayerGui
 local CommF = ReplicatedStorage.Remotes.CommF_
 local CommE = ReplicatedStorage.Remotes.CommE
 local WeaponBackpack = {}
+local CONTROL = {F = 0, B = 0, L = 0, R = 0, Q = 0, E = 0}
+uis = game:GetService("UserInputService")
 local FLYING = false
 local cmdp = game:GetService("Players")
 local cmdlp = cmdp.LocalPlayer
@@ -404,11 +406,22 @@ if isfolder("Setting") and not isfile("Setting/setting.json") then
         WalkSpeedSet = 16,
         ToggleJumpPower = false,
         JumpPowerSet = 52,
+        AutoFarmBounty = false,
+        DMGAura5 = false,
+        AutoBountyTeleportSpeed = 5,
+        UseMeleeOnly = false,
+        ErrorAndTrial = 0,
+        MaxErrorAndTrial = 87000,
+        KeepSafeHealth = 3500,
+        AutoKennWhenAutoBounty = false,
+        UseRaceWhenAutoBounty = false,
+        AutoFarmBountyHop = false,
         chestcollect = 0,
         AutoNormalChest = false,
         AutoDetailChest = false,
         StackableSetting = true,
         CurrentTargetIsland = nil,
+        UnlockPortal = false,
     }
     allowtoserialized = true
 elseif isfolder("Setting") and isfile("Setting/setting.json") then
@@ -3437,6 +3450,7 @@ end)()
 
 
 
+
 --[[
                             $$\                       
                            $$  |                      
@@ -3545,7 +3559,7 @@ pcall(function()
         while task.wait() do
             pcall(function()
                 float = Setting.ToggleFloat or Setting.AutoFarmLevel or Setting.AutoMaterial or Setting.AuraMaterialType1 or Setting.AutoRaceV2 or Setting.AutoRaceV3 or Setting.AutoRaceV4 or Setting.AutoSea2 or Setting.TpToFruit or Setting.AutoRaid or Setting.AutoBartilo or Setting.TeleportToNextIsland or Setting.AutoRichManMission or Setting.AutoFarmObservation or Setting.AutoFarmObservationHop or Setting.AutoBone or Setting.AutoFarmAura or Setting.AutoFarmSelectMob or Setting.AutoFarmSelectBoss or Setting.AutoRengoku or Setting.AutoTwinHooks or Setting.AutoTwinHooksHop or Setting.AutoSharkSaw or Setting.AutoSharkSawHop or Setting.AutoWardensSword or Setting.AutoWardensSwordHop or Setting.AutoGravityCane or Setting.AutoGravityCaneHop or Setting.AutoLongsword or Setting.AutoLongswordHop or Setting.AutoJitte or Setting.AutoJitteHop or Setting.AutoBuddySword or Setting.AutoBuddySwordHop or Setting.AutoHallowScythe or Setting.AutoHallowScytheHop or Setting.AutoDarkDagger or Setting.AutoDarkDaggerHop or Setting.AutoYama or Setting.AutoDragonTrident or Setting.AutoDragonTridentHop or Setting.AutoPole or Setting.AutoPoleHop or Setting.AutoSaberHop or Setting.AutoCanvander or Setting.AutoCanvanderHop or Setting.AutoFarmGunMastery or Setting.AutoFarmFruitMastery or Setting.WaitBRUH
-                NeedAttacking = Setting.AutoFarmLevel or Setting.AutoMaterial or Setting.AuraMaterialType1 or Setting.AutoRaceV2 or Setting.AutoRaceV3 or Setting.AutoRaceV4 or Setting.AutoSea2 or Setting.DMGAura or Setting.DMGAura2 or Setting.DMGAura3 or Setting.DMGAura4 or Setting.AutoBartilo or Setting.AutoRichManMission or Setting.AutoBone or Setting.AutoFarmAura or Setting.AutoFarmSelectMob or Setting.AutoFarmSelectBoss or Setting.AutoRengoku or Setting.AutoTwinHooks or Setting.AutoTwinHooksHop or Setting.AutoSharkSaw or Setting.AutoSharkSawHop or Setting.AutoWardensSword or Setting.AutoWardensSwordHop or Setting.AutoGravityCane or Setting.AutoGravityCaneHop or Setting.AutoLongsword or Setting.AutoLongswordHop or Setting.AutoJitte or Setting.AutoJitteHop or Setting.AutoBuddySword or Setting.AutoBuddySwordHop or Setting.AutoHallowScythe or Setting.AutoHallowScytheHop or Setting.AutoDarkDagger or Setting.AutoDarkDaggerHop or Setting.AutoYama or Setting.AutoDragonTrident or Setting.AutoDragonTridentHop or Setting.AutoPole or Setting.AutoPoleHop or Setting.AutoSaberHop or Setting.AutoCanvander or Setting.AutoCanvanderHop or Setting.AutoFarmGunMastery or Setting.AutoFarmFruitMastery
+                NeedAttacking = Setting.AutoFarmLevel or Setting.AutoMaterial or Setting.AuraMaterialType1 or Setting.AutoRaceV2 or Setting.AutoRaceV3 or Setting.AutoRaceV4 or Setting.AutoSea2 or Setting.DMGAura or Setting.DMGAura2 or Setting.DMGAura3 or Setting.DMGAura4 or DMGAura5 or Setting.AutoBartilo or Setting.AutoRichManMission or Setting.AutoBone or Setting.AutoFarmAura or Setting.AutoFarmSelectMob or Setting.AutoFarmSelectBoss or Setting.AutoRengoku or Setting.AutoTwinHooks or Setting.AutoTwinHooksHop or Setting.AutoSharkSaw or Setting.AutoSharkSawHop or Setting.AutoWardensSword or Setting.AutoWardensSwordHop or Setting.AutoGravityCane or Setting.AutoGravityCaneHop or Setting.AutoLongsword or Setting.AutoLongswordHop or Setting.AutoJitte or Setting.AutoJitteHop or Setting.AutoBuddySword or Setting.AutoBuddySwordHop or Setting.AutoHallowScythe or Setting.AutoHallowScytheHop or Setting.AutoDarkDagger or Setting.AutoDarkDaggerHop or Setting.AutoYama or Setting.AutoDragonTrident or Setting.AutoDragonTridentHop or Setting.AutoPole or Setting.AutoPoleHop or Setting.AutoSaberHop or Setting.AutoCanvander or Setting.AutoCanvanderHop or Setting.AutoFarmGunMastery or Setting.AutoFarmFruitMastery
                 KillAuraS = Setting.AutoRaid or Setting.KillAura
                 BringMob = Setting.BringMob or Setting.BringMob2 or Setting.BringMob3
                 IsWeaponBusy = Setting.AutoBuddySword or Setting.AutoBuddySwordHop or Setting.AutoTwinHooks or Setting.AutoTwinHooksHop
@@ -4461,7 +4475,7 @@ coroutine.wrap(function()
                                 EquipSword()
                                 task.wait(0.15)
                                 UseSkillMelee()
-                            until not v:FindFirstChild("Health") or (v:FindFirstChild("Health") and v.Health == 0) or not Setting.AutoSeaEvent or table.find(Setting.IgnoreSeaEventList, "SeaBeast")
+                            until not v:FindFirstChild("Health") or (v:FindFirstChild("Health") and v.Health == 0) or not Setting.AutoRaceV4 or table.find(Setting.IgnoreSeaEventList, "SeaBeast")
                         end
                     end
                 end
@@ -5239,12 +5253,13 @@ pcall(function()
                     repeat task.wait() until (not game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") or (player.Character:FindFirstChild("Humanoid") and player.Character.Humanoid.Health == 0) or (game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") and not game.Players.LocalPlayer.Character.Humanoid.Sit and not Setting.WaitBRUH)) or not Setting.AutoSeaEvent
                 end
                 repeat task.wait() until player:FindFirstChild("Humanoid") and player.Humanoid.Health > 0
-                task.wait(0.365)
+                task.wait(5)
             end
         end
     end)()
 end)
 
+    
 
 
 
@@ -5308,6 +5323,93 @@ pcall(function()
         end
     end)()
 end)
+coroutine.wrap(function()
+    while task.wait() do
+        if Setting.AutoFarmBounty then
+            Setting.PauseAutoEqu = true
+            for _, v in pairs(workspace.Character:GetChildren()) do
+                if v and (v:FindFirstChild("Humanoid") and v.Humanoid.Health ~= 0) and v:FindFirstChild("HumanoidRootPart") and Setting.AutoFarmBounty then
+                    Setting.Atgay = v:GetAttribute("InCombat")
+                    tpwithnewtpbyme2(v.HumanoidRootPart.CFrame, tonumber(Setting.AutoBountyTeleportSpeed))
+                    EquipMelee()
+                    task.wait(0.5)
+                    UseSkillMelee()
+                    task.wait(2)
+                    tpwithnewtpbyme(v.HumanoidRootPart.X, v.HumanoidRootPart.Y + 100, v.HumanoidRootPart.Z, 6)
+                    if Setting.Atgay then
+                        if not Setting.UseMeleeOnly then
+                            repeat
+                                repeat task.wait() until player.Character:FindFirstChild("Humanoid") and player.Character.Humanoid.Health > 0
+                                Setting.PauseAutoEqu = true
+                                if Setting.ErrorAndTrial >= Setting.MaxErrorAndTrial or not Setting.AutoFarmBounty then
+                                    break
+                                else
+                                    if Setting.UseRaceWhenAutoBounty and Setting.AutoFarmBounty then
+                                        game:GetService("ReplicatedStorage").Remotes.CommE:FireServer("ActivateAbility")
+                                    end
+                                    if player.Character.Humanoid.Health <= Setting.KeepSafeHealth and Setting.AutoFarmBounty then
+                                        repeat
+                                            tpwithnewtpbyme(v.HumanoidRootPart.X, v.HumanoidRootPart.Y + 1000, v.HumanoidRootPart.Z, tonumber(6))
+                                            task.wait()
+                                        until player.Character.Humanoid.Health > Setting.KeepSafeHealth
+                                    end
+                                    if Setting.AutoKennWhenAutoBounty and Setting.AutoFarmBounty then
+                                        CommE:FireServer("Ken", true)
+                                    end
+                                    task.wait()
+                                    PosMobMasteryFruit = v.HumanoidRootPart.Position
+                                    tpwithnewtpbyme2(v.HumanoidRootPart.CFrame, tonumber(Setting.AutoBountyTeleportSpeed))
+                                    EquipMelee()
+                                    UseSkillMelee()
+                                    tpwithnewtpbyme2(v.HumanoidRootPart.CFrame, tonumber(Setting.AutoBountyTeleportSpeed))
+                                    PosMobMasteryFruit = v.HumanoidRootPart.Position
+                                    EquipSword()
+                                    UseSkillMelee()
+                                    tpwithnewtpbyme2(v.HumanoidRootPart.CFrame, tonumber(Setting.AutoBountyTeleportSpeed))
+                                    PosMobMasteryFruit = v.HumanoidRootPart.Position
+                                    Setting.ErrorAndTrial = Setting.ErrorAndTrial + 1
+                                end
+                                task.wait()
+                            until not v:FindFirstChild("Humanoid") or v.Humanoid.Health == 0  or Setting.ErrorAndTrial >= Setting.MaxErrorAndTrial or not Setting.AutoFarmBounty
+                        else
+                            repeat
+                                repeat task.wait() until player.Character:FindFirstChild("Humanoid") and player.Character.Humanoid.Health > 0
+                                Setting.PauseAutoEqu = true
+                                if Setting.ErrorAndTrial >= Setting.MaxErrorAndTrial or not Setting.AutoFarmBounty then
+                                    break
+                                else
+                                    if Setting.UseRaceWhenAutoBounty and Setting.AutoFarmBounty then
+                                        game:GetService("ReplicatedStorage").Remotes.CommE:FireServer("ActivateAbility")
+                                    end
+                                    if player.Character.Humanoid.Health <= Setting.KeepSafeHealth and Setting.AutoFarmBounty then
+                                        repeat
+                                            tpwithnewtpbyme(v.HumanoidRootPart.X, v.HumanoidRootPart.Y + 1000, v.HumanoidRootPart.Z, tonumber(6))
+                                            task.wait()
+                                        until player.Character.Humanoid.Health > Setting.KeepSafeHealth
+                                    end
+                                    if Setting.AutoKennWhenAutoBounty and Setting.AutoFarmBounty then
+                                        CommE:FireServer("Ken", true)
+                                    end
+                                    task.wait()
+                                    PosMobMasteryFruit = v.HumanoidRootPart.Position
+                                    tpwithnewtpbyme2(v.HumanoidRootPart.CFrame, tonumber(Setting.AutoBountyTeleportSpeed))
+                                    EquipMelee()
+                                    UseSkillMelee()
+                                    Setting.ErrorAndTrial = Setting.ErrorAndTrial + 1
+                                end
+                                task.wait()
+                            until not v:FindFirstChild("Humanoid") or v.Humanoid.Health == 0  or Setting.ErrorAndTrial >= Setting.MaxErrorAndTrial or not Setting.AutoFarmBounty
+                        end
+                    end
+                end
+            end
+            Setting.PauseAutoEqu = false
+            if Setting.AutoFarmBountyHop then
+                SVHop()
+            end
+        end
+    end
+end)()
 
 
 
@@ -6719,8 +6821,7 @@ do
     ToggleNoClip = Tabs.PlayerTab:AddToggle("ToggleNoClip", {Title = "NoClip", Default = Setting.ToggleNoClip })
 
     ToggleNoClip:OnChanged(function()
-        Setting.ToggleNoClip = Options.ToggleNoClip.Value
-        if Setting.ToggleNoClip then
+        if Options.ToggleNoClip.Value then
             for _,v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
                 if v:IsA('BasePart') and v.CanCollide and v.Name ~= floatName then
                     v.CanCollide = false
@@ -6793,15 +6894,15 @@ do
     AutoKillSelectedPlayer:OnChanged(function()
         Setting.AutoKillSelectedPlayer = Options.AutoKillSelectedPlayer.Value
     end)
-    AutoBounty = Tabs.PlayerTab:AddToggle("AutoBounty", {Title = "Auto Bounty", Default = false })
+    AutoFarmBounty = Tabs.PlayerTab:AddToggle("AutoFarmBounty", {Title = "Auto Bounty", Default = false })
 
-    AutoBounty:OnChanged(function()
-        Setting.AutoBounty = Options.AutoBounty.Value
+    AutoFarmBounty:OnChanged(function()
+        Setting.AutoFarmBounty = Options.AutoFarmBounty.Value
     end)
-    AutoBountyHop = Tabs.PlayerTab:AddToggle("AutoBountyHop", {Title = "Auto Bounty Hop", Default = false })
+    AutoFarmBountyHop = Tabs.PlayerTab:AddToggle("AutoFarmBountyHop", {Title = "Auto Bounty Hop", Default = Setting.AutoFarmBountyHop })
 
-    AutoBountyHop:OnChanged(function()
-        Setting.AutoBountyHop = Options.AutoBountyHop.Value
+    AutoFarmBountyHop:OnChanged(function()
+        Setting.AutoFarmBountyHop = Options.AutoFarmBountyHop.Value
     end)
     Tabs.PlayerTab:AddSection("Visual")
     Tabs.Main:AddButton({
@@ -7501,17 +7602,55 @@ do
     Tabs.Settings:AddSection("Auto Bounty Settings")
     MaxErrorTrial = Tabs.Settings:AddInput("MaxErrorTrial", {
         Title = "Max Error & Trial",
-        Default = 1,
+        Default = tonumber(Setting.MaxErrorAndTrial),
         Placeholder = "Placeholder",
         Numeric = true,
         Finished = false, 
         Callback = function(Value)
-            print("Input changed:", Value)
+            Setting.MaxErrorAndTrial = tonumber(Value)
         end
     })
 
     MaxErrorTrial:OnChanged(function()
-        print("Input updated:", MaxErrorTrial.Value)
+        Setting.MaxErrorAndTrial = tonumber(MaxErrorTrial.Value)
+    end)
+    KeepSafeHealth = Tabs.Settings:AddInput("KeepSafeHealth", {
+        Title = "Run When HP =",
+        Default = tonumber(Setting.KeepSafeHealth),
+        Placeholder = "Placeholder",
+        Numeric = true,
+        Finished = false, 
+        Callback = function(Value)
+            Setting.KeepSafeHealth = tonumber(Value)
+        end
+    })
+
+    KeepSafeHealth:OnChanged(function()
+        Setting.KeepSafeHealth = tonumber(KeepSafeHealth.Value)
+    end)
+    UseRaceWhenAutoBounty = Tabs.Settings:AddToggle("UseRaceWhenAutoBounty", {Title = "Use Race", Default = Setting.UseRaceWhenAutoBounty })
+
+    UseRaceWhenAutoBounty:OnChanged(function()
+        Setting.UseRaceWhenAutoBounty = Options.UseRaceWhenAutoBounty.Value
+    end)
+    UseMeleeOnly = Tabs.Settings:AddToggle("UseMeleeOnly", {Title = "Use Melee Only", Default = Setting.UseMeleeOnly })
+
+    UseMeleeOnly:OnChanged(function()
+        Setting.UseMeleeOnly = Options.UseMeleeOnly.Value
+    end)
+    AutoBountyTeleportSpeed = Tabs.Settings:AddSlider("AutoBountyTeleportSpeed", {
+        Title = "Teleport Speed",
+        Description = "",
+        Default = tonumber(Setting.AutoBountyTeleportSpeed),
+        Min = 0,
+        Max = 50,
+        Rounding = 1,
+        Callback = function(Value)
+            Setting.AutoBountyTeleportSpeed = tonumber(Value)
+        end
+    })
+    AutoBountyTeleportSpeed:OnChanged(function(Value)
+        Setting.AutoBountyTeleportSpeed = tonumber(Value)
     end)
     Tabs.Settings:AddSection("Stackable")
     StackableSetting = Tabs.Settings:AddToggle("StackableSetting", {Title = "Stackable", Default = Setting.StackableSetting })
@@ -7519,7 +7658,12 @@ do
     StackableSetting:OnChanged(function()
         Setting.StackableSetting = Options.StackableSetting.Value
     end)
+    Tabs.Settings:AddSection("E?##a?%")
+    UnlockPortal = Tabs.Settings:AddToggle("UnlockPortal", {Title = "Unlock Portal", Default = Setting.UnlockPortal })
 
+    UnlockPortal:OnChanged(function()
+        Setting.UnlockPortal = Options.UnlockPortal.Value
+    end)
     Tabs.Settings:AddSection("W A S D Ui Settings")
     BigSmallWASD = Tabs.Settings:AddToggle("BigSmallWASD", {Title = "Small/Big", Default = false })
 
