@@ -5359,7 +5359,6 @@ coroutine.wrap(function()
                                 break
                             else
                                 task.wait()
-                                Setting.PauseAutoFarmBountyOfTarget = false
                                 if Setting.UseRaceWhenAutoBounty and Setting.AutoFarmBounty then
                                     game:GetService("ReplicatedStorage").Remotes.CommE:FireServer("ActivateAbility")
                                 end
@@ -5376,14 +5375,16 @@ coroutine.wrap(function()
                                     CommE:FireServer("Ken", true)
                                 end
                                 task.wait()
-                                tpwithnewtpbyme2(v.HumanoidRootPart.CFrame, tonumber(Setting.AutoBountyTeleportSpeed))
-                                EquipMelee()
-                                if v.Humanoid and tonumber(v.Humanoid.Health) <= tonumber(v.Humanoid.MaxHealth) / 1.3 and not Setting.NoMore then
-                                    Setting.NoMore = true
-                                    tpwithnewtpbyme(v.HumanoidRootPart.X, v.HumanoidRootPart.Y + 500, v.HumanoidRootPart.Z, 6)
-                                    task.wait(10)
+                                if v and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health ~= 0 then
+                                    tpwithnewtpbyme2(v.HumanoidRootPart.CFrame, tonumber(Setting.AutoBountyTeleportSpeed))
+                                    EquipMelee()
+                                    if v.Humanoid and tonumber(v.Humanoid.Health) <= tonumber(v.Humanoid.MaxHealth) / 1.3 and not Setting.NoMore then
+                                        Setting.NoMore = true
+                                        tp(v.HumanoidRootPart.Position.X, v.HumanoidRootPart.Position.Y + 500, v.HumanoidRootPart.Position.Z)
+                                        task.wait(10)
+                                    end
+                                    Setting.ErrorAndTrial = Setting.ErrorAndTrial + 1
                                 end
-                                Setting.ErrorAndTrial = Setting.ErrorAndTrial + 1
                             end
                             task.wait()
                         until not v:FindFirstChild("Humanoid") or v.Humanoid.Health == 0  or Setting.ErrorAndTrial >= Setting.MaxErrorAndTrial or not Setting.AutoFarmBounty
