@@ -417,6 +417,7 @@ if isfolder("Setting") and not isfile("Setting/setting.json") then
         UseRaceWhenAutoBounty = false,
         AutoFarmBountyHop = false,
         PauseAutoFarmBountyOfTarget = false,
+        AndTrial = 0,
         NoMore = false,
         chestcollect = 0,
         AutoNormalChest = false,
@@ -5332,6 +5333,7 @@ coroutine.wrap(function()
             Setting.DMGAura5 = true
             for _, v in pairs(workspace.Characters:GetChildren()) do
                 if v and (v:FindFirstChild("Humanoid") and v.Humanoid.Health ~= 0) and v:FindFirstChild("HumanoidRootPart") and Setting.AutoFarmBounty and v.Name ~= game.Players.LocalPlayer.Name then
+                    repeat task.wait() until (v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0) or not v:FindFirstChild("Humanoid")
                     Setting.PauseAutoFarmBountyOfTarget = false
                     Setting.NoMore = false
                     EquipMelee()
@@ -5340,11 +5342,7 @@ coroutine.wrap(function()
                         task.wait()
                     until not v or not v:FindFirstChild("HumanoidRootPart") or (v.HumanoidRootPart.Position - player.Character.HumanoidRootPart.Position).Magnitude <= 30 or not Setting.AutoFarmBounty
                     EquipMelee()
-                    Setting.PosMobMasteryFruit = (v and v:FindFirstChild("HumanoidRootPart") and v.HumanoidRootPart.Position)
                     task.wait(5)
-                    Setting.PosMobMasteryFruit = (v and v:FindFirstChild("HumanoidRootPart") and v.HumanoidRootPart.Position)
-                    UseSkillMelee()
-                    task.wait(2)
                     if v and v:FindFirstChild("HumanoidRootPart") then
                         pcall(function()
                             tpwithnewtpbyme(v.HumanoidRootPart.Position.X, v.HumanoidRootPart.Position.Y + 500, v.HumanoidRootPart.Position.Z, 7)
@@ -5352,6 +5350,7 @@ coroutine.wrap(function()
                     end
                     task.wait()
                     Setting.Atgay = v:GetAttribute("InCombat")
+                    MaxHealthTaget = v.Humanoid:GetAttribute("MaxHealth")
                     task.wait()
                     if Setting.Atgay then
                         if not Setting.UseMeleeOnly then
@@ -5365,7 +5364,7 @@ coroutine.wrap(function()
                                     if Setting.PauseAutoFarmBountyOfTarget then
                                         pcall(function()
                                             tpwithnewtpbyme(v.HumanoidRootPart.X, v.HumanoidRootPart.Y + 500, v.HumanoidRootPart.Z, 6)
-                                            task.wait()
+                                            task.wait(10)
                                         end)
                                     end
                                     Setting.PauseAutoFarmBountyOfTarget = false
@@ -5389,7 +5388,8 @@ coroutine.wrap(function()
                                     tpwithnewtpbyme2(v.HumanoidRootPart.CFrame, tonumber(Setting.AutoBountyTeleportSpeed))
                                     EquipMelee()
                                     Setting.ErrorAndTrial = Setting.ErrorAndTrial + 1
-                                    if math.abs(Setting.MaxErrorAndTrial - Setting.ErrorAndTrial) >= Setting.ErrorAndTrial and not Setting.NoMore then
+                                    Setting.AndTrial = Setting.AndTrial + 1
+                                    if tonumber(v.Humanoid.Health) <= tonumber(MaxHealthTaget) / 2 and not Setting.NoMore then
                                         Setting.PauseAutoFarmBountyOfTarget = true
                                         Setting.NoMore = true
                                     end
@@ -5420,8 +5420,8 @@ coroutine.wrap(function()
                                     Setting.PosMobMasteryFruit = v.HumanoidRootPart.Position
                                     tpwithnewtpbyme2(v.HumanoidRootPart.CFrame, tonumber(Setting.AutoBountyTeleportSpeed))
                                     EquipMelee()
-                                    UseSkillMelee()
                                     Setting.ErrorAndTrial = Setting.ErrorAndTrial + 1
+                                    Setting.AndTrial = Setting.AndTrial + 1
                                 end
                                 task.wait()
                             until not v:FindFirstChild("Humanoid") or v.Humanoid.Health == 0  or Setting.ErrorAndTrial >= Setting.MaxErrorAndTrial or not Setting.AutoFarmBounty
