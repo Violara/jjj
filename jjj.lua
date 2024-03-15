@@ -5402,6 +5402,8 @@ coroutine.wrap(function()
                                 if v and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health ~= 0 then
                                     tpwithnewtpbyme2(v.HumanoidRootPart.CFrame, tonumber(Setting.AutoBountyTeleportSpeed))
                                     EquipMelee()
+                                    Setting.PosMobMasteryFruit = v.HumanoidRootPart.Position
+                                    UseSkillMelee()
                                     if v.Humanoid and tonumber(v.Humanoid.Health) <= tonumber(v.Humanoid.MaxHealth) / 2 and not Setting.NoMore then
                                         Setting.NoMore = true
                                         tp(v.HumanoidRootPart.Position.X, v.HumanoidRootPart.Position.Y + 1000, v.HumanoidRootPart.Position.Z)
