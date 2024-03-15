@@ -5385,14 +5385,15 @@ coroutine.wrap(function()
                                 if Setting.UseRaceWhenAutoBounty and Setting.AutoFarmBounty then
                                     game:GetService("ReplicatedStorage").Remotes.CommE:FireServer("ActivateAbility")
                                 end
-                                if player.Character.Humanoid.Health <= Setting.KeepSafeHealth and Setting.AutoFarmBounty then
+                                if player.Character.Humanoid.Health <= tonumber(Setting.KeepSafeHealth) and Setting.AutoFarmBounty then
                                     repeat
                                         pcall(function()
                                             tp(v.HumanoidRootPart.X, v.HumanoidRootPart.Y + 1000, v.HumanoidRootPart.Z)
                                             task.wait()
                                         end)
                                         task.wait()
-                                    until not v or not v:FindFirstChild("HumanoidRootPart") or player.Character.Humanoid.Health > Setting.KeepSafeHealth
+                                    until not v or not v:FindFirstChild("HumanoidRootPart") or player.Character.Humanoid.Health > tonumber(Setting.KeepSafeHealth) or not Setting.AutoFarmBounty
+                                    task.wait()
                                 end
                                 if Setting.AutoKennWhenAutoBounty and Setting.AutoFarmBounty then
                                     CommE:FireServer("Ken", true)
@@ -5403,7 +5404,7 @@ coroutine.wrap(function()
                                     EquipMelee()
                                     if v.Humanoid and tonumber(v.Humanoid.Health) <= tonumber(v.Humanoid.MaxHealth) / 2 and not Setting.NoMore then
                                         Setting.NoMore = true
-                                        tp(v.HumanoidRootPart.Position.X, v.HumanoidRootPart.Position.Y + 500, v.HumanoidRootPart.Position.Z)
+                                        tp(v.HumanoidRootPart.Position.X, v.HumanoidRootPart.Position.Y + 1000, v.HumanoidRootPart.Position.Z)
                                         task.wait(5)
                                     end
                                     Setting.ErrorAndTrial = Setting.ErrorAndTrial + 1
