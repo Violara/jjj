@@ -5337,6 +5337,7 @@ coroutine.wrap(function()
                     until (v.HumanoidRootPart.Position - player.Character.HumanoidRootPart.Position).Magnitude <= 30 or not Setting.AutoFarmBounty
                     EquipMelee()
                     task.wait(3)
+                    PosMobMasteryFruit = (v:FindFirstChild("HumanoidRootPart") and v.HumanoidRootPart.Position)
                     UseSkillMelee()
                     task.wait(2)
                     tpwithnewtpbyme(v.HumanoidRootPart.Position.X, v.HumanoidRootPart.Position.Y + 100, v.HumanoidRootPart.Position.Z, 6)
