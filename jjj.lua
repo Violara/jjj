@@ -5388,7 +5388,7 @@ coroutine.wrap(function()
                                 if player.Character.Humanoid.Health <= Setting.KeepSafeHealth and Setting.AutoFarmBounty then
                                     repeat
                                         pcall(function()
-                                            tpwithnewtpbyme(v.HumanoidRootPart.X, v.HumanoidRootPart.Y + 1000, v.HumanoidRootPart.Z, 6)
+                                            tp(v.HumanoidRootPart.X, v.HumanoidRootPart.Y + 1000, v.HumanoidRootPart.Z)
                                             task.wait()
                                         end)
                                         task.wait()
