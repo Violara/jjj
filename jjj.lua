@@ -5358,6 +5358,9 @@ coroutine.wrap(function()
                     until not v or not v:FindFirstChild("HumanoidRootPart") or (v.HumanoidRootPart.Position - player.Character.HumanoidRootPart.Position).Magnitude <= 30 or not Setting.AutoFarmBounty
                     EquipMelee()
                     for i = 1, 100 do
+                        if v.Humanoid and tonumber(v.Humanoid.Health) <= tonumber(v.Humanoid.MaxHealth) / 2 then
+                            break
+                        end
                         tpwithnewtpbyme2(v.HumanoidRootPart.CFrame, 10)
                         task.wait()
                     end
@@ -5401,7 +5404,7 @@ coroutine.wrap(function()
                                     if v.Humanoid and tonumber(v.Humanoid.Health) <= tonumber(v.Humanoid.MaxHealth) / 2 and not Setting.NoMore then
                                         Setting.NoMore = true
                                         tp(v.HumanoidRootPart.Position.X, v.HumanoidRootPart.Position.Y + 500, v.HumanoidRootPart.Position.Z)
-                                        task.wait(20)
+                                        task.wait(10)
                                     end
                                     Setting.ErrorAndTrial = Setting.ErrorAndTrial + 1
                                 end
