@@ -5350,7 +5350,7 @@ coroutine.wrap(function()
                     end
                     task.wait()
                     Setting.Atgay = v:GetAttribute("InCombat")
-                    MaxHealthTaget = v:GetAttribute("MaxHealth")
+                    MaxHealthTaget = v.Humanoid:GetAttribute("MaxHealth")
                     task.wait()
                     if Setting.Atgay then
                         if not Setting.UseMeleeOnly then
@@ -5389,7 +5389,7 @@ coroutine.wrap(function()
                                     EquipMelee()
                                     Setting.ErrorAndTrial = Setting.ErrorAndTrial + 1
                                     Setting.AndTrial = Setting.AndTrial + 1
-                                    if v.Humanoid.Health <= tonumber(MaxHealthTaget) / 2 and not Setting.NoMore then
+                                    if v.Humanoid and tonumber(v.Humanoid.Health) <= tonumber(MaxHealthTaget) / 1.3 and not Setting.NoMore then
                                         Setting.PauseAutoFarmBountyOfTarget = true
                                         Setting.NoMore = true
                                     end
