@@ -416,6 +416,9 @@ if isfolder("Setting") and not isfile("Setting/setting.json") then
         AutoKennWhenAutoBounty = false,
         UseRaceWhenAutoBounty = false,
         AutoFarmBountyHop = false,
+        PauseAutoFarmBountyOfTarget = false,
+        AndTrial = 0,
+        NoMore = false,
         chestcollect = 0,
         AutoNormalChest = false,
         AutoDetailChest = false,
@@ -5330,6 +5333,9 @@ coroutine.wrap(function()
             Setting.DMGAura5 = true
             for _, v in pairs(workspace.Characters:GetChildren()) do
                 if v and (v:FindFirstChild("Humanoid") and v.Humanoid.Health ~= 0) and v:FindFirstChild("HumanoidRootPart") and Setting.AutoFarmBounty and v.Name ~= game.Players.LocalPlayer.Name then
+                    repeat task.wait() until (v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0) or not v:FindFirstChild("Humanoid")
+                    Setting.PauseAutoFarmBountyOfTarget = false
+                    Setting.NoMore = false
                     EquipMelee()
                     repeat
                         tpwithnewtpbyme2(v.HumanoidRootPart.CFrame, tonumber(Setting.AutoBountyTeleportSpeed))
@@ -5358,6 +5364,13 @@ coroutine.wrap(function()
                                 if Setting.ErrorAndTrial >= Setting.MaxErrorAndTrial or not Setting.AutoFarmBounty then
                                     break
                                 else
+                                    if Setting.PauseAutoFarmBountyOfTarget then
+                                        pcall(function()
+                                            tpwithnewtpbyme(v.HumanoidRootPart.X, v.HumanoidRootPart.Y + 500, v.HumanoidRootPart.Z, 6)
+                                            task.wait(10)
+                                        end)
+                                    end
+                                    Setting.PauseAutoFarmBountyOfTarget = false
                                     if Setting.UseRaceWhenAutoBounty and Setting.AutoFarmBounty then
                                         game:GetService("ReplicatedStorage").Remotes.CommE:FireServer("ActivateAbility")
                                     end
@@ -5377,13 +5390,12 @@ coroutine.wrap(function()
                                     Setting.PosMobMasteryFruit = (v:FindFirstChild("HumanoidRootPart") and v.HumanoidRootPart.Position)
                                     tpwithnewtpbyme2(v.HumanoidRootPart.CFrame, tonumber(Setting.AutoBountyTeleportSpeed))
                                     EquipMelee()
-                                    UseSkillMelee()
-                                    tpwithnewtpbyme2(v.HumanoidRootPart.CFrame, tonumber(Setting.AutoBountyTeleportSpeed))
-                                    Setting.PosMobMasteryFruit = (v:FindFirstChild("HumanoidRootPart") and v.HumanoidRootPart.Position)
-                                    EquipSword()
-                                    UseSkillMelee()
-                                    tpwithnewtpbyme2(v.HumanoidRootPart.CFrame, tonumber(Setting.AutoBountyTeleportSpeed))
                                     Setting.ErrorAndTrial = Setting.ErrorAndTrial + 1
+                                    Setting.AndTrial = Setting.AndTrial + 1
+                                    if Setting.AndTrial >= 300 and not Setting.NoMore then
+                                        Setting.PauseAutoFarmBountyOfTarget = true
+                                        Setting.NoMore = true
+                                    end
                                 end
                                 task.wait()
                             until not v:FindFirstChild("Humanoid") or v.Humanoid.Health == 0  or Setting.ErrorAndTrial >= Setting.MaxErrorAndTrial or not Setting.AutoFarmBounty
@@ -5413,6 +5425,7 @@ coroutine.wrap(function()
                                     EquipMelee()
                                     UseSkillMelee()
                                     Setting.ErrorAndTrial = Setting.ErrorAndTrial + 1
+                                    Setting.AndTrial = Setting.AndTrial + 1
                                 end
                                 task.wait()
                             until not v:FindFirstChild("Humanoid") or v.Humanoid.Health == 0  or Setting.ErrorAndTrial >= Setting.MaxErrorAndTrial or not Setting.AutoFarmBounty
