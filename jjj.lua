@@ -5334,13 +5334,16 @@ coroutine.wrap(function()
                     repeat
                         tpwithnewtpbyme2(v.HumanoidRootPart.CFrame, tonumber(Setting.AutoBountyTeleportSpeed))
                         task.wait()
-                    until (v.HumanoidRootPart.Position - player.Character.HumanoidRootPart.Position).Magnitude <= 30 or not Setting.AutoFarmBounty
+                    until not v or not v:FindFirstChild("HumanoidRootPart") or (v.HumanoidRootPart.Position - player.Character.HumanoidRootPart.Position).Magnitude <= 30 or not Setting.AutoFarmBounty
                     EquipMelee()
                     task.wait(3)
-                    PosMobMasteryFruit = (v:FindFirstChild("HumanoidRootPart") and v.HumanoidRootPart.Position)
+                    PosMobMasteryFruit = (v and v:FindFirstChild("HumanoidRootPart") and v.HumanoidRootPart.Position)
                     UseSkillMelee()
                     task.wait(2)
-                    tpwithnewtpbyme(v.HumanoidRootPart.Position.X, v.HumanoidRootPart.Position.Y + 100, v.HumanoidRootPart.Position.Z, 6)
+                    if v and v:FindFirstChild("HumanoidRootPart") then
+                        tpwithnewtpbyme(v.HumanoidRootPart.Position.X, v.HumanoidRootPart.Position.Y + 100, v.HumanoidRootPart.Position.Z, 6)
+                    end
+                    task.wait()
                     if Setting.Atgay then
                         if not Setting.UseMeleeOnly then
                             repeat
