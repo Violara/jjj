@@ -416,6 +416,8 @@ if isfolder("Setting") and not isfile("Setting/setting.json") then
         AutoKennWhenAutoBounty = false,
         UseRaceWhenAutoBounty = false,
         AutoFarmBountyHop = false,
+        PauseAutoFarmBountyOfTarget = false,
+        NoMore = false,
         chestcollect = 0,
         AutoNormalChest = false,
         AutoDetailChest = false,
@@ -5330,6 +5332,9 @@ coroutine.wrap(function()
             Setting.DMGAura5 = true
             for _, v in pairs(workspace.Characters:GetChildren()) do
                 if v and (v:FindFirstChild("Humanoid") and v.Humanoid.Health ~= 0) and v:FindFirstChild("HumanoidRootPart") and Setting.AutoFarmBounty and v.Name ~= game.Players.LocalPlayer.Name then
+                    repeat task.wait() until (v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0) or not v:FindFirstChild("Humanoid")
+                    Setting.PauseAutoFarmBountyOfTarget = false
+                    Setting.NoMore = false
                     EquipMelee()
                     repeat
                         tpwithnewtpbyme2(v.HumanoidRootPart.CFrame, tonumber(Setting.AutoBountyTeleportSpeed))
@@ -5343,7 +5348,7 @@ coroutine.wrap(function()
                     task.wait(2)
                     if v and v:FindFirstChild("HumanoidRootPart") then
                         pcall(function()
-                            tpwithnewtpbyme(v.HumanoidRootPart.Position.X, v.HumanoidRootPart.Position.Y + 100, v.HumanoidRootPart.Position.Z, 7)
+                            tpwithnewtpbyme(v.HumanoidRootPart.Position.X, v.HumanoidRootPart.Position.Y + 500, v.HumanoidRootPart.Position.Z, 7)
                         end)
                     end
                     task.wait()
@@ -5358,30 +5363,37 @@ coroutine.wrap(function()
                                 if Setting.ErrorAndTrial >= Setting.MaxErrorAndTrial or not Setting.AutoFarmBounty then
                                     break
                                 else
+                                    if Setting.PauseAutoFarmBountyOfTarget then
+                                        pcall(function()
+                                            tpwithnewtpbyme(v.HumanoidRootPart.X, v.HumanoidRootPart.Y + 500, v.HumanoidRootPart.Z, 6)
+                                            task.wait()
+                                        end)
+                                    end
+                                    Setting.PauseAutoFarmBountyOfTarget = false
                                     if Setting.UseRaceWhenAutoBounty and Setting.AutoFarmBounty then
                                         game:GetService("ReplicatedStorage").Remotes.CommE:FireServer("ActivateAbility")
                                     end
                                     if player.Character.Humanoid.Health <= Setting.KeepSafeHealth and Setting.AutoFarmBounty then
                                         repeat
-                                            tpwithnewtpbyme(v.HumanoidRootPart.X, v.HumanoidRootPart.Y + 1000, v.HumanoidRootPart.Z, 6)
+                                            pcall(function()
+                                                tpwithnewtpbyme(v.HumanoidRootPart.X, v.HumanoidRootPart.Y + 1000, v.HumanoidRootPart.Z, 6)
+                                                task.wait()
+                                            end)
                                             task.wait()
-                                        until player.Character.Humanoid.Health > Setting.KeepSafeHealth
+                                        until not v or not v:FindFirstChild("HumanoidRootPart") or player.Character.Humanoid.Health > Setting.KeepSafeHealth
                                     end
                                     if Setting.AutoKennWhenAutoBounty and Setting.AutoFarmBounty then
                                         CommE:FireServer("Ken", true)
                                     end
                                     task.wait()
-                                    Setting.PosMobMasteryFruit = v.HumanoidRootPart.Position
+                                    Setting.PosMobMasteryFruit = (v:FindFirstChild("HumanoidRootPart") and v.HumanoidRootPart.Position)
                                     tpwithnewtpbyme2(v.HumanoidRootPart.CFrame, tonumber(Setting.AutoBountyTeleportSpeed))
                                     EquipMelee()
-                                    UseSkillMelee()
-                                    tpwithnewtpbyme2(v.HumanoidRootPart.CFrame, tonumber(Setting.AutoBountyTeleportSpeed))
-                                    Setting.PosMobMasteryFruit = v.HumanoidRootPart.Position
-                                    EquipSword()
-                                    UseSkillMelee()
-                                    tpwithnewtpbyme2(v.HumanoidRootPart.CFrame, tonumber(Setting.AutoBountyTeleportSpeed))
-                                    Setting.PosMobMasteryFruit = v.HumanoidRootPart.Position
                                     Setting.ErrorAndTrial = Setting.ErrorAndTrial + 1
+                                    if math.abs(Setting.MaxErrorAndTrial - Setting.ErrorAndTrial) >= Setting.ErrorAndTrial and not Setting.NoMore then
+                                        Setting.PauseAutoFarmBountyOfTarget = true
+                                        Setting.NoMore = true
+                                    end
                                 end
                                 task.wait()
                             until not v:FindFirstChild("Humanoid") or v.Humanoid.Health == 0  or Setting.ErrorAndTrial >= Setting.MaxErrorAndTrial or not Setting.AutoFarmBounty
