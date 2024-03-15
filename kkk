@@ -5334,7 +5334,7 @@ coroutine.wrap(function()
                     repeat
                         tpwithnewtpbyme2(v.HumanoidRootPart.CFrame, tonumber(Setting.AutoBountyTeleportSpeed))
                         task.wait()
-                    until (v.HumanoidRootPart.Position - player.Character.HumanoidRootPart.Position).Magnitude > 30
+                    until (v.HumanoidRootPart.Position - player.Character.HumanoidRootPart.Position).Magnitude <= 30
                     EquipMelee()
                     task.wait(0.5)
                     UseSkillMelee()
