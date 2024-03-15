@@ -2382,13 +2382,29 @@ local function AutoGetShip()
         end
     end
 end
-local function EquipWeapon(Name)
+function EquipWeapon(Name)
     if Backpack:FindFirstChild(Name) then
       local Tool = Backpack:FindFirstChild(Name)
       task.wait(0.02)
       player.Character.Humanoid:EquipTool(Tool)
       task.wait(0.5)
     end
+end
+function UnEquipWeapon(Weapon)
+    if game.Players.LocalPlayer.Character:FindFirstChild(Weapon) then
+        task.wait(0.5)
+        game.Players.LocalPlayer.Character:FindFirstChild(Weapon).Parent = game.Players.LocalPlayer.Backpack
+        task.wait(0.1)
+    end
+end
+function UnEquipMelee()
+    for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+		if v:IsA("Tool") then
+			if v.ToolTip == "Melee" then
+				v.Parent = game.Players.LocalPlayer.Backpack
+			end
+		end
+	end
 end
 function EquipGun()
 	for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
@@ -5331,6 +5347,7 @@ coroutine.wrap(function()
         if Setting.AutoFarmBounty then
             Setting.PauseAutoEqu = true
             Setting.DMGAura5 = true
+            Setting.UseSkill = true
             for _, v in pairs(workspace.Characters:GetChildren()) do
                 if v and (v:FindFirstChild("Humanoid") and v.Humanoid.Health ~= 0) and v:FindFirstChild("HumanoidRootPart") and Setting.AutoFarmBounty and v.Name ~= game.Players.LocalPlayer.Name then
                     repeat task.wait() until (v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0) or not v:FindFirstChild("Humanoid")
@@ -5341,10 +5358,17 @@ coroutine.wrap(function()
                         task.wait()
                     until not v or not v:FindFirstChild("HumanoidRootPart") or (v.HumanoidRootPart.Position - player.Character.HumanoidRootPart.Position).Magnitude <= 30 or not Setting.AutoFarmBounty
                     EquipMelee()
-                    task.wait(5)
+                    for i = 1, 100 do
+                        if v.Humanoid and tonumber(v.Humanoid.Health) <= tonumber(v.Humanoid.MaxHealth) / 2 then
+                            break
+                        end
+                        tpwithnewtpbyme2(v.HumanoidRootPart.CFrame, 10)
+                        task.wait()
+                    end
+                    UnEquipMelee()
                     if v and v:FindFirstChild("HumanoidRootPart") then
                         pcall(function()
-                            tpwithnewtpbyme(v.HumanoidRootPart.Position.X, v.HumanoidRootPart.Position.Y + 500, v.HumanoidRootPart.Position.Z, 7)
+                            tp(v.HumanoidRootPart.Position.X, v.HumanoidRootPart.Position.Y + 500, v.HumanoidRootPart.Position.Z)
                         end)
                     end
                     task.wait()
@@ -5362,14 +5386,15 @@ coroutine.wrap(function()
                                 if Setting.UseRaceWhenAutoBounty and Setting.AutoFarmBounty then
                                     game:GetService("ReplicatedStorage").Remotes.CommE:FireServer("ActivateAbility")
                                 end
-                                if player.Character.Humanoid.Health <= Setting.KeepSafeHealth and Setting.AutoFarmBounty then
+                                if player.Character.Humanoid.Health <= tonumber(Setting.KeepSafeHealth) and Setting.AutoFarmBounty then
                                     repeat
                                         pcall(function()
-                                            tpwithnewtpbyme(v.HumanoidRootPart.X, v.HumanoidRootPart.Y + 1000, v.HumanoidRootPart.Z, 6)
+                                            tp(v.HumanoidRootPart.X, v.HumanoidRootPart.Y + 1000, v.HumanoidRootPart.Z)
                                             task.wait()
                                         end)
                                         task.wait()
-                                    until not v or not v:FindFirstChild("HumanoidRootPart") or player.Character.Humanoid.Health > Setting.KeepSafeHealth
+                                    until not v or not v:FindFirstChild("HumanoidRootPart") or player.Character.Humanoid.Health > tonumber(Setting.KeepSafeHealth) or not Setting.AutoFarmBounty
+                                    task.wait()
                                 end
                                 if Setting.AutoKennWhenAutoBounty and Setting.AutoFarmBounty then
                                     CommE:FireServer("Ken", true)
@@ -5378,10 +5403,31 @@ coroutine.wrap(function()
                                 if v and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health ~= 0 then
                                     tpwithnewtpbyme2(v.HumanoidRootPart.CFrame, tonumber(Setting.AutoBountyTeleportSpeed))
                                     EquipMelee()
+                                    MobHumP = v.HumanoidRootPart.Position
+                                    Setting.PosMobMasteryFruit = MobHumP
+                                    UseSkillMelee()
                                     if v.Humanoid and tonumber(v.Humanoid.Health) <= tonumber(v.Humanoid.MaxHealth) / 2 and not Setting.NoMore then
                                         Setting.NoMore = true
-                                        tp(v.HumanoidRootPart.Position.X, v.HumanoidRootPart.Position.Y + 500, v.HumanoidRootPart.Position.Z)
-                                        task.wait(20)
+                                        tp(v.HumanoidRootPart.Position.X, v.HumanoidRootPart.Position.Y + 1000, v.HumanoidRootPart.Position.Z)
+                                        task.wait(5)
+                                    end
+                                    EquipSword()
+                                    MobHumP = v.HumanoidRootPart.Position
+                                    Setting.PosMobMasteryFruit = MobHumP
+                                    UseSkillMelee()
+                                    if v.Humanoid and tonumber(v.Humanoid.Health) <= tonumber(v.Humanoid.MaxHealth) / 2 and not Setting.NoMore then
+                                        Setting.NoMore = true
+                                        tp(v.HumanoidRootPart.Position.X, v.HumanoidRootPart.Position.Y + 1000, v.HumanoidRootPart.Position.Z)
+                                        task.wait(5)
+                                    end
+                                    EquipGun()
+                                    MobHumP = v.HumanoidRootPart.Position
+                                    Setting.PosMobMasteryFruit = MobHumP
+                                    UseSkillMelee()
+                                    if v.Humanoid and tonumber(v.Humanoid.Health) <= tonumber(v.Humanoid.MaxHealth) / 2 and not Setting.NoMore then
+                                        Setting.NoMore = true
+                                        tp(v.HumanoidRootPart.Position.X, v.HumanoidRootPart.Position.Y + 1000, v.HumanoidRootPart.Position.Z)
+                                        task.wait(5)
                                     end
                                     Setting.ErrorAndTrial = Setting.ErrorAndTrial + 1
                                 end
@@ -5391,6 +5437,7 @@ coroutine.wrap(function()
                     end
                 end
             end
+            Setting.UseSkill = false
             Setting.PauseAutoEqu = false
             Setting.DMGAura5 = false
             if Setting.AutoFarmBountyHop then
