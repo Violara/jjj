@@ -5357,7 +5357,10 @@ coroutine.wrap(function()
                         task.wait()
                     until not v or not v:FindFirstChild("HumanoidRootPart") or (v.HumanoidRootPart.Position - player.Character.HumanoidRootPart.Position).Magnitude <= 30 or not Setting.AutoFarmBounty
                     EquipMelee()
-                    task.wait(5)
+                    for i = 1, 100 do
+                        tpwithnewtpbyme2(v.HumanoidRootPart.CFrame, 10)
+                        task.wait()
+                    end
                     UnEquipMelee()
                     if v and v:FindFirstChild("HumanoidRootPart") then
                         pcall(function()
