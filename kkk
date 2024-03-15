@@ -5342,11 +5342,7 @@ coroutine.wrap(function()
                         task.wait()
                     until not v or not v:FindFirstChild("HumanoidRootPart") or (v.HumanoidRootPart.Position - player.Character.HumanoidRootPart.Position).Magnitude <= 30 or not Setting.AutoFarmBounty
                     EquipMelee()
-                    Setting.PosMobMasteryFruit = (v and v:FindFirstChild("HumanoidRootPart") and v.HumanoidRootPart.Position)
                     task.wait(5)
-                    Setting.PosMobMasteryFruit = (v and v:FindFirstChild("HumanoidRootPart") and v.HumanoidRootPart.Position)
-                    UseSkillMelee()
-                    task.wait(2)
                     if v and v:FindFirstChild("HumanoidRootPart") then
                         pcall(function()
                             tpwithnewtpbyme(v.HumanoidRootPart.Position.X, v.HumanoidRootPart.Position.Y + 500, v.HumanoidRootPart.Position.Z, 7)
@@ -5354,6 +5350,7 @@ coroutine.wrap(function()
                     end
                     task.wait()
                     Setting.Atgay = v:GetAttribute("InCombat")
+                    MaxHealthTaget = v:GetAttribute("MaxHealth")
                     task.wait()
                     if Setting.Atgay then
                         if not Setting.UseMeleeOnly then
@@ -5392,7 +5389,7 @@ coroutine.wrap(function()
                                     EquipMelee()
                                     Setting.ErrorAndTrial = Setting.ErrorAndTrial + 1
                                     Setting.AndTrial = Setting.AndTrial + 1
-                                    if Setting.AndTrial >= 300 and not Setting.NoMore then
+                                    if v.Humanoid.Health <= tonumber(MaxHealthTaget) / 2 and not Setting.NoMore then
                                         Setting.PauseAutoFarmBountyOfTarget = true
                                         Setting.NoMore = true
                                     end
@@ -5423,7 +5420,6 @@ coroutine.wrap(function()
                                     Setting.PosMobMasteryFruit = v.HumanoidRootPart.Position
                                     tpwithnewtpbyme2(v.HumanoidRootPart.CFrame, tonumber(Setting.AutoBountyTeleportSpeed))
                                     EquipMelee()
-                                    UseSkillMelee()
                                     Setting.ErrorAndTrial = Setting.ErrorAndTrial + 1
                                     Setting.AndTrial = Setting.AndTrial + 1
                                 end
