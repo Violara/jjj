@@ -5330,19 +5330,24 @@ coroutine.wrap(function()
             Setting.DMGAura5 = true
             for _, v in pairs(workspace.Characters:GetChildren()) do
                 if v and (v:FindFirstChild("Humanoid") and v.Humanoid.Health ~= 0) and v:FindFirstChild("HumanoidRootPart") and Setting.AutoFarmBounty and v.Name ~= game.Players.LocalPlayer.Name then
-                    Setting.Atgay = v:GetAttribute("InCombat")
+                    EquipMelee()
                     repeat
                         tpwithnewtpbyme2(v.HumanoidRootPart.CFrame, tonumber(Setting.AutoBountyTeleportSpeed))
                         task.wait()
                     until not v or not v:FindFirstChild("HumanoidRootPart") or (v.HumanoidRootPart.Position - player.Character.HumanoidRootPart.Position).Magnitude <= 30 or not Setting.AutoFarmBounty
                     EquipMelee()
-                    task.wait(3)
-                    PosMobMasteryFruit = (v and v:FindFirstChild("HumanoidRootPart") and v.HumanoidRootPart.Position)
+                    Setting.PosMobMasteryFruit = (v and v:FindFirstChild("HumanoidRootPart") and v.HumanoidRootPart.Position)
+                    task.wait(5)
+                    Setting.PosMobMasteryFruit = (v and v:FindFirstChild("HumanoidRootPart") and v.HumanoidRootPart.Position)
                     UseSkillMelee()
                     task.wait(2)
                     if v and v:FindFirstChild("HumanoidRootPart") then
-                        tpwithnewtpbyme(v.HumanoidRootPart.Position.X, v.HumanoidRootPart.Position.Y + 100, v.HumanoidRootPart.Position.Z, 6)
+                        pcall(function()
+                            tpwithnewtpbyme(v.HumanoidRootPart.Position.X, v.HumanoidRootPart.Position.Y + 100, v.HumanoidRootPart.Position.Z, 7)
+                        end)
                     end
+                    task.wait()
+                    Setting.Atgay = v:GetAttribute("InCombat")
                     task.wait()
                     if Setting.Atgay then
                         if not Setting.UseMeleeOnly then
@@ -5358,7 +5363,7 @@ coroutine.wrap(function()
                                     end
                                     if player.Character.Humanoid.Health <= Setting.KeepSafeHealth and Setting.AutoFarmBounty then
                                         repeat
-                                            tpwithnewtpbyme(v.HumanoidRootPart.X, v.HumanoidRootPart.Y + 1000, v.HumanoidRootPart.Z, tonumber(6))
+                                            tpwithnewtpbyme(v.HumanoidRootPart.X, v.HumanoidRootPart.Y + 1000, v.HumanoidRootPart.Z, 6)
                                             task.wait()
                                         until player.Character.Humanoid.Health > Setting.KeepSafeHealth
                                     end
@@ -5366,16 +5371,16 @@ coroutine.wrap(function()
                                         CommE:FireServer("Ken", true)
                                     end
                                     task.wait()
-                                    PosMobMasteryFruit = v.HumanoidRootPart.Position
+                                    Setting.PosMobMasteryFruit = v.HumanoidRootPart.Position
                                     tpwithnewtpbyme2(v.HumanoidRootPart.CFrame, tonumber(Setting.AutoBountyTeleportSpeed))
                                     EquipMelee()
                                     UseSkillMelee()
                                     tpwithnewtpbyme2(v.HumanoidRootPart.CFrame, tonumber(Setting.AutoBountyTeleportSpeed))
-                                    PosMobMasteryFruit = v.HumanoidRootPart.Position
+                                    Setting.PosMobMasteryFruit = v.HumanoidRootPart.Position
                                     EquipSword()
                                     UseSkillMelee()
                                     tpwithnewtpbyme2(v.HumanoidRootPart.CFrame, tonumber(Setting.AutoBountyTeleportSpeed))
-                                    PosMobMasteryFruit = v.HumanoidRootPart.Position
+                                    Setting.PosMobMasteryFruit = v.HumanoidRootPart.Position
                                     Setting.ErrorAndTrial = Setting.ErrorAndTrial + 1
                                 end
                                 task.wait()
@@ -5401,7 +5406,7 @@ coroutine.wrap(function()
                                         CommE:FireServer("Ken", true)
                                     end
                                     task.wait()
-                                    PosMobMasteryFruit = v.HumanoidRootPart.Position
+                                    Setting.PosMobMasteryFruit = v.HumanoidRootPart.Position
                                     tpwithnewtpbyme2(v.HumanoidRootPart.CFrame, tonumber(Setting.AutoBountyTeleportSpeed))
                                     EquipMelee()
                                     UseSkillMelee()
