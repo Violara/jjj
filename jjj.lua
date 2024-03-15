@@ -5404,7 +5404,7 @@ coroutine.wrap(function()
                                     if v.Humanoid and tonumber(v.Humanoid.Health) <= tonumber(v.Humanoid.MaxHealth) / 2 and not Setting.NoMore then
                                         Setting.NoMore = true
                                         tp(v.HumanoidRootPart.Position.X, v.HumanoidRootPart.Position.Y + 500, v.HumanoidRootPart.Position.Z)
-                                        task.wait(10)
+                                        task.wait(5)
                                     end
                                     Setting.ErrorAndTrial = Setting.ErrorAndTrial + 1
                                 end
