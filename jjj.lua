@@ -2382,13 +2382,29 @@ local function AutoGetShip()
         end
     end
 end
-local function EquipWeapon(Name)
+function EquipWeapon(Name)
     if Backpack:FindFirstChild(Name) then
       local Tool = Backpack:FindFirstChild(Name)
       task.wait(0.02)
       player.Character.Humanoid:EquipTool(Tool)
       task.wait(0.5)
     end
+end
+function UnEquipWeapon(Weapon)
+    if game.Players.LocalPlayer.Character:FindFirstChild(Weapon) then
+        task.wait(0.5)
+        game.Players.LocalPlayer.Character:FindFirstChild(Weapon).Parent = game.Players.LocalPlayer.Backpack
+        task.wait(0.1)
+    end
+end
+function UnEquipMelee()
+    for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+		if v:IsA("Tool") then
+			if v.ToolTip == "Melee" then
+				v.Parent = game.Players.LocalPlayer.Backpack
+			end
+		end
+	end
 end
 function EquipGun()
 	for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
@@ -5342,9 +5358,10 @@ coroutine.wrap(function()
                     until not v or not v:FindFirstChild("HumanoidRootPart") or (v.HumanoidRootPart.Position - player.Character.HumanoidRootPart.Position).Magnitude <= 30 or not Setting.AutoFarmBounty
                     EquipMelee()
                     task.wait(5)
+                    UnEquipMelee()
                     if v and v:FindFirstChild("HumanoidRootPart") then
                         pcall(function()
-                            tpwithnewtpbyme(v.HumanoidRootPart.Position.X, v.HumanoidRootPart.Position.Y + 500, v.HumanoidRootPart.Position.Z, 7)
+                            tp(v.HumanoidRootPart.Position.X, v.HumanoidRootPart.Position.Y + 500, v.HumanoidRootPart.Position.Z)
                         end)
                     end
                     task.wait()
