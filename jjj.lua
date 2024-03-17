@@ -1644,4 +1644,4 @@ end
 textButton77.MouseButton1Click:Connect(onButtonClick2)
 ]]
 finishload = true
-CoreGui["TTJY HUB MAIN"].Enabled = true
+CoreGui["DrRay"].Enabled = true
