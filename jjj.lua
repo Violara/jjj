@@ -1,33 +1,31 @@
 repeat task.wait() until game:IsLoaded()
-local GameVar = {
-    p = game:GetService("Players"),
-    Player = p.LocalPlayer,
-    uis = game:GetService("UserInputService"),
-    cmdp = game:GetService("Players"),
-    cmdlp = cmdp.LocalPlayer,
-    player = cmdlp,
-    cmdl = game:GetService("Lighting"),
-    cmdrs = game:GetService("ReplicatedStorage"),
-    cmdrs2 = game:GetService("RunService"),
-    cmdts = game:GetService("TweenService"),
-    cmdvu = game:GetService("VirtualUser"),
-    cmduis = game:GetService("UserInputService"),
-    Mouses = cmdlp:GetMouse(),
-    cmdm = Mouses,
-    VirtualInputManager = game:GetService('VirtualInputManager'),
-    RunService = game:GetService("RunService"),
-    ReplicatedStorage = game:GetService("ReplicatedStorage"),
-    CoreGui = game:GetService("CoreGui"),
-    HttpService = game:GetService("HttpService"),
-    VirtualUser = game:GetService("VirtualUser"),
-    workspace = game:GetService("Workspace"),
-    StarterGui = game:GetService("StarterGui"),
-    tweenService = game:GetService("TweenService"),
-    tweenInfo = TweenInfo.new(1, Enum.EasingStyle.Linear),
-    tween = nil,
-    char = Player.Character,
-    Backpack = Player.Backpack,
-}
+local p = game:GetService("Players")
+Player = p.LocalPlayer
+uis = game:GetService("UserInputService")
+cmdp = p
+cmdlp = p.LocalPlayer
+player = cmdlp
+cmdl = game:GetService("Lighting")
+cmdrs = game:GetService("ReplicatedStorage")
+cmdrs2 = game:GetService("RunService")
+cmdts = game:GetService("TweenService")
+cmdvu = game:GetService("VirtualUser")
+cmduis = game:GetService("UserInputService")
+Mouses = cmdlp:GetMouse()
+cmdm = Mouses
+VirtualInputManager = game:GetService('VirtualInputManager')
+RunService = game:GetService("RunService")
+ReplicatedStorage = game:GetService("ReplicatedStorage")
+CoreGui = game:GetService("CoreGui")
+HttpService = game:GetService("HttpService")
+VirtualUser = game:GetService("VirtualUser")
+workspace = game:GetService("Workspace")
+StarterGui = game:GetService("StarterGui")
+tweenService = game:GetService("TweenService")
+tweenInfo = TweenInfo.new(1, Enum.EasingStyle.Linear)
+tween = nil
+char = Player.Character
+Backpack = Player.Backpack
 local Var = {
     DeviceType = nil,
     FullPath = nil,
@@ -73,7 +71,7 @@ local Setting = {
 }
 
 function keyPress(Key, Press)
-    GameVar.VirtualInputManager:SendKeyEvent(Press, Key, false, game)
+    VirtualInputManager:SendKeyEvent(Press, Key, false, game)
 end
 function findNearestBase()
     local maxDistance = math.huge
@@ -157,7 +155,7 @@ function isPlayerNearPosition(player, position, radius)
     return false
 end
 function checkPlatform()
-    if GameVar.UserInputService.TouchEnabled then
+    if UserInputService.TouchEnabled then
         print("User is on a mobile device.")
         Var.DeviceType = "Mobile"
     else
@@ -235,7 +233,7 @@ function Notify(title, context)
 end
 local screenGui2 = Instance.new("ScreenGui")
 screenGui2.Name = "InputPcToMobile"
-screenGui2.Parent = GameVar.CoreGui
+screenGui2.Parent = CoreGui
 buttonSize = UDim2.new(0.05, 0, 0.05, 0)
 function createButton(key, position)
     local button = Instance.new("TextButton")
@@ -473,7 +471,6 @@ local listToRemove22 = {
     "DogwoodTree_Var01",
     "RedwoodTreeLarge-Var01"
 }
-
 local DrRayLibrary = loadstring(game:HttpGet("https://raw.githubusercontent.com/Yumiara/Asset/main/XUMINANU.lua"))()
 local window = DrRayLibrary:Load("The Mimic Script v2.UP1FV", "Default")
 
@@ -613,7 +610,7 @@ MAIN.newButton("Set Lantern Brightness", "Hold lantern first", function()
     end
 end)
 MAIN.newButton("Set Lantern Range", "Hold lantern first", function()
-    for _,v in pairs(GameVar.workspace:GetDescendants()) do
+    for _,v in pairs(workspace:GetDescendants()) do
         if v:IsA("PointLight") and v.Parent.Parent.Parent.Parent.Name == game.Players.LocalPlayer.Name or v:IsA("PointLight") and v.Parent.Parent.Parent.Name == game.Players.LocalPlayer.Name or v:IsA("SpotLight") and v.Parent.Parent.Parent.Parent.Name == game.Players.LocalPlayer.Name then
             v.Range = rangeofL
             break
@@ -621,7 +618,7 @@ MAIN.newButton("Set Lantern Range", "Hold lantern first", function()
     end
 end)
 MAIN.newButton("Virtual Lantern", "Can't hold | Virtual | Can be see in Inventory", function()
-    for _,v in pairs(GameVar.ReplicatedStorage:GetDescendants()) do
+    for _,v in pairs(ReplicatedStorage:GetDescendants()) do
         if v.Parent.Name == "SkinsInfo" then
             v.Parent = Backpack
         end
@@ -641,7 +638,7 @@ end)
 B1C1.newLabel("ESP")
 B1C1.newButton("ESP Item", "", function()
     if game.PlaceId == 6296321810 or game.PlaceId == 6479231833 then
-        for _,v in pairs(GameVar.workspace:GetDescendants()) do
+        for _,v in pairs(workspace:GetDescendants()) do
             if v.Name == "Key1" or v.Name == "Key2" or v.Name == "Key3" then
             local highlight = Instance.new("Highlight")
             highlight.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
@@ -659,7 +656,7 @@ B1C1.newButton("ESP Item", "", function()
 end)
 B1C1.newButton("ESP Monster", "", function()
     if game.PlaceId == 6296321810 or game.PlaceId == 6479231833 then
-        for _,v in pairs(GameVar.workspace:GetDescendants()) do
+        for _,v in pairs(workspace:GetDescendants()) do
             if v.Name == "AI" and v.Parent.Name == "GameAI" then
                 local highlight = Instance.new("Highlight")
                 highlight.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
@@ -670,7 +667,7 @@ B1C1.newButton("ESP Monster", "", function()
             end
         end
     elseif  game.PlaceId == 6301638949 or game.PlaceId == 6480994221 then
-        for _,v in pairs(GameVar.workspace:GetDescendants()) do
+        for _,v in pairs(workspace:GetDescendants()) do
             if v.Name == "KurikoCeiling" and v.Parent.Name == "GameAI" or v.Name == "KurikoFloor" and v.Parent.Name == "GameAI" or v.Name == "Biwaki" and v.Parent.Name == "GameAI2" or v.Name == "realshizu" and v.Parent.Name == "GameAI2" then
                 local highlight = Instance.new("Highlight")
                 highlight.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
@@ -719,7 +716,7 @@ end)
 B1C2.newLabel("ESP")
 B1C2.newButton("ESP Item", "", function()
     if game.PlaceId == 6373539583 or game.PlaceId == 6485055338 then
-        for _,v in pairs(GameVar.workspace:GetDescendants()) do
+        for _,v in pairs(workspace:GetDescendants()) do
             if v.Name == "Key1" or v.Name == "Butterfly" and v:FindFirstChild("ProxPart") and v:FindFirstChild("butterfly") then
             local highlight = Instance.new("Highlight")
             highlight.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
@@ -730,7 +727,7 @@ B1C2.newButton("ESP Item", "", function()
         end
     end
     elseif  game.PlaceId == 6406571212 or game.PlaceId == 6485055836 then
-        for _,v in pairs(GameVar.workspace:GetDescendants()) do
+        for _,v in pairs(workspace:GetDescendants()) do
             if v.Name == "Key1" or v.Name == "Butterfly" and v:FindFirstChild("ProxPart") and v:FindFirstChild("butterfly") then
             local highlight = Instance.new("Highlight")
             highlight.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
@@ -741,7 +738,7 @@ B1C2.newButton("ESP Item", "", function()
         end
     end
     elseif  game.PlaceId == 6425178683 or game.PlaceId == 6485056556 then
-        for _,v in pairs(GameVar.workspace:GetDescendants()) do
+        for _,v in pairs(workspace:GetDescendants()) do
             if v.Name == "Butterfly" and v:FindFirstChild("ProxPart") and v:FindFirstChild("butterfly") then
             local highlight = Instance.new("Highlight")
             highlight.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
@@ -757,7 +754,7 @@ B1C2.newButton("ESP Item", "", function()
 end)
 B1C2.newButton("ESP Monster", "", function()
     if game.PlaceId == 6373539583 or game.PlaceId == 6485055338 then
-        for _,v in pairs(GameVar.workspace:GetDescendants()) do
+        for _,v in pairs(workspace:GetDescendants()) do
             if v.Name == "AI" and v.Parent.Name == "GameAI" or v.Name == "Kusonoki" and v.Parent.Name == "GameAI" then
                 local highlight = Instance.new("Highlight")
                 highlight.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
@@ -768,7 +765,7 @@ B1C2.newButton("ESP Monster", "", function()
             end
         end
     elseif  game.PlaceId == 6406571212 or game.PlaceId == 6485055836 then
-        for _,v in pairs(GameVar.workspace:GetDescendants()) do
+        for _,v in pairs(workspace:GetDescendants()) do
             if v.Name == "AI" and v.Parent.Name == "GameAI" or v.Name == "AI" and v.Parent.Name == "GameAI2" then
                 local highlight = Instance.new("Highlight")
                 highlight.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
@@ -779,7 +776,7 @@ B1C2.newButton("ESP Monster", "", function()
             end
         end
     elseif  game.PlaceId == 6425178683 or game.PlaceId == 6485056556 then
-        for _,v in pairs(GameVar.workspace:GetDescendants()) do
+        for _,v in pairs(workspace:GetDescendants()) do
             if v.Name == "AI" and v.Parent.Name == "GameAI" then
                 local highlight = Instance.new("Highlight")
                 highlight.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
@@ -813,7 +810,7 @@ end)
 B1C3.newLabel("ESP")
 B1C3.newButton("ESP Item", "", function()
     if game.PlaceId == 6472459099 or game.PlaceId == 6688734180 then
-        for _,v in pairs(GameVar.workspace:GetDescendants()) do
+        for _,v in pairs(workspace:GetDescendants()) do
             if v.Name == "Blade" or v.Name == "Butterfly" and v:FindFirstChild("ProxPart") and v:FindFirstChild("butterfly") then
             local highlight = Instance.new("Highlight")
             highlight.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
@@ -824,7 +821,7 @@ B1C3.newButton("ESP Item", "", function()
         end
     end
     elseif  game.PlaceId == 6682163754 or game.PlaceId == 6688734313 then
-        for _,v in pairs(GameVar.workspace:GetDescendants()) do
+        for _,v in pairs(workspace:GetDescendants()) do
             if v.Parent.Name == "Givers" or v.Name == "Rose" or v.Parent.Name == "BellFolder" then
                 local highlight = Instance.new("Highlight")
                 highlight.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
@@ -835,7 +832,7 @@ B1C3.newButton("ESP Item", "", function()
             end
         end
     elseif  game.PlaceId == 6682164423 or game.PlaceId == 6688734395 then
-        for _,v in pairs(GameVar.workspace:GetDescendants()) do
+        for _,v in pairs(workspace:GetDescendants()) do
             if v.Name == "Key1" or v.Name == "CodeDoor" then
                 local highlight = Instance.new("Highlight")
                 highlight.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
@@ -851,7 +848,7 @@ B1C3.newButton("ESP Item", "", function()
 end)
 B1C3.newButton("ESP Monster", "", function()
     if game.PlaceId == 6472459099 or game.PlaceId == 6688734180 then
-        for _,v in pairs(GameVar.workspace:GetDescendants()) do
+        for _,v in pairs(workspace:GetDescendants()) do
             if v.Name == "kaito" and v.Parent.Name == "GameAI" then
                 local highlight = Instance.new("Highlight")
                 highlight.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
@@ -862,7 +859,7 @@ B1C3.newButton("ESP Monster", "", function()
             end
         end
     elseif  game.PlaceId == 6682163754 or game.PlaceId == 6688734313 then
-        for _,v in pairs(GameVar.workspace:GetDescendants()) do
+        for _,v in pairs(workspace:GetDescendants()) do
             if v.Name == "AI" and v.Parent.Name == "GameAI" then
                 local highlight = Instance.new("Highlight")
                 highlight.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
@@ -873,7 +870,7 @@ B1C3.newButton("ESP Monster", "", function()
             end
         end
     elseif  game.PlaceId == 6682164423 or game.PlaceId == 6688734395 then
-        for _,v in pairs(GameVar.workspace:GetDescendants()) do
+        for _,v in pairs(workspace:GetDescendants()) do
             if v.Name == "omukadeMAIN" then
                 local highlight = Instance.new("Highlight")
                 highlight.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
@@ -896,7 +893,7 @@ B1C4.newButton("Auto Win", "", function()
     Tp(91, -48.35, -1416.24, nil)
 end)
 B1C4.newButton("ESP Item", "", function()
-    for _,v in pairs(GameVar.workspace:GetDescendants()) do
+    for _,v in pairs(workspace:GetDescendants()) do
         if v.Name == "Model" and v:FindFirstChild("DrawerScript") or v.Name == "Model" and v:FindFirstChild("ProxPart") and v:FindFirstChild("Handle") then
             local highlight = Instance.new("Highlight")
             highlight.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
@@ -908,7 +905,7 @@ B1C4.newButton("ESP Item", "", function()
     end
 end)
 B1C4.newButton("ESP Monster", "", function()
-    for _,v in pairs(GameVar.workspace:GetDescendants()) do
+    for _,v in pairs(workspace:GetDescendants()) do
         if v.Name == "Manq" and v.Parent.Name == "GameAI" then
             local highlight = Instance.new("Highlight")
             highlight.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
@@ -922,14 +919,14 @@ end)
 B1C4.newLabel("Map 2")
 B1C4.newButton("Auto Win", "If you are using Custom Prompt, Look Down", function()
     if not Setting.CustomFirePropmt then
-        for i, v in pairs(GameVar.workspace:GetDescendants()) do
+        for i, v in pairs(workspace:GetDescendants()) do
             if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Name == "Butterfly" then
                 Tp(v.Parent.Position.X, v.Parent.Position.Y, v.Parent.Position.Z, 0.3)
                 fireproximityprompt(v)
             end
         end
     else
-        for i, v in pairs(GameVar.workspace:GetDescendants()) do
+        for i, v in pairs(workspace:GetDescendants()) do
             if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Name == "Butterfly" then
                 Tp(v.Parent.Position.X, v.Parent.Position.Y + 1, v.Parent.Position.Z, 0.3)
                 fireproximitypromptv2(v, 1, true)
@@ -938,7 +935,7 @@ B1C4.newButton("Auto Win", "If you are using Custom Prompt, Look Down", function
     end
 end)
 B1C4.newButton("ESP Item", "", function()
-    for _,v in pairs(GameVar.workspace:GetDescendants()) do
+    for _,v in pairs(workspace:GetDescendants()) do
         if v.Name == "Butterfly" and v.Parent.Name == "Butterflies" then
             local highlight = Instance.new("Highlight")
             highlight.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
@@ -950,7 +947,7 @@ B1C4.newButton("ESP Item", "", function()
     end
 end)
 B1C4.newButton("ESP Monster", "", function()
-    for _,v in pairs(GameVar.workspace["GameAI"]:GetChildren()) do
+    for _,v in pairs(workspace["GameAI"]:GetChildren()) do
         if v.Parent.Name == "GameAI" then
             local highlight = Instance.new("Highlight")
             highlight.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
@@ -965,49 +962,49 @@ B1C4.newLabel("Map 3")
 B1C4.newButton("Auto Win", "If you are using Custom Prompt, Look Down", function()
     if not Setting.CustomFirePropmt then
         Tp(665.63, 18.17, 2108.62, 0.3)
-        for i, v in pairs(GameVar.workspace:GetDescendants()) do
+        for i, v in pairs(workspace:GetDescendants()) do
             if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart")  then
                 fireproximityprompt(v)
             end
         end
         task.wait()
         Tp(620.22, 17.87, 2340.73, 0.3)
-        for i, v in pairs(GameVar.workspace:GetDescendants()) do
+        for i, v in pairs(workspace:GetDescendants()) do
             if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart")  then
                 fireproximityprompt(v)
             end
         end
         task.wait()
         Tp(756.75, 16.39, 2538.24, 0.3)
-        for i, v in pairs(GameVar.workspace:GetDescendants()) do
+        for i, v in pairs(workspace:GetDescendants()) do
             if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart")  then
                 fireproximityprompt(v)
             end
         end
         task.wait()
         Tp(860.18, 24.85, 2548.28, 0.3)
-        for i, v in pairs(GameVar.workspace:GetDescendants()) do
+        for i, v in pairs(workspace:GetDescendants()) do
             if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart")  then
                 fireproximityprompt(v)
             end
         end
         task.wait()
         Tp(855.96, 15.47, 2388.36, 0.3)
-        for i, v in pairs(GameVar.workspace:GetDescendants()) do
+        for i, v in pairs(workspace:GetDescendants()) do
             if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart")  then
                 fireproximityprompt(v)
             end
         end
         task.wait()
         Tp(836.29, 19.01, 2247.34, 0.3)
-        for i, v in pairs(GameVar.workspace:GetDescendants()) do
+        for i, v in pairs(workspace:GetDescendants()) do
             if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart")  then
                 fireproximityprompt(v)
             end
         end
         task.wait()
         Tp(688.41, 28.37, 2251.57, 0.3)
-        for i, v in pairs(GameVar.workspace:GetDescendants()) do
+        for i, v in pairs(workspace:GetDescendants()) do
             if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart")  then
                 fireproximityprompt(v)
                 fireproximityprompt(v)
@@ -1019,49 +1016,49 @@ B1C4.newButton("Auto Win", "If you are using Custom Prompt, Look Down", function
         end
     else
         Tp(665.63, 18.17, 2108.62, 0.3)
-        for i, v in pairs(GameVar.workspace:GetDescendants()) do
+        for i, v in pairs(workspace:GetDescendants()) do
             if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart")  then
                 fireproximitypromptv2(v, 1, true)
             end
         end
         task.wait()
         Tp(620.22, 17.87, 2340.73, 0.3)
-        for i, v in pairs(GameVar.workspace:GetDescendants()) do
+        for i, v in pairs(workspace:GetDescendants()) do
             if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart")  then
                 fireproximitypromptv2(v, 1, true)
             end
         end
         task.wait()
         Tp(756.75, 16.39, 2538.24, 0.3)
-        for i, v in pairs(GameVar.workspace:GetDescendants()) do
+        for i, v in pairs(workspace:GetDescendants()) do
             if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart")  then
                 fireproximitypromptv2(v, 1, true)
             end
         end
         task.wait()
         Tp(860.18, 24.85, 2548.28, 0.3)
-        for i, v in pairs(GameVar.workspace:GetDescendants()) do
+        for i, v in pairs(workspace:GetDescendants()) do
             if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart")  then
                 fireproximitypromptv2(v, 1, true)
             end
         end
         task.wait()
         Tp(855.96, 15.47, 2388.36, 0.3)
-        for i, v in pairs(GameVar.workspace:GetDescendants()) do
+        for i, v in pairs(workspace:GetDescendants()) do
             if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart")  then
                 fireproximitypromptv2(v, 1, true)
             end
         end
         task.wait()
         Tp(836.29, 19.01, 2247.34, 0.3)
-        for i, v in pairs(GameVar.workspace:GetDescendants()) do
+        for i, v in pairs(workspace:GetDescendants()) do
             if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart")  then
                 fireproximitypromptv2(v, 1, true)
             end
         end
         task.wait()
         Tp(688.41, 28.37, 2251.57, 0.3)
-        for i, v in pairs(GameVar.workspace:GetDescendants()) do
+        for i, v in pairs(workspace:GetDescendants()) do
             if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart")  then
                 fireproximitypromptv2(v, 1, true)
                 fireproximitypromptv2(v, 1, true)
@@ -1073,7 +1070,7 @@ B1C4.newButton("Auto Win", "If you are using Custom Prompt, Look Down", function
     end
 end)
 B1C4.newButton("ESP Item", "", function()
-    for _,v in pairs(GameVar.workspace:GetDescendants()) do
+    for _,v in pairs(workspace:GetDescendants()) do
         if v.Name == "Model" and v:FindFirstChild("Spirit") and v:FindFirstChild("Spirit"):FindFirstChild("Handle") or v.Parent.Name == "PuzzleItems" or v.Name == "Key" then
             local highlight = Instance.new("Highlight")
             highlight.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
@@ -1085,7 +1082,7 @@ B1C4.newButton("ESP Item", "", function()
     end
 end)
 B1C4.newButton("ESP Monster", "", function()
-    for _,v in pairs(GameVar.workspace["GameAI"]:GetDescendants()) do
+    for _,v in pairs(workspace["GameAI"]:GetDescendants()) do
         if v.Parent.Name == "GameAI" then
             local highlight = Instance.new("Highlight")
             highlight.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
@@ -1098,43 +1095,43 @@ B1C4.newButton("ESP Monster", "", function()
 end)
 B1C4.newLabel("Map 4")
 B1C4.newButton("Auto Kill Sama", "", function()
-    for i,v in pairs(GameVar.workspace.GameHearts:GetChildren()) do
+    for i,v in pairs(workspace.GameHearts:GetChildren()) do
         repeat
             if Workspace.Camera.FieldOfView > 71 then
-                GameVar.Player.Character.HumanoidRootPart.CFrame = CFrame.new(2823, 155, 2490)
+                Player.Character.HumanoidRootPart.CFrame = CFrame.new(2823, 155, 2490)
             else
-            if not GameVar.Player.Character:FindFirstChild("Katana") then
-                GameVar.Player.Backpack.Katana.Parent = GameVar.Player.Character
+            if not Player.Character:FindFirstChild("Katana") then
+                Player.Backpack.Katana.Parent = Player.Character
             end
             task.wait()
             if string.sub(tostring(v.Root.CFrame.Position),1,2) == "32" then
-                GameVar.Player.Character.HumanoidRootPart.CFrame = CFrame.new(3209, 132, 2193)
+                Player.Character.HumanoidRootPart.CFrame = CFrame.new(3209, 132, 2193)
             elseif string.sub(tostring(v.Root.CFrame.Position),1,2) == "25" then
-                GameVar.Player.Character.HumanoidRootPart.CFrame = CFrame.new(2589, 132, 2408)
+                Player.Character.HumanoidRootPart.CFrame = CFrame.new(2589, 132, 2408)
             elseif string.sub(tostring(v.Root.CFrame.Position),1,2) == "28" then
-                GameVar.Player.Character.HumanoidRootPart.CFrame = CFrame.new(2802, 115, 2418)
+                Player.Character.HumanoidRootPart.CFrame = CFrame.new(2802, 115, 2418)
             end
             repeat
                 if string.sub(tostring(v.Root.CFrame.Position),1,2) == "32" then
-                    GameVar.workspace.Camera.CFrame = CFrame.new(3209.01807, 133.388229, 2192.93799, 0.959981084, -0.139965221, -0.242582455, 0.00294077187, 0.871154189, -0.491000861, 0.280049741, 0.470638156, 0.836703002)
+                    workspace.Camera.CFrame = CFrame.new(3209.01807, 133.388229, 2192.93799, 0.959981084, -0.139965221, -0.242582455, 0.00294077187, 0.871154189, -0.491000861, 0.280049741, 0.470638156, 0.836703002)
                 elseif string.sub(tostring(v.Root.CFrame.Position),1,2) == "25" then
-                    GameVar.workspace.Camera.CFrame = CFrame.new(2589.01733, 133.500214, 2408.00513, -0.252294064, -0.260695487, -0.93187207, -0.00756763248, 0.963527501, -0.267502367, 0.967621028, -0.060437195, -0.245065123)
+                    workspace.Camera.CFrame = CFrame.new(2589.01733, 133.500214, 2408.00513, -0.252294064, -0.260695487, -0.93187207, -0.00756763248, 0.963527501, -0.267502367, 0.967621028, -0.060437195, -0.245065123)
                 elseif string.sub(tostring(v.Root.CFrame.Position),1,2) == "28" then
-                    GameVar.workspace.Camera.CFrame = CFrame.new(2802.03345, 116.452713, 2417.99463, 0.152567074, -0.359060764, -0.920759797, 0.00740486849, 0.932055831, -0.362238824, 0.988265336, 0.0484476127, 0.144859836)
+                    workspace.Camera.CFrame = CFrame.new(2802.03345, 116.452713, 2417.99463, 0.152567074, -0.359060764, -0.920759797, 0.00740486849, 0.932055831, -0.362238824, 0.988265336, 0.0484476127, 0.144859836)
                 end
                 task.wait()
-                GameVar.Player.Character.Katana:Activate()
+                Player.Character.Katana:Activate()
                 if v:FindFirstChild("Destroyed") then
                     break
                 end
-            until GameVar.workspace.Camera.FieldOfView > 71
+            until workspace.Camera.FieldOfView > 71
         end
             task.wait()
         until v:FindFirstChild("Destroyed")
     end
 end)
 B1C4.newButton("ESP Heart", "", function()
-    for _,v in pairs(GameVar.workspace:GetDescendants()) do
+    for _,v in pairs(workspace:GetDescendants()) do
         if v.Name == "Heart" then
             local highlight = Instance.new("Highlight")
             highlight.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
@@ -1146,7 +1143,7 @@ B1C4.newButton("ESP Heart", "", function()
     end
 end)
 B1C4.newButton("ESP Monster", "", function()
-    for _,v in pairs(GameVar.workspace["GameAI"]:GetChildren()) do
+    for _,v in pairs(workspace["GameAI"]:GetChildren()) do
         if v.Parent.Name == "GameAI" or v.Name == "Saigomo" then
             local highlight = Instance.new("Highlight")
             highlight.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
@@ -1168,17 +1165,17 @@ end)
 B2C1.newLabel("Rio & Mio")
 B2C1.newButton("Read Book", "", function()
     if not Setting.CustomFirePropmt then
-        for i, v in pairs(GameVar.workspace:GetDescendants()) do
+        for i, v in pairs(workspace:GetDescendants()) do
             if v:IsA("ProximityPrompt") and v.Parent.Name == "Interact" and v.Parent.Parent.Name == "Book" then
-                GameVar.Player.Character.HumanoidRootPart.CFrame = CFrame.new(v.Parent.Position.X, v.Parent.Position.Y + 5, v.Parent.Position.Z)
+                Player.Character.HumanoidRootPart.CFrame = CFrame.new(v.Parent.Position.X, v.Parent.Position.Y + 5, v.Parent.Position.Z)
                 task.wait(0.3)
                 fireproximityprompt(v)
             end
         end
     else
-        for i, v in pairs(GameVar.workspace:GetDescendants()) do
+        for i, v in pairs(workspace:GetDescendants()) do
             if v:IsA("ProximityPrompt") and v.Parent.Name == "Interact" and v.Parent.Parent.Name == "Book" then
-                GameVar.Player.Character.HumanoidRootPart.CFrame = CFrame.new(v.Parent.Position.X, v.Parent.Position.Y + 5, v.Parent.Position.Z)
+                Player.Character.HumanoidRootPart.CFrame = CFrame.new(v.Parent.Position.X, v.Parent.Position.Y + 5, v.Parent.Position.Z)
                 task.wait(0.3)
                 fireproximitypromptv2(v, 1, true)
             end
@@ -1188,14 +1185,14 @@ end)
 B2C1.newButton("Auto Win", "", function()
     if not Setting.CustomFirePropmt then
         Setting.Float = true
-        for _,v in pairs(GameVar.Player.Character:GetDescendants()) do
+        for _,v in pairs(Player.Character:GetDescendants()) do
             if v:IsA('BasePart') and v.CanCollide and v.Name ~= floatName then
                 v.CanCollide = false
             end
         end
-        for i, v in pairs(GameVar.workspace:GetDescendants()) do
+        for i, v in pairs(workspace:GetDescendants()) do
             if v:IsA("ProximityPrompt") and v.Parent.Name == "Cube" and v.Parent.MeshId == "https://assetdelivery.roblox.com/v1/asset/?id=8569135676"  then
-                GameVar.Player.Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                Player.Character.HumanoidRootPart.CFrame = v.Parent.CFrame
                 v.HoldDuration = 0
                 task.wait(0.3)
                 fireproximityprompt(v)
@@ -1203,9 +1200,9 @@ B2C1.newButton("Auto Win", "", function()
             end
         end
         task.wait()
-        for i, v in pairs(GameVar.workspace:GetDescendants()) do
+        for i, v in pairs(workspace:GetDescendants()) do
             if v:IsA("ProximityPrompt") and v.ObjectText == "Old Well" then
-                GameVar.Player.Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                Player.Character.HumanoidRootPart.CFrame = v.Parent.CFrame
                 v.HoldDuration = 0
                 task.wait(0.3)
                 fireproximityprompt(v)
@@ -1214,9 +1211,9 @@ B2C1.newButton("Auto Win", "", function()
         end
         Notify("Script", "Wait")
         task.wait(5)
-        for i, v in pairs(GameVar.workspace:GetDescendants()) do
+        for i, v in pairs(workspace:GetDescendants()) do
             if v:IsA("ProximityPrompt") and v.ObjectText == "Bell" then
-                GameVar.Player.Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                Player.Character.HumanoidRootPart.CFrame = v.Parent.CFrame
                 v.HoldDuration = 0
                 task.wait(0.3)
                 fireproximityprompt(v)
@@ -1224,30 +1221,30 @@ B2C1.newButton("Auto Win", "", function()
             end
         end
         Setting.Float = false
-        for _,v in pairs(GameVar.Player.Character:GetDescendants()) do
+        for _,v in pairs(Player.Character:GetDescendants()) do
             if v:IsA('BasePart') and v.CanCollide and v.Name ~= floatName then
                 v.CanCollide = true
             end
         end
     else
         Setting.Float = true
-        for _,v in pairs(GameVar.Player.Character:GetDescendants()) do
+        for _,v in pairs(Player.Character:GetDescendants()) do
             if v:IsA('BasePart') and v.CanCollide and v.Name ~= floatName then
                 v.CanCollide = false
             end
         end
-        for i, v in pairs(GameVar.workspace:GetDescendants()) do
+        for i, v in pairs(workspace:GetDescendants()) do
             if v:IsA("ProximityPrompt") and v.Parent.Name == "Cube" and v.Parent.MeshId == "https://assetdelivery.roblox.com/v1/asset/?id=8569135676"  then
-                GameVar.Player.Character.HumanoidRootPart.CFrame = CFrame.new(v.Parent.Position.X, v.Parent.Position.Y + 2, v.Parent.Position.Z)
+                Player.Character.HumanoidRootPart.CFrame = CFrame.new(v.Parent.Position.X, v.Parent.Position.Y + 2, v.Parent.Position.Z)
                 task.wait(0.3)
                 fireproximitypromptv2(v, 1, true)
                 break
             end
         end
         task.wait()
-        for i, v in pairs(GameVar.workspace:GetDescendants()) do
+        for i, v in pairs(workspace:GetDescendants()) do
             if v:IsA("ProximityPrompt") and v.ObjectText == "Old Well" then
-                GameVar.Player.Character.HumanoidRootPart.CFrame = CFrame.new(v.Parent.Position.X, v.Parent.Position.Y + 3, v.Parent.Position.Z)
+                Player.Character.HumanoidRootPart.CFrame = CFrame.new(v.Parent.Position.X, v.Parent.Position.Y + 3, v.Parent.Position.Z)
                 task.wait(0.3)
                 fireproximitypromptv2(v, 1, true)
                 break
@@ -1255,19 +1252,19 @@ B2C1.newButton("Auto Win", "", function()
         end
         Notify("Script", "Wait")
         task.wait(5)
-        for i, v in pairs(GameVar.workspace:GetDescendants()) do
+        for i, v in pairs(workspace:GetDescendants()) do
             if v:IsA("ProximityPrompt") and v.ObjectText == "Bell" then
-                GameVar.Player.Character.HumanoidRootPart.CFrame = CFrame.new(v.Parent.Position.X, v.Parent.Position.Y + 10, v.Parent.Position.Z)
+                Player.Character.HumanoidRootPart.CFrame = CFrame.new(v.Parent.Position.X, v.Parent.Position.Y + 10, v.Parent.Position.Z)
                 task.wait(0.3)
                 fireproximitypromptv2(v, 1, true)
                 task.wait(0.3)
-                GameVar.Player.Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                Player.Character.HumanoidRootPart.CFrame = v.Parent.CFrame
                 break
             end
         end
         task.wait()
         Setting.Float = false
-        for _,v in pairs(GameVar.Player.Character:GetDescendants()) do
+        for _,v in pairs(Player.Character:GetDescendants()) do
             if v:IsA('BasePart') and v.CanCollide and v.Name ~= floatName then
                 v.CanCollide = true
             end
@@ -1276,9 +1273,9 @@ B2C1.newButton("Auto Win", "", function()
 end)
 B2C1.newButton("Escape", "", function()
     if not Setting.CustomFirePropmt then
-        for i, v in pairs(GameVar.workspace:GetDescendants()) do
+        for i, v in pairs(workspace:GetDescendants()) do
             if v:IsA("ProximityPrompt") and v.ActionText == "Exit" then
-                GameVar.Player.Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                Player.Character.HumanoidRootPart.CFrame = v.Parent.CFrame
                 task.wait(0.3)
                 fireproximityprompt(v)
                 break
@@ -1286,9 +1283,9 @@ B2C1.newButton("Escape", "", function()
         end
     else
         Setting.Float = true
-        for i, v in pairs(GameVar.workspace:GetDescendants()) do
+        for i, v in pairs(workspace:GetDescendants()) do
             if v:IsA("ProximityPrompt") and v.ActionText == "Exit" then
-                GameVar.Player.Character.HumanoidRootPart.CFrame = CFrame.new(v.Parent.Position.X, v.Parent.Position.Y + 3, v.Parent.Position.Z)
+                Player.Character.HumanoidRootPart.CFrame = CFrame.new(v.Parent.Position.X, v.Parent.Position.Y + 3, v.Parent.Position.Z)
                 task.wait(0.3)
                 fireproximitypromptv2(v, 1, true)
                 break
@@ -1321,30 +1318,30 @@ B2C1.newButton("Enter Zone", "Press when you already spawn or you see the villag
 end)
 B2C1.newButton("Talk", "Press when you already tp or you see another village", function()
     if not Setting.CustomFirePropmt then
-        GameVar.CoreGui["TTJY HUB MAIN"].Enabled = false
-        for _,v in pairs(GameVar.Player.Character:GetDescendants()) do
+        CoreGui["TTJY HUB MAIN"].Enabled = false
+        for _,v in pairs(Player.Character:GetDescendants()) do
             if v:IsA('BasePart') and v.CanCollide and v.Name ~= floatName then
                 v.CanCollide = false
             end
         end
         if not Var.TalkDebounce then 
-            if GameVar.Player.Character then 
-                if GameVar.Player.Character:FindFirstChild('HumanoidRootPart') then 
+            if Player.Character then 
+                if Player.Character:FindFirstChild('HumanoidRootPart') then 
                     Var.TalkDebounce = true
                     Tp(-326.344421, 23.1051254, 3662.32056, 0.28)
-                    for Index, v in ipairs(GameVar.workspace:GetDescendants()) do 
+                    for Index, v in ipairs(workspace:GetDescendants()) do 
                         if v:IsA("ProximityPrompt") and v.Parent.Name == "Quest" then 
                             v.HoldDuration = 0
                             fireproximityprompt(v)
                         end 
                     end 
                     for i = 1,200 do 
-                        GameVar.VirtualUser:ClickButton1(Vector2.new(0,0))
+                        VirtualUser:ClickButton1(Vector2.new(0,0))
                         task.wait(0.001)
                     end 
                     Var.TalkDebounce = false
-                    GameVar.CoreGui["TTJY HUB MAIN"].Enabled = true
-                    for _,v in pairs(GameVar.Player.Character:GetDescendants()) do
+                    CoreGui["TTJY HUB MAIN"].Enabled = true
+                    for _,v in pairs(Player.Character:GetDescendants()) do
                         if v:IsA('BasePart') and v.CanCollide and v.Name ~= floatName then
                             v.CanCollide = true
                         end
@@ -1354,31 +1351,31 @@ B2C1.newButton("Talk", "Press when you already tp or you see another village", f
         end
         task.wait()
     else
-        GameVar.CoreGui["TTJY HUB MAIN"].Enabled = false
-        for _,v in pairs(GameVar.Player.Character:GetDescendants()) do
+        CoreGui["TTJY HUB MAIN"].Enabled = false
+        for _,v in pairs(Player.Character:GetDescendants()) do
             if v:IsA('BasePart') and v.CanCollide and v.Name ~= floatName then
                 v.CanCollide = false
             end
         end
         Setting.Float = true
         if not Var.TalkDebounce then 
-            if GameVar.Player.Character then 
-                if GameVar.Player.Character:FindFirstChild('HumanoidRootPart') then 
+            if Player.Character then 
+                if Player.Character:FindFirstChild('HumanoidRootPart') then 
                     Var.TalkDebounce = true
                     Tp(-326.344421, 27, 3662.32056, 0.28)
-                    for Index, v in ipairs(GameVar.workspace:GetDescendants()) do 
+                    for Index, v in ipairs(workspace:GetDescendants()) do 
                         if v:IsA("ProximityPrompt") and v.Parent.Name == "Quest" then 
                             fireproximitypromptv2(v, 1, true)
                         end 
                     end 
                     for i = 1,200 do 
-                        GameVar.VirtualUser:ClickButton1(Vector2.new(0,0))
+                        VirtualUser:ClickButton1(Vector2.new(0,0))
                         task.wait(0.001)
                     end 
                     Var.TalkDebounce = false
                     Setting.Float = false
-                    GameVar.CoreGui["TTJY HUB MAIN"].Enabled = true
-                    for _,v in pairs(GameVar.Player.Character:GetDescendants()) do
+                    CoreGui["TTJY HUB MAIN"].Enabled = true
+                    for _,v in pairs(Player.Character:GetDescendants()) do
                         if v:IsA('BasePart') and v.CanCollide and v.Name ~= floatName then
                             v.CanCollide = true
                         end
@@ -1392,9 +1389,9 @@ end)
 B2C1.newButton("Get Key", "Press after you talk", function()
     if not Setting.CustomFirePropmt then
         Tp(-401.797424, 3070.25, 3864.77979, 1)
-        for i, v in pairs(GameVar.workspace:GetDescendants()) do
+        for i, v in pairs(workspace:GetDescendants()) do
             if v:IsA("ProximityPrompt") and v.ActionText == "Obtain" and v.Parent.Name == "Key1" then
-                GameVar.Player.Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                Player.Character.HumanoidRootPart.CFrame = v.Parent.CFrame
                 v.HoldDuration = 0
                 task.wait(0.3)
                 fireproximityprompt(v)
@@ -1402,16 +1399,16 @@ B2C1.newButton("Get Key", "Press after you talk", function()
         end
     else
         Setting.Float = true
-        for _,v in pairs(GameVar.Player.Character:GetDescendants()) do
+        for _,v in pairs(Player.Character:GetDescendants()) do
             if v:IsA('BasePart') and v.CanCollide and v.Name ~= floatName then
                 v.CanCollide = false
             end
         end
         task.wait()
         Tp(-401.797424, 3070.25, 3864.77979, 1)
-        for i, v in pairs(GameVar.workspace:GetDescendants()) do
+        for i, v in pairs(workspace:GetDescendants()) do
             if v:IsA("ProximityPrompt") and v.ActionText == "Obtain" and v.Parent.Name == "Key1" then
-                GameVar.Player.Character.HumanoidRootPart.CFrame = CFrame.new(v.Parent.Position.X, v.Parent.Position.Y + 3, v.Parent.Position.Z)
+                Player.Character.HumanoidRootPart.CFrame = CFrame.new(v.Parent.Position.X, v.Parent.Position.Y + 3, v.Parent.Position.Z)
                 v.RequiresLineOfSight = false
                 task.wait(0.3)
                 fireproximitypromptv2(v, 1, true)
@@ -1419,7 +1416,7 @@ B2C1.newButton("Get Key", "Press after you talk", function()
         end
         task.wait()
         Setting.Float = false
-        for _,v in pairs(GameVar.Player.Character:GetDescendants()) do
+        for _,v in pairs(Player.Character:GetDescendants()) do
             if v:IsA('BasePart') and v.CanCollide and v.Name ~= floatName then
                 v.CanCollide = true
             end
@@ -1436,13 +1433,13 @@ B2C1.newButton("Get Picture", "Press after you talk", function()
     Tp(-675.159424, 3071.0813, 4998.77686, 2)
     Tp(-392.277039, 3071.03931, 3888.39697, 2)
     Tp(-10.6637068, 3070.17041, 4711.52637, 2)
-    for _,v in pairs(GameVar.workspace:GetDescendants()) do
+    for _,v in pairs(workspace:GetDescendants()) do
         if v.Name == "hintpic" and v:FindFirstChild("Image") then
             table.insert(pic4, v.Image.Decal.Texture)
         end
     end
     task.wait(1)
-    for _,v in pairs(GameVar.workspace:GetDescendants()) do
+    for _,v in pairs(workspace:GetDescendants()) do
         if v.Name == "specialpic" and v:FindFirstChild("Image") then
             table.insert(pic4, v.Image.Decal.Texture)
         end
@@ -1450,9 +1447,9 @@ B2C1.newButton("Get Picture", "Press after you talk", function()
 end)
 B2C1.newButton("Enter Room", "Press after you talk", function()
     if not Setting.CustomFirePropmt then
-        for _,v in pairs(GameVar.workspace:GetDescendants()) do
+        for _,v in pairs(workspace:GetDescendants()) do
             if v:IsA("ProximityPrompt") and v.Parent.Name == "Teleporter" and v.ActionText == "Enter" and v.Parent.Parent.Name == "Enter" and v.Parent.Parent.Parent.Name == "MainHouse" then
-                GameVar.Player.Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                Player.Character.HumanoidRootPart.CFrame = v.Parent.CFrame
                 v.HoldDuration = 0
                 wait(0.3)
                 fireproximityprompt(v)
@@ -1460,22 +1457,22 @@ B2C1.newButton("Enter Room", "Press after you talk", function()
         end
     else
         Setting.Float = true
-        for _,v in pairs(GameVar.Player.Character:GetDescendants()) do
+        for _,v in pairs(Player.Character:GetDescendants()) do
             if v:IsA('BasePart') and v.CanCollide and v.Name ~= floatName then
                 v.CanCollide = false
             end
         end
         task.wait()
-        for _,v in pairs(GameVar.workspace:GetDescendants()) do
+        for _,v in pairs(workspace:GetDescendants()) do
             if v:IsA("ProximityPrompt") and v.Parent.Name == "Teleporter" and v.ActionText == "Enter" and v.Parent.Parent.Name == "Enter" and v.Parent.Parent.Parent.Name == "MainHouse" then
-                GameVar.Player.Character.HumanoidRootPart.CFrame = CFrame.new(v.Parent.Position.X, v.Parent.Position.Y + 3, v.Parent.Position.Z)
+                Player.Character.HumanoidRootPart.CFrame = CFrame.new(v.Parent.Position.X, v.Parent.Position.Y + 3, v.Parent.Position.Z)
                 task.wait(0.3)
                 fireproximitypromptv2(v, 1, true)
             end
         end
         task.wait()
         Setting.Float = false
-        for _,v in pairs(GameVar.Player.Character:GetDescendants()) do
+        for _,v in pairs(Player.Character:GetDescendants()) do
             if v:IsA('BasePart') and v.CanCollide and v.Name ~= floatName then
                 v.CanCollide = true
             end
@@ -1484,9 +1481,9 @@ B2C1.newButton("Enter Room", "Press after you talk", function()
 end)
 B2C1.newButton("Auto Win", "Press after get picture and enter room", function()
     if not Setting.CustomFirePropmt then
-        for _, v in pairs(GameVar.workspace:GetDescendants()) do
+        for _, v in pairs(workspace:GetDescendants()) do
             if v.Name == "Orb" and v.Parent.Name == "Seishin" and v.Transparency == 0 then
-                for _, v in pairs(GameVar.workspace:GetDescendants()) do
+                for _, v in pairs(workspace:GetDescendants()) do
                     if v:IsA("ProximityPrompt") and v.Parent.Name == "Orb" then
                         v.HoldDuration = 0
                         Tp(v.Parent.CFrame.Position.X, v.Parent.CFrame.Position.Y, v.Parent.CFrame.Position.Z, nil)
@@ -1494,13 +1491,13 @@ B2C1.newButton("Auto Win", "Press after get picture and enter room", function()
                     end
                 end
             else
-                for _, v in pairs(GameVar.workspace:GetDescendants()) do
+                for _, v in pairs(workspace:GetDescendants()) do
                     if string.match(v.Name, "%d") and v:FindFirstChild("Image") and table.find(pic4, v.Image.Decal.Texture) then
                         table.insert(listofcandle, v.Name)
                     end
                 end
                 task.wait(2)
-                for _, v in pairs(GameVar.workspace:GetDescendants()) do
+                for _, v in pairs(workspace:GetDescendants()) do
                     if v:IsA("ProximityPrompt") and v.Parent.Name == "Wax" and table.find(listofcandle, v.Parent.Parent.Parent.Name) then
                         v.HoldDuration = 0
                         Tp(v.Parent.CFrame.Position.X, v.Parent.CFrame.Position.Y, v.Parent.CFrame.Position.Z, 0.3)
@@ -1508,7 +1505,7 @@ B2C1.newButton("Auto Win", "Press after get picture and enter room", function()
                     end
                 end
                 task.wait()
-                for _, v in pairs(GameVar.workspace:GetDescendants()) do
+                for _, v in pairs(workspace:GetDescendants()) do
                     if v:IsA("ProximityPrompt") and v.Parent.Name == "Orb" then
                         v.HoldDuration = 0
                         Tp(v.Parent.CFrame.Position.X, v.Parent.CFrame.Position.Y, v.Parent.CFrame.Position.Z, 0.3)
@@ -1516,7 +1513,7 @@ B2C1.newButton("Auto Win", "Press after get picture and enter room", function()
                     end
                 end
                 Tp(-326.344421, 23.1051254, 3662.32056, 0.28)
-                for Index, v in ipairs(GameVar.workspace:GetDescendants()) do 
+                for Index, v in ipairs(workspace:GetDescendants()) do 
                     if v:IsA("ProximityPrompt") and v.Parent.Name == "Quest" then 
                         v.HoldDuration = 0
                         fireproximityprompt(v)
@@ -1528,15 +1525,15 @@ B2C1.newButton("Auto Win", "Press after get picture and enter room", function()
         end
     else
         Setting.Float = true
-        for _,v in pairs(GameVar.Player.Character:GetDescendants()) do
+        for _,v in pairs(Player.Character:GetDescendants()) do
             if v:IsA('BasePart') and v.CanCollide and v.Name ~= floatName then
                 v.CanCollide = false
             end
         end
         task.wait()
-        for _, v in pairs(GameVar.workspace:GetDescendants()) do
+        for _, v in pairs(workspace:GetDescendants()) do
             if v.Name == "Orb" and v.Parent.Name == "Seishin" and v.Transparency == 0 then
-                for _, v in pairs(GameVar.workspace:GetDescendants()) do
+                for _, v in pairs(workspace:GetDescendants()) do
                     if v:IsA("ProximityPrompt") and v.Parent.Name == "Orb" then
                         v.HoldDuration = 0
                         Tp(v.Parent.CFrame.Position.X, v.Parent.CFrame.Position.Y + 3, v.Parent.CFrame.Position.Z, nil)
@@ -1544,13 +1541,13 @@ B2C1.newButton("Auto Win", "Press after get picture and enter room", function()
                     end
                 end
             else
-                for _, v in pairs(GameVar.workspace:GetDescendants()) do
+                for _, v in pairs(workspace:GetDescendants()) do
                     if string.match(v.Name, "%d") and v:FindFirstChild("Image") and table.find(pic4, v.Image.Decal.Texture) then
                         table.insert(listofcandle, v.Name)
                     end
                 end
                 task.wait(2)
-                for _, v in pairs(GameVar.workspace:GetDescendants()) do
+                for _, v in pairs(workspace:GetDescendants()) do
                     if v:IsA("ProximityPrompt") and v.Parent.Name == "Wax" and table.find(listofcandle, v.Parent.Parent.Parent.Name) then
                         v.HoldDuration = 0
                         Tp(v.Parent.CFrame.Position.X, v.Parent.CFrame.Position.Y + 1, v.Parent.CFrame.Position.Z, 0.3)
@@ -1558,7 +1555,7 @@ B2C1.newButton("Auto Win", "Press after get picture and enter room", function()
                     end
                 end
                 task.wait()
-                for _, v in pairs(GameVar.workspace:GetDescendants()) do
+                for _, v in pairs(workspace:GetDescendants()) do
                     if v:IsA("ProximityPrompt") and v.Parent.Name == "Orb" then
                         v.HoldDuration = 0
                         Tp(v.Parent.CFrame.Position.X, v.Parent.CFrame.Position.Y + 3, v.Parent.CFrame.Position.Z, 0.3)
@@ -1566,14 +1563,14 @@ B2C1.newButton("Auto Win", "Press after get picture and enter room", function()
                     end
                 end
                 Tp(-326.344421, 27, 3662.32056, 0.28)
-                for Index, v in ipairs(GameVar.workspace:GetDescendants()) do 
+                for Index, v in ipairs(workspace:GetDescendants()) do 
                     if v:IsA("ProximityPrompt") and v.Parent.Name == "Quest" then 
                         fireproximityprompt(v, 1, true)
                     end 
                 end
                 task.wait()
                 Setting.Float = false
-                for _,v in pairs(GameVar.Player.Character:GetDescendants()) do
+                for _,v in pairs(Player.Character:GetDescendants()) do
                     if v:IsA('BasePart') and v.CanCollide and v.Name ~= floatName then
                         v.CanCollide = true
                     end
@@ -1647,4 +1644,4 @@ end
 textButton77.MouseButton1Click:Connect(onButtonClick2)
 finishload = true
 getgenv().FinishLoad = true
-GameVar.CoreGui["TTJY HUB MAIN"].Enabled = true
+CoreGui["TTJY HUB MAIN"].Enabled = true
