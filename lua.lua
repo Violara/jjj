@@ -1618,7 +1618,7 @@ Credits.newLabel("Special Thanks To sa.l")
 
 
 
-
+--[[
 if game.CoreGui:FindFirstChild("TTJY HUB2") then
     game.CoreGui:FindFirstChild("TTJY HUB2"):Destroy()
 end
@@ -1642,6 +1642,6 @@ local function onButtonClick2()
 end
 
 textButton77.MouseButton1Click:Connect(onButtonClick2)
+]]
 finishload = true
-getgenv().FinishLoad = true
 CoreGui["TTJY HUB MAIN"].Enabled = true
