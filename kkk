@@ -1,31 +1,31 @@
 repeat task.wait() until game:IsLoaded()
 local p = game:GetService("Players")
-Player = p.LocalPlayer,
-uis = game:GetService("UserInputService"),
-cmdp = p,
-cmdlp = p.LocalPlayer,
-player = cmdlp,
-cmdl = game:GetService("Lighting"),
-cmdrs = game:GetService("ReplicatedStorage"),
-cmdrs2 = game:GetService("RunService"),
-cmdts = game:GetService("TweenService"),
-cmdvu = game:GetService("VirtualUser"),
-cmduis = game:GetService("UserInputService"),
-Mouses = cmdlp:GetMouse(),
-cmdm = Mouses,
-VirtualInputManager = game:GetService('VirtualInputManager'),
-RunService = game:GetService("RunService"),
-ReplicatedStorage = game:GetService("ReplicatedStorage"),
-CoreGui = game:GetService("CoreGui"),
-HttpService = game:GetService("HttpService"),
-VirtualUser = game:GetService("VirtualUser"),
-workspace = game:GetService("Workspace"),
-StarterGui = game:GetService("StarterGui"),
-tweenService = game:GetService("TweenService"),
-tweenInfo = TweenInfo.new(1, Enum.EasingStyle.Linear),
-tween = nil,
-char = Player.Character,
-Backpack = Player.Backpack,
+Player = p.LocalPlayer
+uis = game:GetService("UserInputService")
+cmdp = p
+cmdlp = p.LocalPlayer
+player = cmdlp
+cmdl = game:GetService("Lighting")
+cmdrs = game:GetService("ReplicatedStorage")
+cmdrs2 = game:GetService("RunService")
+cmdts = game:GetService("TweenService")
+cmdvu = game:GetService("VirtualUser")
+cmduis = game:GetService("UserInputService")
+Mouses = cmdlp:GetMouse()
+cmdm = Mouses
+VirtualInputManager = game:GetService('VirtualInputManager')
+RunService = game:GetService("RunService")
+ReplicatedStorage = game:GetService("ReplicatedStorage")
+CoreGui = game:GetService("CoreGui")
+HttpService = game:GetService("HttpService")
+VirtualUser = game:GetService("VirtualUser")
+workspace = game:GetService("Workspace")
+StarterGui = game:GetService("StarterGui")
+tweenService = game:GetService("TweenService")
+tweenInfo = TweenInfo.new(1, Enum.EasingStyle.Linear)
+tween = nil
+char = Player.Character
+Backpack = Player.Backpack
 local Var = {
     DeviceType = nil,
     FullPath = nil,
@@ -155,7 +155,7 @@ function isPlayerNearPosition(player, position, radius)
     return false
 end
 function checkPlatform()
-    if UserInputService.TouchEnabled then
+    if uis.TouchEnabled then
         print("User is on a mobile device.")
         Var.DeviceType = "Mobile"
     else
@@ -471,7 +471,7 @@ local listToRemove22 = {
     "DogwoodTree_Var01",
     "RedwoodTreeLarge-Var01"
 }
-local DrRayLibrary = loadstring(game:HttpGet("https://raw.githubusercontent.com/Yumiara/Asset/main/XUMINANU.lua"))()
+local DrRayLibrary = loadstring(game:HttpGet("https://raw.githubusercontent.com/AZYsGithub/DrRay-UI-Library/main/DrRay.lua"))()
 local window = DrRayLibrary:Load("The Mimic Script v2.UP1FV", "Default")
 
 local MAIN = DrRayLibrary.newTab("Main", "ImageIdHere")
@@ -1618,7 +1618,7 @@ Credits.newLabel("Special Thanks To sa.l")
 
 
 
-
+--[[
 if game.CoreGui:FindFirstChild("TTJY HUB2") then
     game.CoreGui:FindFirstChild("TTJY HUB2"):Destroy()
 end
@@ -1642,6 +1642,6 @@ local function onButtonClick2()
 end
 
 textButton77.MouseButton1Click:Connect(onButtonClick2)
+]]
 finishload = true
-getgenv().FinishLoad = true
-CoreGui["TTJY HUB MAIN"].Enabled = true
+CoreGui["DrRay"].Enabled = true
