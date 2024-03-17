@@ -231,58 +231,7 @@ function Notify(title, context)
         Text = tostring(context);
     })
 end
-local screenGui2 = Instance.new("ScreenGui")
-screenGui2.Name = "InputPcToMobile"
-screenGui2.Parent = CoreGui
-buttonSize = UDim2.new(0.05, 0, 0.05, 0)
-function createButton(key, position)
-    local button = Instance.new("TextButton")
-    button.Name = key
-    button.Text = key
-    button.Size = buttonSize
-    button.Position = position
-    button.BackgroundColor3 = Color3.new(0.5, 0.5, 0.5)
-    button.Parent = screenGui2
 
-    local isPressed = false
-    button.MouseButton1Down:Connect(function()
-        isPressed = true
-        if key == "W" then
-            CONTROL.F = speedofthefly
-            print("W")
-        elseif key == "S" then
-            CONTROL.B = -speedofthefly
-            print("S")
-        elseif key == "A" then
-            CONTROL.L = -speedofthefly
-            print("A")
-        elseif key == "D" then
-            CONTROL.R = speedofthefly
-            print("D")
-        end
-    end)
-
-    button.MouseButton1Up:Connect(function()
-        isPressed = false
-        if key == "W" then
-            CONTROL.F = 0
-        elseif key == "S" then
-            CONTROL.B = 0
-        elseif key == "A" then
-            CONTROL.L = 0
-        elseif key == "D" then
-            CONTROL.R = 0
-        end
-    end)
-end
-createButton("W", UDim2.new(0.05, 0, 0.1, 0))
-task.wait()
-createButton("A", UDim2.new(0, 0, 0.2, 0))
-task.wait()
-createButton("S", UDim2.new(0.05, 0, 0.3, 0))
-task.wait()
-createButton("D", UDim2.new(0.1, 0, 0.2, 0))
-task.wait()
 
 local listToRemove21 = {
     "Meshes/house1",
@@ -471,7 +420,7 @@ local listToRemove22 = {
     "DogwoodTree_Var01",
     "RedwoodTreeLarge-Var01"
 }
-local DrRayLibrary = loadstring(game:HttpGet("https://raw.githubusercontent.com/Yumiara/Asset/main/XUMINANU.lua"))()
+local DrRayLibrary = loadstring(game:HttpGet("https://raw.githubusercontent.com/AZYsGithub/DrRay-UI-Library/main/DrRay.lua"))()
 local window = DrRayLibrary:Load("The Mimic Script v2.UP1FV", "Default")
 
 local MAIN = DrRayLibrary.newTab("Main", "ImageIdHere")
