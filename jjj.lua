@@ -183,6 +183,7 @@ function fireproximitypromptv2(Obj, Amount, Skip)
         error("userdata<ProximityPrompt> expected")
     end
 end
+--[[
 local function updateGravity()
     local character = game.Players.LocalPlayer.Character
     local humanoidRootPart = character and character:FindFirstChild("HumanoidRootPart")
@@ -195,6 +196,7 @@ local function updateGravity()
 end
     
 game:GetService("RunService").RenderStepped:Connect(updateGravity)
+--]]
 function isPlayerNearModel(part,distance)
     local distanceThreshold = distance -- Define the distance threshold for "near" (you can adjust this value)
     local distance = (part.WorldPivot.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude
@@ -1594,3 +1596,9 @@ textButton77.MouseButton1Click:Connect(onButtonClick2)
 ]]
 finishload = true
 CoreGui["DrRay"].Enabled = true
+gay = CoreGui["DrRay"]
+gay.Parent = game.Players.LocalPlayer.PlayerGui
+repeat
+    gay.Name = tostring(math.random(1,100))
+    task.wait(0)
+until false
