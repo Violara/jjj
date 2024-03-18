@@ -26,6 +26,7 @@ tweenInfo = TweenInfo.new(1, Enum.EasingStyle.Linear)
 tween = nil
 char = Player.Character
 Backpack = Player.Backpack
+task.wait(10)
 local Var = {
     DeviceType = nil,
     FullPath = nil,
@@ -56,6 +57,7 @@ local Var = {
     FirstPress = false,
     success = nil,
 }
+task.wait(10)
 local Setting = {
     CustomFirePropmt = false,
     FLYING = false,
@@ -69,10 +71,12 @@ local Setting = {
     NormalLightingSettings = nil,
     FullBrightEnabled = false,
 }
-
+task.wait(10)
 function keyPress(Key, Press)
     VirtualInputManager:SendKeyEvent(Press, Key, false, game)
 end
+warn("78")
+task.wait(10)
 function findNearestBase()
     local maxDistance = math.huge
     local nearestTarget
@@ -89,6 +93,8 @@ function findNearestBase()
 
     return nearestTarget
 end
+warn("96")
+task.wait(10)
 function createBillBoardGui(targetToAddUI, text)
     if not targetToAddUI then
         return
@@ -113,7 +119,8 @@ function createBillBoardGui(targetToAddUI, text)
     textLabel.TextSize = 30
     textLabel.Font = Enum.Font.Arial
 end
-
+warn("122")
+task.wait(10)
 function resetThings()
     for _, v in ipairs(Workspace:GetDescendants()) do
         if v.Name == "PUZZLEREVEAL" then
@@ -121,6 +128,8 @@ function resetThings()
         end
     end
 end
+warn("130")
+task.wait(10)
 function interfaceCount(val)
     if val == "Add" then
         interfaceTables.SendCount = interfaceTables.SendCount + 1
@@ -130,6 +139,8 @@ function interfaceCount(val)
         interfaceTables.SendCount = 1
     end
 end
+warn("142")
+task.wait(10)
 function onLeftPuzzle(data)
     if data.Call == "TowerPuzzle.LeftPuzzle" then
         resetThings()
@@ -138,6 +149,8 @@ end
 local interfaceTables = {
     SendCount = 1
 }
+warn("152")
+task.wait(10)
 baseName = "Base"
 listButtons = {}
 function isPlayerNear(part,distance)
@@ -145,6 +158,8 @@ function isPlayerNear(part,distance)
     local distance = (part.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude
     return distance <= distanceThreshold
 end
+warn("161")
+task.wait(10)
 function isPlayerNearPosition(player, position, radius)
     local character = player.Character
     if character and character:FindFirstChild("HumanoidRootPart") then
@@ -154,6 +169,8 @@ function isPlayerNearPosition(player, position, radius)
     end
     return false
 end
+warn("172")
+task.wait(10)
 function checkPlatform()
     if uis.TouchEnabled then
         print("User is on a mobile device.")
@@ -164,6 +181,8 @@ function checkPlatform()
     end
 end
 checkPlatform()
+warn("184")
+task.wait(10)
 function fireproximitypromptv2(Obj, Amount, Skip)
     if Obj.ClassName == "ProximityPrompt" then 
         Amount = Amount or 1
@@ -183,6 +202,8 @@ function fireproximitypromptv2(Obj, Amount, Skip)
         error("userdata<ProximityPrompt> expected")
     end
 end
+warn("205")
+task.wait(10)
 --[[
 local function updateGravity()
     local character = game.Players.LocalPlayer.Character
@@ -203,15 +224,21 @@ function isPlayerNearModel(part,distance)
     local distance = (part.WorldPivot.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude
     return distance <= distanceThreshold
 end
+warn("227")
+task.wait(10)
 function TweenBIGO(speed, posX, posY, posZ)
     tweenInfo = TweenInfo.new(speed, Enum.EasingStyle.Linear)
     tween = tweenService:Create(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart, tweenInfo, {CFrame = CFrame.new(posX, posY, posZ)})
     tween:Play()
 end
+warn("234")
+task.wait(10)
 function Tp(posX, posY, posZ, next)
     player.Character:FindFirstChild("HumanoidRootPart").CFrame = CFrame.new(posX, posY, posZ)
     task.wait(next)
 end
+warn("240")
+task.wait(10)
 function isPlayerNearPos(targetPosition, distanceThreshold)
     local character = game.Players.LocalPlayer.Character
     if not character or not character:IsA("Model") then
@@ -228,12 +255,16 @@ function isPlayerNearPos(targetPosition, distanceThreshold)
 
     return distance <= distanceThreshold
 end
+warn("258")
+task.wait(10)
 function Notify(title, context)
     game.StarterGui:SetCore("SendNotification",{
         Title = tostring(title);
         Text = tostring(context);
     })
 end
+warn("266")
+task.wait(10)
 
 
 local listToRemove21 = {
@@ -328,6 +359,8 @@ local listToRemove21 = {
     "seaweed",
     "decimatedboulder"
 }
+warn("362")
+task.wait(10)
 local listToRemove22 = {
     "Rock_Gate",
     "LargeBoulder_Var02",
@@ -423,7 +456,8 @@ local listToRemove22 = {
     "DogwoodTree_Var01",
     "RedwoodTreeLarge-Var01"
 }
-task.wait(5)
+warn("459")
+task.wait(10)
 local DrRayLibrary = loadstring(game:HttpGet("https://raw.githubusercontent.com/AZYsGithub/DrRay-UI-Library/main/DrRay.lua"))()
 local window = DrRayLibrary:Load("The Mimic Script v2.UP1FV", "Default")
 
@@ -1597,9 +1631,6 @@ end
 textButton77.MouseButton1Click:Connect(onButtonClick2)
 ]]
 finishload = true
-CoreGui["DrRay"].Enabled = true
-gay = CoreGui["DrRay"]
-gay.Parent = game.Players.LocalPlayer.PlayerGui
 repeat
     gay.Name = tostring(math.random(1,100))
     task.wait(0)
