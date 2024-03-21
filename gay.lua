@@ -2168,9 +2168,9 @@ end
 
 function OnFluentChange()
     if Window.Root.Visible then
-        TTJYHUB.TextColor3  = __VE[36](0, 255, 0)
+        TTJYHUB.TextColor3  = __U[36](0, 255, 0)
     else
-        TTJYHUB.TextColor3  = __VE[36](255, 0, 0)
+        TTJYHUB.TextColor3  = __U[36](255, 0, 0)
     end
 end
 function SVHop()
@@ -2403,7 +2403,7 @@ Part.Anchored = true
 Part.Transparency = 1
 Part.Parent = workspace
 
-function updatePartPosition()
+local function updatePartPosition()
     local character = __VE["LPs"].Character
     local humanoidRootPart = character and character:FindFirstChild("HumanoidRootPart")
 
@@ -2417,7 +2417,7 @@ end
 game:GetService("RunService").RenderStepped:Connect(updatePartPosition)
 local function CheckAndClearWeapon()
     if Setting.StackableSetting then
-        if (Setting.AutoTwinHooks or Setting.AutoTwinHooksHop) and Setting.StackableSetting and Third_World then
+        if (Setting.AutoTwinHooks or Setting.AutoTwinHooksHop) and Setting.StackableSetting and WorldCheck["Third Sea"] then
             __U[6](function()
                 if workspace.Enemies:FindFirstChild("Captain Elephant") and Setting.StackableSetting then
                     for _,v in pairs(workspace.Enemies:GetChildren()) do
@@ -2617,7 +2617,7 @@ local function CheckAndClearWeapon()
             end)
         end
         __U[23]()
-        if (Setting.AutoLongsword or Setting.AutoLongswordHop) and Setting.StackableSetting and New_World then
+        if (Setting.AutoLongsword or Setting.AutoLongswordHop) and Setting.StackableSetting and WorldCheck["Second Sea"] then
             __U[6](function()
                 if workspace.Enemies:FindFirstChild("Diamond") and Setting.StackableSetting then
                     for _,v in pairs(workspace.Enemies:GetChildren()) do
@@ -2657,7 +2657,7 @@ local function CheckAndClearWeapon()
             end)
         end
         __U[23]()
-        if (Setting.AutoJitte or Setting.AutoJitteHop) and Setting.StackableSetting and New_World then
+        if (Setting.AutoJitte or Setting.AutoJitteHop) and Setting.StackableSetting and WorldCheck["Second Sea"] then
             __U[6](function()
                 if workspace.Enemies:FindFirstChild("Smoke Admiral") and Setting.StackableSetting then
                     for _,v in pairs(workspace.Enemies:GetChildren()) do
@@ -2697,7 +2697,7 @@ local function CheckAndClearWeapon()
             end)
         end
         __U[23]()
-        if (Setting.AutoDragonTrident or Setting.AutoDragonTridentHop) and Setting.StackableSetting and New_World then
+        if (Setting.AutoDragonTrident or Setting.AutoDragonTridentHop) and Setting.StackableSetting and WorldCheck["Second Sea"] then
             __U[6](function()
                 if workspace.Enemies:FindFirstChild("Tide Keeper") and Setting.StackableSetting then
                     for _,v in pairs(workspace.Enemies:GetChildren()) do
@@ -2777,7 +2777,7 @@ local function CheckAndClearWeapon()
             end)
         end
         __U[23]()
-        if (Setting.AutoHallowScythe or Setting.AutoHallowScytheHop) and Setting.StackableSetting and Third_World then
+        if (Setting.AutoHallowScythe or Setting.AutoHallowScytheHop) and Setting.StackableSetting and WorldCheck["Third Sea"] then
             __U[6](function()
                 if game:GetService("Workspace").Enemies:FindFirstChild("Soul Reaper") and Setting.StackableSetting then
                     for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
@@ -2882,7 +2882,7 @@ local function CheckAndClearWeapon()
             end)
         end
         __U[23]()
-        if (Setting.AutoCanvander or Setting.AutoCanvanderHop) and Setting.StackableSetting and Third_World then
+        if (Setting.AutoCanvander or Setting.AutoCanvanderHop) and Setting.StackableSetting and WorldCheck["Third Sea"] then
             __U[6](function()
                 if workspace.Enemies:FindFirstChild("Beautiful Pirate") and Setting.StackableSetting then
                     for _,v in pairs(workspace.Enemies:GetChildren()) do
@@ -3969,13 +3969,13 @@ __U[58](function()
                             else
                                 tpwithnewtpbyme(-5984.0532226563, 82.14656829834, 8753.326171875, __U[31](Setting.TeleportSpeedAutoFarm))
                             end
-                        elseif New_World and Setting.AutoFarmObservation then
+                        elseif WorldCheck["Second Sea"] and Setting.AutoFarmObservation then
                             if workspace.Enemies:FindFirstChild("Lava Pirate") then
                                 game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies:FindFirstChild("Lava Pirate").HumanoidRootPart.CFrame * __U[26](3,0,0)
                             else
                                 tpwithnewtpbyme(-5478.39209, 15.9775667, -5246.9126, __U[31](Setting.TeleportSpeedAutoFarm))
                             end
-                        elseif Third_World and Setting.AutoFarmObservation then
+                        elseif WorldCheck["Third Sea"] and Setting.AutoFarmObservation then
                             if workspace.Enemies:FindFirstChild("Giant Islander") then
                                 game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies:FindFirstChild("Giant Islander").HumanoidRootPart.CFrame * __U[26](3,0,0)
                             else
@@ -4003,7 +4003,7 @@ __U[58](function()
                                 end
                                 __U[23]()
                             until game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui:FindFirstChild("ImageLabel") or not Setting.AutoFarmObservation
-                        elseif New_World then
+                        elseif WorldCheck["Second Sea"] then
                             repeat
                                 if not game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui:FindFirstChild("ImageLabel") then
                                     tpwithnewtpbyme(-5478.39209, 15.9775667, -5246.9126, __U[31](Setting.TeleportSpeedAutoFarm))
@@ -4013,7 +4013,7 @@ __U[58](function()
                                 end
                                 __U[23]()
                             until game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui:FindFirstChild("ImageLabel") or not Setting.AutoFarmObservation
-                        elseif Third_World then
+                        elseif WorldCheck["Third Sea"] then
                             repeat
                                 if not game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui:FindFirstChild("ImageLabel") then
                                     tpwithnewtpbyme(4530.3540039063, 656.75695800781, -131.60952758789, __U[31](Setting.TeleportSpeedAutoFarm))
@@ -4363,7 +4363,7 @@ __U[6](function()
     __U[58](function()
         repeat __U[23]() until finishload
         while __U[23]() do
-            if (Setting.AutoLegendarySword or Setting.AutoLegendarySwordHop) and New_World then
+            if (Setting.AutoLegendarySword or Setting.AutoLegendarySwordHop) and WorldCheck["Second Sea"] then
                 __U[6](function()
                     argsLEGS1 = {
                         [1] = "LegendarySwordDealer",
@@ -4381,7 +4381,7 @@ __U[6](function()
                     }
                     __VE["RlS"].Remotes.CommF_:InvokeServer(unpack(argsLEGS3))
                     task.__U[19](1)
-                    if Setting.AutoLegendarySwordHop and New_World then
+                    if Setting.AutoLegendarySwordHop and WorldCheck["Second Sea"] then
                         SVHop()
                     end
                 end)
@@ -5097,9 +5097,9 @@ __U[58](function() --🟢, Full Access Settings
                         end
                         __U[23]()
                         if not __VE["PsG"].Main.Timer.Visible and (not __VE["WO"].Locations:FindFirstChild("Island 1") or (__VE["WO"].Locations:FindFirstChild("Island 1") and not isTargetNearPlayer(__VE["WO"].Locations:FindFirstChild("Island 1").CFrame, 6700))) then
-                            if New_World then
+                            if WorldCheck["Second Sea"] then
                                 __U[58](__VE["WS"].Map.CircleIsland.RaidSummon2.Button.Main.ClickDetector)
-                            elseif Third_World then
+                            elseif WorldCheck["Third Sea"] then
                                 __U[58](__VE["WS"].Map["Boat Castle"].RaidSummon2.Button.Main.ClickDetector)
                             end
                         end
@@ -5277,7 +5277,7 @@ do
             WeaponBackpack = {}
             __U[19]()
             for _, item in pairs(Backpack:GetChildren()) do
-                __VE[30](WeaponBackpack, item.Name)
+                __U[30](WeaponBackpack, item.Name)
             end
             __U[19]()
             SelectWeapon:SetValues(WeaponBackpack)
@@ -5360,7 +5360,7 @@ do
         AutoRichManMission:OnChanged(function()
             Setting.AutoRichManMission = Options.AutoRichManMission.Value
         end)
-    elseif New_World then
+    elseif WorldCheck["Second Sea"] then
         AutoBartilo = Tabs.AutoFarmTab:AddToggle("AutoBartilo", {Title = "Auto Bartilo Quest", Default = Setting.AutoBartilo })
 
         AutoBartilo:OnChanged(function()
@@ -6084,7 +6084,7 @@ do
         Multi = true,
         Default = {"nil", "nil"},
     })
-    SelectIgnoreEvent:OnChanged(function(Value)
+    SelectIgnoreEvent:OnChanged(function(SelectedValues)
         Setting.IgnoreSeaEventList = {}
         for _, Value in ipairs(SelectedValues) do
             table.insert(Setting.IgnoreSeaEventList, Value)
@@ -6529,11 +6529,11 @@ do
         end
     })
     Tabs.TpTab:AddSection("Teleport")
-    if Old_World then
+    if WorldCheck["First Sea"] then
         __Place = {"Pirate Starter", "Marine Starter", "Middle Town", "Jungle", "Pirate Village", "Dessert", "Frozen Village", "Marine Fortress", "Skyland 1st", "Skyland 2nd", "Skyland 3rd", "Skyland 4th", "Skyland 5th", "Colosseum", "Prison", "Underwater", "Magma Village", "Fountain City"}
-    elseif New_World then
+    elseif WorldCheck["Second Sea"] then
         __Place = {"Kingdom Of Rose", "Colosseum", "Secret Room (Race v3)", "Cafe", "Front Factory", "Factory", "Swan Room", "Green Zone", "Graveyard Island", "Cursed Ship", "Hot Island", "Cold Island", "Raid", "Law Raid", "Snow Mountain", "Dark Arena", "Ice Castle", "Forgotten Island", "Usoup's Island", "What is this Island"}
-    elseif Third_World then
+    elseif WorldCheck["Third Sea"] then
         __Place = {"Mansion", "Port Town", "Great Tree", "Castle On The Sea", "MiniSky", "Hydra Island", "Floating Turtle", "Haunted Castle", "Ice Cream Island", "Peanut Island", "Cake Island"}
     end
     
@@ -7186,11 +7186,18 @@ do
     end)
 end
 
-
+task.wait(0.05)
+if allowtoserialized then
+    serializedSetting = game.HttpService:JSONEncode(Setting)
+    writefile("Setting/setting.json", serializedSetting)
+end
+task.wait(5)
+finishload = true
 
 
 
 -- Auto Third Sea
+--[[
 __U[20](function()
     while __U[19]() do
         if __A.AutoThirdSea then
@@ -7225,3 +7232,4 @@ __U[20](function()
         end
     end
 end)
+]]
