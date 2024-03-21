@@ -10,15 +10,18 @@ for i=1,#__LUABLE["Functions"] do
 end
 --__Team = {}
 --__Team.Select = Config["Team"] or "p"
+__A = {}
 local Value_Game = "Blox Fruits"
 local WebhookUrl = 'https://discord.com/api/webhooks/1218168899434975292/8ihet3SCRq4RQJ_fXduTCH7YP3kbJu7JK1LPirx5LSsDbOL_H5CyZpDDZPUkCJl-XnZ8'
-
-if RoExec() then
-    Executor_Name = "RO-EXEC"
-    local PlayerName = game.Players.LocalPlayer.Name
-    game.Players[PlayerName]:Kick("Ro-Exec not support")
-else
-    Executor_Name = tostring(Executor)
+__A.Executor = identifyexecutor()
+__A.RoExec = function()
+    if tostring(__A.Executor) == "Krampus" then
+        Executor_Name = "RO-EXEC"
+        return true
+    else
+        Executor_Name = tostring(Executor)
+        return false
+    end
 end
 local HttpService = game:GetService("HttpService")
 local requestt = http_request or request or syn.request
