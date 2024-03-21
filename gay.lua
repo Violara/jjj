@@ -104,7 +104,7 @@ __VE = {
 repeat
     if __VE["PsG"].Main:FindFirstChild("ChooseTeam") then
         if __VE["PsG"].Main.ChooseTeam.Visible then
-            if __Team.Select == "Marines" then
+            if __Team == "Marines" then
                 for i,v in __U[7]({"MouseButton1Click", "MouseButton1Down", "Activated"}) do
                     for i,v in __U[7](__U[47](__VE["PsG"].Main.ChooseTeam.Container.Marines.Frame.TextButton[v])) do
                         v.Function()
@@ -137,10 +137,160 @@ if game:GetService("CoreGui"):FindFirstChild("TTJY ASSET") then
     game:GetService("CoreGui")["TTJY ASSET"]:Destroy()
 end
 task.wait()
-local a={["_TTJY ASSET"]=Instance.new("ScreenGui"),["_TTJY HUB"]=Instance.new("Frame"),["_UIStroke"]=Instance.new("UIStroke"),["_UICorner"]=Instance.new("UICorner"),["_TextButton"]=Instance.new("TextButton"),["_UIStroke1"]=Instance.new("UIStroke"),["_Stop Hop"]=Instance.new("Frame"),["_UIStroke2"]=Instance.new("UIStroke"),["_UICorner1"]=Instance.new("UICorner"),["_TextButton1"]=Instance.new("TextButton"),["_UIStroke3"]=Instance.new("UIStroke"),["_STOP TP"]=Instance.new("Frame"),["_UIStroke4"]=Instance.new("UIStroke"),["_UICorner2"]=Instance.new("UICorner"),["_TextButton2"]=Instance.new("TextButton"),["_UIStroke5"]=Instance.new("UIStroke"),["_STATUS"]=Instance.new("Frame"),["_UIStroke6"]=Instance.new("UIStroke"),["_UICorner3"]=Instance.new("UICorner"),["_ImageButton"]=Instance.new("ImageButton")};
--- Properties:
-Converted["_TTJY ASSET"]={ZIndexBehavior=Enum.ZIndexBehavior.Sibling,Name="TTJY ASSET",Parent=game:GetService("CoreGui")}Converted["_TTJY HUB"]={BackgroundColor3=Color3.fromRGB(56.0000042617321,56.0000042617321,56.0000042617321),BackgroundTransparency=0.4000000059604645,BorderColor3=Color3.fromRGB(0,0,0),BorderSizePixel=0,Position=UDim2.new(0.465000004,0,-0.1,0),Size=UDim2.new(0.0700000003,0,0.100000001,0),ZIndex=2,Name="TTJY HUB",Parent=Converted["_TTJY ASSET"]}Converted["_UIStroke"]={LineJoinMode=Enum.LineJoinMode.Bevel,Thickness=3,Parent=Converted["_TTJY HUB"]}Converted["_UICorner"].Parent=Converted["_TTJY HUB"]Converted["_TextButton"]={Font=Enum.Font.SourceSans,Text="TTJY HUB",TextColor3=Color3.fromRGB(0,255,0),TextScaled=true,TextSize=14,TextWrapped=true,BackgroundColor3=Color3.fromRGB(255,255,255),BackgroundTransparency=1,BorderColor3=Color3.fromRGB(0,0,0),BorderSizePixel=0,Size=UDim2.new(1,0,1,0),Parent=Converted["_TTJY HUB"]}Converted["_UIStroke1"].LineJoinMode=Enum.LineJoinMode.Bevel;Converted["_UIStroke1"].Parent=Converted["_TextButton"]Converted["_Stop Hop"]={BackgroundColor3=Color3.fromRGB(56.0000042617321,56.0000042617321,56.0000042617321),BackgroundTransparency=0.4000000059604645,BorderColor3=Color3.fromRGB(0,0,0),BorderSizePixel=0,Position=UDim2.new(0.39443019,0,-0.1,0),Size=UDim2.new(0.0700000003,0,0.100000001,0),ZIndex=2,Name="PAUSE Hop",Parent=Converted["_TTJY ASSET"]}Converted["_UIStroke2"].LineJoinMode=Enum.LineJoinMode.Bevel;Converted["_UIStroke2"].Thickness=3;Converted["_UIStroke2"].Parent=Converted["_Stop Hop"]Converted["_UICorner1"].Parent=Converted["_Stop Hop"]Converted["_TextButton1"]={Font=Enum.Font.SourceSans,Text="STOP HOP",TextColor3=Color3.fromRGB(255,0,0),TextScaled=true,TextSize=14,TextWrapped=true,BackgroundColor3=Color3.fromRGB(255,255,255),BackgroundTransparency=1,BorderColor3=Color3.fromRGB(0,0,0),BorderSizePixel=0,Size=UDim2.new(1,0,1,0),Parent=Converted["_Stop Hop"]}Converted["_UIStroke3"].LineJoinMode=Enum.LineJoinMode.Bevel;Converted["_UIStroke3"].Parent=Converted["_TextButton1"]Converted["_STOP TP"].BackgroundColor3=Color3.fromRGB(56.0000042617321,56.0000042617321,56.0000042617321)Converted["_STOP TP"].BackgroundTransparency=0.4000000059604645;Converted["_STOP TP"].BorderColor3=Color3.fromRGB(0,0,0)Converted["_STOP TP"].BorderSizePixel=0;Converted["_STOP TP"].Position=UDim2.new(0.534916341,0,-0.1,0)Converted["_STOP TP"].Size=UDim2.new(0.0700000003,0,0.100000001,0)Converted["_STOP TP"].ZIndex=2;Converted["_STOP TP"].Name="STOP TP"Converted["_STOP TP"].Parent=Converted["_TTJY ASSET"]Converted["_UIStroke4"].LineJoinMode=Enum.LineJoinMode.Bevel;Converted["_UIStroke4"].Thickness=3;Converted["_UIStroke4"].Parent=Converted["_STOP TP"]Converted["_UICorner2"].Parent=Converted["_STOP TP"]Converted["_TextButton2"].Font=Enum.Font.SourceSans;Converted["_TextButton2"].Text="STOP TP"Converted["_TextButton2"].TextColor3=Color3.fromRGB(255,0,0)Converted["_TextButton2"].TextScaled=true;Converted["_TextButton2"].TextSize=14;Converted["_TextButton2"].TextWrapped=true;Converted["_TextButton2"].BackgroundColor3=Color3.fromRGB(255,255,255)Converted["_TextButton2"].BackgroundTransparency=1;Converted["_TextButton2"].BorderColor3=Color3.fromRGB(0,0,0)Converted["_TextButton2"].BorderSizePixel=0;Converted["_TextButton2"].Size=UDim2.new(1,0,1,0)Converted["_TextButton2"].Parent=Converted["_STOP TP"]Converted["_UIStroke5"].LineJoinMode=Enum.LineJoinMode.Bevel;Converted["_UIStroke5"].Parent=Converted["_TextButton2"]Converted["_STATUS"].BackgroundColor3=Color3.fromRGB(56.0000042617321,56.0000042617321,56.0000042617321)Converted["_STATUS"].BackgroundTransparency=0.4000000059604645;Converted["_STATUS"].BorderColor3=Color3.fromRGB(0,0,0)Converted["_STATUS"].BorderSizePixel=0;Converted["_STATUS"].Position=UDim2.new(0.615287483,0,-0.05,0)Converted["_STATUS"].Size=UDim2.new(0.0203398019,0,0.0497226082,0)Converted["_STATUS"].ZIndex=2;Converted["_STATUS"].Name="STATUS"Converted["_STATUS"].Parent=Converted["_TTJY ASSET"]Converted["_UIStroke6"].LineJoinMode=Enum.LineJoinMode.Bevel;Converted["_UIStroke6"].Thickness=3;Converted["_UIStroke6"].Parent=Converted["_STATUS"]Converted["_UICorner3"].Parent=Converted["_STATUS"]Converted["_ImageButton"].Image="http://www.roblox.com/asset/?id=16586323338"Converted["_ImageButton"].BackgroundColor3=Color3.fromRGB(255,255,255)Converted["_ImageButton"].BackgroundTransparency=1;Converted["_ImageButton"].BorderColor3=Color3.fromRGB(0,0,0)Converted["_ImageButton"].BorderSizePixel=0;Converted["_ImageButton"].Size=UDim2.new(1,0,1,0)Converted["_ImageButton"].Parent=Converted["_STATUS"];
+local Converted = {
+	["_TTJY ASSET"] = Instance.new("ScreenGui");
+	["_TTJY HUB"] = Instance.new("Frame");
+	["_UIStroke"] = Instance.new("UIStroke");
+	["_UICorner"] = Instance.new("UICorner");
+	["_TextButton"] = Instance.new("TextButton");
+	["_UIStroke1"] = Instance.new("UIStroke");
+	["_Stop Hop"] = Instance.new("Frame");
+	["_UIStroke2"] = Instance.new("UIStroke");
+	["_UICorner1"] = Instance.new("UICorner");
+	["_TextButton1"] = Instance.new("TextButton");
+	["_UIStroke3"] = Instance.new("UIStroke");
+	["_STOP TP"] = Instance.new("Frame");
+	["_UIStroke4"] = Instance.new("UIStroke");
+	["_UICorner2"] = Instance.new("UICorner");
+	["_TextButton2"] = Instance.new("TextButton");
+	["_UIStroke5"] = Instance.new("UIStroke");
+	["_STATUS"] = Instance.new("Frame");
+	["_UIStroke6"] = Instance.new("UIStroke");
+	["_UICorner3"] = Instance.new("UICorner");
+	["_ImageButton"] = Instance.new("ImageButton");
+}
 
+-- Properties:
+
+Converted["_TTJY ASSET"].ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+Converted["_TTJY ASSET"].Name = "TTJY ASSET"
+Converted["_TTJY ASSET"].Parent = game:GetService("CoreGui")
+--[[
+Converted["_TTJY ASSET"] = {
+    ZIndexBehavior = Enum.ZIndexBehavior.Sibling,
+    Name = "TTJY ASSET",
+    Parent = game:GetService("CoreGui")
+}
+]]
+Converted["_TTJY HUB"].BackgroundColor3 = Color3.fromRGB(56.0000042617321, 56.0000042617321, 56.0000042617321)
+Converted["_TTJY HUB"].BackgroundTransparency = 0.4000000059604645
+Converted["_TTJY HUB"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_TTJY HUB"].BorderSizePixel = 0
+Converted["_TTJY HUB"].Position = UDim2.new(0.465000004, 0, -0.1, 0)
+Converted["_TTJY HUB"].Size = UDim2.new(0.0700000003, 0, 0.100000001, 0)
+Converted["_TTJY HUB"].ZIndex = 2
+Converted["_TTJY HUB"].Name = "TTJY HUB"
+Converted["_TTJY HUB"].Parent = Converted["_TTJY ASSET"]
+
+Converted["_UIStroke"].LineJoinMode = Enum.LineJoinMode.Bevel
+Converted["_UIStroke"].Thickness = 3
+Converted["_UIStroke"].Parent = Converted["_TTJY HUB"]
+
+Converted["_UICorner"].Parent = Converted["_TTJY HUB"]
+
+Converted["_TextButton"].Font = Enum.Font.SourceSans
+Converted["_TextButton"].Text = "TTJY HUB"
+Converted["_TextButton"].TextColor3 = Color3.fromRGB(0, 255, 0)
+Converted["_TextButton"].TextScaled = true
+Converted["_TextButton"].TextSize = 14
+Converted["_TextButton"].TextWrapped = true
+Converted["_TextButton"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_TextButton"].BackgroundTransparency = 1
+Converted["_TextButton"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_TextButton"].BorderSizePixel = 0
+Converted["_TextButton"].Size = UDim2.new(1, 0, 1, 0)
+Converted["_TextButton"].Parent = Converted["_TTJY HUB"]
+
+Converted["_UIStroke1"].LineJoinMode = Enum.LineJoinMode.Bevel
+Converted["_UIStroke1"].Parent = Converted["_TextButton"]
+
+Converted["_Stop Hop"].BackgroundColor3 = Color3.fromRGB(56.0000042617321, 56.0000042617321, 56.0000042617321)
+Converted["_Stop Hop"].BackgroundTransparency = 0.4000000059604645
+Converted["_Stop Hop"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Stop Hop"].BorderSizePixel = 0
+Converted["_Stop Hop"].Position = UDim2.new(0.39443019, 0, -0.1, 0)
+Converted["_Stop Hop"].Size = UDim2.new(0.0700000003, 0, 0.100000001, 0)
+Converted["_Stop Hop"].ZIndex = 2
+Converted["_Stop Hop"].Name = "PAUSE Hop"
+Converted["_Stop Hop"].Parent = Converted["_TTJY ASSET"]
+
+Converted["_UIStroke2"].LineJoinMode = Enum.LineJoinMode.Bevel
+Converted["_UIStroke2"].Thickness = 3
+Converted["_UIStroke2"].Parent = Converted["_Stop Hop"]
+
+Converted["_UICorner1"].Parent = Converted["_Stop Hop"]
+
+Converted["_TextButton1"].Font = Enum.Font.SourceSans
+Converted["_TextButton1"].Text = "STOP HOP"
+Converted["_TextButton1"].TextColor3 = Color3.fromRGB(255, 0, 0)
+Converted["_TextButton1"].TextScaled = true
+Converted["_TextButton1"].TextSize = 14
+Converted["_TextButton1"].TextWrapped = true
+Converted["_TextButton1"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_TextButton1"].BackgroundTransparency = 1
+Converted["_TextButton1"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_TextButton1"].BorderSizePixel = 0
+Converted["_TextButton1"].Size = UDim2.new(1, 0, 1, 0)
+Converted["_TextButton1"].Parent = Converted["_Stop Hop"]
+
+Converted["_UIStroke3"].LineJoinMode = Enum.LineJoinMode.Bevel
+Converted["_UIStroke3"].Parent = Converted["_TextButton1"]
+
+Converted["_STOP TP"].BackgroundColor3 = Color3.fromRGB(56.0000042617321, 56.0000042617321, 56.0000042617321)
+Converted["_STOP TP"].BackgroundTransparency = 0.4000000059604645
+Converted["_STOP TP"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_STOP TP"].BorderSizePixel = 0
+Converted["_STOP TP"].Position = UDim2.new(0.534916341, 0, -0.1, 0)
+Converted["_STOP TP"].Size = UDim2.new(0.0700000003, 0, 0.100000001, 0)
+Converted["_STOP TP"].ZIndex = 2
+Converted["_STOP TP"].Name = "STOP TP"
+Converted["_STOP TP"].Parent = Converted["_TTJY ASSET"]
+
+Converted["_UIStroke4"].LineJoinMode = Enum.LineJoinMode.Bevel
+Converted["_UIStroke4"].Thickness = 3
+Converted["_UIStroke4"].Parent = Converted["_STOP TP"]
+
+Converted["_UICorner2"].Parent = Converted["_STOP TP"]
+
+Converted["_TextButton2"].Font = Enum.Font.SourceSans
+Converted["_TextButton2"].Text = "STOP TP"
+Converted["_TextButton2"].TextColor3 = Color3.fromRGB(255, 0, 0)
+Converted["_TextButton2"].TextScaled = true
+Converted["_TextButton2"].TextSize = 14
+Converted["_TextButton2"].TextWrapped = true
+Converted["_TextButton2"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_TextButton2"].BackgroundTransparency = 1
+Converted["_TextButton2"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_TextButton2"].BorderSizePixel = 0
+Converted["_TextButton2"].Size = UDim2.new(1, 0, 1, 0)
+Converted["_TextButton2"].Parent = Converted["_STOP TP"]
+
+Converted["_UIStroke5"].LineJoinMode = Enum.LineJoinMode.Bevel
+Converted["_UIStroke5"].Parent = Converted["_TextButton2"]
+
+Converted["_STATUS"].BackgroundColor3 = Color3.fromRGB(56.0000042617321, 56.0000042617321, 56.0000042617321)
+Converted["_STATUS"].BackgroundTransparency = 0.4000000059604645
+Converted["_STATUS"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_STATUS"].BorderSizePixel = 0
+Converted["_STATUS"].Position = UDim2.new(0.615287483, 0, -0.05, 0)
+Converted["_STATUS"].Size = UDim2.new(0.0203398019, 0, 0.0497226082, 0)
+Converted["_STATUS"].ZIndex = 2
+Converted["_STATUS"].Name = "STATUS"
+Converted["_STATUS"].Parent = Converted["_TTJY ASSET"]
+
+Converted["_UIStroke6"].LineJoinMode = Enum.LineJoinMode.Bevel
+Converted["_UIStroke6"].Thickness = 3
+Converted["_UIStroke6"].Parent = Converted["_STATUS"]
+
+Converted["_UICorner3"].Parent = Converted["_STATUS"]
+
+Converted["_ImageButton"].Image = "http://www.roblox.com/asset/?id=16586323338"
+Converted["_ImageButton"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_ImageButton"].BackgroundTransparency = 1
+Converted["_ImageButton"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_ImageButton"].BorderSizePixel = 0
+Converted["_ImageButton"].Size = UDim2.new(1, 0, 1, 0)
+Converted["_ImageButton"].Parent = Converted["_STATUS"]
 
 TTJYHUB = Converted["_TextButton"]
 STOPTP = Converted["_TextButton2"]
@@ -183,7 +333,7 @@ if isfolder("Setting") and not isfile("Setting/setting.json") then
         AutoFarmAuraDistance = __N[2]*__N[8]*__N[8]*__N[8],
         BringMobDistance = __N[2]*__N[8]*__N[8],
         Skill = {Z,X,C,V = __Y[1]},
-        KillAt = __N[2]*__[8],
+        KillAt = __N[2]*__N[8],
         StatsValue = __Y[5],
         TeleportToNEXTIslandSpeed = __N[4]*__Y[5],
         AutoRaidPosY, AutoRaidPosX, AutoRaidPosZ = __Y[4],
@@ -240,39 +390,34 @@ for i=1,#__Inc do
         __Ws[i] = __Inc[i]
     end)
 end
-function __World:Check()
-    if placeId == 2753915549 then
-        return __Ws[1]
-    elseif placeId == 4442272183 then
-        return __Ws[2]
-    elseif placeId == 7449423635 then
-        return __Ws[3]
-    end
-end
-__World:Check()
-if __World:Check() < __N[1] then
-elseif __World:Check() == __N[1] then
-elseif __World:Check() > __N[1] then
+local placeId = game.PlaceId
+local WorldCheck = {["First Sea"]=false,["Second Sea"]=false,["Third Sea"]=false}
+if placeId == 2753915549 then
+    WorldCheck["First Sea"] = true
+elseif placeId == 4442272183 then
+    WorldCheck["Second Sea"] = true
+elseif placeId == 7449423635 then
+    WorldCheck["Third Sea"] = true
 end
 local function CheckQuestBoss(SelectBoss)
-	if __World:Check() < __N[1] then
+	if WorldCheck["First Sea"] then
 		if SelectBoss == "Saber Expert" then
             return {
                 [1] = "Saber Expert",
                 [2] = "Saber Expert",
-                [3] = __VE[26](-1458.89502, 29.8870335, -50.633564, 0.858821094, 1.13848939e-08, 0.512275636, -4.85649254e-09, 1, -1.40823326e-08, -0.512275636, 9.6063415e-09, 0.858821094)
+                [3] = __U[26](-1458.89502, 29.8870335, -50.633564, 0.858821094, 1.13848939e-08, 0.512275636, -4.85649254e-09, 1, -1.40823326e-08, -0.512275636, 9.6063415e-09, 0.858821094)
             }
 		elseif SelectBoss == "The Saw" then
             return {
 			    [1] = "The Saw",
 			    [2] = "The Saw",
-			    [3] = __VE[26](-683.519897, 13.8534927, 1610.87854, -0.290192783, 6.88365773e-08, 0.956968188, 6.98413629e-08, 1, -5.07531119e-08, -0.956968188, 5.21077759e-08, -0.290192783)
+			    [3] = __U[26](-683.519897, 13.8534927, 1610.87854, -0.290192783, 6.88365773e-08, 0.956968188, 6.98413629e-08, 1, -5.07531119e-08, -0.956968188, 5.21077759e-08, -0.290192783)
             }
 		elseif SelectBoss == "Greybeard" then
             return {
 			    [1] = "Greybeard [Lv. 750] [Raid Boss]",
 			    [2] = "Greybeard",
-			    [3] = __VE[26](-4955.72949, 80.8163834, 4305.82666, -0.433646321, -1.03394289e-08, 0.901083171, -3.0443168e-08, 1, -3.17633075e-09, -0.901083171, -2.88092288e-08, -0.433646321)
+			    [3] = __U[26](-4955.72949, 80.8163834, 4305.82666, -0.433646321, -1.03394289e-08, 0.901083171, -3.0443168e-08, 1, -3.17633075e-09, -0.901083171, -2.88092288e-08, -0.433646321)
             }
 		elseif SelectBoss == "The Gorilla King" then
             return {
@@ -280,8 +425,8 @@ local function CheckQuestBoss(SelectBoss)
 			    [2] = "The Gorilla King",
 			    [4] = "JungleQuest",
 			    [5] = 3,
-			    [6] = __VE[26](-1604.12012, 36.8521118, 154.23732, 0.0648873374, -4.70858913e-06, -0.997892559, 1.41431883e-07, 1, -4.70933674e-06, 0.997892559, 1.64442184e-07, 0.0648873374), --CFrameMon
-			    [3] = __VE[26](-1223.52808, 6.27936459, -502.292664, 0.310949147, -5.66602516e-08, 0.950426519, -3.37275488e-08, 1, 7.06501808e-08, -0.950426519, -5.40241736e-08, 0.310949147) --CFrameQuest
+			    [6] = __U[26](-1604.12012, 36.8521118, 154.23732, 0.0648873374, -4.70858913e-06, -0.997892559, 1.41431883e-07, 1, -4.70933674e-06, 0.997892559, 1.64442184e-07, 0.0648873374), --CFrameMon
+			    [3] = __U[26](-1223.52808, 6.27936459, -502.292664, 0.310949147, -5.66602516e-08, 0.950426519, -3.37275488e-08, 1, 7.06501808e-08, -0.950426519, -5.40241736e-08, 0.310949147) --CFrameQuest
             }
 		elseif SelectBoss == "Bobby" then
             return {
@@ -289,8 +434,8 @@ local function CheckQuestBoss(SelectBoss)
 			    [2] = "Bobby",
 			    [4] = "BuggyQuest1",
 			    [5] = 3,
-			    [6] = __VE[26](-1139.59717, 4.75205183, 3825.16211, -0.959730506, -7.5857054e-09, 0.280922383, -4.06310328e-08, 1, -1.11807175e-07, -0.280922383, -1.18718916e-07, -0.959730506),
-			    [3] = __VE[26](-1147.65173, 32.5966301, 4156.02588, 0.956680477, -1.77109952e-10, -0.29113996, 5.16530874e-10, 1, 1.08897802e-09, 0.29113996, -1.19218679e-09, 0.956680477)
+			    [6] = __U[26](-1139.59717, 4.75205183, 3825.16211, -0.959730506, -7.5857054e-09, 0.280922383, -4.06310328e-08, 1, -1.11807175e-07, -0.280922383, -1.18718916e-07, -0.959730506),
+			    [3] = __U[26](-1147.65173, 32.5966301, 4156.02588, 0.956680477, -1.77109952e-10, -0.29113996, 5.16530874e-10, 1, 1.08897802e-09, 0.29113996, -1.19218679e-09, 0.956680477)
             }
 		elseif SelectBoss == "Yeti" then
             return {
@@ -298,14 +443,14 @@ local function CheckQuestBoss(SelectBoss)
 			    [2] = "Yeti",
 			    [4] = "SnowQuest",
 			    [5] = 3,
-			    [6] = __VE[26](1384.90247, 87.3078308, -1296.6825, 0.280209213, 2.72035177e-08, -0.959938943, -6.75690828e-08, 1, 8.6151708e-09, 0.959938943, 6.24481444e-08, 0.280209213),
-			    [3] = __VE[26](1221.7356, 138.046906, -1488.84082, 0.349343032, -9.49245944e-08, 0.936994851, 6.29478194e-08, 1, 7.7838429e-08, -0.936994851, 3.17894653e-08, 0.349343032)
+			    [6] = __U[26](1384.90247, 87.3078308, -1296.6825, 0.280209213, 2.72035177e-08, -0.959938943, -6.75690828e-08, 1, 8.6151708e-09, 0.959938943, 6.24481444e-08, 0.280209213),
+			    [3] = __U[26](1221.7356, 138.046906, -1488.84082, 0.349343032, -9.49245944e-08, 0.936994851, 6.29478194e-08, 1, 7.7838429e-08, -0.936994851, 3.17894653e-08, 0.349343032)
             }
 		elseif SelectBoss == "Mob Leader" then
             return {
 			    [1] = "Mob Leader [Lv. 120] [Boss]",
 			    [2] = "Mob Leader",
-			    [3] = __VE[26](-2848.59399, 7.4272871, 5342.44043, -0.928248107, -8.7248246e-08, 0.371961564, -7.61816636e-08, 1, 4.44474857e-08, -0.371961564, 1.29216433e-08, -0.92824)
+			    [3] = __U[26](-2848.59399, 7.4272871, 5342.44043, -0.928248107, -8.7248246e-08, 0.371961564, -7.61816636e-08, 1, 4.44474857e-08, -0.371961564, 1.29216433e-08, -0.92824)
             }
 		elseif SelectBoss == "Vice Admiral" then
             return {
@@ -313,8 +458,8 @@ local function CheckQuestBoss(SelectBoss)
                 [2] = "Vice Admiral",
                 [4] = "MarineQuest2",
                 [5] = 2,
-                [6] = __VE[26](-5035.42285, 28.6520386, 4324.50293, -0.0611100644, -8.08395768e-08, 0.998130739, -1.57416586e-08, 1, 8.00271849e-08, -0.998130739, -1.08217701e-08, -0.0611100644),
-                [3] = __VE[26](-5078.45898, 99.6520691, 4402.1665, -0.555574954, -9.88630566e-11, 0.831466436, -6.35508286e-08, 1, -4.23449258e-08, -0.831466436, -7.63661632e-08, -0.555574954)
+                [6] = __U[26](-5035.42285, 28.6520386, 4324.50293, -0.0611100644, -8.08395768e-08, 0.998130739, -1.57416586e-08, 1, 8.00271849e-08, -0.998130739, -1.08217701e-08, -0.0611100644),
+                [3] = __U[26](-5078.45898, 99.6520691, 4402.1665, -0.555574954, -9.88630566e-11, 0.831466436, -6.35508286e-08, 1, -4.23449258e-08, -0.831466436, -7.63661632e-08, -0.555574954)
             }
 		elseif SelectBoss == "Warden" then
             return {
@@ -322,8 +467,8 @@ local function CheckQuestBoss(SelectBoss)
                 [2] = "Warden",
                 [4] = "ImpelQuest",
                 [5] = 1,
-                [6] = __VE[26](4851.35059, 5.68744135, 743.251282, -0.538484037, -6.68303741e-08, -0.842635691, 1.38001752e-08, 1, -8.81300792e-08, 0.842635691, -5.90851599e-08, -0.538484037),
-                [3] = __VE[26](5232.5625, 5.26856995, 747.506897, 0.943829298, -4.5439414e-08, 0.330433697, 3.47818627e-08, 1, 3.81658154e-08, -0.330433697, -2.45289105e-08, 0.943829298)
+                [6] = __U[26](4851.35059, 5.68744135, 743.251282, -0.538484037, -6.68303741e-08, -0.842635691, 1.38001752e-08, 1, -8.81300792e-08, 0.842635691, -5.90851599e-08, -0.538484037),
+                [3] = __U[26](5232.5625, 5.26856995, 747.506897, 0.943829298, -4.5439414e-08, 0.330433697, 3.47818627e-08, 1, 3.81658154e-08, -0.330433697, -2.45289105e-08, 0.943829298)
             }
 		elseif SelectBoss == "Chief Warden" then
             return {
@@ -331,8 +476,8 @@ local function CheckQuestBoss(SelectBoss)
                 [2] = "Chief Warden",
                 [4] = "ImpelQuest",
                 [5] = 2,
-                [6] = __VE[26](4851.35059, 5.68744135, 743.251282, -0.538484037, -6.68303741e-08, -0.842635691, 1.38001752e-08, 1, -8.81300792e-08, 0.842635691, -5.90851599e-08, -0.538484037),
-                [3] = __VE[26](5232.5625, 5.26856995, 747.506897, 0.943829298, -4.5439414e-08, 0.330433697, 3.47818627e-08, 1, 3.81658154e-08, -0.330433697, -2.45289105e-08, 0.943829298)
+                [6] = __U[26](4851.35059, 5.68744135, 743.251282, -0.538484037, -6.68303741e-08, -0.842635691, 1.38001752e-08, 1, -8.81300792e-08, 0.842635691, -5.90851599e-08, -0.538484037),
+                [3] = __U[26](5232.5625, 5.26856995, 747.506897, 0.943829298, -4.5439414e-08, 0.330433697, 3.47818627e-08, 1, 3.81658154e-08, -0.330433697, -2.45289105e-08, 0.943829298)
             }
 		elseif SelectBoss == "Swan" then
             return {
@@ -340,8 +485,8 @@ local function CheckQuestBoss(SelectBoss)
                 [2] = "Swan",
                 [4] = "ImpelQuest",
                 [5] = 3,
-                [6] = __VE[26](4851.35059, 5.68744135, 743.251282, -0.538484037, -6.68303741e-08, -0.842635691, 1.38001752e-08, 1, -8.81300792e-08, 0.842635691, -5.90851599e-08, -0.538484037),
-                [3] = __VE[26](5232.5625, 5.26856995, 747.506897, 0.943829298, -4.5439414e-08, 0.330433697, 3.47818627e-08, 1, 3.81658154e-08, -0.330433697, -2.45289105e-08, 0.943829298)
+                [6] = __U[26](4851.35059, 5.68744135, 743.251282, -0.538484037, -6.68303741e-08, -0.842635691, 1.38001752e-08, 1, -8.81300792e-08, 0.842635691, -5.90851599e-08, -0.538484037),
+                [3] = __U[26](5232.5625, 5.26856995, 747.506897, 0.943829298, -4.5439414e-08, 0.330433697, 3.47818627e-08, 1, 3.81658154e-08, -0.330433697, -2.45289105e-08, 0.943829298)
             }
 		elseif SelectBoss == "Magma Admiral" then
             return {
@@ -349,11 +494,11 @@ local function CheckQuestBoss(SelectBoss)
                 [2] = "Magma Admiral",
                 [4] = "MagmaQuest",
                 [5] = 3,
-                [6] = __VE[26](-5317.07666, 12.2721891, 8517.41699, 0.51175487, -2.65508806e-08, -0.859131515, -3.91131572e-08, 1, -5.42026761e-08, 0.859131515, 6.13418294e-08, 0.51175487),
-                [3] = __VE[26](-5530.12646, 22.8769703, 8859.91309, 0.857838571, 2.23414389e-08, 0.513919294, 1.53689133e-08, 1, -6.91265853e-08, -0.513919294, 6.71978384e-08, 0.857838571)
+                [6] = __U[26](-5317.07666, 12.2721891, 8517.41699, 0.51175487, -2.65508806e-08, -0.859131515, -3.91131572e-08, 1, -5.42026761e-08, 0.859131515, 6.13418294e-08, 0.51175487),
+                [3] = __U[26](-5530.12646, 22.8769703, 8859.91309, 0.857838571, 2.23414389e-08, 0.513919294, 1.53689133e-08, 1, -6.91265853e-08, -0.513919294, 6.71978384e-08, 0.857838571)
             }
 		elseif SelectBoss == "Fishman Lord" then
-            ValueCM = __VE[26](61351.7773, 31.0306778, 1113.31409, 0.999974668, 0, -0.00714713801, 0, 1.00000012, 0, 0.00714714266, 0, 0.999974549)
+            ValueCM = __U[26](61351.7773, 31.0306778, 1113.31409, 0.999974668, 0, -0.00714713801, 0, 1.00000012, 0, 0.00714714266, 0, 0.999974549)
             if (ValueCM.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude > 3000 then
 				__VE["RlS"].Remotes.CommF_:InvokeServer("requestEntrance",__U[57](61163.8515625, 11.6796875, 1819.7841796875))
 			end
@@ -362,11 +507,11 @@ local function CheckQuestBoss(SelectBoss)
                 [2] = "Fishman Lord",
                 [4] = "FishmanQuest",
                 [5] = 3,
-                [6] = __VE[26](61123.0859, 18.5066795, 1570.18018, 0.927145958, 1.0624845e-07, 0.374700129, -6.98219367e-08, 1, -1.10790765e-07, -0.374700129, 7.65569368e-08, 0.927145958),
-                [3] = __VE[26](61351.7773, 31.0306778, 1113.31409, 0.999974668, 0, -0.00714713801, 0, 1.00000012, 0, 0.00714714266, 0, 0.999974549)
+                [6] = __U[26](61123.0859, 18.5066795, 1570.18018, 0.927145958, 1.0624845e-07, 0.374700129, -6.98219367e-08, 1, -1.10790765e-07, -0.374700129, 7.65569368e-08, 0.927145958),
+                [3] = __U[26](61351.7773, 31.0306778, 1113.31409, 0.999974668, 0, -0.00714713801, 0, 1.00000012, 0, 0.00714714266, 0, 0.999974549)
             }
 		elseif SelectBoss == "Wysper" then
-            ValueCM = __VE[26](-7862.94629, 5545.52832, -379.833954, 0.462944925, 1.45838088e-08, -0.886386991, 1.0534996e-08, 1, 2.19553424e-08, 0.886386991, -1.95022007e-08, 0.462944925)
+            ValueCM = __U[26](-7862.94629, 5545.52832, -379.833954, 0.462944925, 1.45838088e-08, -0.886386991, 1.0534996e-08, 1, 2.19553424e-08, 0.886386991, -1.95022007e-08, 0.462944925)
             if (ValueCM.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude > 3000 then
 				__VE["RlS"].Remotes.CommF_:InvokeServer("requestEntrance",__U[57](-4607.82275, 872.54248, -1667.55688))
 			end
@@ -375,8 +520,8 @@ local function CheckQuestBoss(SelectBoss)
                 [2] = "Wysper",
                 [4] = "SkyExp1Quest",
                 [5] = 3,
-                [6] = __VE[26](-7862.94629, 5545.52832, -379.833954, 0.462944925, 1.45838088e-08, -0.886386991, 1.0534996e-08, 1, 2.19553424e-08, 0.886386991, -1.95022007e-08, 0.462944925),
-                [3] = __VE[26](-7925.48389, 5550.76074, -636.178345, 0.716468513, -1.22915289e-09, 0.697619379, 3.37381434e-09, 1, -1.70304748e-09, -0.697619379, 3.57381835e-09, 0.716468513)
+                [6] = __U[26](-7862.94629, 5545.52832, -379.833954, 0.462944925, 1.45838088e-08, -0.886386991, 1.0534996e-08, 1, 2.19553424e-08, 0.886386991, -1.95022007e-08, 0.462944925),
+                [3] = __U[26](-7925.48389, 5550.76074, -636.178345, 0.716468513, -1.22915289e-09, 0.697619379, 3.37381434e-09, 1, -1.70304748e-09, -0.697619379, 3.57381835e-09, 0.716468513)
             }
 		elseif SelectBoss == "Thunder God" then
             return {
@@ -384,8 +529,8 @@ local function CheckQuestBoss(SelectBoss)
                 [2] = "Thunder God",
                 [4] = "SkyExp2Quest",
                 [5] = 3,
-                [6] = __VE[26](-7902.78613, 5635.99902, -1411.98706, -0.0361216255, -1.16895912e-07, 0.999347389, 1.44533963e-09, 1, 1.17024491e-07, -0.999347389, 5.6715117e-09, -0.0361216255),
-                [3] = __VE[26](-7917.53613, 5616.61377, -2277.78564, 0.965189934, 4.80563429e-08, -0.261550069, -6.73089886e-08, 1, -6.46515304e-08, 0.261550069, 8.00056768e-08, 0.965189934)
+                [6] = __U[26](-7902.78613, 5635.99902, -1411.98706, -0.0361216255, -1.16895912e-07, 0.999347389, 1.44533963e-09, 1, 1.17024491e-07, -0.999347389, 5.6715117e-09, -0.0361216255),
+                [3] = __U[26](-7917.53613, 5616.61377, -2277.78564, 0.965189934, 4.80563429e-08, -0.261550069, -6.73089886e-08, 1, -6.46515304e-08, 0.261550069, 8.00056768e-08, 0.965189934)
             }
 		elseif SelectBoss == "Cyborg" then
             return {
@@ -393,11 +538,11 @@ local function CheckQuestBoss(SelectBoss)
                 [2] = "Cyborg",
                 [4] = "FountainQuest",
                 [5] = 3,
-                [6] = __VE[26](5253.54834, 38.5361786, 4050.45166, -0.0112687312, -9.93677887e-08, -0.999936521, 2.55291371e-10, 1, -9.93769547e-08, 0.999936521, -1.37512213e-09, -0.0112687312),
-                [3] = __VE[26](6041.82813, 52.7112198, 3907.45142, -0.563162148, 1.73805248e-09, -0.826346457, -5.94632716e-08, 1, 4.26280238e-08, 0.826346457, 7.31437524e-08, -0.563162148)
+                [6] = __U[26](5253.54834, 38.5361786, 4050.45166, -0.0112687312, -9.93677887e-08, -0.999936521, 2.55291371e-10, 1, -9.93769547e-08, 0.999936521, -1.37512213e-09, -0.0112687312),
+                [3] = __U[26](6041.82813, 52.7112198, 3907.45142, -0.563162148, 1.73805248e-09, -0.826346457, -5.94632716e-08, 1, 4.26280238e-08, 0.826346457, 7.31437524e-08, -0.563162148)
             }
 		end
-	elseif __World:Check() == __N[1] then
+	elseif WorldCheck["Second Sea"] then
 		-- New World
 		if SelectBoss == "Diamond" then
             return {
@@ -405,8 +550,8 @@ local function CheckQuestBoss(SelectBoss)
                 [2] = "Diamond",
                 [4] = "Area1Quest",
                 [5] = 3,
-                [6] = __VE[26](-424.080078, 73.0055847, 1836.91589, 0.253544956, -1.42165932e-08, 0.967323601, -6.00147771e-08, 1, 3.04272909e-08, -0.967323601, -6.5768397e-08, 0.253544956),
-                [3] = __VE[26](-1736.26587, 198.627731, -236.412857, -0.997808516, 0, -0.0661673471, 0, 1, 0, 0.0661673471, 0, -0.997808516)
+                [6] = __U[26](-424.080078, 73.0055847, 1836.91589, 0.253544956, -1.42165932e-08, 0.967323601, -6.00147771e-08, 1, 3.04272909e-08, -0.967323601, -6.5768397e-08, 0.253544956),
+                [3] = __U[26](-1736.26587, 198.627731, -236.412857, -0.997808516, 0, -0.0661673471, 0, 1, 0, 0.0661673471, 0, -0.997808516)
             }
 		elseif SelectBoss == "Jeremy" then
             return {
@@ -414,8 +559,8 @@ local function CheckQuestBoss(SelectBoss)
                 [2] = "Jeremy",
                 [4] = "Area2Quest",
                 [5] = 3,
-                [6] = __VE[26](632.698608, 73.1055908, 918.666321, -0.0319722369, 8.96074881e-10, -0.999488771, 1.36326533e-10, 1, 8.92172336e-10, 0.999488771, -1.07732087e-10, -0.0319722369),
-                [3] = __VE[26](2203.76953, 448.966034, 752.731079, -0.0217453763, 0, -0.999763548, 0, 1, 0, 0.999763548, 0, -0.0217453763)
+                [6] = __U[26](632.698608, 73.1055908, 918.666321, -0.0319722369, 8.96074881e-10, -0.999488771, 1.36326533e-10, 1, 8.92172336e-10, 0.999488771, -1.07732087e-10, -0.0319722369),
+                [3] = __U[26](2203.76953, 448.966034, 752.731079, -0.0217453763, 0, -0.999763548, 0, 1, 0, 0.999763548, 0, -0.0217453763)
             }
 		elseif SelectBoss == "Fajita" then
             return {
@@ -423,14 +568,14 @@ local function CheckQuestBoss(SelectBoss)
                 [2] = "Fajita",
                 [4] = "MarineQuest3",
                 [5] = 3,
-                [6] = __VE[26](-2442.65015, 73.0511475, -3219.11523, -0.873540044, 4.2329841e-08, -0.486752301, 5.64383384e-08, 1, -1.43220786e-08, 0.486752301, -3.99823996e-08, -0.873540044),
-                [3] = __VE[26](-2297.40332, 115.449463, -3946.53833, 0.961227536, -1.46645796e-09, -0.275756449, -2.3212845e-09, 1, -1.34094433e-08, 0.275756449, 1.35296352e-08, 0.961227536)
+                [6] = __U[26](-2442.65015, 73.0511475, -3219.11523, -0.873540044, 4.2329841e-08, -0.486752301, 5.64383384e-08, 1, -1.43220786e-08, 0.486752301, -3.99823996e-08, -0.873540044),
+                [3] = __U[26](-2297.40332, 115.449463, -3946.53833, 0.961227536, -1.46645796e-09, -0.275756449, -2.3212845e-09, 1, -1.34094433e-08, 0.275756449, 1.35296352e-08, 0.961227536)
             }
 		elseif SelectBoss == "Don Swan" then
             return {
 			    [1] = "Don Swan [Lv. 1000] [Boss]",
                 [2] = "Don Swan",
-                [3] = __VE[26](2288.802, 15.1870775, 863.034607, 0.99974072, -8.41247214e-08, -0.0227668174, 8.4774733e-08, 1, 2.75850098e-08, 0.0227668174, -2.95079072e-08, 0.99974072)
+                [3] = __U[26](2288.802, 15.1870775, 863.034607, 0.99974072, -8.41247214e-08, -0.0227668174, 8.4774733e-08, 1, 2.75850098e-08, 0.0227668174, -2.95079072e-08, 0.99974072)
             }
 		elseif SelectBoss == "Smoke Admiral" then
             return {
@@ -438,26 +583,26 @@ local function CheckQuestBoss(SelectBoss)
                 [2] = "Smoke Admiral",
                 [4] = "IceSideQuest",
                 [5] = 3,
-                [6] = __VE[26](-6059.96191, 15.9868021, -4904.7373, -0.444992423, -3.0874483e-09, 0.895534337, -3.64098796e-08, 1, -1.4644522e-08, -0.895534337, -3.91229982e-08, -0.444992423),
-                [3] = __VE[26](-5115.72754, 23.7664986, -5338.2207, 0.251453817, 1.48345061e-08, -0.967869282, 4.02796978e-08, 1, 2.57916977e-08, 0.967869282, -4.54708946e-08, 0.251453817)
+                [6] = __U[26](-6059.96191, 15.9868021, -4904.7373, -0.444992423, -3.0874483e-09, 0.895534337, -3.64098796e-08, 1, -1.4644522e-08, -0.895534337, -3.91229982e-08, -0.444992423),
+                [3] = __U[26](-5115.72754, 23.7664986, -5338.2207, 0.251453817, 1.48345061e-08, -0.967869282, 4.02796978e-08, 1, 2.57916977e-08, 0.967869282, -4.54708946e-08, 0.251453817)
             }
 		elseif SelectBoss == "Cursed Captain" then
             return {
 			    [1] = "Cursed Captain [Lv. 1325] [Raid Boss]",
                 [2] = "Cursed Captain",
-                [3] = __VE[26](916.928589, 181.092773, 33422, -0.999505103, 9.26310495e-09, 0.0314563364, 8.42916226e-09, 1, -2.6643713e-08, -0.0314563364, -2.63653774e-08, -0.999505103)
+                [3] = __U[26](916.928589, 181.092773, 33422, -0.999505103, 9.26310495e-09, 0.0314563364, 8.42916226e-09, 1, -2.6643713e-08, -0.0314563364, -2.63653774e-08, -0.999505103)
             }
 		elseif SelectBoss == "Darkbeard" then
             return {
 			    [1] = "Darkbeard [Lv. 1000] [Raid Boss]",
                 [2] = "Darkbeard",
-                [3] = __VE[26](3876.00366, 24.6882591, -3820.21777, -0.976951957, 4.97356325e-08, 0.213458836, 4.57335361e-08, 1, -2.36868622e-08, -0.213458836, -1.33787044e-08, -0.976951957)
+                [3] = __U[26](3876.00366, 24.6882591, -3820.21777, -0.976951957, 4.97356325e-08, 0.213458836, 4.57335361e-08, 1, -2.36868622e-08, -0.213458836, -1.33787044e-08, -0.976951957)
             }
 		elseif SelectBoss == "Order" then
             return {
 			    [1] = "Order [Lv. 1250] [Raid Boss]",
                 [2] = "Order",
-                [3] = __VE[26](-6221.15039, 16.2351036, -5045.23584, -0.380726993, 7.41463495e-08, 0.924687505, 5.85604774e-08, 1, -5.60738549e-08, -0.924687505, 3.28013137e-08, -0.380726993)
+                [3] = __U[26](-6221.15039, 16.2351036, -5045.23584, -0.380726993, 7.41463495e-08, 0.924687505, 5.85604774e-08, 1, -5.60738549e-08, -0.924687505, 3.28013137e-08, -0.380726993)
             }
 		elseif SelectBoss == "Awakened Ice Admiral" then
             return {
@@ -465,8 +610,8 @@ local function CheckQuestBoss(SelectBoss)
                 [2] = "Awakened Ice Admiral",
                 [4] = "FrostQuest",
                 [5] = 3,
-                [6] = __VE[26](5669.33203, 28.2118053, -6481.55908, 0.921275556, -1.25320829e-08, 0.388910472, 4.72230788e-08, 1, -7.96414241e-08, -0.388910472, 9.17372489e-08, 0.921275556),
-                [3] = __VE[26](6407.33936, 340.223785, -6892.521, 0.49051559, -5.25310213e-08, -0.871432424, -2.76146022e-08, 1, -7.58250565e-08, 0.871432424, 6.12576301e-08, 0.49051559)
+                [6] = __U[26](5669.33203, 28.2118053, -6481.55908, 0.921275556, -1.25320829e-08, 0.388910472, 4.72230788e-08, 1, -7.96414241e-08, -0.388910472, 9.17372489e-08, 0.921275556),
+                [3] = __U[26](6407.33936, 340.223785, -6892.521, 0.49051559, -5.25310213e-08, -0.871432424, -2.76146022e-08, 1, -7.58250565e-08, 0.871432424, 6.12576301e-08, 0.49051559)
             }
 		elseif SelectBoss == "Tide Keeper" then
             return {
@@ -474,11 +619,11 @@ local function CheckQuestBoss(SelectBoss)
                 [2] = "Tide Keeper",
                 [4] = "ForgottenQuest",
                 [5] = 3,
-                [6] = __VE[26](-3053.89648, 236.881363, -10148.2324, -0.985987961, -3.58504737e-09, 0.16681771, -3.07832915e-09, 1, 3.29612559e-09, -0.16681771, 2.73641976e-09, -0.985987961),
-                [3] = __VE[26](-3570.18652, 123.328949, -11555.9072, 0.465199202, -1.3857326e-08, 0.885206044, 4.0332897e-09, 1, 1.35347511e-08, -0.885206044, -2.72606271e-09, 0.465199202)
+                [6] = __U[26](-3053.89648, 236.881363, -10148.2324, -0.985987961, -3.58504737e-09, 0.16681771, -3.07832915e-09, 1, 3.29612559e-09, -0.16681771, 2.73641976e-09, -0.985987961),
+                [3] = __U[26](-3570.18652, 123.328949, -11555.9072, 0.465199202, -1.3857326e-08, 0.885206044, 4.0332897e-09, 1, 1.35347511e-08, -0.885206044, -2.72606271e-09, 0.465199202)
             }
 		end
-	elseif __World:Check() > __N[1] then
+	elseif WorldCheck["Third Sea"] then
 		-- Third World
 		if SelectBoss == "Stone" then
             return {
@@ -486,8 +631,8 @@ local function CheckQuestBoss(SelectBoss)
                 [2] = "Stone",
                 [4] = "PiratePortQuest",
                 [5] = 3,
-                [6] = __VE[26](-290, 44, 5577),
-                [3] = __VE[26](-1085, 40, 6779)
+                [6] = __U[26](-290, 44, 5577),
+                [3] = __U[26](-1085, 40, 6779)
             }
 		elseif SelectBoss == "Island Empress" then
             return {
@@ -495,8 +640,8 @@ local function CheckQuestBoss(SelectBoss)
                 [2] = "Island Empress",
                 [4] = "AmazonQuest2",
                 [5] = 3,
-                [6] = __VE[26](5443, 602, 752),
-                [3] = __VE[26](5659, 602, 244)
+                [6] = __U[26](5443, 602, 752),
+                [3] = __U[26](5659, 602, 244)
             }
 		elseif SelectBoss == "Kilo Admiral" then
             return {
@@ -504,8 +649,8 @@ local function CheckQuestBoss(SelectBoss)
                 [2] = "Kilo Admiral",
                 [4] = "MarineTreeIsland",  
                 [5] = 3,
-                [6] = __VE[26](2178, 29, -6737),
-                [3] =__VE[26](2846, 433, -7100)
+                [6] = __U[26](2178, 29, -6737),
+                [3] =__U[26](2846, 433, -7100)
             }
 		elseif SelectBoss == "Captain Elephant" then
             return {
@@ -513,8 +658,8 @@ local function CheckQuestBoss(SelectBoss)
                 [2] = "Captain Elephant",
                 [4] = "DeepForestIsland",
                 [5] = 3,
-                [6] = __VE[26](-13232, 333, -7631),
-                [3] = __VE[26](-13221, 325, -8405),
+                [6] = __U[26](-13232, 333, -7631),
+                [3] = __U[26](-13221, 325, -8405),
             }
 		elseif SelectBoss == "Beautiful Pirate" then
             return {
@@ -522,26 +667,26 @@ local function CheckQuestBoss(SelectBoss)
                 [2] = "Beautiful Pirate",
                 [4] = "DeepForestIsland2", 
                 [5] = 3,
-                [6] = __VE[26](-12686, 391, -9902),
-                [3] = __VE[26](5182, 23, -20),
+                [6] = __U[26](-12686, 391, -9902),
+                [3] = __U[26](5182, 23, -20),
             }
 		elseif SelectBoss == "rip_indra True Form" then
             return {
 			    [1] = "rip_indra True Form [Lv. 5000] [Raid Boss]",
                 [2] = "rip_indra True Form",
-                [3] = __VE[26](-5359, 424, -2735)
+                [3] = __U[26](-5359, 424, -2735)
             }
 		elseif SelectBoss == "Longma" then
             return {
 			    [1] = "Longma [Lv. 2000] [Boss]",
                 [2] = "Longma",
-                [3] = __VE[26](-10248.3936, 353.79129, -9306.34473)
+                [3] = __U[26](-10248.3936, 353.79129, -9306.34473)
             }
 		elseif SelectBoss == "Soul Reaper" then
             return {
                 [1] = "Soul Reaper [Lv. 2100] [Raid Boss]",
                 [2] = "Soul Reaper",
-                [3] = __VE[26](-9515.62109, 315.925537, 6691.12012)
+                [3] = __U[26](-9515.62109, 315.925537, 6691.12012)
             }
 		elseif SelectBoss == "Cake Queen" then
 			return {
@@ -549,31 +694,31 @@ local function CheckQuestBoss(SelectBoss)
                 [2] = "Cake Queen",
                 [4] = "IceCreamIslandQuest",
                 [5] = 3,
-                [6] = __VE[26](-821.267456, 65.9448776, -10964.3994, 0.814093888, -3.67296735e-08, -0.58073324, 3.30765637e-08, 1, -1.6879099e-08, 0.58073324, -5.46748513e-09, 0.814093888),
-                [3] = __VE[26](-715.467102, 381.69104, -11019.8896, 0.955998719, -1.07319993e-08, -0.293370903, 5.00311881e-09, 1, -2.02781667e-08, 0.293370903, 1.7918131e-08, 0.955998719)
+                [6] = __U[26](-821.267456, 65.9448776, -10964.3994, 0.814093888, -3.67296735e-08, -0.58073324, 3.30765637e-08, 1, -1.6879099e-08, 0.58073324, -5.46748513e-09, 0.814093888),
+                [3] = __U[26](-715.467102, 381.69104, -11019.8896, 0.955998719, -1.07319993e-08, -0.293370903, 5.00311881e-09, 1, -2.02781667e-08, 0.293370903, 1.7918131e-08, 0.955998719)
             }
 		end
 	end
 end
 local function FindTargetBoss(value)
-	if __World:Check() < __N[1] then
+	if WorldCheck["First Sea"] then
 		if tostring(value) == "Saber Expert" then
             return {
                 [1] = "Saber Expert",
                 [2] = "Saber Expert",
-                [3] = __VE[26](-1458.89502, 29.8870335, -50.633564, 0.858821094, 1.13848939e-08, 0.512275636, -4.85649254e-09, 1, -1.40823326e-08, -0.512275636, 9.6063415e-09, 0.858821094)
+                [3] = __U[26](-1458.89502, 29.8870335, -50.633564, 0.858821094, 1.13848939e-08, 0.512275636, -4.85649254e-09, 1, -1.40823326e-08, -0.512275636, 9.6063415e-09, 0.858821094)
             }
 		elseif tostring(value) == "The Saw" then
             return {
                 [1] = "The Saw",
                 [2] = "The Saw",
-                [3] = __VE[26](-683.519897, 13.8534927, 1610.87854, -0.290192783, 6.88365773e-08, 0.956968188, 6.98413629e-08, 1, -5.07531119e-08, -0.956968188, 5.21077759e-08, -0.290192783)
+                [3] = __U[26](-683.519897, 13.8534927, 1610.87854, -0.290192783, 6.88365773e-08, 0.956968188, 6.98413629e-08, 1, -5.07531119e-08, -0.956968188, 5.21077759e-08, -0.290192783)
             }
 		elseif tostring(value) == "Greybeard" then
             return {
                 [1] = "Greybeard [Lv. 750] [Raid Boss]",
                 [2] = "Greybeard",
-                [3] = __VE[26](-4955.72949, 80.8163834, 4305.82666, -0.433646321, -1.03394289e-08, 0.901083171, -3.0443168e-08, 1, -3.17633075e-09, -0.901083171, -2.88092288e-08, -0.433646321)
+                [3] = __U[26](-4955.72949, 80.8163834, 4305.82666, -0.433646321, -1.03394289e-08, 0.901083171, -3.0443168e-08, 1, -3.17633075e-09, -0.901083171, -2.88092288e-08, -0.433646321)
             }
 		elseif tostring(value) == "The Gorilla King" then
             return {
@@ -581,8 +726,8 @@ local function FindTargetBoss(value)
                 [2] = "The Gorilla King",
                 [4] = "JungleQuest",
                 [5] = 3,
-                [6] = __VE[26](-1604.12012, 36.8521118, 154.23732, 0.0648873374, -4.70858913e-06, -0.997892559, 1.41431883e-07, 1, -4.70933674e-06, 0.997892559, 1.64442184e-07, 0.0648873374),
-                [3] = __VE[26](-1223.52808, 6.27936459, -502.292664, 0.310949147, -5.66602516e-08, 0.950426519, -3.37275488e-08, 1, 7.06501808e-08, -0.950426519, -5.40241736e-08, 0.310949147)
+                [6] = __U[26](-1604.12012, 36.8521118, 154.23732, 0.0648873374, -4.70858913e-06, -0.997892559, 1.41431883e-07, 1, -4.70933674e-06, 0.997892559, 1.64442184e-07, 0.0648873374),
+                [3] = __U[26](-1223.52808, 6.27936459, -502.292664, 0.310949147, -5.66602516e-08, 0.950426519, -3.37275488e-08, 1, 7.06501808e-08, -0.950426519, -5.40241736e-08, 0.310949147)
             }
 		elseif tostring(value) == "Bobby" then
             return {
@@ -590,8 +735,8 @@ local function FindTargetBoss(value)
                 [2] = "Bobby",
                 [4] = "BuggyQuest1",
                 [5] = 3,
-                [6] = __VE[26](-1139.59717, 4.75205183, 3825.16211, -0.959730506, -7.5857054e-09, 0.280922383, -4.06310328e-08, 1, -1.11807175e-07, -0.280922383, -1.18718916e-07, -0.959730506),
-                [3] = __VE[26](-1147.65173, 32.5966301, 4156.02588, 0.956680477, -1.77109952e-10, -0.29113996, 5.16530874e-10, 1, 1.08897802e-09, 0.29113996, -1.19218679e-09, 0.956680477)
+                [6] = __U[26](-1139.59717, 4.75205183, 3825.16211, -0.959730506, -7.5857054e-09, 0.280922383, -4.06310328e-08, 1, -1.11807175e-07, -0.280922383, -1.18718916e-07, -0.959730506),
+                [3] = __U[26](-1147.65173, 32.5966301, 4156.02588, 0.956680477, -1.77109952e-10, -0.29113996, 5.16530874e-10, 1, 1.08897802e-09, 0.29113996, -1.19218679e-09, 0.956680477)
             }
 		elseif tostring(value) == "Yeti" then
             return {
@@ -599,14 +744,14 @@ local function FindTargetBoss(value)
                 [2] = "Yeti",
                 [4] = "SnowQuest",
                 [5] = 3,
-                [6] = __VE[26](1384.90247, 87.3078308, -1296.6825, 0.280209213, 2.72035177e-08, -0.959938943, -6.75690828e-08, 1, 8.6151708e-09, 0.959938943, 6.24481444e-08, 0.280209213),
-                [3] = __VE[26](1221.7356, 138.046906, -1488.84082, 0.349343032, -9.49245944e-08, 0.936994851, 6.29478194e-08, 1, 7.7838429e-08, -0.936994851, 3.17894653e-08, 0.349343032)
+                [6] = __U[26](1384.90247, 87.3078308, -1296.6825, 0.280209213, 2.72035177e-08, -0.959938943, -6.75690828e-08, 1, 8.6151708e-09, 0.959938943, 6.24481444e-08, 0.280209213),
+                [3] = __U[26](1221.7356, 138.046906, -1488.84082, 0.349343032, -9.49245944e-08, 0.936994851, 6.29478194e-08, 1, 7.7838429e-08, -0.936994851, 3.17894653e-08, 0.349343032)
             }
 		elseif tostring(value) == "Mob Leader" then
             return {
                 [1] = "Mob Leader [Lv. 120] [Boss]",
                 [2] = "Mob Leader",
-                [3] = __VE[26](-2848.59399, 7.4272871, 5342.44043, -0.928248107, -8.7248246e-08, 0.371961564, -7.61816636e-08, 1, 4.44474857e-08, -0.371961564, 1.29216433e-08, -0.92824)
+                [3] = __U[26](-2848.59399, 7.4272871, 5342.44043, -0.928248107, -8.7248246e-08, 0.371961564, -7.61816636e-08, 1, 4.44474857e-08, -0.371961564, 1.29216433e-08, -0.92824)
             }
 		elseif tostring(value) == "Vice Admiral" then
             return {
@@ -614,8 +759,8 @@ local function FindTargetBoss(value)
                 [2] = "Vice Admiral",
                 [4] = "MarineQuest2",
                 [5] = 2,
-                [6] = __VE[26](-5035.42285, 28.6520386, 4324.50293, -0.0611100644, -8.08395768e-08, 0.998130739, -1.57416586e-08, 1, 8.00271849e-08, -0.998130739, -1.08217701e-08, -0.0611100644),
-                [3] = __VE[26](-5078.45898, 99.6520691, 4402.1665, -0.555574954, -9.88630566e-11, 0.831466436, -6.35508286e-08, 1, -4.23449258e-08, -0.831466436, -7.63661632e-08, -0.555574954)
+                [6] = __U[26](-5035.42285, 28.6520386, 4324.50293, -0.0611100644, -8.08395768e-08, 0.998130739, -1.57416586e-08, 1, 8.00271849e-08, -0.998130739, -1.08217701e-08, -0.0611100644),
+                [3] = __U[26](-5078.45898, 99.6520691, 4402.1665, -0.555574954, -9.88630566e-11, 0.831466436, -6.35508286e-08, 1, -4.23449258e-08, -0.831466436, -7.63661632e-08, -0.555574954)
             }
 		elseif tostring(value) == "Warden" then
             return {
@@ -623,8 +768,8 @@ local function FindTargetBoss(value)
                 [2] = "Warden",
                 [4] = "ImpelQuest",
                 [5] = 1,
-                [6] = __VE[26](4851.35059, 5.68744135, 743.251282, -0.538484037, -6.68303741e-08, -0.842635691, 1.38001752e-08, 1, -8.81300792e-08, 0.842635691, -5.90851599e-08, -0.538484037),
-                [3] = __VE[26](5232.5625, 5.26856995, 747.506897, 0.943829298, -4.5439414e-08, 0.330433697, 3.47818627e-08, 1, 3.81658154e-08, -0.330433697, -2.45289105e-08, 0.943829298)
+                [6] = __U[26](4851.35059, 5.68744135, 743.251282, -0.538484037, -6.68303741e-08, -0.842635691, 1.38001752e-08, 1, -8.81300792e-08, 0.842635691, -5.90851599e-08, -0.538484037),
+                [3] = __U[26](5232.5625, 5.26856995, 747.506897, 0.943829298, -4.5439414e-08, 0.330433697, 3.47818627e-08, 1, 3.81658154e-08, -0.330433697, -2.45289105e-08, 0.943829298)
             }
 		elseif tostring(value) == "Chief Warden" then
             return {
@@ -632,8 +777,8 @@ local function FindTargetBoss(value)
                 [2] = "Chief Warden",
                 [4] = "ImpelQuest",
                 [5] = 2,
-                [6] = __VE[26](4851.35059, 5.68744135, 743.251282, -0.538484037, -6.68303741e-08, -0.842635691, 1.38001752e-08, 1, -8.81300792e-08, 0.842635691, -5.90851599e-08, -0.538484037),
-                [3] = __VE[26](5232.5625, 5.26856995, 747.506897, 0.943829298, -4.5439414e-08, 0.330433697, 3.47818627e-08, 1, 3.81658154e-08, -0.330433697, -2.45289105e-08, 0.943829298)
+                [6] = __U[26](4851.35059, 5.68744135, 743.251282, -0.538484037, -6.68303741e-08, -0.842635691, 1.38001752e-08, 1, -8.81300792e-08, 0.842635691, -5.90851599e-08, -0.538484037),
+                [3] = __U[26](5232.5625, 5.26856995, 747.506897, 0.943829298, -4.5439414e-08, 0.330433697, 3.47818627e-08, 1, 3.81658154e-08, -0.330433697, -2.45289105e-08, 0.943829298)
             }
 		elseif tostring(value) == "Swan" then
             return {
@@ -641,8 +786,8 @@ local function FindTargetBoss(value)
                 [2] = "Swan",
                 [4] = "ImpelQuest",
                 [5] = 3,
-                [6] = __VE[26](4851.35059, 5.68744135, 743.251282, -0.538484037, -6.68303741e-08, -0.842635691, 1.38001752e-08, 1, -8.81300792e-08, 0.842635691, -5.90851599e-08, -0.538484037),
-                [3] = __VE[26](5232.5625, 5.26856995, 747.506897, 0.943829298, -4.5439414e-08, 0.330433697, 3.47818627e-08, 1, 3.81658154e-08, -0.330433697, -2.45289105e-08, 0.943829298)
+                [6] = __U[26](4851.35059, 5.68744135, 743.251282, -0.538484037, -6.68303741e-08, -0.842635691, 1.38001752e-08, 1, -8.81300792e-08, 0.842635691, -5.90851599e-08, -0.538484037),
+                [3] = __U[26](5232.5625, 5.26856995, 747.506897, 0.943829298, -4.5439414e-08, 0.330433697, 3.47818627e-08, 1, 3.81658154e-08, -0.330433697, -2.45289105e-08, 0.943829298)
             }
 		elseif tostring(value) == "Magma Admiral" then
             return {
@@ -650,8 +795,8 @@ local function FindTargetBoss(value)
                 [2] = "Magma Admiral",
                 [4] = "MagmaQuest",
                 [5] = 3,
-                [6] = __VE[26](-5317.07666, 12.2721891, 8517.41699, 0.51175487, -2.65508806e-08, -0.859131515, -3.91131572e-08, 1, -5.42026761e-08, 0.859131515, 6.13418294e-08, 0.51175487),
-                [3] = __VE[26](-5530.12646, 22.8769703, 8859.91309, 0.857838571, 2.23414389e-08, 0.513919294, 1.53689133e-08, 1, -6.91265853e-08, -0.513919294, 6.71978384e-08, 0.857838571)
+                [6] = __U[26](-5317.07666, 12.2721891, 8517.41699, 0.51175487, -2.65508806e-08, -0.859131515, -3.91131572e-08, 1, -5.42026761e-08, 0.859131515, 6.13418294e-08, 0.51175487),
+                [3] = __U[26](-5530.12646, 22.8769703, 8859.91309, 0.857838571, 2.23414389e-08, 0.513919294, 1.53689133e-08, 1, -6.91265853e-08, -0.513919294, 6.71978384e-08, 0.857838571)
             }
 		elseif tostring(value) == "Fishman Lord" then
             if (__U[57](61123.0859, 18.5066795, 1570.18018) - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude > 3000 then
@@ -662,8 +807,8 @@ local function FindTargetBoss(value)
                 [2] = "Fishman Lord",
                 [4] = "FishmanQuest",
                 [5] = 3,
-                [6] = __VE[26](61123.0859, 18.5066795, 1570.18018, 0.927145958, 1.0624845e-07, 0.374700129, -6.98219367e-08, 1, -1.10790765e-07, -0.374700129, 7.65569368e-08, 0.927145958),
-                [3] = __VE[26](61351.7773, 31.0306778, 1113.31409, 0.999974668, 0, -0.00714713801, 0, 1.00000012, 0, 0.00714714266, 0, 0.999974549)
+                [6] = __U[26](61123.0859, 18.5066795, 1570.18018, 0.927145958, 1.0624845e-07, 0.374700129, -6.98219367e-08, 1, -1.10790765e-07, -0.374700129, 7.65569368e-08, 0.927145958),
+                [3] = __U[26](61351.7773, 31.0306778, 1113.31409, 0.999974668, 0, -0.00714713801, 0, 1.00000012, 0, 0.00714714266, 0, 0.999974549)
             }
 		elseif tostring(value) == "Wysper" then
             if (__U[57](-7862.94629, 5545.52832, -379.833954) - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude > 3000 then
@@ -674,8 +819,8 @@ local function FindTargetBoss(value)
                 [2] = "Wysper",
                 [4] = "SkyExp1Quest",
                 [5] = 3,
-                [6] = __VE[26](-7862.94629, 5545.52832, -379.833954, 0.462944925, 1.45838088e-08, -0.886386991, 1.0534996e-08, 1, 2.19553424e-08, 0.886386991, -1.95022007e-08, 0.462944925),
-                [3] = __VE[26](-7925.48389, 5550.76074, -636.178345, 0.716468513, -1.22915289e-09, 0.697619379, 3.37381434e-09, 1, -1.70304748e-09, -0.697619379, 3.57381835e-09, 0.716468513)
+                [6] = __U[26](-7862.94629, 5545.52832, -379.833954, 0.462944925, 1.45838088e-08, -0.886386991, 1.0534996e-08, 1, 2.19553424e-08, 0.886386991, -1.95022007e-08, 0.462944925),
+                [3] = __U[26](-7925.48389, 5550.76074, -636.178345, 0.716468513, -1.22915289e-09, 0.697619379, 3.37381434e-09, 1, -1.70304748e-09, -0.697619379, 3.57381835e-09, 0.716468513)
             }
 		elseif tostring(value) == "Thunder God" then
             return {
@@ -683,8 +828,8 @@ local function FindTargetBoss(value)
                 [2] = "Thunder God",
                 [4] = "SkyExp2Quest",
                 [5] = 3,
-                [6] = __VE[26](-7902.78613, 5635.99902, -1411.98706, -0.0361216255, -1.16895912e-07, 0.999347389, 1.44533963e-09, 1, 1.17024491e-07, -0.999347389, 5.6715117e-09, -0.0361216255),
-                [3] = __VE[26](-7917.53613, 5616.61377, -2277.78564, 0.965189934, 4.80563429e-08, -0.261550069, -6.73089886e-08, 1, -6.46515304e-08, 0.261550069, 8.00056768e-08, 0.965189934)
+                [6] = __U[26](-7902.78613, 5635.99902, -1411.98706, -0.0361216255, -1.16895912e-07, 0.999347389, 1.44533963e-09, 1, 1.17024491e-07, -0.999347389, 5.6715117e-09, -0.0361216255),
+                [3] = __U[26](-7917.53613, 5616.61377, -2277.78564, 0.965189934, 4.80563429e-08, -0.261550069, -6.73089886e-08, 1, -6.46515304e-08, 0.261550069, 8.00056768e-08, 0.965189934)
             }
         elseif tostring(value) == "Cyborg" then
             return {
@@ -692,11 +837,11 @@ local function FindTargetBoss(value)
                 [2] = "Cyborg",
                 [4] = "FountainQuest",
                 [5] = 3,
-                [6] = __VE[26](5253.54834, 38.5361786, 4050.45166, -0.0112687312, -9.93677887e-08, -0.999936521, 2.55291371e-10, 1, -9.93769547e-08, 0.999936521, -1.37512213e-09, -0.0112687312),
-                [3] = __VE[26](6041.82813, 52.7112198, 3907.45142, -0.563162148, 1.73805248e-09, -0.826346457, -5.94632716e-08, 1, 4.26280238e-08, 0.826346457, 7.31437524e-08, -0.563162148)
+                [6] = __U[26](5253.54834, 38.5361786, 4050.45166, -0.0112687312, -9.93677887e-08, -0.999936521, 2.55291371e-10, 1, -9.93769547e-08, 0.999936521, -1.37512213e-09, -0.0112687312),
+                [3] = __U[26](6041.82813, 52.7112198, 3907.45142, -0.563162148, 1.73805248e-09, -0.826346457, -5.94632716e-08, 1, 4.26280238e-08, 0.826346457, 7.31437524e-08, -0.563162148)
             }
 		end
-	elseif __World:Check() == __N[1] then
+	elseif WorldCheck["Second Sea"] then
 		-- New World
 		if tostring(value) == "Diamond" then
             return {
@@ -704,8 +849,8 @@ local function FindTargetBoss(value)
                 [2] = "Diamond",
                 [4] = "Area1Quest",
                 [5] = 3,
-                [6] = __VE[26](-424.080078, 73.0055847, 1836.91589, 0.253544956, -1.42165932e-08, 0.967323601, -6.00147771e-08, 1, 3.04272909e-08, -0.967323601, -6.5768397e-08, 0.253544956),
-                [3] = __VE[26](-1736.26587, 198.627731, -236.412857, -0.997808516, 0, -0.0661673471, 0, 1, 0, 0.0661673471, 0, -0.997808516)
+                [6] = __U[26](-424.080078, 73.0055847, 1836.91589, 0.253544956, -1.42165932e-08, 0.967323601, -6.00147771e-08, 1, 3.04272909e-08, -0.967323601, -6.5768397e-08, 0.253544956),
+                [3] = __U[26](-1736.26587, 198.627731, -236.412857, -0.997808516, 0, -0.0661673471, 0, 1, 0, 0.0661673471, 0, -0.997808516)
             }
 		elseif tostring(value) == "Jeremy" then
             return {
@@ -713,8 +858,8 @@ local function FindTargetBoss(value)
                 [2] = "Jeremy",
                 [4] = "Area2Quest",
                 [5] = 3,
-                [6] = __VE[26](632.698608, 73.1055908, 918.666321, -0.0319722369, 8.96074881e-10, -0.999488771, 1.36326533e-10, 1, 8.92172336e-10, 0.999488771, -1.07732087e-10, -0.0319722369),
-                [3] = __VE[26](2203.76953, 448.966034, 752.731079, -0.0217453763, 0, -0.999763548, 0, 1, 0, 0.999763548, 0, -0.0217453763)
+                [6] = __U[26](632.698608, 73.1055908, 918.666321, -0.0319722369, 8.96074881e-10, -0.999488771, 1.36326533e-10, 1, 8.92172336e-10, 0.999488771, -1.07732087e-10, -0.0319722369),
+                [3] = __U[26](2203.76953, 448.966034, 752.731079, -0.0217453763, 0, -0.999763548, 0, 1, 0, 0.999763548, 0, -0.0217453763)
             }
 		elseif tostring(value) == "Fajita" then
             return {
@@ -722,14 +867,14 @@ local function FindTargetBoss(value)
                 [2] = "Fajita",
                 [4] = "MarineQuest3",
                 [5] = 3,
-                [6] = __VE[26](-2442.65015, 73.0511475, -3219.11523, -0.873540044, 4.2329841e-08, -0.486752301, 5.64383384e-08, 1, -1.43220786e-08, 0.486752301, -3.99823996e-08, -0.873540044),
-                [3] = __VE[26](-2297.40332, 115.449463, -3946.53833, 0.961227536, -1.46645796e-09, -0.275756449, -2.3212845e-09, 1, -1.34094433e-08, 0.275756449, 1.35296352e-08, 0.961227536)
+                [6] = __U[26](-2442.65015, 73.0511475, -3219.11523, -0.873540044, 4.2329841e-08, -0.486752301, 5.64383384e-08, 1, -1.43220786e-08, 0.486752301, -3.99823996e-08, -0.873540044),
+                [3] = __U[26](-2297.40332, 115.449463, -3946.53833, 0.961227536, -1.46645796e-09, -0.275756449, -2.3212845e-09, 1, -1.34094433e-08, 0.275756449, 1.35296352e-08, 0.961227536)
             }
 		elseif tostring(value) == "Don Swan" then
             return {
                 [1] = "Don Swan [Lv. 1000] [Boss]",
                 [2] = "Don Swan",
-                [3] = __VE[26](2288.802, 15.1870775, 863.034607, 0.99974072, -8.41247214e-08, -0.0227668174, 8.4774733e-08, 1, 2.75850098e-08, 0.0227668174, -2.95079072e-08, 0.99974072)
+                [3] = __U[26](2288.802, 15.1870775, 863.034607, 0.99974072, -8.41247214e-08, -0.0227668174, 8.4774733e-08, 1, 2.75850098e-08, 0.0227668174, -2.95079072e-08, 0.99974072)
             }
 		elseif tostring(value) == "Smoke Admiral" then
             return {
@@ -737,26 +882,26 @@ local function FindTargetBoss(value)
                 [2] = "Smoke Admiral",
                 [4] = "IceSideQuest",
                 [5] = 3,
-                [6] = __VE[26](-6059.96191, 15.9868021, -4904.7373, -0.444992423, -3.0874483e-09, 0.895534337, -3.64098796e-08, 1, -1.4644522e-08, -0.895534337, -3.91229982e-08, -0.444992423),
-                [3] = __VE[26](-5115.72754, 23.7664986, -5338.2207, 0.251453817, 1.48345061e-08, -0.967869282, 4.02796978e-08, 1, 2.57916977e-08, 0.967869282, -4.54708946e-08, 0.251453817)
+                [6] = __U[26](-6059.96191, 15.9868021, -4904.7373, -0.444992423, -3.0874483e-09, 0.895534337, -3.64098796e-08, 1, -1.4644522e-08, -0.895534337, -3.91229982e-08, -0.444992423),
+                [3] = __U[26](-5115.72754, 23.7664986, -5338.2207, 0.251453817, 1.48345061e-08, -0.967869282, 4.02796978e-08, 1, 2.57916977e-08, 0.967869282, -4.54708946e-08, 0.251453817)
             }
 		elseif tostring(value) == "Cursed Captain" then
             return {
                 [1] = "Cursed Captain [Lv. 1325] [Raid Boss]",
                 [2] = "Cursed Captain",
-                [3] = __VE[26](916.928589, 181.092773, 33422, -0.999505103, 9.26310495e-09, 0.0314563364, 8.42916226e-09, 1, -2.6643713e-08, -0.0314563364, -2.63653774e-08, -0.999505103)
+                [3] = __U[26](916.928589, 181.092773, 33422, -0.999505103, 9.26310495e-09, 0.0314563364, 8.42916226e-09, 1, -2.6643713e-08, -0.0314563364, -2.63653774e-08, -0.999505103)
             }
 		elseif tostring(value) == "Darkbeard" then
             return {
                 [1] = "Darkbeard [Lv. 1000] [Raid Boss]",
                 [2] = "Darkbeard",
-                [3] = __VE[26](3876.00366, 24.6882591, -3820.21777, -0.976951957, 4.97356325e-08, 0.213458836, 4.57335361e-08, 1, -2.36868622e-08, -0.213458836, -1.33787044e-08, -0.976951957)
+                [3] = __U[26](3876.00366, 24.6882591, -3820.21777, -0.976951957, 4.97356325e-08, 0.213458836, 4.57335361e-08, 1, -2.36868622e-08, -0.213458836, -1.33787044e-08, -0.976951957)
             }
 		elseif tostring(value) == "Order" then
             return {
                 [1] = "Order [Lv. 1250] [Raid Boss]",
                 [2] = "Order",
-                [3] = __VE[26](-6221.15039, 16.2351036, -5045.23584, -0.380726993, 7.41463495e-08, 0.924687505, 5.85604774e-08, 1, -5.60738549e-08, -0.924687505, 3.28013137e-08, -0.380726993)
+                [3] = __U[26](-6221.15039, 16.2351036, -5045.23584, -0.380726993, 7.41463495e-08, 0.924687505, 5.85604774e-08, 1, -5.60738549e-08, -0.924687505, 3.28013137e-08, -0.380726993)
             }
 		elseif tostring(value) == "Awakened Ice Admiral" then
             return {
@@ -764,8 +909,8 @@ local function FindTargetBoss(value)
                 [2] = "Awakened Ice Admiral",
                 [4] = "FrostQuest",
                 [5] = 3,
-                [6] = __VE[26](5669.33203, 28.2118053, -6481.55908, 0.921275556, -1.25320829e-08, 0.388910472, 4.72230788e-08, 1, -7.96414241e-08, -0.388910472, 9.17372489e-08, 0.921275556),
-                [3] = __VE[26](6407.33936, 340.223785, -6892.521, 0.49051559, -5.25310213e-08, -0.871432424, -2.76146022e-08, 1, -7.58250565e-08, 0.871432424, 6.12576301e-08, 0.49051559)
+                [6] = __U[26](5669.33203, 28.2118053, -6481.55908, 0.921275556, -1.25320829e-08, 0.388910472, 4.72230788e-08, 1, -7.96414241e-08, -0.388910472, 9.17372489e-08, 0.921275556),
+                [3] = __U[26](6407.33936, 340.223785, -6892.521, 0.49051559, -5.25310213e-08, -0.871432424, -2.76146022e-08, 1, -7.58250565e-08, 0.871432424, 6.12576301e-08, 0.49051559)
             }
 		elseif tostring(value) == "Tide Keeper" then
             return {
@@ -773,11 +918,11 @@ local function FindTargetBoss(value)
                 [2] = "Tide Keeper",
                 [4] = "ForgottenQuest",
                 [5] = 3,
-                [6] = __VE[26](-3053.89648, 236.881363, -10148.2324, -0.985987961, -3.58504737e-09, 0.16681771, -3.07832915e-09, 1, 3.29612559e-09, -0.16681771, 2.73641976e-09, -0.985987961),
-                [3] = __VE[26](-3570.18652, 123.328949, -11555.9072, 0.465199202, -1.3857326e-08, 0.885206044, 4.0332897e-09, 1, 1.35347511e-08, -0.885206044, -2.72606271e-09, 0.465199202)
+                [6] = __U[26](-3053.89648, 236.881363, -10148.2324, -0.985987961, -3.58504737e-09, 0.16681771, -3.07832915e-09, 1, 3.29612559e-09, -0.16681771, 2.73641976e-09, -0.985987961),
+                [3] = __U[26](-3570.18652, 123.328949, -11555.9072, 0.465199202, -1.3857326e-08, 0.885206044, 4.0332897e-09, 1, 1.35347511e-08, -0.885206044, -2.72606271e-09, 0.465199202)
             }
 		end
-	elseif __World:Check() > __N[1] then
+	elseif WorldCheck["Third Sea"] then
 		-- Third World
 		if tostring(value) == "Stone" then
             return {
@@ -785,8 +930,8 @@ local function FindTargetBoss(value)
                 [2] = "Stone",
                 [4] = "PiratePortQuest",     
                 [5] = 3,
-                [6] = __VE[26](-290, 44, 5577),
-                [3] = __VE[26](-1085, 40, 6779)
+                [6] = __U[26](-290, 44, 5577),
+                [3] = __U[26](-1085, 40, 6779)
             }
 		elseif tostring(value) == "Island Empress" then
             return {
@@ -794,8 +939,8 @@ local function FindTargetBoss(value)
                 [2] = "Island Empress",
                 [4] = "AmazonQuest2",
                 [5] = 3,
-                [6] = __VE[26](5443, 602, 752),
-                [3] = __VE[26](5659, 602, 244)
+                [6] = __U[26](5443, 602, 752),
+                [3] = __U[26](5659, 602, 244)
             }
 		elseif tostring(value) == "Kilo Admiral" then
             return {
@@ -803,8 +948,8 @@ local function FindTargetBoss(value)
                 [2] = "Kilo Admiral",
                 [4] = "MarineTreeIsland",
                 [5] = 3,
-                [6] = __VE[26](2178, 29, -6737),
-                [3] = __VE[26](2846, 433, -7100)
+                [6] = __U[26](2178, 29, -6737),
+                [3] = __U[26](2846, 433, -7100)
             }
 		elseif tostring(value) == "Captain Elephant" then
             return {
@@ -812,8 +957,8 @@ local function FindTargetBoss(value)
                 [2] = "Captain Elephant",
                 [4] = "DeepForestIsland",
                 [5] = 3,
-                [6] = __VE[26](-13232, 333, -7631),
-                [3] = __VE[26](-13221, 325, -8405)
+                [6] = __U[26](-13232, 333, -7631),
+                [3] = __U[26](-13221, 325, -8405)
             }
 		elseif tostring(value) == "Beautiful Pirate" then
             return {
@@ -821,26 +966,26 @@ local function FindTargetBoss(value)
                 [2] = "Beautiful Pirate",
                 [4] = "DeepForestIsland2",
                 [5] = 3,
-                [6] = __VE[26](-12686, 391, -9902),
-                [3] = __VE[26](5182, 23, -20),
+                [6] = __U[26](-12686, 391, -9902),
+                [3] = __U[26](5182, 23, -20),
             }
 		elseif tostring(value) == "rip_indra True Form" then
             return {
                 [1] = "rip_indra True Form [Lv. 5000] [Raid Boss]",
                 [2] = "rip_indra True Form",
-                [3] = __VE[26](-5359, 424, -2735)
+                [3] = __U[26](-5359, 424, -2735)
             }
 		elseif tostring(value) == "Longma" then
             return {
                 [1] = "Longma [Lv. 2000] [Boss]",
                 [2] = "Longma",
-                [3] = __VE[26](-10248.3936, 353.79129, -9306.34473)
+                [3] = __U[26](-10248.3936, 353.79129, -9306.34473)
             }
 		elseif tostring(value) == "Soul Reaper" then
             return {
                 [1] = "Soul Reaper [Lv. 2100] [Raid Boss]",
                 [2] = "Soul Reaper",
-                [3] = __VE[26](-9515.62109, 315.925537, 6691.12012)
+                [3] = __U[26](-9515.62109, 315.925537, 6691.12012)
             }
 		elseif tostring(value) == "Cake Queen" then
             return {
@@ -848,109 +993,109 @@ local function FindTargetBoss(value)
                 [2] = "Cake Queen",
                 [4] = "IceCreamIslandQuest",
                 [5] = 3,
-                [6] = __VE[26](-821.267456, 65.9448776, -10964.3994, 0.814093888, -3.67296735e-08, -0.58073324, 3.30765637e-08, 1, -1.6879099e-08, 0.58073324, -5.46748513e-09, 0.814093888),
-                [3] = __VE[26](-715.467102, 381.69104, -11019.8896, 0.955998719, -1.07319993e-08, -0.293370903, 5.00311881e-09, 1, -2.02781667e-08, 0.293370903, 1.7918131e-08, 0.955998719)
+                [6] = __U[26](-821.267456, 65.9448776, -10964.3994, 0.814093888, -3.67296735e-08, -0.58073324, 3.30765637e-08, 1, -1.6879099e-08, 0.58073324, -5.46748513e-09, 0.814093888),
+                [3] = __U[26](-715.467102, 381.69104, -11019.8896, 0.955998719, -1.07319993e-08, -0.293370903, 5.00311881e-09, 1, -2.02781667e-08, 0.293370903, 1.7918131e-08, 0.955998719)
             }
 		end
 	end
 end
 local function TpOfTpTab()
-    if __World:Check() < __N[1] then
+    if WorldCheck["First Sea"] then
         if SelectTpSpot == "\80\105\114\97\116\101\32\83\116\97\114\116\101\114" then
             if InstanceTp then
-                CFrameTargetTp = __VE[26](994.9686279296875, 16.641939163208008, 1427.6319580078125)
+                CFrameTargetTp = __U[26](994.9686279296875, 16.641939163208008, 1427.6319580078125)
             else
-                CFrameTargetTp = __VE[26](994.9686279296875, 16.641939163208008, 1427.6319580078125)
+                CFrameTargetTp = __U[26](994.9686279296875, 16.641939163208008, 1427.6319580078125)
                 if (CFrameTargetTp.Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude > 10000 then
                     CommF:InvokeServer("requestEntrance", __U[57](-4607.82275390625, 874.3905029296875, -1667.556884765625))
                 end
             end
         elseif SelectTpSpot == "\77\97\114\105\110\101\32\83\116\97\114\116\101\114" then
             if InstanceTp then
-                CFrameTargetTp = __VE[26](-2645.46142578125, 9.68152904510498, 2048.440673828125)
+                CFrameTargetTp = __U[26](-2645.46142578125, 9.68152904510498, 2048.440673828125)
             else
-                CFrameTargetTp = __VE[26](-2645.46142578125, 9.68152904510498, 2048.440673828125)
+                CFrameTargetTp = __U[26](-2645.46142578125, 9.68152904510498, 2048.440673828125)
                 if (CFrameTargetTp.Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude > 10000 then
                     CommF:InvokeServer("requestEntrance", __U[57](-4607.82275390625, 874.3905029296875, -1667.556884765625))
                 end
             end
         elseif SelectTpSpot == "\77\105\100\100\108\101\32\84\111\119\110" then
             if InstanceTp then
-                CFrameTargetTp = __VE[26](-622.5928955078125, 8.339500427246094, 1559.7164306640625)
+                CFrameTargetTp = __U[26](-622.5928955078125, 8.339500427246094, 1559.7164306640625)
             else
-                CFrameTargetTp = __VE[26](-622.5928955078125, 8.339500427246094, 1559.7164306640625)
+                CFrameTargetTp = __U[26](-622.5928955078125, 8.339500427246094, 1559.7164306640625)
                 if (CFrameTargetTp.Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude > 10000 then
                     CommF:InvokeServer("requestEntrance", __U[57](-4607.82275390625, 874.3905029296875, -1667.556884765625))
                 end
             end
         elseif SelectTpSpot == "\74\117\110\103\108\101" then
             if InstanceTp then
-                CFrameTargetTp = __VE[26](-1613.74365234375, 36.977413177490234, 148.67115783691406)
+                CFrameTargetTp = __U[26](-1613.74365234375, 36.977413177490234, 148.67115783691406)
             else
-                CFrameTargetTp = __VE[26](-1613.74365234375, 36.977413177490234, 148.67115783691406)
+                CFrameTargetTp = __U[26](-1613.74365234375, 36.977413177490234, 148.67115783691406)
                 if (CFrameTargetTp.Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude > 10000 then
                     CommF:InvokeServer("requestEntrance", __U[57](-4607.82275390625, 874.3905029296875, -1667.556884765625))
                 end
             end
         elseif SelectTpSpot == "\80\105\114\97\116\101\32\86\105\108\108\97\103\101" then
             if InstanceTp then
-                CFrameTargetTp = __VE[26](-1146.427734375, 44.877357482910156, 3846.61328125)
+                CFrameTargetTp = __U[26](-1146.427734375, 44.877357482910156, 3846.61328125)
             else
-                CFrameTargetTp = __VE[26](-1146.427734375, 44.877357482910156, 3846.61328125)
+                CFrameTargetTp = __U[26](-1146.427734375, 44.877357482910156, 3846.61328125)
                 if (CFrameTargetTp.Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude > 10000 then
                     CommF:InvokeServer("requestEntrance", __U[57](-4607.82275390625, 874.3905029296875, -1667.556884765625))
                 end
             end
         elseif SelectTpSpot == "\68\101\115\115\101\114\116" then
             if InstanceTp then
-                CFrameTargetTp = __VE[26](924.7705078125, 6.146862983703613, 4329.72314453125)
+                CFrameTargetTp = __U[26](924.7705078125, 6.146862983703613, 4329.72314453125)
             else
-                CFrameTargetTp = __VE[26](924.7705078125, 6.146862983703613, 4329.72314453125)
+                CFrameTargetTp = __U[26](924.7705078125, 6.146862983703613, 4329.72314453125)
                 if (CFrameTargetTp.Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude > 10000 then
                     CommF:InvokeServer("requestEntrance", __U[57](-4607.82275390625, 874.3905029296875, -1667.556884765625))
                 end
             end
         elseif SelectTpSpot == "\70\114\111\122\101\110\32\86\105\108\108\97\103\101" then
             if InstanceTp then
-                CFrameTargetTp = __VE[26](1120.902587890625, 7.670980930328369, -1189.6358642578125)
+                CFrameTargetTp = __U[26](1120.902587890625, 7.670980930328369, -1189.6358642578125)
             else
-                CFrameTargetTp = __VE[26](1120.902587890625, 7.670980930328369, -1189.6358642578125)
+                CFrameTargetTp = __U[26](1120.902587890625, 7.670980930328369, -1189.6358642578125)
                 if (CFrameTargetTp.Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude > 10000 then
                     CommF:InvokeServer("requestEntrance", __U[57](-4607.82275390625, 874.3905029296875, -1667.556884765625))
                 end
             end
         elseif SelectTpSpot == "\77\97\114\105\110\101\32\70\111\114\116\114\101\115\115" then
             if InstanceTp then
-                CFrameTargetTp = __VE[26](-5034.90771484375, 27.965608596801758, 4334.7890625)
+                CFrameTargetTp = __U[26](-5034.90771484375, 27.965608596801758, 4334.7890625)
             else
-                CFrameTargetTp = __VE[26](-5034.90771484375, 27.965608596801758, 4334.7890625)
+                CFrameTargetTp = __U[26](-5034.90771484375, 27.965608596801758, 4334.7890625)
                 if (CFrameTargetTp.Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude > 10000 then
                     CommF:InvokeServer("requestEntrance", __U[57](-4607.82275390625, 874.3905029296875, -1667.556884765625))
                 end
             end
         elseif SelectTpSpot == "\83\107\121\108\97\110\100\32\49\115\116" then
             if InstanceTp then
-                CFrameTargetTp = __VE[26](-5009.7939453125, 281.7386169433594, -2830.664306640625)
+                CFrameTargetTp = __U[26](-5009.7939453125, 281.7386169433594, -2830.664306640625)
             else
-                CFrameTargetTp = __VE[26](-5009.7939453125, 281.7386169433594, -2830.664306640625)
+                CFrameTargetTp = __U[26](-5009.7939453125, 281.7386169433594, -2830.664306640625)
                 if (CFrameTargetTp.Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude > 10000 then
                     CommF:InvokeServer("requestEntrance", __U[57](-4607.82275390625, 874.3905029296875, -1667.556884765625))
                 end
             end
         elseif SelectTpSpot == "\83\107\121\108\97\110\100\32\50\110\100" then
             if InstanceTp then
-                CFrameTargetTp = __VE[26](-5270.48583984375, 395.70489501953125, -2212.401123046875)
+                CFrameTargetTp = __U[26](-5270.48583984375, 395.70489501953125, -2212.401123046875)
             else
-                CFrameTargetTp = __VE[26](-5270.48583984375, 395.70489501953125, -2212.401123046875)
+                CFrameTargetTp = __U[26](-5270.48583984375, 395.70489501953125, -2212.401123046875)
                 if (CFrameTargetTp.Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude > 10000 then
                     CommF:InvokeServer("requestEntrance", __U[57](-4607.82275390625, 874.3905029296875, -1667.556884765625))
                 end
             end
         elseif SelectTpSpot == "\83\107\121\108\97\110\100\32\51\114\100" then
             if InstanceTp then
-                CFrameTargetTp = __VE[26](-4771.7998046875, 718.5603637695312, -2621.241455078125)
+                CFrameTargetTp = __U[26](-4771.7998046875, 718.5603637695312, -2621.241455078125)
             else
-                CFrameTargetTp = __VE[26](-4771.7998046875, 718.5603637695312, -2621.241455078125)
+                CFrameTargetTp = __U[26](-4771.7998046875, 718.5603637695312, -2621.241455078125)
                 if (CFrameTargetTp.Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude > 10000 then
                     CommF:InvokeServer("requestEntrance", __U[57](-4607.82275390625, 874.3905029296875, -1667.556884765625))
                 end
@@ -973,18 +1118,18 @@ local function TpOfTpTab()
             end
         elseif SelectTpSpot == "\67\111\108\111\115\115\101\117\109" then
             if InstanceTp then
-                CFrameTargetTp = __VE[26](-1536.6083984375, 8.051512718200684, -2983.515380859375)
+                CFrameTargetTp = __U[26](-1536.6083984375, 8.051512718200684, -2983.515380859375)
             else
-                CFrameTargetTp = __VE[26](-1536.6083984375, 8.051512718200684, -2983.515380859375)
+                CFrameTargetTp = __U[26](-1536.6083984375, 8.051512718200684, -2983.515380859375)
                 if (CFrameTargetTp.Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude > 10000 then
                     CommF:InvokeServer("requestEntrance", __U[57](-4607.82275390625, 874.3905029296875, -1667.556884765625))
                 end
             end
         elseif SelectTpSpot == "\80\114\105\115\111\110" then
             if InstanceTp then
-                CFrameTargetTp = __VE[26](4867.283203125, 6.470325469970703, 732.0301513671875)
+                CFrameTargetTp = __U[26](4867.283203125, 6.470325469970703, 732.0301513671875)
             else
-                CFrameTargetTp = __VE[26](4867.283203125, 6.470325469970703, 732.0301513671875)
+                CFrameTargetTp = __U[26](4867.283203125, 6.470325469970703, 732.0301513671875)
                 if (CFrameTargetTp.Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude > 10000 then
                     CommF:InvokeServer("requestEntrance", __U[57](-4607.82275390625, 874.3905029296875, -1667.556884765625))
                 end
@@ -999,206 +1144,206 @@ local function TpOfTpTab()
             end
         elseif SelectTpSpot == "\77\97\103\109\101\32\86\105\108\108\97\103\101" then
             if InstanceTp then
-                CFrameTargetTp = __VE[26](-5236.81201171875, 7.995201587677002, 8450.7021484375)
+                CFrameTargetTp = __U[26](-5236.81201171875, 7.995201587677002, 8450.7021484375)
             else
-                CFrameTargetTp = __VE[26](-5236.81201171875, 7.995201587677002, 8450.7021484375)
+                CFrameTargetTp = __U[26](-5236.81201171875, 7.995201587677002, 8450.7021484375)
                 if (CFrameTargetTp.Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude > 10000 then
                     CommF:InvokeServer("requestEntrance", __U[57](-4607.82275390625, 874.3905029296875, -1667.556884765625))
                 end
             end
         elseif SelectTpSpot == "\70\111\117\110\116\97\105\110\32\67\105\116\121" then
             if InstanceTp then
-                CFrameTargetTp = __VE[26](5105.4208984375, 4.3343119621276855, 4074.138671875)
+                CFrameTargetTp = __U[26](5105.4208984375, 4.3343119621276855, 4074.138671875)
             else
-                CFrameTargetTp = __VE[26](5105.4208984375, 4.3343119621276855, 4074.138671875)
+                CFrameTargetTp = __U[26](5105.4208984375, 4.3343119621276855, 4074.138671875)
                 if (CFrameTargetTp - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude > 10000 then
                     CommF:InvokeServer("requestEntrance", __U[57](-4607.82275390625, 874.3905029296875, -1667.556884765625))
                 end
             end
         end
-    elseif __World:Check() == __N[1] then
+    elseif WorldCheck["Second Sea"] then
         if SelectTpSpot == "\75\105\110\103\100\111\109\32\79\102\32\82\111\115\101" then
             if InstanceTp then
-                CFrameTargetTp = __VE[26](-12.300018310546875, 29.402055740356445, 2766.919677734375)
+                CFrameTargetTp = __U[26](-12.300018310546875, 29.402055740356445, 2766.919677734375)
             else
-                CFrameTargetTp = __VE[26](-12.300018310546875, 29.402055740356445, 2766.919677734375)
+                CFrameTargetTp = __U[26](-12.300018310546875, 29.402055740356445, 2766.919677734375)
                 if (CFrameTargetTp.Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude > 20000 then
                     CommF:InvokeServer("requestEntrance",__U[57](-6508.5581054688, 89.034996032715, -132.83953857422))
                 end
             end
         elseif SelectTpSpot == "\67\111\108\111\115\115\101\117\109" then
             if InstanceTp then
-                CFrameTargetTp = __VE[26](-1821.328369140625, 45.541255950927734, 1358.9896240234375)
+                CFrameTargetTp = __U[26](-1821.328369140625, 45.541255950927734, 1358.9896240234375)
             else
-                CFrameTargetTp = __VE[26](-1821.328369140625, 45.541255950927734, 1358.9896240234375)
+                CFrameTargetTp = __U[26](-1821.328369140625, 45.541255950927734, 1358.9896240234375)
                 if (CFrameTargetTp.Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude > 20000 then
                     CommF:InvokeServer("requestEntrance",__U[57](-6508.5581054688, 89.034996032715, -132.83953857422))
                 end
             end
         elseif SelectTpSpot == "\83\101\99\114\101\116\32\82\111\111\109\32\40\82\97\99\101\32\118\51\41" then
             if InstanceTp then
-                CFrameTargetTp = __VE[26](-2027.0584716796875, 124.79798126220703, -78.88665008544922)
+                CFrameTargetTp = __U[26](-2027.0584716796875, 124.79798126220703, -78.88665008544922)
             else
-                CFrameTargetTp = __VE[26](-2027.0584716796875, 124.79798126220703, -78.88665008544922)
+                CFrameTargetTp = __U[26](-2027.0584716796875, 124.79798126220703, -78.88665008544922)
                 if (CFrameTargetTp.Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude > 20000 then
                     CommF:InvokeServer("requestEntrance",__U[57](-6508.5581054688, 89.034996032715, -132.83953857422))
                 end
             end
         elseif SelectTpSpot == "\67\97\102\101" then
             if InstanceTp then
-                CFrameTargetTp = __VE[26](-381.9906921386719, 72.30252838134766, 283.7034606933594)
+                CFrameTargetTp = __U[26](-381.9906921386719, 72.30252838134766, 283.7034606933594)
             else
-                CFrameTargetTp = __VE[26](-381.9906921386719, 72.30252838134766, 283.7034606933594)
+                CFrameTargetTp = __U[26](-381.9906921386719, 72.30252838134766, 283.7034606933594)
                 if (CFrameTargetTp.Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude > 20000 then
                     CommF:InvokeServer("requestEntrance",__U[57](-6508.5581054688, 89.034996032715, -132.83953857422))
                 end
             end
         elseif SelectTpSpot == "\70\114\111\110\116\32\70\97\99\116\111\114\121" then
             if InstanceTp then
-                CFrameTargetTp = __VE[26](230.86642456054688, 71.83038330078125, -231.8999481201172)
+                CFrameTargetTp = __U[26](230.86642456054688, 71.83038330078125, -231.8999481201172)
             else
-                CFrameTargetTp = __VE[26](230.86642456054688, 71.83038330078125, -231.8999481201172)
+                CFrameTargetTp = __U[26](230.86642456054688, 71.83038330078125, -231.8999481201172)
                 if (CFrameTargetTp.Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude > 20000 then
                     CommF:InvokeServer("requestEntrance",__U[57](-6508.5581054688, 89.034996032715, -132.83953857422))
                 end
             end
         elseif SelectTpSpot == "\70\97\99\116\111\114\121" then
             if InstanceTp then
-                CFrameTargetTp = __VE[26](429.5542297363281, 218.63314819335938, -430.0518798828125)
+                CFrameTargetTp = __U[26](429.5542297363281, 218.63314819335938, -430.0518798828125)
             else
-                CFrameTargetTp = __VE[26](429.5542297363281, 218.63314819335938, -430.0518798828125)
+                CFrameTargetTp = __U[26](429.5542297363281, 218.63314819335938, -430.0518798828125)
                 if (CFrameTargetTp.Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude > 20000 then
                     CommF:InvokeServer("requestEntrance",__U[57](-6508.5581054688, 89.034996032715, -132.83953857422))
                 end
             end
         elseif SelectTpSpot == "\83\119\97\110\32\82\111\111\109" then
             if InstanceTp then
-                CFrameTargetTp = __VE[26](nil)
+                CFrameTargetTp = __U[26](nil)
             else
-                CFrameTargetTp = __VE[26](nil)
+                CFrameTargetTp = __U[26](nil)
                 if (CFrameTargetTp.Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude > 20000 then
                     CommF:InvokeServer("requestEntrance",__U[57](-6508.5581054688, 89.034996032715, -132.83953857422))
                 end
             end
         elseif SelectTpSpot == "\71\114\101\101\110\32\90\111\110\101" then
             if InstanceTp then
-                CFrameTargetTp = __VE[26](-2250.882568359375, 73.37700653076172, -2692.625244140625)
+                CFrameTargetTp = __U[26](-2250.882568359375, 73.37700653076172, -2692.625244140625)
             else
-                CFrameTargetTp = __VE[26](-2250.882568359375, 73.37700653076172, -2692.625244140625)
+                CFrameTargetTp = __U[26](-2250.882568359375, 73.37700653076172, -2692.625244140625)
                 if (CFrameTargetTp.Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude > 20000 then
                     CommF:InvokeServer("requestEntrance",__U[57](-6508.5581054688, 89.034996032715, -132.83953857422))
                 end
             end
         elseif SelectTpSpot == "\71\114\97\118\101\121\97\114\100\32\73\115\108\97\110\100" then
             if InstanceTp then
-                CFrameTargetTp = __VE[26](-5458.5849609375, 47.87034606933594, -814.068115234375)
+                CFrameTargetTp = __U[26](-5458.5849609375, 47.87034606933594, -814.068115234375)
             else
-                CFrameTargetTp = __VE[26](-5458.5849609375, 47.87034606933594, -814.068115234375)
+                CFrameTargetTp = __U[26](-5458.5849609375, 47.87034606933594, -814.068115234375)
                 if (CFrameTargetTp.Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude > 20000 then
                     CommF:InvokeServer("requestEntrance",__U[57](-6508.5581054688, 89.034996032715, -132.83953857422))
                 end
             end
         elseif SelectTpSpot == "\67\117\114\115\101\100\32\83\104\105\112" then
             if InstanceTp then
-                CFrameTargetTp = __VE[26](nil)
+                CFrameTargetTp = __U[26](nil)
             else
-                CFrameTargetTp = __VE[26](nil)
+                CFrameTargetTp = __U[26](nil)
                 if (CFrameTargetTp.Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude > 20000 then
                     CommF:InvokeServer("requestEntrance",__U[57](-6508.5581054688, 89.034996032715, -132.83953857422))
                 end
             end
         elseif SelectTpSpot == "\72\111\116\32\73\115\108\97\110\100" then
             if InstanceTp then
-                CFrameTargetTp = __VE[26](-5933.240234375, 16.172576904296875, -5054.5400390625)
+                CFrameTargetTp = __U[26](-5933.240234375, 16.172576904296875, -5054.5400390625)
             else
-                CFrameTargetTp = __VE[26](-5933.240234375, 16.172576904296875, -5054.5400390625)
+                CFrameTargetTp = __U[26](-5933.240234375, 16.172576904296875, -5054.5400390625)
                 if (CFrameTargetTp.Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude > 20000 then
                     CommF:InvokeServer("requestEntrance",__U[57](-6508.5581054688, 89.034996032715, -132.83953857422))
                 end
             end
         elseif SelectTpSpot == "\67\111\108\100\32\73\115\108\97\110\100" then
             if InstanceTp then
-                CFrameTargetTp = __VE[26](-5425.0546875, 15.852957725524902, -5244.63671875)
+                CFrameTargetTp = __U[26](-5425.0546875, 15.852957725524902, -5244.63671875)
             else
-                CFrameTargetTp = __VE[26](-5425.0546875, 15.852957725524902, -5244.63671875)
+                CFrameTargetTp = __U[26](-5425.0546875, 15.852957725524902, -5244.63671875)
                 if (CFrameTargetTp.Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude > 20000 then
                     CommF:InvokeServer("requestEntrance",__U[57](-6508.5581054688, 89.034996032715, -132.83953857422))
                 end
             end
         elseif SelectTpSpot == "\82\97\105\100" then
             if InstanceTp then
-                CFrameTargetTp = __VE[26](-6450.7060546875, 252.81024169921875, -4495.576171875)
+                CFrameTargetTp = __U[26](-6450.7060546875, 252.81024169921875, -4495.576171875)
             else
-                CFrameTargetTp = __VE[26](-6450.7060546875, 252.81024169921875, -4495.576171875)
+                CFrameTargetTp = __U[26](-6450.7060546875, 252.81024169921875, -4495.576171875)
                 if (CFrameTargetTp.Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude > 20000 then
                     CommF:InvokeServer("requestEntrance",__U[57](-6508.5581054688, 89.034996032715, -132.83953857422))
                 end
             end
         elseif SelectTpSpot == "\76\97\119\32\82\97\105\100" then
             if InstanceTp then
-                CFrameTargetTp = __VE[26](-5549.77099609375, 330.7765808105469, -5928.8642578125)
+                CFrameTargetTp = __U[26](-5549.77099609375, 330.7765808105469, -5928.8642578125)
             else
-                CFrameTargetTp = __VE[26](-5549.77099609375, 330.7765808105469, -5928.8642578125)
+                CFrameTargetTp = __U[26](-5549.77099609375, 330.7765808105469, -5928.8642578125)
                 if (CFrameTargetTp.Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude > 20000 then
                     CommF:InvokeServer("requestEntrance",__U[57](-6508.5581054688, 89.034996032715, -132.83953857422))
                 end
             end
         elseif SelectTpSpot == "\83\110\111\119\32\77\111\117\110\116\97\105\110" then
             if InstanceTp then
-                CFrameTargetTp = __VE[26](404.9621276855469, 400.9583435058594, -5323.09228515625)
+                CFrameTargetTp = __U[26](404.9621276855469, 400.9583435058594, -5323.09228515625)
             else
-                CFrameTargetTp = __VE[26](404.9621276855469, 400.9583435058594, -5323.09228515625)
+                CFrameTargetTp = __U[26](404.9621276855469, 400.9583435058594, -5323.09228515625)
                 if (CFrameTargetTp.Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude > 20000 then
                     CommF:InvokeServer("requestEntrance",__U[57](-6508.5581054688, 89.034996032715, -132.83953857422))
                 end
             end
         elseif SelectTpSpot == "\68\97\114\107\32\65\114\101\97\110\97" then
             if InstanceTp then
-                CFrameTargetTp = __VE[26](3756.60400390625, 13.871602058410645, -3533.947998046875)
+                CFrameTargetTp = __U[26](3756.60400390625, 13.871602058410645, -3533.947998046875)
             else
-                CFrameTargetTp = __VE[26](3756.60400390625, 13.871602058410645, -3533.947998046875)
+                CFrameTargetTp = __U[26](3756.60400390625, 13.871602058410645, -3533.947998046875)
                 if (CFrameTargetTp.Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude > 20000 then
                     CommF:InvokeServer("requestEntrance",__U[57](-6508.5581054688, 89.034996032715, -132.83953857422))
                 end
             end
         elseif SelectTpSpot == "\73\99\101\32\67\97\115\116\108\101" then
             if InstanceTp then
-                CFrameTargetTp = __VE[26](5672.884765625, 27.25011444091797, -6461.46826171875)
+                CFrameTargetTp = __U[26](5672.884765625, 27.25011444091797, -6461.46826171875)
             else
-                CFrameTargetTp = __VE[26](5672.884765625, 27.25011444091797, -6461.46826171875)
+                CFrameTargetTp = __U[26](5672.884765625, 27.25011444091797, -6461.46826171875)
                 if (CFrameTargetTp.Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude > 20000 then
                     CommF:InvokeServer("requestEntrance",__U[57](-6508.5581054688, 89.034996032715, -132.83953857422))
                 end
             end
         elseif SelectTpSpot == "\70\111\114\103\111\116\116\101\110\32\73\115\108\97\110\100" then
             if InstanceTp then
-                CFrameTargetTp = __VE[26](-3040.594482421875, 6.138787269592285, -9596.7373046875)
+                CFrameTargetTp = __U[26](-3040.594482421875, 6.138787269592285, -9596.7373046875)
             else
-                CFrameTargetTp = __VE[26](-3040.594482421875, 6.138787269592285, -9596.7373046875)
+                CFrameTargetTp = __U[26](-3040.594482421875, 6.138787269592285, -9596.7373046875)
                 if (CFrameTargetTp.Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude > 20000 then
                     CommF:InvokeServer("requestEntrance",__U[57](-6508.5581054688, 89.034996032715, -132.83953857422))
                 end
             end
         elseif SelectTpSpot == "\85\115\111\117\112\39\115\32\73\115\108\97\110\100" then
             if InstanceTp then
-                CFrameTargetTp = __VE[26](4748.18994140625, 12.582029342651367, 2852.78369140625)
+                CFrameTargetTp = __U[26](4748.18994140625, 12.582029342651367, 2852.78369140625)
             else
-                CFrameTargetTp = __VE[26](4748.18994140625, 12.582029342651367, 2852.78369140625)
+                CFrameTargetTp = __U[26](4748.18994140625, 12.582029342651367, 2852.78369140625)
                 if (CFrameTargetTp.Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude > 20000 then
                     CommF:InvokeServer("requestEntrance",__U[57](-6508.5581054688, 89.034996032715, -132.83953857422))
                 end
             end
         elseif SelectTpSpot == "\87\104\97\116\32\105\115\32\116\104\105\115\32\73\115\108\97\110\100" then
             if InstanceTp then
-                CFrameTargetTp = __VE[26](-5089.3173828125, 3.617180109024048, 2381.7216796875)
+                CFrameTargetTp = __U[26](-5089.3173828125, 3.617180109024048, 2381.7216796875)
             else
-                CFrameTargetTp = __VE[26](-5089.3173828125, 3.617180109024048, 2381.7216796875)
+                CFrameTargetTp = __U[26](-5089.3173828125, 3.617180109024048, 2381.7216796875)
                 if (CFrameTargetTp.Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude > 20000 then
                     CommF:InvokeServer("requestEntrance",__U[57](-6508.5581054688, 89.034996032715, -132.83953857422))
                 end
             end
         end
-    elseif __World:Check() > __N[1] then
+    elseif WorldCheck["Third Sea"] then
         if SelectTpSpot == "\77\97\110\115\105\111\110" then
             if InstanceTp then
                 if Setting.UnlockPortal then
@@ -1213,9 +1358,9 @@ local function TpOfTpTab()
             end
         elseif SelectTpSpot == "\80\111\114\116\32\84\111\119\110" then
             if InstanceTp then
-                CFrameTargetTp = __VE[26](-435.68109130859, 189.69866943359, 5551.0756835938)
+                CFrameTargetTp = __U[26](-435.68109130859, 189.69866943359, 5551.0756835938)
             else
-                CFrameTargetTp = __VE[26](-435.68109130859, 189.69866943359, 5551.0756835938)
+                CFrameTargetTp = __U[26](-435.68109130859, 189.69866943359, 5551.0756835938)
                 if (__U[57](-435.68109130859, 189.69866943359, 5551.0756835938) - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude > 9000 then
                     if Setting.UnlockPortal then
                         CommF:InvokeServer("requestEntrance", __U[57](5748.7587890625, 610.44982910156, -267.81704711914))
@@ -1225,9 +1370,9 @@ local function TpOfTpTab()
             end
         elseif SelectTpSpot == "\71\114\101\97\116\32\84\114\101\101" then
             if InstanceTp then
-                CFrameTargetTp = __VE[26](2198.0063476563, 128.71075439453, -7109.5043945313)
+                CFrameTargetTp = __U[26](2198.0063476563, 128.71075439453, -7109.5043945313)
             else
-                CFrameTargetTp = __VE[26](2198.0063476563, 128.71075439453, -7109.5043945313)
+                CFrameTargetTp = __U[26](2198.0063476563, 128.71075439453, -7109.5043945313)
                 if (__U[57](2198.0063476563, 128.71075439453, -7109.5043945313) - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude > 11500 then
                     if Setting.UnlockPortal then
                         CommF:InvokeServer("requestEntrance", __U[57](5748.7587890625, 610.44982910156, -267.81704711914))
@@ -1237,13 +1382,13 @@ local function TpOfTpTab()
             end
         elseif SelectTpSpot == "\67\97\115\116\108\101\32\79\110\32\84\104\101\32\83\101\97" then
             if InstanceTp then
-                CFrameTargetTp = __VE[26](-5072.08984375, 314.5412902832, -3151.1098632812)
+                CFrameTargetTp = __U[26](-5072.08984375, 314.5412902832, -3151.1098632812)
                 if Setting.UnlockPortal then
                     CommF:InvokeServer("requestEntrance",__U[57](-5072.08984375, 314.5412902832, -3151.1098632812))
                     task.__U[19](0.5)
                 end
             else
-                CFrameTargetTp = __VE[26](-5072.08984375, 314.5412902832, -3151.1098632812)
+                CFrameTargetTp = __U[26](-5072.08984375, 314.5412902832, -3151.1098632812)
                 if Setting.UnlockPortal then
                     CommF:InvokeServer("requestEntrance",__U[57](-5072.08984375, 314.5412902832, -3151.1098632812))
                     task.__U[19](0.5)
@@ -1251,19 +1396,19 @@ local function TpOfTpTab()
             end
         elseif SelectTpSpot == "\77\105\110\105\83\107\121" then
             if InstanceTp then
-                CFrameTargetTp = __VE[26](-260.65557861328, 49325.8046875, -35253.5703125)
+                CFrameTargetTp = __U[26](-260.65557861328, 49325.8046875, -35253.5703125)
             else
-                CFrameTargetTp = __VE[26](-260.65557861328, 49325.8046875, -35253.5703125)
+                CFrameTargetTp = __U[26](-260.65557861328, 49325.8046875, -35253.5703125)
             end
         elseif SelectTpSpot == "\72\121\100\114\97\32\73\115\108\97\110\100" then
             if InstanceTp then
-                CFrameTargetTp = __VE[26](5748.7587890625, 610.44982910156, -267.81704711914)
+                CFrameTargetTp = __U[26](5748.7587890625, 610.44982910156, -267.81704711914)
                 if Setting.UnlockPortal then
                     CommF:InvokeServer("requestEntrance", __U[57](5748.7587890625, 610.44982910156, -267.81704711914))
                     task.__U[19](0.5)
                 end
             else
-                CFrameTargetTp = __VE[26](5748.7587890625, 610.44982910156, -267.81704711914)
+                CFrameTargetTp = __U[26](5748.7587890625, 610.44982910156, -267.81704711914)
                 if Setting.UnlockPortal then
                     CommF:InvokeServer("requestEntrance", __U[57](5748.7587890625, 610.44982910156, -267.81704711914))
                     task.__U[19](0.5)
@@ -1271,13 +1416,13 @@ local function TpOfTpTab()
             end
         elseif SelectTpSpot == "\70\108\111\97\116\105\110\103\32\84\117\114\116\108\101" then
             if InstanceTp then
-                CFrameTargetTp = __VE[26](-12471.169921875, 374.94024658203, -7551.677734375)
+                CFrameTargetTp = __U[26](-12471.169921875, 374.94024658203, -7551.677734375)
                 if Setting.UnlockPortal then
                     CommF:InvokeServer("requestEntrance",__U[57](-12471.169921875, 374.94024658203, -7551.677734375))
                     task.__U[19](0.5)
                 end
             else
-                CFrameTargetTp = __VE[26](-12471.169921875, 374.94024658203, -7551.677734375)
+                CFrameTargetTp = __U[26](-12471.169921875, 374.94024658203, -7551.677734375)
                 if Setting.UnlockPortal then
                     CommF:InvokeServer("requestEntrance",__U[57](-12471.169921875, 374.94024658203, -7551.677734375))
                     task.__U[19](0.5)
@@ -1285,9 +1430,9 @@ local function TpOfTpTab()
             end
         elseif SelectTpSpot == "\72\97\117\110\116\101\100\32\67\97\115\116\108\101" then
             if InstanceTp then
-                CFrameTargetTp = __VE[26](-9709.30762, 204.695892, 6044.04688)
+                CFrameTargetTp = __U[26](-9709.30762, 204.695892, 6044.04688)
             else
-                CFrameTargetTp = __VE[26](-9709.30762, 204.695892, 6044.04688)
+                CFrameTargetTp = __U[26](-9709.30762, 204.695892, 6044.04688)
                 if Setting.UnlockPortal then
                     if (__U[57](2198.0063476563, 128.71075439453, -7109.5043945313) - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude > 9000 then
                         CommF:InvokeServer("requestEntrance",__U[57](-5072.08984375, 314.5412902832, -3151.1098632812))
@@ -1297,9 +1442,9 @@ local function TpOfTpTab()
             end
         elseif SelectTpSpot == "\73\99\101\32\67\114\101\97\109\32\73\115\108\97\110\100" then
             if InstanceTp then
-                CFrameTargetTp = __VE[26](-821.35913085938, 65.845329284668, -10965.2578125)
+                CFrameTargetTp = __U[26](-821.35913085938, 65.845329284668, -10965.2578125)
             else
-                CFrameTargetTp = __VE[26](-821.35913085938, 65.845329284668, -10965.2578125)
+                CFrameTargetTp = __U[26](-821.35913085938, 65.845329284668, -10965.2578125)
                 if Setting.UnlockPortal then
                     if (__U[57](-821.35913085938, 65.845329284668, -10965.2578125) - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude > 10000 then
                         CommF:InvokeServer("requestEntrance",__U[57](-5072.08984375, 314.5412902832, -3151.1098632812))
@@ -1309,9 +1454,9 @@ local function TpOfTpTab()
             end
         elseif SelectTpSpot == "\80\101\97\110\117\116\32\73\115\108\97\110\100" then
             if InstanceTp then
-                CFrameTargetTp = __VE[26](-2104.453125, 38.129974365234, -10194.0078125)
+                CFrameTargetTp = __U[26](-2104.453125, 38.129974365234, -10194.0078125)
             else
-                CFrameTargetTp = __VE[26](-2104.453125, 38.129974365234, -10194.0078125)
+                CFrameTargetTp = __U[26](-2104.453125, 38.129974365234, -10194.0078125)
                 if Setting.UnlockPortal then
                     if (__U[57](-2104.453125, 38.129974365234, -10194.0078125) - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude > 10000 then
                         CommF:InvokeServer("requestEntrance",__U[57](-5072.08984375, 314.5412902832, -3151.1098632812))
@@ -1321,9 +1466,9 @@ local function TpOfTpTab()
             end
         elseif SelectTpSpot == "Peanut Island??" then
             if InstanceTp then
-                CFrameTargetTp = __VE[26](-2017.4874267578125, 36.85276412963867, -12027.53515625)
+                CFrameTargetTp = __U[26](-2017.4874267578125, 36.85276412963867, -12027.53515625)
             else
-                CFrameTargetTp = __VE[26](-2017.4874267578125, 36.85276412963867, -12027.53515625)
+                CFrameTargetTp = __U[26](-2017.4874267578125, 36.85276412963867, -12027.53515625)
                 if Setting.UnlockPortal then
                     if (__U[57](-2017.4874267578125, 36.85276412963867, -12027.53515625) - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude > 10500 then
                         CommF:InvokeServer("requestEntrance",__U[57](-5072.08984375, 314.5412902832, -3151.1098632812))
@@ -1336,7 +1481,7 @@ local function TpOfTpTab()
 end
 local function CheckLevel()
     Lv = game:GetService("Players").LocalPlayer.Data.Level.Value
-    if __World:Check() < __N[1] then
+    if WorldCheck["First Sea"] then
         if ((Lv == 1 or Lv <= 9) and not Setting.AutoFarmSelectMob) or (Setting.AutoFarmSelectMob and tostring(Setting.SelectMob) == "Bandit" and not Setting.AutoFarmLevel) then -- Bandit
             return {
                 [1] = "Bandit [Lv. 5]",
@@ -1594,7 +1739,7 @@ local function CheckLevel()
                 [6] = CFrame.new(5677.6772460938, 92.786109924316, 4966.6323242188)
             }
         end
-    elseif __World:Check() == __N[1] then
+    elseif WorldCheck["Second Sea"] then
         if ((Lv == 700 or Lv <= 724) and not Setting.AutoFarmSelectMob) or (Setting.AutoFarmSelectMob and tostring(Setting.SelectMob) == "Raider") then -- Raider
             return {
                 [1] = "Raider [Lv. 700]",
@@ -1809,7 +1954,7 @@ local function CheckLevel()
                 [6] = CFrame.new(-3262.9301757813, 298.69036865234, -10552.529296875)
             }
         end
-    elseif __World:Check() > __N[1] then
+    elseif WorldCheck["Third Sea"] then
         if ((Lv == 1500 or Lv <= 1524) and not Setting.AutoFarmSelectMob) or (Setting.AutoFarmSelectMob and tostring(Setting.SelectMob) == "Pirate Millionaire") then -- Pirate Millionaire
             return {
                 [1] = "Pirate Millionaire [Lv. 1500]",
@@ -2021,7 +2166,6 @@ local function CheckLevel()
     end
 end
 
---[[
 function OnFluentChange()
     if Window.Root.Visible then
         TTJYHUB.TextColor3  = __VE[36](0, 255, 0)
@@ -2029,7 +2173,6 @@ function OnFluentChange()
         TTJYHUB.TextColor3  = __VE[36](255, 0, 0)
     end
 end
-]]
 function SVHop()
     task.__U[19](5)
     if StopAllHop then
@@ -2052,7 +2195,7 @@ function SVHop()
 end
 function tp(x, y, z)
     if __VE["Ps"].Character:FindFirstChild("HumanoidRootPart") then
-        __VE["Ps"].Character.HumanoidRootPart.CFrame = __VE[26](x, y, z)
+        __VE["Ps"].Character.HumanoidRootPart.CFrame = __U[26](x, y, z)
         __U[23]()
     end
 end
@@ -2079,7 +2222,7 @@ function tpwithnewtpbyme(a,b,c,speedoftpNTP)
             break
         end
         currentPos = currentPos + direction * speedoftpNTP 
-        __VE["Ps"].Character.HumanoidRootPart.CFrame = __VE[26](currentPos)
+        __VE["Ps"].Character.HumanoidRootPart.CFrame = __U[26](currentPos)
         __U[23]()
     end
 end
@@ -2100,7 +2243,7 @@ function tpwithnewtpbyme2(xyz,speedoftpNTP)
             break
         end
         currentPos = currentPos + direction * speedoftpNTP 
-        __VE["Ps"].Character.HumanoidRootPart.CFrame = __VE[26](currentPos)
+        __VE["Ps"].Character.HumanoidRootPart.CFrame = __U[26](currentPos)
         __U[23]()
     end
 end
@@ -2139,23 +2282,23 @@ function tpwithseat(xyz,speedoftpNTP)
             repeat __U[23]() until not Setting.WaitBRUH or Setting.BREAKALLTHISSHITHAHAHAHAHA
         end
         currentPos = currentPos + direction * speedoftpNTP 
-        __VE["Ps"].Character.Humanoid.SeatPart.Parent:SetPrimaryPartCFrame(__VE[26](currentPos))
+        __VE["Ps"].Character.Humanoid.SeatPart.Parent:SetPrimaryPartCFrame(__U[26](currentPos))
         __U[23]()
     end
 end
 function TpShipToLevel()
     if Setting.SelectSeaLevel == "1" then
-        tpwithseat(__VE[26](-23872.423828125, 13.270583152770996, 792.7938232421875), __U[31](Setting.TeleportSpeedAutoFarm))
+        tpwithseat(__U[26](-23872.423828125, 13.270583152770996, 792.7938232421875), __U[31](Setting.TeleportSpeedAutoFarm))
     elseif Setting.SelectSeaLevel == "2" then
-        tpwithseat(__VE[26](-27782.32421875, 10.934972763061523, 1278.9227294921875), __U[31](Setting.TeleportSpeedAutoFarm))
+        tpwithseat(__U[26](-27782.32421875, 10.934972763061523, 1278.9227294921875), __U[31](Setting.TeleportSpeedAutoFarm))
     elseif Setting.SelectSeaLevel == "3" then
-        tpwithseat(__VE[26](-31620.69921875, 5.933741092681885, -323.7947692871094), __U[31](Setting.TeleportSpeedAutoFarm))
+        tpwithseat(__U[26](-31620.69921875, 5.933741092681885, -323.7947692871094), __U[31](Setting.TeleportSpeedAutoFarm))
     elseif Setting.SelectSeaLevel == "4" then
-        tpwithseat(__VE[26](-36455.96875, 5.935291767120361, -522.872802734375), __U[31](Setting.TeleportSpeedAutoFarm))
+        tpwithseat(__U[26](-36455.96875, 5.935291767120361, -522.872802734375), __U[31](Setting.TeleportSpeedAutoFarm))
     elseif Setting.SelectSeaLevel == "5" then
-        tpwithseat(__VE[26](-40951.2890625, 5.934666633605957, -346.8652648925781), __U[31](Setting.TeleportSpeedAutoFarm))
+        tpwithseat(__U[26](-40951.2890625, 5.934666633605957, -346.8652648925781), __U[31](Setting.TeleportSpeedAutoFarm))
     elseif Setting.SelectSeaLevel == "6" then
-        tpwithseat(__VE[26](-42190.67578125, 5.93480110168457, 7495.6953125), __U[31](Setting.TeleportSpeedAutoFarm))
+        tpwithseat(__U[26](-42190.67578125, 5.93480110168457, 7495.6953125), __U[31](Setting.TeleportSpeedAutoFarm))
     end
 end
 function isTargetNearPlayer(targetCFrame, proximityThreshold)
@@ -2243,7 +2386,7 @@ function teleportToNearestChest()
     if nearestChest then
         tpwithnewtpbyme(nearestChest.Position.X, nearestChest.Position.Y, nearestChest.Position.Z, 5)
         __U[23]()
-        __VE["LPs"].Character.HumanoidRootPart.CFrame = __VE[26](nearestChest.Position.X, nearestChest.Position.Y, nearestChest.Position.Z)
+        __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](nearestChest.Position.X, nearestChest.Position.Y, nearestChest.Position.Z)
     else
 
     end
@@ -2253,7 +2396,7 @@ function ChestAdded(child)
         Setting.chestcollect = Setting.chestcollect + 1
     end
 end
-local Part = __VE[35]("Part")
+local Part = __U[35]("Part")
 Part.Size = __U[57](2, 0.2, 1.5)
 Part.Material = Enum.Material.Grass
 Part.Anchored = true
@@ -2261,13 +2404,13 @@ Part.Transparency = 1
 Part.Parent = workspace
 
 function updatePartPosition()
-    local character = __VE["Ps"].Character
+    local character = __VE["LPs"].Character
     local humanoidRootPart = character and character:FindFirstChild("HumanoidRootPart")
 
     if humanoidRootPart and float then
-        Part.CFrame = humanoidRootPart.CFrame * __VE[26](0, -3.55, 0)
+        Part.CFrame = humanoidRootPart.CFrame * __U[26](0, -3.55, 0)
     else
-        Part.CFrame = __VE[26](0, -10000, 0)
+        Part.CFrame = __U[26](0, -10000, 0)
     end
 end
 
@@ -2293,7 +2436,7 @@ local function CheckAndClearWeapon()
                     end
                 else
                     if ReplicatedStorage:FindFirstChild("Captain Elephant") and Setting.StackableSetting then
-                        tpwithnewtpbyme2(ReplicatedStorage:FindFirstChild("Captain Elephant").HumanoidRootPart.CFrame * __VE[26](0,30,0), __U[31](Setting.TeleportSpeedAutoFarm))
+                        tpwithnewtpbyme2(ReplicatedStorage:FindFirstChild("Captain Elephant").HumanoidRootPart.CFrame * __U[26](0,30,0), __U[31](Setting.TeleportSpeedAutoFarm))
                     end
                     task.__U[19](0.675)
                     for _,v in pairs(workspace.Enemies:GetChildren()) do
@@ -2333,7 +2476,7 @@ local function CheckAndClearWeapon()
                     end
                 else
                     if __VE["RlS"]:FindFirstChild("Cake Queen") and Setting.StackableSetting then
-                        tpwithnewtpbyme2(ReplicatedStorage:FindFirstChild("Cake Queen").HumanoidRootPart.CFrame * __VE[26](0,30,0), __U[31](Setting.TeleportSpeedAutoFarm))
+                        tpwithnewtpbyme2(ReplicatedStorage:FindFirstChild("Cake Queen").HumanoidRootPart.CFrame * __U[26](0,30,0), __U[31](Setting.TeleportSpeedAutoFarm))
                         task.__U[19](0.675)
                         for _,v in pairs(workspace.Enemies:GetChildren()) do
                             if v and v.Name == tostring("Cake Queen") and Setting.StackableSetting then
@@ -2373,7 +2516,7 @@ local function CheckAndClearWeapon()
                     end
                 else
                     if __VE["RlS"]:FindFirstChild("The Saw") and Setting.StackableSetting then
-                        tpwithnewtpbyme2(ReplicatedStorage:FindFirstChild("The Saw").HumanoidRootPart.CFrame * __VE[26](0,30,0), __U[31](Setting.TeleportSpeedAutoFarm))
+                        tpwithnewtpbyme2(ReplicatedStorage:FindFirstChild("The Saw").HumanoidRootPart.CFrame * __U[26](0,30,0), __U[31](Setting.TeleportSpeedAutoFarm))
                         task.__U[19](0.675)
                         for _,v in pairs(workspace.Enemies:GetChildren()) do
                             if v and v.Name == tostring("The Saw") and Setting.StackableSetting then
@@ -2413,7 +2556,7 @@ local function CheckAndClearWeapon()
                     end
                 else
                     if __VE["RlS"]:FindFirstChild("Chief Warden") and Setting.StackableSetting then
-                        tpwithnewtpbyme2(ReplicatedStorage:FindFirstChild("Chief Warden").HumanoidRootPart.CFrame * __VE[26](0,30,0), __U[31](Setting.TeleportSpeedAutoFarm))
+                        tpwithnewtpbyme2(ReplicatedStorage:FindFirstChild("Chief Warden").HumanoidRootPart.CFrame * __U[26](0,30,0), __U[31](Setting.TeleportSpeedAutoFarm))
                         task.__U[19](0.675)
                         for _,v in pairs(workspace.Enemies:GetChildren()) do
                             if v and v.Name == tostring("Chief Warden") and Setting.StackableSetting then
@@ -2453,7 +2596,7 @@ local function CheckAndClearWeapon()
                     end
                 else
                     if __VE["RlS"]:FindFirstChild("Fajita") and Setting.StackableSetting then
-                        tpwithnewtpbyme2(ReplicatedStorage:FindFirstChild("Fajita").HumanoidRootPart.CFrame * __VE[26](0,30,0), __U[31](Setting.TeleportSpeedAutoFarm))
+                        tpwithnewtpbyme2(ReplicatedStorage:FindFirstChild("Fajita").HumanoidRootPart.CFrame * __U[26](0,30,0), __U[31](Setting.TeleportSpeedAutoFarm))
                         task.__U[19](0.675)
                         for _,v in pairs(workspace.Enemies:GetChildren()) do
                             if v and v.Name == tostring("Fajita") and Setting.StackableSetting then
@@ -2493,7 +2636,7 @@ local function CheckAndClearWeapon()
                     end
                 else
                     if __VE["RlS"]:FindFirstChild("Diamond") and Setting.StackableSetting then
-                        tpwithnewtpbyme2(ReplicatedStorage:FindFirstChild("Diamond").HumanoidRootPart.CFrame * __VE[26](0,30,0), __U[31](Setting.TeleportSpeedAutoFarm))
+                        tpwithnewtpbyme2(ReplicatedStorage:FindFirstChild("Diamond").HumanoidRootPart.CFrame * __U[26](0,30,0), __U[31](Setting.TeleportSpeedAutoFarm))
                         task.__U[19](0.675)
                         for _,v in pairs(workspace.Enemies:GetChildren()) do
                             if v and v.Name == tostring("Diamond") and Setting.StackableSetting then
@@ -2533,7 +2676,7 @@ local function CheckAndClearWeapon()
                     end
                 else
                     if __VE["RlS"]:FindFirstChild("Smoke Admiral") and Setting.StackableSetting then
-                        tpwithnewtpbyme2(ReplicatedStorage:FindFirstChild("Smoke Admiral").HumanoidRootPart.CFrame * __VE[26](0,30,0), __U[31](Setting.TeleportSpeedAutoFarm))
+                        tpwithnewtpbyme2(ReplicatedStorage:FindFirstChild("Smoke Admiral").HumanoidRootPart.CFrame * __U[26](0,30,0), __U[31](Setting.TeleportSpeedAutoFarm))
                         task.__U[19](0.675)
                         for _,v in pairs(workspace.Enemies:GetChildren()) do
                             if v and v.Name == tostring("Smoke Admiral") and Setting.StackableSetting then
@@ -2573,7 +2716,7 @@ local function CheckAndClearWeapon()
                     end
                 else
                     if __VE["RlS"]:FindFirstChild("Tide Keeper") and Setting.StackableSetting then
-                        tpwithnewtpbyme2(ReplicatedStorage:FindFirstChild("Tide Keeper").HumanoidRootPart.CFrame * __VE[26](0,30,0), __U[31](Setting.TeleportSpeedAutoFarm))
+                        tpwithnewtpbyme2(ReplicatedStorage:FindFirstChild("Tide Keeper").HumanoidRootPart.CFrame * __U[26](0,30,0), __U[31](Setting.TeleportSpeedAutoFarm))
                         task.__U[19](0.675)
                         for _,v in pairs(workspace.Enemies:GetChildren()) do
                             if v and v.Name == tostring("Tide Keeper") and Setting.StackableSetting then
@@ -2613,7 +2756,7 @@ local function CheckAndClearWeapon()
                     end
                 else
                     if __VE["RlS"]:FindFirstChild("Thunder God") and Setting.StackableSetting then
-                        tpwithnewtpbyme2(ReplicatedStorage:FindFirstChild("Thunder God").HumanoidRootPart.CFrame * __VE[26](0,30,0), __U[31](Setting.TeleportSpeedAutoFarm))
+                        tpwithnewtpbyme2(ReplicatedStorage:FindFirstChild("Thunder God").HumanoidRootPart.CFrame * __U[26](0,30,0), __U[31](Setting.TeleportSpeedAutoFarm))
                         task.__U[19](0.675)
                         for _,v in pairs(workspace.Enemies:GetChildren()) do
                             if v and v.Name == tostring("Thunder God") and Setting.StackableSetting then
@@ -2654,10 +2797,10 @@ local function CheckAndClearWeapon()
                     end
                 elseif (Backpack:FindFirstChild("Hallow Essence") or __VE["LPs"].Character:FindFirstChild("Hallow Essence")) and Setting.StackableSetting then
                     repeat 
-                        tpwithnewtpbyme2(__VE[26](-8932.322265625, 146.83154296875, 6062.55078125), __U[31](Setting.TeleportSpeedAutoFarm)) 
+                        tpwithnewtpbyme2(__U[26](-8932.322265625, 146.83154296875, 6062.55078125), __U[31](Setting.TeleportSpeedAutoFarm)) 
                         __U[19]()
-                        __VE["LPs"].Character.HumanoidRootPart.CFrame = __VE[26](-8932.322265625, 146.83154296875, 6062.55078125)
-                    until (__VE[26](-8932.322265625, 146.83154296875, 6062.55078125).Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude <= 8 or not Setting.StackableSetting or not Setting.AutoHallowScythe                   
+                        __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](-8932.322265625, 146.83154296875, 6062.55078125)
+                    until (__U[26](-8932.322265625, 146.83154296875, 6062.55078125).Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude <= 8 or not Setting.StackableSetting or not Setting.AutoHallowScythe                   
                     EquipWeapon("Hallow Essence")
                     task.__U[19](2)
                     for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
@@ -2677,7 +2820,7 @@ local function CheckAndClearWeapon()
                     end
                 else
                     if ReplicatedStorage:FindFirstChild("Soul Reaper") and Setting.StackableSetting then
-                        tpwithnewtpbyme2(__VE["RlS"]:FindFirstChild("Soul Reaper").HumanoidRootPart.CFrame * __VE[26](0,30,0), __U[31](Setting.TeleportSpeedAutoFarm))
+                        tpwithnewtpbyme2(__VE["RlS"]:FindFirstChild("Soul Reaper").HumanoidRootPart.CFrame * __U[26](0,30,0), __U[31](Setting.TeleportSpeedAutoFarm))
                         task.__U[19](0.576)
                         for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
                             if v and v.Name == tostring("Soul Reaper") and Setting.StackableSetting then
@@ -2718,7 +2861,7 @@ local function CheckAndClearWeapon()
                     end
                 else
                     if __VE["RlS"]:FindFirstChild("Saber Expert") and Setting.StackableSetting then
-                        tpwithnewtpbyme2(ReplicatedStorage:FindFirstChild("Saber Expert").HumanoidRootPart.CFrame * __VE[26](0,30,0), __U[31](Setting.TeleportSpeedAutoFarm))
+                        tpwithnewtpbyme2(ReplicatedStorage:FindFirstChild("Saber Expert").HumanoidRootPart.CFrame * __U[26](0,30,0), __U[31](Setting.TeleportSpeedAutoFarm))
                         task.__U[19](0.675)
                         for _,v in pairs(workspace.Enemies:GetChildren()) do
                             if v and v.Name == tostring("Saber Expert") and Setting.StackableSetting then
@@ -2758,7 +2901,7 @@ local function CheckAndClearWeapon()
                     end
                 else
                     if __VE["RlS"]:FindFirstChild("Beautiful Pirate") and Setting.StackableSetting then
-                        tpwithnewtpbyme2(ReplicatedStorage:FindFirstChild("Beautiful Pirate").HumanoidRootPart.CFrame * __VE[26](0,30,0), __U[31](Setting.TeleportSpeedAutoFarm))
+                        tpwithnewtpbyme2(ReplicatedStorage:FindFirstChild("Beautiful Pirate").HumanoidRootPart.CFrame * __U[26](0,30,0), __U[31](Setting.TeleportSpeedAutoFarm))
                         task.__U[19](0.675)
                         for _,v in pairs(workspace.Enemies:GetChildren()) do
                             if v and v.Name == tostring("Beautiful Pirate") and Setting.StackableSetting then
@@ -2985,7 +3128,7 @@ local Data = Combat
 local Blank = function() end
 local RigEvent = __VE["RlS"].RigControllerEvent
 local Validator = game.ReplicatedStorage.Remotes.Validator
-local Animation = __VE[35]("Animation")
+local Animation = __U[35]("Animation")
 local RecentlyFired = 0
 local AttackCD = 0
 local Controller
@@ -3027,7 +3170,7 @@ task.spawn(function()
     local Data = Combat
     local Blank = function() end
     local RigEvent = __VE["RlS"].RigControllerEvent
-    local Animation = __VE[35]("Animation")
+    local Animation = __U[35]("Animation")
     local RecentlyFired = 0
     local AttackCD = 0
     local Controller
@@ -3767,15 +3910,15 @@ __U[58](function()
             __U[6](function()
                 repeat
                     if InstanceTp and Setting.AutoBone then
-                        game.Players.LocalPlayer.Character:SetPrimaryPartCFrame(__VE[26](-9515.75, 174.8521728515625, 6079.40625))
+                        game.Players.LocalPlayer.Character:SetPrimaryPartCFrame(__U[26](-9515.75, 174.8521728515625, 6079.40625))
                         __U[19]()
                         game.Players.LocalPlayer.Character.Humanoid.Health = 0
                         repeat __U[23]() until game.Players.LocalPlayer.Character.Humanoid
-                        game.Players.LocalPlayer.Character:SetPrimaryPartCFrame(__VE[26](-9515.75, 174.8521728515625, 6079.40625))
-                        game.Players.LocalPlayer.Character:SetPrimaryPartCFrame(__VE[26](-9515.75, 174.8521728515625, 6079.40625))
-                        game.Players.LocalPlayer.Character:SetPrimaryPartCFrame(__VE[26](-9515.75, 174.8521728515625, 6079.40625))
+                        game.Players.LocalPlayer.Character:SetPrimaryPartCFrame(__U[26](-9515.75, 174.8521728515625, 6079.40625))
+                        game.Players.LocalPlayer.Character:SetPrimaryPartCFrame(__U[26](-9515.75, 174.8521728515625, 6079.40625))
+                        game.Players.LocalPlayer.Character:SetPrimaryPartCFrame(__U[26](-9515.75, 174.8521728515625, 6079.40625))
                     else
-                        tpwithnewtpbyme2(__VE[26](-9515.75, 174.8521728515625, 6079.40625), __U[31](Setting.TeleportSpeedAutoFarm))
+                        tpwithnewtpbyme2(__U[26](-9515.75, 174.8521728515625, 6079.40625), __U[31](Setting.TeleportSpeedAutoFarm))
                     end
                     task.__U[19](2.175)
                 until (__U[57](-9515.75, 174.8521728515625, 6079.40625) - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude < 3000 or not InstanceTp or not Setting.AutoBone
@@ -3800,13 +3943,13 @@ __U[58](function()
                 else
                     for i, v in pairs(__VE["RlS"]:GetChildren()) do 
                         if v.Name == "Reborn Skeleton" then
-                            tpwithnewtpbyme2(v.HumanoidRootPart.CFrame * __VE[26](2, 20, 2), __U[31](Setting.TeleportSpeedAutoFarm))
+                            tpwithnewtpbyme2(v.HumanoidRootPart.CFrame * __U[26](2, 20, 2), __U[31](Setting.TeleportSpeedAutoFarm))
                         elseif v.Name == "Living Zombie" then
-                            tpwithnewtpbyme2(v.HumanoidRootPart.CFrame * __VE[26](2, 20, 2), __U[31](Setting.TeleportSpeedAutoFarm))
+                            tpwithnewtpbyme2(v.HumanoidRootPart.CFrame * __U[26](2, 20, 2), __U[31](Setting.TeleportSpeedAutoFarm))
                         elseif v.Name == "Demonic Soul" then
-                            tpwithnewtpbyme2(v.HumanoidRootPart.CFrame * __VE[26](2, 20, 2), __U[31](Setting.TeleportSpeedAutoFarm))
+                            tpwithnewtpbyme2(v.HumanoidRootPart.CFrame * __U[26](2, 20, 2), __U[31](Setting.TeleportSpeedAutoFarm))
                         elseif v.Name == "Posessed Mummy" then
-                            tpwithnewtpbyme2(v.HumanoidRootPart.CFrame * __VE[26](2, 20, 2), __U[31](Setting.TeleportSpeedAutoFarm))
+                            tpwithnewtpbyme2(v.HumanoidRootPart.CFrame * __U[26](2, 20, 2), __U[31](Setting.TeleportSpeedAutoFarm))
                         end
                     end
                 end
@@ -3822,19 +3965,19 @@ __U[58](function()
                     if game:GetService("Players").LocalPlayer.VisionRadius.Value < 3000 then
                         if Old_World and Setting.AutoFarmObservation then
                             if workspace.Enemies:FindFirstChild("Military Spy") then
-                                game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies:FindFirstChild("Military Spy").HumanoidRootPart.CFrame * __VE[26](3,0,0)
+                                game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies:FindFirstChild("Military Spy").HumanoidRootPart.CFrame * __U[26](3,0,0)
                             else
                                 tpwithnewtpbyme(-5984.0532226563, 82.14656829834, 8753.326171875, __U[31](Setting.TeleportSpeedAutoFarm))
                             end
                         elseif New_World and Setting.AutoFarmObservation then
                             if workspace.Enemies:FindFirstChild("Lava Pirate") then
-                                game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies:FindFirstChild("Lava Pirate").HumanoidRootPart.CFrame * __VE[26](3,0,0)
+                                game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies:FindFirstChild("Lava Pirate").HumanoidRootPart.CFrame * __U[26](3,0,0)
                             else
                                 tpwithnewtpbyme(-5478.39209, 15.9775667, -5246.9126, __U[31](Setting.TeleportSpeedAutoFarm))
                             end
                         elseif Third_World and Setting.AutoFarmObservation then
                             if workspace.Enemies:FindFirstChild("Giant Islander") then
-                                game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies:FindFirstChild("Giant Islander").HumanoidRootPart.CFrame * __VE[26](3,0,0)
+                                game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies:FindFirstChild("Giant Islander").HumanoidRootPart.CFrame * __U[26](3,0,0)
                             else
                                 tpwithnewtpbyme(4530.3540039063, 656.75695800781, -131.60952758789, __U[31](Setting.TeleportSpeedAutoFarm))
                             end
@@ -3924,7 +4067,7 @@ __U[58](function()
                 if __VE["RlS"].Remotes.CommF_:InvokeServer("Alchemist","1") == 0 then
                     tpwithnewtpbyme(-2779.83521, 72.9661407, -3574.02002, 5)
                     __U[23]()
-                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = __VE[26](-2779.83521, 72.9661407, -3574.02002)
+                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = __U[26](-2779.83521, 72.9661407, -3574.02002)
                     __U[19]()
                     if (__U[57](-2779.83521, 72.9661407, -3574.02002) - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 4 then
                         task.__U[19](1.3)
@@ -3995,8 +4138,8 @@ __U[58](function()
             elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Skypiea" and Setting.AutoRaceV4 then
                 for i,v in pairs(game:GetService("Workspace").Map.SkyTrial.Model:GetDescendants()) do
                     if v.Name == "snowisland_Cylinder.081" then
-                        tpwithnewtpbyme2(v.CFrame * __VE[26](0,0,0), 5)
-                        __VE["LPs"].Character.CFrame = v.CFrame * __VE[26](0,0,0)
+                        tpwithnewtpbyme2(v.CFrame * __U[26](0,0,0), 5)
+                        __VE["LPs"].Character.CFrame = v.CFrame * __U[26](0,0,0)
                     end
                 end
             elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Fishman" then
@@ -4031,7 +4174,7 @@ __U[58](function()
                 Setting.PauseAutoEqu = false
                 Setting.UseSkill = false
             elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Cyborg" and Setting.AutoRaceV4 then
-                tpwithnewtpbyme(__VE[26](28654, 14898.7832), 5)
+                tpwithnewtpbyme(__U[26](28654, 14898.7832), 5)
             elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Ghoul" and Setting.AutoRaceV4 then
                 for _,v in pairs(workspace.Enemies:GetChildren()) do
                     if v then
@@ -4051,9 +4194,9 @@ __U[58](function()
             elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Mink" and Setting.AutoRaceV4 then
                 for i,v in pairs(game:GetService("Workspace"):GetDescendants()) do
                     if v.Name == "StartPoint" then
-                        tpwithnewtpbyme2(v.CFrame * __VE[26](0,3,0), 5) 
+                        tpwithnewtpbyme2(v.CFrame * __U[26](0,3,0), 5) 
                         __U[23]()
-                        __VE["LPs"].Character.CFrame = v.CFrame * __VE[26](0,3,0)
+                        __VE["LPs"].Character.CFrame = v.CFrame * __U[26](0,3,0)
                    end
                 end
             end
@@ -4253,9 +4396,9 @@ __U[6](function()
             if Setting.AutoRengoku then
                 if game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Hidden Key") or game:GetService("Players").LocalPlayer.Character:FindFirstChild("Hidden Key") then
                     EquipWeapon("Hidden Key")
-                    tpwithnewtpbyme2(__VE[26](6571.1201171875, 299.23028564453, -6967.841796875), __U[31](Setting.TeleportSpeedAutoFarm))
+                    tpwithnewtpbyme2(__U[26](6571.1201171875, 299.23028564453, -6967.841796875), __U[31](Setting.TeleportSpeedAutoFarm))
                     __U[19]()
-                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = __VE[26](6571.1201171875, 305, -6967.841796875)
+                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = __U[26](6571.1201171875, 305, -6967.841796875)
                     __U[19]()
                 elseif game:GetService("Workspace").Enemies:FindFirstChild("Snow Lurker") or game:GetService("Workspace").Enemies:FindFirstChild("Arctic Warrior") then
                     for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
@@ -4272,7 +4415,7 @@ __U[6](function()
                         end
                     end
                 else
-                    tpwithnewtpbyme2(__VE[26](5439.716796875, 84.420944213867, -6715.1635742188), __U[31](Setting.TeleportSpeedAutoFarm))
+                    tpwithnewtpbyme2(__U[26](5439.716796875, 84.420944213867, -6715.1635742188), __U[31](Setting.TeleportSpeedAutoFarm))
                 end
             end
         end
@@ -4303,7 +4446,7 @@ __U[6](function()
                             end
                         else
                             if __VE["RlS"]:FindFirstChild("Captain Elephant") then
-                                tpwithnewtpbyme2(ReplicatedStorage:FindFirstChild("Captain Elephant").HumanoidRootPart.CFrame * __VE[26](0,30,0), __U[31](Setting.TeleportSpeedAutoFarm))
+                                tpwithnewtpbyme2(ReplicatedStorage:FindFirstChild("Captain Elephant").HumanoidRootPart.CFrame * __U[26](0,30,0), __U[31](Setting.TeleportSpeedAutoFarm))
                             else
                                 if Setting.AutoTwinHooksHop then
                                     SVHop()
@@ -4332,7 +4475,7 @@ __U[6](function()
                             end
                         else
                             if __VE["RlS"]:FindFirstChild("Cake Queen") then
-                                tpwithnewtpbyme2(ReplicatedStorage:FindFirstChild("Cake Queen").HumanoidRootPart.CFrame * __VE[26](0,30,0), __U[31](Setting.TeleportSpeedAutoFarm))
+                                tpwithnewtpbyme2(ReplicatedStorage:FindFirstChild("Cake Queen").HumanoidRootPart.CFrame * __U[26](0,30,0), __U[31](Setting.TeleportSpeedAutoFarm))
                             else
                                 if Setting.AutoBuddySwordHop then
                                     SVHop()
@@ -4361,7 +4504,7 @@ __U[6](function()
                             end
                         else
                             if __VE["RlS"]:FindFirstChild("The Saw") then
-                                tpwithnewtpbyme2(ReplicatedStorage:FindFirstChild("The Saw").HumanoidRootPart.CFrame * __VE[26](0,30,0), __U[31](Setting.TeleportSpeedAutoFarm))
+                                tpwithnewtpbyme2(ReplicatedStorage:FindFirstChild("The Saw").HumanoidRootPart.CFrame * __U[26](0,30,0), __U[31](Setting.TeleportSpeedAutoFarm))
                             else
                                 if Setting.AutoSharkSawHop then
                                     SVHop()
@@ -4390,7 +4533,7 @@ __U[6](function()
                             end
                         else
                             if __VE["RlS"]:FindFirstChild("Chief Warden") then
-                                tpwithnewtpbyme2(ReplicatedStorage:FindFirstChild("Chief Warden").HumanoidRootPart.CFrame * __VE[26](0,30,0), __U[31](Setting.TeleportSpeedAutoFarm))
+                                tpwithnewtpbyme2(ReplicatedStorage:FindFirstChild("Chief Warden").HumanoidRootPart.CFrame * __U[26](0,30,0), __U[31](Setting.TeleportSpeedAutoFarm))
                             else
                                 if Setting.AutoWardensSwordHop then
                                     SVHop()
@@ -4419,7 +4562,7 @@ __U[6](function()
                             end
                         else
                             if __VE["RlS"]:FindFirstChild("Fajita") then
-                                tpwithnewtpbyme2(ReplicatedStorage:FindFirstChild("Fajita").HumanoidRootPart.CFrame * __VE[26](0,30,0), __U[31](Setting.TeleportSpeedAutoFarm))
+                                tpwithnewtpbyme2(ReplicatedStorage:FindFirstChild("Fajita").HumanoidRootPart.CFrame * __U[26](0,30,0), __U[31](Setting.TeleportSpeedAutoFarm))
                             else
                                 if Setting.AutoGravityCaneHop then
                                     SVHop()
@@ -4448,7 +4591,7 @@ __U[6](function()
                             end
                         else
                             if __VE["RlS"]:FindFirstChild("Diamond") then
-                                tpwithnewtpbyme2(ReplicatedStorage:FindFirstChild("Diamond").HumanoidRootPart.CFrame * __VE[26](0,30,0), __U[31](Setting.TeleportSpeedAutoFarm))
+                                tpwithnewtpbyme2(ReplicatedStorage:FindFirstChild("Diamond").HumanoidRootPart.CFrame * __U[26](0,30,0), __U[31](Setting.TeleportSpeedAutoFarm))
                             else
                                 if Setting.AutoLongswordHop then
                                     SVHop()
@@ -4477,7 +4620,7 @@ __U[6](function()
                             end
                         else
                             if __VE["RlS"]:FindFirstChild("Smoke Admiral") then
-                                tpwithnewtpbyme2(ReplicatedStorage:FindFirstChild("Smoke Admiral").HumanoidRootPart.CFrame * __VE[26](0,30,0), __U[31](Setting.TeleportSpeedAutoFarm))
+                                tpwithnewtpbyme2(ReplicatedStorage:FindFirstChild("Smoke Admiral").HumanoidRootPart.CFrame * __U[26](0,30,0), __U[31](Setting.TeleportSpeedAutoFarm))
                             else
                                 if Setting.AutoJitteHop then
                                     SVHop()
@@ -4506,7 +4649,7 @@ __U[6](function()
                             end
                         else
                             if __VE["RlS"]:FindFirstChild("Tide Keeper") then
-                                tpwithnewtpbyme2(ReplicatedStorage:FindFirstChild("Tide Keeper").HumanoidRootPart.CFrame * __VE[26](0,30,0), __U[31](Setting.TeleportSpeedAutoFarm))
+                                tpwithnewtpbyme2(ReplicatedStorage:FindFirstChild("Tide Keeper").HumanoidRootPart.CFrame * __U[26](0,30,0), __U[31](Setting.TeleportSpeedAutoFarm))
                             else
                                 if Setting.AutoDragonTridentHop then
                                     SVHop()
@@ -4535,7 +4678,7 @@ __U[6](function()
                             end
                         else
                             if __VE["RlS"]:FindFirstChild("Thunder God") then
-                                tpwithnewtpbyme2(ReplicatedStorage:FindFirstChild("Thunder God").HumanoidRootPart.CFrame * __VE[26](0,30,0), __U[31](Setting.TeleportSpeedAutoFarm))
+                                tpwithnewtpbyme2(ReplicatedStorage:FindFirstChild("Thunder God").HumanoidRootPart.CFrame * __U[26](0,30,0), __U[31](Setting.TeleportSpeedAutoFarm))
                             else
                                 if Setting.AutoPoleHop then
                                     SVHop()
@@ -4565,14 +4708,14 @@ __U[6](function()
                             end
                         elseif Backpack:FindFirstChild("Hallow Essence") or __VE["LPs"].Character:FindFirstChild("Hallow Essence") then
                             repeat 
-                                tpwithnewtpbyme2(__VE[26](-8932.322265625, 146.83154296875, 6062.55078125), __U[31](Setting.TeleportSpeedAutoFarm)) 
+                                tpwithnewtpbyme2(__U[26](-8932.322265625, 146.83154296875, 6062.55078125), __U[31](Setting.TeleportSpeedAutoFarm)) 
                                 __U[19]()
-                                __VE["LPs"].Character.HumanoidRootPart.CFrame = __VE[26](-8932.322265625, 146.83154296875, 6062.55078125)
-                            until (__VE[26](-8932.322265625, 146.83154296875, 6062.55078125).Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude <= 8                        
+                                __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](-8932.322265625, 146.83154296875, 6062.55078125)
+                            until (__U[26](-8932.322265625, 146.83154296875, 6062.55078125).Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude <= 8                        
                             EquipWeapon("Hallow Essence")
                         else
                             if ReplicatedStorage:FindFirstChild("Soul Reaper") then
-                                tpwithnewtpbyme2(__VE["RlS"]:FindFirstChild("Soul Reaper").HumanoidRootPart.CFrame * __VE[26](0,30,0), __U[31](Setting.TeleportSpeedAutoFarm))
+                                tpwithnewtpbyme2(__VE["RlS"]:FindFirstChild("Soul Reaper").HumanoidRootPart.CFrame * __U[26](0,30,0), __U[31](Setting.TeleportSpeedAutoFarm))
                             else
                                 if Setting.AutoHallowScytheHop then
                                     SVHop()
@@ -4601,7 +4744,7 @@ __U[6](function()
                             end
                         else
                             if __VE["RlS"]:FindFirstChild("Saber Expert") then
-                                tpwithnewtpbyme2(ReplicatedStorage:FindFirstChild("Saber Expert").HumanoidRootPart.CFrame * __VE[26](0,30,0), __U[31](Setting.TeleportSpeedAutoFarm))
+                                tpwithnewtpbyme2(ReplicatedStorage:FindFirstChild("Saber Expert").HumanoidRootPart.CFrame * __U[26](0,30,0), __U[31](Setting.TeleportSpeedAutoFarm))
                             else
                                 if Setting.AutoSaberHop then
                                     SVHop()
@@ -4630,7 +4773,7 @@ __U[6](function()
                             end
                         else
                             if __VE["RlS"]:FindFirstChild("Beautiful Pirate") then
-                                tpwithnewtpbyme2(ReplicatedStorage:FindFirstChild("Beautiful Pirate").HumanoidRootPart.CFrame * __VE[26](0,30,0), __U[31](Setting.TeleportSpeedAutoFarm))
+                                tpwithnewtpbyme2(ReplicatedStorage:FindFirstChild("Beautiful Pirate").HumanoidRootPart.CFrame * __U[26](0,30,0), __U[31](Setting.TeleportSpeedAutoFarm))
                             else
                                 if Setting.AutoCanvanderHop then
                                     SVHop()
@@ -4926,15 +5069,15 @@ __U[58](function() --🟢
         if Setting.TeleportToNextIsland then
             __U[6](function()
                 if __VE["WO"].Locations:FindFirstChild("Island 5") then
-                    tpwithnewtpbyme2(__VE["WO"].Locations:FindFirstChild("Island 5").CFrame*__VE[26](0 + __U[31](Setting.AutoRaidPosX), 25 + __U[31](Setting.AutoRaidPosY), 0 + __U[31](Setting.AutoRaidPosZ)), __U[31](Setting.TeleportToNEXTIslandSpeed))
+                    tpwithnewtpbyme2(__VE["WO"].Locations:FindFirstChild("Island 5").CFrame*__U[26](0 + __U[31](Setting.AutoRaidPosX), 25 + __U[31](Setting.AutoRaidPosY), 0 + __U[31](Setting.AutoRaidPosZ)), __U[31](Setting.TeleportToNEXTIslandSpeed))
                 elseif __VE["WO"].Locations:FindFirstChild("Island 4") then
-                    tpwithnewtpbyme2(__VE["WO"].Locations:FindFirstChild("Island 4").CFrame*__VE[26](0 + __U[31](Setting.AutoRaidPosX), 25 + __U[31](Setting.AutoRaidPosY), 0 + __U[31](Setting.AutoRaidPosZ)), __U[31](Setting.TeleportToNEXTIslandSpeed))
+                    tpwithnewtpbyme2(__VE["WO"].Locations:FindFirstChild("Island 4").CFrame*__U[26](0 + __U[31](Setting.AutoRaidPosX), 25 + __U[31](Setting.AutoRaidPosY), 0 + __U[31](Setting.AutoRaidPosZ)), __U[31](Setting.TeleportToNEXTIslandSpeed))
                 elseif __VE["WO"].Locations:FindFirstChild("Island 3") then
-                    tpwithnewtpbyme2(__VE["WO"].Locations:FindFirstChild("Island 3").CFrame*__VE[26](0 + __U[31](Setting.AutoRaidPosX), 25 + __U[31](Setting.AutoRaidPosY), 0 + __U[31](Setting.AutoRaidPosZ)), __U[31](Setting.TeleportToNEXTIslandSpeed))
+                    tpwithnewtpbyme2(__VE["WO"].Locations:FindFirstChild("Island 3").CFrame*__U[26](0 + __U[31](Setting.AutoRaidPosX), 25 + __U[31](Setting.AutoRaidPosY), 0 + __U[31](Setting.AutoRaidPosZ)), __U[31](Setting.TeleportToNEXTIslandSpeed))
                 elseif __VE["WO"].Locations:FindFirstChild("Island 2") then
-                    tpwithnewtpbyme2(__VE["WO"].Locations:FindFirstChild("Island 2").CFrame*__VE[26](0 + __U[31](Setting.AutoRaidPosX), 25 + __U[31](Setting.AutoRaidPosY), 0 + __U[31](Setting.AutoRaidPosZ)), __U[31](Setting.TeleportToNEXTIslandSpeed))
+                    tpwithnewtpbyme2(__VE["WO"].Locations:FindFirstChild("Island 2").CFrame*__U[26](0 + __U[31](Setting.AutoRaidPosX), 25 + __U[31](Setting.AutoRaidPosY), 0 + __U[31](Setting.AutoRaidPosZ)), __U[31](Setting.TeleportToNEXTIslandSpeed))
                 elseif __VE["WO"].Locations:FindFirstChild("Island 1") then
-                    tpwithnewtpbyme2(__VE["WO"].Locations:FindFirstChild("Island 1").CFrame*__VE[26](0 + __U[31](Setting.AutoRaidPosX), 25 + __U[31](Setting.AutoRaidPosY), 0 + __U[31](Setting.AutoRaidPosZ)), __U[31](Setting.TeleportToNEXTIslandSpeed))
+                    tpwithnewtpbyme2(__VE["WO"].Locations:FindFirstChild("Island 1").CFrame*__U[26](0 + __U[31](Setting.AutoRaidPosX), 25 + __U[31](Setting.AutoRaidPosY), 0 + __U[31](Setting.AutoRaidPosZ)), __U[31](Setting.TeleportToNEXTIslandSpeed))
                 end
             end)
         end
@@ -4962,29 +5105,29 @@ __U[58](function() --🟢, Full Access Settings
                         end
                         repeat __U[23]() until (__VE["WO"].Locations:FindFirstChild("Island 1") and isTargetNearPlayer(__VE["WO"].Locations:FindFirstChild("Island 1").CFrame, 6700)) or not Setting.AutoRaid
                         if __VE["WO"].Locations:FindFirstChild("Island 5") then
-                            tpwithnewtpbyme2(__VE["WO"].Locations:FindFirstChild("Island 5").CFrame*__VE[26](0 + __U[31](Setting.AutoRaidPosX), 25 + __U[31](Setting.AutoRaidPosY), 0 + __U[31](Setting.AutoRaidPosZ)), __U[31](Setting.TeleportToNEXTIslandSpeed))
+                            tpwithnewtpbyme2(__VE["WO"].Locations:FindFirstChild("Island 5").CFrame*__U[26](0 + __U[31](Setting.AutoRaidPosX), 25 + __U[31](Setting.AutoRaidPosY), 0 + __U[31](Setting.AutoRaidPosZ)), __U[31](Setting.TeleportToNEXTIslandSpeed))
                         elseif __VE["WO"].Locations:FindFirstChild("Island 4") then
-                            tpwithnewtpbyme2(__VE["WO"].Locations:FindFirstChild("Island 4").CFrame*__VE[26](0 + __U[31](Setting.AutoRaidPosX), 25 + __U[31](Setting.AutoRaidPosY), 0 + __U[31](Setting.AutoRaidPosZ)), __U[31](Setting.TeleportToNEXTIslandSpeed))
+                            tpwithnewtpbyme2(__VE["WO"].Locations:FindFirstChild("Island 4").CFrame*__U[26](0 + __U[31](Setting.AutoRaidPosX), 25 + __U[31](Setting.AutoRaidPosY), 0 + __U[31](Setting.AutoRaidPosZ)), __U[31](Setting.TeleportToNEXTIslandSpeed))
                         elseif __VE["WO"].Locations:FindFirstChild("Island 3") then
-                            tpwithnewtpbyme2(__VE["WO"].Locations:FindFirstChild("Island 3").CFrame*__VE[26](0 + __U[31](Setting.AutoRaidPosX), 25 + __U[31](Setting.AutoRaidPosY), 0 + __U[31](Setting.AutoRaidPosZ)), __U[31](Setting.TeleportToNEXTIslandSpeed))
+                            tpwithnewtpbyme2(__VE["WO"].Locations:FindFirstChild("Island 3").CFrame*__U[26](0 + __U[31](Setting.AutoRaidPosX), 25 + __U[31](Setting.AutoRaidPosY), 0 + __U[31](Setting.AutoRaidPosZ)), __U[31](Setting.TeleportToNEXTIslandSpeed))
                         elseif __VE["WO"].Locations:FindFirstChild("Island 2") then
-                            tpwithnewtpbyme2(__VE["WO"].Locations:FindFirstChild("Island 2").CFrame*__VE[26](0 + __U[31](Setting.AutoRaidPosX), 25 + __U[31](Setting.AutoRaidPosY), 0 + __U[31](Setting.AutoRaidPosZ)), __U[31](Setting.TeleportToNEXTIslandSpeed))
+                            tpwithnewtpbyme2(__VE["WO"].Locations:FindFirstChild("Island 2").CFrame*__U[26](0 + __U[31](Setting.AutoRaidPosX), 25 + __U[31](Setting.AutoRaidPosY), 0 + __U[31](Setting.AutoRaidPosZ)), __U[31](Setting.TeleportToNEXTIslandSpeed))
                         elseif __VE["WO"].Locations:FindFirstChild("Island 1") then
-                            tpwithnewtpbyme2(__VE["WO"].Locations:FindFirstChild("Island 1").CFrame*__VE[26](0 + __U[31](Setting.AutoRaidPosX), 25 + __U[31](Setting.AutoRaidPosY), 0 + __U[31](Setting.AutoRaidPosZ)), __U[31](Setting.TeleportToNEXTIslandSpeed))
+                            tpwithnewtpbyme2(__VE["WO"].Locations:FindFirstChild("Island 1").CFrame*__U[26](0 + __U[31](Setting.AutoRaidPosX), 25 + __U[31](Setting.AutoRaidPosY), 0 + __U[31](Setting.AutoRaidPosZ)), __U[31](Setting.TeleportToNEXTIslandSpeed))
                         end
                     end)
                 else
                     repeat __U[23]() until (__VE["WO"].Locations:FindFirstChild("Island 1") and isTargetNearPlayer(__VE["WO"].Locations:FindFirstChild("Island 1").CFrame, 6700) and game:GetService("Players")["LocalPlayer"].PlayerGui.Main.Timer.Visible) or not Setting.AutoRaid
                     if __VE["WO"].Locations:FindFirstChild("Island 5") then
-                        tpwithnewtpbyme2(__VE["WO"].Locations:FindFirstChild("Island 5").CFrame*__VE[26](0 + __U[31](Setting.AutoRaidPosX), 25 + __U[31](Setting.AutoRaidPosY), 0 + __U[31](Setting.AutoRaidPosZ)), __U[31](Setting.TeleportToNEXTIslandSpeed))
+                        tpwithnewtpbyme2(__VE["WO"].Locations:FindFirstChild("Island 5").CFrame*__U[26](0 + __U[31](Setting.AutoRaidPosX), 25 + __U[31](Setting.AutoRaidPosY), 0 + __U[31](Setting.AutoRaidPosZ)), __U[31](Setting.TeleportToNEXTIslandSpeed))
                     elseif __VE["WO"].Locations:FindFirstChild("Island 4") then
-                        tpwithnewtpbyme2(__VE["WO"].Locations:FindFirstChild("Island 4").CFrame*__VE[26](0 + __U[31](Setting.AutoRaidPosX), 25 + __U[31](Setting.AutoRaidPosY), 0 + __U[31](Setting.AutoRaidPosZ)), __U[31](Setting.TeleportToNEXTIslandSpeed))
+                        tpwithnewtpbyme2(__VE["WO"].Locations:FindFirstChild("Island 4").CFrame*__U[26](0 + __U[31](Setting.AutoRaidPosX), 25 + __U[31](Setting.AutoRaidPosY), 0 + __U[31](Setting.AutoRaidPosZ)), __U[31](Setting.TeleportToNEXTIslandSpeed))
                     elseif __VE["WO"].Locations:FindFirstChild("Island 3") then
-                        tpwithnewtpbyme2(__VE["WO"].Locations:FindFirstChild("Island 3").CFrame*__VE[26](0 + __U[31](Setting.AutoRaidPosX), 25 + __U[31](Setting.AutoRaidPosY), 0 + __U[31](Setting.AutoRaidPosZ)), __U[31](Setting.TeleportToNEXTIslandSpeed))
+                        tpwithnewtpbyme2(__VE["WO"].Locations:FindFirstChild("Island 3").CFrame*__U[26](0 + __U[31](Setting.AutoRaidPosX), 25 + __U[31](Setting.AutoRaidPosY), 0 + __U[31](Setting.AutoRaidPosZ)), __U[31](Setting.TeleportToNEXTIslandSpeed))
                     elseif __VE["WO"].Locations:FindFirstChild("Island 2") then
-                        tpwithnewtpbyme2(__VE["WO"].Locations:FindFirstChild("Island 2").CFrame*__VE[26](0 + __U[31](Setting.AutoRaidPosX), 25 + __U[31](Setting.AutoRaidPosY), 0 + __U[31](Setting.AutoRaidPosZ)), __U[31](Setting.TeleportToNEXTIslandSpeed))
+                        tpwithnewtpbyme2(__VE["WO"].Locations:FindFirstChild("Island 2").CFrame*__U[26](0 + __U[31](Setting.AutoRaidPosX), 25 + __U[31](Setting.AutoRaidPosY), 0 + __U[31](Setting.AutoRaidPosZ)), __U[31](Setting.TeleportToNEXTIslandSpeed))
                     elseif __VE["WO"].Locations:FindFirstChild("Island 1") then
-                        tpwithnewtpbyme2(__VE["WO"].Locations:FindFirstChild("Island 1").CFrame*__VE[26](0 + __U[31](Setting.AutoRaidPosX), 25 + __U[31](Setting.AutoRaidPosY), 0 + __U[31](Setting.AutoRaidPosZ)), __U[31](Setting.TeleportToNEXTIslandSpeed))
+                        tpwithnewtpbyme2(__VE["WO"].Locations:FindFirstChild("Island 1").CFrame*__U[26](0 + __U[31](Setting.AutoRaidPosX), 25 + __U[31](Setting.AutoRaidPosY), 0 + __U[31](Setting.AutoRaidPosZ)), __U[31](Setting.TeleportToNEXTIslandSpeed))
                     end
                 end
                 __U[23]()
@@ -5230,11 +5373,11 @@ do
         end)
     end
     __U[23]()
-    if __World:Check() < __N[1] then
+    if WorldCheck["First Sea"] then
         Valuess = {"Bandit", "Monkey", "Gorilla", "Pirate", "Brute", "Desert Bandit", "Desert Officer", "Snow Bandit", "Snowman", "Chief Petty Officer", "Sky Bandit", "Dark Master", "Prisoner", "Dangerous Prisoner", "Toga Warrior", "Gladiator", "Military Soldier", "Fishman Warrior", "Fishman Commando", "God's Guard", "Shanda", "Royal Squad", "Royal Soldier", "Galley Pirate"}
-    elseif __World:Check() == __N[1] then
+    elseif WorldCheck["Second Sea"] then
         Valuess = {"Raider", "Mercenary", "Swan Pirate", "Factory Staff", "Marine Lieutenant", "Marine Captain", "Zombie", "Vampire", "Snow Trooper", "Winter Warrior", "Lab Subordinate", "Horned Warrior", "Magma Ninja", "Lava Pirate", "Ship Deckhand", "Ship Engineer", "Ship Steward", "Ship Officer", "Arctic Warrior", "Snow Lurker", "Sea Soldier", "Water Fighter"}
-    elseif __World:Check() > __N[1] then
+    elseif WorldCheck["Third Sea"] then
         Valuess = {"Pirate Millionaire", "Pistol Billionaire", "Dragon Crew Warrior", "Dragon Crew Archer", "Female Islander", "Giant Islander", "Marine Commodore", "Marine Rear Admiral", "Fishman Raider", "Fishman Captain", "Forest Pirate", "Mythological Pirate", "Jungle Pirate", "Musketeer Pirate", "Musketeer Pirate", "Living Zombie", "Demonic Souls", "Posessed Mummys", "Peanut Scout", "Peanut Presidents", "Ice Cream Chefs", "Ice Cream Commanders", "Cookie Crafters"}
     end
     SelectMob = Tabs.AutoFarmTab:AddDropdown("SelectMob", {
@@ -5251,11 +5394,11 @@ do
     AutoFarmSelectMob:OnChanged(function()
         Setting.AutoFarmSelectMob = Options.AutoFarmSelectMob.Value
     end)
-    if __World:Check() < __N[1] then
+    if WorldCheck["First Sea"] then
         Valuess = BossName["First Sea"]
-    elseif __World:Check() == __N[1] then
+    elseif WorldCheck["Second Sea"] then
         Valuess = BossName["Second Sea"]
-    elseif __World:Check() > __N[1] then
+    elseif WorldCheck["Third Sea"] then
         Valuess = BossName["Third Sea"]
     end
     SelectBoss = Tabs.AutoFarmTab:AddDropdown("SelectBoss", {
@@ -5307,7 +5450,7 @@ do
         Setting.AutoFarmAllSwordMastery = Options.AutoFarmAllSwordMastery.Value
     end)
 
-    if __World:Check() > __N[1] then
+    if WorldCheck["Third Sea"] then
         Tabs.AutoFarmTab:AddSection("Bone")
         AutoBone = Tabs.AutoFarmTab:AddToggle("AutoBone", {Title = "Auto Farm Bones", Default = Setting.AutoBone })
 
@@ -5866,7 +6009,7 @@ do
                 CommF:InvokeServer("requestEntrance",__U[57](28282.5703125, 14896.8505859375, 105.1042709350586))
             elseif (__VE["LPs"].Character.HumanoidRootPart.Position - __U[57](28282.5703125, 14896.8505859375, 105.1042709350586)).Magnitude < 1000 then
                 __U[19](0.5)
-                Teleport(__VE[26](28973.0879, 14889.9756, -120.298691))
+                Teleport(__U[26](28973.0879, 14889.9756, -120.298691))
             end
         end
     })
@@ -5885,17 +6028,17 @@ do
                 CommF:InvokeServer("requestEntrance",__U[57](28282.5703125, 14896.8505859375, 105.1042709350586))
             elseif (__VE["LPs"].Character.HumanoidRootPart.Position - __U[57](28282.5703125, 14896.8505859375, 105.1042709350586)).Magnitude < 1000 then
                 if __VE["LPs"].Data.Race.Value == "Fishman" then
-                    tpwithnewtpbyme2(__VE[26](28224.056640625, 14889.4267578125, -210.5872039794922), 5)
+                    tpwithnewtpbyme2(__U[26](28224.056640625, 14889.4267578125, -210.5872039794922), 5)
                 elseif __VE["LPs"].Data.Race.Value == "Human" then
-                    tpwithnewtpbyme2(__VE[26](29237.294921875, 14889.4267578125, -206.94955444335938), 5)
+                    tpwithnewtpbyme2(__U[26](29237.294921875, 14889.4267578125, -206.94955444335938), 5)
                 elseif __VE["LPs"].Data.Race.Value == "Cyborg" then
-                    tpwithnewtpbyme2(__VE[26](28492.4140625, 14894.4267578125, -422.1100158691406), 5)
+                    tpwithnewtpbyme2(__U[26](28492.4140625, 14894.4267578125, -422.1100158691406), 5)
                 elseif __VE["LPs"].Data.Race.Value == "Skypiea" then
-                    tpwithnewtpbyme2(__VE[26](28967.408203125, 14918.0751953125, 234.31198120117188), 5)
+                    tpwithnewtpbyme2(__U[26](28967.408203125, 14918.0751953125, 234.31198120117188), 5)
                 elseif __VE["LPs"].Data.Race.Value == "Ghoul" then
-                    tpwithnewtpbyme2(__VE[26](28672.720703125, 14889.1279296875, 454.5961608886719), 5)
+                    tpwithnewtpbyme2(__U[26](28672.720703125, 14889.1279296875, 454.5961608886719), 5)
                 elseif __VE["LPs"].Data.Race.Value == "Mink" then
-                    tpwithnewtpbyme2(__VE[26](29020.66015625, 14889.4267578125, -379.2682800292969), 5)
+                    tpwithnewtpbyme2(__U[26](29020.66015625, 14889.4267578125, -379.2682800292969), 5)
                 end
             end
         end
@@ -5943,8 +6086,8 @@ do
     })
     SelectIgnoreEvent:OnChanged(function(Value)
         Setting.IgnoreSeaEventList = {}
-        for Value, State in next, Value do
-            __VE[30](Setting.IgnoreSeaEventList, Value)
+        for _, Value in ipairs(SelectedValues) do
+            table.insert(Setting.IgnoreSeaEventList, Value)
         end
     end)
     SelectSeaLevel = Tabs.SeaEventT:AddDropdown("SelectSeaLevel", {
@@ -7052,7 +7195,7 @@ __U[20](function()
     while __U[19]() do
         if __A.AutoThirdSea then
             __U[6](function()
-                if __VE["LPs"].Data.Level.Value >= __N[2]*__N[3]*__N[8]*__N[8] and __World:Check() == __N[1] then
+                if __VE["LPs"].Data.Level.Value >= __N[2]*__N[3]*__N[8]*__N[8] and WorldCheck["Second Sea"] then
                     __A.AutoFarm = __Y[2]
                     if CommF:InvokeServer("ZQuestProgress", "General") == __Y[4]then
                         tpwithnewtpbyme2(__U[26](-1926.3221435547, 12.819851875305, 1738.3092041016),5)
