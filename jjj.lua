@@ -104,7 +104,7 @@ __VE = {
 repeat
     if __VE["PsG"].Main:FindFirstChild("ChooseTeam") then
         if __VE["PsG"].Main.ChooseTeam.Visible then
-            if __Team.Select == "Marines" then
+            if __Team == "Marines" then
                 for i,v in __U[7]({"MouseButton1Click", "MouseButton1Down", "Activated"}) do
                     for i,v in __U[7](__U[47](__VE["PsG"].Main.ChooseTeam.Container.Marines.Frame.TextButton[v])) do
                         v.Function()
@@ -333,7 +333,7 @@ if isfolder("Setting") and not isfile("Setting/setting.json") then
         AutoFarmAuraDistance = __N[2]*__N[8]*__N[8]*__N[8],
         BringMobDistance = __N[2]*__N[8]*__N[8],
         Skill = {Z,X,C,V = __Y[1]},
-        KillAt = __N[2]*__[8],
+        KillAt = __N[2]*__N[8],
         StatsValue = __Y[5],
         TeleportToNEXTIslandSpeed = __N[4]*__Y[5],
         AutoRaidPosY, AutoRaidPosX, AutoRaidPosZ = __Y[4],
@@ -2166,7 +2166,6 @@ local function CheckLevel()
     end
 end
 
---[[
 function OnFluentChange()
     if Window.Root.Visible then
         TTJYHUB.TextColor3  = __VE[36](0, 255, 0)
@@ -2174,7 +2173,6 @@ function OnFluentChange()
         TTJYHUB.TextColor3  = __VE[36](255, 0, 0)
     end
 end
-]]
 function SVHop()
     task.__U[19](5)
     if StopAllHop then
@@ -2406,7 +2404,7 @@ Part.Transparency = 1
 Part.Parent = workspace
 
 function updatePartPosition()
-    local character = __VE["Ps"].Character
+    local character = __VE["LPs"].Character
     local humanoidRootPart = character and character:FindFirstChild("HumanoidRootPart")
 
     if humanoidRootPart and float then
@@ -5279,7 +5277,7 @@ do
             WeaponBackpack = {}
             __U[19]()
             for _, item in pairs(Backpack:GetChildren()) do
-                __VE[30](WeaponBackpack, item.Name)
+                __U[30](WeaponBackpack, item.Name)
             end
             __U[19]()
             SelectWeapon:SetValues(WeaponBackpack)
@@ -6086,10 +6084,10 @@ do
         Multi = true,
         Default = {"nil", "nil"},
     })
-    SelectIgnoreEvent:OnChanged(function(Value)
+    SelectIgnoreEvent:OnChanged(function(SelectedValues)
         Setting.IgnoreSeaEventList = {}
-        for Value, State in next, Value do
-            __VE[30](Setting.IgnoreSeaEventList, Value)
+        for _, Value in ipairs(SelectedValues) do
+            table.insert(Setting.IgnoreSeaEventList, Value)
         end
     end)
     SelectSeaLevel = Tabs.SeaEventT:AddDropdown("SelectSeaLevel", {
@@ -7193,6 +7191,7 @@ end
 
 
 -- Auto Third Sea
+--[[
 __U[20](function()
     while __U[19]() do
         if __A.AutoThirdSea then
@@ -7227,3 +7226,4 @@ __U[20](function()
         end
     end
 end)
+]]
