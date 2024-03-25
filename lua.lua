@@ -4886,7 +4886,7 @@ pcall(function()
             if Setting.AutoFindMirageIsland then
                 currentShipPath = nil
                 sexofcount = 0
-                if not __VE["LPs"].Character.Humanoid.Sit then
+                if not __VE["LPs"].Character.Humanoid.Sit and Setting.AutoFindMirageIsland then
                     for _, v in __U[7](__VE["WS"].Boats:GetChildren()) do
                         if v and v:FindFirstChild("Owner") and __U[32](v.Owner.Value) == __U[32](game.Players.LocalPlayer.Name) and Setting.AutoFindMirageIsland then
                             table.insert(sexofcount, "gay")
@@ -4922,6 +4922,11 @@ pcall(function()
                 __U[23]()
                 tpwithseat(__U[26](829.504761, 24.4572105, 15972.5693), __U[31](Setting.TeleportSpeedAutoFarm))
                 repeat __U[23]() until __VE["WO"]:FindFirstChild("Mirage Island") or not __VE["LPs"].Character.Humanoid or (__VE["LPs"].Character.Humanoid and __VE["LPs"].Character.Humanoid.Health ~= 0) or not currentShipPath or not Setting.AutoFindMirageIsland
+                if __VE["WO"]:FindFirstChild("Mirage Island") and Setting.AutoFindMirageIsland then
+                    __VE["LPs"].Character.Humanoid.Sit = false
+                    task.wait(0.5)
+                    tpwithnewtpbyme2(__VE["WO"]:FindFirstChild("Mirage Island").CFrame*__U[26](0, 40, 0), __U[31](Setting.TeleportSpeedAutoFarm))
+                end
                 repeat __U[23]() until not __VE["WO"]:FindFirstChild("Mirage Island") or not Setting.AutoFindMirageIsland
             end
         end
@@ -5941,30 +5946,35 @@ do
 
     AutoStoreFruit:OnChanged(function()
         while Options.AutoStoreFruit.Value do
-            for _, tool in __U[7](game.Players.LocalPlayer.Character:GetChildren()) do
-                if tool:FindFirstChild("EatRemote") and Options.AutoStoreFruit.Value then
-                    local FruitToStore = tool:GetAttribute("OriginalName")
-                    if FruitToStore then
-                        __VE["RlS"].Remotes.CommF_:InvokeServer("StoreFruit", FruitToStore, tool)
-                    else
-                        __U[2]("Attribute 'OriginalName' not found for tool:", tool.Name)
+            pcall(function()
+                for _, tool in __U[7](game.Players.LocalPlayer.Character:GetChildren()) do
+                    if tool:FindFirstChild("EatRemote") and Options.AutoStoreFruit.Value then
+                        local FruitToStore = tool:GetAttribute("OriginalName")
+                        if FruitToStore then
+                            __VE["RlS"].Remotes.CommF_:InvokeServer("StoreFruit", FruitToStore, tool)
+                        else
+                            __U[2]("Attribute 'OriginalName' not found for tool:", tool.Name)
+                        end
                     end
                 end
-            end
-            __U[23]()
-            for _, tool in __U[7](game.Players.LocalPlayer.Backpack:GetChildren()) do
-                if tool:FindFirstChild("EatRemote") and Options.AutoStoreFruit.Value then
-                    local FruitToStore = tool:GetAttribute("OriginalName")
-                    
-                    if FruitToStore then
-                        EquipWeapon(tool.Name)
-                        wait()
-                        __VE["RlS"].Remotes.CommF_:InvokeServer("StoreFruit", FruitToStore, tool)
-                    else
-                        __U[2]("Attribute 'OriginalName' not found for tool:", tool.Name)
+                __U[23]()
+                for _, tool in __U[7](game.Players.LocalPlayer.Backpack:GetChildren()) do
+                    if tool:FindFirstChild("EatRemote") and Options.AutoStoreFruit.Value then
+                        Setting.PauseAutoEqu = true
+                        pcall(function()
+                            local FruitToStore = tool:GetAttribute("OriginalName")
+                            if FruitToStore then
+                                EquipWeapon(tool.Name)
+                                wait()
+                                __VE["RlS"].Remotes.CommF_:InvokeServer("StoreFruit", FruitToStore, tool)
+                            else
+                                __U[2]("Attribute 'OriginalName' not found for tool:", tool.Name)
+                            end
+                        end)
+                        Setting.PauseAutoEqu = false
                     end
                 end
-            end
+            end)
             __U[23]()
         end
     end)
@@ -5972,27 +5982,32 @@ do
 
     AutoDropFruit:OnChanged(function()
         while Options.AutoDropFruit.Value do
-            for _, v in __U[7](game.Players.LocalPlayer.Character:GetChildren()) do
-                if v:FindFirstChild("EatRemote") and Options.AutoDropFruit.Value then
-                    v.EatRemote:InvokeServer("Drop")
+            pcall(function()
+                for _, v in __U[7](game.Players.LocalPlayer.Character:GetChildren()) do
+                    if v:FindFirstChild("EatRemote") and Options.AutoDropFruit.Value then
+                        v.EatRemote:InvokeServer("Drop")
+                    end
                 end
-            end
-            __U[23]()
-            for _, v in __U[7](game.Players.LocalPlayer.Backpack:GetChildren()) do
-                if v:FindFirstChild("EatRemote", true) and Options.AutoDropFruit.Value then
-                    EquipWeapon(v.Name)
-                    wait()
-                    v.EatRemote:InvokeServer("Drop")
+                __U[23]()
+                for _, v in __U[7](game.Players.LocalPlayer.Backpack:GetChildren()) do
+                    if v:FindFirstChild("EatRemote", true) and Options.AutoDropFruit.Value then
+                        Setting.PauseAutoEqu = true
+                        pcall(function()
+                            EquipWeapon(v.Name)
+                            wait()
+                            v.EatRemote:InvokeServer("Drop")
+                        end)
+                        Setting.PauseAutoEqu = false
+                    end
                 end
-            end
+            end)
             __U[23]()
         end
     end)
-
     Tabs.FruitT:AddSection("Selectable") -- Full Access Settings
     SelectDropFruit = Tabs.FruitT:AddDropdown("SelectDropFruit", {
         Title = "Fruit To Drop",
-        Values = {"gay"}, --🟡
+        Values = {FruitList}, --🟡 | MUTI
         Multi = false,
         Default = 1,
     })
@@ -6006,7 +6021,7 @@ do
     end)
     SelectStoreFruit = Tabs.FruitT:AddDropdown("SelectStoreFruit", {
         Title = "Fruit To Store",
-        Values = {"gay"}, --🟡
+        Values = {"gay"}, --🟡 | MUTI
         Multi = false,
         Default = 1,
     })
@@ -6541,6 +6556,13 @@ do
         Setting.ToggleAimBotGun = Options.ToggleAimBotGun.Value
     end)
     Tabs.PlayerTab:AddSection("Bounty")
+    Tabs.Main:AddButton({
+        Title = "Player Quest",
+        Description = "",
+        Callback = function()
+            CommF:InvokeServer("PlayerHunter")
+        end
+    })
     SelectPlayerToAutoBounty = Tabs.PlayerTab:AddDropdown("SelectPlayerToAutoBounty", {
         Title = "Select Player",
         Values = {"rigga56"},
