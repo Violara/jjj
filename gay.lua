@@ -3406,7 +3406,7 @@ __U[6](function()
         repeat __U[23]() until finishload
         while __U[23]() do
             if Setting.AutoFarmLevel and not Setting.AutoSea2 then
-                __U[6](function()
+                --__U[6](function()
                     CheckAndClearWeapon()
                     __U[23]()
                     CheckLevel()
@@ -3464,7 +3464,7 @@ __U[6](function()
                     until not __VE["PsG"].Main.Quest.Visible or not Setting.AutoFarmLevel or (CFrameMon.Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude > 3000
                     Attack = false
                     __U[23]()
-                end)
+                --end)
                 __U[23]()
             elseif Setting.AutoFarmLevel and Setting.AutoSea2 then
                 __U[6](function()
@@ -4138,8 +4138,11 @@ __U[58](function()
         if Setting.TpToFruit then
             __U[6](function()
                 for _, v in __U[7](__VE["WS"]:GetChildren()) do
-                    if v:IsA("Tool") then
-                        tpwithnewtpbyfruit(v.WorldPivot.Position.X, v.WorldPivot.Position.Y, v.WorldPivot.Position.Z, 5)
+                    if v:IsA("Tool") and v:FindFirstChild("Handle") then
+                        pcall(function()
+                            tpwithnewtpbyfruit(v.Handle.Position.X, v.Handle.Position.Y, v.Handle.Position.Z, 5)
+                        end)
+                        task.wait()
                         break
                     end
                 end
@@ -5930,10 +5933,10 @@ do
     BringFruit:OnChanged(function()
         Setting.BringFruit = Options.BringFruit.Value
     end)
-    TeleportFruit = Tabs.FruitT:AddToggle("TeleportFruit", {Title = "Teleport To Fruit", Default = false })
+    TpToFruit = Tabs.FruitT:AddToggle("TeleportFruit", {Title = "Teleport To Fruit", Default = false })
 
-    TeleportFruit:OnChanged(function()
-        Setting.TpToFruit = Options.TeleportFruit.Value
+    TpToFruit:OnChanged(function()
+        Setting.TpToFruit = Options.TpToFruit.Value
     end)
     AutoRandomFruit = Tabs.FruitT:AddToggle("AutoRandomFruit", {Title = "Auto Spin Fruit", Default = Setting.AutoRandomFruit })
 
