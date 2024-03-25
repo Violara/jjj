@@ -2196,75 +2196,137 @@ function SVHop()
         until StopAllHop
     end
 end
+local function UNT(V3,CM)
+    if not CM then
+        if WorldCheck["First Sea"]then
+        elseif WorldCheck["Second Sea"]then
+            ReVal=math.huge
+            V3Z=(V3-__VE["LPs"].Character.HumanoidRootPart.Position).Magnitude
+            V3O=(V3-__U[57](-6508.5581054688,5000.0349960327,-132.83953857422)).Magnitude
+            V3T=(V3-__U[57](923.21252441406,126.9760055542,32852.83203125)).Magnitude
+            if V3Z<ReVal then ReVal=V3Z end
+            if V3O<ReVal then ReVal=V3O end
+            if V3T<ReVal then ReVal=V3T end
+            if ReVal==V3Z then
+            elseif ReVal==V3O then CommF:InvokeServer("requestEntrance",__U[57](-6508.5581054688,5000.0349960327,-132.83953857422)) task.wait(0.5)
+            elseif ReVal==V3T then CommF:InvokeServer("requestEntrance",__U[57](923.21252441406,126.9760055542,32852.83203125)) task.wait(0.5)
+            end
+        elseif WorldCheck["Third Sea"]then
+            ReVal=math.huge
+            V3Z=(V3-__VE["LPs"].Character.HumanoidRootPart.Position).Magnitude
+            V3O=(V3-__U[57](-5072.08984375,314.5412902832,-3151.1098632812)).Magnitude
+            V3T=(V3-__U[57](5748.7587890625,610.44982910156,-267.81704711914)).Magnitude
+            V3Th=(V3-__U[57](-12471.169921875,374.94024658203,-7551.677734375)).Magnitude
+            if V3Z<ReVal then ReVal=V3Z end
+            if V3O<ReVal then ReVal=V3O end
+            if V3T<ReVal then ReVal=V3T end
+            if V3Th<ReVal then ReVal=V3Th end
+            if ReVal==V3Z then
+            elseif ReVal==V3O then CommF:InvokeServer("requestEntrance",__U[57](-5072.08984375,314.5412902832,-3151.1098632812)) task.wait(0.5)
+            elseif ReVal==V3T then CommF:InvokeServer("requestEntrance",__U[57](5748.7587890625,610.44982910156,-267.81704711914)) task.wait(0.5)
+            elseif ReVal==V3Th then CommF:InvokeServer("requestEntrance",__U[57](-12471.169921875,374.94024658203,-7551.677734375)) task.wait(0.5) end
+        end
+    else
+        if WorldCheck["First Sea"]then
+        elseif WorldCheck["Second Sea"]then
+            ReVal=math.huge
+            V3Z=(V3.Position-__VE["LPs"].Character.HumanoidRootPart.Position).Magnitude
+            V3O=(V3.Position-__U[57](-6508.5581054688,5000.0349960327,-132.83953857422)).Magnitude
+            V3T=(V3.Position-__U[57](923.21252441406,126.9760055542,32852.83203125)).Magnitude
+            if V3Z<ReVal then ReVal=V3Z end
+            if V3O<ReVal then ReVal=V3O end
+            if V3T<ReVal then ReVal=V3T end
+            print(V3Z .. "\n" .. V3O .. "\n" .. V3T)
+            warn(ReVal)
+            if ReVal==V3Z then
+            elseif ReVal==V3O then CommF:InvokeServer("requestEntrance",__U[57](-6508.5581054688,5000.0349960327,-132.83953857422)) task.wait(0.5) print("y")
+            elseif ReVal==V3T then CommF:InvokeServer("requestEntrance",__U[57](923.21252441406,126.9760055542,32852.83203125)) task.wait(0.5) print("w") end
+        elseif WorldCheck["Third Sea"]then
+            ReVal=math.huge
+            V3Z=(V3.Position-__VE["LPs"].Character.HumanoidRootPart.Position).Magnitude
+            V3O=(V3.Position-__U[57](-5072.08984375,314.5412902832,-3151.1098632812)).Magnitude
+            V3T=(V3.Position-__U[57](5748.7587890625,610.44982910156,-267.81704711914)).Magnitude
+            V3Th=(V3.Position-__U[57](-12471.169921875,374.94024658203,-7551.677734375)).Magnitude
+            if V3Z<ReVal then ReVal=V3Z end
+            if V3O<ReVal then ReVal=V3O end
+            if V3T<ReVal then ReVal=V3T end
+            if V3Th<ReVal then ReVal=V3Th end
+            if ReVal==V3Z then
+            elseif ReVal==V3O then CommF:InvokeServer("requestEntrance",__U[57](-5072.08984375,314.5412902832,-3151.1098632812)) task.wait(0.5)
+            elseif ReVal==V3T then CommF:InvokeServer("requestEntrance",__U[57](5748.7587890625,610.44982910156,-267.81704711914)) task.wait(0.5)
+            elseif ReVal==V3Th then CommF:InvokeServer("requestEntrance",__U[57](-12471.169921875,374.94024658203,-7551.677734375)) task.wait(0.5) end
+        end
+    end
+end
 function tp(x, y, z)
-    if __VE["Ps"].Character:FindFirstChild("HumanoidRootPart") then
-        __VE["Ps"].Character.HumanoidRootPart.CFrame = __U[26](x, y, z)
+    if __VE["LPs"].Character:FindFirstChild("HumanoidRootPart") then
+        __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](x, y, z)
         __U[23]()
     end
 end
 function tp2(xyz)
-    if __VE["Ps"].Character:FindFirstChild("HumanoidRootPart") then
-        __VE["Ps"].Character.HumanoidRootPart.CFrame = xyz.Position
+    if __VE["LPs"].Character:FindFirstChild("HumanoidRootPart") then
+        __VE["LPs"].Character.HumanoidRootPart.CFrame = xyz.Position
         __U[23]()
     end
 end
 function tpwithnewtpbyme(a,b,c,speedoftpNTP)
-    hrd = __VE["Ps"].Character.HumanoidRootPart
-    p = hrd.Position
-    currentPos = __U[57](p.x, p.y, p.z)
-    targetPos = __U[57](a, b, c)
+    local hrd = __VE["LPs"].Character.HumanoidRootPart
+    local p = hrd.Position
+    local currentPos = __U[57](p.x, p.y, p.z)
+    local targetPos = __U[57](a, b, c)
 
-    direction = (targetPos - currentPos).Unit
-    distance = (targetPos - currentPos).Magnitude
-    steps = __VE[39](distance / speedoftpNTP) 
+    local direction = (targetPos - currentPos).Unit
+    local distance = (targetPos - currentPos).Magnitude
+    local steps = __U[39](distance / speedoftpNTP) 
     for i = 1, steps do
         if Setting.UnlockPortal then
             UNT(targetPos, false)
         end
-        if not __VE["Ps"].Character:FindFirstChild("Humanoid") then
-            repeat __U[23](0.175) until __VE["Ps"].Character:FindFirstChild("Humanoid")
+        if not __VE["LPs"].Character:FindFirstChild("Humanoid") then
+            repeat __U[23](0.175) until __VE["LPs"].Character:FindFirstChild("Humanoid")
         end
         if Setting.BREAKALLTHISSHITHAHAHAHAHA then
             break
         end
         currentPos = currentPos + direction * speedoftpNTP 
-        __VE["Ps"].Character.HumanoidRootPart.CFrame = __U[26](currentPos)
+        __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](currentPos)
         __U[23]()
     end
 end
 function tpwithnewtpbyme2(xyz,speedoftpNTP)
-    hrd = __VE["Ps"].Character.HumanoidRootPart
-    p = hrd.Position
-    currentPos = __U[57](p.x, p.y, p.z)
-    targetPos = xyz.Position
+    local hrd = __VE["LPs"].Character.HumanoidRootPart
+    local p = hrd.Position
+    local currentPos = __U[57](p.x, p.y, p.z)
+    local targetPos = xyz.Position
 
-    direction = (targetPos - currentPos).Unit
-    distance = (targetPos - currentPos).Magnitude
-    steps = __VE[39](distance / speedoftpNTP) 
+    local direction = (targetPos - currentPos).Unit
+    local distance = (targetPos - currentPos).Magnitude
+    local steps = __U[39](distance / speedoftpNTP) 
     for i = 1, steps do
         if Setting.UnlockPortal then
             UNT(xyz, true)
         end
-        if not __VE["Ps"].Character:FindFirstChild("Humanoid") then
-            repeat __U[23](0.175) until __VE["Ps"].Character:FindFirstChild("Humanoid")
+        if not __VE["LPs"].Character:FindFirstChild("Humanoid") then
+            repeat __U[23](0.175) until __VE["LPs"].Character:FindFirstChild("Humanoid")
         end
         if Setting.BREAKALLTHISSHITHAHAHAHAHA then
             break
         end
         currentPos = currentPos + direction * speedoftpNTP 
-        __VE["Ps"].Character.HumanoidRootPart.CFrame = __U[26](currentPos)
+        __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](currentPos)
         __U[23]()
     end
 end
 function tpwithnewtpbyme3(part,speedoftpNTP)
-    Targetpart = part
-    p = part.Position
-    currentPos = __U[57](p.X, p.Y, p.Z)
-    targetPos = __VE["Ps"].Character.HumanoidRootPart.Position
+    local Targetpart = part
+    local p = part.Position
+    local currentPos = __U[57](p.X, p.Y, p.Z)
+    local targetPos = __VE["LPs"].Character.HumanoidRootPart.Position
 
-    direction = (targetPos - currentPos).Unit
-    distance = (targetPos - currentPos).Magnitude
-    steps = __VE[39](distance / speedoftpNTP) 
+    local direction = (targetPos - currentPos).Unit
+    local distance = (targetPos - currentPos).Magnitude
+    local steps = __U[39](distance / speedoftpNTP) 
     for i = 1, steps do
         currentPos = currentPos + direction * speedoftpNTP 
         part.Position = currentPos
@@ -2272,7 +2334,7 @@ function tpwithnewtpbyme3(part,speedoftpNTP)
     end
 end
 function tpwithseat(xyz,speedoftpNTP)
-    local hrd = __VE["Ps"].Character.HumanoidRootPart
+    local hrd = __VE["LPs"].Character.HumanoidRootPart
     local p = hrd.Position
     local currentPos = __U[57](p.x, p.y, p.z)
     local targetPos = xyz.Position
@@ -2281,8 +2343,8 @@ function tpwithseat(xyz,speedoftpNTP)
     local distance = (targetPos - currentPos).Magnitude
     local steps = math.floor(distance / speedoftpNTP) 
     for i = 1, steps do
-        if not __VE["Ps"].Character:FindFirstChild("Humanoid") then
-            repeat __U[23](0.175) until __VE["Ps"].Character:FindFirstChild("Humanoid")
+        if not __VE["LPs"].Character:FindFirstChild("Humanoid") then
+            repeat __U[23](0.175) until __VE["LPs"].Character:FindFirstChild("Humanoid")
         end
         if Setting.BREAKALLTHISSHITHAHAHAHAHA then
             break
@@ -2291,7 +2353,7 @@ function tpwithseat(xyz,speedoftpNTP)
             repeat __U[23]() until not Setting.WaitBRUH or Setting.BREAKALLTHISSHITHAHAHAHAHA
         end
         currentPos = currentPos + direction * speedoftpNTP 
-        __VE["Ps"].Character.Humanoid.SeatPart.Parent:SetPrimaryPartCFrame(__U[26](currentPos))
+        __VE["LPs"].Character.Humanoid.SeatPart.Parent:SetPrimaryPartCFrame(__U[26](currentPos))
         __U[23]()
     end
 end
@@ -3406,7 +3468,7 @@ __U[6](function()
         repeat __U[23]() until finishload
         while __U[23]() do
             if Setting.AutoFarmLevel and not Setting.AutoSea2 then
-                --__U[6](function()
+                __U[6](function()
                     CheckAndClearWeapon()
                     __U[23]()
                     CheckLevel()
@@ -3414,14 +3476,14 @@ __U[6](function()
                     if InstanceTp then
                         repeat
                             __U[19](0.175)
-                            if InstanceTp and (CheckLevel()[3].Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude > 3000 then
-                                __VE["LPs"].Character:SetPrimaryPartCFrame(CheckLevel()[3])
+                            if InstanceTp and (CheckLevel()[6].Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude > 3000 then
+                                __VE["LPs"].Character:SetPrimaryPartCFrame(CheckLevel()[6])
                                 __U[19]()
                                 __VE["LPs"].Character.Humanoid.Health = 0
                                 repeat __U[23]() until __VE["LPs"].Character.Humanoid
-                                __VE["LPs"].Character:SetPrimaryPartCFrame(CheckLevel()[3])
-                                __VE["LPs"].Character:SetPrimaryPartCFrame(CheckLevel()[3])
-                                __VE["LPs"].Character:SetPrimaryPartCFrame(CheckLevel()[3])
+                                __VE["LPs"].Character:SetPrimaryPartCFrame(CheckLevel()[6])
+                                __VE["LPs"].Character:SetPrimaryPartCFrame(CheckLevel()[6])
+                                __VE["LPs"].Character:SetPrimaryPartCFrame(CheckLevel()[6])
                             else
                                 break
                             end
@@ -3431,20 +3493,20 @@ __U[6](function()
                     __U[23]()
                     repeat __U[23]() until __VE["LPs"].Character:FindFirstChild("Humanoid")
                     if not __VE["PsG"].Main.Quest.Visible then
-                        tpwithnewtpbyme2(CheckLevel()[6], __U[31](Setting.TeleportSpeedAutoFarm))
+                        tpwithnewtpbyme2(CheckLevel()[5], __U[31](Setting.TeleportSpeedAutoFarm))
                         __U[23](1)
-                        if (CheckLevel()[3].Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude < 3000 then
-                            CommF:InvokeServer("StartQuest", CheckLevel()[4], CheckLevel()[5])
+                        if (CheckLevel()[5].Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude < 3000 then
+                            CommF:InvokeServer("StartQuest", CheckLevel()[4], CheckLevel()[3])
                         end
                         __U[23](.175)
                     end
                     __U[23]()
                     if Setting.AutoFarmLevel and not Setting.AutoSea2 then
-                        tpwithnewtpbyme2(CheckLevel()[3], __U[31](Setting.TeleportSpeedAutoFarm))
+                        tpwithnewtpbyme2(CheckLevel()[6], __U[31](Setting.TeleportSpeedAutoFarm))
                     end
                     repeat
                         for _,v in __U[7](__VE["WS"].Enemies:GetChildren()) do
-                            if v and v.Name == __U[32](CheckLevel()[2]) and (CheckLevel()[6].Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude < 3000 then
+                            if v and v.Name == __U[32](CheckLevel()[4]) and (CheckLevel()[6].Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude < 3000 then
                                 if v:FindFirstChild("Humanoid") and v.Humanoid.Health ~= 0 and Setting.AutoFarmLevel and __VE["PsG"].Main.Quest.Visible and (CheckLevel()[6].Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude < 3000 then
                                     CheckAndClearWeapon()
                                     __U[23]()
@@ -3455,16 +3517,15 @@ __U[6](function()
                                         tpwithnewtpbyme(MobHumP.X + Setting.AutoFarmPosX, MobHumP.Y + Setting.AutoFarmPosY, MobHumP.Z + Setting.AutoFarmPosZ, __U[31](Setting.TeleportSpeedAutoFarm))
                                         __U[19]()
                                         Setting.TryNumOfthis1 = Setting.TryNumOfthis1 + 1
-                                    until v.Humanoid.Health == 0 or __VE["PsG"].Main.Quest.Visible == false or not Setting.AutoFarmLevel or Setting.TryNumOfthis1 == 300 or (CFrameMon.Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude > 3000
+                                    until v.Humanoid.Health == 0 or not __VE["PsG"].Main.Quest.Visible or not Setting.AutoFarmLevel or Setting.TryNumOfthis1 == 300 or (CFrameMon.Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude > 3000
                                 end
                             end
                         end
-                        tpwithnewtpbyme2(CheckLevel()[3], __U[31](Setting.TeleportSpeedAutoFarm))
+                        tpwithnewtpbyme2(CheckLevel()[6], __U[31](Setting.TeleportSpeedAutoFarm))
                         __U[23]()
                     until not __VE["PsG"].Main.Quest.Visible or not Setting.AutoFarmLevel or (CFrameMon.Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude > 3000
-                    Attack = false
                     __U[23]()
-                --end)
+                end)
                 __U[23]()
             elseif Setting.AutoFarmLevel and Setting.AutoSea2 then
                 __U[6](function()
@@ -7379,7 +7440,7 @@ if allowtoserialized then
 end
 task.wait(5)
 finishload = true
-Notification.new("<Color=Green>Data Save<Color=/>"):Display()
+__VE["Notification"].new("<Color=Green>Data Save<Color=/>"):Display()
 
 
 
