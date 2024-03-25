@@ -330,6 +330,7 @@ if isfolder("Setting") and not isfile("Setting/setting.json") then
         CancelTpToFruit, BringFruit, AutoRandomFruit, AutoStoreFruit, AutoDropFruit, SelectFruitToSnipe, AutoSea2, RemoveAnim, MeleeStats = __Y[2],
         DefenseStats, SwordStats, GunStat, BloxFruitStats, AutoRaceV2, AutoRaceV3, AutoRaceV4, KillAura, AutoRaid = __Y[2],
         DMGAura, DMGAura2, DMGAura3, AutoBartilo,AutoFarmObservation, AutoFarmObservationHop, AutoRichManMission, AutoBone = __Y[2],
+        ChangeTWay = false,
         AutoFarmPosX, AutoFarmPosZ, TryNumOfthis1 = __Y[4],
         AutoFarmPosY = __N[3]*__N[1],
         TeleportSpeedAutoFarm = __N[3],
@@ -2208,8 +2209,8 @@ local function UNT(V3,CM)
             if V3O<ReVal then ReVal=V3O end
             if V3T<ReVal then ReVal=V3T end
             if ReVal==V3Z then
-            elseif ReVal==V3O then CommF:InvokeServer("requestEntrance",__U[57](-6508.5581054688,5000.0349960327,-132.83953857422)) task.wait(0.5)
-            elseif ReVal==V3T then CommF:InvokeServer("requestEntrance",__U[57](923.21252441406,126.9760055542,32852.83203125)) task.wait(0.5)
+            elseif ReVal==V3O then Setting.ChangeTWay=true;CommF:InvokeServer("requestEntrance",__U[57](-6508.55810546875, 89.03499603271484, -132.83953857421875)) task.wait(0.5)
+            elseif ReVal==V3T then Setting.ChangeTWay=true;CommF:InvokeServer("requestEntrance",__U[57](923.21252441406,126.9760055542,32852.83203125)) task.wait(0.5)
             end
         elseif WorldCheck["Third Sea"]then
             ReVal=math.huge
@@ -2222,9 +2223,9 @@ local function UNT(V3,CM)
             if V3T<ReVal then ReVal=V3T end
             if V3Th<ReVal then ReVal=V3Th end
             if ReVal==V3Z then
-            elseif ReVal==V3O then CommF:InvokeServer("requestEntrance",__U[57](-5072.08984375,314.5412902832,-3151.1098632812)) task.wait(0.5)
-            elseif ReVal==V3T then CommF:InvokeServer("requestEntrance",__U[57](5748.7587890625,610.44982910156,-267.81704711914)) task.wait(0.5)
-            elseif ReVal==V3Th then CommF:InvokeServer("requestEntrance",__U[57](-12471.169921875,374.94024658203,-7551.677734375)) task.wait(0.5) end
+            elseif ReVal==V3O then Setting.ChangeTWay=true;CommF:InvokeServer("requestEntrance",__U[57](-5072.08984375,314.5412902832,-3151.1098632812)) task.wait(0.5)
+            elseif ReVal==V3T then Setting.ChangeTWay=true;CommF:InvokeServer("requestEntrance",__U[57](5748.7587890625,610.44982910156,-267.81704711914)) task.wait(0.5)
+            elseif ReVal==V3Th then Setting.ChangeTWay=true;CommF:InvokeServer("requestEntrance",__U[57](-12471.169921875,374.94024658203,-7551.677734375)) task.wait(0.5) end
         end
     else
         if WorldCheck["First Sea"]then
@@ -2237,8 +2238,8 @@ local function UNT(V3,CM)
             if V3O<ReVal then ReVal=V3O end
             if V3T<ReVal then ReVal=V3T end
             if ReVal==V3Z then
-            elseif ReVal==V3O then CommF:InvokeServer("requestEntrance",__U[57](-6508.55810546875, 89.03499603271484, -132.83953857421875)) task.wait(0.5)
-            elseif ReVal==V3T then CommF:InvokeServer("requestEntrance",__U[57](923.21252441406,126.9760055542,32852.83203125)) task.wait(0.5) end
+            elseif ReVal==V3O then Setting.ChangeTWay=true;trueCommF:InvokeServer("requestEntrance",__U[57](-6508.55810546875, 89.03499603271484, -132.83953857421875)) task.wait(0.5)
+            elseif ReVal==V3T then Setting.ChangeTWay=true;CommF:InvokeServer("requestEntrance",__U[57](923.21252441406,126.9760055542,32852.83203125)) task.wait(0.5) end
         elseif WorldCheck["Third Sea"]then
             ReVal=math.huge
             V3Z=(V3.Position-__VE["LPs"].Character.HumanoidRootPart.Position).Magnitude
@@ -2250,9 +2251,9 @@ local function UNT(V3,CM)
             if V3T<ReVal then ReVal=V3T end
             if V3Th<ReVal then ReVal=V3Th end
             if ReVal==V3Z then
-            elseif ReVal==V3O then CommF:InvokeServer("requestEntrance",__U[57](-5072.08984375,314.5412902832,-3151.1098632812)) task.wait(0.5)
-            elseif ReVal==V3T then CommF:InvokeServer("requestEntrance",__U[57](5748.7587890625,610.44982910156,-267.81704711914)) task.wait(0.5)
-            elseif ReVal==V3Th then CommF:InvokeServer("requestEntrance",__U[57](-12471.169921875,374.94024658203,-7551.677734375)) task.wait(0.5) end
+            elseif ReVal==V3O then Setting.ChangeTWay=true;CommF:InvokeServer("requestEntrance",__U[57](-5072.08984375,314.5412902832,-3151.1098632812)) task.wait(0.5)
+            elseif ReVal==V3T then Setting.ChangeTWay=true;CommF:InvokeServer("requestEntrance",__U[57](5748.7587890625,610.44982910156,-267.81704711914)) task.wait(0.5)
+            elseif ReVal==V3Th then Setting.ChangeTWay=true;CommF:InvokeServer("requestEntrance",__U[57](-12471.169921875,374.94024658203,-7551.677734375)) task.wait(0.5) end
         end
     end
 end
@@ -2278,13 +2279,16 @@ function tpwithnewtpbyme(a,b,c,speedoftpNTP)
     local distance = (targetPos - currentPos).Magnitude
     local steps = __U[39](distance / speedoftpNTP) 
     for i = 1, steps do
-        p = hrd.Position
-        currentPos = __U[57](p.x, p.y, p.z)
-        direction = (targetPos - currentPos).Unit
-        distance = (targetPos - currentPos).Magnitude
-        steps = __U[39](distance / speedoftpNTP) 
         if Setting.UnlockPortal then
             UNT(targetPos, false)
+            if Setting.ChangeTWay then
+                p = hrd.Position
+                currentPos = __U[57](p.x, p.y, p.z)
+                direction = (targetPos - currentPos).Unit
+                distance = (targetPos - currentPos).Magnitude
+                steps = __U[39](distance / speedoftpNTP)
+                Setting.ChangeTWay = false
+            end
         end
         if not __VE["LPs"].Character:FindFirstChild("Humanoid") then
             repeat __U[23](0.175) until __VE["LPs"].Character:FindFirstChild("Humanoid")
@@ -2307,13 +2311,16 @@ function tpwithnewtpbyme2(xyz,speedoftpNTP)
     local distance = (targetPos - currentPos).Magnitude
     local steps = __U[39](distance / speedoftpNTP) 
     for i = 1, steps do
-        p = hrd.Position
-        currentPos = __U[57](p.x, p.y, p.z)
-        direction = (targetPos - currentPos).Unit
-        distance = (targetPos - currentPos).Magnitude
-        steps = __U[39](distance / speedoftpNTP) 
         if Setting.UnlockPortal then
             UNT(xyz, true)
+            if Setting.ChangeTWay then
+                p = hrd.Position
+                currentPos = __U[57](p.x, p.y, p.z)
+                direction = (targetPos - currentPos).Unit
+                distance = (targetPos - currentPos).Magnitude
+                steps = __U[39](distance / speedoftpNTP) 
+                Setting.ChangeTWay = false
+            end
         end
         if not __VE["LPs"].Character:FindFirstChild("Humanoid") then
             repeat __U[23](0.175) until __VE["LPs"].Character:FindFirstChild("Humanoid")
