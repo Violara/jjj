@@ -2238,7 +2238,7 @@ local function UNT(V3,CM)
             if V3O<ReVal then ReVal=V3O end
             if V3T<ReVal then ReVal=V3T end
             if ReVal==V3Z then
-            elseif ReVal==V3O then Setting.ChangeTWay=true;trueCommF:InvokeServer("requestEntrance",__U[57](-6508.55810546875, 89.03499603271484, -132.83953857421875)) task.wait(0.5)
+            elseif ReVal==V3O then Setting.ChangeTWay=true;CommF:InvokeServer("requestEntrance",__U[57](-6508.55810546875, 89.03499603271484, -132.83953857421875)) task.wait(0.5)
             elseif ReVal==V3T then Setting.ChangeTWay=true;CommF:InvokeServer("requestEntrance",__U[57](923.21252441406,126.9760055542,32852.83203125)) task.wait(0.5) end
         elseif WorldCheck["Third Sea"]then
             ReVal=math.huge
@@ -2274,22 +2274,16 @@ function tpwithnewtpbyme(a,b,c,speedoftpNTP)
     local p = hrd.Position
     local currentPos = __U[57](p.x, p.y, p.z)
     local targetPos = __U[57](a, b, c)
+    local saveY = p.y
 
     local direction = (targetPos - currentPos).Unit
     local distance = (targetPos - currentPos).Magnitude
-    local steps = __U[39](distance / speedoftpNTP) 
+    local steps = __U[39](distance / speedoftpNTP)
+    if Setting.UnlockPortal then
+        UNT(targetPos, false)
+    end
+    task.wait()
     for i = 1, steps do
-        if Setting.UnlockPortal then
-            UNT(targetPos, false)
-            if Setting.ChangeTWay then
-                p = hrd.Position
-                currentPos = __U[57](p.x, p.y, p.z)
-                direction = (targetPos - currentPos).Unit
-                distance = (targetPos - currentPos).Magnitude
-                steps = __U[39](distance / speedoftpNTP)
-                Setting.ChangeTWay = false
-            end
-        end
         if not __VE["LPs"].Character:FindFirstChild("Humanoid") then
             repeat __U[23](0.175) until __VE["LPs"].Character:FindFirstChild("Humanoid")
         end
@@ -2306,22 +2300,16 @@ function tpwithnewtpbyme2(xyz,speedoftpNTP)
     local p = hrd.Position
     local currentPos = __U[57](p.x, p.y, p.z)
     local targetPos = xyz.Position
+    local saveY = p.y
 
     local direction = (targetPos - currentPos).Unit
     local distance = (targetPos - currentPos).Magnitude
-    local steps = __U[39](distance / speedoftpNTP) 
+    local steps = __U[39](distance / speedoftpNTP)
+    if Setting.UnlockPortal then
+        UNT(xyz, true)
+    end
+    task.wait()
     for i = 1, steps do
-        if Setting.UnlockPortal then
-            UNT(xyz, true)
-            if Setting.ChangeTWay then
-                p = hrd.Position
-                currentPos = __U[57](p.x, p.y, p.z)
-                direction = (targetPos - currentPos).Unit
-                distance = (targetPos - currentPos).Magnitude
-                steps = __U[39](distance / speedoftpNTP) 
-                Setting.ChangeTWay = false
-            end
-        end
         if not __VE["LPs"].Character:FindFirstChild("Humanoid") then
             repeat __U[23](0.175) until __VE["LPs"].Character:FindFirstChild("Humanoid")
         end
