@@ -330,6 +330,7 @@ if isfolder("Setting") and not isfile("Setting/setting.json") then
         CancelTpToFruit, BringFruit, AutoRandomFruit, AutoStoreFruit, AutoDropFruit, SelectFruitToSnipe, AutoSea2, RemoveAnim, MeleeStats = __Y[2],
         DefenseStats, SwordStats, GunStat, BloxFruitStats, AutoRaceV2, AutoRaceV3, AutoRaceV4, KillAura, AutoRaid = __Y[2],
         DMGAura, DMGAura2, DMGAura3, AutoBartilo,AutoFarmObservation, AutoFarmObservationHop, AutoRichManMission, AutoBone = __Y[2],
+        ChangeTWay = false,
         AutoFarmPosX, AutoFarmPosZ, TryNumOfthis1 = __Y[4],
         AutoFarmPosY = __N[3]*__N[1],
         TeleportSpeedAutoFarm = __N[3],
@@ -2208,8 +2209,8 @@ local function UNT(V3,CM)
             if V3O<ReVal then ReVal=V3O end
             if V3T<ReVal then ReVal=V3T end
             if ReVal==V3Z then
-            elseif ReVal==V3O then CommF:InvokeServer("requestEntrance",__U[57](-6508.5581054688,5000.0349960327,-132.83953857422)) task.wait(0.5)
-            elseif ReVal==V3T then CommF:InvokeServer("requestEntrance",__U[57](923.21252441406,126.9760055542,32852.83203125)) task.wait(0.5)
+            elseif ReVal==V3O then Setting.ChangeTWay=true;CommF:InvokeServer("requestEntrance",__U[57](-6508.55810546875, 89.03499603271484, -132.83953857421875)) task.wait(0.5)
+            elseif ReVal==V3T then Setting.ChangeTWay=true;CommF:InvokeServer("requestEntrance",__U[57](923.21252441406,126.9760055542,32852.83203125)) task.wait(0.5)
             end
         elseif WorldCheck["Third Sea"]then
             ReVal=math.huge
@@ -2222,9 +2223,9 @@ local function UNT(V3,CM)
             if V3T<ReVal then ReVal=V3T end
             if V3Th<ReVal then ReVal=V3Th end
             if ReVal==V3Z then
-            elseif ReVal==V3O then CommF:InvokeServer("requestEntrance",__U[57](-5072.08984375,314.5412902832,-3151.1098632812)) task.wait(0.5)
-            elseif ReVal==V3T then CommF:InvokeServer("requestEntrance",__U[57](5748.7587890625,610.44982910156,-267.81704711914)) task.wait(0.5)
-            elseif ReVal==V3Th then CommF:InvokeServer("requestEntrance",__U[57](-12471.169921875,374.94024658203,-7551.677734375)) task.wait(0.5) end
+            elseif ReVal==V3O then Setting.ChangeTWay=true;CommF:InvokeServer("requestEntrance",__U[57](-5072.08984375,314.5412902832,-3151.1098632812)) task.wait(0.5)
+            elseif ReVal==V3T then Setting.ChangeTWay=true;CommF:InvokeServer("requestEntrance",__U[57](5748.7587890625,610.44982910156,-267.81704711914)) task.wait(0.5)
+            elseif ReVal==V3Th then Setting.ChangeTWay=true;CommF:InvokeServer("requestEntrance",__U[57](-12471.169921875,374.94024658203,-7551.677734375)) task.wait(0.5) end
         end
     else
         if WorldCheck["First Sea"]then
@@ -2237,8 +2238,8 @@ local function UNT(V3,CM)
             if V3O<ReVal then ReVal=V3O end
             if V3T<ReVal then ReVal=V3T end
             if ReVal==V3Z then
-            elseif ReVal==V3O then CommF:InvokeServer("requestEntrance",__U[57](-6508.5581054688,5000.0349960327,-132.83953857422)) task.wait(0.5)
-            elseif ReVal==V3T then CommF:InvokeServer("requestEntrance",__U[57](923.21252441406,126.9760055542,32852.83203125)) task.wait(0.5) end
+            elseif ReVal==V3O then Setting.ChangeTWay=true;trueCommF:InvokeServer("requestEntrance",__U[57](-6508.55810546875, 89.03499603271484, -132.83953857421875)) task.wait(0.5)
+            elseif ReVal==V3T then Setting.ChangeTWay=true;CommF:InvokeServer("requestEntrance",__U[57](923.21252441406,126.9760055542,32852.83203125)) task.wait(0.5) end
         elseif WorldCheck["Third Sea"]then
             ReVal=math.huge
             V3Z=(V3.Position-__VE["LPs"].Character.HumanoidRootPart.Position).Magnitude
@@ -2250,9 +2251,9 @@ local function UNT(V3,CM)
             if V3T<ReVal then ReVal=V3T end
             if V3Th<ReVal then ReVal=V3Th end
             if ReVal==V3Z then
-            elseif ReVal==V3O then CommF:InvokeServer("requestEntrance",__U[57](-5072.08984375,314.5412902832,-3151.1098632812)) task.wait(0.5)
-            elseif ReVal==V3T then CommF:InvokeServer("requestEntrance",__U[57](5748.7587890625,610.44982910156,-267.81704711914)) task.wait(0.5)
-            elseif ReVal==V3Th then CommF:InvokeServer("requestEntrance",__U[57](-12471.169921875,374.94024658203,-7551.677734375)) task.wait(0.5) end
+            elseif ReVal==V3O then Setting.ChangeTWay=true;CommF:InvokeServer("requestEntrance",__U[57](-5072.08984375,314.5412902832,-3151.1098632812)) task.wait(0.5)
+            elseif ReVal==V3T then Setting.ChangeTWay=true;CommF:InvokeServer("requestEntrance",__U[57](5748.7587890625,610.44982910156,-267.81704711914)) task.wait(0.5)
+            elseif ReVal==V3Th then Setting.ChangeTWay=true;CommF:InvokeServer("requestEntrance",__U[57](-12471.169921875,374.94024658203,-7551.677734375)) task.wait(0.5) end
         end
     end
 end
@@ -2276,10 +2277,20 @@ function tpwithnewtpbyme(a,b,c,speedoftpNTP)
 
     local direction = (targetPos - currentPos).Unit
     local distance = (targetPos - currentPos).Magnitude
-    local steps = __VE[39](distance / speedoftpNTP) 
+    local steps = __U[39](distance / speedoftpNTP) 
     for i = 1, steps do
         if Setting.UnlockPortal then
             UNT(targetPos, false)
+            task.wait()
+            if Setting.ChangeTWay then
+                p = hrd.Position
+                currentPos = __U[57](p.x, p.y, p.z)
+                direction = (targetPos - currentPos).Unit
+                distance = (targetPos - currentPos).Magnitude
+                steps = __U[39](distance / speedoftpNTP)
+                task.wait()
+                Setting.ChangeTWay = false
+            end
         end
         if not __VE["LPs"].Character:FindFirstChild("Humanoid") then
             repeat __U[23](0.175) until __VE["LPs"].Character:FindFirstChild("Humanoid")
@@ -2300,10 +2311,19 @@ function tpwithnewtpbyme2(xyz,speedoftpNTP)
 
     local direction = (targetPos - currentPos).Unit
     local distance = (targetPos - currentPos).Magnitude
-    local steps = __VE[39](distance / speedoftpNTP) 
+    local steps = __U[39](distance / speedoftpNTP) 
     for i = 1, steps do
         if Setting.UnlockPortal then
             UNT(xyz, true)
+            task.wait()
+            if Setting.ChangeTWay then
+                p = hrd.Position
+                currentPos = __U[57](p.x, p.y, p.z)
+                direction = (targetPos - currentPos).Unit
+                distance = (targetPos - currentPos).Magnitude
+                steps = __U[39](distance / speedoftpNTP) 
+                Setting.ChangeTWay = false
+            end
         end
         if not __VE["LPs"].Character:FindFirstChild("Humanoid") then
             repeat __U[23](0.175) until __VE["LPs"].Character:FindFirstChild("Humanoid")
@@ -2324,7 +2344,7 @@ function tpwithnewtpbyme3(part,speedoftpNTP)
 
     local direction = (targetPos - currentPos).Unit
     local distance = (targetPos - currentPos).Magnitude
-    local steps = __VE[39](distance / speedoftpNTP) 
+    local steps = __U[39](distance / speedoftpNTP) 
     for i = 1, steps do
         currentPos = currentPos + direction * speedoftpNTP 
         part.Position = currentPos
@@ -2489,7 +2509,7 @@ local function CheckAndClearWeapon()
         if (Setting.AutoSpikeyTrident or Setting.AutoSpikeyTridentHop) and Setting.Stackable and WorldCheck["First Sea"] then
             __U[6](function()
                 if __VE["WS"].Enemies:FindFirstChild("Cake Prince") then
-                    for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                    for i,v in pairs(__VE["WS"].Enemies:GetChildren()) do
                         if v and v.Name == "Cake Prince" and v:FindFirstChild("Humanoid") and v.Humanoid.Health ~= 0 then
                             if v:FindFirstChild("HumanoidRootPart") then
                                 repeat
@@ -2527,8 +2547,8 @@ local function CheckAndClearWeapon()
                         end
                     end
                 else
-                    if ReplicatedStorage:FindFirstChild("Captain Elephant") and Setting.StackableSetting then
-                        tpwithnewtpbyme2(ReplicatedStorage:FindFirstChild("Captain Elephant").HumanoidRootPart.CFrame * __U[26](0,30,0), __U[31](Setting.TeleportSpeedAutoFarm))
+                    if __VE["RlS"]:FindFirstChild("Captain Elephant") and Setting.StackableSetting then
+                        tpwithnewtpbyme2(__VE["RlS"]:FindFirstChild("Captain Elephant").HumanoidRootPart.CFrame * __U[26](0,30,0), __U[31](Setting.TeleportSpeedAutoFarm))
                     end
                     __U[23](0.675)
                     for _,v in __U[7](__VE["WS"].Enemies:GetChildren()) do
@@ -2568,7 +2588,7 @@ local function CheckAndClearWeapon()
                     end
                 else
                     if __VE["RlS"]:FindFirstChild("Cake Queen") and Setting.StackableSetting then
-                        tpwithnewtpbyme2(ReplicatedStorage:FindFirstChild("Cake Queen").HumanoidRootPart.CFrame * __U[26](0,30,0), __U[31](Setting.TeleportSpeedAutoFarm))
+                        tpwithnewtpbyme2(__VE["RlS"]:FindFirstChild("Cake Queen").HumanoidRootPart.CFrame * __U[26](0,30,0), __U[31](Setting.TeleportSpeedAutoFarm))
                         __U[23](0.675)
                         for _,v in __U[7](__VE["WS"].Enemies:GetChildren()) do
                             if v and v.Name == __U[32]("Cake Queen") and Setting.StackableSetting then
@@ -2608,7 +2628,7 @@ local function CheckAndClearWeapon()
                     end
                 else
                     if __VE["RlS"]:FindFirstChild("The Saw") and Setting.StackableSetting then
-                        tpwithnewtpbyme2(ReplicatedStorage:FindFirstChild("The Saw").HumanoidRootPart.CFrame * __U[26](0,30,0), __U[31](Setting.TeleportSpeedAutoFarm))
+                        tpwithnewtpbyme2(__VE["RlS"]:FindFirstChild("The Saw").HumanoidRootPart.CFrame * __U[26](0,30,0), __U[31](Setting.TeleportSpeedAutoFarm))
                         __U[23](0.675)
                         for _,v in __U[7](__VE["WS"].Enemies:GetChildren()) do
                             if v and v.Name == __U[32]("The Saw") and Setting.StackableSetting then
@@ -2648,7 +2668,7 @@ local function CheckAndClearWeapon()
                     end
                 else
                     if __VE["RlS"]:FindFirstChild("Chief Warden") and Setting.StackableSetting then
-                        tpwithnewtpbyme2(ReplicatedStorage:FindFirstChild("Chief Warden").HumanoidRootPart.CFrame * __U[26](0,30,0), __U[31](Setting.TeleportSpeedAutoFarm))
+                        tpwithnewtpbyme2(__VE["RlS"]:FindFirstChild("Chief Warden").HumanoidRootPart.CFrame * __U[26](0,30,0), __U[31](Setting.TeleportSpeedAutoFarm))
                         __U[23](0.675)
                         for _,v in __U[7](__VE["WS"].Enemies:GetChildren()) do
                             if v and v.Name == __U[32]("Chief Warden") and Setting.StackableSetting then
@@ -2688,7 +2708,7 @@ local function CheckAndClearWeapon()
                     end
                 else
                     if __VE["RlS"]:FindFirstChild("Fajita") and Setting.StackableSetting then
-                        tpwithnewtpbyme2(ReplicatedStorage:FindFirstChild("Fajita").HumanoidRootPart.CFrame * __U[26](0,30,0), __U[31](Setting.TeleportSpeedAutoFarm))
+                        tpwithnewtpbyme2(__VE["RlS"]:FindFirstChild("Fajita").HumanoidRootPart.CFrame * __U[26](0,30,0), __U[31](Setting.TeleportSpeedAutoFarm))
                         __U[23](0.675)
                         for _,v in __U[7](__VE["WS"].Enemies:GetChildren()) do
                             if v and v.Name == __U[32]("Fajita") and Setting.StackableSetting then
@@ -2728,7 +2748,7 @@ local function CheckAndClearWeapon()
                     end
                 else
                     if __VE["RlS"]:FindFirstChild("Diamond") and Setting.StackableSetting then
-                        tpwithnewtpbyme2(ReplicatedStorage:FindFirstChild("Diamond").HumanoidRootPart.CFrame * __U[26](0,30,0), __U[31](Setting.TeleportSpeedAutoFarm))
+                        tpwithnewtpbyme2(__VE["RlS"]:FindFirstChild("Diamond").HumanoidRootPart.CFrame * __U[26](0,30,0), __U[31](Setting.TeleportSpeedAutoFarm))
                         __U[23](0.675)
                         for _,v in __U[7](__VE["WS"].Enemies:GetChildren()) do
                             if v and v.Name == __U[32]("Diamond") and Setting.StackableSetting then
@@ -2768,7 +2788,7 @@ local function CheckAndClearWeapon()
                     end
                 else
                     if __VE["RlS"]:FindFirstChild("Smoke Admiral") and Setting.StackableSetting then
-                        tpwithnewtpbyme2(ReplicatedStorage:FindFirstChild("Smoke Admiral").HumanoidRootPart.CFrame * __U[26](0,30,0), __U[31](Setting.TeleportSpeedAutoFarm))
+                        tpwithnewtpbyme2(__VE["RlS"]:FindFirstChild("Smoke Admiral").HumanoidRootPart.CFrame * __U[26](0,30,0), __U[31](Setting.TeleportSpeedAutoFarm))
                         __U[23](0.675)
                         for _,v in __U[7](__VE["WS"].Enemies:GetChildren()) do
                             if v and v.Name == __U[32]("Smoke Admiral") and Setting.StackableSetting then
@@ -2808,7 +2828,7 @@ local function CheckAndClearWeapon()
                     end
                 else
                     if __VE["RlS"]:FindFirstChild("Tide Keeper") and Setting.StackableSetting then
-                        tpwithnewtpbyme2(ReplicatedStorage:FindFirstChild("Tide Keeper").HumanoidRootPart.CFrame * __U[26](0,30,0), __U[31](Setting.TeleportSpeedAutoFarm))
+                        tpwithnewtpbyme2(__VE["RlS"]:FindFirstChild("Tide Keeper").HumanoidRootPart.CFrame * __U[26](0,30,0), __U[31](Setting.TeleportSpeedAutoFarm))
                         __U[23](0.675)
                         for _,v in __U[7](__VE["WS"].Enemies:GetChildren()) do
                             if v and v.Name == __U[32]("Tide Keeper") and Setting.StackableSetting then
@@ -2848,7 +2868,7 @@ local function CheckAndClearWeapon()
                     end
                 else
                     if __VE["RlS"]:FindFirstChild("Thunder God") and Setting.StackableSetting then
-                        tpwithnewtpbyme2(ReplicatedStorage:FindFirstChild("Thunder God").HumanoidRootPart.CFrame * __U[26](0,30,0), __U[31](Setting.TeleportSpeedAutoFarm))
+                        tpwithnewtpbyme2(__VE["RlS"]:FindFirstChild("Thunder God").HumanoidRootPart.CFrame * __U[26](0,30,0), __U[31](Setting.TeleportSpeedAutoFarm))
                         __U[23](0.675)
                         for _,v in __U[7](__VE["WS"].Enemies:GetChildren()) do
                             if v and v.Name == __U[32]("Thunder God") and Setting.StackableSetting then
@@ -2871,8 +2891,8 @@ local function CheckAndClearWeapon()
         __U[23]()
         if (Setting.AutoHallowScythe or Setting.AutoHallowScytheHop) and Setting.StackableSetting and WorldCheck["Third Sea"] then
             __U[6](function()
-                if game:GetService("Workspace").Enemies:FindFirstChild("Soul Reaper") and Setting.StackableSetting then
-                    for i,v in __U[7](game:GetService("Workspace").Enemies:GetChildren()) do
+                if __VE["WS"].Enemies:FindFirstChild("Soul Reaper") and Setting.StackableSetting then
+                    for i,v in __U[7](__VE["WS"].Enemies:GetChildren()) do
                         if v and v.Name == __U[32]("Soul Reaper") and Setting.StackableSetting then
                             if v:FindFirstChild("Humanoid") and v.Humanoid.Health ~= 0 and Setting.AutoHallowScythe and Setting.StackableSetting then
                                 EquipWeapon(__U[32](Setting.SelectWeapon))
@@ -2895,7 +2915,7 @@ local function CheckAndClearWeapon()
                     until (__U[26](-8932.322265625, 146.83154296875, 6062.55078125).Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude <= 8 or not Setting.StackableSetting or not Setting.AutoHallowScythe                   
                     EquipWeapon("Hallow Essence")
                     __U[23](2)
-                    for i,v in __U[7](game:GetService("Workspace").Enemies:GetChildren()) do
+                    for i,v in __U[7](__VE["WS"].Enemies:GetChildren()) do
                         if v and v.Name == __U[32]("Soul Reaper") and Setting.StackableSetting then
                             if v:FindFirstChild("Humanoid") and v.Humanoid.Health ~= 0 and Setting.AutoHallowScythe and Setting.StackableSetting then
                                 EquipWeapon(__U[32](Setting.SelectWeapon))
@@ -2911,10 +2931,10 @@ local function CheckAndClearWeapon()
                         end
                     end
                 else
-                    if ReplicatedStorage:FindFirstChild("Soul Reaper") and Setting.StackableSetting then
+                    if __VE["RlS"]:FindFirstChild("Soul Reaper") and Setting.StackableSetting then
                         tpwithnewtpbyme2(__VE["RlS"]:FindFirstChild("Soul Reaper").HumanoidRootPart.CFrame * __U[26](0,30,0), __U[31](Setting.TeleportSpeedAutoFarm))
                         __U[23](0.576)
-                        for i,v in __U[7](game:GetService("Workspace").Enemies:GetChildren()) do
+                        for i,v in __U[7](__VE["WS"].Enemies:GetChildren()) do
                             if v and v.Name == __U[32]("Soul Reaper") and Setting.StackableSetting then
                                 if v:FindFirstChild("Humanoid") and v.Humanoid.Health ~= 0 and Setting.AutoHallowScythe and Setting.StackableSetting then
                                     EquipWeapon(__U[32](Setting.SelectWeapon))
@@ -2953,7 +2973,7 @@ local function CheckAndClearWeapon()
                     end
                 else
                     if __VE["RlS"]:FindFirstChild("Saber Expert") and Setting.StackableSetting then
-                        tpwithnewtpbyme2(ReplicatedStorage:FindFirstChild("Saber Expert").HumanoidRootPart.CFrame * __U[26](0,30,0), __U[31](Setting.TeleportSpeedAutoFarm))
+                        tpwithnewtpbyme2(__VE["RlS"]:FindFirstChild("Saber Expert").HumanoidRootPart.CFrame * __U[26](0,30,0), __U[31](Setting.TeleportSpeedAutoFarm))
                         __U[23](0.675)
                         for _,v in __U[7](__VE["WS"].Enemies:GetChildren()) do
                             if v and v.Name == __U[32]("Saber Expert") and Setting.StackableSetting then
@@ -2993,7 +3013,7 @@ local function CheckAndClearWeapon()
                     end
                 else
                     if __VE["RlS"]:FindFirstChild("Beautiful Pirate") and Setting.StackableSetting then
-                        tpwithnewtpbyme2(ReplicatedStorage:FindFirstChild("Beautiful Pirate").HumanoidRootPart.CFrame * __U[26](0,30,0), __U[31](Setting.TeleportSpeedAutoFarm))
+                        tpwithnewtpbyme2(__VE["RlS"]:FindFirstChild("Beautiful Pirate").HumanoidRootPart.CFrame * __U[26](0,30,0), __U[31](Setting.TeleportSpeedAutoFarm))
                         __U[23](0.675)
                         for _,v in __U[7](__VE["WS"].Enemies:GetChildren()) do
                             if v and v.Name == __U[32]("Beautiful Pirate") and Setting.StackableSetting then
@@ -3466,7 +3486,7 @@ __U[6](function()
         repeat __U[23]() until finishload
         while __U[23]() do
             if Setting.AutoFarmLevel and not Setting.AutoSea2 then
-                --__U[6](function()
+                __U[6](function()
                     CheckAndClearWeapon()
                     __U[23]()
                     CheckLevel()
@@ -3474,14 +3494,14 @@ __U[6](function()
                     if InstanceTp then
                         repeat
                             __U[19](0.175)
-                            if InstanceTp and (CheckLevel()[3].Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude > 3000 then
-                                __VE["LPs"].Character:SetPrimaryPartCFrame(CheckLevel()[3])
+                            if InstanceTp and (CheckLevel()[6].Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude > 3000 then
+                                __VE["LPs"].Character:SetPrimaryPartCFrame(CheckLevel()[6])
                                 __U[19]()
                                 __VE["LPs"].Character.Humanoid.Health = 0
                                 repeat __U[23]() until __VE["LPs"].Character.Humanoid
-                                __VE["LPs"].Character:SetPrimaryPartCFrame(CheckLevel()[3])
-                                __VE["LPs"].Character:SetPrimaryPartCFrame(CheckLevel()[3])
-                                __VE["LPs"].Character:SetPrimaryPartCFrame(CheckLevel()[3])
+                                __VE["LPs"].Character:SetPrimaryPartCFrame(CheckLevel()[6])
+                                __VE["LPs"].Character:SetPrimaryPartCFrame(CheckLevel()[6])
+                                __VE["LPs"].Character:SetPrimaryPartCFrame(CheckLevel()[6])
                             else
                                 break
                             end
@@ -3491,20 +3511,20 @@ __U[6](function()
                     __U[23]()
                     repeat __U[23]() until __VE["LPs"].Character:FindFirstChild("Humanoid")
                     if not __VE["PsG"].Main.Quest.Visible then
-                        tpwithnewtpbyme2(CheckLevel()[6], __U[31](Setting.TeleportSpeedAutoFarm))
+                        tpwithnewtpbyme2(CheckLevel()[5], __U[31](Setting.TeleportSpeedAutoFarm))
                         __U[23](1)
-                        if (CheckLevel()[3].Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude < 3000 then
-                            CommF:InvokeServer("StartQuest", CheckLevel()[4], CheckLevel()[5])
+                        if (CheckLevel()[5].Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude < 3000 then
+                            CommF:InvokeServer("StartQuest", CheckLevel()[2], CheckLevel()[3])
                         end
                         __U[23](.175)
                     end
                     __U[23]()
                     if Setting.AutoFarmLevel and not Setting.AutoSea2 then
-                        tpwithnewtpbyme2(CheckLevel()[3], __U[31](Setting.TeleportSpeedAutoFarm))
+                        tpwithnewtpbyme2(CheckLevel()[6], __U[31](Setting.TeleportSpeedAutoFarm))
                     end
                     repeat
                         for _,v in __U[7](__VE["WS"].Enemies:GetChildren()) do
-                            if v and v.Name == __U[32](CheckLevel()[2]) and (CheckLevel()[6].Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude < 3000 then
+                            if v and v.Name == __U[32](CheckLevel()[4]) and (CheckLevel()[6].Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude < 3000 then
                                 if v:FindFirstChild("Humanoid") and v.Humanoid.Health ~= 0 and Setting.AutoFarmLevel and __VE["PsG"].Main.Quest.Visible and (CheckLevel()[6].Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude < 3000 then
                                     CheckAndClearWeapon()
                                     __U[23]()
@@ -3515,16 +3535,15 @@ __U[6](function()
                                         tpwithnewtpbyme(MobHumP.X + Setting.AutoFarmPosX, MobHumP.Y + Setting.AutoFarmPosY, MobHumP.Z + Setting.AutoFarmPosZ, __U[31](Setting.TeleportSpeedAutoFarm))
                                         __U[19]()
                                         Setting.TryNumOfthis1 = Setting.TryNumOfthis1 + 1
-                                    until v.Humanoid.Health == 0 or __VE["PsG"].Main.Quest.Visible == false or not Setting.AutoFarmLevel or Setting.TryNumOfthis1 == 300 or (CFrameMon.Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude > 3000
+                                    until v.Humanoid.Health == 0 or not __VE["PsG"].Main.Quest.Visible or not Setting.AutoFarmLevel or Setting.TryNumOfthis1 == 300 or (CFrameMon.Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude > 3000
                                 end
                             end
                         end
-                        tpwithnewtpbyme2(CheckLevel()[3], __U[31](Setting.TeleportSpeedAutoFarm))
+                        tpwithnewtpbyme2(CheckLevel()[6], __U[31](Setting.TeleportSpeedAutoFarm))
                         __U[23]()
                     until not __VE["PsG"].Main.Quest.Visible or not Setting.AutoFarmLevel or (CFrameMon.Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude > 3000
-                    Attack = false
                     __U[23]()
-                --end)
+                end)
                 __U[23]()
             elseif Setting.AutoFarmLevel and Setting.AutoSea2 then
                 __U[6](function()
@@ -3939,7 +3958,7 @@ __U[6](function()
 							end
 						end
 						__U[23]()
-						for _, v in __U[7](ReplicatedStorage:GetChildren()) do
+						for _, v in __U[7](__VE["RlS"]:GetChildren()) do
 							if v and table.find(BossName["First Sea"], __U[32](v.Name)) then
 								FindTargetBoss(__U[32](v.Name))
 								__U[23](0.675)
@@ -4235,12 +4254,12 @@ __U[58](function()
                         if not Backpack:FindFirstChild("Flower 1") and not game:GetService("Players").LocalPlayer.Character:FindFirstChild("Flower 1") then
                             tpwithnewtpbyme2(__VE["WS"].Flower1.CFrame, 5)
                             __U[23]()
-                            __VE["LPs"].Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Flower1.CFrame
+                            __VE["LPs"].Character.HumanoidRootPart.CFrame = __VE["WS"].Flower1.CFrame
                             __U[23]()
                         elseif not game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Flower 2") and not game:GetService("Players").LocalPlayer.Character:FindFirstChild("Flower 2") then
                             tpwithnewtpbyme2(__VE["WS"].Flower2.CFrame, 5)
                             __U[23]()
-                            __VE["LPs"].Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Flower2.CFrame
+                            __VE["LPs"].Character.HumanoidRootPart.CFrame = __VE["WS"].Flower2.CFrame
                             __U[23]()
                         elseif not Backpack:FindFirstChild("Flower 3") and not game:GetService("Players").LocalPlayer.Character:FindFirstChild("Flower 3") then
                             if __VE["WS"].Enemies:FindFirstChild("Zombie") then
@@ -4871,7 +4890,7 @@ __U[6](function()
                             until (__U[26](-8932.322265625, 146.83154296875, 6062.55078125).Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude <= 8                        
                             EquipWeapon("Hallow Essence")
                         else
-                            if ReplicatedStorage:FindFirstChild("Soul Reaper") then
+                            if __VE["RlS"]:FindFirstChild("Soul Reaper") then
                                 tpwithnewtpbyme2(__VE["RlS"]:FindFirstChild("Soul Reaper").HumanoidRootPart.CFrame * __U[26](0,30,0), __U[31](Setting.TeleportSpeedAutoFarm))
                             else
                                 if Setting.AutoHallowScytheHop then
@@ -5051,7 +5070,7 @@ __U[6](function()
                     Setting.PauseAutoEqu = false
                 end
                 __U[23]()
-                if #game:GetService("Workspace").SeaBeasts:GetChildren() > 0 and not table.find(Setting.IgnoreSeaEventList, "SeaBeast") then
+                if #__VE["WS"].SeaBeasts:GetChildren() > 0 and not table.find(Setting.IgnoreSeaEventList, "SeaBeast") then
                     Setting.DMGAura4 = true
                     Setting.WaitBRUH = true
                     Setting.PauseAutoEqu = true
@@ -5097,7 +5116,7 @@ __U[6](function()
                     Setting.PauseAutoEqu = false
                 end
                 __U[23]()
-                if not __VE["WS"].Enemies:FindFirstChild("Shark") and not __VE["WS"].Enemies:FindFirstChild("Terrorshark") and not __VE["WS"].Enemies:FindFirstChild("Piranha") and not __VE["WS"].Enemies:FindFirstChild("Fish Crew Member") and #game:GetService("Workspace").SeaBeasts:GetChildren() == 0 then
+                if not __VE["WS"].Enemies:FindFirstChild("Shark") and not __VE["WS"].Enemies:FindFirstChild("Terrorshark") and not __VE["WS"].Enemies:FindFirstChild("Piranha") and not __VE["WS"].Enemies:FindFirstChild("Fish Crew Member") and #__VE["WS"].SeaBeasts:GetChildren() == 0 then
                     Setting.DMGAura4 = false
                     Setting.WaitBRUH = false
                     Setting.PauseAutoEqu = false
@@ -7470,7 +7489,7 @@ __U[20](function()
                                     until __A.AutoThirdSea == __Y[2] or v.Humanoid.Health <= __Y[4] or not v.Parent
                                 end
                             end
-                        elseif not game:GetService("Workspace").Enemies:FindFirstChild("\114\105\112\95\105\110\100\114\97") and (__U[26](-26880.93359375, 22.848554611206, 473.18951416016).Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude <= __N[8]*__N[8]*__N[8] then
+                        elseif not __VE["WS"].Enemies:FindFirstChild("\114\105\112\95\105\110\100\114\97") and (__U[26](-26880.93359375, 22.848554611206, 473.18951416016).Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude <= __N[8]*__N[8]*__N[8] then
                             tpwithnewtpbyme2(__U[26](-26880.93359375, 22.848554611206, 473.18951416016),5)
                         end
                     end
