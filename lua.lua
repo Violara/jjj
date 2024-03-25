@@ -10,6 +10,7 @@ for i=1,#__LUABLE["Functions"] do
 end
 --__Team = {}
 --__Team.Select = Config["Team"] or "p"
+--[[
 __A = {}
 __A.Api = loadstring(game:HttpGet("https://raw.githubusercontent.com/ZoiIntra/Api/main/Luable/__CheckGame.lua"))()
 -- Setting
@@ -96,6 +97,7 @@ __A.data = {
 }
 __A.newdata = __A.HttpService:JSONEncode(__A.data)
 __A.requestt({Url = __A.WebhookUrl, Body = __A.newdata, Method = "POST", Headers = __A.headers})
+]]
 __VE = {
     ["Ps"] = game:GetService("Players"),
     ["LPs"] = game:GetService("Players").LocalPlayer,
@@ -3404,7 +3406,7 @@ __U[6](function()
         repeat __U[23]() until finishload
         while __U[23]() do
             if Setting.AutoFarmLevel and not Setting.AutoSea2 then
-                __U[6](function()
+                --__U[6](function()
                     CheckAndClearWeapon()
                     __U[23]()
                     CheckLevel()
@@ -3462,7 +3464,7 @@ __U[6](function()
                     until not __VE["PsG"].Main.Quest.Visible or not Setting.AutoFarmLevel or (CFrameMon.Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude > 3000
                     Attack = false
                     __U[23]()
-                end)
+                --end)
                 __U[23]()
             elseif Setting.AutoFarmLevel and Setting.AutoSea2 then
                 __U[6](function()
@@ -4136,8 +4138,11 @@ __U[58](function()
         if Setting.TpToFruit then
             __U[6](function()
                 for _, v in __U[7](__VE["WS"]:GetChildren()) do
-                    if v:IsA("Tool") then
-                        tpwithnewtpbyfruit(v.WorldPivot.Position.X, v.WorldPivot.Position.Y, v.WorldPivot.Position.Z, 5)
+                    if v:IsA("Tool") and v:FindFirstChild("Handle") then
+                        pcall(function()
+                            tpwithnewtpbyfruit(v.Handle.Position.X, v.Handle.Position.Y, v.Handle.Position.Z, 5)
+                        end)
+                        task.wait()
                         break
                     end
                 end
@@ -5928,10 +5933,10 @@ do
     BringFruit:OnChanged(function()
         Setting.BringFruit = Options.BringFruit.Value
     end)
-    TeleportFruit = Tabs.FruitT:AddToggle("TeleportFruit", {Title = "Teleport To Fruit", Default = false })
+    TpToFruit = Tabs.FruitT:AddToggle("TpToFruit", {Title = "Teleport To Fruit", Default = false })
 
-    TeleportFruit:OnChanged(function()
-        Setting.TpToFruit = Options.TeleportFruit.Value
+    TpToFruit:OnChanged(function()
+        Setting.TpToFruit = Options.TpToFruit.Value
     end)
     AutoRandomFruit = Tabs.FruitT:AddToggle("AutoRandomFruit", {Title = "Auto Spin Fruit", Default = Setting.AutoRandomFruit })
 
@@ -5947,7 +5952,7 @@ do
     AutoStoreFruit:OnChanged(function()
         while Options.AutoStoreFruit.Value do
             pcall(function()
-                for _, tool in __U[7](game.Players.LocalPlayer.Character:GetChildren()) do
+                for _, tool in __U[7](__VE["LPs"].Character:GetChildren()) do
                     if tool:FindFirstChild("EatRemote") and Options.AutoStoreFruit.Value then
                         local FruitToStore = tool:GetAttribute("OriginalName")
                         if FruitToStore then
@@ -5958,13 +5963,13 @@ do
                     end
                 end
                 __U[23]()
-                for _, tool in __U[7](game.Players.LocalPlayer.Backpack:GetChildren()) do
-                    if tool:FindFirstChild("EatRemote") and Options.AutoStoreFruit.Value then
+                for _, tool in __U[7](Backpack:GetChildren()) do
+                    if tool and tool:FindFirstChild("EatRemote") and Options.AutoStoreFruit.Value then
                         Setting.PauseAutoEqu = true
                         pcall(function()
                             local FruitToStore = tool:GetAttribute("OriginalName")
                             if FruitToStore then
-                                EquipWeapon(tool.Name)
+                                EquipWeapon(__U[32](tool.Name))
                                 wait()
                                 __VE["RlS"].Remotes.CommF_:InvokeServer("StoreFruit", FruitToStore, tool)
                             else
@@ -5983,17 +5988,17 @@ do
     AutoDropFruit:OnChanged(function()
         while Options.AutoDropFruit.Value do
             pcall(function()
-                for _, v in __U[7](game.Players.LocalPlayer.Character:GetChildren()) do
+                for _, v in __U[7](__VE["LPs"].Character:GetChildren()) do
                     if v:FindFirstChild("EatRemote") and Options.AutoDropFruit.Value then
                         v.EatRemote:InvokeServer("Drop")
                     end
                 end
                 __U[23]()
-                for _, v in __U[7](game.Players.LocalPlayer.Backpack:GetChildren()) do
-                    if v:FindFirstChild("EatRemote", true) and Options.AutoDropFruit.Value then
+                for _, v in __U[7](Backpack:GetChildren()) do
+                    if v and v:FindFirstChild("EatRemote") and Options.AutoDropFruit.Value then
                         Setting.PauseAutoEqu = true
                         pcall(function()
-                            EquipWeapon(v.Name)
+                            EquipWeapon(__U[32](v.Name))
                             wait()
                             v.EatRemote:InvokeServer("Drop")
                         end)
@@ -6592,7 +6597,7 @@ do
         Title = "In Combat",
         Description = "",
         Callback = function()
-            game:GetService("Players").LocalPlayer.__VE["PsG"].Main.InCombat.Visible = not game:GetService("Players").LocalPlayer.__VE["PsG"].Main.InCombat.Visible
+            __VE["PsG"].Main.InCombat.Visible = not game:GetService("Players").LocalPlayer.__VE["PsG"].Main.InCombat.Visible
         end
     })
     Tabs.Main:AddButton({
@@ -6604,45 +6609,45 @@ do
     })
     LevelVisual = Tabs.PlayerTab:AddInput("LevelVisual", {
         Title = "Level",
-        Default = game:GetService("Players").LocalPlayer.__VE["PsG"].Main.Level.Text,
+        Default = __VE["PsG"].Main.Level.Text,
         Placeholder = "Placeholder",
         Numeric = false,
         Finished = false,
         Callback = function(Value)
-            game:GetService("Players").LocalPlayer.__VE["PsG"].Main.Level.Text = "Lv. " .. Value
+           __VE["PsG"].Main.Level.Text = "Lv. " .. Value
         end
     })
 
     LevelVisual:OnChanged(function()
-        game:GetService("Players").LocalPlayer.__VE["PsG"].Main.Level.Text = "Lv. " .. LevelVisual.Value
+        __VE["PsG"].Main.Level.Text = "Lv. " .. LevelVisual.Value
     end)
     BeliVisual = Tabs.PlayerTab:AddInput("BeliVisual", {
         Title = "Beli",
-        Default = game:GetService("Players").LocalPlayer.__VE["PsG"].Main.Beli.Text,
+        Default = __VE["PsG"].Main.Beli.Text,
         Placeholder = "Placeholder",
         Numeric = false,
         Finished = false,
         Callback = function(Value)
-            game:GetService("Players").LocalPlayer.__VE["PsG"].Main.Beli.Text = "$" .. BeliVisual
+            __VE["PsG"].Main.Beli.Text = "$" .. BeliVisual
         end
     })
 
     BeliVisual:OnChanged(function()
-        game:GetService("Players").LocalPlayer.__VE["PsG"].Main.Beli.Text = "$" .. BeliVisual.Value
+        __VE["PsG"].Main.Beli.Text = "$" .. BeliVisual.Value
     end)
     FragmentVisual = Tabs.PlayerTab:AddInput("FragmentVisual", {
         Title = "Fragment",
-        Default = game:GetService("Players").LocalPlayer.__VE["PsG"].Main.Fragments.Text,
+        Default = __VE["PsG"].Main.Fragments.Text,
         Placeholder = "Placeholder",
         Numeric = false,
         Finished = false,
         Callback = function(Value)
-            game:GetService("Players").LocalPlayer.__VE["PsG"].Main.Fragments.Text = "ƒ" .. FragmentVisual.Value
+            __VE["PsG"].Main.Fragments.Text = "ƒ" .. FragmentVisual.Value
         end
     })
 
     FragmentVisual:OnChanged(function()
-        game:GetService("Players").LocalPlayer.__VE["PsG"].Main.Fragments.Text = "ƒ" .. FragmentVisual.Value
+        __VE["PsG"].Main.Fragments.Text = "ƒ" .. FragmentVisual.Value
     end)
     StaminaVisual = Tabs.PlayerTab:AddInput("StaminaVisual", {
         Title = "Stamina",
