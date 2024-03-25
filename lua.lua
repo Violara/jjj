@@ -2236,11 +2236,9 @@ local function UNT(V3,CM)
             if V3Z<ReVal then ReVal=V3Z end
             if V3O<ReVal then ReVal=V3O end
             if V3T<ReVal then ReVal=V3T end
-            print(V3Z .. "\n" .. V3O .. "\n" .. V3T)
-            warn(ReVal)
             if ReVal==V3Z then
-            elseif ReVal==V3O then CommF:InvokeServer("requestEntrance",__U[57](-6508.5581054688,5000.0349960327,-132.83953857422)) task.wait(0.5) print("y")
-            elseif ReVal==V3T then CommF:InvokeServer("requestEntrance",__U[57](923.21252441406,126.9760055542,32852.83203125)) task.wait(0.5) print("w") end
+            elseif ReVal==V3O then CommF:InvokeServer("requestEntrance",__U[57](-6508.55810546875, 89.03499603271484, -132.83953857421875)) task.wait(0.5)
+            elseif ReVal==V3T then CommF:InvokeServer("requestEntrance",__U[57](923.21252441406,126.9760055542,32852.83203125)) task.wait(0.5) end
         elseif WorldCheck["Third Sea"]then
             ReVal=math.huge
             V3Z=(V3.Position-__VE["LPs"].Character.HumanoidRootPart.Position).Magnitude
@@ -3496,7 +3494,7 @@ __U[6](function()
                         tpwithnewtpbyme2(CheckLevel()[5], __U[31](Setting.TeleportSpeedAutoFarm))
                         __U[23](1)
                         if (CheckLevel()[5].Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude < 3000 then
-                            CommF:InvokeServer("StartQuest", CheckLevel()[4], CheckLevel()[3])
+                            CommF:InvokeServer("StartQuest", CheckLevel()[2], CheckLevel()[3])
                         end
                         __U[23](.175)
                     end
