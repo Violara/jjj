@@ -330,7 +330,7 @@ if isfolder("Setting") and not isfile("Setting/setting.json") then
         CancelTpToFruit, BringFruit, AutoRandomFruit, AutoStoreFruit, AutoDropFruit, SelectFruitToSnipe, AutoSea2, RemoveAnim, MeleeStats = __Y[2],
         DefenseStats, SwordStats, GunStat, BloxFruitStats, AutoRaceV2, AutoRaceV3, AutoRaceV4, KillAura, AutoRaid = __Y[2],
         DMGAura, DMGAura2, DMGAura3, AutoBartilo,AutoFarmObservation, AutoFarmObservationHop, AutoRichManMission, AutoBone = __Y[2],
-        ChangeTWay = false,
+        ChangeTWay, AutoFarmSwordMastery = false,
         AutoFarmPosX, AutoFarmPosZ, TryNumOfthis1 = __Y[4],
         AutoFarmPosY = __N[3]*__N[1],
         TeleportSpeedAutoFarm = __N[3],
@@ -403,6 +403,9 @@ elseif placeId == 4442272183 then
 elseif placeId == 7449423635 then
     WorldCheck["Third Sea"] = true
 end
+WorldCheck["First Sea"] = true
+WorldCheck["Second Sea"] = true
+WorldCheck["Third Sea"] = true
 local function CheckQuestBoss(SelectBoss)
 	if WorldCheck["First Sea"] then
 		if SelectBoss == "Saber Expert" then
@@ -2297,7 +2300,7 @@ function tpwithnewtpbyme(a,b,c,speedoftpNTP)
 end
 function tpwithnewtpbyme2(xyz,speedoftpNTP)
     if Setting.UnlockPortal then
-        UNT(xyz.Position, true)
+        UNT(xyz, true)
     end
     task.wait()
     local hrd = __VE["LPs"].Character.HumanoidRootPart
@@ -3645,10 +3648,128 @@ __U[6](function()
                     __U[23]()
                 end)
                 __U[23]()
+            elseif Setting.AutoFarmLevel and Setting.AutoThirdSea then
+                __U[6](function()
+                    if __VE["LPs"].Data.Level.Value >= __N[2]*__N[3]*__N[8]*__N[8] and WorldCheck["Second Sea"] then
+                        CommF:InvokeServer("TravelZou")
+                        tpwithnewtpbyme2(__U[26](-1926.3221435547, 12.819851875305, 1738.3092041016),5)
+                        if (__U[26](-1926.3221435547, 12.819851875305, 1738.3092041016).Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude <= __N[8] and Setting.AutoThirdSea then
+                            __U[19](1.5)
+                            CommF:InvokeServer("ZQuestProgress","Begin")
+                        end
+                        repeat task.wait() until __VE["WS"].Enemies:FindFirstChild("\114\105\112\95\105\110\100\114\97") or not Setting.AutoThirdSea or not Setting.AutoFarmLevel
+                        __U[19](1.8)
+                        if __VE["WS"].Enemies:FindFirstChild("\114\105\112\95\105\110\100\114\97") and Setting.AutoThirdSea and Setting.AutoFarmLevel then
+                            for i,v in __U[7](__VE["WS"].Enemies:GetChildren()) do
+                                if v.Name == "\114\105\112\95\105\110\100\114\97" and Setting.AutoThirdSea and v.Humanoid and v.Humanoid.Health ~= 0 and Setting.AutoFarmLevel then
+                                    repeat __U[23]()
+                                        MobHumP = v.HumanoidRootPart.Position
+                                        tpwithnewtpbyme2(v.HumanoidRootPart.CFrame * __U[26](Setting.AutoFarmPosX, Setting.AutoFarmPosY, Setting.AutoFarmPosZ), __U[31](Setting.TeleportSpeedAutoFarm))
+                                        CommF:InvokeServer("TravelZou")
+                                    until not Setting.AutoThirdSea or not Setting.AutoFarmLevel or v.Humanoid.Health <= __Y[4] or not v.Parent
+                                end
+                            end
+                        elseif not __VE["WS"].Enemies:FindFirstChild("\114\105\112\95\105\110\100\114\97") and (__U[26](-26880.93359375, 22.848554611206, 473.18951416016).Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude <= __N[8]*__N[8]*__N[8] then
+                            tpwithnewtpbyme2(__U[26](-26880.93359375, 22.848554611206, 473.18951416016), 5)
+                        end
+                    else
+                        __U[6](function()
+                            CheckAndClearWeapon()
+                            __U[23]()
+                            CheckLevel()
+                            __U[23](0.657)
+                            if InstanceTp then
+                                repeat
+                                    __U[19](0.175)
+                                    if InstanceTp and (CheckLevel()[6].Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude > 3000 then
+                                        __VE["LPs"].Character:SetPrimaryPartCFrame(CheckLevel()[6])
+                                        __U[19]()
+                                        __VE["LPs"].Character.Humanoid.Health = 0
+                                        repeat __U[23]() until __VE["LPs"].Character.Humanoid
+                                        __VE["LPs"].Character:SetPrimaryPartCFrame(CheckLevel()[6])
+                                        __VE["LPs"].Character:SetPrimaryPartCFrame(CheckLevel()[6])
+                                        __VE["LPs"].Character:SetPrimaryPartCFrame(CheckLevel()[6])
+                                    else
+                                        break
+                                    end
+                                    __U[23](2.175)
+                                until (CheckLevel()[6].Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude < 3000 and InstanceTp
+                            end
+                            __U[23]()
+                            repeat __U[23]() until __VE["LPs"].Character:FindFirstChild("Humanoid")
+                            if not __VE["PsG"].Main.Quest.Visible then
+                                tpwithnewtpbyme2(CheckLevel()[5], __U[31](Setting.TeleportSpeedAutoFarm))
+                                __U[23](1)
+                                if (CheckLevel()[5].Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude < 3000 then
+                                    CommF:InvokeServer("StartQuest", CheckLevel()[2], CheckLevel()[3])
+                                end
+                                __U[23](.175)
+                            end
+                            __U[23]()
+                            if Setting.AutoFarmLevel and not Setting.AutoThirdSea then
+                                tpwithnewtpbyme2(CheckLevel()[6], __U[31](Setting.TeleportSpeedAutoFarm))
+                            end
+                            repeat
+                                for _,v in __U[7](__VE["WS"].Enemies:GetChildren()) do
+                                    if v and v.Name == __U[32](CheckLevel()[4]) and (CheckLevel()[6].Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude < 3000 then
+                                        if v:FindFirstChild("Humanoid") and v.Humanoid.Health ~= 0 and Setting.AutoFarmLevel and __VE["PsG"].Main.Quest.Visible and (CheckLevel()[6].Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude < 3000 and Setting.AutoThirdSea then
+                                            CheckAndClearWeapon()
+                                            __U[23]()
+                                            Setting.TryNumOfthis1 = 0
+                                            repeat
+                                                repeat __U[23]() until __VE["LPs"].Character:FindFirstChild("Humanoid")
+                                                MobHumP = v.HumanoidRootPart.Position
+                                                tpwithnewtpbyme(MobHumP.X + Setting.AutoFarmPosX, MobHumP.Y + Setting.AutoFarmPosY, MobHumP.Z + Setting.AutoFarmPosZ, __U[31](Setting.TeleportSpeedAutoFarm))
+                                                __U[19]()
+                                                Setting.TryNumOfthis1 = Setting.TryNumOfthis1 + 1
+                                            until v.Humanoid.Health == 0 or not __VE["PsG"].Main.Quest.Visible or not Setting.AutoFarmLevel or Setting.TryNumOfthis1 == 300 or (CFrameMon.Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude > 3000 or not Setting.AutoThirdSea
+                                        end
+                                    end
+                                end
+                                tpwithnewtpbyme2(CheckLevel()[6], __U[31](Setting.TeleportSpeedAutoFarm))
+                                __U[23]()
+                            until not __VE["PsG"].Main.Quest.Visible or not Setting.AutoFarmLevel or (CFrameMon.Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude > 3000 or not Setting.AutoThirdSea
+                            __U[23]()
+                        end)
+                        __U[23]()
+                    end
+                end)
             end
             __U[23]()
         end
     end)()
+end)
+__U[20](function()
+    while __U[23]() do
+        if Setting.AutoThirdSeaM then
+            __U[6](function()
+                if __VE["LPs"].Data.Level.Value >= __N[2]*__N[3]*__N[8]*__N[8] and WorldCheck["Second Sea"] and Setting.AutoThirdSeaM then
+                    if CommF:InvokeServer("ZQuestProgress", "General") == __Y[4] then
+                        tpwithnewtpbyme2(__U[26](-1926.3221435547, 12.819851875305, 1738.3092041016),5)
+                        if (__U[26](-1926.3221435547, 12.819851875305, 1738.3092041016).Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude <= __N[8] and Setting.AutoThirdSeaM then
+                            __U[19](1.5)
+                            CommF:InvokeServer("ZQuestProgress","Begin")
+                        end
+                        repeat task.wait() until __VE["WS"].Enemies:FindFirstChild("\114\105\112\95\105\110\100\114\97") or not Setting.AutoThirdSeaM
+                        __U[19](1.8)
+                        if __VE["WS"].Enemies:FindFirstChild("\114\105\112\95\105\110\100\114\97") and Setting.AutoThirdSea then
+                            for i,v in __U[7](__VE["WS"].Enemies:GetChildren()) do
+                                if v.Name == "\114\105\112\95\105\110\100\114\97" and Setting.AutoThirdSea and v.Humanoid and v.Humanoid.Health ~= 0 then
+                                    repeat __U[23]()
+                                        MobHumP = v.HumanoidRootPart.Position
+                                        tpwithnewtpbyme2(v.HumanoidRootPart.CFrame * __U[26](Setting.AutoFarmPosX, Setting.AutoFarmPosY, Setting.AutoFarmPosZ), __U[31](Setting.TeleportSpeedAutoFarm))
+                                        CommF_:InvokeServer("TravelZou")
+                                    until not Setting.AutoThirdSea or v.Humanoid.Health <= __Y[4] or not v.Parent
+                                end
+                            end
+                        elseif not __VE["WS"].Enemies:FindFirstChild("\114\105\112\95\105\110\100\114\97") and (__U[26](-26880.93359375, 22.848554611206, 473.18951416016).Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude <= __N[8]*__N[8]*__N[8] then
+                            tpwithnewtpbyme2(__U[26](-26880.93359375, 22.848554611206, 473.18951416016), 5)
+                        end
+                    end
+                end
+            end)
+        end
+    end
 end)
 __U[6](function()
     __U[58](function()
@@ -4519,7 +4640,51 @@ __U[6](function()
 		end
     end)()
 end)
-
+pcall(function()
+    coroutine.wrap(function()
+        pcall(function()
+            while task.wait() do
+                if Setting.AutoFarmSwordMastery then
+                    __U[6](function()
+                        if (__VE["WS"].Enemies:FindFirstChild("Cookie Crafter") or __VE["WS"].Enemies:FindFirstChild("Cake Guard") or __VE["WS"].Enemies:FindFirstChild("Baking Staff") or __VE["WS"].Enemies:FindFirstChild("Head Baker")) and Setting.AutoFarmSwordMastery then
+                            for _, v in pairs(__VE["WS"].Enemies:GetChildren()) do
+                                if (v.Name == "Cookie Crafter" or v.Name == "Cake Guard" or v.Name == "Baking Staff" or v.Name == "Head Baker") and Setting.AutoFarmSwordMastery then
+                                    if (v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health ~= 0) and Setting.AutoFarmSwordMastery then
+                                        Setting.TryNumOfthis1 = 0
+                                        repeat
+                                            repeat __U[23]() until __VE["LPs"].Character:FindFirstChild("Humanoid")
+                                            MobHumP = v.HumanoidRootPart.Position
+                                            tpwithnewtpbyme(MobHumP.X + Setting.AutoFarmPosX, MobHumP.Y + Setting.AutoFarmPosY, MobHumP.Z + Setting.AutoFarmPosZ, __U[31](Setting.TeleportSpeedAutoFarm))
+                                            __U[19]()
+                                            Setting.TryNumOfthis1 = Setting.TryNumOfthis1 + 1
+                                        until v.Humanoid.Health == 0 or not Setting.AutoFarmSwordMastery or Setting.TryNumOfthis1 == 30000
+                                    end
+                                end
+                            end
+                        else
+                            if __VE["RlS"]:FindFirstChild("Cookie Crafter") then
+                                tpwithnewtpbyme2(__VE["RlS"]:FindFirstChild("Cookie Crafter").HumanoidRootPart.CFrame * __U[26](0,30,0), __U[31](Setting.TeleportSpeedAutoFarm)) 
+                            else
+                                if __VE["RlS"]:FindFirstChild("Cake Guard") then
+                                    tpwithnewtpbyme2(__VE["RlS"]:FindFirstChild("Cake Guard").HumanoidRootPart.CFrame * __U[26](0,30,0), __U[31](Setting.TeleportSpeedAutoFarm)) 
+                                else
+                                    if __VE["RlS"]:FindFirstChild("Baking Staff") then
+                                        tpwithnewtpbyme2(__VE["RlS"]:FindFirstChild("Baking Staff").HumanoidRootPart.CFrame * __U[26](0,30,0), __U[31](Setting.TeleportSpeedAutoFarm))
+                                    else
+                                        if __VE["RlS"]:FindFirstChild("Head Baker") then
+                                            tpwithnewtpbyme2(__VE["RlS"]:FindFirstChild("Head Baker").HumanoidRootPart.CFrame * __U[26](0,30,0), __U[31](Setting.TeleportSpeedAutoFarm))
+                                        end
+                                    end
+                                end
+                            end
+                        end
+                    end)
+                end
+            end
+        end)
+    end)()
+end)
+--AutoFarmAllSwordMastery in here
 __U[6](function()
     __U[58](function()
         repeat __U[23]() until finishload
@@ -5469,7 +5634,7 @@ do
         Callback = function()
             serializedSetting = __VE["HS"]:JSONEncode(Setting)
             __U[23]()
-            __VE[56]("Setting/setting.json", serializedSetting)
+            __U[56]("Setting/setting.json", serializedSetting)
         end
     })
     WeaponBackpack = {__U[32](Setting.SelectWeapon)}
@@ -5583,7 +5748,7 @@ do
         AutoSea3 = Tabs.AutoFarmTab:AddToggle("AutoSea3", {Title = "Auto Sea 3", Default = Setting.AutoSea3 })
 
         AutoSea3:OnChanged(function()
-            Setting.AutoSea3 = Options.AutoSea3.Value --🔴,ยังไม่ได้ทำ
+            Setting.AutoSea3 = Options.AutoSea3.Value
         end)
     end
     __U[23]()
@@ -5653,14 +5818,14 @@ do
     end)
 
     Tabs.AutoFarmTab:AddSection("Sword")
-    AutoFarmSwordMastery = Tabs.AutoFarmTab:AddToggle("AutoFarmSwordMastery", {Title = "Auto Farm Sword Mastery", Default = Setting.AutoFarmSwordMastery })
+    AutoFarmSwordMastery = Tabs.AutoFarmTab:AddToggle("AutoFarmSwordMastery", {Title = "Auto Farm Sword Mastery | UNT", Default = Setting.AutoFarmSwordMastery })
 
-    AutoFarmSwordMastery:OnChanged(function() --My version 🟡,ยังไม่เสร็จ
+    AutoFarmSwordMastery:OnChanged(function()
         Setting.AutoFarmSwordMastery = Options.AutoFarmSwordMastery.Value
     end)
-    AutoFarmAllSwordMastery = Tabs.AutoFarmTab:AddToggle("AutoFarmAllSwordMastery", {Title = "Auto Farm All Sword Mastery", Default = Setting.AutoFarmAllSwordMastery })
+    AutoFarmAllSwordMastery = Tabs.AutoFarmTab:AddToggle("AutoFarmAllSwordMastery", {Title = "Auto Farm All Sword Mastery | UNT", Default = Setting.AutoFarmAllSwordMastery })
 
-    AutoFarmAllSwordMastery:OnChanged(function() --My version 🟡,ยังไม่เสร็จ
+    AutoFarmAllSwordMastery:OnChanged(function()
         Setting.AutoFarmAllSwordMastery = Options.AutoFarmAllSwordMastery.Value
     end)
 
@@ -5673,6 +5838,11 @@ do
         end)
 
         Tabs.AutoFarmTab:AddSection("Cake Prince")
+        AutoFarmCakePrince = Tabs.AutoFarmTab:AddToggle("AutoFarmCakePrince", {Title = "Auto Farm Cake Prince", Default = Setting.AutoBone })
+
+        AutoFarmCakePrince:OnChanged(function()
+            Setting.AutoFarmCakePrince = Options.AutoFarmCakePrince.Value
+        end)
         AutoFarmCakePrince:OnChanged(function()
             Setting.AutoFarmCakePrince = Options.AutoFarmCakePrince.Value
             if Options.AutoFarmCakePrince.Value then
@@ -6076,31 +6246,93 @@ do
     Tabs.FruitT:AddSection("Selectable") -- Full Access Settings
     SelectDropFruit = Tabs.FruitT:AddDropdown("SelectDropFruit", {
         Title = "Fruit To Drop",
-        Values = {FruitList}, --🟡 | MUTI
-        Multi = false,
-        Default = 1,
+        Description = "",
+        Values = FruitList,
+        Multi = true,
+        Default = Setting.SelectDropFruit,
     })
-    SelectDropFruit:OnChanged(function(Value)
-        Setting.SelectDropFruit = Options.SelectDropFruit.Value --🟡
+    SelectDropFruit:OnChanged(function(SelectedValues)
+        Setting.SelectDropFruit = {}
+        for _, Value in ipairs(SelectedValues) do
+            table.insert(Setting.SelectDropFruit, Value)
+        end
     end)
-    AutoDropSelectFruit = Tabs.FruitT:AddToggle("AutoDropSelectFruit", {Title = "Auto Drop Select Fruit", Default = false })
+    AutoDropSelectFruit = Tabs.FruitT:AddToggle("AutoDropSelectFruit", {Title = "Auto Drop Select Fruit", Default = Setting.AutoDropSelectFruit })
 
     AutoDropSelectFruit:OnChanged(function()
-        Setting.AutoDropSelectFruit = Options.AutoDropSelectFruit.Value --🟡
+        Setting.AutoDropSelectFruit = Options.AutoDropSelectFruit.Value
+        while Options.AutoDropSelectFruit.Value do
+            pcall(function()
+                for _, v in __U[7](__VE["LPs"].Character:GetChildren()) do
+                    if table.find(Setting.SelectDropFruit, __U[32](v.Name)) and v:FindFirstChild("EatRemote") and Options.AutoDropSelectFruit.Value then
+                        v.EatRemote:InvokeServer("Drop")
+                    end
+                end
+                __U[23]()
+                for _, v in __U[7](Backpack:GetChildren()) do
+                    if v and table.find(Setting.SelectDropFruit, __U[32](v.Name)) and v:FindFirstChild("EatRemote") and Options.AutoDropSelectFruit.Value then
+                        Setting.PauseAutoEqu = true
+                        pcall(function()
+                            EquipWeapon(__U[32](v.Name))
+                            wait()
+                            v.EatRemote:InvokeServer("Drop")
+                        end)
+                        Setting.PauseAutoEqu = false
+                    end
+                end
+            end)
+            __U[23]()
+        end
     end)
     SelectStoreFruit = Tabs.FruitT:AddDropdown("SelectStoreFruit", {
         Title = "Fruit To Store",
-        Values = {"gay"}, --🟡 | MUTI
-        Multi = false,
-        Default = 1,
+        Description = "",
+        Values = FruitList,
+        Multi = true,
+        Default = Setting.SelectStoreFruit,
     })
-    SelectStoreFruit:OnChanged(function(Value)
-        Setting.SelectStoreFruit = Options.SelectStoreFruit.Value --🟡
+    SelectStoreFruit:OnChanged(function(SelectedValues)
+        Setting.SelectStoreFruit = {}
+        for _, Value in ipairs(SelectedValues) do
+            table.insert(Setting.SelectStoreFruit, Value)
+        end
     end)
     AutoStoreSelectFruit = Tabs.FruitT:AddToggle("AutoStoreSelectFruit", {Title = "Auto Store Select Fruit", Default = false })
 
     AutoStoreSelectFruit:OnChanged(function()
-        Setting.AutoStoreSelectFruit = Options.AutoStoreSelectFruit.Value --🟡
+        Setting.AutoStoreSelectFruit = Options.AutoStoreSelectFruit.Value
+        while Options.AutoStoreFruit.Value do
+            pcall(function()
+                for _, tool in __U[7](__VE["LPs"].Character:GetChildren()) do
+                    if table.find(Setting.SelectStoreFruit, __U[32](tool.Name)) and tool:FindFirstChild("EatRemote") and Options.AutoStoreFruit.Value then
+                        local FruitToStore = tool:GetAttribute("OriginalName")
+                        if FruitToStore then
+                            __VE["RlS"].Remotes.CommF_:InvokeServer("StoreFruit", FruitToStore, tool)
+                        else
+                            __U[2]("Attribute 'OriginalName' not found for tool:", tool.Name)
+                        end
+                    end
+                end
+                __U[23]()
+                for _, tool in __U[7](Backpack:GetChildren()) do
+                    if tool and table.find(Setting.SelectStoreFruit, __U[32](tool.Name)) and tool:FindFirstChild("EatRemote") and Options.AutoStoreFruit.Value then
+                        Setting.PauseAutoEqu = true
+                        pcall(function()
+                            local FruitToStore = tool:GetAttribute("OriginalName")
+                            if FruitToStore then
+                                EquipWeapon(__U[32](tool.Name))
+                                wait()
+                                __VE["RlS"].Remotes.CommF_:InvokeServer("StoreFruit", FruitToStore, tool)
+                            else
+                                __U[2]("Attribute 'OriginalName' not found for tool:", tool.Name)
+                            end
+                        end)
+                        Setting.PauseAutoEqu = false
+                    end
+                end
+            end)
+            __U[23]()
+        end
     end)
     Tabs.FruitT:AddSection("Snipe")
     FruitList = {
@@ -6207,7 +6439,8 @@ do
         Title = "Teleport Ship To You",
         Description = "",
         Callback = function()
-            --🔴, ยังไม่ได้ทำ
+            --🔴
+            --tpwithseat()
         end
     })
     Tabs.MirageARaceT:AddSection("Race V1-V3")
@@ -6463,7 +6696,7 @@ do
                 wait()
             end
     
-            local T = cmdlp.Character.HumanoidRootPart
+            local T = __VE["LPs"].Character.HumanoidRootPart
             local SPEED = 0
     
             function FLY()
@@ -6498,7 +6731,7 @@ do
     
                     BG:Destroy()
                     BV:Destroy()
-                    cmdlp.Character.Humanoid.PlatformStand = false
+                    __VE["LPs"].Character.Humanoid.PlatformStand = false
                 end)
             end
     
@@ -6743,18 +6976,17 @@ do
     end)
     SelectUiToHide = Tabs.PlayerTab:AddDropdown("SelectUiToHide", {
         Title = "Select Ui",
-        Description = "",
+        Description = "dont hide dad location becuz u dont have 😭",
         Values = {"dad location", "mom location", "gay"},
         Multi = true,
         Default = {"dad location"},
     })
 
-    SelectUiToHide:OnChanged(function(Value)
-        local Values = {}
-        for Value, State in next, Value do
-            table.insert(Values, Value)
+    SelectUiToHide:OnChanged(function(SelectedValues)
+        Setting.SelectUiToHide = {}
+        for _, Value in ipairs(SelectedValues) do
+            table.insert(Setting.SelectUiToHide, Value)
         end
-        print("Mutlidropdown changed:", table.concat(Values, ", "))
     end)
     Tabs.PlayerTab:AddButton({
         Title = "Hide Selected UI",
@@ -7447,40 +7679,3 @@ __VE["Notification"].new("<Color=Green>Data Save<Color=/>"):Display()
 
 
 
--- Auto Third Sea
---[[
-__U[20](function()
-    while __U[19]() do
-        if __A.AutoThirdSea then
-            __U[6](function()
-                if __VE["LPs"].Data.Level.Value >= __N[2]*__N[3]*__N[8]*__N[8] and WorldCheck["Second Sea"] then
-                    __A.AutoFarm = __Y[2]
-                    if CommF:InvokeServer("ZQuestProgress", "General") == __Y[4]then
-                        tpwithnewtpbyme2(__U[26](-1926.3221435547, 12.819851875305, 1738.3092041016),5)
-                        if (__U[26](-1926.3221435547, 12.819851875305, 1738.3092041016).Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude <= __N[8] then
-                            __U[19](1.5)
-                            CommF:InvokeServer("ZQuestProgress","Begin")
-                        end
-                        __U[19](1.8)
-                        if __VE["WS"].Enemies:FindFirstChild("\114\105\112\95\105\110\100\114\97") then
-                            for i,v in __U[7](__VE["WS"].Enemies:GetChildren()) do
-                                if v.Name == "\114\105\112\95\105\110\100\114\97" then
-                                    repeat __U[23]()
-                                        MobHumP = v.HumanoidRootPart.Position
-                                        EquipWeapon(__U[32](Setting.SelectWeapon))
-                                        tpwithnewtpbyme2(v.HumanoidRootPart.CFrame * __U[26](Setting.AutoFarmPosX, Setting.AutoFarmPosY, Setting.AutoFarmPosZ), __U[31](Setting.TeleportSpeedAutoFarm))
-                                        CommF_:InvokeServer("TravelZou")
-                                        __U[34](__VE["LPs"],"SimulationRadius",math.huge)
-                                    until __A.AutoThirdSea == __Y[2] or v.Humanoid.Health <= __Y[4] or not v.Parent
-                                end
-                            end
-                        elseif not __VE["WS"].Enemies:FindFirstChild("\114\105\112\95\105\110\100\114\97") and (__U[26](-26880.93359375, 22.848554611206, 473.18951416016).Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude <= __N[8]*__N[8]*__N[8] then
-                            tpwithnewtpbyme2(__U[26](-26880.93359375, 22.848554611206, 473.18951416016),5)
-                        end
-                    end
-                end
-            end)
-        end
-    end
-end)
-]]
