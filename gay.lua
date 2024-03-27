@@ -11,11 +11,6 @@ local function createParts(Size, CFrame)
     part.Color = Color3.fromRGB(255, 0, 0)
 
     part.Parent = workspace
-
-    local highlight = Instance.new("Highlight")
-    highlight.FillColor = Color3.fromRGB(255, 0, 0)
-    highlight.FillTransparency = 0
-    highlight.Parent = part
 end
 createParts(Vector3.new(15, 1, 45), CFrame.new(237.287537, 98.6303635, 145.430832, -0.0137257231, 0.009610896, 0.999859631, 0.573576331, 0.819152057, -3.57042147e-08, -0.81903708, 0.573495865, -0.0167560373))
 createParts(Vector3.new(10, 1, 5), CFrame.new(230.05275, 107.451981, 91.0173264, -0.561256826, -3.43324125e-08, 0.827641666, -1.24129595e-08, 1, 3.30644916e-08, -0.827641666, 8.28418933e-09, -0.561256826))
