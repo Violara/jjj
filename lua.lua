@@ -212,8 +212,12 @@ do
         while Setting.AutoPray do
             if Setting.AutoPray then
                 pcall(function()
-                    if game:GetService("Players").LocalPlayer.PlayerGui.Menu.Windows.Inventory.Handle.Items.Lists.ScrollingFrame:FindFirstChild("Pray") and game:GetService("Players").LocalPlayer.PlayerGui.Menu.Windows.Inventory.Handle.Items.Lists.ScrollingFrame.Pray.Visible then
-                        game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Item"):FireServer("Pray")
+                    if game:GetService("Players").LocalPlayer.PlayerGui.Menu.PowerList.Handle:FindFirstChild("Pray") and game:GetService("Players").LocalPlayer.PlayerGui.Menu.PowerList.Handle.Pray.Visible then
+                        
+                    else
+                        if game:GetService("Players").LocalPlayer.PlayerGui.Menu.Windows.Inventory.Handle.Items.Lists.ScrollingFrame:FindFirstChild("Pray") and game:GetService("Players").LocalPlayer.PlayerGui.Menu.Windows.Inventory.Handle.Items.Lists.ScrollingFrame.Pray.Visible then
+                            game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Item"):FireServer("Pray")
+                        end
                     end
                 end)
             end
@@ -222,6 +226,7 @@ do
     end)
     getgenv().TextStatus = "Getting Storage"
     Tabs.Main:AddSection("Storage")
+    AutoExtend = Tabs.Main:AddToggle("AutoExtend", {Title = "Auto Extend", Default = Setting.AutoExtend })
     AutoExtend:OnChanged(function()
         Setting.AutoExtend = Options.AutoExtend.Value
         while Setting.AutoExtend do
@@ -305,7 +310,7 @@ do
             task.wait(0.5)
         end
     end)
-    Tabs.Setting:AddButton({
+    Tabs.Settings:AddButton({
         Title = "Save as config",
         Description = "",
         Callback = function()
