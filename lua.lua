@@ -169,17 +169,28 @@ do
     Tabs.Main:AddSection("Aura")
     AutoAura = Tabs.Main:AddToggle("AutoAura", {Title = "Auto Roll Aura | Actually it suck", Default = Setting.AutoAura })
     AutoAura:OnChanged(function()
-        
+        Setting.AutoAura = Options.AutoAura.Value
+        while Setting.AutoAura do
+            if Setting.AutoAura then
+                pcall(function()
+                    game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Rolling"):InvokeServer("Roll")
+                    game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Rolling"):InvokeServer("Show")
+                    game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Rolling"):InvokeServer("Equip")
+                    if checkSameNumbers() then
+                        game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Rolling"):InvokeServer("Replace")
+                    end
+                end)
+            end
+            task.wait(0.1)
+        end
     end)
-    print("0.5")
     getgenv().TextStatus = "Getting Items"
-    print("1")
     Tabs.Main:AddSection("Items")
     AutoCollectItem = Tabs.Main:AddToggle("AutoCollectItem", {Title = "Auto Collect Items", Default = Setting.AutoCollectItem })
     AutoCollectItem:OnChanged(function()
-        print("2")
-        while Options.AutoCollectItem do
-            if Options.AutoCollectItem then
+        Setting.AutoCollectItem = Options.AutoCollectItem.Value
+        while Setting.AutoCollectItem do
+            if Setting.AutoCollectItem then
                 pcall(function()
                     if workspace:FindFirstChild("Pray") or workspace:FindFirstChild("GwaGwa") then
                         KEY_WINPG = workspace:FindFirstChild("Pray") or workspace:FindFirstChild("GwaGwa")
@@ -197,8 +208,9 @@ do
     getgenv().TextStatus = "Getting Auto Farm"
     AutoPray = Tabs.Main:AddToggle("AutoPray", {Title = "Auto Pray", Default = Setting.AutoPray })
     AutoPray:OnChanged(function()
-        while Options.AutoPray do
-            if Options.AutoPray then
+        Setting.AutoPray = Options.AutoPray.Value
+        while Setting.AutoPray do
+            if Setting.AutoPray then
                 pcall(function()
                     if game:GetService("Players").LocalPlayer.PlayerGui.Menu.Windows.Inventory.Handle.Items.Lists.ScrollingFrame:FindFirstChild("Pray") and game:GetService("Players").LocalPlayer.PlayerGui.Menu.Windows.Inventory.Handle.Items.Lists.ScrollingFrame.Pray.Visible then
                         game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Item"):FireServer("Pray")
@@ -211,8 +223,9 @@ do
     getgenv().TextStatus = "Getting Storage"
     Tabs.Main:AddSection("Storage")
     AutoExtend:OnChanged(function()
-        while Options.AutoExtend do
-            if Options.AutoExtend then
+        Setting.AutoExtend = Options.AutoExtend.Value
+        while Setting.AutoExtend do
+            if Setting.AutoExtend then
                 pcall(function()
                     game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Rolling"):InvokeServer("Extend")
                 end)
@@ -247,8 +260,9 @@ do
     getgenv().TextStatus = "Crafting suck yo"
     AutoCraft = Tabs.Main:AddToggle("AutoCraft", {Title = "Auto Craft", Default = Setting.AutoCraft })
     AutoCraft:OnChanged(function()
-        while Options.AutoCraft do
-            if Options.AutoCraft then
+        Setting.AutoCraft = Options.AutoCraft.Value
+        while Setting.AutoCraft do
+            if Setting.AutoCraft then
                 pcall(function()
                     if Setting.AutoCraftWhat == "Water Gwa Gwa" then
                         if not game:GetService("Players").LocalPlayer.PlayerGui.Menu.Craft.Handle.Craft.Lists.ScrollingFrame["Binary Gwa Gwa"].Done.Visible then
@@ -300,7 +314,6 @@ do
         end
     })
 end
-
 
 task.wait(0.05)
 if allowtoserialized then
