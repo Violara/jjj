@@ -97,6 +97,8 @@ __VE["IBFS"] = workspace:WaitForChild("ItemBoughtFromShop")
 originalWalkSpeed = __VE["LPs"].Character.Humanoid.WalkSpeed
 originalJumpPower = __VE["LPs"].Character.Humanoid.JumpPower
 CONTROL = {F = 0, B = 0, L = 0, R = 0, Q = 0, E = 0}
+Float = false
+Noclip = false
 cmdm = __VE["GMos"]
 speedofthevfly = 1
 speedofthefly = 1
@@ -509,7 +511,7 @@ Tabs.AutoQuest:AddButton({
 				workspace.QuestMakerEvent:FireServer(9)
                 ResetRequest = ResetRequest + 1
                 task.wait(0.1) 
-            until ResetRequest == 20000 or (workspace[tostring(teamZone)]:FindFirstChild("Quest") and workspace[tostring(teamZone)].Quest:FindFirstChild("Thin Ice"))
+            until ResetRequest == 20000 or (workspace[tostring(teamZone)]:FindFirstChild("Quest") and workspace[tostring(teamZone)].Quest:FindFirstChild("ThinIce"))
             workspace[tostring(teamZone)].VoteLaunchRE:FireServer()
             task.wait(0.5)
             tpwithnewtpbyme2(CFrame.new(-55.08570861816406, 26.171443939208984, 1328.283203125), 5)
@@ -523,7 +525,24 @@ Tabs.AutoQuest:AddButton({
         end)
     end
 })
-
+WaterGodmode = Tabs.Player:AddToggle("WaterGodmode", {Title = "Water Godmode", Default = __Y[2] })
+WaterGodmode:OnChanged(function()
+	if Options.WaterGodmode.Value then
+		for _, v in pairs(__VE["WS"]:GetDescendants()) do
+			if v and v.Name == "Water" then
+				v.CanTouch = false
+			end
+		end
+	end
+end)
+FloatT = Tabs.Player:AddToggle("FloatT", {Title = "Float", Default = __Y[2] })
+FloatT:OnChanged(function()
+	Float = Options.FloatT.Value
+end)
+NoClipT = Tabs.Player:AddToggle("NoClipT", {Title = "Noclip", Default = __Y[2] })
+NoClipT:OnChanged(function()
+	Noclip = Options.NoClipT.Value
+end)
 local FLysss = Tabs.Player:AddToggle("FLysss", {Title = "Fly", Default = __Y[2] })
 
 FLysss:OnChanged(function()
@@ -788,6 +807,48 @@ Tabs.Settings:AddButton({
 })
 
 
+local Part = Instance.new("Part")
+Part.Size = Vector3.new(2, 0.2, 1.5)
+Part.Material = Enum.Material.Grass
+Part.Anchored = true
+Part.Transparency = 1
+Part.Parent = workspace
+local function updatePartPosition()
+    local character = __VE["LPs"].Character
+    local humanoidRootPart = character and character:FindFirstChild("HumanoidRootPart")
+    
+    if humanoidRootPart and Float then
+        Part.CFrame = humanoidRootPart.CFrame * CFrame.new(0, -3.1, 0)
+    else
+        Part.CFrame = CFrame.new(0, -10000, 0)
+    end
+end
+coroutine.wrap(function()
+	game:GetService("RunService").RenderStepped:Connect(updatePartPosition)
+end)
+local function NoclipLoop()
+	if Noclip and __VE["LPs"].Character ~= nil then
+		if __VE["LPs"].Character:FindFirstChild("HumanoidRootPart") and __VE["LPs"].Character.HumanoidRootPart.CanCollide then
+			for _, child in pairs(__VE["LPs"].Character:GetDescendants()) do
+				if child:IsA("BasePart") and child.CanCollide == true and child.Name ~= floatName then
+					child.CanCollide = false
+				end
+			end
+		end
+	elseif not Noclip and __VE["LPs"].Character ~= nil then
+		if __VE["LPs"].Character:FindFirstChild("HumanoidRootPart") and not __VE["LPs"].Character.HumanoidRootPart.CanCollide then
+			for _, child in pairs(__VE["LPs"].Character:GetDescendants()) do
+				if child:IsA("BasePart") and child.CanCollide == false and child.Name ~= floatName then
+					child.CanCollide = true
+				end
+			end
+		end
+	end
+	task.wait()
+end
+coroutine.wrap(function()
+	game:GetService("RunService").Stepped:Connect(NoclipLoop)
+end)
 task.wait(0.05)
 if allowtoserialized then
     serializedSetting = game.HttpService:JSONEncode(Setting)
