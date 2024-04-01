@@ -1,119 +1,125 @@
-repeat task.wait() until game:IsLoaded()
+repeat
+    task.wait()
+until game:IsLoaded()
 __LUABLE = {
-    ["Functions"] = loadstring(game:HttpGet("https://raw.githubusercontent.com/ZoiIntra/Api/main/Luable/__Function.lua"))()
+    ["Functions"] = loadstring(
+        game:HttpGet("https://raw.githubusercontent.com/ZoiIntra/Api/main/Luable/__Function.lua")
+    )()
 }
 __U = {}
-for i=1,#__LUABLE["Functions"] do
-    pcall(function()
-        __U[i] = clonefunction(__LUABLE["Functions"][i])
-    end)
+for a = 1, #__LUABLE["Functions"] do
+    pcall(
+        function()
+            __U[a] = clonefunction(__LUABLE["Functions"][a])
+        end
+    )
 end
 __VE = {
     ["Ps"] = game:GetService("Players"),
     ["LPs"] = game:GetService("Players").LocalPlayer,
     ["PsG"] = game:GetService("Players").LocalPlayer.PlayerGui
-    
 }
-local Converted = {
-	["_TTJY ASSET"] = Instance.new("ScreenGui");
-	["_TTJY HUB"] = Instance.new("Frame");
-	["_UIStroke"] = Instance.new("UIStroke");
-	["_UICorner"] = Instance.new("UICorner");
-	["_TextButton"] = Instance.new("TextButton");
-	["_UIStroke1"] = Instance.new("UIStroke");
+local b = {
+    ["_TTJY ASSET"] = __U[35]("ScreenGui"),
+    ["_TTJY HUB"] = __U[35]("Frame"),
+    ["_UIStroke"] = __U[35]("UIStroke"),
+    ["_UICorner"] = __U[35]("UICorner"),
+    ["_TextButton"] = __U[35]("TextButton"),
+    ["_UIStroke1"] = __U[35]("UIStroke")
 }
-
--- Properties:
-
-Converted["_TTJY ASSET"].ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-Converted["_TTJY ASSET"].Name = "TTJY ASSET"
-Converted["_TTJY ASSET"].Parent = game:GetService("CoreGui")
-
-Converted["_TTJY HUB"].BackgroundColor3 = Color3.fromRGB(56.0000042617321, 56.0000042617321, 56.0000042617321)
-Converted["_TTJY HUB"].BackgroundTransparency = 0.4000000059604645
-Converted["_TTJY HUB"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_TTJY HUB"].BorderSizePixel = 0
-Converted["_TTJY HUB"].Position = UDim2.new(0.465000004, 0, -0.1, 0)
-Converted["_TTJY HUB"].Size = UDim2.new(0.0700000003, 0, 0.100000001, 0)
-Converted["_TTJY HUB"].ZIndex = 2
-Converted["_TTJY HUB"].Name = "TTJY HUB"
-Converted["_TTJY HUB"].Parent = Converted["_TTJY ASSET"]
-
-Converted["_UIStroke"].LineJoinMode = Enum.LineJoinMode.Bevel
-Converted["_UIStroke"].Thickness = 3
-Converted["_UIStroke"].Parent = Converted["_TTJY HUB"]
-
-Converted["_UICorner"].Parent = Converted["_TTJY HUB"]
-
-Converted["_TextButton"].Font = Enum.Font.SourceSans
-Converted["_TextButton"].Text = "TTJY HUB"
-Converted["_TextButton"].TextColor3 = Color3.fromRGB(0, 255, 0)
-Converted["_TextButton"].TextScaled = true
-Converted["_TextButton"].TextSize = 14
-Converted["_TextButton"].TextWrapped = true
-Converted["_TextButton"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_TextButton"].BackgroundTransparency = 1
-Converted["_TextButton"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_TextButton"].BorderSizePixel = 0
-Converted["_TextButton"].Size = UDim2.new(1, 0, 1, 0)
-Converted["_TextButton"].Parent = Converted["_TTJY HUB"]
-
-Converted["_UIStroke1"].LineJoinMode = Enum.LineJoinMode.Bevel
-Converted["_UIStroke1"].Parent = Converted["_TextButton"]
-
-TTJYHUB = Converted["_TextButton"]
-Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
-SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
-InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
+b["_TTJY ASSET"].ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+b["_TTJY ASSET"].Name = "TTJY ASSET"
+b["_TTJY ASSET"].Parent = game:GetService("CoreGui")
+b["_TTJY HUB"].BackgroundColor3 = Color3.fromRGB(56.0000042617321, 56.0000042617321, 56.0000042617321)
+b["_TTJY HUB"].BackgroundTransparency = 0.4000000059604645
+b["_TTJY HUB"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+b["_TTJY HUB"].BorderSizePixel = 0
+b["_TTJY HUB"].Position = UDim2.new(0.465000004, 0, -0.1, 0)
+b["_TTJY HUB"].Size = UDim2.new(0.0700000003, 0, 0.100000001, 0)
+b["_TTJY HUB"].ZIndex = 2
+b["_TTJY HUB"].Name = "TTJY HUB"
+b["_TTJY HUB"].Parent = b["_TTJY ASSET"]
+b["_UIStroke"].LineJoinMode = Enum.LineJoinMode.Bevel
+b["_UIStroke"].Thickness = 3
+b["_UIStroke"].Parent = b["_TTJY HUB"]
+b["_UICorner"].Parent = b["_TTJY HUB"]
+b["_TextButton"].Font = Enum.Font.SourceSans
+b["_TextButton"].Text = "TTJY HUB"
+b["_TextButton"].TextColor3 = Color3.fromRGB(0, 255, 0)
+b["_TextButton"].TextScaled = true
+b["_TextButton"].TextSize = 14
+b["_TextButton"].TextWrapped = true
+b["_TextButton"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+b["_TextButton"].BackgroundTransparency = 1
+b["_TextButton"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+b["_TextButton"].BorderSizePixel = 0
+b["_TextButton"].Size = UDim2.new(1, 0, 1, 0)
+b["_TextButton"].Parent = b["_TTJY HUB"]
+b["_UIStroke1"].LineJoinMode = Enum.LineJoinMode.Bevel
+b["_UIStroke1"].Parent = b["_TextButton"]
+TTJYHUB = b["_TextButton"]
+Fluent = __U[40](game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
+SaveManager = __U[40](game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
+InterfaceManager = __U[40](game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
 __U[6](function()
     if Fluent and SaveManager and InterfaceManager then
         __U[1]("No Error")
     else
         Fluent = __U[40](game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
         SaveManager = __U[40](game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
-        InterfaceManager = __U[40](game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
+        InterfaceManager =__U[40](game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
     end
 end)
-__X = {true,false,nil,0,1} ;  __Y ={} ; for i=1,#__X do __U[6](function() __Y[i] = __X[i] end) end
-__M = {2,3,5,7,11,13,17,10} ;  __N ={} ; for i=1,#__M do __U[6](function() __N[i] = __M[i] end) end
-__VE["WS"] , __VE["RuS"] , __VE["RlS"] = game:GetService("Workspace"), game:GetService("RunService") , game:GetService("ReplicatedStorage")
-__VE["VIM"] , __VE["UIS"] = game:GetService("VirtualInputManager"), game:GetService("UserInputService")
-__VE["Lg"] , __VE["TS"], __VE["GMos"] = game:GetService("Lighting") ,game:GetService("TweenService") ,  game:GetService("Players").LocalPlayer:GetMouse()
-__VE["VU"],__VE["CG"] = game:GetService("VirtualUser") ,game:GetService("CoreGui")
+__X = {true, false, nil, 0, 1}
+__Y = {}
+for a = 1, #__X do
+    __U[6](
+        function()
+            __Y[a] = __X[a]
+        end
+    )
+end
+__M = {2, 3, 5, 7, 11, 13, 17, 10}
+__N = {}
+for a = 1, #__M do
+    __U[6](
+        function()
+            __N[a] = __M[a]
+        end
+    )
+end
+__VE["WS"], __VE["RuS"], __VE["RlS"] = game:GetService("Workspace"),  game:GetService("RunService"), game:GetService("ReplicatedStorage")
+__VE["VIM"], __VE["UIS"] = game:GetService("VirtualInputManager"), game:GetService("UserInputService")
+__VE["Lg"], __VE["TS"], __VE["GMos"] = game:GetService("Lighting"), game:GetService("TweenService"), game:GetService("Players").LocalPlayer:GetMouse()
+__VE["VU"], __VE["CG"] = game:GetService("VirtualUser"), game:GetService("CoreGui")
 __VE["HS"] = game:GetService("HttpService")
-__VE["RRC"] = game:GetService("Players").LocalPlayer.PlayerGui.MainInterface.RemoteFunction.RollRemoteClient
-__VE["RE"] = game:GetService("ReplicatedStorage").Remotes.RollEvent
-__VE["SRC"] = game:GetService("Players").LocalPlayer.PlayerGui.MainInterface.RemoteFunction.StatusRemoteClient
+originalWalkSpeed = __VE["LPs"].Character.Humanoid.WalkSpeed
+originalJumpPower = __VE["LPs"].Character.Humanoid.JumpPower
+CONTROL = {F = 0, B = 0, L = 0, R = 0, Q = 0, E = 0}
+cmdm = Mouses
+speedofthevfly = 1
+speedofthefly = 1
 Setting = nil
 serializedSetting = nil
 if not isfolder("Setting") then
     makefolder("Setting")
 end
-if isfolder("Setting") and not isfile("Setting/settingSOLRNG.json") then
+if isfolder("Setting") and not isfile("Setting/settingBABFT.json") then
     print("no file")
     Setting = {
-        AutoAura = false,
-        AutoAchivement = false,
-        AutoUpStorage = false,
-        SelectGlove = nil,
-        AutoCraftGlove = false,
-        AutoUseLuckyPotion = false,
-        AutoUseSpeedPotion = false,
-        AutoUseCoin = false,
-        AutoUseGildedCoin = false,
-        IncreaseWalkSpeed = false,
-        RemoveFog = false,
-        SetDay = false,
-        SetNight = false,
-        ESPItems = false,
-    }
+		autofarming = __Y[2],
+		stayatyvalue = 55,
+		aspeed = 1000,
+		antireport = __Y[2],
+		waituntil = 20
+	}
     allowtoserialized = __Y[1]
-elseif __U[49]("Setting") and __U[50]("Setting/settingSOLRNG.json") then
+elseif __U[49]("Setting") and __U[50]("Setting/settingBABFT.json") then
     __U[1]("file")
     __U[23]()
-    Setting = game.HttpService:JSONDecode(__U[51]("Setting/settingSOLRNG.json"))
+    Setting = game.HttpService:JSONDecode(__U[51]("Setting/settingBABFT.json"))
 end
-local credits = {
+local c = {
     {Title = "Owner", Content = "ttjy."},
     {Title = "VIP", Content = "x2neptune - Alchemy Hub"},
     {Title = "Co Owner", Content = "ttjy_"},
@@ -124,521 +130,473 @@ local credits = {
     {Title = "Bypasser", Content = "ttjy."},
     {Title = "Bypasser", Content = "x2neptune - Alchemy Hub"},
     {Title = "Key System", Content = "sa.l"},
-    {Title = "UI", Content = "dawid"},
+    {Title = "UI", Content = "dawid"}
 }
-
 function OnFluentChange()
     if Window.Root.Visible then
-        TTJYHUB.TextColor3  = __U[36](0, 255, 0)
+        TTJYHUB.TextColor3 = __U[36](0, 255, 0)
     else
-        TTJYHUB.TextColor3  = __U[36](255, 0, 0)
+        TTJYHUB.TextColor3 = __U[36](255, 0, 0)
     end
 end
-local function ESPSomething(obj, text)
-    local billboard = Instance.new("BillboardGui")
-    billboard.Name = "TextLabelBillboard"
-    billboard.Adornee = obj
-    billboard.Size = UDim2.new(0, 100, 0, 50)
-    billboard.StudsOffset = Vector3.new(0, 2, 0)
-    billboard.AlwaysOnTop = true
-
-    local textLabel = Instance.new("TextLabel")
-    textLabel.Name = "Text"
-    textLabel.Parent = billboard
-    textLabel.Text = tostring(text)
-    textLabel.TextColor3 = Color3.fromRGB(255, 0, 0)
-    textLabel.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
-    textLabel.TextStrokeTransparency = 0.082
-    textLabel.BackgroundTransparency = 1
-    textLabel.Size = UDim2.new(1, 0, 1, 0)
-
-    billboard.Parent = obj
-end
-
-Window = nil
-repeat
-    __U[6](function()
-        Window = Fluent:CreateWindow({
-            Title = "Sol's RNG Script v.UP1FV",
-            SubTitle = "by TTJY & ",
-            TabWidth = 160,
-            Size = UDim2.fromOffset(580, 460),
-            Acrylic = false,
-            Theme = "Dark",
-            MinimizeKey = Enum.KeyCode.LeftControl
-        })
-    end)
-    print("Window Loaded")
-    __U[23](5)
-until Window ~= nil
-
+local Fluent = __U[40](game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
+local SaveManager = __U[40](game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
+local InterfaceManager = __U[40](game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
+local Window = Fluent:CreateWindow({
+    Title = "Build a boat for teasure v.UP1PV",
+    SubTitle = "by TTJY",
+    TabWidth = 110,
+    Size = UDim2.fromOffset(580, 400),
+    Acrylic = true,
+    Theme = "Dark",
+    MinimizeKey = Enum.KeyCode.LeftControl
+})
 local Tabs = {
-    Main = Window:AddTab({ Title = "Main", Icon = "home" }),
-    GloveAPotion = Window:AddTab({ Title = "Gloves & Potion", Icon = "gauge" }),
-    Items = Window:AddTab({ Title = "Items", Icon = "" }),
-    Player = Window:AddTab({ Title = "Player", Icon = "" }),
-    ESP = Window:AddTab({ Title = "ESP", Icon = "briefcase" }),
-    ChangeLog = Window:AddTab({ Title = "ChangeLog", Icon = "" }),
-    Credits = Window:AddTab({ Title = "Credits", Icon = "book" }),
-    Settings = Window:AddTab({ Title = "Settings", Icon = "settings" })
+    Main = Window:AddTab({ Title = "Main", Icon = "" }),
+	AutoQuest = Window:AddTab({ Title = "Auto Quest", Icon = "" }),
+	Player = Window:AddTab({ Title = "Player", Icon = "" }),
+	asettings = Window:AddTab({ Title = "AutoFarm Settings", Icon = "settings" }),
+    Settings = Window:AddTab({ Title = "UI Settings", Icon = "settings" })
 }
-local Options = Fluent.Options
-__U[6](function()
-    Window.Root:GetPropertyChangedSignal("Visible"):Connect(OnFluentChange)
-end)
-__U[6](function()
-    function onButtonClick()
-        Window.Minimized = not Window.Minimized
-        Window.Root.Visible = not Window.Minimized
-    end
-    TTJYHUB.MouseButton1Click:Connect(onButtonClick)
-end)
-local var = nil
-for _, v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.MainInterface.RemoteFunction:GetChildren()) do
-    if string.match(v.Name, "Craft\n%d+Client") then
-        var = tostring(v.Name)
-        print("Found RemoteFunction:", v.Name)
-    end
+function notify(title, content)
+	if title and not content then content = title; title = "Ruby Hub" end
+	Fluent:Notify({
+		Title = title,
+		Content = content,
+		Duration = 5
+	})
 end
-task.wait()
-do
-    Tabs.Main:AddSection("Aura")
-    AutoAura = Tabs.Main:AddToggle("AutoAura", {Title = "Auto Roll Aura | Faster than normal", Default = Setting.AutoAura })
-    coroutine.wrap(function()
-        AutoAura:OnChanged(function()
-            pcall(function()
-                Setting.AutoAura = Options.AutoAura.Value
-                while Options.AutoAura.Value do
-                    __VE["RRC"]:FireServer("Roll")
-                    task.wait()
-                    __VE["RE"]:FireServer("Choice", "Equip", true)
-                    task.wait(0.1)
-                    __VE["SRC"]:FireServer("GetCooltime")
-                    task.wait(0.2)
-                end
-            end)
-        end)
-    end)()
-    Tabs.Main:AddSection("Achivement")
-    AutoAchivement = Tabs.Main:AddToggle("AutoAchivement", {Title = "Auto Achivement", Default = Setting.AutoAchivement })
-    coroutine.wrap(function()
-        AutoAchivement:OnChanged(function()
-            pcall(function()
-                Setting.AutoAchivement = Options.AutoAchivement.Value
-                while Options.AutoAchivement.Value do
-                    for _, v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.MainInterface.AchievementFrame.Achievements.AchievementGrid.ScrollingFrame:GetChildren()) do
-                        if v and v:IsA("Frame") and v:FindFirstChild("Holder") and v.Holder:FindFirstChild("Title") and v.Holder.Title:FindFirstChild("Completed") then
-                            local matchingOrigin = v.Holder.Progress.ProgressText
-                            local firstNumber, secondNumber = matchingOrigin.Text:match("(%d+) / (%d+)")
-                            if v and firstNumber and secondNumber and tonumber(firstNumber) >= tonumber(secondNumber) then
-                                game.ReplicatedStorage.Remotes.Achievement:FireServer("Claim", tostring(v.Holder.Title.Text))
-                            end
-                        end
-                    end
-                    task.wait(0.5)
-                end
-            end)
-        end)
-    end)()
-    Tabs.Main:AddSection("Storage")
-    AutoUpStorage = Tabs.Main:AddToggle("AutoUpStorage", {Title = "Auto Upgrade Storage", Default = Setting.AutoUpStorage })
-    coroutine.wrap(function()
-        AutoUpStorage:OnChanged(function()
-            pcall(function()
-                Setting.AutoUpStorage = Options.AutoUpStorage.Value
-                while Options.AutoUpStorage.Value do
-                    game:GetService("ReplicatedStorage").Remotes.AuraStorage:FireServer("UpgradeStorage")
-                    task.wait(0.1)
-                end
-            end)
-        end)
-    end)()
-    Tabs.GloveAPotion:AddSection("Gloves")
-    __SEVOLGFOELBAT = {"Gear Basing", "Luck Glove", "Lunar Device", "Solar Device", "Eclipse", "Eclipse Device", "Jackpot Gauntlet", "Exo Gauntlet"}
-    SelectGlove = Tabs.GloveAPotion:AddDropdown("SelectGlove", {
-        Title = "Select Glove",
-        Values = __SEVOLGFOELBAT,
-        Multi = false,
-        Default = Setting.SelectGlove,
-    })
-    SelectGlove:OnChanged(function(Value)
-        pcall(function()
-            Setting.SelectGlove = tostring(Value)
-        end)
-    end)
-    AutoCraftGlove = Tabs.GloveAPotion:AddToggle("AutoCraftGlove", {Title = "Auto Craft Glove", Default = Setting.AutoCraftGlove })
-    coroutine.wrap(function()
-        AutoCraftGlove:OnChanged(function()
-            pcall(function()
-                Setting.AutoCraftGlove = Options.AutoCraftGlove.Value
-                while Options.AutoCraftGlove.Value do
-                    IIS = game:GetService("Players").LocalPlayer.PlayerGui.MainInterface.Inventory.Items.ItemGrid.ScrollingFrame
-                    MRF = game:GetService("Players").LocalPlayer.PlayerGui.MainInterface.RemoteFunction
-                    if Setting.SelectGlove == "Gear Basing" then
-                        if not IIS:FindFirstChild("Gear Basing") then
-                            MRF[var]:FireServer("Insert", "Gear Basing", "Common")
-                            MRF[var]:FireServer("Insert", "Gear Basing", "Uncommon")
-                            MRF[var]:FireServer("Insert", "Gear Basing", "Rare")
-                            MRF[var]:FireServer("Insert", "Gear Basing", "Good")
-                            task.wait()
-                            MRF[var]:FireServer("Craft", "Gear Basing")
-                        end
-                    elseif Setting.SelectGlove == "Luck Glove" then
-                        if not IIS:FindFirstChild("Luck Glove") then
-                            if not IIS:FindFirstChild("Gear Basing") then
-                                MRF[var]:FireServer("Insert", "Gear Basing", "Common")
-                                MRF[var]:FireServer("Insert", "Gear Basing", "Uncommon")
-                                MRF[var]:FireServer("Insert", "Gear Basing", "Rare")
-                                MRF[var]:FireServer("Insert", "Gear Basing", "Good")
-                                task.wait()
-                                MRF[var]:FireServer("Craft", "Gear Basing")
-                            else
-                                MRF[var]:FireServer("Insert", "Luck Glove", "Gear Basing")
-                                MRF[var]:FireServer("Insert", "Luck Glove", "Divinus")
-                                MRF[var]:FireServer("Insert", "Luck Glove", "Crystallized")
-                                MRF[var]:FireServer("Insert", "Luck Glove", "Rare")
-                                task.wait()
-                                MRF[var]:FireServer("Craft", "Luck Glove")
-                            end
-                        end
-                    elseif Setting.SelectGlove == "Lunar Device" then
-                        if not IIS:FindFirstChild("Lunar Device") then
-                            if not IIS:FindFirstChild("Gear Basing") then
-                                MRF[var]:FireServer("Insert", "Gear Basing", "Common")
-                                MRF[var]:FireServer("Insert", "Gear Basing", "Uncommon")
-                                MRF[var]:FireServer("Insert", "Gear Basing", "Rare")
-                                MRF[var]:FireServer("Insert", "Gear Basing", "Good")
-                                task.wait()
-                                MRF[var]:FireServer("Craft", "Gear Basing")
-                            else
-                                MRF[var]:FireServer("Insert", "Lunar Device", "Gear Basing")
-                                MRF[var]:FireServer("Insert", "Lunar Device", "Rare")
-                                MRF[var]:FireServer("Insert", "Lunar Device", "Divinus")
-                                MRF[var]:FireServer("Insert", "Lunar Device", "Lunar")
-                                task.wait()
-                                MRF[var]:FireServer("Craft", "Lunar Device")
-                            end
-                        end
-                    elseif Setting.SelectGlove == "Solar Device" then
-                        if not IIS:FindFirstChild("Solar Device") then
-                            if not IIS:FindFirstChild("Gear Basing") then
-                                MRF[var]:FireServer("Insert", "Gear Basing", "Common")
-                                MRF[var]:FireServer("Insert", "Gear Basing", "Uncommon")
-                                MRF[var]:FireServer("Insert", "Gear Basing", "Rare")
-                                MRF[var]:FireServer("Insert", "Gear Basing", "Good")
-                                task.wait()
-                                MRF[var]:FireServer("Craft", "Gear Basing")
-                            else
-                                MRF[var]:FireServer("Insert", "Solar Device", "Gear Basing")
-                                MRF[var]:FireServer("Insert", "Solar Device", "Solar")
-                                MRF[var]:FireServer("Insert", "Solar Device", "Divinus")
-                                MRF[var]:FireServer("Insert", "Solar Device", "Rare")
-                                task.wait()
-                                MRF[var]:FireServer("Craft", "Solar Device")
-                            end
-                        end
-                    elseif Setting.SelectGlove == "Eclipse" then
-                        if not IIS:FindFirstChild("Eclipse") then
-                            MRF[var]:FireServer("Insert", "Eclipse", "Divinus")
-                            MRF[var]:FireServer("Insert", "Eclipse", "Solar")
-                            MRF[var]:FireServer("Insert", "Eclipse", "Lunar")
-                            task.wait()
-                            MRF[var]:FireServer("Craft", "Eclipse")
-                        end
-                    elseif Setting.SelectGlove == "Eclipse Device" then
-                        if not IIS:FindFirstChild("Eclipse Device") then
-                            if not IIS:FindFirstChild("Eclipse") then
-                                MRF[var]:FireServer("Insert", "Eclipse", "Divinus")
-                                MRF[var]:FireServer("Insert", "Eclipse", "Solar")
-                                MRF[var]:FireServer("Insert", "Eclipse", "Lunar")
-                                task.wait()
-                                MRF[var]:FireServer("Craft", "Eclipse")
-                            end
-                            if not IIS:FindFirstChild("Lunar Device") then
-                                if not IIS:FindFirstChild("Gear Basing") then
-                                    MRF[var]:FireServer("Insert", "Gear Basing", "Common")
-                                    MRF[var]:FireServer("Insert", "Gear Basing", "Uncommon")
-                                    MRF[var]:FireServer("Insert", "Gear Basing", "Rare")
-                                    MRF[var]:FireServer("Insert", "Gear Basing", "Good")
-                                    task.wait()
-                                    MRF[var]:FireServer("Craft", "Gear Basing")
-                                else
-                                    MRF[var]:FireServer("Insert", "Lunar Device", "Gear Basing")
-                                    MRF[var]:FireServer("Insert", "Lunar Device", "Rare")
-                                    MRF[var]:FireServer("Insert", "Lunar Device", "Divinus")
-                                    MRF[var]:FireServer("Insert", "Lunar Device", "Lunar")
-                                    task.wait()
-                                    MRF[var]:FireServer("Craft", "Lunar Device")
-                                end
-                            end
-                            if not IIS:FindFirstChild("Solar Device") then
-                                if not IIS:FindFirstChild("Gear Basing") then
-                                    MRF[var]:FireServer("Insert", "Gear Basing", "Common")
-                                    MRF[var]:FireServer("Insert", "Gear Basing", "Uncommon")
-                                    MRF[var]:FireServer("Insert", "Gear Basing", "Rare")
-                                    MRF[var]:FireServer("Insert", "Gear Basing", "Good")
-                                    task.wait()
-                                    MRF[var]:FireServer("Craft", "Gear Basing")
-                                else
-                                    MRF[var]:FireServer("Insert", "Solar Device", "Gear Basing")
-                                    MRF[var]:FireServer("Insert", "Solar Device", "Solar")
-                                    MRF[var]:FireServer("Insert", "Solar Device", "Divinus")
-                                    MRF[var]:FireServer("Insert", "Solar Device", "Rare")
-                                    task.wait()
-                                    MRF[var]:FireServer("Craft", "Solar Device")
-                                end
-                            end
-                            if IIS:FindFirstChild("Solar Device") and IIS:FindFirstChild("Lunar Device") and IIS:FindFirstChild("Eclipse") then
-                                MRF[var]:FireServer("Insert", "Eclipse Device", "Solar Device")
-                                MRF[var]:FireServer("Insert", "Eclipse Device", "Lunar Device")
-                                MRF[var]:FireServer("Insert", "Eclipse Device", "Eclipse")
-                                task.wait()
-                                MRF[var]:FireServer("Craft", "Eclipse Device")
-                            end
-                        end
-                    elseif Setting.SelectGlove == "Jackpot Gauntlet" then
-                        if not IIS:FindFirstChild("Jackpot Gauntlet") then
-                            if not IIS:FindFirstChild("Gear Basing") then
-                                MRF[var]:FireServer("Insert", "Gear Basing", "Common")
-                                MRF[var]:FireServer("Insert", "Gear Basing", "Uncommon")
-                                MRF[var]:FireServer("Insert", "Gear Basing", "Rare")
-                                MRF[var]:FireServer("Insert", "Gear Basing", "Good")
-                                task.wait()
-                                MRF[var]:FireServer("Craft", "Gear Basing")
-                            end
-                            MRF[var]:FireServer("Insert", "Jackpot Gauntlet", "Jackpot")
-                            MRF[var]:FireServer("Insert", "Jackpot Gauntlet", "Gilded")
-                            MRF[var]:FireServer("Insert", "Jackpot Gauntlet", "Rare")
-                            task.wait()
-                            MRF[var]:FireServer("Craft", "Jackpot Gauntlet")
-                        end
-                    elseif Setting.SelectGlove == "Exo Gauntlet" then
-                        if not IIS:FindFirstChild("Exo Gauntlet") then
-                            if not IIS:FindFirstChild("Gear Basing") then
-                                MRF[var]:FireServer("Insert", "Gear Basing", "Common")
-                                MRF[var]:FireServer("Insert", "Gear Basing", "Uncommon")
-                                MRF[var]:FireServer("Insert", "Gear Basing", "Rare")
-                                MRF[var]:FireServer("Insert", "Gear Basing", "Good")
-                                task.wait()
-                                MRF[var]:FireServer("Craft", "Gear Basing")
-                            end
-                        end
-                        MRF[var]:FireServer("Insert", "Exo Gauntlet", "Gilded")
-                        MRF[var]:FireServer("Insert", "Exo Gauntlet", "Precious")
-                        MRF[var]:FireServer("Insert", "Exo Gauntlet", "Undead")
-                        MRF[var]:FireServer("Insert", "Exo Gauntlet", "Exotic")
-                        task.wait()
-                        MRF[var]:FireServer("Craft", "Exo Gauntlet")
-                    end
-                    task.wait()
-                end
-            end)
-        end)
-    end)()
-    Tabs.GloveAPotion:AddSection("Potion")
-    AutoUseLuckyPotion = Tabs.Items:AddToggle("AutoUseLuckyPotion", {Title = "Auto use Luck Potion", Default = Setting.AutoUseLuckyPotion })
-    coroutine.wrap(function()
-        AutoUseLuckyPotion:OnChanged(function()
-            pcall(function()
-                Setting.AutoUseLuckyPotion = Options.AutoUseLuckyPotion.Value
-                while Options.AutoUseLuckyPotion.Value do
-                    BL = game:GetService("Players").LocalPlayer.PlayerGui.MainInterface.BuffsHolder.Lucky
-                    if not BL.Visible then
-                        game.ReplicatedStorage.Modules.Inventory.UseItem:FireServer("Lucky Potion", 1)
-                        task.wait(0.1)
-                    end
-                    task.wait(0.5)
-                end
-            end)
-        end)
-    end)()
-    AutoUseSpeedPotion = Tabs.Items:AddToggle("AutoUseSpeedPotion", {Title = "Auto use Speed Potion", Default = Setting.AutoUseSpeedPotion })
-    coroutine.wrap(function()
-        AutoUseSpeedPotion:OnChanged(function()
-            pcall(function()
-                Setting.AutoUseSpeedPotion = Options.AutoUseSpeedPotion.Value
-                while Options.AutoUseSpeedPotion.Value do
-                    BQ = game:GetService("Players").LocalPlayer.PlayerGui.MainInterface.BuffsHolder.QuickRoll
-                    if not BQ.Visible then
-                        game.ReplicatedStorage.Modules.Inventory.UseItem:FireServer("Speed Potion", 1)
-                        task.wait(0.1)
-                    end
-                    task.wait(0.5)
-                end
-            end)
-        end)
-    end)()
-    Tabs.Items:AddSection("Use")
-    AutoUseCoin = Tabs.Items:AddToggle("AutoUseCoin", {Title = "Auto Use Coin", Default = Setting.AutoUseCoin })
-    coroutine.wrap(function()
-        AutoUseCoin:OnChanged(function()
-            pcall(function()
-                Setting.AutoUseCoin = Options.AutoUseCoin.Value
-                while Options.AutoUseCoin.Value do
-                    game.ReplicatedStorage.Modules.Inventory.UseItem:FireServer("Coin", 1)
-                    task.wait(0.1)
-                end
-                task.wait(0.5)
-            end)
-        end)
-    end)()
-    AutoUseGildedCoin = Tabs.Items:AddToggle("AutoUseGildedCoin", {Title = "Auto Use Gilded Coin", Default = Setting.AutoUseGildedCoin })
-    coroutine.wrap(function()
-        AutoUseGildedCoin:OnChanged(function()
-            pcall(function()
-                Setting.AutoUseGildedCoin = Options.AutoUseGildedCoin.Value
-                while Options.AutoUseGildedCoin.Value do
-                    game.ReplicatedStorage.Modules.Inventory.UseItem:FireServer("Gilded Coin", 1)
-                    task.wait(0.1)
-                end
-                task.wait(0.5)
-            end)
-        end)
-    end)()
-    Tabs.Items:AddSection("Auto Collect")
-    Tabs.Items:AddSection("AI Engine")
-    Tabs.Items:AddSection("Work in progress")
+if __VE["CG"]:FindFirstChild("TTJY HUB") then
+    __VE["CG"]:FindFirstChild("TTJY HUB"):Destroy()
+end
 
-    Tabs.Player:AddSection("Main")
-    IncreaseWalkSpeed = Tabs.Player:AddToggle("IncreaseWalkSpeed", {Title = "Increase WalkSpeed", Default = Setting.IncreaseWalkSpeed })
-    coroutine.wrap(function()
-        IncreaseWalkSpeed:OnChanged(function()
-            pcall(function()
-                Setting.IncreaseWalkSpeed = Options.IncreaseWalkSpeed.Value
-                if Options.IncreaseWalkSpeed.Value then
-                    while Options.IncreaseWalkSpeed.Value do
-                        if Options.IncreaseWalkSpeed.Value then
-                            __VE["LPs"].Character.Humanoid.WalkSpeed = 18
-                        else
-                            __VE["LPs"].Character.Humanoid.WalkSpeed = 16
-                        end
-                        task.wait(0.5)
-                    end
-                else
-                    __VE["LPs"].Character.Humanoid.WalkSpeed = 16
-                end
-            end)
-        end)
-    end)()
-    RemoveFog = Tabs.Player:AddToggle("RemoveFog", {Title = "Remove Fog", Default = Setting.RemoveFog })
-    coroutine.wrap(function()
-        RemoveFog:OnChanged(function()
-            pcall(function()
-                Setting.RemoveFog = Options.RemoveFog.Value
-                if Options.RemoveFog.Value then
-                    for _, v in pairs(game:GetService("Lighting"):GetChildren()) do
-                        if v and not v:IsA("Script") then
-                            v.Parent = game:GetService("MaterialService")
-                        end
-                    end
-                else
-                    for _, v in pairs(game:GetService("MaterialService"):GetChildren()) do
-                        if v then
-                            v.Parent = game:GetService("Lighting")
-                        end
-                    end
-                end
-            end)
-        end)
-    end)()
-    SetDay = Tabs.Player:AddToggle("SetDay", {Title = "Day Time", Default = Setting.SetDay })
-    coroutine.wrap(function()
-        SetDay:OnChanged(function()
-            pcall(function()
-                Setting.SetDay = Options.SetDay.Value
-            end)
-        end)
-    end)()
-    SetNight = Tabs.Player:AddToggle("SetNight", {Title = "Night Time", Default = Setting.SetNight })
-    coroutine.wrap(function()
-        SetNight:OnChanged(function()
-            pcall(function()
-                Setting.SetNight = Options.SetNight.Value
-            end)
-        end)
-    end)()
+local screenGui = __U[35]("ScreenGui")
+screenGui.Name = "TTJY HUB"
+screenGui.Parent = __VE["CG"]
 
-    Tabs.ESP:AddSection("ESP")
-    ESPItems = Tabs.ESP:AddToggle("ESPItems", {Title = "Items", Default = Setting.ESPItems })
-    coroutine.wrap(function()
-        ESPItems:OnChanged(function()
-            pcall(function()
-                Setting.ESPItems = Options.ESPItems.Value
-                if Options.ESPItems.Value then
-                    while Options.ESPItems.Value do
-                        for _, v in pairs(__VE["WS"].DroppedItems:GetChildren()) do
-                            if v and (v.Name == "Luck Potion" or v.Name == "Speed Potion" or v.Name == "Coin" or v.Name == "Gilded Coin") then
-                                if not v:FindFirstChild("Highlight") then
-                                    local Highlight = Instance.new("Highlight")
-                                    Highlight.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
-                                    Highlight.FillColor = Color3.fromRGB(51, 255, 0)
-                                    Highlight.FillTransparency = 0.3
-                                    Highlight.Name = "Highlight"
-                                    Highlight.OutlineColor = Color3.new(0,0,0)
-                                    Highlight.OutlineTransparency = 0
-                                    Highlight.Parent = v
-                                    ESPSomething(v, tostring(v.Name))
-                                end
-                            end
-                        end
-                        task.wait(0.5)
-                    end
-                else
-                    for _, v in pairs(__VE["WS"]:GetChildren()) do
-                        if v and (v.Name == "Luck Potion" or v.Name == "Speed Potion" or v.Name == "Coin" or v.Name == "Gilded Coin") then
-                            if v:FindFirstChild("Highlight") then
-                                v.Highlight:Destroy()
-                                if v:FindFirstChild("TextLabelBillboard") then
-                                    v.TextLabelBillboard:Destroy()
-                                end
-                            end
-                        end
-                    end
-                end
-            end)
-        end)
-    end)()
+local textButton = __U[35]("TextButton")
+textButton.Text = "TTJY HUB"
+textButton.Size = UDim2.new(0, 100, 0, 50)
+textButton.Position = UDim2.new(0.5, -45, 0, -40)
+textButton.TextColor3 = Color3.new(1, 0, 0)
+textButton.BackgroundColor3 = Color3.new(0, 0, 0)
+textButton.BackgroundTransparency = 0.7
+textButton.Parent = screenGui
 
-    
-    Tabs.ChangeLog:AddParagraph({
-        Title = "Change Log",
-        Content = "# Main\n- Added Auto Rolls\n- Added Auto Upgrade Storage\n- Added Auto Claim Achievement\n# Gloves & Potion\n- Added Auto Craft Gloves\n- Added Auto Use Potions\n# Items\n- Added Auto Use Coins\n- Added Auto Use Gilded Coins\n# Player\n- Added Full Bright\n- Added No Fog (Can be back if you want fog)\n- Added Player Speed\n- Added Anti  AFK\n# ESP\n- Added Items ESP\n# Credits\n- Added Credits\n# Setting\n- Added Save As Config\n\n-->SOON<--\n# Items\n- Add Auto Collect\n- Add Auto Blessing\n# Gloves & Potion\n- Add Open UI"
-    })
+local function onButtonClick()
+    Window.Minimized = not Window.Minimized
+    Window.Root.Visible = not Window.Minimized
+end
+textButton.MouseButton1Click:Connect(onButtonClick)
+local screenGui2 = __U[35]("ScreenGui")
+screenGui2.Name = "InputPcToMobile"
+screenGui2.Parent = __VE["CG"]
+local buttonSize = UDim2.new(0.05, 0, 0.05, 0)
+local function createButton(key, position)
+    local button = __U[35]("TextButton")
+    button.Name = key
+    button.Text = key
+    button.Size = buttonSize
+    button.Position = position
+    button.BackgroundColor3 = Color3.new(0.5, 0.5, 0.5)
+    button.Parent = screenGui2
 
-    for i, v in ipairs(credits) do
-        Tabs.Credits:AddButton({
-            Title = v.Title,
-            Description = v.Content,
-            Callback = function()
-                
-            end
-        })
-    end
-    Tabs.Settings:AddButton({
-        Title = "Save as config",
-        Description = "",
-        Callback = function()
-            serializedSetting = game.HttpService:JSONEncode(Setting)
-            writefile("Setting/settingHEDERNG.json", serializedSetting)
+    local isPressed = __Y[2]
+    button.MouseButton1Down:Connect(function()
+        isPressed = true
+        if key == "W" then
+            CONTROL.F = speedofthefly
+            print("W")
+        elseif key == "S" then
+            CONTROL.B = -speedofthefly
+            print("S")
+        elseif key == "A" then
+            CONTROL.L = -speedofthefly
+            print("A")
+        elseif key == "D" then
+            CONTROL.R = speedofthefly
+            print("D")
         end
-    })
+    end)
+
+    button.MouseButton1Up:Connect(function()
+        isPressed = __Y[2]
+        if key == "W" then
+            CONTROL.F = 0
+        elseif key == "S" then
+            CONTROL.B = 0
+        elseif key == "A" then
+            CONTROL.L = 0
+        elseif key == "D" then
+            CONTROL.R = 0
+        end
+    end)
 end
 
-local function onHeartbeat()
-    game:GetService("Lighting").ClockTime = 0
+-- Create buttons for W, A, S, D
+createButton("W", UDim2.new(0.05, 0, 0.1, 0))
+task.wait(1)
+createButton("A", UDim2.new(0, 0, 0.2, 0))
+task.wait(1)
+createButton("S", UDim2.new(0.05, 0, 0.3, 0))
+task.wait(1)
+createButton("D", UDim2.new(0.1, 0, 0.2, 0))
+task.wait(1)
+local Options = Fluent.Options
+local speedofthefly = 6
+local speedofthevfly =  6
+function tp(x, y, z, speed)
+	pcall(function()
+		local maxForce = __U[57](math.huge, math.huge, math.huge)
+		local velocity = __U[35]("BodyVelocity")
+		velocity.MaxForce = maxForce
+		velocity.Velocity = __U[57](0, 0, 0)
+		velocity.Parent = __VE["LPs"].Character.HumanoidRootPart
+		local targetPosition = __U[57](x, y, z)
+		local dochange = __Y[2]
+		if not speed then dochange = true end
+		while true do
+			if not Setting.autofarming then
+				velocity:Destroy()
+				break
+			end
+			local currentPos = __VE["LPs"].Character.HumanoidRootPart.Position
+			local direction = (targetPosition - currentPos).unit
+			local distance = (targetPosition - currentPos).magnitude
+			if dochange then
+				speed = Setting.aspeed
+			end
+			local distanceCheck = speed/30
+			if distance >= distanceCheck then
+				velocity.Velocity = direction * speed
+			else
+				velocity:Destroy()
+				for i = 1, 20 do
+					__VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](targetPosition)
+					__VE["LPs"].Character.HumanoidRootPart.Velocity = __U[57](0, 0, 0)
+					task.wait()
+				end
+				break
+			end
+			wait()
+		end
+	end)
 end
-game:GetService("RunService").Heartbeat:Connect(function()
-    if Setting.SetDay and not Setting.SetNight then
-        game:GetService("Lighting").ClockTime = 10
-    elseif Setting.SetNight and not Setting.SetDay then
-        game:GetService("Lighting").ClockTime = 0
-    end
+local isfirstrun = true
+local autofarm = Tabs.Main:AddToggle("autofarm", {Title = "Auto Farm", Default = __Y[2] })
+autofarm:OnChanged(function()
+	Setting.autofarming = Options.autofarm.Value
+	if Setting.autofarming then
+		notify("Autofarm started.")
+		while task.wait() do
+			if Setting.autofarming then
+				if __VE["LPs"].Character:FindFirstChild("HumanoidRootPart") then
+					local water = __VE["WS"].BoatStages.NormalStages.CaveStage1.Water
+					local waterp = water.Position
+					local lastwater = __VE["WS"].BoatStages.NormalStages.CaveStage10.Water
+					local lastwaterp = lastwater.Position
+					local chest = __VE["WS"].BoatStages.NormalStages.TheEnd.GoldenChest.Trigger
+					local success = pcall(function()
+						__VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](waterp.x, waterp.y + Setting.stayatyvalue, waterp.z)
+						tp(lastwaterp.x, waterp.y + Setting.stayatyvalue, lastwaterp.z, nil)
+						for i = 1, 5 do
+							__VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](chest.Position.x, chest.Position.y + 20, chest.Position.z)
+							task.wait(0.05)
+							__VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](chest.Position.x, chest.Position.y, chest.Position.z)
+							task.wait(0.05)
+						end
+						__VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](chest.Position.x, chest.Position.y + 30, chest.Position.z)
+						notify("Waiting 20 seconds...")
+						task.wait(Setting.waituntil)
+					end)
+					if not success then
+						notify("ER Activated, Return to player")
+					end
+				end
+			else
+				break
+			end
+		end
+	else
+		if isfirstrun then
+			isfirstrun = __Y[2]
+		else
+			notify("Autofarm Stop")
+		end
+	end
 end)
+
+AutoQuest:AddSection("Simple Scriptz")
+
+
+local FLysss = Tabs.Player:AddToggle("FLysss", {Title = "Fly", Default = __Y[2] })
+
+FLysss:OnChanged(function()
+	if Options.FLysss.Value then
+		FLYING = Options.FLysss.Value
+		while not cmdlp or not cmdlp.Character or not cmdlp.Character:FindFirstChild('HumanoidRootPart') or not cmdlp.Character:FindFirstChild('Humanoid') or not cmdm do
+			wait()
+		end
+
+		local T = cmdlp.Character.HumanoidRootPart
+		local SPEED = 0
+
+		function FLY()
+			local BG = __U[35]('BodyGyro', T)
+			local BV = __U[35]('BodyVelocity', T)
+			BG.P = 9e4
+			BG.maxTorque = __U[57](9e9, 9e9, 9e9)
+			BG.cframe = T.CFrame
+			BV.velocity = __U[57](0, 0, 0)
+			BV.maxForce = __U[57](9e9, 9e9, 9e9)
+
+			spawn(function()
+				while FLYING do
+					if CONTROL.L + CONTROL.R ~= 0 or CONTROL.F + CONTROL.B ~= 0 or CONTROL.Q + CONTROL.E ~= 0 then
+						SPEED = 50
+					elseif not (CONTROL.L + CONTROL.R ~= 0 or CONTROL.F + CONTROL.B ~= 0 or CONTROL.Q + CONTROL.E ~= 0) and SPEED ~= 0 then
+						SPEED = 0
+					end
+
+					if (CONTROL.L + CONTROL.R) ~= 0 or (CONTROL.F + CONTROL.B) ~= 0 or (CONTROL.Q + CONTROL.E) ~= 0 then
+						BV.velocity = ((workspace.CurrentCamera.CoordinateFrame.lookVector * (CONTROL.F + CONTROL.B)) + ((workspace.CurrentCamera.CoordinateFrame * __U[26](CONTROL.L + CONTROL.R, (CONTROL.F + CONTROL.B + CONTROL.Q + CONTROL.E) * 0.2, 0).p) - workspace.CurrentCamera.CoordinateFrame.p)) * SPEED
+					else
+						BV.velocity = __U[57](0, 0, 0)
+					end
+
+					BG.cframe = workspace.CurrentCamera.CoordinateFrame
+					wait()
+				end
+
+				CONTROL = {F = 0, B = 0, L = 0, R = 0, Q = 0, E = 0}
+				SPEED = 0
+
+				BG:Destroy()
+				BV:Destroy()
+				cmdlp.Character.Humanoid.PlatformStand = __Y[2]
+			end)
+		end
+
+		cmdm.KeyDown:connect(function(KEY)
+			if KEY:lower() == 'w' then
+				if vfly then
+					CONTROL.F = speedofthevfly
+				else
+					CONTROL.F = speedofthefly
+				end
+			elseif KEY:lower() == 's' then
+				if vfly then
+					CONTROL.B = -speedofthevfly
+				else
+					CONTROL.B = -speedofthefly
+				end
+			elseif KEY:lower() == 'a' then
+				if vfly then
+					CONTROL.L = -speedofthevfly
+				else
+					CONTROL.L = -speedofthefly
+				end
+			elseif KEY:lower() == 'd' then
+				if vfly then
+					CONTROL.R = speedofthevfly
+				else
+					CONTROL.R = speedofthefly
+				end
+			elseif KEY:lower() == 'y' then
+				if vfly then
+					CONTROL.Q = speedofthevfly * 2
+				else
+					CONTROL.Q = speedofthefly * 2
+				end
+			elseif KEY:lower() == 't' then
+				if vfly then
+					CONTROL.E = -speedofthevfly * 2
+				else
+					CONTROL.E = -speedofthefly * 2
+				end
+			end
+		end)
+
+		cmdm.KeyUp:connect(function(KEY)
+			if KEY:lower() == 'w' then
+				CONTROL.F = 0
+			elseif KEY:lower() == 's' then
+				CONTROL.B = 0
+			elseif KEY:lower() == 'a' then
+				CONTROL.L = 0
+			elseif KEY:lower() == 'd' then
+				CONTROL.R = 0
+			elseif KEY:lower() == 'y' then
+				CONTROL.Q = 0
+			elseif KEY:lower() == 't' then
+				CONTROL.E = 0
+			end
+		end)
+
+		FLY()
+	else
+		FLYING = Options.FLysss.Value
+	end
+end)
+local afspeed = Tabs.asettings:AddSlider("afspeed", {
+	Title = "Autofarm Speed",
+	Description = "Changes the Autofarm Speed",
+	Default = 1000,
+	Min = 100,
+	Max = 10000,
+	Rounding = 0,
+	Callback = function(Value)
+		Setting.aspeed = Value
+	end
+})
+
+afspeed:OnChanged(function(Value)
+	Setting.aspeed = Value
+end)
+
+local stayat = Tabs.asettings:AddSlider("stayat", {
+	Title = "Stay at Y Value",
+	Description = "Stays at the given Y Value (height)",
+	Default = 55,
+	Min = 55,
+	Max = 100,
+	Rounding = 0,
+	Callback = function(Value)
+		Setting.stayatyvalue = Value
+	end
+})
+local wai = Tabs.asettings:AddSlider("wai", {
+	Title = "Wait until AutoFarm starts again",
+	Description = "Waits ... seconds until AutoFarm starts again",
+	Default = 20,
+	Min = 10,
+	Max = 60,
+	Rounding = 0,
+	Callback = function(Value)
+		Setting.waituntil = Value
+	end
+})
+
+wai:OnChanged(function(Value)
+	Setting.waituntil = Value
+end)
+local pfly = Tabs.Player:AddSlider("pfly", {
+	Title = "Fly Speed",
+	Description = "",
+	Default = 6,
+	Min = 1,
+	Max = 50,
+	Rounding = 0,
+	Callback = function(Value)
+		speedofthefly = Value
+		speedofthevfly = Value
+	end
+})
+
+local walk = Tabs.Player:AddSlider("walk", {
+	Title = "WalkSpeed",
+	Description = "Changes the WalkSpeed of the Player",
+	Default = 16,
+	Min = 16,
+	Max = 1000,
+	Rounding = 0,
+	Callback = function(Value)
+		__VE["LPs"].Character.Humanoid.WalkSpeed = Value
+	end
+})
+walk:OnChanged(function(Value)
+	__VE["LPs"].Character.Humanoid.WalkSpeed = Value
+end)
+local jump = Tabs.Player:AddSlider("jump", {
+	Title = "JumpPower",
+	Description = "Changes the JumpPower of the Player",
+	Default = 50,
+	Min = 50,
+	Max = 1000,
+	Rounding = 0,
+	Callback = function(Value)
+		__VE["LPs"].Character.Humanoid.JumpPower = Value
+	end
+})
+jump:OnChanged(function(Value)
+	__VE["LPs"].Character.Humanoid.JumpPower = Value
+end)
+
+Tabs.Settings:AddButton({
+	Title = "Save as config",
+	Description = "",
+	Callback = function()
+		serializedSetting = game.HttpService:JSONEncode(Setting)
+		writefile("Setting/settingBABFT.json", serializedSetting)
+    end
+})
+Tabs.Settings:AddSection("W A S D Buttons")
+Tabs.Settings:AddButton({
+	Title = "Big Button",
+	Description = "",
+	Callback = function()
+		__VE["CG"]["InputPcToMobile"].W.Size = UDim2.new(0.1, 0, 0.1, 0)
+		__VE["CG"]["InputPcToMobile"].A.Size = UDim2.new(0.1, 0, 0.1, 0)
+		__VE["CG"]["InputPcToMobile"].S.Size = UDim2.new(0.1, 0, 0.1, 0)
+		__VE["CG"]["InputPcToMobile"].D.Size = UDim2.new(0.1, 0, 0.1, 0)
+	end
+})
+Tabs.Settings:AddButton({
+	Title = "Small Button",
+	Description = "",
+	Callback = function()
+		__VE["CG"]["InputPcToMobile"].W.Size = UDim2.new(0.05, 0, 0.05, 0)
+		__VE["CG"]["InputPcToMobile"].A.Size = UDim2.new(0.05, 0, 0.05, 0)
+		__VE["CG"]["InputPcToMobile"].S.Size = UDim2.new(0.05, 0, 0.05, 0)
+		__VE["CG"]["InputPcToMobile"].D.Size = UDim2.new(0.05, 0, 0.05, 0)
+	end
+})
+Tabs.Settings:AddButton({
+	Title = "Up",
+	Description = "",
+	Callback = function()
+		__VE["CG"]["InputPcToMobile"].W.Position = UDim2.new(0.05, 0, 0.1, 0)
+		__VE["CG"]["InputPcToMobile"].A.Position = UDim2.new(0, 0, 0.2, 0)
+		__VE["CG"]["InputPcToMobile"].S.Position = UDim2.new(0.05, 0, 0.3, 0)
+		__VE["CG"]["InputPcToMobile"].D.Position = UDim2.new(0.1, 0, 0.2, 0)
+	end
+})
+Tabs.Settings:AddButton({
+	Title = "Down",
+	Description = "",
+	Callback = function()
+		__VE["CG"]["InputPcToMobile"].W.Position = UDim2.new(0.05, 0, 0.7, 0)
+		__VE["CG"]["InputPcToMobile"].A.Position = UDim2.new(0, 0, 0.8, 0)
+		__VE["CG"]["InputPcToMobile"].S.Position = UDim2.new(0.05, 0, 0.9, 0)
+		__VE["CG"]["InputPcToMobile"].D.Position = UDim2.new(0.1, 0, 0.8, 0)
+	end
+})
+Tabs.Settings:AddButton({
+	Title = "Hide",
+	Description = "",
+	Callback = function()
+		__VE["CG"]["InputPcToMobile"].W.Visible = __Y[2]
+		__VE["CG"]["InputPcToMobile"].A.Visible = __Y[2]
+		__VE["CG"]["InputPcToMobile"].S.Visible = __Y[2]
+		__VE["CG"]["InputPcToMobile"].D.Visible = __Y[2]
+	end
+})
+Tabs.Settings:AddButton({
+	Title = "Show",
+	Description = "",
+	Callback = function()
+		__VE["CG"]["InputPcToMobile"].W.Visible = true
+		__VE["CG"]["InputPcToMobile"].A.Visible = true
+		__VE["CG"]["InputPcToMobile"].S.Visible = true
+		__VE["CG"]["InputPcToMobile"].D.Visible = true
+	end
+})
+
 
 task.wait(0.05)
 if allowtoserialized then
     serializedSetting = game.HttpService:JSONEncode(Setting)
-    writefile("Setting/settingHEDERNG.json", serializedSetting)
+    writefile("Setting/settingBABFT.json", serializedSetting)
 end
 task.wait(5)
 finishload = true
