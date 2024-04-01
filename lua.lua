@@ -70,7 +70,7 @@ __U[6](function()
         InterfaceManager =__U[40](game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
     end
 end)
-__X = {true, __Y[2], nil, 0, 1}
+__X = {true, false, nil, 0, 1}
 __Y = {}
 for a = 1, #__X do
     __U[6](
@@ -93,9 +93,6 @@ __VE["VIM"], __VE["UIS"] = game:GetService("VirtualInputManager"), game:GetServi
 __VE["Lg"], __VE["TS"], __VE["GMos"] = game:GetService("Lighting"), game:GetService("TweenService"), game:GetService("Players").LocalPlayer:GetMouse()
 __VE["VU"], __VE["CG"] = game:GetService("VirtualUser"), game:GetService("CoreGui")
 __VE["HS"] = game:GetService("HttpService")
-__VE["RRC"] = game:GetService("Players").LocalPlayer.PlayerGui.MainInterface.RemoteFunction.RollRemoteClient
-__VE["RE"] = game:GetService("ReplicatedStorage").Remotes.RollEvent
-__VE["SRC"] = game:GetService("Players").LocalPlayer.PlayerGui.MainInterface.RemoteFunction.StatusRemoteClient
 originalWalkSpeed = __VE["LPs"].Character.Humanoid.WalkSpeed
 originalJumpPower = __VE["LPs"].Character.Humanoid.JumpPower
 CONTROL = {F = 0, B = 0, L = 0, R = 0, Q = 0, E = 0}
@@ -162,35 +159,32 @@ local Tabs = {
     Settings = Window:AddTab({ Title = "UI Settings", Icon = "settings" })
 }
 function notify(title, content)
-	if title and not content then content = title; title = "Ruby Hub" end
+	if title and not content then content = title; title = "Script Service" end
 	Fluent:Notify({
 		Title = title,
 		Content = content,
 		Duration = 5
 	})
 end
-if __VE["CG"]:FindFirstChild("TTJY HUB") then
-    __VE["CG"]:FindFirstChild("TTJY HUB"):Destroy()
+
+__U[6](
+    function()
+        Window.Root:GetPropertyChangedSignal("Visible"):Connect(OnFluentChange)
+    end
+)
+__U[6](
+    function()
+        function onButtonClick()
+            Window.Minimized = not Window.Minimized
+            Window.Root.Visible = not Window.Minimized
+        end
+        TTJYHUB.MouseButton1Click:Connect(onButtonClick)
+    end
+)
+
+if __VE["CG"]:FindFirstChild("InputPcToMobile") then
+    __VE["CG"]:FindFirstChild("InputPcToMobile"):Destroy()
 end
-
-local screenGui = __U[35]("ScreenGui")
-screenGui.Name = "TTJY HUB"
-screenGui.Parent = __VE["CG"]
-
-local textButton = __U[35]("TextButton")
-textButton.Text = "TTJY HUB"
-textButton.Size = UDim2.new(0, 100, 0, 50)
-textButton.Position = UDim2.new(0.5, -45, 0, -40)
-textButton.TextColor3 = Color3.new(1, 0, 0)
-textButton.BackgroundColor3 = Color3.new(0, 0, 0)
-textButton.BackgroundTransparency = 0.7
-textButton.Parent = screenGui
-
-local function onButtonClick()
-    Window.Minimized = not Window.Minimized
-    Window.Root.Visible = not Window.Minimized
-end
-textButton.MouseButton1Click:Connect(onButtonClick)
 local screenGui2 = __U[35]("ScreenGui")
 screenGui2.Name = "InputPcToMobile"
 screenGui2.Parent = __VE["CG"]
@@ -329,7 +323,7 @@ autofarm:OnChanged(function()
 	end
 end)
 
-AutoQuest:AddSection("Simple Scriptz")
+Tabs.AutoQuest:AddSection("Simple Scriptz")
 
 
 local FLysss = Tabs.Player:AddToggle("FLysss", {Title = "Fly", Default = __Y[2] })
@@ -337,11 +331,11 @@ local FLysss = Tabs.Player:AddToggle("FLysss", {Title = "Fly", Default = __Y[2] 
 FLysss:OnChanged(function()
 	if Options.FLysss.Value then
 		FLYING = Options.FLysss.Value
-		while not cmdlp or not cmdlp.Character or not cmdlp.Character:FindFirstChild('HumanoidRootPart') or not cmdlp.Character:FindFirstChild('Humanoid') or not cmdm do
+		while not __VE["LPs"] or not __VE["LPs"].Character or not __VE["LPs"].Character:FindFirstChild('HumanoidRootPart') or not __VE["LPs"].Character:FindFirstChild('Humanoid') or not cmdm do
 			wait()
 		end
 
-		local T = cmdlp.Character.HumanoidRootPart
+		local T = __VE["LPs"].Character.HumanoidRootPart
 		local SPEED = 0
 
 		function FLY()
@@ -362,12 +356,12 @@ FLysss:OnChanged(function()
 					end
 
 					if (CONTROL.L + CONTROL.R) ~= 0 or (CONTROL.F + CONTROL.B) ~= 0 or (CONTROL.Q + CONTROL.E) ~= 0 then
-						BV.velocity = ((workspace.CurrentCamera.CoordinateFrame.lookVector * (CONTROL.F + CONTROL.B)) + ((workspace.CurrentCamera.CoordinateFrame * __U[26](CONTROL.L + CONTROL.R, (CONTROL.F + CONTROL.B + CONTROL.Q + CONTROL.E) * 0.2, 0).p) - workspace.CurrentCamera.CoordinateFrame.p)) * SPEED
+						BV.velocity = ((__VE["WS"].CurrentCamera.CoordinateFrame.lookVector * (CONTROL.F + CONTROL.B)) + ((__VE["WS"].CurrentCamera.CoordinateFrame * __U[26](CONTROL.L + CONTROL.R, (CONTROL.F + CONTROL.B + CONTROL.Q + CONTROL.E) * 0.2, 0).p) - __VE["WS"].CurrentCamera.CoordinateFrame.p)) * SPEED
 					else
 						BV.velocity = __U[57](0, 0, 0)
 					end
 
-					BG.cframe = workspace.CurrentCamera.CoordinateFrame
+					BG.cframe = __VE["WS"].CurrentCamera.CoordinateFrame
 					wait()
 				end
 
@@ -376,7 +370,7 @@ FLysss:OnChanged(function()
 
 				BG:Destroy()
 				BV:Destroy()
-				cmdlp.Character.Humanoid.PlatformStand = __Y[2]
+				__VE["LPs"].Character.Humanoid.PlatformStand = __Y[2]
 			end)
 		end
 
@@ -444,7 +438,7 @@ end)
 local afspeed = Tabs.asettings:AddSlider("afspeed", {
 	Title = "Autofarm Speed",
 	Description = "Changes the Autofarm Speed",
-	Default = 1000,
+	Default = Setting.aspeed,
 	Min = 100,
 	Max = 10000,
 	Rounding = 0,
@@ -460,7 +454,7 @@ end)
 local stayat = Tabs.asettings:AddSlider("stayat", {
 	Title = "Stay at Y Value",
 	Description = "Stays at the given Y Value (height)",
-	Default = 55,
+	Default = Setting.stayatyvalue,
 	Min = 55,
 	Max = 100,
 	Rounding = 0,
@@ -471,7 +465,7 @@ local stayat = Tabs.asettings:AddSlider("stayat", {
 local wai = Tabs.asettings:AddSlider("wai", {
 	Title = "Wait until AutoFarm starts again",
 	Description = "Waits ... seconds until AutoFarm starts again",
-	Default = 20,
+	Default = Setting.waituntil,
 	Min = 10,
 	Max = 60,
 	Rounding = 0,
