@@ -513,15 +513,33 @@ Tabs.AutoQuest:AddButton({
                 task.wait(0.1) 
             until ResetRequest == 20000 or (workspace[tostring(teamZone)]:FindFirstChild("Quest") and workspace[tostring(teamZone)].Quest:FindFirstChild("ThinIce"))
             workspace[tostring(teamZone)].VoteLaunchRE:FireServer()
+			Setting.autofarming = true
             task.wait(0.5)
-            tpwithnewtpbyme2(CFrame.new(-55.08570861816406, 26.171443939208984, 1328.283203125), 5)
-			task.wait()
-            tpwithnewtpbyme2(CFrame.new(-76.84388732910156, 26.171443939208984, 4345.62353515625), 5)
-			task.wait()
-            tpwithnewtpbyme2(CFrame.new(-63.48623275756836, 26.171443939208984, 8649.052734375), 5)
-			task.wait()
-            tpwithnewtpbyme2(CFrame.new(-53.60350036621094, -357.9239807128906, 9498.6572265625), 5)
-			task.wait()
+			pcall(function()
+				if __VE["LPs"].Character:FindFirstChild("HumanoidRootPart") then
+					local water = __VE["WS"].BoatStages.NormalStages.CaveStage1.Water
+					local waterp = water.Position
+					local lastwater = __VE["WS"].BoatStages.NormalStages.CaveStage10.Water
+					local lastwaterp = lastwater.Position
+					local chest = __VE["WS"].BoatStages.NormalStages.TheEnd.GoldenChest.Trigger
+					local success = pcall(function()
+						__VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](waterp.x, waterp.y + Setting.stayatyvalue, waterp.z)
+						tp(lastwaterp.x, waterp.y + Setting.stayatyvalue, lastwaterp.z, nil)
+						for i = 1, 5 do
+							__VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](chest.Position.x, chest.Position.y + 20, chest.Position.z)
+							task.wait(0.05)
+							__VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](chest.Position.x, chest.Position.y, chest.Position.z)
+							task.wait(0.05)
+						end
+						__VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](chest.Position.x, chest.Position.y + 30, chest.Position.z)
+						task.wait(Setting.waituntil)
+					end)
+					if not success then
+						notify("ER Activated, Return to player")
+					end
+				end
+			end)
+			Setting.autofarming = false
         end)
     end
 })
@@ -823,32 +841,18 @@ local function updatePartPosition()
         Part.CFrame = CFrame.new(0, -10000, 0)
     end
 end
-coroutine.wrap(function()
-	game:GetService("RunService").RenderStepped:Connect(updatePartPosition)
-end)
+game:GetService("RunService").RenderStepped:Connect(updatePartPosition)
 local function NoclipLoop()
 	if Noclip and __VE["LPs"].Character ~= nil then
-		if __VE["LPs"].Character:FindFirstChild("HumanoidRootPart") and __VE["LPs"].Character.HumanoidRootPart.CanCollide then
-			for _, child in pairs(__VE["LPs"].Character:GetDescendants()) do
-				if child:IsA("BasePart") and child.CanCollide == true and child.Name ~= floatName then
-					child.CanCollide = false
-				end
-			end
-		end
-	elseif not Noclip and __VE["LPs"].Character ~= nil then
-		if __VE["LPs"].Character:FindFirstChild("HumanoidRootPart") and not __VE["LPs"].Character.HumanoidRootPart.CanCollide then
-			for _, child in pairs(__VE["LPs"].Character:GetDescendants()) do
-				if child:IsA("BasePart") and child.CanCollide == false and child.Name ~= floatName then
-					child.CanCollide = true
-				end
+		for _, child in pairs(__VE["LPs"].Character:GetChildren()) do
+			if child:IsA("BasePart") and child.CanCollide == true then
+				child.CanCollide = false
 			end
 		end
 	end
 	task.wait()
 end
-coroutine.wrap(function()
-	game:GetService("RunService").Stepped:Connect(NoclipLoop)
-end)
+game:GetService("RunService").Stepped:Connect(NoclipLoop)
 task.wait(0.05)
 if allowtoserialized then
     serializedSetting = game.HttpService:JSONEncode(Setting)
@@ -857,3 +861,4 @@ end
 task.wait(5)
 finishload = true
 getgenv().FinishLoad = true
+warn("Simple Showcase TBC")
