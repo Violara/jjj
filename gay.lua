@@ -97,6 +97,8 @@ __VE["IBFS"] = workspace:WaitForChild("ItemBoughtFromShop")
 originalWalkSpeed = __VE["LPs"].Character.Humanoid.WalkSpeed
 originalJumpPower = __VE["LPs"].Character.Humanoid.JumpPower
 CONTROL = {F = 0, B = 0, L = 0, R = 0, Q = 0, E = 0}
+Float = false
+Noclip = false
 cmdm = __VE["GMos"]
 speedofthevfly = 1
 speedofthefly = 1
@@ -138,6 +140,25 @@ local c = {
     {Title = "Key System", Content = "sa.l"},
     {Title = "UI", Content = "dawid"}
 }
+function tpwithnewtpbyme2(xyz,speedoftpNTP)
+    local hrd = __VE["LPs"].Character.HumanoidRootPart
+    local p = hrd.Position
+    local currentPos = __U[57](p.x, p.y, p.z)
+    local targetPos = xyz.Position
+    local saveY = p.y
+
+    local direction = (targetPos - currentPos).Unit
+    local distance = (targetPos - currentPos).Magnitude
+    local steps = __U[39](distance / speedoftpNTP)
+    for i = 1, steps do
+        if not __VE["LPs"].Character:FindFirstChild("Humanoid") then
+            repeat __U[23](0.175) until __VE["LPs"].Character:FindFirstChild("Humanoid")
+        end
+        currentPos = currentPos + direction * speedoftpNTP 
+        __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](currentPos)
+        __U[23]()
+    end
+end
 local Fluent = __U[40](game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
 local SaveManager = __U[40](game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
 local InterfaceManager = __U[40](game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
@@ -427,23 +448,23 @@ Tabs.AutoQuest:AddButton({
 	Callback = function()
         pcall(function()
             workspace.QuestMakerEvent:FireServer(0)
-            task.wait(0.5)
-            ResetRequest = 0
-            teamColor = game.Players.LocalPlayer.Team.TeamColor.Name
-            teamZone = teamColor.."Zone"
-            workspace.ClearAllPlayersBoatParts:FireServer()
-            task.wait(0.5)
-            workspace.QuestMakerEvent:FireServer(3)
-            repeat
+			task.wait(0.5)
+			ResetRequest = 0
+			teamColor = game.Players.LocalPlayer.Team.TeamColor.Name
+			teamZone = teamColor.."Zone"
+			workspace.ClearAllPlayersBoatParts:FireServer()
+			task.wait(0.5)
+			workspace.QuestMakerEvent:FireServer(3)
+			repeat
 				workspace.QuestMakerEvent:FireServer(3)
-                ResetRequest = ResetRequest + 1
-                task.wait(0.1) 
-            until ResetRequest == 20000 or (workspace[tostring(teamZone)]:FindFirstChild("Quest") and workspace[tostring(teamZone)].Quest:FindFirstChild("Ramp") and workspace[tostring(teamZone)].Quest.Ramp:FindFirstChild("Part"))
-            for _, v in pairs(workspace[tostring(teamZone)].Quest.Ramp:GetChildren()) do
-                if v and v:IsA("BasePart") and v:FindFirstChild("TouchInterest") then
-                    __VE["LPs"].Character.HumanoidRootPart.CFrame = v.CFrame
-                end
-            end
+				ResetRequest = ResetRequest + 1
+				task.wait(0.1) 
+			until ResetRequest == 20000 or (workspace[tostring(teamZone)]:FindFirstChild("Quest") and workspace[tostring(teamZone)].Quest:FindFirstChild("Ramp") and workspace[tostring(teamZone)].Quest.Ramp:FindFirstChild("Part"))
+			for _, v in pairs(workspace[tostring(teamZone)].Quest.Ramp:GetChildren()) do
+				if v and v:FindFirstChild("TouchInterest") and v.Name ~= "Lava" then
+					__VE["LPs"].Character.HumanoidRootPart.CFrame = v.CFrame
+				end
+			end
         end)
     end
 })
@@ -466,7 +487,9 @@ Tabs.AutoQuest:AddButton({
                 task.wait(0.1) 
             until ResetRequest == 20000 or (workspace[tostring(teamZone)]:FindFirstChild("Quest") and workspace[tostring(teamZone)].Quest:FindFirstChild("Butter") and workspace[tostring(teamZone)].Quest.Butter:FindFirstChild("PPart"))
             repeat
-                fireclickdetector(workspace[tostring(teamZone)].Quest.Butter.PPart.ClickDetector)
+				__VE["LPs"].Character.HumanoidRootPart.CFrame = workspace[tostring(teamZone)].Quest.Butter.PPart.CFrame
+                fireclickdetector(workspace[tostring(teamZone)].Quest.Butter.PPart.ClickDetector, 5)
+				task.wait(0.1)
             until not workspace[tostring(teamZone)].Quest:FindFirstChild("Butter") or (workspace[tostring(teamZone)].Quest:FindFirstChild("Butter") and not workspace[tostring(teamZone)].Quest.Butter:FindFirstChild("PPart"))
         end)
     end
@@ -488,17 +511,28 @@ Tabs.AutoQuest:AddButton({
 				workspace.QuestMakerEvent:FireServer(9)
                 ResetRequest = ResetRequest + 1
                 task.wait(0.1) 
-            until ResetRequest == 20000 or (workspace[tostring(teamZone)]:FindFirstChild("Quest") and workspace[tostring(teamZone)].Quest:FindFirstChild("Thin Ice"))
+            until ResetRequest == 20000 or (workspace[tostring(teamZone)]:FindFirstChild("Quest") and workspace[tostring(teamZone)].Quest:FindFirstChild("ThinIce"))
             workspace[tostring(teamZone)].VoteLaunchRE:FireServer()
             task.wait(0.5)
             tpwithnewtpbyme2(CFrame.new(-55.08570861816406, 26.171443939208984, 1328.283203125), 5)
+			task.wait()
             tpwithnewtpbyme2(CFrame.new(-76.84388732910156, 26.171443939208984, 4345.62353515625), 5)
+			task.wait()
             tpwithnewtpbyme2(CFrame.new(-63.48623275756836, 26.171443939208984, 8649.052734375), 5)
+			task.wait()
             tpwithnewtpbyme2(CFrame.new(-53.60350036621094, -357.9239807128906, 9498.6572265625), 5)
+			task.wait()
         end)
     end
 })
-
+FloatT = Tabs.Player:AddToggle("FloatT", {Title = "Float", Default = __Y[2] })
+FloatT:OnChanged(function()
+	Float = Options.FloatT.Value
+end)
+NoClipT = Tabs.Player:AddToggle("NoClipT", {Title = "Noclip", Default = __Y[2] })
+NoClipT:OnChanged(function()
+	Noclip = Options.NoClipT.Value
+end)
 local FLysss = Tabs.Player:AddToggle("FLysss", {Title = "Fly", Default = __Y[2] })
 
 FLysss:OnChanged(function()
@@ -763,6 +797,44 @@ Tabs.Settings:AddButton({
 })
 
 
+local Part = Instance.new("Part")
+Part.Size = Vector3.new(2, 0.2, 1.5)
+Part.Material = Enum.Material.Grass
+Part.Anchored = true
+Part.Transparency = 1
+Part.Parent = workspace
+local function updatePartPosition()
+    local character = __VE["LPs"].Character
+    local humanoidRootPart = character and character:FindFirstChild("HumanoidRootPart")
+    
+    if humanoidRootPart and Float then
+        Part.CFrame = humanoidRootPart.CFrame * CFrame.new(0, -3.1, 0)
+    else
+        Part.CFrame = CFrame.new(0, -10000, 0)
+    end
+end
+    
+game:GetService("RunService").RenderStepped:Connect(updatePartPosition)
+local function NoclipLoop()
+	if Noclip == true and __VE["LPs"].Character ~= nil then
+		if __VE["LPs"].Character:FindFirstChild("HumanoidRootPart") and __VE["LPs"].Character.HumanoidRootPart.CanCollide then
+			for _, child in pairs(__VE["LPs"].Character:GetDescendants()) do
+				if child:IsA("BasePart") and child.CanCollide == true and child.Name ~= floatName then
+					child.CanCollide = false
+				end
+			end
+		end
+	elseif Noclip == false and __VE["LPs"].Character ~= nil then
+		if __VE["LPs"].Character:FindFirstChild("HumanoidRootPart") and not __VE["LPs"].Character.HumanoidRootPart.CanCollide then
+			for _, child in pairs(__VE["LPs"].Character:GetDescendants()) do
+				if child:IsA("BasePart") and child.CanCollide == true and child.Name ~= floatName then
+					child.CanCollide = true
+				end
+			end
+		end
+	end
+end
+Noclipping = game:GetService("RunService").Stepped:Connect(NoclipLoop)
 task.wait(0.05)
 if allowtoserialized then
     serializedSetting = game.HttpService:JSONEncode(Setting)
