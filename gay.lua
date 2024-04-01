@@ -427,13 +427,17 @@ do
     AutoUseCoin = Tabs.Items:AddToggle("AutoUseCoin", {Title = "Auto Use Coin", Default = Setting.AutoUseCoin })
     coroutine.wrap(function()
         AutoUseCoin:OnChanged(function()
-            Setting.AutoUseCoin = Options.AutoUseCoin.Value
-            while Options.AutoUseCoin.Value do
-                game.ReplicatedStorage.Modules.Inventory.UseItem:FireServer("Coin", 1)
-                task.wait(0.1)
-            end
+            pcall(function()
+                Setting.AutoUseCoin = Options.AutoUseCoin.Value
+                print("AutoUseCoin Value:", )
+                while Options.AutoUseCoin.Value do
+                    print("L")
+                    game.ReplicatedStorage.Modules.Inventory.UseItem:FireServer("Coin", 1)
+                    task.wait(0.1)
+                end
+            end)
         end)
-    end)
+    end)()
     AutoUseGildedCoin = Tabs.Items:AddToggle("AutoUseGildedCoin", {Title = "Auto Use Gilded Coin", Default = Setting.AutoUseGildedCoin })
     coroutine.wrap(function()
         AutoUseGildedCoin:OnChanged(function()
