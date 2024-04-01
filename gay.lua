@@ -145,7 +145,7 @@ local function ESPSomething(obj, text)
     local textLabel = Instance.new("TextLabel")
     textLabel.Name = "Text"
     textLabel.Parent = billboard
-    textLabel.Text = text
+    textLabel.Text = tostring(text)
     textLabel.TextColor3 = Color3.fromRGB(255, 0, 0)
     textLabel.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
     textLabel.TextStrokeTransparency = 0.082
@@ -201,6 +201,10 @@ for _, v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.MainInterface
     end
 end
 task.wait()
+local Arg = {
+    ["Action"] = "Equip",
+    ["IsAutoAction"] = true
+}
 do
     Tabs.Main:AddSection("Aura")
     AutoAura = Tabs.Main:AddToggle("AutoAura", {Title = "Auto Roll Aura | Faster than normal", Default = Setting.AutoAura })
@@ -210,13 +214,13 @@ do
                 Setting.AutoAura = Options.AutoAura.Value
                 while Options.AutoAura.Value do
                     __VE["RRC"]:FireServer("Roll")
-                    __VE["RE"]:FireServer("Choice", "Equip", true)
+                    __VE["RE"]:FireServer("Choice", Arg)
                     __VE["SRC"]:FireServer("GetCooltime")
-                    task.wait(0.1)
+                    task.wait(0.5)
                 end
             end)
         end)
-    end)
+    end)()
     Tabs.Main:AddSection("Achivement")
     AutoAchivement = Tabs.Main:AddToggle("AutoAchivement", {Title = "Auto Achivement", Default = Setting.AutoAchivement })
     coroutine.wrap(function()
@@ -237,7 +241,7 @@ do
                 end
             end)
         end)
-    end)
+    end)()
     Tabs.Main:AddSection("Storage")
     AutoUpStorage = Tabs.Main:AddToggle("AutoUpStorage", {Title = "Auto Upgrade Storage", Default = Setting.AutoUpStorage })
     coroutine.wrap(function()
@@ -250,7 +254,7 @@ do
                 end
             end)
         end)
-    end)
+    end)()
     Tabs.GloveAPotion:AddSection("Gloves")
     __SEVOLGFOELBAT = {"Gear Basing", "Luck Glove", "Lunar Device", "Solar Device", "Eclipse", "Eclipse Device", "Jackpot Gauntlet", "Exo Gauntlet"}
     SelectGlove = Tabs.GloveAPotion:AddDropdown("SelectGlove", {
@@ -428,10 +432,11 @@ do
                         task.wait()
                         MRF[var]:FireServer("Craft", "Exo Gauntlet")
                     end
+                    task.wait()
                 end
             end)
         end)
-    end)
+    end)()
     Tabs.GloveAPotion:AddSection("Potion")
     AutoUseLuckyPotion = Tabs.Items:AddToggle("AutoUseLuckyPotion", {Title = "Auto use Luck Potion", Default = Setting.AutoUseLuckyPotion })
     coroutine.wrap(function()
@@ -444,10 +449,11 @@ do
                         game.ReplicatedStorage.Modules.Inventory.UseItem:FireServer("Lucky Potion", 1)
                         task.wait(0.1)
                     end
+                    task.wait(0.5)
                 end
             end)
         end)
-    end)
+    end)()
     AutoUseSpeedPotion = Tabs.Items:AddToggle("AutoUseSpeedPotion", {Title = "Auto use Speed Potion", Default = Setting.AutoUseSpeedPotion })
     coroutine.wrap(function()
         AutoUseSpeedPotion:OnChanged(function()
@@ -459,10 +465,11 @@ do
                         game.ReplicatedStorage.Modules.Inventory.UseItem:FireServer("Speed Potion", 1)
                         task.wait(0.1)
                     end
+                    task.wait(0.5)
                 end
             end)
         end)
-    end)
+    end)()
     Tabs.Items:AddSection("Use")
     AutoUseCoin = Tabs.Items:AddToggle("AutoUseCoin", {Title = "Auto Use Coin", Default = Setting.AutoUseCoin })
     coroutine.wrap(function()
@@ -473,6 +480,7 @@ do
                     game.ReplicatedStorage.Modules.Inventory.UseItem:FireServer("Coin", 1)
                     task.wait(0.1)
                 end
+                task.wait(0.5)
             end)
         end)
     end)()
@@ -485,9 +493,10 @@ do
                     game.ReplicatedStorage.Modules.Inventory.UseItem:FireServer("Gilded Coin", 1)
                     task.wait(0.1)
                 end
+                task.wait(0.5)
             end)
         end)
-    end)
+    end)()
     Tabs.Items:AddSection("Auto Collect")
     Tabs.Items:AddSection("AI Engine")
     Tabs.Items:AddSection("Work in progress")
@@ -505,13 +514,14 @@ do
                         else
                             __VE["LPs"].Character.Humanoid.WalkSpeed = 16
                         end
+                        task.wait(0.5)
                     end
                 else
                     __VE["LPs"].Character.Humanoid.WalkSpeed = 16
                 end
             end)
         end)
-    end)
+    end)()
     RemoveFog = Tabs.Player:AddToggle("RemoveFog", {Title = "Remove Fog", Default = Setting.RemoveFog })
     coroutine.wrap(function()
         RemoveFog:OnChanged(function()
@@ -532,7 +542,7 @@ do
                 end
             end)
         end)
-    end)
+    end)()
     SetDay = Tabs.Player:AddToggle("SetDay", {Title = "Day Time", Default = Setting.SetDay })
     coroutine.wrap(function()
         SetDay:OnChanged(function()
@@ -540,7 +550,7 @@ do
                 Setting.SetDay = Options.SetDay.Value
             end)
         end)
-    end)
+    end)()
     SetNight = Tabs.Player:AddToggle("SetNight", {Title = "Night Time", Default = Setting.SetNight })
     coroutine.wrap(function()
         SetNight:OnChanged(function()
@@ -548,35 +558,48 @@ do
                 Setting.SetNight = Options.SetNight.Value
             end)
         end)
-    end)
+    end)()
 
     Tabs.ESP:AddSection("ESP")
-    ESPItems = Tabs.Player:AddToggle("ESPItems", {Title = "Items", Default = Setting.ESPItems })
+    ESPItems = Tabs.ESP:AddToggle("ESPItems", {Title = "Items", Default = Setting.ESPItems })
     coroutine.wrap(function()
         ESPItems:OnChanged(function()
             pcall(function()
                 Setting.ESPItems = Options.ESPItems.Value
-                while Options.ESPItems.Value do
+                if Options.ESPItems.Value then
+                    while Options.ESPItems.Value do
+                        for _, v in pairs(__VE["WS"].DroppedItems:GetChildren()) do
+                            if v and (v.Name == "Luck Potion" or v.Name == "Speed Potion" or v.Name == "Coin" or v.Name == "Gilded Coin") then
+                                if not v:FindFirstChild("Highlight") then
+                                    local Highlight = Instance.new("Highlight")
+                                    Highlight.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
+                                    Highlight.FillColor = Color3.fromRGB(51, 255, 0)
+                                    Highlight.FillTransparency = 0.3
+                                    Highlight.Name = "Highlight"
+                                    Highlight.OutlineColor = Color3.new(0,0,0)
+                                    Highlight.OutlineTransparency = 0
+                                    Highlight.Parent = v
+                                    ESPSomething(v, tostring(v.Name))
+                                end
+                            end
+                        end
+                        task.wait(0.5)
+                    end
+                else
                     for _, v in pairs(__VE["WS"]:GetChildren()) do
                         if v and (v.Name == "Luck Potion" or v.Name == "Speed Potion" or v.Name == "Coin" or v.Name == "Gilded Coin") then
-                            if not v:FindFirstChild("Highlight") then
-                                local Highlight = Instance.new("Highlight")
-                                Highlight.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
-                                Highlight.FillColor = Color3.fromRGB(51, 255, 0)
-                                Highlight.FillTransparency = 0.3
-                                Highlight.Name = "Highlight"
-                                Highlight.OutlineColor = Color3.new(0,0,0)
-                                Highlight.OutlineTransparency = 0
-                                Highlight.Parent = v
-                                ESPSomething(v, tostring(v.Name))
+                            if v:FindFirstChild("Highlight") then
+                                v.Highlight:Destroy()
+                                if v:FindFirstChild("TextLabelBillboard") then
+                                    v.TextLabelBillboard:Destroy()
+                                end
                             end
                         end
                     end
-                    task.wait(0.5)
                 end
             end)
         end)
-    end)
+    end)()
 
     
     Tabs.ChangeLog:AddParagraph({
