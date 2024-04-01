@@ -525,6 +525,16 @@ Tabs.AutoQuest:AddButton({
         end)
     end
 })
+WaterGodmode = Tabs.Player:AddToggle("WaterGodmode", {Title = "Water Godmode", Default = __Y[2] })
+WaterGodmode:OnChanged(function()
+	if Options.WaterGodmode.Value then
+		for _, v in pairs(__VE["WS"]:GetDescendants()) do
+			if v and v.Name == "Water" then
+				v.CanTouch = false
+			end
+		end
+	end
+end)
 FloatT = Tabs.Player:AddToggle("FloatT", {Title = "Float", Default = __Y[2] })
 FloatT:OnChanged(function()
 	Float = Options.FloatT.Value
@@ -813,28 +823,18 @@ local function updatePartPosition()
         Part.CFrame = CFrame.new(0, -10000, 0)
     end
 end
-    
 game:GetService("RunService").RenderStepped:Connect(updatePartPosition)
 local function NoclipLoop()
-	if Noclip == true and __VE["LPs"].Character ~= nil then
-		if __VE["LPs"].Character:FindFirstChild("HumanoidRootPart") and __VE["LPs"].Character.HumanoidRootPart.CanCollide then
-			for _, child in pairs(__VE["LPs"].Character:GetDescendants()) do
-				if child:IsA("BasePart") and child.CanCollide == true and child.Name ~= floatName then
-					child.CanCollide = false
-				end
-			end
-		end
-	elseif Noclip == false and __VE["LPs"].Character ~= nil then
-		if __VE["LPs"].Character:FindFirstChild("HumanoidRootPart") and not __VE["LPs"].Character.HumanoidRootPart.CanCollide then
-			for _, child in pairs(__VE["LPs"].Character:GetDescendants()) do
-				if child:IsA("BasePart") and child.CanCollide == true and child.Name ~= floatName then
-					child.CanCollide = true
-				end
+	if Noclip and __VE["LPs"].Character ~= nil then
+		for _, child in pairs(__VE["LPs"].Character:GetChildren()) do
+			if child:IsA("BasePart") and child.CanCollide == true then
+				child.CanCollide = false
 			end
 		end
 	end
+	task.wait()
 end
-Noclipping = game:GetService("RunService").Stepped:Connect(NoclipLoop)
+game:GetService("RunService").Stepped:Connect(NoclipLoop)
 task.wait(0.05)
 if allowtoserialized then
     serializedSetting = game.HttpService:JSONEncode(Setting)
@@ -843,3 +843,4 @@ end
 task.wait(5)
 finishload = true
 getgenv().FinishLoad = true
+print("im gay")
