@@ -96,7 +96,7 @@ __VE["HS"] = game:GetService("HttpService")
 originalWalkSpeed = __VE["LPs"].Character.Humanoid.WalkSpeed
 originalJumpPower = __VE["LPs"].Character.Humanoid.JumpPower
 CONTROL = {F = 0, B = 0, L = 0, R = 0, Q = 0, E = 0}
-cmdm = Mouses
+cmdm = __VE["GMos"]
 speedofthevfly = 1
 speedofthefly = 1
 Setting = nil
@@ -111,7 +111,7 @@ if isfolder("Setting") and not isfile("Setting/settingBABFT.json") then
 		stayatyvalue = 55,
 		aspeed = 1000,
 		antireport = __Y[2],
-		waituntil = 20
+		waituntil = 15
 	}
     allowtoserialized = __Y[1]
 elseif __U[49]("Setting") and __U[50]("Setting/settingBABFT.json") then
@@ -132,13 +132,6 @@ local c = {
     {Title = "Key System", Content = "sa.l"},
     {Title = "UI", Content = "dawid"}
 }
-function OnFluentChange()
-    if Window.Root.Visible then
-        TTJYHUB.TextColor3 = __U[36](0, 255, 0)
-    else
-        TTJYHUB.TextColor3 = __U[36](255, 0, 0)
-    end
-end
 local Fluent = __U[40](game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
 local SaveManager = __U[40](game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
 local InterfaceManager = __U[40](game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
@@ -151,6 +144,13 @@ local Window = Fluent:CreateWindow({
     Theme = "Dark",
     MinimizeKey = Enum.KeyCode.LeftControl
 })
+function OnFluentChange()
+    if Window.Root.Visible then
+        TTJYHUB.TextColor3 = __U[36](0, 255, 0)
+    else
+        TTJYHUB.TextColor3 = __U[36](255, 0, 0)
+    end
+end
 local Tabs = {
     Main = Window:AddTab({ Title = "Main", Icon = "" }),
 	AutoQuest = Window:AddTab({ Title = "Auto Quest", Icon = "" }),
@@ -166,6 +166,22 @@ function notify(title, content)
 		Duration = 5
 	})
 end
+
+__U[6](
+    function()
+        Window.Root:GetPropertyChangedSignal("Visible"):Connect(OnFluentChange)
+    end
+)
+__U[6](
+    function()
+        function onButtonClick()
+            Window.Minimized = not Window.Minimized
+            Window.Root.Visible = not Window.Minimized
+        end
+        TTJYHUB.MouseButton1Click:Connect(onButtonClick)
+    end
+)
+
 if __VE["CG"]:FindFirstChild("InputPcToMobile") then
     __VE["CG"]:FindFirstChild("InputPcToMobile"):Destroy()
 end
@@ -422,7 +438,7 @@ end)
 local afspeed = Tabs.asettings:AddSlider("afspeed", {
 	Title = "Autofarm Speed",
 	Description = "Changes the Autofarm Speed",
-	Default = 1000,
+	Default = Setting.aspeed,
 	Min = 100,
 	Max = 10000,
 	Rounding = 0,
@@ -438,7 +454,7 @@ end)
 local stayat = Tabs.asettings:AddSlider("stayat", {
 	Title = "Stay at Y Value",
 	Description = "Stays at the given Y Value (height)",
-	Default = 55,
+	Default = Setting.stayatyvalue,
 	Min = 55,
 	Max = 100,
 	Rounding = 0,
@@ -449,7 +465,7 @@ local stayat = Tabs.asettings:AddSlider("stayat", {
 local wai = Tabs.asettings:AddSlider("wai", {
 	Title = "Wait until AutoFarm starts again",
 	Description = "Waits ... seconds until AutoFarm starts again",
-	Default = 20,
+	Default = Setting.waituntil,
 	Min = 10,
 	Max = 60,
 	Rounding = 0,
