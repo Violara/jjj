@@ -213,11 +213,11 @@ do
                     __VE["RRC"]:FireServer("Roll")
                     __VE["RE"]:FireServer("Choice", "Equip", true)
                     __VE["SRC"]:FireServer("GetCooltime")
-                    task.wait(0.1)
+                    task.wait(0.2)
                 end
             end)
         end)
-    end)
+    end)()
     Tabs.Main:AddSection("Achivement")
     AutoAchivement = Tabs.Main:AddToggle("AutoAchivement", {Title = "Auto Achivement", Default = Setting.AutoAchivement })
     coroutine.wrap(function()
@@ -238,7 +238,7 @@ do
                 end
             end)
         end)
-    end)
+    end)()
     Tabs.Main:AddSection("Storage")
     AutoUpStorage = Tabs.Main:AddToggle("AutoUpStorage", {Title = "Auto Upgrade Storage", Default = Setting.AutoUpStorage })
     coroutine.wrap(function()
@@ -251,7 +251,7 @@ do
                 end
             end)
         end)
-    end)
+    end)()
     Tabs.GloveAPotion:AddSection("Gloves")
     __SEVOLGFOELBAT = {"Gear Basing", "Luck Glove", "Lunar Device", "Solar Device", "Eclipse", "Eclipse Device", "Jackpot Gauntlet", "Exo Gauntlet"}
     SelectGlove = Tabs.GloveAPotion:AddDropdown("SelectGlove", {
@@ -429,10 +429,11 @@ do
                         task.wait()
                         MRF[var]:FireServer("Craft", "Exo Gauntlet")
                     end
+                    task.wait()
                 end
             end)
         end)
-    end)
+    end)()
     Tabs.GloveAPotion:AddSection("Potion")
     AutoUseLuckyPotion = Tabs.Items:AddToggle("AutoUseLuckyPotion", {Title = "Auto use Luck Potion", Default = Setting.AutoUseLuckyPotion })
     coroutine.wrap(function()
@@ -445,10 +446,11 @@ do
                         game.ReplicatedStorage.Modules.Inventory.UseItem:FireServer("Lucky Potion", 1)
                         task.wait(0.1)
                     end
+                    task.wait(0.5)
                 end
             end)
         end)
-    end)
+    end)()
     AutoUseSpeedPotion = Tabs.Items:AddToggle("AutoUseSpeedPotion", {Title = "Auto use Speed Potion", Default = Setting.AutoUseSpeedPotion })
     coroutine.wrap(function()
         AutoUseSpeedPotion:OnChanged(function()
@@ -460,10 +462,11 @@ do
                         game.ReplicatedStorage.Modules.Inventory.UseItem:FireServer("Speed Potion", 1)
                         task.wait(0.1)
                     end
+                    task.wait(0.5)
                 end
             end)
         end)
-    end)
+    end)()
     Tabs.Items:AddSection("Use")
     AutoUseCoin = Tabs.Items:AddToggle("AutoUseCoin", {Title = "Auto Use Coin", Default = Setting.AutoUseCoin })
     coroutine.wrap(function()
@@ -474,6 +477,7 @@ do
                     game.ReplicatedStorage.Modules.Inventory.UseItem:FireServer("Coin", 1)
                     task.wait(0.1)
                 end
+                task.wait(0.5)
             end)
         end)
     end)()
@@ -486,9 +490,10 @@ do
                     game.ReplicatedStorage.Modules.Inventory.UseItem:FireServer("Gilded Coin", 1)
                     task.wait(0.1)
                 end
+                task.wait(0.5)
             end)
         end)
-    end)
+    end)()
     Tabs.Items:AddSection("Auto Collect")
     Tabs.Items:AddSection("AI Engine")
     Tabs.Items:AddSection("Work in progress")
@@ -506,13 +511,14 @@ do
                         else
                             __VE["LPs"].Character.Humanoid.WalkSpeed = 16
                         end
+                        task.wait(0.5)
                     end
                 else
                     __VE["LPs"].Character.Humanoid.WalkSpeed = 16
                 end
             end)
         end)
-    end)
+    end)()
     RemoveFog = Tabs.Player:AddToggle("RemoveFog", {Title = "Remove Fog", Default = Setting.RemoveFog })
     coroutine.wrap(function()
         RemoveFog:OnChanged(function()
@@ -533,7 +539,7 @@ do
                 end
             end)
         end)
-    end)
+    end)()
     SetDay = Tabs.Player:AddToggle("SetDay", {Title = "Day Time", Default = Setting.SetDay })
     coroutine.wrap(function()
         SetDay:OnChanged(function()
@@ -541,7 +547,7 @@ do
                 Setting.SetDay = Options.SetDay.Value
             end)
         end)
-    end)
+    end)()
     SetNight = Tabs.Player:AddToggle("SetNight", {Title = "Night Time", Default = Setting.SetNight })
     coroutine.wrap(function()
         SetNight:OnChanged(function()
@@ -549,7 +555,7 @@ do
                 Setting.SetNight = Options.SetNight.Value
             end)
         end)
-    end)
+    end)()
 
     Tabs.ESP:AddSection("ESP")
     ESPItems = Tabs.Player:AddToggle("ESPItems", {Title = "Items", Default = Setting.ESPItems })
@@ -577,7 +583,7 @@ do
                 end
             end)
         end)
-    end)
+    end)()
 
     
     Tabs.ChangeLog:AddParagraph({
