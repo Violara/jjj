@@ -34,7 +34,7 @@ b["_TTJY HUB"].BackgroundColor3 = Color3.fromRGB(56.0000042617321, 56.0000042617
 b["_TTJY HUB"].BackgroundTransparency = 0.4000000059604645
 b["_TTJY HUB"].BorderColor3 = Color3.fromRGB(0, 0, 0)
 b["_TTJY HUB"].BorderSizePixel = 0
-b["_TTJY HUB"].Position = UDim2.new(0.465000004, 0, -0.1, 0)
+b["_TTJY HUB"].Position = UDim2.new(0.4620000004, 0, -0.1, 0)
 b["_TTJY HUB"].Size = UDim2.new(0.0700000003, 0, 0.100000001, 0)
 b["_TTJY HUB"].ZIndex = 2
 b["_TTJY HUB"].Name = "TTJY HUB"
@@ -93,10 +93,11 @@ __VE["VIM"], __VE["UIS"] = game:GetService("VirtualInputManager"), game:GetServi
 __VE["Lg"], __VE["TS"], __VE["GMos"] = game:GetService("Lighting"), game:GetService("TweenService"), game:GetService("Players").LocalPlayer:GetMouse()
 __VE["VU"], __VE["CG"] = game:GetService("VirtualUser"), game:GetService("CoreGui")
 __VE["HS"] = game:GetService("HttpService")
+__VE["IBFS"] = workspace:WaitForChild("ItemBoughtFromShop")
 originalWalkSpeed = __VE["LPs"].Character.Humanoid.WalkSpeed
 originalJumpPower = __VE["LPs"].Character.Humanoid.JumpPower
 CONTROL = {F = 0, B = 0, L = 0, R = 0, Q = 0, E = 0}
-cmdm = Mouses
+cmdm = __VE["GMos"]
 speedofthevfly = 1
 speedofthefly = 1
 Setting = nil
@@ -111,7 +112,12 @@ if isfolder("Setting") and not isfile("Setting/settingBABFT.json") then
 		stayatyvalue = 55,
 		aspeed = 1000,
 		antireport = __Y[2],
-		waituntil = 20
+		waituntil = 15,
+		CommonChest = __Y[2],
+		UncommonChest = __Y[2],
+		RareChest = __Y[2],
+		EpicChest = __Y[2],
+		LegendaryChest = __Y[2]
 	}
     allowtoserialized = __Y[1]
 elseif __U[49]("Setting") and __U[50]("Setting/settingBABFT.json") then
@@ -132,13 +138,6 @@ local c = {
     {Title = "Key System", Content = "sa.l"},
     {Title = "UI", Content = "dawid"}
 }
-function OnFluentChange()
-    if Window.Root.Visible then
-        TTJYHUB.TextColor3 = __U[36](0, 255, 0)
-    else
-        TTJYHUB.TextColor3 = __U[36](255, 0, 0)
-    end
-end
 local Fluent = __U[40](game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
 local SaveManager = __U[40](game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
 local InterfaceManager = __U[40](game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
@@ -151,6 +150,13 @@ local Window = Fluent:CreateWindow({
     Theme = "Dark",
     MinimizeKey = Enum.KeyCode.LeftControl
 })
+function OnFluentChange()
+    if Window.Root.Visible then
+        TTJYHUB.TextColor3 = __U[36](0, 255, 0)
+    else
+        TTJYHUB.TextColor3 = __U[36](255, 0, 0)
+    end
+end
 local Tabs = {
     Main = Window:AddTab({ Title = "Main", Icon = "" }),
 	AutoQuest = Window:AddTab({ Title = "Auto Quest", Icon = "" }),
@@ -159,35 +165,32 @@ local Tabs = {
     Settings = Window:AddTab({ Title = "UI Settings", Icon = "settings" })
 }
 function notify(title, content)
-	if title and not content then content = title; title = "Ruby Hub" end
+	if title and not content then content = title; title = "Script Service" end
 	Fluent:Notify({
 		Title = title,
 		Content = content,
 		Duration = 5
 	})
 end
-if __VE["CG"]:FindFirstChild("TTJY HUB") then
-    __VE["CG"]:FindFirstChild("TTJY HUB"):Destroy()
+
+__U[6](
+    function()
+        Window.Root:GetPropertyChangedSignal("Visible"):Connect(OnFluentChange)
+    end
+)
+__U[6](
+    function()
+        function onButtonClick()
+            Window.Minimized = not Window.Minimized
+            Window.Root.Visible = not Window.Minimized
+        end
+        TTJYHUB.MouseButton1Click:Connect(onButtonClick)
+    end
+)
+
+if __VE["CG"]:FindFirstChild("InputPcToMobile") then
+    __VE["CG"]:FindFirstChild("InputPcToMobile"):Destroy()
 end
-
-local screenGui = __U[35]("ScreenGui")
-screenGui.Name = "TTJY HUB"
-screenGui.Parent = __VE["CG"]
-
-local textButton = __U[35]("TextButton")
-textButton.Text = "TTJY HUB"
-textButton.Size = UDim2.new(0, 100, 0, 50)
-textButton.Position = UDim2.new(0.5, -45, 0, -40)
-textButton.TextColor3 = Color3.new(1, 0, 0)
-textButton.BackgroundColor3 = Color3.new(0, 0, 0)
-textButton.BackgroundTransparency = 0.7
-textButton.Parent = screenGui
-
-local function onButtonClick()
-    Window.Minimized = not Window.Minimized
-    Window.Root.Visible = not Window.Minimized
-end
-textButton.MouseButton1Click:Connect(onButtonClick)
 local screenGui2 = __U[35]("ScreenGui")
 screenGui2.Name = "InputPcToMobile"
 screenGui2.Parent = __VE["CG"]
@@ -325,20 +328,181 @@ autofarm:OnChanged(function()
 		end
 	end
 end)
+Tabs.Main:AddSection("Auto Chest")
+CommonChest = Tabs.Player:AddToggle("CommonChest", {Title = "Common", Default = Setting.CommonChest })
 
-AutoQuest:AddSection("Simple Scriptz")
+CommonChest:OnChanged(function()
+	Setting.CommonChest = Options.CommonChest.Value
+	while Options.CommonChest.Value do
+    	__VE["IBFS"]:InvokeServer("Common Chest", 1)
+		task.wait(0.1)
+	end
+end)
+UncommonChest = Tabs.Player:AddToggle("UncommonChest", {Title = "Uncommon", Default = Setting.UncommonChest })
 
+UncommonChest:OnChanged(function()
+	Setting.UncommonChest = Options.UncommonChest.Value
+	while Options.UncommonChest.Value do
+    	__VE["IBFS"]:InvokeServer("Uncommon Chest", 1)
+		task.wait(0.1)
+	end
+end)
+RareChest = Tabs.Player:AddToggle("RareChest", {Title = "Rare", Default = Setting.RareChest })
+
+RareChest:OnChanged(function()
+	Setting.RareChest = Options.RareChest.Value
+	while Options.RareChest.Value do
+    	__VE["IBFS"]:InvokeServer("Rare Chest", 1)
+		task.wait(0.1)
+	end
+end)
+EpicChest = Tabs.Player:AddToggle("EpicChest", {Title = "Epic", Default = Setting.EpicChest })
+
+EpicChest:OnChanged(function()
+	Setting.EpicChest = Options.EpicChest.Value
+	while Options.EpicChest.Value do
+    	__VE["IBFS"]:InvokeServer("Epic Chest", 1)
+		task.wai(0.1)
+	end
+end)
+LegendaryChest = Tabs.Player:AddToggle("LegendaryChest", {Title = "Legendary", Default = Setting.LegendaryChest })
+
+LegendaryChest:OnChanged(function()
+	Setting.LegendaryChest = Options.LegendaryChest.Value
+	while Options.LegendaryChest.Value do
+    	__VE["IBFS"]:InvokeServer("Legendary Chest", 1)
+		task.wai(0.1)
+	end
+end)
+
+Tabs.AutoQuest:AddSection("Simple Scriptz")
+Tabs.AutoQuest:AddButton({
+	Title = "Cloud",
+	Description = "WARNINN, THE SCRIPT WILL CLEAR ALL BLOCKS",
+	Callback = function()
+        pcall(function()
+            workspace.QuestMakerEvent:FireServer(0)
+            task.wait(0.5)
+            ResetRequest = 0
+            teamColor = game.Players.LocalPlayer.Team.TeamColor.Name
+            teamZone = teamColor.."Zone"
+            workspace.ClearAllPlayersBoatParts:FireServer()
+            task.wait(0.5)
+            workspace.QuestMakerEvent:FireServer(1)
+            repeat
+                ResetRequest = ResetRequest + 1
+                task.wait() 
+            until ResetRequest == 20000 or (workspace[tostring(teamZone)].Quest:FindFirstChild("Cloud") and workspace[tostring(teamZone)].Quest.Cloud:FindFirstChild("Part2"))
+            __VE["LPs"].Character.HumanoidRootPart.CFrame = workspace[tostring(teamZone)].Quest.Cloud.Part2.CFrame
+        end)
+    end
+})
+Tabs.AutoQuest:AddButton({
+	Title = "Target",
+	Description = "WARNINN, THE SCRIPT WILL CLEAR ALL BLOCKS",
+	Callback = function()
+        pcall(function()
+            workspace.QuestMakerEvent:FireServer(0)
+            task.wait(0.5)
+            ResetRequest = 0
+            teamColor = game.Players.LocalPlayer.Team.TeamColor.Name
+            teamZone = teamColor.."Zone"
+            workspace.ClearAllPlayersBoatParts:FireServer()
+            task.wait(0.5)
+            workspace.QuestMakerEvent:FireServer(2)
+            repeat
+                ResetRequest = ResetRequest + 1
+                task.wait() 
+            until ResetRequest == 20000 or (workspace[tostring(teamZone)].Quest:FindFirstChild("Target") and workspace[tostring(teamZone)].Quest.Target:FindFirstChild("Part"))
+            __VE["LPs"].Character.HumanoidRootPart.CFrame = workspace[tostring(teamZone)].Quest.Target.Part.CFrame
+        end)
+    end
+})
+Tabs.AutoQuest:AddButton({
+	Title = "Ramp",
+	Description = "WARNINN, THE SCRIPT WILL CLEAR ALL BLOCKS",
+	Callback = function()
+        pcall(function()
+            workspace.QuestMakerEvent:FireServer(0)
+            task.wait(0.5)
+            ResetRequest = 0
+            teamColor = game.Players.LocalPlayer.Team.TeamColor.Name
+            teamZone = teamColor.."Zone"
+            workspace.ClearAllPlayersBoatParts:FireServer()
+            task.wait(0.5)
+            workspace.QuestMakerEvent:FireServer(3)
+            repeat
+                ResetRequest = ResetRequest + 1
+                task.wait() 
+            until ResetRequest == 20000 or (workspace[tostring(teamZone)].Quest:FindFirstChild("Ramp") and workspace[tostring(teamZone)].Quest.Ramp:FindFirstChild("Part"))
+            for _, v in pairs(workspace[tostring(teamZone)].Quest.Ramp:GetChildren()) do
+                if v and v:IsA("BasePart") and v:FindFirstChild("TouchInterest") then
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = v.CFrame
+                end
+            end
+        end)
+    end
+})
+Tabs.AutoQuest:AddButton({
+	Title = "Find Me",
+	Description = "WARNINN, THE SCRIPT WILL CLEAR ALL BLOCKS",
+	Callback = function()
+        pcall(function()
+            workspace.QuestMakerEvent:FireServer(0)
+            task.wait(0.5)
+            ResetRequest = 0
+            teamColor = game.Players.LocalPlayer.Team.TeamColor.Name
+            teamZone = teamColor.."Zone"
+            workspace.ClearAllPlayersBoatParts:FireServer()
+            task.wait(0.5)
+            workspace.QuestMakerEvent:FireServer(4)
+            repeat
+                ResetRequest = ResetRequest + 1
+                task.wait() 
+            until ResetRequest == 20000 or (workspace[tostring(teamZone)].Quest:FindFirstChild("Butter") and workspace[tostring(teamZone)].Quest.Butter:FindFirstChild("PPart"))
+            repeat
+                fireclickdetector(workspace[tostring(teamZone)].Quest.Butter.PPart.ClickDetector)
+            until not workspace[tostring(teamZone)].Quest:FindFirstChild("Butter") or (workspace[tostring(teamZone)].Quest:FindFirstChild("Butter") and not workspace[tostring(teamZone)].Quest.Butter:FindFirstChild("PPart"))
+        end)
+    end
+})
+Tabs.AutoQuest:AddButton({
+	Title = "Thin Ice",
+	Description = "WARNINN, THE SCRIPT WILL CLEAR ALL BLOCKS",
+	Callback = function()
+        pcall(function()
+            workspace.QuestMakerEvent:FireServer(0)
+            task.wait(0.5)
+            ResetRequest = 0
+            teamColor = game.Players.LocalPlayer.Team.TeamColor.Name
+            teamZone = teamColor.."Zone"
+            workspace.ClearAllPlayersBoatParts:FireServer()
+            task.wait(0.5)
+            workspace.QuestMakerEvent:FireServer(9)
+            repeat
+                ResetRequest = ResetRequest + 1
+                task.wait() 
+            until ResetRequest == 20000 or workspace[tostring(teamZone)].Quest:FindFirstChild("Thin Ice")
+            workspace[tostring(teamZone)].VoteLaunchRE:FireServer()
+            task.wait(0.5)
+            tpwithnewtpbyme2(CFrame.new(-55.08570861816406, 26.171443939208984, 1328.283203125), 5)
+            tpwithnewtpbyme2(CFrame.new(-76.84388732910156, 26.171443939208984, 4345.62353515625), 5)
+            tpwithnewtpbyme2(CFrame.new(-63.48623275756836, 26.171443939208984, 8649.052734375), 5)
+            tpwithnewtpbyme2(CFrame.new(-53.60350036621094, -357.9239807128906, 9498.6572265625), 5)
+        end)
+    end
+})
 
 local FLysss = Tabs.Player:AddToggle("FLysss", {Title = "Fly", Default = __Y[2] })
 
 FLysss:OnChanged(function()
 	if Options.FLysss.Value then
 		FLYING = Options.FLysss.Value
-		while not cmdlp or not cmdlp.Character or not cmdlp.Character:FindFirstChild('HumanoidRootPart') or not cmdlp.Character:FindFirstChild('Humanoid') or not cmdm do
+		while not __VE["LPs"] or not __VE["LPs"].Character or not __VE["LPs"].Character:FindFirstChild('HumanoidRootPart') or not __VE["LPs"].Character:FindFirstChild('Humanoid') or not cmdm do
 			wait()
 		end
 
-		local T = cmdlp.Character.HumanoidRootPart
+		local T = __VE["LPs"].Character.HumanoidRootPart
 		local SPEED = 0
 
 		function FLY()
@@ -359,12 +523,12 @@ FLysss:OnChanged(function()
 					end
 
 					if (CONTROL.L + CONTROL.R) ~= 0 or (CONTROL.F + CONTROL.B) ~= 0 or (CONTROL.Q + CONTROL.E) ~= 0 then
-						BV.velocity = ((workspace.CurrentCamera.CoordinateFrame.lookVector * (CONTROL.F + CONTROL.B)) + ((workspace.CurrentCamera.CoordinateFrame * __U[26](CONTROL.L + CONTROL.R, (CONTROL.F + CONTROL.B + CONTROL.Q + CONTROL.E) * 0.2, 0).p) - workspace.CurrentCamera.CoordinateFrame.p)) * SPEED
+						BV.velocity = ((__VE["WS"].CurrentCamera.CoordinateFrame.lookVector * (CONTROL.F + CONTROL.B)) + ((__VE["WS"].CurrentCamera.CoordinateFrame * __U[26](CONTROL.L + CONTROL.R, (CONTROL.F + CONTROL.B + CONTROL.Q + CONTROL.E) * 0.2, 0).p) - __VE["WS"].CurrentCamera.CoordinateFrame.p)) * SPEED
 					else
 						BV.velocity = __U[57](0, 0, 0)
 					end
 
-					BG.cframe = workspace.CurrentCamera.CoordinateFrame
+					BG.cframe = __VE["WS"].CurrentCamera.CoordinateFrame
 					wait()
 				end
 
@@ -373,7 +537,7 @@ FLysss:OnChanged(function()
 
 				BG:Destroy()
 				BV:Destroy()
-				cmdlp.Character.Humanoid.PlatformStand = __Y[2]
+				__VE["LPs"].Character.Humanoid.PlatformStand = __Y[2]
 			end)
 		end
 
@@ -441,7 +605,7 @@ end)
 local afspeed = Tabs.asettings:AddSlider("afspeed", {
 	Title = "Autofarm Speed",
 	Description = "Changes the Autofarm Speed",
-	Default = 1000,
+	Default = Setting.aspeed,
 	Min = 100,
 	Max = 10000,
 	Rounding = 0,
@@ -457,7 +621,7 @@ end)
 local stayat = Tabs.asettings:AddSlider("stayat", {
 	Title = "Stay at Y Value",
 	Description = "Stays at the given Y Value (height)",
-	Default = 55,
+	Default = Setting.stayatyvalue,
 	Min = 55,
 	Max = 100,
 	Rounding = 0,
@@ -468,7 +632,7 @@ local stayat = Tabs.asettings:AddSlider("stayat", {
 local wai = Tabs.asettings:AddSlider("wai", {
 	Title = "Wait until AutoFarm starts again",
 	Description = "Waits ... seconds until AutoFarm starts again",
-	Default = 20,
+	Default = Setting.waituntil,
 	Min = 10,
 	Max = 60,
 	Rounding = 0,
