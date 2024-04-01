@@ -34,7 +34,7 @@ b["_TTJY HUB"].BackgroundColor3 = Color3.fromRGB(56.0000042617321, 56.0000042617
 b["_TTJY HUB"].BackgroundTransparency = 0.4000000059604645
 b["_TTJY HUB"].BorderColor3 = Color3.fromRGB(0, 0, 0)
 b["_TTJY HUB"].BorderSizePixel = 0
-b["_TTJY HUB"].Position = UDim2.new(0.465000004, 0, -0.1, 0)
+b["_TTJY HUB"].Position = UDim2.new(0.4620000004, 0, -0.1, 0)
 b["_TTJY HUB"].Size = UDim2.new(0.0700000003, 0, 0.100000001, 0)
 b["_TTJY HUB"].ZIndex = 2
 b["_TTJY HUB"].Name = "TTJY HUB"
@@ -112,7 +112,12 @@ if isfolder("Setting") and not isfile("Setting/settingBABFT.json") then
 		stayatyvalue = 55,
 		aspeed = 1000,
 		antireport = __Y[2],
-		waituntil = 15
+		waituntil = 15,
+		CommonChest = __Y[2],
+		UncommonChest = __Y[2],
+		RareChest = __Y[2],
+		EpicChest = __Y[2],
+		LegendaryChest = __Y[2]
 	}
     allowtoserialized = __Y[1]
 elseif __U[49]("Setting") and __U[50]("Setting/settingBABFT.json") then
@@ -324,30 +329,50 @@ autofarm:OnChanged(function()
 	end
 end)
 Tabs.Main:AddSection("Auto Chest")
-CommonChest = Tabs.Player:AddToggle("CommonChest", {Title = "Common", Default = Setting.CommonChest })
+CommonChest = Tabs.Main:AddToggle("CommonChest", {Title = "Common", Default = Setting.CommonChest })
 
 CommonChest:OnChanged(function()
-    __VE["IBFS"]:InvokeServer("Common Chest", 1)
+	Setting.CommonChest = Options.CommonChest.Value
+	while Options.CommonChest.Value do
+    	__VE["IBFS"]:InvokeServer("Common Chest", 1)
+		task.wait(0.1)
+	end
 end)
-UncommonChest = Tabs.Player:AddToggle("UncommonChest", {Title = "Uncommon", Default = Setting.UncommonChest })
+UncommonChest = Tabs.Main:AddToggle("UncommonChest", {Title = "Uncommon", Default = Setting.UncommonChest })
 
 UncommonChest:OnChanged(function()
-    __VE["IBFS"]:InvokeServer("Uncommon Chest", 1)
+	Setting.UncommonChest = Options.UncommonChest.Value
+	while Options.UncommonChest.Value do
+    	__VE["IBFS"]:InvokeServer("Uncommon Chest", 1)
+		task.wait(0.1)
+	end
 end)
-RareChest = Tabs.Player:AddToggle("RareChest", {Title = "Rare", Default = Setting.RareChest })
+RareChest = Tabs.Main:AddToggle("RareChest", {Title = "Rare", Default = Setting.RareChest })
 
 RareChest:OnChanged(function()
-    __VE["IBFS"]:InvokeServer("Rare Chest", 1)
+	Setting.RareChest = Options.RareChest.Value
+	while Options.RareChest.Value do
+    	__VE["IBFS"]:InvokeServer("Rare Chest", 1)
+		task.wait(0.1)
+	end
 end)
-EpicChest = Tabs.Player:AddToggle("EpicChest", {Title = "Epic", Default = Setting.EpicChest })
+EpicChest = Tabs.Main:AddToggle("EpicChest", {Title = "Epic", Default = Setting.EpicChest })
 
 EpicChest:OnChanged(function()
-    __VE["IBFS"]:InvokeServer("Epic Chest", 1)
+	Setting.EpicChest = Options.EpicChest.Value
+	while Options.EpicChest.Value do
+    	__VE["IBFS"]:InvokeServer("Epic Chest", 1)
+		task.wai(0.1)
+	end
 end)
-LegendaryChest = Tabs.Player:AddToggle("LegendaryChest", {Title = "Legendary", Default = Setting.LegendaryChest })
+LegendaryChest = Tabs.Main:AddToggle("LegendaryChest", {Title = "Legendary", Default = Setting.LegendaryChest })
 
 LegendaryChest:OnChanged(function()
-    __VE["IBFS"]:InvokeServer("Legendary Chest", 1)
+	Setting.LegendaryChest = Options.LegendaryChest.Value
+	while Options.LegendaryChest.Value do
+    	__VE["IBFS"]:InvokeServer("Legendary Chest", 1)
+		task.wai(0.1)
+	end
 end)
 
 Tabs.AutoQuest:AddSection("Simple Scriptz")
@@ -357,17 +382,19 @@ Tabs.AutoQuest:AddButton({
 	Callback = function()
         pcall(function()
             workspace.QuestMakerEvent:FireServer(0)
-            task.wait()
+            task.wait(0.5)
             ResetRequest = 0
             teamColor = game.Players.LocalPlayer.Team.TeamColor.Name
             teamZone = teamColor.."Zone"
             workspace.ClearAllPlayersBoatParts:FireServer()
-            wait(0.5)
+            task.wait(0.5)
+			print("START")
             workspace.QuestMakerEvent:FireServer(1)
             repeat
+				workspace.QuestMakerEvent:FireServer(1)
                 ResetRequest = ResetRequest + 1
-                task.wait() 
-            until ResetRequest == 5000 or (workspace[tostring(teamZone)].Quest:FindFirstChild("Cloud") and workspace[tostring(teamZone)].Quest.Cloud:FindFirstChild("Part2"))
+                task.wait(0.1) 
+            until ResetRequest == 20000 or (workspace[tostring(teamZone)]:FindFirstChild("Quest") and workspace[tostring(teamZone)].Quest:FindFirstChild("Cloud") and workspace[tostring(teamZone)].Quest.Cloud:FindFirstChild("Part2"))
             __VE["LPs"].Character.HumanoidRootPart.CFrame = workspace[tostring(teamZone)].Quest.Cloud.Part2.CFrame
         end)
     end
@@ -378,17 +405,18 @@ Tabs.AutoQuest:AddButton({
 	Callback = function()
         pcall(function()
             workspace.QuestMakerEvent:FireServer(0)
-            task.wait()
+            task.wait(0.5)
             ResetRequest = 0
             teamColor = game.Players.LocalPlayer.Team.TeamColor.Name
             teamZone = teamColor.."Zone"
             workspace.ClearAllPlayersBoatParts:FireServer()
-            wait(0.5)
+            task.wait(0.5)
             workspace.QuestMakerEvent:FireServer(2)
             repeat
+				workspace.QuestMakerEvent:FireServer(2)
                 ResetRequest = ResetRequest + 1
-                task.wait() 
-            until ResetRequest == 5000 or (workspace[tostring(teamZone)].Quest:FindFirstChild("Target") and workspace[tostring(teamZone)].Quest.Target:FindFirstChild("Part"))
+                task.wait(0.1) 
+            until ResetRequest == 20000 or (workspace[tostring(teamZone)]:FindFirstChild("Quest") and workspace[tostring(teamZone)].Quest:FindFirstChild("Target") and workspace[tostring(teamZone)].Quest.Target:FindFirstChild("Part"))
             __VE["LPs"].Character.HumanoidRootPart.CFrame = workspace[tostring(teamZone)].Quest.Target.Part.CFrame
         end)
     end
@@ -399,17 +427,18 @@ Tabs.AutoQuest:AddButton({
 	Callback = function()
         pcall(function()
             workspace.QuestMakerEvent:FireServer(0)
-            task.wait()
+            task.wait(0.5)
             ResetRequest = 0
             teamColor = game.Players.LocalPlayer.Team.TeamColor.Name
             teamZone = teamColor.."Zone"
             workspace.ClearAllPlayersBoatParts:FireServer()
-            wait(0.5)
+            task.wait(0.5)
             workspace.QuestMakerEvent:FireServer(3)
             repeat
+				workspace.QuestMakerEvent:FireServer(3)
                 ResetRequest = ResetRequest + 1
-                task.wait() 
-            until ResetRequest == 5000 or (workspace[tostring(teamZone)].Quest:FindFirstChild("Ramp") and workspace[tostring(teamZone)].Quest.Ramp:FindFirstChild("Part"))
+                task.wait(0.1) 
+            until ResetRequest == 20000 or (workspace[tostring(teamZone)]:FindFirstChild("Quest") and workspace[tostring(teamZone)].Quest:FindFirstChild("Ramp") and workspace[tostring(teamZone)].Quest.Ramp:FindFirstChild("Part"))
             for _, v in pairs(workspace[tostring(teamZone)].Quest.Ramp:GetChildren()) do
                 if v and v:IsA("BasePart") and v:FindFirstChild("TouchInterest") then
                     __VE["LPs"].Character.HumanoidRootPart.CFrame = v.CFrame
@@ -424,17 +453,18 @@ Tabs.AutoQuest:AddButton({
 	Callback = function()
         pcall(function()
             workspace.QuestMakerEvent:FireServer(0)
-            task.wait()
+            task.wait(0.5)
             ResetRequest = 0
             teamColor = game.Players.LocalPlayer.Team.TeamColor.Name
             teamZone = teamColor.."Zone"
             workspace.ClearAllPlayersBoatParts:FireServer()
-            wait(0.5)
+            task.wait(0.5)
             workspace.QuestMakerEvent:FireServer(4)
             repeat
+				workspace.QuestMakerEvent:FireServer(4)
                 ResetRequest = ResetRequest + 1
-                task.wait() 
-            until ResetRequest == 5000 or (workspace[tostring(teamZone)].Quest:FindFirstChild("Butter") and workspace[tostring(teamZone)].Quest.Butter:FindFirstChild("PPart"))
+                task.wait(0.1) 
+            until ResetRequest == 20000 or (workspace[tostring(teamZone)]:FindFirstChild("Quest") and workspace[tostring(teamZone)].Quest:FindFirstChild("Butter") and workspace[tostring(teamZone)].Quest.Butter:FindFirstChild("PPart"))
             repeat
                 fireclickdetector(workspace[tostring(teamZone)].Quest.Butter.PPart.ClickDetector)
             until not workspace[tostring(teamZone)].Quest:FindFirstChild("Butter") or (workspace[tostring(teamZone)].Quest:FindFirstChild("Butter") and not workspace[tostring(teamZone)].Quest.Butter:FindFirstChild("PPart"))
@@ -447,17 +477,18 @@ Tabs.AutoQuest:AddButton({
 	Callback = function()
         pcall(function()
             workspace.QuestMakerEvent:FireServer(0)
-            task.wait()
+            task.wait(0.5)
             ResetRequest = 0
             teamColor = game.Players.LocalPlayer.Team.TeamColor.Name
             teamZone = teamColor.."Zone"
             workspace.ClearAllPlayersBoatParts:FireServer()
-            wait(0.5)
+            task.wait(0.5)
             workspace.QuestMakerEvent:FireServer(9)
             repeat
+				workspace.QuestMakerEvent:FireServer(9)
                 ResetRequest = ResetRequest + 1
-                task.wait() 
-            until ResetRequest == 5000 or workspace[tostring(teamZone)].Quest:FindFirstChild("Thin Ice")
+                task.wait(0.1) 
+            until ResetRequest == 20000 or (workspace[tostring(teamZone)]:FindFirstChild("Quest") and workspace[tostring(teamZone)].Quest:FindFirstChild("Thin Ice"))
             workspace[tostring(teamZone)].VoteLaunchRE:FireServer()
             task.wait(0.5)
             tpwithnewtpbyme2(CFrame.new(-55.08570861816406, 26.171443939208984, 1328.283203125), 5)
