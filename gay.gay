@@ -62,7 +62,6 @@ Converted["_UIStroke1"].LineJoinMode = Enum.LineJoinMode.Bevel
 Converted["_UIStroke1"].Parent = Converted["_TextButton"]
 
 TTJYHUB = Converted["_TextButton"]
-
 Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
 SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
 InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
@@ -82,33 +81,43 @@ __VE["VIM"] , __VE["UIS"] = game:GetService("VirtualInputManager"), game:GetServ
 __VE["Lg"] , __VE["TS"], __VE["GMos"] = game:GetService("Lighting") ,game:GetService("TweenService") ,  game:GetService("Players").LocalPlayer:GetMouse()
 __VE["VU"],__VE["CG"] = game:GetService("VirtualUser") ,game:GetService("CoreGui")
 __VE["HS"] = game:GetService("HttpService")
+__VE["RRC"] = game:GetService("Players").LocalPlayer.PlayerGui.MainInterface.RemoteFunction.RollRemoteClient
+__VE["RE"] = game:GetService("ReplicatedStorage").Remotes.RollEvent
+__VE["SRC"] = game:GetService("Players").LocalPlayer.PlayerGui.MainInterface.RemoteFunction.StatusRemoteClient
 Setting = nil
+serializedSetting = nil
 if not isfolder("Setting") then
     makefolder("Setting")
 end
-if isfolder("Setting") and not isfile("Setting/settingHEDERNG.json") then
+if isfolder("Setting") and not isfile("Setting/settingSOLRNG.json") then
     print("no file")
     Setting = {
         AutoAura = false,
-        AutoCollectItem = false,
-        AutoPray = false,
-        AutoExtend = false,
-        AutoCraftWhat = nil,
-        AutoCraft = false
+        AutoAchivement = false,
+        AutoUpStorage = false,
+        SelectGlove = nil,
+        AutoCraftGlove = false,
+        AutoUseLuckyPotion = false,
+        AutoUseSpeedPotion = false,
+        AutoUseCoin = false,
+        AutoUseGildedCoin = false,
     }
     allowtoserialized = __Y[1]
-elseif __U[49]("Setting") and __U[50]("Setting/settingHEDERNG.json") then
+elseif __U[49]("Setting") and __U[50]("Setting/settingSOLRNG.json") then
     __U[1]("file")
     __U[23]()
-    Setting = game.HttpService:JSONDecode(__U[51]("Setting/settingHEDERNG.json"))
+    Setting = game.HttpService:JSONDecode(__U[51]("Setting/settingSOLRNG.json"))
 end
-
 local credits = {
     {Title = "Owner", Content = "ttjy."},
+    {Title = "VIP", Content = "x2neptune - Alchemy Hub"},
     {Title = "Co Owner", Content = "ttjy_"},
     {Title = "Scripter", Content = "ttjy."},
     {Title = "Scripter", Content = "ttjy_"},
+    {Title = "Scripter", Content = "x2neptune - Alchemy Hub"},
+    {Title = "Bypasser", Content = "???"},
     {Title = "Bypasser", Content = "ttjy."},
+    {Title = "Bypasser", Content = "x2neptune - Alchemy Hub"},
     {Title = "Key System", Content = "sa.l"},
     {Title = "UI", Content = "dawid"},
 }
@@ -120,22 +129,13 @@ function OnFluentChange()
         TTJYHUB.TextColor3  = __U[36](255, 0, 0)
     end
 end
-local function checkSameNumbers()
-    local labelText = game:GetService("Players").LocalPlayer.PlayerGui.Menu.Windows["My Auras"].Handle.Auras.Count.Text
-    local firstNumber, secondNumber = labelText:match("(%d+) / (%d+)")
-    if firstNumber and secondNumber then
-        return tonumber(firstNumber) == tonumber(secondNumber)
-    else
-        return false
-    end
-end
 
 Window = nil
 repeat
     __U[6](function()
         Window = Fluent:CreateWindow({
-            Title = "???? RNG Script v.UP1FV",
-            SubTitle = "by TTJY",
+            Title = "Sol's RNG Script v.UP1FV",
+            SubTitle = "by TTJY & ",
             TabWidth = 160,
             Size = UDim2.fromOffset(580, 460),
             Acrylic = false,
@@ -149,7 +149,10 @@ until Window ~= nil
 
 local Tabs = {
     Main = Window:AddTab({ Title = "Main", Icon = "home" }),
+    GloveAPotion = Window:AddTab({ Title = "Gloves & Potion", Icon = "gauge" }),
+    Items = Window:AddTab({ Title = "Items", Icon = "" }),
     ESP = Window:AddTab({ Title = "ESP", Icon = "briefcase" }),
+    ChangeLog = Window:AddTab({ Title = "ChangeLog", Icon = "" }),
     Credits = Window:AddTab({ Title = "Credits", Icon = "book" }),
     Settings = Window:AddTab({ Title = "Settings", Icon = "settings" })
 }
@@ -164,145 +167,304 @@ __U[6](function()
     end
     TTJYHUB.MouseButton1Click:Connect(onButtonClick)
 end)
-do
-    getgenv().TextStatus = "Getting Aura"
-    Tabs.Main:AddSection("Aura")
-    AutoAura = Tabs.Main:AddToggle("AutoAura", {Title = "Auto Roll Aura | Actually it suck", Default = Setting.AutoAura })
-    AutoAura:OnChanged(function()
-        while Options.AutoAura do
-            if Options.AutoAura then
-                pcall(function()
-                    game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Rolling"):InvokeServer("Roll")
-                    game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Rolling"):InvokeServer("Show")
-                    game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Rolling"):InvokeServer("Equip")
-                    if checkSameNumbers() then
-                        game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Rolling"):InvokeServer("Replace")
-                    end
-                end)
-            end
-            task.wait(0.1)
-        end
-    end)
-    getgenv().TextStatus = "Getting Items"
-    print("1")
-    Tabs.Main:AddSection("Items")
-    AutoCollectItem = Tabs.Main:AddToggle("AutoCollectItem", {Title = "Auto Collect Items", Default = Setting.AutoCollectItem })
-    AutoCollectItem:OnChanged(function()
-        print("2")
-        while Options.AutoCollectItem do
-            if Options.AutoCollectItem then
-                pcall(function()
-                    if workspace:FindFirstChild("Pray") or workspace:FindFirstChild("GwaGwa") then
-                        KEY_WINPG = workspace:FindFirstChild("Pray") or workspace:FindFirstChild("GwaGwa")
-                        if KEY_WINPG and KEY_WINPG:FindFirstChild("Attachment") and KEY_WINPG.Attachment:FindFirstChild("ProximityPrompt") and KEY_WINPG.Attachment.ProximityPrompt.Enabled then
-                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = KEY_WINPG.CFrame
-                            task.wait(0.3)
-                            fireproximityprompt(KEY_WINPG.Attachment.ProximityPrompt)
-                        end
-                    end
-                end)
-            end
-            task.wait(0.5)
-        end
-    end)
-    getgenv().TextStatus = "Getting Auto Farm"
-    AutoPray = Tabs.Main:AddToggle("AutoPray", {Title = "Auto Pray", Default = Setting.AutoPray })
-    AutoPray:OnChanged(function()
-        while Options.AutoPray do
-            if Options.AutoPray then
-                pcall(function()
-                    if game:GetService("Players").LocalPlayer.PlayerGui.Menu.Windows.Inventory.Handle.Items.Lists.ScrollingFrame:FindFirstChild("Pray") and game:GetService("Players").LocalPlayer.PlayerGui.Menu.Windows.Inventory.Handle.Items.Lists.ScrollingFrame.Pray.Visible then
-                        game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Item"):FireServer("Pray")
-                    end
-                end)
-            end
-            task.wait(0.5)
-        end
-    end)
-    getgenv().TextStatus = "Getting Storage"
-    Tabs.Main:AddSection("Storage")
-    AutoExtend:OnChanged(function()
-        while Options.AutoExtend do
-            if Options.AutoExtend then
-                pcall(function()
-                    game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Rolling"):InvokeServer("Extend")
-                end)
-            end
-            task.wait(0.5)
-        end
-    end)
-    Tabs.Main:AddSection("Craft")
-    if Setting.AutoCraftWhat == nil then
-        AutoCraftWhat = Tabs.Main:AddDropdown("AutoCraftWhat", {
-            Title = "Select Weapon",
-            Values = {"Water Gwa Gwa", "Murder Gwa Gwa", "Darkness Gwa Gwa", "Binary Gwa Gwa", "Planet Gwa Gwa"},
-            Multi = false,
-            Default = 1,
-        })
-        AutoCraftWhat:OnChanged(function(Value)
-            Setting.AutoCraftWhat = tostring(Value)
-        end)
-    else
-        MagicAPPEAR = Setting.AutoCraftWhat
-        AutoCraftWhat = Tabs.Main:AddDropdown("AutoCraftWhat", {
-            Title = "Select Weapon",
-            Values = {"Water Gwa Gwa", "Murder Gwa Gwa", "Darkness Gwa Gwa", "Binary Gwa Gwa", "Planet Gwa Gwa"},
-            Multi = false,
-            Default = 1,
-        })
-        AutoCraftWhat:OnChanged(function(Value)
-            Setting.AutoCraftWhat = tostring(Value)
-        end)
-        Setting.AutoCraftWhat = MagicAPPEAR
+local var = nil
+for _, v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.MainInterface.RemoteFunction:GetChildren()) do
+    if string.match(v.Name, "Craft\n%d+Client") then
+        var = tostring(v.Name)
+        print("Found RemoteFunction:", v.Name)
     end
-    getgenv().TextStatus = "Crafting suck yo"
-    AutoCraft = Tabs.Main:AddToggle("AutoCraft", {Title = "Auto Craft", Default = Setting.AutoCraft })
-    AutoCraft:OnChanged(function()
-        while Options.AutoCraft do
-            if Options.AutoCraft then
-                pcall(function()
-                    if Setting.AutoCraftWhat == "Water Gwa Gwa" then
-                        if not game:GetService("Players").LocalPlayer.PlayerGui.Menu.Craft.Handle.Craft.Lists.ScrollingFrame["Binary Gwa Gwa"].Done.Visible then
-                            game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Craft"):FireServer("Craft")
-                            game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Craft"):FireServer("Button", "")
-                            game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Crafting"):InvokeServer("Water Gwa Gwa", "Gwa Gwa")
-                            game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Crafting"):InvokeServer("Water Gwa Gwa", "WATER")
-                        end
-                    elseif Setting.AutoCraftWhat == "Murder Gwa Gwa" then
-                        if not game:GetService("Players").LocalPlayer.PlayerGui.Menu.Craft.Handle.Craft.Lists.ScrollingFrame["Murder Gwa Gwa"].Done.Visible then
-                            game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Craft"):FireServer("Craft")
-                            game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Craft"):FireServer("Button", "")
-                            game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Crafting"):InvokeServer("Water Gwa Gwa", "Gwa Gwa")
-                            game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Crafting"):InvokeServer("Water Gwa Gwa", "Murder")
-                        end
-                    elseif Setting.AutoCraftWhat == "Darkness Gwa Gwa" then
-                        if not game:GetService("Players").LocalPlayer.PlayerGui.Menu.Craft.Handle.Craft.Lists.ScrollingFrame["Darkness Gwa Gwa"].Done.Visible then
-                            game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Craft"):FireServer("Craft")
-                            game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Craft"):FireServer("Button", "")
-                            game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Crafting"):InvokeServer("Water Gwa Gwa", "Gwa Gwa")
-                            game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Crafting"):InvokeServer("Water Gwa Gwa", "Darkness")
-                        end
-                    elseif Setting.AutoCraftWhat == "Binary Gwa Gwa" then
-                        if not game:GetService("Players").LocalPlayer.PlayerGui.Menu.Craft.Handle.Craft.Lists.ScrollingFrame["Binary Gwa Gwa"].Done.Visible then
-                            game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Craft"):FireServer("Craft")
-                            game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Craft"):FireServer("Button", "")
-                            game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Crafting"):InvokeServer("Water Gwa Gwa", "Gwa Gwa")
-                            game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Crafting"):InvokeServer("Water Gwa Gwa", "BINARYX")
-                        end
-                    elseif Setting.AutoCraftWhat == "Planet Gwa Gwa" then
-                        if not game:GetService("Players").LocalPlayer.PlayerGui.Menu.Craft.Handle.Craft.Lists.ScrollingFrame["Planet Gwa Gwa"].Done.Visible then
-                            game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Craft"):FireServer("Craft")
-                            game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Craft"):FireServer("Button", "")
-                            game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Crafting"):InvokeServer("Water Gwa Gwa", "Gwa Gwa")
-                            game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Crafting"):InvokeServer("Water Gwa Gwa", "Planet")
+end
+task.wait()
+do
+    Tabs.Main:AddSection("Aura")
+    AutoAura = Tabs.Main:AddToggle("AutoAura", {Title = "Auto Roll Aura | Faster than normal", Default = Setting.AutoAura })
+    coroutine.wrap(function()
+        AutoAura:OnChanged(function()
+            Setting.AutoAura = Options.AutoAura.Value
+            while Options.AutoAura.Value do
+                __VE["RRC"]:FireServer("Roll")
+                __VE["RE"]:FireServer("Choice", "Equip", true)
+                __VE["SRC"]:FireServer("GetCooltime")
+                task.wait(0.1)
+            end
+        end)
+    end)
+    Tabs.Main:AddSection("Achivement")
+    AutoAchivement = Tabs.Main:AddToggle("AutoAchivement", {Title = "Auto Achivement", Default = Setting.AutoAchivement })
+    coroutine.wrap(function()
+        AutoAchivement:OnChanged(function()
+            Setting.AutoAchivement = Options.AutoAchivement.Value
+            while Options.AutoAchivement.Value do
+                for _, v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.MainInterface.AchievementFrame.Achievements.AchievementGrid.ScrollingFrame:GetChildren()) do
+                    if v and v:IsA("Frame") and v:FindFirstChild("Holder") and v.Holder:FindFirstChild("Title") and v.Holder.Title:FindFirstChild("Completed") then
+                        local matchingOrigin = v.Holder.Progress.ProgressText
+                        local firstNumber, secondNumber = matchingOrigin.Text:match("(%d+) / (%d+)")
+                        if v and firstNumber and secondNumber and tonumber(firstNumber) >= tonumber(secondNumber) then
+                            game.ReplicatedStorage.Remotes.Achievement:FireServer("Claim", tostring(v.Holder.Title.Text))
                         end
                     end
-                end)
+                end
+                task.wait(0.5)
             end
-            task.wait(0.5)
-        end
+        end)
     end)
-    Tabs.Setting:AddButton({
+    Tabs.Main:AddSection("Storage")
+    AutoUpStorage = Tabs.Main:AddToggle("AutoUpStorage", {Title = "Auto Upgrade Storage", Default = Setting.AutoUpStorage })
+    coroutine.wrap(function()
+        AutoUpStorage:OnChanged(function()
+            Setting.AutoUpStorage = Options.AutoUpStorage.Value
+            while Options.AutoUpStorage.Value do
+                game:GetService("ReplicatedStorage").Remotes.AuraStorage:FireServer("UpgradeStorage")
+                task.wait(0.1)
+            end
+        end)
+    end)
+    Tabs.GloveAPotion:AddSection("Gloves")
+    __SEVOLGFOELBAT = {"Gear Basing", "Luck Glove", "Lunar Device", "Solar Device", "Eclipse", "Eclipse Device", "Jackpot Gauntlet", "Exo Gauntlet"}
+    SelectGlove = Tabs.GloveAPotion:AddDropdown("SelectGlove", {
+        Title = "Select Glove",
+        Values = __SEVOLGFOELBAT,
+        Multi = false,
+        Default = Setting.SelectGlove,
+    })
+    SelectGlove:OnChanged(function(Value)
+        Setting.SelectGlove = tostring(Value)
+    end)
+    AutoCraftGlove = Tabs.GloveAPotion:AddToggle("AutoCraftGlove", {Title = "Auto Craft Glove", Default = Setting.AutoCraftGlove })
+    coroutine.wrap(function()
+        AutoCraftGlove:OnChanged(function()
+            Setting.AutoCraftGlove = Options.AutoCraftGlove.Value
+            while Options.AutoCraftGlove.Value do
+                IIS = game:GetService("Players").LocalPlayer.PlayerGui.MainInterface.Inventory.Items.ItemGrid.ScrollingFrame
+                MRF = game:GetService("Players").LocalPlayer.PlayerGui.MainInterface.RemoteFunction
+                if Setting.SelectGlove == "Gear Basing" then
+                    if not IIS:FindFirstChild("Gear Basing") then
+                        MRF[var]:FireServer("Insert", "Gear Basing", "Common")
+                        MRF[var]:FireServer("Insert", "Gear Basing", "Uncommon")
+                        MRF[var]:FireServer("Insert", "Gear Basing", "Rare")
+                        MRF[var]:FireServer("Insert", "Gear Basing", "Good")
+                        task.wait()
+                        MRF[var]:FireServer("Craft", "Gear Basing")
+                    end
+                elseif Setting.SelectGlove == "Luck Glove" then
+                    if not IIS:FindFirstChild("Luck Glove") then
+                        if not IIS:FindFirstChild("Gear Basing") then
+                            MRF[var]:FireServer("Insert", "Gear Basing", "Common")
+                            MRF[var]:FireServer("Insert", "Gear Basing", "Uncommon")
+                            MRF[var]:FireServer("Insert", "Gear Basing", "Rare")
+                            MRF[var]:FireServer("Insert", "Gear Basing", "Good")
+                            task.wait()
+                            MRF[var]:FireServer("Craft", "Gear Basing")
+                        else
+                            MRF[var]:FireServer("Insert", "Luck Glove", "Gear Basing")
+                            MRF[var]:FireServer("Insert", "Luck Glove", "Divinus")
+                            MRF[var]:FireServer("Insert", "Luck Glove", "Crystallized")
+                            MRF[var]:FireServer("Insert", "Luck Glove", "Rare")
+                            task.wait()
+                            MRF[var]:FireServer("Craft", "Luck Glove")
+                        end
+                    end
+                elseif Setting.SelectGlove == "Lunar Device" then
+                    if not IIS:FindFirstChild("Lunar Device") then
+                        if not IIS:FindFirstChild("Gear Basing") then
+                            MRF[var]:FireServer("Insert", "Gear Basing", "Common")
+                            MRF[var]:FireServer("Insert", "Gear Basing", "Uncommon")
+                            MRF[var]:FireServer("Insert", "Gear Basing", "Rare")
+                            MRF[var]:FireServer("Insert", "Gear Basing", "Good")
+                            task.wait()
+                            MRF[var]:FireServer("Craft", "Gear Basing")
+                        else
+                            MRF[var]:FireServer("Insert", "Lunar Device", "Gear Basing")
+                            MRF[var]:FireServer("Insert", "Lunar Device", "Rare")
+                            MRF[var]:FireServer("Insert", "Lunar Device", "Divinus")
+                            MRF[var]:FireServer("Insert", "Lunar Device", "Lunar")
+                            task.wait()
+                            MRF[var]:FireServer("Craft", "Lunar Device")
+                        end
+                    end
+                elseif Setting.SelectGlove == "Solar Device" then
+                    if not IIS:FindFirstChild("Solar Device") then
+                        if not IIS:FindFirstChild("Gear Basing") then
+                            MRF[var]:FireServer("Insert", "Gear Basing", "Common")
+                            MRF[var]:FireServer("Insert", "Gear Basing", "Uncommon")
+                            MRF[var]:FireServer("Insert", "Gear Basing", "Rare")
+                            MRF[var]:FireServer("Insert", "Gear Basing", "Good")
+                            task.wait()
+                            MRF[var]:FireServer("Craft", "Gear Basing")
+                        else
+                            MRF[var]:FireServer("Insert", "Solar Device", "Gear Basing")
+                            MRF[var]:FireServer("Insert", "Solar Device", "Solar")
+                            MRF[var]:FireServer("Insert", "Solar Device", "Divinus")
+                            MRF[var]:FireServer("Insert", "Solar Device", "Rare")
+                            task.wait()
+                            MRF[var]:FireServer("Craft", "Solar Device")
+                        end
+                    end
+                elseif Setting.SelectGlove == "Eclipse" then
+                    if not IIS:FindFirstChild("Eclipse") then
+                        MRF[var]:FireServer("Insert", "Eclipse", "Divinus")
+                        MRF[var]:FireServer("Insert", "Eclipse", "Solar")
+                        MRF[var]:FireServer("Insert", "Eclipse", "Lunar")
+                        task.wait()
+                        MRF[var]:FireServer("Craft", "Eclipse")
+                    end
+                elseif Setting.SelectGlove == "Eclipse Device" then
+                    if not IIS:FindFirstChild("Eclipse Device") then
+                        if not IIS:FindFirstChild("Eclipse") then
+                            MRF[var]:FireServer("Insert", "Eclipse", "Divinus")
+                            MRF[var]:FireServer("Insert", "Eclipse", "Solar")
+                            MRF[var]:FireServer("Insert", "Eclipse", "Lunar")
+                            task.wait()
+                            MRF[var]:FireServer("Craft", "Eclipse")
+                        end
+                        if not IIS:FindFirstChild("Lunar Device") then
+                            if not IIS:FindFirstChild("Gear Basing") then
+                                MRF[var]:FireServer("Insert", "Gear Basing", "Common")
+                                MRF[var]:FireServer("Insert", "Gear Basing", "Uncommon")
+                                MRF[var]:FireServer("Insert", "Gear Basing", "Rare")
+                                MRF[var]:FireServer("Insert", "Gear Basing", "Good")
+                                task.wait()
+                                MRF[var]:FireServer("Craft", "Gear Basing")
+                            else
+                                MRF[var]:FireServer("Insert", "Lunar Device", "Gear Basing")
+                                MRF[var]:FireServer("Insert", "Lunar Device", "Rare")
+                                MRF[var]:FireServer("Insert", "Lunar Device", "Divinus")
+                                MRF[var]:FireServer("Insert", "Lunar Device", "Lunar")
+                                task.wait()
+                                MRF[var]:FireServer("Craft", "Lunar Device")
+                            end
+                        end
+                        if not IIS:FindFirstChild("Solar Device") then
+                            if not IIS:FindFirstChild("Gear Basing") then
+                                MRF[var]:FireServer("Insert", "Gear Basing", "Common")
+                                MRF[var]:FireServer("Insert", "Gear Basing", "Uncommon")
+                                MRF[var]:FireServer("Insert", "Gear Basing", "Rare")
+                                MRF[var]:FireServer("Insert", "Gear Basing", "Good")
+                                task.wait()
+                                MRF[var]:FireServer("Craft", "Gear Basing")
+                            else
+                                MRF[var]:FireServer("Insert", "Solar Device", "Gear Basing")
+                                MRF[var]:FireServer("Insert", "Solar Device", "Solar")
+                                MRF[var]:FireServer("Insert", "Solar Device", "Divinus")
+                                MRF[var]:FireServer("Insert", "Solar Device", "Rare")
+                                task.wait()
+                                MRF[var]:FireServer("Craft", "Solar Device")
+                            end
+                        end
+                        if IIS:FindFirstChild("Solar Device") and IIS:FindFirstChild("Lunar Device") and IIS:FindFirstChild("Eclipse") then
+                            MRF[var]:FireServer("Insert", "Eclipse Device", "Solar Device")
+                            MRF[var]:FireServer("Insert", "Eclipse Device", "Lunar Device")
+                            MRF[var]:FireServer("Insert", "Eclipse Device", "Eclipse")
+                            task.wait()
+                            MRF[var]:FireServer("Craft", "Eclipse Device")
+                        end
+                    end
+                elseif Setting.SelectGlove == "Jackpot Gauntlet" then
+                    if not IIS:FindFirstChild("Jackpot Gauntlet") then
+                        if not IIS:FindFirstChild("Gear Basing") then
+                            MRF[var]:FireServer("Insert", "Gear Basing", "Common")
+                            MRF[var]:FireServer("Insert", "Gear Basing", "Uncommon")
+                            MRF[var]:FireServer("Insert", "Gear Basing", "Rare")
+                            MRF[var]:FireServer("Insert", "Gear Basing", "Good")
+                            task.wait()
+                            MRF[var]:FireServer("Craft", "Gear Basing")
+                        end
+                        MRF[var]:FireServer("Insert", "Jackpot Gauntlet", "Jackpot")
+                        MRF[var]:FireServer("Insert", "Jackpot Gauntlet", "Gilded")
+                        MRF[var]:FireServer("Insert", "Jackpot Gauntlet", "Rare")
+                        task.wait()
+                        MRF[var]:FireServer("Craft", "Jackpot Gauntlet")
+                    end
+                elseif Setting.SelectGlove == "Exo Gauntlet" then
+                    if not IIS:FindFirstChild("Exo Gauntlet") then
+                        if not IIS:FindFirstChild("Gear Basing") then
+                            MRF[var]:FireServer("Insert", "Gear Basing", "Common")
+                            MRF[var]:FireServer("Insert", "Gear Basing", "Uncommon")
+                            MRF[var]:FireServer("Insert", "Gear Basing", "Rare")
+                            MRF[var]:FireServer("Insert", "Gear Basing", "Good")
+                            task.wait()
+                            MRF[var]:FireServer("Craft", "Gear Basing")
+                        end
+                    end
+                    MRF[var]:FireServer("Insert", "Exo Gauntlet", "Gilded")
+                    MRF[var]:FireServer("Insert", "Exo Gauntlet", "Precious")
+                    MRF[var]:FireServer("Insert", "Exo Gauntlet", "Undead")
+                    MRF[var]:FireServer("Insert", "Exo Gauntlet", "Exotic")
+                    task.wait()
+                    MRF[var]:FireServer("Craft", "Exo Gauntlet")
+                end
+            end
+        end)
+    end)
+    Tabs.GloveAPotion:AddSection("Potion")
+    AutoUseLuckyPotion = Tabs.Items:AddToggle("AutoUseLuckyPotion", {Title = "Auto use Luck Potion", Default = Setting.AutoUseLuckyPotion })
+    coroutine.wrap(function()
+        AutoUseLuckyPotion:OnChanged(function()
+            Setting.AutoUseLuckyPotion = Options.AutoUseLuckyPotion.Value
+            while Options.AutoUseLuckyPotion.Value do
+                BL = game:GetService("Players").LocalPlayer.PlayerGui.MainInterface.BuffsHolder.Lucky
+                if not BL.Visible then
+                    game.ReplicatedStorage.Modules.Inventory.UseItem:FireServer("Lucky Potion", 1)
+                    task.wait(0.1)
+                end
+            end
+        end)
+    end)
+    AutoUseSpeedPotion = Tabs.Items:AddToggle("AutoUseSpeedPotion", {Title = "Auto use Speed Potion", Default = Setting.AutoUseSpeedPotion })
+    coroutine.wrap(function()
+        AutoUseSpeedPotion:OnChanged(function()
+            Setting.AutoUseSpeedPotion = Options.AutoUseSpeedPotion.Value
+            while Options.AutoUseSpeedPotion.Value do
+                BQ = game:GetService("Players").LocalPlayer.PlayerGui.MainInterface.BuffsHolder.QuickRoll
+                if not BQ.Visible then
+                    game.ReplicatedStorage.Modules.Inventory.UseItem:FireServer("Speed Potion", 1)
+                    task.wait(0.1)
+                end
+            end
+        end)
+    end)
+    Tabs.Items:AddSection("Use")
+    AutoUseCoin = Tabs.Items:AddToggle("AutoUseCoin", {Title = "Auto Use Coin", Default = Setting.AutoUseCoin })
+    coroutine.wrap(function()
+        AutoUseCoin:OnChanged(function()
+            Setting.AutoUseCoin = Options.AutoUseCoin.Value
+            print(Setting.AutoUseCoin, Options.AutoUseCoin.Value)
+            while Options.AutoUseCoin.Value do
+                print("L")
+                game.ReplicatedStorage.Modules.Inventory.UseItem:FireServer("Coin", 1)
+                task.wait(0.1)
+            end
+        end)
+    end)
+    AutoUseGildedCoin = Tabs.Items:AddToggle("AutoUseGildedCoin", {Title = "Auto Use Gilded Coin", Default = Setting.AutoUseGildedCoin })
+    coroutine.wrap(function()
+        AutoUseGildedCoin:OnChanged(function()
+            Setting.AutoUseGildedCoin = Options.AutoUseGildedCoin.Value
+            while Options.AutoUseGildedCoin.Value do
+                game.ReplicatedStorage.Modules.Inventory.UseItem:FireServer("Gilded Coin", 1)
+                task.wait(0.1)
+            end
+        end)
+    end)
+    Tabs.Items:AddSection("Auto Collect")
+    Tabs.Items:AddSection("AI Engine")
+    Tabs.Items:AddSection("Work in progress")
+
+    Tabs.ChangeLog:AddParagraph({
+        Title = "Change Log",
+        Content = "# Main\n- Added Auto Rolls\n- Added Auto Upgrade Storage\n- Added Auto Claim Achievement\n# Gloves & Potion\n- Added Auto Craft Gloves\n- Added Auto Use Potions\n# Items\n- Added Auto Use Coins\n- Added Auto Use Gilded Coins\n# Player\n- Added Full Bright\n- Added No Fog (Can be back if you want fog)\n- Added Player Speed\n- Added Anti  AFK\n# ESP\n- Added Items ESP\n# Credits\n- Added Credits\n# Setting\n- Added Save As Config\n\n-->SOON<--\n# Items\n- Add Auto Collect\n- Add Auto Blessing\n# Gloves & Potion\n- Add Open UI"
+    })
+
+    for i, v in ipairs(credits) do
+        Tabs.Credits:AddButton({
+            Title = v.Title,
+            Description = v.Content,
+            Callback = function()
+                
+            end
+        })
+    end
+    Tabs.Settings:AddButton({
         Title = "Save as config",
         Description = "",
         Callback = function()
@@ -311,7 +473,6 @@ do
         end
     })
 end
-
 
 task.wait(0.05)
 if allowtoserialized then
