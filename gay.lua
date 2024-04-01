@@ -93,6 +93,7 @@ __VE["VIM"], __VE["UIS"] = game:GetService("VirtualInputManager"), game:GetServi
 __VE["Lg"], __VE["TS"], __VE["GMos"] = game:GetService("Lighting"), game:GetService("TweenService"), game:GetService("Players").LocalPlayer:GetMouse()
 __VE["VU"], __VE["CG"] = game:GetService("VirtualUser"), game:GetService("CoreGui")
 __VE["HS"] = game:GetService("HttpService")
+__VE["IBFS"] = workspace:WaitForChild("ItemBoughtFromShop")
 originalWalkSpeed = __VE["LPs"].Character.Humanoid.WalkSpeed
 originalJumpPower = __VE["LPs"].Character.Humanoid.JumpPower
 CONTROL = {F = 0, B = 0, L = 0, R = 0, Q = 0, E = 0}
@@ -322,9 +323,150 @@ autofarm:OnChanged(function()
 		end
 	end
 end)
+Tabs.Main:AddSection("Auto Chest")
+CommonChest = Tabs.Player:AddToggle("CommonChest", {Title = "Common", Default = Setting.CommonChest })
+
+CommonChest:OnChanged(function()
+    __VE["IBFS"]:InvokeServer("Common Chest", 1)
+end)
+UncommonChest = Tabs.Player:AddToggle("UncommonChest", {Title = "Uncommon", Default = Setting.UncommonChest })
+
+UncommonChest:OnChanged(function()
+    __VE["IBFS"]:InvokeServer("Uncommon Chest", 1)
+end)
+RareChest = Tabs.Player:AddToggle("RareChest", {Title = "Rare", Default = Setting.RareChest })
+
+RareChest:OnChanged(function()
+    __VE["IBFS"]:InvokeServer("Rare Chest", 1)
+end)
+EpicChest = Tabs.Player:AddToggle("EpicChest", {Title = "Epic", Default = Setting.EpicChest })
+
+EpicChest:OnChanged(function()
+    __VE["IBFS"]:InvokeServer("Epic Chest", 1)
+end)
+LegendaryChest = Tabs.Player:AddToggle("LegendaryChest", {Title = "Legendary", Default = Setting.LegendaryChest })
+
+LegendaryChest:OnChanged(function()
+    __VE["IBFS"]:InvokeServer("Legendary Chest", 1)
+end)
 
 Tabs.AutoQuest:AddSection("Simple Scriptz")
-
+Tabs.AutoQuest:AddButton({
+	Title = "Cloud",
+	Description = "WARNINN, THE SCRIPT WILL CLEAR ALL BLOCKS",
+	Callback = function()
+        pcall(function()
+            workspace.QuestMakerEvent:FireServer(0)
+            task.wait()
+            ResetRequest = 0
+            teamColor = game.Players.LocalPlayer.Team.TeamColor.Name
+            teamZone = teamColor.."Zone"
+            workspace.ClearAllPlayersBoatParts:FireServer()
+            wait(0.5)
+            workspace.QuestMakerEvent:FireServer(1)
+            repeat
+                ResetRequest = ResetRequest + 1
+                task.wait() 
+            until ResetRequest == 5000 or (workspace[tostring(teamZone)].Quest:FindFirstChild("Cloud") and workspace[tostring(teamZone)].Quest.Cloud:FindFirstChild("Part2"))
+            __VE["LPs"].Character.HumanoidRootPart.CFrame = workspace[tostring(teamZone)].Quest.Cloud.Part2.CFrame
+        end)
+    end
+})
+Tabs.AutoQuest:AddButton({
+	Title = "Target",
+	Description = "WARNINN, THE SCRIPT WILL CLEAR ALL BLOCKS",
+	Callback = function()
+        pcall(function()
+            workspace.QuestMakerEvent:FireServer(0)
+            task.wait()
+            ResetRequest = 0
+            teamColor = game.Players.LocalPlayer.Team.TeamColor.Name
+            teamZone = teamColor.."Zone"
+            workspace.ClearAllPlayersBoatParts:FireServer()
+            wait(0.5)
+            workspace.QuestMakerEvent:FireServer(2)
+            repeat
+                ResetRequest = ResetRequest + 1
+                task.wait() 
+            until ResetRequest == 5000 or (workspace[tostring(teamZone)].Quest:FindFirstChild("Target") and workspace[tostring(teamZone)].Quest.Target:FindFirstChild("Part"))
+            __VE["LPs"].Character.HumanoidRootPart.CFrame = workspace[tostring(teamZone)].Quest.Target.Part.CFrame
+        end)
+    end
+})
+Tabs.AutoQuest:AddButton({
+	Title = "Ramp",
+	Description = "WARNINN, THE SCRIPT WILL CLEAR ALL BLOCKS",
+	Callback = function()
+        pcall(function()
+            workspace.QuestMakerEvent:FireServer(0)
+            task.wait()
+            ResetRequest = 0
+            teamColor = game.Players.LocalPlayer.Team.TeamColor.Name
+            teamZone = teamColor.."Zone"
+            workspace.ClearAllPlayersBoatParts:FireServer()
+            wait(0.5)
+            workspace.QuestMakerEvent:FireServer(3)
+            repeat
+                ResetRequest = ResetRequest + 1
+                task.wait() 
+            until ResetRequest == 5000 or (workspace[tostring(teamZone)].Quest:FindFirstChild("Ramp") and workspace[tostring(teamZone)].Quest.Ramp:FindFirstChild("Part"))
+            for _, v in pairs(workspace[tostring(teamZone)].Quest.Ramp:GetChildren()) do
+                if v and v:IsA("BasePart") and v:FindFirstChild("TouchInterest") then
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = v.CFrame
+                end
+            end
+        end)
+    end
+})
+Tabs.AutoQuest:AddButton({
+	Title = "Find Me",
+	Description = "WARNINN, THE SCRIPT WILL CLEAR ALL BLOCKS",
+	Callback = function()
+        pcall(function()
+            workspace.QuestMakerEvent:FireServer(0)
+            task.wait()
+            ResetRequest = 0
+            teamColor = game.Players.LocalPlayer.Team.TeamColor.Name
+            teamZone = teamColor.."Zone"
+            workspace.ClearAllPlayersBoatParts:FireServer()
+            wait(0.5)
+            workspace.QuestMakerEvent:FireServer(4)
+            repeat
+                ResetRequest = ResetRequest + 1
+                task.wait() 
+            until ResetRequest == 5000 or (workspace[tostring(teamZone)].Quest:FindFirstChild("Butter") and workspace[tostring(teamZone)].Quest.Butter:FindFirstChild("PPart"))
+            repeat
+                fireclickdetector(workspace[tostring(teamZone)].Quest.Butter.PPart.ClickDetector)
+            until not workspace[tostring(teamZone)].Quest:FindFirstChild("Butter") or (workspace[tostring(teamZone)].Quest:FindFirstChild("Butter") and not workspace[tostring(teamZone)].Quest.Butter:FindFirstChild("PPart"))
+        end)
+    end
+})
+Tabs.AutoQuest:AddButton({
+	Title = "Thin Ice",
+	Description = "WARNINN, THE SCRIPT WILL CLEAR ALL BLOCKS",
+	Callback = function()
+        pcall(function()
+            workspace.QuestMakerEvent:FireServer(0)
+            task.wait()
+            ResetRequest = 0
+            teamColor = game.Players.LocalPlayer.Team.TeamColor.Name
+            teamZone = teamColor.."Zone"
+            workspace.ClearAllPlayersBoatParts:FireServer()
+            wait(0.5)
+            workspace.QuestMakerEvent:FireServer(9)
+            repeat
+                ResetRequest = ResetRequest + 1
+                task.wait() 
+            until ResetRequest == 5000 or workspace[tostring(teamZone)].Quest:FindFirstChild("Thin Ice")
+            workspace[tostring(teamZone)].VoteLaunchRE:FireServer()
+            task.wait(0.5)
+            tpwithnewtpbyme2(CFrame.new(-55.08570861816406, 26.171443939208984, 1328.283203125), 5)
+            tpwithnewtpbyme2(CFrame.new(-76.84388732910156, 26.171443939208984, 4345.62353515625), 5)
+            tpwithnewtpbyme2(CFrame.new(-63.48623275756836, 26.171443939208984, 8649.052734375), 5)
+            tpwithnewtpbyme2(CFrame.new(-53.60350036621094, -357.9239807128906, 9498.6572265625), 5)
+        end)
+    end
+})
 
 local FLysss = Tabs.Player:AddToggle("FLysss", {Title = "Fly", Default = __Y[2] })
 
