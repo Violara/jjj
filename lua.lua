@@ -1,864 +1,327 @@
-repeat
-    task.wait()
-until game:IsLoaded()
-__LUABLE = {
-    ["Functions"] = loadstring(
-        game:HttpGet("https://raw.githubusercontent.com/ZoiIntra/Api/main/Luable/__Function.lua")
-    )()
-}
-__U = {}
-for a = 1, #__LUABLE["Functions"] do
-    pcall(
-        function()
-            __U[a] = clonefunction(__LUABLE["Functions"][a])
+local script = Instance.new("LocalScript")
+    script.Name = "Script1"
+    script.Parent = Converted["_TextButton7"]
+    local req = require
+    local require = function(obj)
+        local fake = fake_module_scripts[obj]
+        if fake then
+            return fake()
         end
-    )
-end
-__VE = {
-    ["Ps"] = game:GetService("Players"),
-    ["LPs"] = game:GetService("Players").LocalPlayer,
-    ["PsG"] = game:GetService("Players").LocalPlayer.PlayerGui
-}
-local b = {
-    ["_TTJY ASSET"] = __U[35]("ScreenGui"),
-    ["_TTJY HUB"] = __U[35]("Frame"),
-    ["_UIStroke"] = __U[35]("UIStroke"),
-    ["_UICorner"] = __U[35]("UICorner"),
-    ["_TextButton"] = __U[35]("TextButton"),
-    ["_UIStroke1"] = __U[35]("UIStroke")
-}
-b["_TTJY ASSET"].ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-b["_TTJY ASSET"].Name = "TTJY ASSET"
-b["_TTJY ASSET"].Parent = game:GetService("CoreGui")
-b["_TTJY HUB"].BackgroundColor3 = Color3.fromRGB(56.0000042617321, 56.0000042617321, 56.0000042617321)
-b["_TTJY HUB"].BackgroundTransparency = 0.4000000059604645
-b["_TTJY HUB"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-b["_TTJY HUB"].BorderSizePixel = 0
-b["_TTJY HUB"].Position = UDim2.new(0.4620000004, 0, -0.1, 0)
-b["_TTJY HUB"].Size = UDim2.new(0.0700000003, 0, 0.100000001, 0)
-b["_TTJY HUB"].ZIndex = 2
-b["_TTJY HUB"].Name = "TTJY HUB"
-b["_TTJY HUB"].Parent = b["_TTJY ASSET"]
-b["_UIStroke"].LineJoinMode = Enum.LineJoinMode.Bevel
-b["_UIStroke"].Thickness = 3
-b["_UIStroke"].Parent = b["_TTJY HUB"]
-b["_UICorner"].Parent = b["_TTJY HUB"]
-b["_TextButton"].Font = Enum.Font.SourceSans
-b["_TextButton"].Text = "TTJY HUB"
-b["_TextButton"].TextColor3 = Color3.fromRGB(0, 255, 0)
-b["_TextButton"].TextScaled = true
-b["_TextButton"].TextSize = 14
-b["_TextButton"].TextWrapped = true
-b["_TextButton"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-b["_TextButton"].BackgroundTransparency = 1
-b["_TextButton"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-b["_TextButton"].BorderSizePixel = 0
-b["_TextButton"].Size = UDim2.new(1, 0, 1, 0)
-b["_TextButton"].Parent = b["_TTJY HUB"]
-b["_UIStroke1"].LineJoinMode = Enum.LineJoinMode.Bevel
-b["_UIStroke1"].Parent = b["_TextButton"]
-TTJYHUB = b["_TextButton"]
-Fluent = __U[40](game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
-SaveManager = __U[40](game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
-InterfaceManager = __U[40](game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
-__U[6](function()
-    if Fluent and SaveManager and InterfaceManager then
-        __U[1]("No Error")
-    else
-        Fluent = __U[40](game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
-        SaveManager = __U[40](game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
-        InterfaceManager =__U[40](game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
+        return req(obj)
     end
-end)
-__X = {true, false, nil, 0, 1}
-__Y = {}
-for a = 1, #__X do
-    __U[6](
-        function()
-            __Y[a] = __X[a]
-        end
-    )
-end
-__M = {2, 3, 5, 7, 11, 13, 17, 10}
-__N = {}
-for a = 1, #__M do
-    __U[6](
-        function()
-            __N[a] = __M[a]
-        end
-    )
-end
-__VE["WS"], __VE["RuS"], __VE["RlS"] = game:GetService("Workspace"),  game:GetService("RunService"), game:GetService("ReplicatedStorage")
-__VE["VIM"], __VE["UIS"] = game:GetService("VirtualInputManager"), game:GetService("UserInputService")
-__VE["Lg"], __VE["TS"], __VE["GMos"] = game:GetService("Lighting"), game:GetService("TweenService"), game:GetService("Players").LocalPlayer:GetMouse()
-__VE["VU"], __VE["CG"] = game:GetService("VirtualUser"), game:GetService("CoreGui")
-__VE["HS"] = game:GetService("HttpService")
-__VE["IBFS"] = workspace:WaitForChild("ItemBoughtFromShop")
-originalWalkSpeed = __VE["LPs"].Character.Humanoid.WalkSpeed
-originalJumpPower = __VE["LPs"].Character.Humanoid.JumpPower
-CONTROL = {F = 0, B = 0, L = 0, R = 0, Q = 0, E = 0}
-Float = false
-Noclip = false
-cmdm = __VE["GMos"]
-speedofthevfly = 1
-speedofthefly = 1
-Setting = nil
-serializedSetting = nil
-if not isfolder("Setting") then
-    makefolder("Setting")
-end
-if isfolder("Setting") and not isfile("Setting/settingBABFT.json") then
-    print("no file")
-    Setting = {
-		autofarming = __Y[2],
-		stayatyvalue = 55,
-		aspeed = 1000,
-		antireport = __Y[2],
-		waituntil = 15,
-		CommonChest = __Y[2],
-		UncommonChest = __Y[2],
-		RareChest = __Y[2],
-		EpicChest = __Y[2],
-		LegendaryChest = __Y[2]
-	}
-    allowtoserialized = __Y[1]
-elseif __U[49]("Setting") and __U[50]("Setting/settingBABFT.json") then
-    __U[1]("file")
-    __U[23]()
-    Setting = game.HttpService:JSONDecode(__U[51]("Setting/settingBABFT.json"))
-end
-local c = {
-    {Title = "Owner", Content = "ttjy."},
-    {Title = "VIP", Content = "x2neptune - Alchemy Hub"},
-    {Title = "Co Owner", Content = "ttjy_"},
-    {Title = "Scripter", Content = "ttjy."},
-    {Title = "Scripter", Content = "ttjy_"},
-    {Title = "Scripter", Content = "x2neptune - Alchemy Hub"},
-    {Title = "Bypasser", Content = "???"},
-    {Title = "Bypasser", Content = "ttjy."},
-    {Title = "Bypasser", Content = "x2neptune - Alchemy Hub"},
-    {Title = "Key System", Content = "sa.l"},
-    {Title = "UI", Content = "dawid"}
-}
-function tpwithnewtpbyme2(xyz,speedoftpNTP)
-    local hrd = __VE["LPs"].Character.HumanoidRootPart
-    local p = hrd.Position
-    local currentPos = __U[57](p.x, p.y, p.z)
-    local targetPos = xyz.Position
-    local saveY = p.y
 
-    local direction = (targetPos - currentPos).Unit
-    local distance = (targetPos - currentPos).Magnitude
-    local steps = __U[39](distance / speedoftpNTP)
-    for i = 1, steps do
-        if not __VE["LPs"].Character:FindFirstChild("Humanoid") then
-            repeat __U[23](0.175) until __VE["LPs"].Character:FindFirstChild("Humanoid")
-        end
-        currentPos = currentPos + direction * speedoftpNTP 
-        __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](currentPos)
-        __U[23]()
-    end
-end
-local Fluent = __U[40](game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
-local SaveManager = __U[40](game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
-local InterfaceManager = __U[40](game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
-local Window = Fluent:CreateWindow({
-    Title = "Build a boat for teasure v.UP1PV",
-    SubTitle = "by TTJY",
-    TabWidth = 110,
-    Size = UDim2.fromOffset(580, 400),
-    Acrylic = true,
-    Theme = "Dark",
-    MinimizeKey = Enum.KeyCode.LeftControl
-})
-function OnFluentChange()
-    if Window.Root.Visible then
-        TTJYHUB.TextColor3 = __U[36](0, 255, 0)
-    else
-        TTJYHUB.TextColor3 = __U[36](255, 0, 0)
-    end
-end
-local Tabs = {
-    Main = Window:AddTab({ Title = "Main", Icon = "" }),
-	AutoQuest = Window:AddTab({ Title = "Auto Quest", Icon = "" }),
-	Player = Window:AddTab({ Title = "Player", Icon = "" }),
-	asettings = Window:AddTab({ Title = "AutoFarm Settings", Icon = "settings" }),
-    Settings = Window:AddTab({ Title = "UI Settings", Icon = "settings" })
-}
-function notify(title, content)
-	if title and not content then content = title; title = "Script Service" end
-	Fluent:Notify({
-		Title = title,
-		Content = content,
-		Duration = 5
-	})
-end
-
-__U[6](
-    function()
-        Window.Root:GetPropertyChangedSignal("Visible"):Connect(OnFluentChange)
-    end
-)
-__U[6](
-    function()
-        function onButtonClick()
-            Window.Minimized = not Window.Minimized
-            Window.Root.Visible = not Window.Minimized
-        end
-        TTJYHUB.MouseButton1Click:Connect(onButtonClick)
-    end
-)
-
-if __VE["CG"]:FindFirstChild("InputPcToMobile") then
-    __VE["CG"]:FindFirstChild("InputPcToMobile"):Destroy()
-end
-local screenGui2 = __U[35]("ScreenGui")
-screenGui2.Name = "InputPcToMobile"
-screenGui2.Parent = __VE["CG"]
-local buttonSize = UDim2.new(0.05, 0, 0.05, 0)
-local function createButton(key, position)
-    local button = __U[35]("TextButton")
-    button.Name = key
-    button.Text = key
-    button.Size = buttonSize
-    button.Position = position
-    button.BackgroundColor3 = Color3.new(0.5, 0.5, 0.5)
-    button.Parent = screenGui2
-
-    local isPressed = __Y[2]
-    button.MouseButton1Down:Connect(function()
-        isPressed = true
-        if key == "W" then
-            CONTROL.F = speedofthefly
-            print("W")
-        elseif key == "S" then
-            CONTROL.B = -speedofthefly
-            print("S")
-        elseif key == "A" then
-            CONTROL.L = -speedofthefly
-            print("A")
-        elseif key == "D" then
-            CONTROL.R = speedofthefly
-            print("D")
-        end
-    end)
-
-    button.MouseButton1Up:Connect(function()
-        isPressed = __Y[2]
-        if key == "W" then
-            CONTROL.F = 0
-        elseif key == "S" then
-            CONTROL.B = 0
-        elseif key == "A" then
-            CONTROL.L = 0
-        elseif key == "D" then
-            CONTROL.R = 0
-        end
-    end)
-end
-
--- Create buttons for W, A, S, D
-createButton("W", UDim2.new(0.05, 0, 0.1, 0))
-task.wait(1)
-createButton("A", UDim2.new(0, 0, 0.2, 0))
-task.wait(1)
-createButton("S", UDim2.new(0.05, 0, 0.3, 0))
-task.wait(1)
-createButton("D", UDim2.new(0.1, 0, 0.2, 0))
-task.wait(1)
-local Options = Fluent.Options
-local speedofthefly = 6
-local speedofthevfly =  6
-function tp(x, y, z, speed)
-	pcall(function()
-		local maxForce = __U[57](math.huge, math.huge, math.huge)
-		local velocity = __U[35]("BodyVelocity")
-		velocity.MaxForce = maxForce
-		velocity.Velocity = __U[57](0, 0, 0)
-		velocity.Parent = __VE["LPs"].Character.HumanoidRootPart
-		local targetPosition = __U[57](x, y, z)
-		local dochange = __Y[2]
-		if not speed then dochange = true end
-		while true do
-			if not Setting.autofarming then
-				velocity:Destroy()
-				break
-			end
-			local currentPos = __VE["LPs"].Character.HumanoidRootPart.Position
-			local direction = (targetPosition - currentPos).unit
-			local distance = (targetPosition - currentPos).magnitude
-			if dochange then
-				speed = Setting.aspeed
-			end
-			local distanceCheck = speed/30
-			if distance >= distanceCheck then
-				velocity.Velocity = direction * speed
-			else
-				velocity:Destroy()
-				for i = 1, 20 do
-					__VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](targetPosition)
-					__VE["LPs"].Character.HumanoidRootPart.Velocity = __U[57](0, 0, 0)
-					task.wait()
-				end
-				break
-			end
-			wait()
-		end
-	end)
-end
-local isfirstrun = true
-local autofarm = Tabs.Main:AddToggle("autofarm", {Title = "Auto Farm", Default = __Y[2] })
-autofarm:OnChanged(function()
-	Setting.autofarming = Options.autofarm.Value
-	if Setting.autofarming then
-		notify("Autofarm started.")
-		while task.wait() do
-			if Setting.autofarming then
-				if __VE["LPs"].Character:FindFirstChild("HumanoidRootPart") then
-					local water = __VE["WS"].BoatStages.NormalStages.CaveStage1.Water
-					local waterp = water.Position
-					local lastwater = __VE["WS"].BoatStages.NormalStages.CaveStage10.Water
-					local lastwaterp = lastwater.Position
-					local chest = __VE["WS"].BoatStages.NormalStages.TheEnd.GoldenChest.Trigger
-					local success = pcall(function()
-						__VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](waterp.x, waterp.y + Setting.stayatyvalue, waterp.z)
-						tp(lastwaterp.x, waterp.y + Setting.stayatyvalue, lastwaterp.z, nil)
-						for i = 1, 5 do
-							__VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](chest.Position.x, chest.Position.y + 20, chest.Position.z)
-							task.wait(0.05)
-							__VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](chest.Position.x, chest.Position.y, chest.Position.z)
-							task.wait(0.05)
-						end
-						__VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](chest.Position.x, chest.Position.y + 30, chest.Position.z)
-						notify("Waiting 20 seconds...")
-						task.wait(Setting.waituntil)
-					end)
-					if not success then
-						notify("ER Activated, Return to player")
-					end
-				end
-			else
-				break
-			end
-		end
-	else
-		if isfirstrun then
-			isfirstrun = __Y[2]
-		else
-			notify("Autofarm Stop")
-		end
-	end
-end)
-Tabs.Main:AddSection("Auto Chest")
-CommonChest = Tabs.Main:AddToggle("CommonChest", {Title = "Common", Default = Setting.CommonChest })
-
-CommonChest:OnChanged(function()
-	Setting.CommonChest = Options.CommonChest.Value
-	while Options.CommonChest.Value do
-    	__VE["IBFS"]:InvokeServer("Common Chest", 1)
-		task.wait(0.1)
-	end
-end)
-UncommonChest = Tabs.Main:AddToggle("UncommonChest", {Title = "Uncommon", Default = Setting.UncommonChest })
-
-UncommonChest:OnChanged(function()
-	Setting.UncommonChest = Options.UncommonChest.Value
-	while Options.UncommonChest.Value do
-    	__VE["IBFS"]:InvokeServer("Uncommon Chest", 1)
-		task.wait(0.1)
-	end
-end)
-RareChest = Tabs.Main:AddToggle("RareChest", {Title = "Rare", Default = Setting.RareChest })
-
-RareChest:OnChanged(function()
-	Setting.RareChest = Options.RareChest.Value
-	while Options.RareChest.Value do
-    	__VE["IBFS"]:InvokeServer("Rare Chest", 1)
-		task.wait(0.1)
-	end
-end)
-EpicChest = Tabs.Main:AddToggle("EpicChest", {Title = "Epic", Default = Setting.EpicChest })
-
-EpicChest:OnChanged(function()
-	Setting.EpicChest = Options.EpicChest.Value
-	while Options.EpicChest.Value do
-    	__VE["IBFS"]:InvokeServer("Epic Chest", 1)
-		task.wai(0.1)
-	end
-end)
-LegendaryChest = Tabs.Main:AddToggle("LegendaryChest", {Title = "Legendary", Default = Setting.LegendaryChest })
-
-LegendaryChest:OnChanged(function()
-	Setting.LegendaryChest = Options.LegendaryChest.Value
-	while Options.LegendaryChest.Value do
-    	__VE["IBFS"]:InvokeServer("Legendary Chest", 1)
-		task.wai(0.1)
-	end
-end)
-
-Tabs.AutoQuest:AddSection("Simple Scriptz")
-Tabs.AutoQuest:AddButton({
-	Title = "Cloud",
-	Description = "WARNINN, THE SCRIPT WILL CLEAR ALL BLOCKS",
-	Callback = function()
-        pcall(function()
-            workspace.QuestMakerEvent:FireServer(0)
-            task.wait(0.5)
-            ResetRequest = 0
-            teamColor = game.Players.LocalPlayer.Team.TeamColor.Name
-            teamZone = teamColor.."Zone"
-            workspace.ClearAllPlayersBoatParts:FireServer()
-            task.wait(0.5)
-			print("START")
-            workspace.QuestMakerEvent:FireServer(1)
-            repeat
-				workspace.QuestMakerEvent:FireServer(1)
-                ResetRequest = ResetRequest + 1
-                task.wait(0.1) 
-            until ResetRequest == 20000 or (workspace[tostring(teamZone)]:FindFirstChild("Quest") and workspace[tostring(teamZone)].Quest:FindFirstChild("Cloud") and workspace[tostring(teamZone)].Quest.Cloud:FindFirstChild("Part2"))
-            __VE["LPs"].Character.HumanoidRootPart.CFrame = workspace[tostring(teamZone)].Quest.Cloud.Part2.CFrame
-        end)
-    end
-})
-Tabs.AutoQuest:AddButton({
-	Title = "Target",
-	Description = "WARNINN, THE SCRIPT WILL CLEAR ALL BLOCKS",
-	Callback = function()
-        pcall(function()
-            workspace.QuestMakerEvent:FireServer(0)
-            task.wait(0.5)
-            ResetRequest = 0
-            teamColor = game.Players.LocalPlayer.Team.TeamColor.Name
-            teamZone = teamColor.."Zone"
-            workspace.ClearAllPlayersBoatParts:FireServer()
-            task.wait(0.5)
-            workspace.QuestMakerEvent:FireServer(2)
-            repeat
-				workspace.QuestMakerEvent:FireServer(2)
-                ResetRequest = ResetRequest + 1
-                task.wait(0.1) 
-            until ResetRequest == 20000 or (workspace[tostring(teamZone)]:FindFirstChild("Quest") and workspace[tostring(teamZone)].Quest:FindFirstChild("Target") and workspace[tostring(teamZone)].Quest.Target:FindFirstChild("Part"))
-            __VE["LPs"].Character.HumanoidRootPart.CFrame = workspace[tostring(teamZone)].Quest.Target.Part.CFrame
-        end)
-    end
-})
-Tabs.AutoQuest:AddButton({
-	Title = "Ramp",
-	Description = "WARNINN, THE SCRIPT WILL CLEAR ALL BLOCKS",
-	Callback = function()
-        pcall(function()
-            workspace.QuestMakerEvent:FireServer(0)
-			task.wait(0.5)
-			ResetRequest = 0
-			teamColor = game.Players.LocalPlayer.Team.TeamColor.Name
-			teamZone = teamColor.."Zone"
-			workspace.ClearAllPlayersBoatParts:FireServer()
-			task.wait(0.5)
-			workspace.QuestMakerEvent:FireServer(3)
-			repeat
-				workspace.QuestMakerEvent:FireServer(3)
-				ResetRequest = ResetRequest + 1
-				task.wait(0.1) 
-			until ResetRequest == 20000 or (workspace[tostring(teamZone)]:FindFirstChild("Quest") and workspace[tostring(teamZone)].Quest:FindFirstChild("Ramp") and workspace[tostring(teamZone)].Quest.Ramp:FindFirstChild("Part"))
-			for _, v in pairs(workspace[tostring(teamZone)].Quest.Ramp:GetChildren()) do
-				if v and v:FindFirstChild("TouchInterest") and v.Name ~= "Lava" then
-					__VE["LPs"].Character.HumanoidRootPart.CFrame = v.CFrame
-				end
-			end
-        end)
-    end
-})
-Tabs.AutoQuest:AddButton({
-	Title = "Find Me",
-	Description = "WARNINN, THE SCRIPT WILL CLEAR ALL BLOCKS",
-	Callback = function()
-        pcall(function()
-            workspace.QuestMakerEvent:FireServer(0)
-            task.wait(0.5)
-            ResetRequest = 0
-            teamColor = game.Players.LocalPlayer.Team.TeamColor.Name
-            teamZone = teamColor.."Zone"
-            workspace.ClearAllPlayersBoatParts:FireServer()
-            task.wait(0.5)
-            workspace.QuestMakerEvent:FireServer(4)
-            repeat
-				workspace.QuestMakerEvent:FireServer(4)
-                ResetRequest = ResetRequest + 1
-                task.wait(0.1) 
-            until ResetRequest == 20000 or (workspace[tostring(teamZone)]:FindFirstChild("Quest") and workspace[tostring(teamZone)].Quest:FindFirstChild("Butter") and workspace[tostring(teamZone)].Quest.Butter:FindFirstChild("PPart"))
-            repeat
-				__VE["LPs"].Character.HumanoidRootPart.CFrame = workspace[tostring(teamZone)].Quest.Butter.PPart.CFrame
-                fireclickdetector(workspace[tostring(teamZone)].Quest.Butter.PPart.ClickDetector, 5)
-				task.wait(0.1)
-            until not workspace[tostring(teamZone)].Quest:FindFirstChild("Butter") or (workspace[tostring(teamZone)].Quest:FindFirstChild("Butter") and not workspace[tostring(teamZone)].Quest.Butter:FindFirstChild("PPart"))
-        end)
-    end
-})
-Tabs.AutoQuest:AddButton({
-	Title = "Thin Ice",
-	Description = "WARNINN, THE SCRIPT WILL CLEAR ALL BLOCKS",
-	Callback = function()
-        pcall(function()
-            workspace.QuestMakerEvent:FireServer(0)
-            task.wait(0.5)
-            ResetRequest = 0
-            teamColor = game.Players.LocalPlayer.Team.TeamColor.Name
-            teamZone = teamColor.."Zone"
-            workspace.ClearAllPlayersBoatParts:FireServer()
-            task.wait(0.5)
-            workspace.QuestMakerEvent:FireServer(9)
-            repeat
-				workspace.QuestMakerEvent:FireServer(9)
-                ResetRequest = ResetRequest + 1
-                task.wait(0.1) 
-            until ResetRequest == 20000 or (workspace[tostring(teamZone)]:FindFirstChild("Quest") and workspace[tostring(teamZone)].Quest:FindFirstChild("ThinIce"))
-            workspace[tostring(teamZone)].VoteLaunchRE:FireServer()
-			Setting.autofarming = true
-            task.wait(0.5)
-			pcall(function()
-				if __VE["LPs"].Character:FindFirstChild("HumanoidRootPart") then
-					local water = __VE["WS"].BoatStages.NormalStages.CaveStage1.Water
-					local waterp = water.Position
-					local lastwater = __VE["WS"].BoatStages.NormalStages.CaveStage10.Water
-					local lastwaterp = lastwater.Position
-					local chest = __VE["WS"].BoatStages.NormalStages.TheEnd.GoldenChest.Trigger
-					local success = pcall(function()
-						__VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](waterp.x, waterp.y + Setting.stayatyvalue, waterp.z)
-						tp(lastwaterp.x, waterp.y + Setting.stayatyvalue, lastwaterp.z, nil)
-						for i = 1, 5 do
-							__VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](chest.Position.x, chest.Position.y + 20, chest.Position.z)
-							task.wait(0.05)
-							__VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](chest.Position.x, chest.Position.y, chest.Position.z)
-							task.wait(0.05)
-						end
-						__VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](chest.Position.x, chest.Position.y + 30, chest.Position.z)
-						task.wait(Setting.waituntil)
-					end)
-					if not success then
-						notify("ER Activated, Return to player")
-					end
-				end
-			end)
-			Setting.autofarming = false
-        end)
-    end
-})
-WaterGodmode = Tabs.Player:AddToggle("WaterGodmode", {Title = "Water Godmode", Default = __Y[2] })
-WaterGodmode:OnChanged(function()
-	if Options.WaterGodmode.Value then
-		for _, v in pairs(__VE["WS"]:GetDescendants()) do
-			if v and v.Name == "Water" then
-				v.CanTouch = false
-			end
-		end
-	end
-end)
-FloatT = Tabs.Player:AddToggle("FloatT", {Title = "Float", Default = __Y[2] })
-FloatT:OnChanged(function()
-	Float = Options.FloatT.Value
-end)
-NoClipT = Tabs.Player:AddToggle("NoClipT", {Title = "Noclip", Default = __Y[2] })
-NoClipT:OnChanged(function()
-	Noclip = Options.NoClipT.Value
-end)
-local FLysss = Tabs.Player:AddToggle("FLysss", {Title = "Fly", Default = __Y[2] })
-
-FLysss:OnChanged(function()
-	if Options.FLysss.Value then
-		FLYING = Options.FLysss.Value
-		while not __VE["LPs"] or not __VE["LPs"].Character or not __VE["LPs"].Character:FindFirstChild('HumanoidRootPart') or not __VE["LPs"].Character:FindFirstChild('Humanoid') or not cmdm do
-			wait()
-		end
-
-		local T = __VE["LPs"].Character.HumanoidRootPart
-		local SPEED = 0
-
-		function FLY()
-			local BG = __U[35]('BodyGyro', T)
-			local BV = __U[35]('BodyVelocity', T)
-			BG.P = 9e4
-			BG.maxTorque = __U[57](9e9, 9e9, 9e9)
-			BG.cframe = T.CFrame
-			BV.velocity = __U[57](0, 0, 0)
-			BV.maxForce = __U[57](9e9, 9e9, 9e9)
-
-			spawn(function()
-				while FLYING do
-					if CONTROL.L + CONTROL.R ~= 0 or CONTROL.F + CONTROL.B ~= 0 or CONTROL.Q + CONTROL.E ~= 0 then
-						SPEED = 50
-					elseif not (CONTROL.L + CONTROL.R ~= 0 or CONTROL.F + CONTROL.B ~= 0 or CONTROL.Q + CONTROL.E ~= 0) and SPEED ~= 0 then
-						SPEED = 0
-					end
-
-					if (CONTROL.L + CONTROL.R) ~= 0 or (CONTROL.F + CONTROL.B) ~= 0 or (CONTROL.Q + CONTROL.E) ~= 0 then
-						BV.velocity = ((__VE["WS"].CurrentCamera.CoordinateFrame.lookVector * (CONTROL.F + CONTROL.B)) + ((__VE["WS"].CurrentCamera.CoordinateFrame * __U[26](CONTROL.L + CONTROL.R, (CONTROL.F + CONTROL.B + CONTROL.Q + CONTROL.E) * 0.2, 0).p) - __VE["WS"].CurrentCamera.CoordinateFrame.p)) * SPEED
+	local selectedPose
+	local function LaVert()
+		function sandbox(var,func)
+			local env = getfenv(func)
+			local newenv = setmetatable({},{
+				__index = function(self,k)
+					if k=="script" then
+						return var
 					else
-						BV.velocity = __U[57](0, 0, 0)
+						return env[k]
 					end
-
-					BG.cframe = __VE["WS"].CurrentCamera.CoordinateFrame
-					wait()
+				end,
+			})
+			setfenv(func,newenv)
+			return func
+		end
+		cors = {}
+		mas = Instance.new("Model",game:GetService("Lighting"))
+		Tool0 = Instance.new("Tool")
+		MagicLocalScript = Instance.new("LocalScript")
+		Part2 = Instance.new("Part")
+		Part3 = Instance.new("Part")
+		SpecialMesh4 = Instance.new("SpecialMesh")
+		Tool0.Name = "SimpleS Studio"
+		Tool0.Parent = mas
+		MagicLocalScript.Parent = Tool0
+		table.insert(cors,sandbox(MagicLocalScript,function()
+			local Tool = script.Parent
+	
+			enabled = true
+	
+			local selectionBox
+	
+			local arcHandles
+			
+			selectedPose = nil
+	
+			local moveHandles
+	
+			local previousCFrame
+	
+			local previousDistance
+	
+			function onArcHandlesDown(normal)
+	
+				print("HandlesDown")
+	
+				if selectedPose then
+	
+					previousCFrame = selectedPose.CFrame
+	
 				end
-
-				CONTROL = {F = 0, B = 0, L = 0, R = 0, Q = 0, E = 0}
-				SPEED = 0
-
-				BG:Destroy()
-				BV:Destroy()
-				__VE["LPs"].Character.Humanoid.PlatformStand = __Y[2]
+	
+			end
+	
+			function onArcHandlesDrag(axis, relativeAngle, deltaRadius)
+	
+				if selectedPose then
+	
+					local axisangle = Vector3.FromAxis(axis)
+	
+					axisangle = axisangle * relativeAngle
+	
+					selectedPose.CFrame = previousCFrame * CFrame.Angles(axisangle.X, axisangle.Y, axisangle.Z)
+	
+					local x, y, z = selectedPose.CFrame:toEulerAnglesXYZ()
+	
+					print(math.floor(math.deg(x)), math.floor(math.deg(y)), math.floor(math.deg(z)))
+	
+				end
+	
+			end
+	
+			function onMoveHandlesDown(normal)
+	
+				print("HandlesDown")
+	
+				if selectedPose then
+	
+					previousDistance = 0
+	
+				end
+	
+			end
+	
+			function onMoveHandlesDrag(normal, distance)
+	
+				if selectedPose then
+	
+					local delta = distance - previousDistance
+	
+					translation = CFrame.new(Vector3.FromNormalId(normal) * delta)
+	
+					selectedPose.CFrame = translation * selectedPose.CFrame
+	
+					previousDistance = distance
+	
+					print(selectedPose.Position)
+	
+				end
+	
+			end
+	
+			function onButton1Down(mouse)
+	
+				print("3DButtonDown")
+	
+				selectionBox.Adornee = nil
+	
+				arcHandles.Adornee = nil
+	
+				moveHandles.Adornee = nil
+	
+				if mouse.Target ~= nil then
+	
+					selectedPose = mouse.Target
+	
+					selectionBox.Adornee = mouse.Target
+	
+					arcHandles.Adornee = mouse.Target
+	
+					moveHandles.Adornee = mouse.Target
+	
+				end
+	
+			end
+	
+			function onEquippedLocal(mouse)
+	
+				local character = script.Parent.Parent
+	
+				local player = Game.Players:GetPlayerFromCharacter(character)
+	
+				mouse.Icon ="rbxasset://textures\\DragCursor.png"
+	
+				mouse.Button1Down:connect(function() onButton1Down(mouse) end)
+	
+				selectionBox = Instance.new("SelectionBox")
+	
+				selectionBox.Color = BrickColor.new("Cyan")
+	
+				selectionBox.Adornee = nil
+	
+				selectionBox.Parent = player.PlayerGui
+	
+				arcHandlesPart = Instance.new("Part")
+	
+				arcHandlesPart.Name = "ArcHandlesProxyPart"
+	
+				arcHandlesPart.Size = Vector3.new(2,2,2)
+	
+				arcHandlesPart.Parent = player.PlayerGui
+	
+				moveHandlesPart = Instance.new("Part")
+	
+				moveHandlesPart.Name = "MoveHandlesProxyPart"
+	
+				moveHandlesPart.Size = Vector3.new(2,2,2)
+	
+				moveHandlesPart.Parent = player.PlayerGui
+	
+				arcHandles = Instance.new("ArcHandles")
+	
+				arcHandles.Color = BrickColor.new("Neon orange")
+	
+				arcHandles.Adornee = nil
+	
+				arcHandles.Axes = Axes.new(Enum.Axis.X, Enum.Axis.Y, Enum.Axis.Z)
+	
+				arcHandles.MouseDrag:connect(onArcHandlesDrag)
+	
+				arcHandles.MouseButton1Down:connect(onArcHandlesDown)
+	
+				arcHandles.Parent = player.PlayerGui
+	
+				moveHandles = Instance.new("Handles")
+	
+				moveHandles.Style = Enum.HandlesStyle.Movement
+	
+				moveHandles.Color = BrickColor.new("Bright blue")
+	
+				moveHandles.Adornee = nil
+	
+				moveHandles.MouseDrag:connect(onMoveHandlesDrag)
+	
+				moveHandles.MouseButton1Down:connect(onMoveHandlesDown)
+	
+				moveHandles.Parent = player.PlayerGui
+	
+			end
+	
+			function onUnequippedLocal()
+	
+				selectionBox:Remove()
+	
+				arcHandles:Remove()
+	
+				moveHandles:remove()
+	
+			end
+	
+			Tool.Equipped:connect(onEquippedLocal)
+	
+			Tool.Unequipped:connect(onUnequippedLocal)
+		end))
+		Part2.Name = "Handle"
+		Part2.Parent = Tool0
+		Part2.CFrame = CFrame.new(-11.6290159, 6.38923359, -112.359108, 0, 0, 1, 0, 1, 0, -1, 0, 0)
+		Part2.Orientation = Vector3.new(0, 90, 0)
+		Part2.Position = Vector3.new(-11.629015922546387, 6.389233589172363, -112.3591079711914)
+		Part2.Rotation = Vector3.new(0, 90, 0)
+		Part2.Color = Color3.new(0.972549, 0.972549, 0.972549)
+		Part2.Size = Vector3.new(0.0010000000474974513, 0.001000046730041504, 0.0010000000474974513)
+		Part2.BrickColor = BrickColor.new("Institutional white")
+		Part2.brickColor = BrickColor.new("Institutional white")
+		Part3.Name = "Magic"
+		Part3.Parent = Tool0
+		Part3.CFrame = CFrame.new(-12.1285172, 5.78873873, -112.858604, 0, 0, 1, 0, 1, 0, -1, 0, 0)
+		Part3.Orientation = Vector3.new(0, 90, 0)
+		Part3.Position = Vector3.new(-12.128517150878906, 5.78873872756958, -112.85860443115234)
+		Part3.Rotation = Vector3.new(0, 90, 0)
+		Part3.Color = Color3.new(0.972549, 0.972549, 0.972549)
+		Part3.Size = Vector3.new(1, 1.2000000476837158, 1)
+		Part3.BrickColor = BrickColor.new("Institutional white")
+		Part3.Elasticity = 0
+		Part3.Friction = 0
+		Part3.brickColor = BrickColor.new("Institutional white")
+		SpecialMesh4.Parent = Part3
+		SpecialMesh4.MeshId = "http://www.roblox.com/asset/?id=16171271"
+		SpecialMesh4.Scale = Vector3.new(0.5, 0.5, 0.5)
+		SpecialMesh4.TextureId = "http://www.roblox.com/asset/?id=16171265"
+		SpecialMesh4.MeshType = Enum.MeshType.FileMesh
+		for i,v in pairs(mas:GetChildren()) do
+			v.Parent = workspace
+			pcall(function() v:MakeJoints() end)
+		end
+		mas:Destroy()
+		for i,v in pairs(cors) do
+			spawn(function()
+				pcall(v)
 			end)
 		end
-
-		cmdm.KeyDown:connect(function(KEY)
-			if KEY:lower() == 'w' then
-				if vfly then
-					CONTROL.F = speedofthevfly
-				else
-					CONTROL.F = speedofthefly
+		repeat task.wait() until game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+	
+		Tool0.Parent = game.Players.LocalPlayer.Character
+		if not game.CoreGui:FindFirstChild("Simple Showcase Studio") then
+			local SimpleShowcase = Instance.new("ScreenGui")
+			SimpleShowcase.Name = "Simple Showcase Studio"
+			SimpleShowcase.Parent = game.CoreGui
+			local SimpleFrame = Instance.new("Frame")
+			SimpleFrame.Size = UDim2.new(0.15, 0, 0.1, 0)
+			SimpleFrame.Position = UDim2.new(0.8, 0, 0, 0)
+			SimpleFrame.BackgroundColor3 = Color3.new(0, 0, 0)
+			SimpleFrame.Parent = SimpleShowcase
+			local SimpleText = Instance.new("TextBox")
+			SimpleText.Position = UDim2.new(0, 0, 0, 0)
+			SimpleText.Size = UDim2.new(1, 0, 1, 0)
+			SimpleText.TextColor3 = Color3.new(1, 1, 1)
+			SimpleText.Parent = SimpleFrame
+			
+			SimpleText:GetPropertyChangedSignal("Text"):Connect(function()
+				if selectedPose then
+					pcall(function()
+						local text = SimpleText.Text
+						local numbers = {}
+						for num in text:gmatch("%d+") do
+							table.insert(numbers, tonumber(num))
+						end
+						
+						if numbers[1] and numbers[2] and numbers[3] then
+							local size = Vector3.new(numbers[1], numbers[2], numbers[3])
+							selectedPose.Size = size
+						end
+					end)
 				end
-			elseif KEY:lower() == 's' then
-				if vfly then
-					CONTROL.B = -speedofthevfly
-				else
-					CONTROL.B = -speedofthefly
+			end)
+		end
+		if not game.CoreGui:FindFirstChild("LOWQUAD") then
+			pcall(function()
+				local screenGui = Instance.new("ScreenGui")
+				screenGui.Name = "LOWQUAD"
+				screenGui.Parent = game.CoreGui
+				local frame = Instance.new("Frame")
+				frame.Size = UDim2.new(0.06, 0, 0.05, 0)
+				frame.Position = UDim2.new(0.39, 0, 0.1, 0)
+				frame.BackgroundColor3 = Color3.new(1, 1, 1)
+				frame.BackgroundTransparency = 1
+				frame.Parent = screenGui
+				local button = Instance.new("TextButton")
+				button.Size = UDim2.new(1, 0, 1, 0)
+				button.BackgroundColor3 = Color3.new(0.5, 0.5, 0.5)
+				button.Text = "Part"
+				button.Parent = frame
+				local function Ilikeyou()
+					local Ilikeyou = Instance.new("Part")
+					Ilikeyou.Transparency = 0
+					Ilikeyou.Size = Vector3.new(1, 1, 1)
+					Ilikeyou.Anchored = true
+					Ilikeyou.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+					Ilikeyou.Parent = workspace
 				end
-			elseif KEY:lower() == 'a' then
-				if vfly then
-					CONTROL.L = -speedofthevfly
-				else
-					CONTROL.L = -speedofthefly
-				end
-			elseif KEY:lower() == 'd' then
-				if vfly then
-					CONTROL.R = speedofthevfly
-				else
-					CONTROL.R = speedofthefly
-				end
-			elseif KEY:lower() == 'y' then
-				if vfly then
-					CONTROL.Q = speedofthevfly * 2
-				else
-					CONTROL.Q = speedofthefly * 2
-				end
-			elseif KEY:lower() == 't' then
-				if vfly then
-					CONTROL.E = -speedofthevfly * 2
-				else
-					CONTROL.E = -speedofthefly * 2
-				end
-			end
-		end)
-
-		cmdm.KeyUp:connect(function(KEY)
-			if KEY:lower() == 'w' then
-				CONTROL.F = 0
-			elseif KEY:lower() == 's' then
-				CONTROL.B = 0
-			elseif KEY:lower() == 'a' then
-				CONTROL.L = 0
-			elseif KEY:lower() == 'd' then
-				CONTROL.R = 0
-			elseif KEY:lower() == 'y' then
-				CONTROL.Q = 0
-			elseif KEY:lower() == 't' then
-				CONTROL.E = 0
-			end
-		end)
-
-		FLY()
-	else
-		FLYING = Options.FLysss.Value
-	end
-end)
-local afspeed = Tabs.asettings:AddSlider("afspeed", {
-	Title = "Autofarm Speed",
-	Description = "Changes the Autofarm Speed",
-	Default = Setting.aspeed,
-	Min = 100,
-	Max = 10000,
-	Rounding = 0,
-	Callback = function(Value)
-		Setting.aspeed = Value
-	end
-})
-
-afspeed:OnChanged(function(Value)
-	Setting.aspeed = Value
-end)
-
-local stayat = Tabs.asettings:AddSlider("stayat", {
-	Title = "Stay at Y Value",
-	Description = "Stays at the given Y Value (height)",
-	Default = Setting.stayatyvalue,
-	Min = 55,
-	Max = 100,
-	Rounding = 0,
-	Callback = function(Value)
-		Setting.stayatyvalue = Value
-	end
-})
-local wai = Tabs.asettings:AddSlider("wai", {
-	Title = "Wait until AutoFarm starts again",
-	Description = "Waits ... seconds until AutoFarm starts again",
-	Default = Setting.waituntil,
-	Min = 10,
-	Max = 60,
-	Rounding = 0,
-	Callback = function(Value)
-		Setting.waituntil = Value
-	end
-})
-
-wai:OnChanged(function(Value)
-	Setting.waituntil = Value
-end)
-local pfly = Tabs.Player:AddSlider("pfly", {
-	Title = "Fly Speed",
-	Description = "",
-	Default = 6,
-	Min = 1,
-	Max = 50,
-	Rounding = 0,
-	Callback = function(Value)
-		speedofthefly = Value
-		speedofthevfly = Value
-	end
-})
-
-local walk = Tabs.Player:AddSlider("walk", {
-	Title = "WalkSpeed",
-	Description = "Changes the WalkSpeed of the Player",
-	Default = 16,
-	Min = 16,
-	Max = 1000,
-	Rounding = 0,
-	Callback = function(Value)
-		__VE["LPs"].Character.Humanoid.WalkSpeed = Value
-	end
-})
-walk:OnChanged(function(Value)
-	__VE["LPs"].Character.Humanoid.WalkSpeed = Value
-end)
-local jump = Tabs.Player:AddSlider("jump", {
-	Title = "JumpPower",
-	Description = "Changes the JumpPower of the Player",
-	Default = 50,
-	Min = 50,
-	Max = 1000,
-	Rounding = 0,
-	Callback = function(Value)
-		__VE["LPs"].Character.Humanoid.JumpPower = Value
-	end
-})
-jump:OnChanged(function(Value)
-	__VE["LPs"].Character.Humanoid.JumpPower = Value
-end)
-
-Tabs.Settings:AddButton({
-	Title = "Save as config",
-	Description = "",
-	Callback = function()
-		serializedSetting = game.HttpService:JSONEncode(Setting)
-		writefile("Setting/settingBABFT.json", serializedSetting)
-    end
-})
-Tabs.Settings:AddSection("W A S D Buttons")
-Tabs.Settings:AddButton({
-	Title = "Big Button",
-	Description = "",
-	Callback = function()
-		__VE["CG"]["InputPcToMobile"].W.Size = UDim2.new(0.1, 0, 0.1, 0)
-		__VE["CG"]["InputPcToMobile"].A.Size = UDim2.new(0.1, 0, 0.1, 0)
-		__VE["CG"]["InputPcToMobile"].S.Size = UDim2.new(0.1, 0, 0.1, 0)
-		__VE["CG"]["InputPcToMobile"].D.Size = UDim2.new(0.1, 0, 0.1, 0)
-	end
-})
-Tabs.Settings:AddButton({
-	Title = "Small Button",
-	Description = "",
-	Callback = function()
-		__VE["CG"]["InputPcToMobile"].W.Size = UDim2.new(0.05, 0, 0.05, 0)
-		__VE["CG"]["InputPcToMobile"].A.Size = UDim2.new(0.05, 0, 0.05, 0)
-		__VE["CG"]["InputPcToMobile"].S.Size = UDim2.new(0.05, 0, 0.05, 0)
-		__VE["CG"]["InputPcToMobile"].D.Size = UDim2.new(0.05, 0, 0.05, 0)
-	end
-})
-Tabs.Settings:AddButton({
-	Title = "Up",
-	Description = "",
-	Callback = function()
-		__VE["CG"]["InputPcToMobile"].W.Position = UDim2.new(0.05, 0, 0.1, 0)
-		__VE["CG"]["InputPcToMobile"].A.Position = UDim2.new(0, 0, 0.2, 0)
-		__VE["CG"]["InputPcToMobile"].S.Position = UDim2.new(0.05, 0, 0.3, 0)
-		__VE["CG"]["InputPcToMobile"].D.Position = UDim2.new(0.1, 0, 0.2, 0)
-	end
-})
-Tabs.Settings:AddButton({
-	Title = "Down",
-	Description = "",
-	Callback = function()
-		__VE["CG"]["InputPcToMobile"].W.Position = UDim2.new(0.05, 0, 0.7, 0)
-		__VE["CG"]["InputPcToMobile"].A.Position = UDim2.new(0, 0, 0.8, 0)
-		__VE["CG"]["InputPcToMobile"].S.Position = UDim2.new(0.05, 0, 0.9, 0)
-		__VE["CG"]["InputPcToMobile"].D.Position = UDim2.new(0.1, 0, 0.8, 0)
-	end
-})
-Tabs.Settings:AddButton({
-	Title = "Hide",
-	Description = "",
-	Callback = function()
-		__VE["CG"]["InputPcToMobile"].W.Visible = __Y[2]
-		__VE["CG"]["InputPcToMobile"].A.Visible = __Y[2]
-		__VE["CG"]["InputPcToMobile"].S.Visible = __Y[2]
-		__VE["CG"]["InputPcToMobile"].D.Visible = __Y[2]
-	end
-})
-Tabs.Settings:AddButton({
-	Title = "Show",
-	Description = "",
-	Callback = function()
-		__VE["CG"]["InputPcToMobile"].W.Visible = true
-		__VE["CG"]["InputPcToMobile"].A.Visible = true
-		__VE["CG"]["InputPcToMobile"].S.Visible = true
-		__VE["CG"]["InputPcToMobile"].D.Visible = true
-	end
-})
-
-
-local Part = Instance.new("Part")
-Part.Size = Vector3.new(2, 0.2, 1.5)
-Part.Material = Enum.Material.Grass
-Part.Anchored = true
-Part.Transparency = 1
-Part.Parent = workspace
-local function updatePartPosition()
-    local character = __VE["LPs"].Character
-    local humanoidRootPart = character and character:FindFirstChild("HumanoidRootPart")
-    
-    if humanoidRootPart and Float then
-        Part.CFrame = humanoidRootPart.CFrame * CFrame.new(0, -3.1, 0)
-    else
-        Part.CFrame = CFrame.new(0, -10000, 0)
-    end
-end
-game:GetService("RunService").RenderStepped:Connect(updatePartPosition)
-local function NoclipLoop()
-	if Noclip and __VE["LPs"].Character ~= nil then
-		for _, child in pairs(__VE["LPs"].Character:GetChildren()) do
-			if child:IsA("BasePart") and child.CanCollide == true then
-				child.CanCollide = false
+	
+				-- Connect the function to the MouseButton1Click event of the button
+				button.MouseButton1Click:Connect(Ilikeyou)
+			end)
+		end
+		
+		while task.wait() do
+			if Part3 and game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
+				Part3.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0, 7, 0)
 			end
 		end
 	end
-	task.wait()
-end
-game:GetService("RunService").Stepped:Connect(NoclipLoop)
-task.wait(0.05)
-if allowtoserialized then
-    serializedSetting = game.HttpService:JSONEncode(Setting)
-    writefile("Setting/settingBABFT.json", serializedSetting)
-end
-task.wait(5)
-finishload = true
-getgenv().FinishLoad = true
-warn("Simple Showcase TBC")
+
+    LaVert()
