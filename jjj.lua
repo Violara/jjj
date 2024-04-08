@@ -1,2495 +1,5991 @@
--- Generated using RoadToGlory's Converter v1.1 (RoadToGlory#9879)
+if not getgenv().AllowToLoad then
+    game.Players.LocalPlayer:Kick("Instance Blacklist")
+end
+if game.CoreGui:FindFirstChild("KeySystem") then
+    game.CoreGui["KeySystem"]:Destroy()
+else
+    game.Players.LocalPlayer:Kick("Instance.. nvm")
+end
+repeat
+    task.wait()
+until game:IsLoaded()
+__LUABLE = {
+    ["Functions"] = loadstring(
+        game:HttpGet("https://raw.githubusercontent.com/Yumiara/Asset/main/api.lua")
+    )()
+}
+__U = {}
+for a = 1, #__LUABLE["Functions"] do
+    pcall(
+        function()
+            __U[a] = clonefunction(__LUABLE["Functions"][a])
+        end
+    )
+end
+__VE = {
+    ["Ps"] = game:GetService("Players"),
+    ["LPs"] = game:GetService("Players").LocalPlayer,
+    ["PsG"] = game:GetService("Players").LocalPlayer.PlayerGui
+}
+local b = {
+    ["_TTJY ASSET"] = __U[35]("ScreenGui"),
+    ["_TTJY HUB"] = __U[35]("Frame"),
+    ["_UIStroke"] = __U[35]("UIStroke"),
+    ["_UICorner"] = __U[35]("UICorner"),
+    ["_TextButton"] = __U[35]("TextButton"),
+    ["_UIStroke1"] = __U[35]("UIStroke")
+}
+b["_TTJY ASSET"].ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+b["_TTJY ASSET"].Name = "TTJY ASSET"
+b["_TTJY ASSET"].Parent = game:GetService("CoreGui")
+b["_TTJY HUB"].BackgroundColor3 = __U[36](56.0000042617321, 56.0000042617321, 56.0000042617321)
+b["_TTJY HUB"].BackgroundTransparency = 0.4000000059604645
+b["_TTJY HUB"].BorderColor3 = __U[36](0, 0, 0)
+b["_TTJY HUB"].BorderSizePixel = 0
+b["_TTJY HUB"].Position = __U[27](0.4620000004, 0, -0.1, 0)
+b["_TTJY HUB"].Size = __U[27](0.0700000003, 0, 0.100000001, 0)
+b["_TTJY HUB"].ZIndex = 2
+b["_TTJY HUB"].Name = "TTJY HUB"
+b["_TTJY HUB"].Parent = b["_TTJY ASSET"]
+b["_UIStroke"].LineJoinMode = Enum.LineJoinMode.Bevel
+b["_UIStroke"].Thickness = 3
+b["_UIStroke"].Parent = b["_TTJY HUB"]
+b["_UICorner"].Parent = b["_TTJY HUB"]
+b["_TextButton"].Font = Enum.Font.SourceSans
+b["_TextButton"].Text = "TTJY HUB"
+b["_TextButton"].TextColor3 = __U[36](0, 255, 0)
+b["_TextButton"].TextScaled = __Y[1]
+b["_TextButton"].TextSize = 14
+b["_TextButton"].TextWrapped = __Y[1]
+b["_TextButton"].BackgroundColor3 = __U[36](255, 255, 255)
+b["_TextButton"].BackgroundTransparency = 1
+b["_TextButton"].BorderColor3 = __U[36](0, 0, 0)
+b["_TextButton"].BorderSizePixel = 0
+b["_TextButton"].Size = __U[27](1, 0, 1, 0)
+b["_TextButton"].Parent = b["_TTJY HUB"]
+b["_UIStroke1"].LineJoinMode = Enum.LineJoinMode.Bevel
+b["_UIStroke1"].Parent = b["_TextButton"]
+TTJYHUB = b["_TextButton"]
+Fluent = __U[40](game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
+SaveManager = __U[40](game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
+InterfaceManager = __U[40](game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
+__U[6](function()
+    if Fluent and SaveManager and InterfaceManager then
+        __U[1]("No Error")
+    else
+        Fluent = __U[40](game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
+        SaveManager = __U[40](game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
+        InterfaceManager =__U[40](game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
+    end
+end)
+__X = {true, false, nil, 0, 1}
+__Y = {}
+for a = 1, #__X do
+    __U[6](
+        function()
+            __Y[a] = __X[a]
+        end
+    )
+end
+__M = {2, 3, 5, 7, 11, 13, 17, 10}
+__N = {}
+for a = 1, #__M do
+    __U[6](
+        function()
+            __N[a] = __M[a]
+        end
+    )
+end
+__VE["WS"], __VE["RuS"], __VE["RlS"] = game:GetService("Workspace"),  game:GetService("RunService"), game:GetService("ReplicatedStorage")
+__VE["VIM"], __VE["UIS"] = game:GetService("VirtualInputManager"), game:GetService("UserInputService")
+__VE["Lg"], __VE["TS"], __VE["GMos"] = game:GetService("Lighting"), game:GetService("TweenService"), game:GetService("Players").LocalPlayer:GetMouse()
+__VE["VU"], __VE["CG"] = game:GetService("VirtualUser"), game:GetService("CoreGui")
+__VE["HS"] = game:GetService("HttpService")
+originalPositionofHum = __VE["LPs"] and __VE["LPs"].Character and __VE["LPs"].Character:FindFirstChild("HumanoidRootPart") and __VE["LPs"].Character.HumanoidRootPart.CFrame.Position
+originalWalkSpeed = __VE["LPs"] and __VE["LPs"].Character and __VE["LPs"].Character.Humanoid.WalkSpeed
+originalJumpPower = __VE["LPs"] and __VE["LPs"].Character and __VE["LPs"].Character.Humanoid.JumpPower
+CONTROL = {F = 0, B = 0, L = 0, R = 0, Q = 0, E = 0}
+FullPath, BALLGIVER, tailHitbox, LASEROFNAGISA, selectedObject, selectedIndex = __Y[3]
+CustomFirePropmt, FLYING, NightMareMode = __Y[2]
+matches = {}
+FirstPressCook, FirstPressJigoku = __Y[1]
+Order270 = __Y[3]
+RegenerationAmount, RegenerationDelay, DeductionDelay, DeductionAmount, Speed = __Y[3]
 
--- Instances:
 
-local Converted = {
-	["_DevelopemtTools"] = Instance.new("ScreenGui");
-	["_Frame"] = Instance.new("Frame");
-	["_Title"] = Instance.new("TextLabel");
-	["_Title1"] = Instance.new("TextLabel");
-	["_UICorner"] = Instance.new("UICorner");
-	["_UIAspectRatioConstraint"] = Instance.new("UIAspectRatioConstraint");
-	["_Frame1"] = Instance.new("Frame");
-	["_UIGradient"] = Instance.new("UIGradient");
-	["_MainFrame1"] = Instance.new("Frame");
-	["_TextButton"] = Instance.new("TextButton");
-	["_LocalScript"] = Instance.new("LocalScript");
-	["_TextButton1"] = Instance.new("TextButton");
-	["_LocalScript1"] = Instance.new("LocalScript");
-	["_TextButton2"] = Instance.new("TextButton");
-	["_LocalScript2"] = Instance.new("LocalScript");
-	["_TextButton3"] = Instance.new("TextButton");
-	["_LocalScript3"] = Instance.new("LocalScript");
-	["_TextButton4"] = Instance.new("TextButton");
-	["_LocalScript4"] = Instance.new("LocalScript");
-	["_TextButton5"] = Instance.new("TextButton");
-	["_LocalScript5"] = Instance.new("LocalScript");
-	["_TextButton6"] = Instance.new("TextButton");
-	["_LocalScript6"] = Instance.new("LocalScript");
-	["_TextButton7"] = Instance.new("TextButton");
-	["_Script1"] = Instance.new("LocalScript");
-	["_UICorner1"] = Instance.new("UICorner");
-	["_Tools"] = Instance.new("TextButton");
-	["_Frame2"] = Instance.new("Frame");
-	["_LocalScript7"] = Instance.new("LocalScript");
-	["_Remote Scanner"] = Instance.new("TextButton");
-	["_Frame3"] = Instance.new("Frame");
-	["_LocalScript8"] = Instance.new("LocalScript");
-	["_Script scanner"] = Instance.new("TextButton");
-	["_Frame4"] = Instance.new("Frame");
-	["_LocalScript9"] = Instance.new("LocalScript");
-	["_nil scanner"] = Instance.new("TextButton");
-	["_Frame5"] = Instance.new("Frame");
-	["_LocalScript10"] = Instance.new("LocalScript");
-	["_MainFrame2"] = Instance.new("Frame");
-	["_UICorner2"] = Instance.new("UICorner");
-	["_ScrollingFrame"] = Instance.new("ScrollingFrame");
-	["_UIListLayout"] = Instance.new("UIListLayout");
-	["_Frame6"] = Instance.new("Frame");
-	["_TextButton8"] = Instance.new("TextButton");
-	["_LocalScript11"] = Instance.new("LocalScript");
-	["_TextButton9"] = Instance.new("TextButton");
-	["_LocalScript12"] = Instance.new("LocalScript");
-	["_TextButton10"] = Instance.new("TextButton");
-	["_LocalScript13"] = Instance.new("LocalScript");
-	["_TextButton11"] = Instance.new("TextButton");
-	["_LocalScript14"] = Instance.new("LocalScript");
-	["_MainFrame3"] = Instance.new("Frame");
-	["_UICorner3"] = Instance.new("UICorner");
-	["_ScrollingFrame1"] = Instance.new("ScrollingFrame");
-	["_UIListLayout1"] = Instance.new("UIListLayout");
-	["_Frame7"] = Instance.new("Frame");
-	["_TextButton12"] = Instance.new("TextButton");
-	["_LocalScript15"] = Instance.new("LocalScript");
-	["_TextButton13"] = Instance.new("TextButton");
-	["_LocalScript16"] = Instance.new("LocalScript");
-	["_TextButton14"] = Instance.new("TextButton");
-	["_LocalScript17"] = Instance.new("LocalScript");
-	["_TextButton15"] = Instance.new("TextButton");
-	["_LocalScript18"] = Instance.new("LocalScript");
-	["_TextLabel"] = Instance.new("TextLabel");
-	["_MainFrame4"] = Instance.new("Frame");
-	["_UICorner4"] = Instance.new("UICorner");
-	["_ScrollingFrame2"] = Instance.new("ScrollingFrame");
-	["_UIListLayout2"] = Instance.new("UIListLayout");
-	["_Frame8"] = Instance.new("Frame");
-	["_TextButton16"] = Instance.new("TextButton");
-	["_LocalScript19"] = Instance.new("LocalScript");
-	["_TextLabel1"] = Instance.new("TextLabel");
-	["_TextButton17"] = Instance.new("TextButton");
-	["_LocalScript20"] = Instance.new("LocalScript");
-	["_TextButton18"] = Instance.new("TextButton");
-	["_LocalScript21"] = Instance.new("LocalScript");
-	["_Magic Open"] = Instance.new("Frame");
-	["_TextButton19"] = Instance.new("TextButton");
-	["_LocalScript22"] = Instance.new("LocalScript");
+Float = __Y[2]
+Noclip = __Y[2]
+cmdm = __VE["GMos"]
+speedofthevfly = 1
+speedofthefly = 1
+Setting = __Y[3]
+serializedSetting = __Y[3]
+if getgenv().Addons then
+    if not isfolder("Setting") then
+        makefolder("Setting")
+    end
+    if isfolder("Setting") and not isfile("Setting/settingTheMimicNClassic.json") then
+        print("no file")
+        Setting = {}
+        allowtoserialized = __Y[1]
+    elseif __U[49]("Setting") and __U[50]("Setting/settingTheMimicNClassic.json") then
+        __U[1]("file")
+        __U[23]()
+        Setting = __VE["HS"]:JSONDecode(__U[51]("Setting/settingTheMimicNClassic.json"))
+    end
+end
+local GetConnections = function(A, B)
+    for i,v in __U[7](getconnections(A[__U[32](B)])) do
+        v:Fire()
+    end 
+end
+local function findNearestBase()
+    local maxDistance = math.huge
+    local nearestTarget
+
+    for _, v in __U[73](Workspace:GetDescendants()) do
+        if v.Name == "Base" then
+            local distance = (v.Position - __VE["LPs"].HumanoidRootPart.Position).Magnitude
+            if distance < maxDistance then
+                nearestTarget = v
+                maxDistance = distance
+            end
+        end
+    end
+
+    return nearestTarget
+end
+
+local function createBillBoardGui(targetToAddUI, text)
+    if not targetToAddUI then
+        return
+    end
+
+    local billboardGui = __U[35]("BillboardGui", targetToAddUI)
+    billboardGui.Size = __U[27](1, 0, 1, 0)
+    billboardGui.Name = "PUZZLEREVEAL"
+    billboardGui.AlwaysOnTop = __Y[1]
+
+    local frame = __U[35]("Frame", billboardGui)
+    frame.Size = __U[27](1, 0, 1, 0)
+    frame.BackgroundTransparency = 1
+    frame.BorderSizePixel = 0
+
+    local textLabel = __U[35]("TextLabel", frame)
+    textLabel.Text = __U[32](text)
+    textLabel.Size = __U[27](1, 0, 1, 0)
+    textLabel.BackgroundTransparency = 1
+    textLabel.BorderSizePixel = 0
+    textLabel.TextColor3 = Color3.new(255, 255, 255)
+    textLabel.TextSize = 30
+    textLabel.Font = Enum.Font.Arial
+end
+
+function resetThings()
+    for _, v in __U[73](Workspace:GetDescendants()) do
+        if v.Name == "PUZZLEREVEAL" then
+            v:Destroy()
+        end
+    end
+end
+
+interfaceTables = {
+    SendCount = 1
 }
 
--- Properties:
+local function interfaceCount(val)
+    if val == "Add" then
+        interfaceTables.SendCount = interfaceTables.SendCount + 1
+    elseif val == "Remove" then
+        interfaceTables.SendCount = interfaceTables.SendCount - 1
+    elseif val == "DeleteAll" then
+        interfaceTables.SendCount = 1
+    end
+end
 
-Converted["_DevelopemtTools"].ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-Converted["_DevelopemtTools"].Name = "DevelopemtTools"
-Converted["_DevelopemtTools"].Parent = game:GetService("CoreGui")
+local function onLeftPuzzle(data)
+    if data.Call == "TowerPuzzle.LeftPuzzle" then
+        resetThings()
+    end
+end
 
-Converted["_Frame"].BackgroundColor3 = Color3.fromRGB(25.000000409781933, 23.000000528991222, 30.00000011175871)
-Converted["_Frame"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_Frame"].BorderSizePixel = 0
-Converted["_Frame"].Position = UDim2.new(0.249607921, 0, 0.168169245, 0)
-Converted["_Frame"].Size = UDim2.new(0.5, 0, 0.699999988, 0)
-Converted["_Frame"].Parent = Converted["_DevelopemtTools"]
 
-Converted["_Title"].Font = Enum.Font.SourceSans
-Converted["_Title"].Text = "HUB"
-Converted["_Title"].TextColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_Title"].TextScaled = true
-Converted["_Title"].TextSize = 14
-Converted["_Title"].TextStrokeColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_Title"].TextStrokeTransparency = 0
-Converted["_Title"].TextWrapped = true
-Converted["_Title"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_Title"].BackgroundTransparency = 1
-Converted["_Title"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_Title"].BorderSizePixel = 0
-Converted["_Title"].Position = UDim2.new(0.165969715, 0, 0.0445809476, 0)
-Converted["_Title"].Size = UDim2.new(0.109299518, 0, 0.14458096, 0)
-Converted["_Title"].Name = "Title"
-Converted["_Title"].Parent = Converted["_Frame"]
+baseName = "Base"
+listButtons = {}
+UserInputService = __VE["UIS"]
+local function isPlayerNear(part,distance)
+    local distanceThreshold = distance
+    local distance = (part.Position - __VE["LPs"].Character.HumanoidRootPart.Position).magnitude
+    return distance <= distanceThreshold
+end
+local function isPlayerNearPosition(player, position, radius)
+    character = __VE["LPs"].Character
+    if character and character:FindFirstChild("HumanoidRootPart") then
+        local playerPosition = character.HumanoidRootPart.Position
+        local distance = (playerPosition - position).Magnitude
+        return distance <= radius
+    end
+    return __Y[2]
+end
+local function createTrail(ColorValue)
+    character = __VE["LPs"].Character or __VE["LPs"].CharacterAdded:Wait()
+    local part = __U[35]("Part")
+    part.Size = __U[57](0, 0, 0)
+    part.Transparency = 1
+    part.Anchored = __Y[1]
+    part.CanCollide = __Y[2]
+    part.CanTouch = __Y[2]
+    part.Parent = __VE["WS"]
+    local attachment1 = __U[35]("Attachment")
+    attachment1.Parent = part
+    local leftHandAttachment = character:WaitForChild("LeftHand")
+    local attachment2 = __U[35]("Attachment")
+    attachment2.Parent = leftHandAttachment
+    local trail = __U[35]("Trail")
+    trail.Attachment0 = attachment1
+    trail.Attachment1 = attachment2
+    trail.Texture = "rbxassetid://0"
+    blueKeypoint = ColorSequenceKeypoint.new(0, Color3.new(0, 0, 1))
+    cyanKeypoint = ColorSequenceKeypoint.new(1, Color3.new(0, 1, 1))
+    greenKeypoint = ColorSequenceKeypoint.new(0, Color3.new(0, 1, 0))
+    lightGreenKeypoint = ColorSequenceKeypoint.new(1, Color3.new(0.5, 1, 0.5))
+    pinkKeypoint = ColorSequenceKeypoint.new(0, Color3.new(1, 0.75, 0.8))
+    redKeypoint = ColorSequenceKeypoint.new(1, Color3.new(1, 0, 0))
+    purpleKeypoint = ColorSequenceKeypoint.new(0, Color3.new(0.5, 0, 1))
+    lightPurpleKeypoint = ColorSequenceKeypoint.new(1, Color3.new(0.8, 0.5, 1))
+    if ColorValue == 1 then
+        trail.Color = ColorSequence.new({blueKeypoint, cyanKeypoint})
+    elseif ColorValue == 2 then
+        trail.Color = ColorSequence.new({greenKeypoint, lightGreenKeypoint})
+    elseif ColorValue == 3 then
+        trail.Color = ColorSequence.new({pinkKeypoint, redKeypoint})
+    elseif ColorValue == 4 then
+        trail.Color = ColorSequence.new({purpleKeypoint, lightPurpleKeypoint})
+    end
+    trail.LightEmission = 1
+    trail.LightInfluence = 1
+    trail.Parent = part
+    offset = __U[57](0, 0, 1)
+    local function updatePartCFrame()
+        if character:FindFirstChild("LeftHand") then
+            local handCF = character.LeftHand.CFrame
+            local newCF = handCF * __U[26](offset)
+            part.CFrame = newCF
+        end
+    end
+    
+    local heartbeatConnection
+    heartbeatConnection = game:GetService("RunService").Heartbeat:Connect(function()
+        updatePartCFrame()
+    end)
+    local function cleanup()
+        if heartbeatConnection then
+            heartbeatConnection:Disconnect()
+        end
+    end
+    part.AncestryChanged:Connect(function(_, parent)
+        if not parent then
+            cleanup()
+        end
+    end)
+    character = __VE["LPs"].Character or __VE["LPs"].CharacterAdded:Wait()
+    local part = __U[35]("Part")
+    part.Size = __U[57](0, 0, 0)
+    part.Transparency = 1
+    part.Anchored = __Y[1]
+    part.CanCollide = __Y[2]
+    part.CanTouch = __Y[2]
+    part.Parent = workspace
+    local attachment1 = __U[35]("Attachment")
+    attachment1.Parent = part
+    local rightHandAttachment = character:WaitForChild("RightHand")
+    local attachment2 = __U[35]("Attachment")
+    attachment2.Parent = rightHandAttachment
+    local trail = __U[35]("Trail")
+    trail.Attachment0 = attachment1
+    trail.Attachment1 = attachment2
+    trail.Texture = "rbxassetid://0"
+    blueKeypoint = ColorSequenceKeypoint.new(0, Color3.new(0, 0, 1))
+    cyanKeypoint = ColorSequenceKeypoint.new(1, Color3.new(0, 1, 1))
+    greenKeypoint = ColorSequenceKeypoint.new(0, Color3.new(0, 1, 0))
+    lightGreenKeypoint = ColorSequenceKeypoint.new(1, Color3.new(0.5, 1, 0.5))
+    pinkKeypoint = ColorSequenceKeypoint.new(0, Color3.new(1, 0.75, 0.8))
+    redKeypoint = ColorSequenceKeypoint.new(1, Color3.new(1, 0, 0))
+    purpleKeypoint = ColorSequenceKeypoint.new(0, Color3.new(0.5, 0, 1))
+    lightPurpleKeypoint = ColorSequenceKeypoint.new(1, Color3.new(0.8, 0.5, 1))
+    if ColorValue == 1 then
+    trail.Color = ColorSequence.new({blueKeypoint, cyanKeypoint})
+    elseif ColorValue == 2 then
+        trail.Color = ColorSequence.new({greenKeypoint, lightGreenKeypoint})
+    elseif ColorValue == 3 then
+        trail.Color = ColorSequence.new({pinkKeypoint, redKeypoint})
+    elseif ColorValue == 4 then
+        trail.Color = ColorSequence.new({purpleKeypoint, lightPurpleKeypoint})
+    end
+    trail.LightEmission = 1
+    trail.LightInfluence = 1
+    trail.Parent = part
+    offset = __U[57](0, 0, 1)
+    local function updatePartCFrame()
+        if character:FindFirstChild("RightHand") then
+            local handCF = character.RightHand.CFrame
+            local newCF = handCF * __U[26](offset)
+            part.CFrame = newCF
+        end
+    end
+    local heartbeatConnection
+    heartbeatConnection = game:GetService("RunService").Heartbeat:Connect(function()
+        updatePartCFrame()
+    end)
+    local function cleanup()
+        if heartbeatConnection then
+            heartbeatConnection:Disconnect()
+        end
+    end
+    part.AncestryChanged:Connect(function(_, parent)
+        if not parent then
+            cleanup()
+        end
+    end)
+end
+local function isPlayerNearModel(part,distance)
+    local distanceThreshold = distance
+    local distance = (part.WorldPivot.Position - __VE["LPs"].Character.HumanoidRootPart.Position).magnitude
+    return distance <= distanceThreshold
+end
+local function TweenBIGO(speed, posX, posY, posZ)
+    tweenInfo = TweenInfo.new(speed, Enum.EasingStyle.Linear)
+    tween = __VE["TS"]:Create(__VE["LPs"].Character.HumanoidRootPart, tweenInfo, {CFrame = __U[26](posX, posY, posZ)})
+    tween:Play()
+end
+local function Tp(posX, posY, posZ, nextt)
+    __VE["LPs"].Character:FindFirstChild("HumanoidRootPart").CFrame = __U[26](posX, posY, posZ)
+    __U[23](nextt)
+end
+function tpwithnewtpbyme2(xyz,speedoftpNTP)
+    local hrd = __VE["LPs"].Character.HumanoidRootPart
+    local p = hrd.Position
+    local currentPos = __U[57](p.x, p.y, p.z)
+    local targetPos = xyz.Position
+    local saveY = p.y
 
-Converted["_Title1"].Font = Enum.Font.SourceSans
-Converted["_Title1"].Text = "TTJY"
-Converted["_Title1"].TextColor3 = Color3.fromRGB(255, 0, 4.000000236555934)
-Converted["_Title1"].TextScaled = true
-Converted["_Title1"].TextSize = 14
-Converted["_Title1"].TextStrokeColor3 = Color3.fromRGB(255, 0, 0)
-Converted["_Title1"].TextStrokeTransparency = 0
-Converted["_Title1"].TextWrapped = true
-Converted["_Title1"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_Title1"].BackgroundTransparency = 1
-Converted["_Title1"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_Title1"].BorderSizePixel = 0
-Converted["_Title1"].Position = UDim2.new(0.0365917794, 0, 0.0445809476, 0)
-Converted["_Title1"].Size = UDim2.new(0.11500261, 0, 0.144580975, 0)
-Converted["_Title1"].Name = "Title"
-Converted["_Title1"].Parent = Converted["_Frame"]
-
-Converted["_UICorner"].Parent = Converted["_Frame"]
-
-Converted["_UIAspectRatioConstraint"].AspectRatio = 2
-Converted["_UIAspectRatioConstraint"].Parent = Converted["_Frame"]
-
-Converted["_Frame1"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_Frame1"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_Frame1"].BorderSizePixel = 0
-Converted["_Frame1"].Position = UDim2.new(0.0335000008, 0, 0.170000002, 0)
-Converted["_Frame1"].Size = UDim2.new(0.25, 0, 0.00999999978, 0)
-Converted["_Frame1"].Parent = Converted["_Frame"]
-
-Converted["_UIGradient"].Color = ColorSequence.new{
-	ColorSequenceKeypoint.new(0, Color3.fromRGB(0, 0, 0)),
-	ColorSequenceKeypoint.new(0.08117444068193436, Color3.fromRGB(255, 255, 255)),
-	ColorSequenceKeypoint.new(0.8911917209625244, Color3.fromRGB(255, 255, 255)),
-	ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 0, 0))
+    local direction = (targetPos - currentPos).Unit
+    local distance = (targetPos - currentPos).Magnitude
+    local steps = __U[39](distance / speedoftpNTP)
+    for i = 1, steps do
+        if not __VE["LPs"].Character:FindFirstChild("Humanoid") then
+            repeat __U[23](0.175) until __VE["LPs"].Character:FindFirstChild("Humanoid")
+        end
+        currentPos = currentPos + direction * speedoftpNTP 
+        __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](currentPos)
+        __U[23]()
+    end
+end
+local Part = __U[35]("Part")
+Part.Size = __U[57](2, 0.2, 1.5)
+Part.Material = Enum.Material.Grass
+Part.Anchored = __Y[1]
+Part.Transparency = 1
+Part.Parent = workspace
+local function updatePartPosition()
+    character = __VE["LPs"].Character
+    local humanoidRootPart = character and character:FindFirstChild("HumanoidRootPart")
+    if humanoidRootPart and Float then
+        Part.CFrame = humanoidRootPart.CFrame * __U[26](0, -3.1, 0)
+    else
+        Part.CFrame = __U[26](0, -10000, 0)
+    end
+end
+__VE["RuS"].RenderStepped:Connect(updatePartPosition)
+local listToRemove21 = {
+    "Meshes/house1",
+    "Meshes/house2",
+    "Meshes/house6 (1)",
+    "Meshes/house4 (2)",
+    "Window",
+    "Bicycle w/ Basket",
+    "Truck",
+    "Electric Cable(2)",
+    "MapleLeafTreeVar01",
+    "MapleLeafTreeVar02",
+    "Cardboard Box 2",
+    "Divider_1800_800",
+    "AC",
+    "Lights",
+    "Box004",
+    "Papers",
+    "Table_02_100.002",
+    "Meshes/officechair",
+    "Box007",
+    "Box008",
+    "Mouse",
+    "Folding Chair",
+    "flower",
+    "Phone",
+    "Whiteboard Frame",
+    "WhiteBinder",
+    "BlueBinder",
+    "corpse",
+    "AutopsyTable",
+    "LargePictureFrame",
+    "InstrumentTable",
+    "Stool",
+    "Bucket",
+    "scene1:wall_scroll_1",
+    "scene1:cloth2_low",
+    "scene1:table2_low",
+    "scene1:doll_8",
+    "bed",
+    "DecoVase03",
+    "DecoFan_02",
+    "DecoFan_01",
+    "CoffeeTable",
+    "Foliage_Grass01",
+    "Foliage_GrassClump02",
+    "Foliage_Weeds01",
+    "LRoomCushion_02",
+    "LRoomCushion_03",
+    "LRoomCushion_04",
+    "LRoomCup_01",
+    "LRoomCup_02",
+    "LRoomBowl_02",
+    "LRoomCushion_01",
+    "LRoomSkillet_01",
+    "LRoomFan",
+    "LRoomKettle_01",
+    "Medium Moss Boulder 01",
+    "scene1:shelf_storage_6",
+    "scene1:rice_barrel_57",
+    "scene1:furnace_4",
+    "scene1:kettle_low_4",
+    "scene1:hang_kettle_4",
+    "FakeHead",
+    "RealHead",
+    "gashadead",
+    "SM_Alien_Tree_B2_LOD1",
+    "mushrooms",
+    "statue",
+    "Fireflies",
+    "Shelf02",
+    "LRoomHibachi_01",
+    "LRoomTeaKettle_01",
+    "LRoomKettle_02",
+    "Fern_OuterLeaves",
+    "Shelf01",
+    "Tree",
+    "Tree_Collision",
+    "RailingsSection_02",
+    "Betobetosan",
+    "tofuboynpc",
+    "Meshes/gate",
+    "FallenTreeVar1",
+    "Eyemove",
+    "YokaiTownfolks",
+    "lantern.001",
+    "Foliage_Maple_Tree.001",
+    "Meshes/clothj",
+    "_Torii",
+    "eye",
+    "seaweed",
+    "decimatedboulder"
 }
-Converted["_UIGradient"].Parent = Converted["_Frame1"]
-
-Converted["_MainFrame1"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_MainFrame1"].BackgroundTransparency = 0.949999988079071
-Converted["_MainFrame1"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_MainFrame1"].BorderSizePixel = 0
-Converted["_MainFrame1"].Position = UDim2.new(0.049660217, 0, 0.23000519, 0)
-Converted["_MainFrame1"].Size = UDim2.new(0.899999976, 0, 0.710925221, 0)
-Converted["_MainFrame1"].Visible = false
-Converted["_MainFrame1"].Name = "MainFrame1"
-Converted["_MainFrame1"].Parent = Converted["_Frame"]
-
-Converted["_TextButton"].Font = Enum.Font.SourceSans
-Converted["_TextButton"].Text = "DEX"
-Converted["_TextButton"].TextColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_TextButton"].TextScaled = true
-Converted["_TextButton"].TextSize = 14
-Converted["_TextButton"].TextWrapped = true
-Converted["_TextButton"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_TextButton"].BackgroundTransparency = 1
-Converted["_TextButton"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_TextButton"].BorderSizePixel = 0
-Converted["_TextButton"].Position = UDim2.new(-0.00145200896, 0, 0, 0)
-Converted["_TextButton"].Size = UDim2.new(0, 200, 0, 50)
-Converted["_TextButton"].Parent = Converted["_MainFrame1"]
-
-Converted["_TextButton1"].Font = Enum.Font.SourceSans
-Converted["_TextButton1"].Text = "INF Yield"
-Converted["_TextButton1"].TextColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_TextButton1"].TextScaled = true
-Converted["_TextButton1"].TextSize = 14
-Converted["_TextButton1"].TextWrapped = true
-Converted["_TextButton1"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_TextButton1"].BackgroundTransparency = 1
-Converted["_TextButton1"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_TextButton1"].BorderSizePixel = 0
-Converted["_TextButton1"].Position = UDim2.new(-0.00145200896, 0, 0.408088237, 0)
-Converted["_TextButton1"].Size = UDim2.new(0, 200, 0, 50)
-Converted["_TextButton1"].Parent = Converted["_MainFrame1"]
-
-Converted["_TextButton2"].Font = Enum.Font.SourceSans
-Converted["_TextButton2"].Text = "Position Finder"
-Converted["_TextButton2"].TextColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_TextButton2"].TextScaled = true
-Converted["_TextButton2"].TextSize = 14
-Converted["_TextButton2"].TextWrapped = true
-Converted["_TextButton2"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_TextButton2"].BackgroundTransparency = 1
-Converted["_TextButton2"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_TextButton2"].BorderSizePixel = 0
-Converted["_TextButton2"].Position = UDim2.new(-0.00145200896, 0, 0.816176474, 0)
-Converted["_TextButton2"].Size = UDim2.new(0, 200, 0, 50)
-Converted["_TextButton2"].Parent = Converted["_MainFrame1"]
-
-Converted["_TextButton3"].Font = Enum.Font.SourceSans
-Converted["_TextButton3"].Text = "Magnitude Calculator"
-Converted["_TextButton3"].TextColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_TextButton3"].TextScaled = true
-Converted["_TextButton3"].TextSize = 14
-Converted["_TextButton3"].TextWrapped = true
-Converted["_TextButton3"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_TextButton3"].BackgroundTransparency = 1
-Converted["_TextButton3"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_TextButton3"].BorderSizePixel = 0
-Converted["_TextButton3"].Position = UDim2.new(0.355753094, 0, 0, 0)
-Converted["_TextButton3"].Size = UDim2.new(0, 200, 0, 50)
-Converted["_TextButton3"].Parent = Converted["_MainFrame1"]
-
-Converted["_TextButton4"].Font = Enum.Font.SourceSans
-Converted["_TextButton4"].Text = "Remote Spy"
-Converted["_TextButton4"].TextColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_TextButton4"].TextScaled = true
-Converted["_TextButton4"].TextSize = 14
-Converted["_TextButton4"].TextWrapped = true
-Converted["_TextButton4"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_TextButton4"].BackgroundTransparency = 1
-Converted["_TextButton4"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_TextButton4"].BorderSizePixel = 0
-Converted["_TextButton4"].Position = UDim2.new(0.354301035, 0, 0.408088237, 0)
-Converted["_TextButton4"].Size = UDim2.new(0, 200, 0, 50)
-Converted["_TextButton4"].Parent = Converted["_MainFrame1"]
-
-Converted["_TextButton5"].Font = Enum.Font.SourceSans
-Converted["_TextButton5"].Text = "Hydroxide"
-Converted["_TextButton5"].TextColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_TextButton5"].TextScaled = true
-Converted["_TextButton5"].TextSize = 14
-Converted["_TextButton5"].TextWrapped = true
-Converted["_TextButton5"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_TextButton5"].BackgroundTransparency = 1
-Converted["_TextButton5"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_TextButton5"].BorderSizePixel = 0
-Converted["_TextButton5"].Position = UDim2.new(0.355753094, 0, 0.816176474, 0)
-Converted["_TextButton5"].Size = UDim2.new(0, 200, 0, 50)
-Converted["_TextButton5"].Parent = Converted["_MainFrame1"]
-
-Converted["_TextButton6"].Font = Enum.Font.SourceSans
-Converted["_TextButton6"].Text = "UNC"
-Converted["_TextButton6"].TextColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_TextButton6"].TextScaled = true
-Converted["_TextButton6"].TextSize = 14
-Converted["_TextButton6"].TextWrapped = true
-Converted["_TextButton6"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_TextButton6"].BackgroundTransparency = 1
-Converted["_TextButton6"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_TextButton6"].BorderSizePixel = 0
-Converted["_TextButton6"].Position = UDim2.new(0.708602011, 0, 0, 0)
-Converted["_TextButton6"].Size = UDim2.new(0, 200, 0, 50)
-Converted["_TextButton6"].Parent = Converted["_MainFrame1"]
-
-Converted["_TextButton7"].Font = Enum.Font.SourceSans
-Converted["_TextButton7"].Text = "Instance - Convert"
-Converted["_TextButton7"].TextColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_TextButton7"].TextScaled = true
-Converted["_TextButton7"].TextSize = 14
-Converted["_TextButton7"].TextWrapped = true
-Converted["_TextButton7"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_TextButton7"].BackgroundTransparency = 1
-Converted["_TextButton7"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_TextButton7"].BorderSizePixel = 0
-Converted["_TextButton7"].Position = UDim2.new(0.708602011, 0, 0.408088237, 0)
-Converted["_TextButton7"].Size = UDim2.new(0, 200, 0, 50)
-Converted["_TextButton7"].Parent = Converted["_MainFrame1"]
-
-Converted["_UICorner1"].Parent = Converted["_MainFrame1"]
-
-Converted["_Tools"].Font = Enum.Font.SourceSans
-Converted["_Tools"].Text = "Tools"
-Converted["_Tools"].TextColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_Tools"].TextSize = 19
-Converted["_Tools"].TextStrokeColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_Tools"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_Tools"].BackgroundTransparency = 1
-Converted["_Tools"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_Tools"].BorderSizePixel = 0
-Converted["_Tools"].Position = UDim2.new(0.346720308, 0, 0.0651563033, 0)
-Converted["_Tools"].Size = UDim2.new(0.100000001, 0, 0.100000001, 0)
-Converted["_Tools"].Name = "Tools"
-Converted["_Tools"].Parent = Converted["_Frame"]
-
-Converted["_Frame2"].BackgroundColor3 = Color3.fromRGB(255, 0, 0)
-Converted["_Frame2"].BackgroundTransparency = 1
-Converted["_Frame2"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_Frame2"].BorderSizePixel = 0
-Converted["_Frame2"].Position = UDim2.new(0.400000006, 0, 0.800000012, 0)
-Converted["_Frame2"].Size = UDim2.new(0.200000003, 0, 0.0500000007, 0)
-Converted["_Frame2"].Parent = Converted["_Tools"]
-
-Converted["_Remote Scanner"].Font = Enum.Font.SourceSans
-Converted["_Remote Scanner"].Text = "Remote Scanner"
-Converted["_Remote Scanner"].TextColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_Remote Scanner"].TextSize = 19
-Converted["_Remote Scanner"].TextStrokeColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_Remote Scanner"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_Remote Scanner"].BackgroundTransparency = 1
-Converted["_Remote Scanner"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_Remote Scanner"].BorderSizePixel = 0
-Converted["_Remote Scanner"].Position = UDim2.new(0.460416079, 0, 0.0651563033, 0)
-Converted["_Remote Scanner"].Size = UDim2.new(0.100000001, 0, 0.100000001, 0)
-Converted["_Remote Scanner"].Name = "Remote Scanner"
-Converted["_Remote Scanner"].Parent = Converted["_Frame"]
-
-Converted["_Frame3"].BackgroundColor3 = Color3.fromRGB(255, 0, 0)
-Converted["_Frame3"].BackgroundTransparency = 1
-Converted["_Frame3"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_Frame3"].BorderSizePixel = 0
-Converted["_Frame3"].Position = UDim2.new(0.400000006, 0, 0.800000012, 0)
-Converted["_Frame3"].Size = UDim2.new(0.200000003, 0, 0.0500000007, 0)
-Converted["_Frame3"].Parent = Converted["_Remote Scanner"]
-
-Converted["_Script scanner"].Font = Enum.Font.SourceSans
-Converted["_Script scanner"].Text = "Script scanner"
-Converted["_Script scanner"].TextColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_Script scanner"].TextSize = 19
-Converted["_Script scanner"].TextStrokeColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_Script scanner"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_Script scanner"].BackgroundTransparency = 1
-Converted["_Script scanner"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_Script scanner"].BorderSizePixel = 0
-Converted["_Script scanner"].Position = UDim2.new(0.601555645, 0, 0.0651563033, 0)
-Converted["_Script scanner"].Size = UDim2.new(0.100000001, 0, 0.100000001, 0)
-Converted["_Script scanner"].Name = "Script scanner"
-Converted["_Script scanner"].Parent = Converted["_Frame"]
-
-Converted["_Frame4"].BackgroundColor3 = Color3.fromRGB(255, 0, 0)
-Converted["_Frame4"].BackgroundTransparency = 1
-Converted["_Frame4"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_Frame4"].BorderSizePixel = 0
-Converted["_Frame4"].Position = UDim2.new(0.400000006, 0, 0.800000012, 0)
-Converted["_Frame4"].Size = UDim2.new(0.200000003, 0, 0.0500000007, 0)
-Converted["_Frame4"].Parent = Converted["_Script scanner"]
-
-Converted["_nil scanner"].Font = Enum.Font.SourceSans
-Converted["_nil scanner"].Text = "nil scanner"
-Converted["_nil scanner"].TextColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_nil scanner"].TextSize = 19
-Converted["_nil scanner"].TextStrokeColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_nil scanner"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_nil scanner"].BackgroundTransparency = 1
-Converted["_nil scanner"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_nil scanner"].BorderSizePixel = 0
-Converted["_nil scanner"].Position = UDim2.new(0.730933607, 0, 0.0651563033, 0)
-Converted["_nil scanner"].Size = UDim2.new(0.100000001, 0, 0.100000001, 0)
-Converted["_nil scanner"].Name = "nil scanner"
-Converted["_nil scanner"].Parent = Converted["_Frame"]
-
-Converted["_Frame5"].BackgroundColor3 = Color3.fromRGB(255, 0, 0)
-Converted["_Frame5"].BackgroundTransparency = 1
-Converted["_Frame5"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_Frame5"].BorderSizePixel = 0
-Converted["_Frame5"].Position = UDim2.new(0.400000006, 0, 0.800000012, 0)
-Converted["_Frame5"].Size = UDim2.new(0.200000003, 0, 0.0500000007, 0)
-Converted["_Frame5"].Parent = Converted["_nil scanner"]
-
-Converted["_MainFrame2"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_MainFrame2"].BackgroundTransparency = 1
-Converted["_MainFrame2"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_MainFrame2"].BorderSizePixel = 0
-Converted["_MainFrame2"].Position = UDim2.new(0.049660217, 0, 0.23000519, 0)
-Converted["_MainFrame2"].Size = UDim2.new(0.899999976, 0, 0.710925221, 0)
-Converted["_MainFrame2"].Visible = false
-Converted["_MainFrame2"].Name = "MainFrame2"
-Converted["_MainFrame2"].Parent = Converted["_Frame"]
-
-Converted["_UICorner2"].Parent = Converted["_MainFrame2"]
-
-Converted["_ScrollingFrame"].ScrollBarImageColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_ScrollingFrame"].Active = true
-Converted["_ScrollingFrame"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_ScrollingFrame"].BackgroundTransparency = 0.8999999761581421
-Converted["_ScrollingFrame"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_ScrollingFrame"].BorderSizePixel = 0
-Converted["_ScrollingFrame"].Size = UDim2.new(0.800000012, 0, 1, 0)
-Converted["_ScrollingFrame"].Parent = Converted["_MainFrame2"]
-
-Converted["_UIListLayout"].SortOrder = Enum.SortOrder.LayoutOrder
-Converted["_UIListLayout"].Parent = Converted["_ScrollingFrame"]
-
-Converted["_Frame6"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_Frame6"].BackgroundTransparency = 0.8999999761581421
-Converted["_Frame6"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_Frame6"].BorderSizePixel = 0
-Converted["_Frame6"].Position = UDim2.new(0.818958163, 0, 0, 0)
-Converted["_Frame6"].Size = UDim2.new(0.180000007, 0, 1, 0)
-Converted["_Frame6"].Parent = Converted["_MainFrame2"]
-
-Converted["_TextButton8"].Font = Enum.Font.SourceSans
-Converted["_TextButton8"].Text = "Refresh"
-Converted["_TextButton8"].TextColor3 = Color3.fromRGB(0, 255, 255)
-Converted["_TextButton8"].TextScaled = true
-Converted["_TextButton8"].TextSize = 14
-Converted["_TextButton8"].TextWrapped = true
-Converted["_TextButton8"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_TextButton8"].BackgroundTransparency = 1
-Converted["_TextButton8"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_TextButton8"].BorderSizePixel = 0
-Converted["_TextButton8"].Size = UDim2.new(1, 0, 0.100000001, 0)
-Converted["_TextButton8"].Parent = Converted["_Frame6"]
-
-Converted["_TextButton9"].Font = Enum.Font.SourceSans
-Converted["_TextButton9"].Text = "Copy Remote Path"
-Converted["_TextButton9"].TextColor3 = Color3.fromRGB(0, 255, 255)
-Converted["_TextButton9"].TextScaled = true
-Converted["_TextButton9"].TextSize = 14
-Converted["_TextButton9"].TextWrapped = true
-Converted["_TextButton9"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_TextButton9"].BackgroundTransparency = 1
-Converted["_TextButton9"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_TextButton9"].BorderSizePixel = 0
-Converted["_TextButton9"].Position = UDim2.new(0, 0, 0.327205896, 0)
-Converted["_TextButton9"].Size = UDim2.new(1, 0, 0.100000001, 0)
-Converted["_TextButton9"].Parent = Converted["_Frame6"]
-
-Converted["_TextButton10"].Font = Enum.Font.SourceSans
-Converted["_TextButton10"].Text = "Print Remote Path"
-Converted["_TextButton10"].TextColor3 = Color3.fromRGB(0, 255, 255)
-Converted["_TextButton10"].TextScaled = true
-Converted["_TextButton10"].TextSize = 14
-Converted["_TextButton10"].TextWrapped = true
-Converted["_TextButton10"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_TextButton10"].BackgroundTransparency = 1
-Converted["_TextButton10"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_TextButton10"].BorderSizePixel = 0
-Converted["_TextButton10"].Position = UDim2.new(0, 0, 0.224264711, 0)
-Converted["_TextButton10"].Size = UDim2.new(1, 0, 0.100000001, 0)
-Converted["_TextButton10"].Parent = Converted["_Frame6"]
-
-Converted["_TextButton11"].Font = Enum.Font.SourceSans
-Converted["_TextButton11"].Text = "Warn Remote Path"
-Converted["_TextButton11"].TextColor3 = Color3.fromRGB(0, 255, 255)
-Converted["_TextButton11"].TextScaled = true
-Converted["_TextButton11"].TextSize = 14
-Converted["_TextButton11"].TextWrapped = true
-Converted["_TextButton11"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_TextButton11"].BackgroundTransparency = 1
-Converted["_TextButton11"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_TextButton11"].BorderSizePixel = 0
-Converted["_TextButton11"].Position = UDim2.new(0, 0, 0.426470578, 0)
-Converted["_TextButton11"].Size = UDim2.new(1, 0, 0.100000001, 0)
-Converted["_TextButton11"].Parent = Converted["_Frame6"]
-
-Converted["_MainFrame3"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_MainFrame3"].BackgroundTransparency = 1
-Converted["_MainFrame3"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_MainFrame3"].BorderSizePixel = 0
-Converted["_MainFrame3"].Position = UDim2.new(0.049660217, 0, 0.23000519, 0)
-Converted["_MainFrame3"].Size = UDim2.new(0.899999976, 0, 0.710925221, 0)
-Converted["_MainFrame3"].Visible = false
-Converted["_MainFrame3"].Name = "MainFrame3"
-Converted["_MainFrame3"].Parent = Converted["_Frame"]
-
-Converted["_UICorner3"].Parent = Converted["_MainFrame3"]
-
-Converted["_ScrollingFrame1"].ScrollBarImageColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_ScrollingFrame1"].Active = true
-Converted["_ScrollingFrame1"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_ScrollingFrame1"].BackgroundTransparency = 0.8999999761581421
-Converted["_ScrollingFrame1"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_ScrollingFrame1"].BorderSizePixel = 0
-Converted["_ScrollingFrame1"].Size = UDim2.new(0.800000012, 0, 1, 0)
-Converted["_ScrollingFrame1"].Parent = Converted["_MainFrame3"]
-
-Converted["_UIListLayout1"].SortOrder = Enum.SortOrder.LayoutOrder
-Converted["_UIListLayout1"].Parent = Converted["_ScrollingFrame1"]
-
-Converted["_Frame7"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_Frame7"].BackgroundTransparency = 0.8999999761581421
-Converted["_Frame7"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_Frame7"].BorderSizePixel = 0
-Converted["_Frame7"].Position = UDim2.new(0.818958163, 0, 0, 0)
-Converted["_Frame7"].Size = UDim2.new(0.180000007, 0, 1, 0)
-Converted["_Frame7"].Parent = Converted["_MainFrame3"]
-
-Converted["_TextButton12"].Font = Enum.Font.SourceSans
-Converted["_TextButton12"].Text = "Refresh"
-Converted["_TextButton12"].TextColor3 = Color3.fromRGB(0, 255, 255)
-Converted["_TextButton12"].TextScaled = true
-Converted["_TextButton12"].TextSize = 14
-Converted["_TextButton12"].TextWrapped = true
-Converted["_TextButton12"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_TextButton12"].BackgroundTransparency = 1
-Converted["_TextButton12"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_TextButton12"].BorderSizePixel = 0
-Converted["_TextButton12"].Size = UDim2.new(1, 0, 0.100000001, 0)
-Converted["_TextButton12"].Parent = Converted["_Frame7"]
-
-Converted["_TextButton13"].Font = Enum.Font.SourceSans
-Converted["_TextButton13"].Text = "Copy Script Path"
-Converted["_TextButton13"].TextColor3 = Color3.fromRGB(0, 255, 255)
-Converted["_TextButton13"].TextScaled = true
-Converted["_TextButton13"].TextSize = 14
-Converted["_TextButton13"].TextWrapped = true
-Converted["_TextButton13"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_TextButton13"].BackgroundTransparency = 1
-Converted["_TextButton13"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_TextButton13"].BorderSizePixel = 0
-Converted["_TextButton13"].Position = UDim2.new(0, 0, 0.327205896, 0)
-Converted["_TextButton13"].Size = UDim2.new(1, 0, 0.100000001, 0)
-Converted["_TextButton13"].Parent = Converted["_Frame7"]
-
-Converted["_TextButton14"].Font = Enum.Font.SourceSans
-Converted["_TextButton14"].Text = "Print Script Path"
-Converted["_TextButton14"].TextColor3 = Color3.fromRGB(0, 255, 255)
-Converted["_TextButton14"].TextScaled = true
-Converted["_TextButton14"].TextSize = 14
-Converted["_TextButton14"].TextWrapped = true
-Converted["_TextButton14"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_TextButton14"].BackgroundTransparency = 1
-Converted["_TextButton14"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_TextButton14"].BorderSizePixel = 0
-Converted["_TextButton14"].Position = UDim2.new(0, 0, 0.224264711, 0)
-Converted["_TextButton14"].Size = UDim2.new(1, 0, 0.100000001, 0)
-Converted["_TextButton14"].Parent = Converted["_Frame7"]
-
-Converted["_TextButton15"].Font = Enum.Font.SourceSans
-Converted["_TextButton15"].Text = "Warn Script Path"
-Converted["_TextButton15"].TextColor3 = Color3.fromRGB(0, 255, 255)
-Converted["_TextButton15"].TextScaled = true
-Converted["_TextButton15"].TextSize = 14
-Converted["_TextButton15"].TextWrapped = true
-Converted["_TextButton15"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_TextButton15"].BackgroundTransparency = 1
-Converted["_TextButton15"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_TextButton15"].BorderSizePixel = 0
-Converted["_TextButton15"].Position = UDim2.new(0, 0, 0.426470578, 0)
-Converted["_TextButton15"].Size = UDim2.new(1, 0, 0.100000001, 0)
-Converted["_TextButton15"].Parent = Converted["_Frame7"]
-
-Converted["_TextLabel"].Font = Enum.Font.SourceSans
-Converted["_TextLabel"].Text = "LocalScript"
-Converted["_TextLabel"].TextColor3 = Color3.fromRGB(255, 0, 0)
-Converted["_TextLabel"].TextScaled = true
-Converted["_TextLabel"].TextSize = 14
-Converted["_TextLabel"].TextWrapped = true
-Converted["_TextLabel"].BackgroundColor3 = Color3.fromRGB(255, 0, 4.000000236555934)
-Converted["_TextLabel"].BackgroundTransparency = 1
-Converted["_TextLabel"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_TextLabel"].BorderSizePixel = 0
-Converted["_TextLabel"].Position = UDim2.new(0, 0, 0.897058845, 0)
-Converted["_TextLabel"].Size = UDim2.new(1, 0, 0.100000001, 0)
-Converted["_TextLabel"].Parent = Converted["_Frame7"]
-
-Converted["_MainFrame4"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_MainFrame4"].BackgroundTransparency = 1
-Converted["_MainFrame4"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_MainFrame4"].BorderSizePixel = 0
-Converted["_MainFrame4"].Position = UDim2.new(0.049660217, 0, 0.23000519, 0)
-Converted["_MainFrame4"].Size = UDim2.new(0.899999976, 0, 0.710925221, 0)
-Converted["_MainFrame4"].Visible = false
-Converted["_MainFrame4"].Name = "MainFrame4"
-Converted["_MainFrame4"].Parent = Converted["_Frame"]
-
-Converted["_UICorner4"].Parent = Converted["_MainFrame4"]
-
-Converted["_ScrollingFrame2"].ScrollBarImageColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_ScrollingFrame2"].Active = true
-Converted["_ScrollingFrame2"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_ScrollingFrame2"].BackgroundTransparency = 0.8999999761581421
-Converted["_ScrollingFrame2"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_ScrollingFrame2"].BorderSizePixel = 0
-Converted["_ScrollingFrame2"].Size = UDim2.new(0.800000012, 0, 1, 0)
-Converted["_ScrollingFrame2"].Parent = Converted["_MainFrame4"]
-
-Converted["_UIListLayout2"].SortOrder = Enum.SortOrder.LayoutOrder
-Converted["_UIListLayout2"].Parent = Converted["_ScrollingFrame2"]
-
-Converted["_Frame8"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_Frame8"].BackgroundTransparency = 0.8999999761581421
-Converted["_Frame8"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_Frame8"].BorderSizePixel = 0
-Converted["_Frame8"].Position = UDim2.new(0.818958163, 0, 0, 0)
-Converted["_Frame8"].Size = UDim2.new(0.180000007, 0, 1, 0)
-Converted["_Frame8"].Parent = Converted["_MainFrame4"]
-
-Converted["_TextButton16"].Font = Enum.Font.SourceSans
-Converted["_TextButton16"].Text = "Refresh"
-Converted["_TextButton16"].TextColor3 = Color3.fromRGB(0, 255, 255)
-Converted["_TextButton16"].TextScaled = true
-Converted["_TextButton16"].TextSize = 14
-Converted["_TextButton16"].TextWrapped = true
-Converted["_TextButton16"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_TextButton16"].BackgroundTransparency = 1
-Converted["_TextButton16"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_TextButton16"].BorderSizePixel = 0
-Converted["_TextButton16"].Size = UDim2.new(1, 0, 0.100000001, 0)
-Converted["_TextButton16"].Parent = Converted["_Frame8"]
-
-Converted["_TextLabel1"].Font = Enum.Font.SourceSans
-Converted["_TextLabel1"].Text = "LocalScript"
-Converted["_TextLabel1"].TextColor3 = Color3.fromRGB(255, 0, 0)
-Converted["_TextLabel1"].TextScaled = true
-Converted["_TextLabel1"].TextSize = 14
-Converted["_TextLabel1"].TextWrapped = true
-Converted["_TextLabel1"].BackgroundColor3 = Color3.fromRGB(255, 0, 4.000000236555934)
-Converted["_TextLabel1"].BackgroundTransparency = 1
-Converted["_TextLabel1"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_TextLabel1"].BorderSizePixel = 0
-Converted["_TextLabel1"].Position = UDim2.new(0, 0, 0.897058845, 0)
-Converted["_TextLabel1"].Size = UDim2.new(1, 0, 0.100000001, 0)
-Converted["_TextLabel1"].Parent = Converted["_Frame8"]
-
-Converted["_TextButton17"].Font = Enum.Font.SourceSans
-Converted["_TextButton17"].Text = "Destroy()"
-Converted["_TextButton17"].TextColor3 = Color3.fromRGB(0, 255, 255)
-Converted["_TextButton17"].TextScaled = true
-Converted["_TextButton17"].TextSize = 14
-Converted["_TextButton17"].TextWrapped = true
-Converted["_TextButton17"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_TextButton17"].BackgroundTransparency = 1
-Converted["_TextButton17"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_TextButton17"].BorderSizePixel = 0
-Converted["_TextButton17"].Position = UDim2.new(0, 0, 0.220588237, 0)
-Converted["_TextButton17"].Size = UDim2.new(1, 0, 0.100000001, 0)
-Converted["_TextButton17"].Parent = Converted["_Frame8"]
-
-Converted["_TextButton18"].Font = Enum.Font.SourceSans
-Converted["_TextButton18"].Text = "Close"
-Converted["_TextButton18"].TextColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_TextButton18"].TextSize = 14
-Converted["_TextButton18"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_TextButton18"].BackgroundTransparency = 1
-Converted["_TextButton18"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_TextButton18"].BorderSizePixel = 0
-Converted["_TextButton18"].Position = UDim2.new(0.897804499, 0, 0.0888656527, 0)
-Converted["_TextButton18"].Size = UDim2.new(0.0500000007, 0, 0.0500000007, 0)
-Converted["_TextButton18"].Parent = Converted["_Frame"]
-
-Converted["_Magic Open"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_Magic Open"].BackgroundTransparency = 1
-Converted["_Magic Open"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_Magic Open"].BorderSizePixel = 0
-Converted["_Magic Open"].Position = UDim2.new(0.474385768, 0, 0.0294729508, 0)
-Converted["_Magic Open"].Size = UDim2.new(0.0500000007, 0, 0.0500000007, 0)
-Converted["_Magic Open"].Visible = false
-Converted["_Magic Open"].Name = "Magic Open"
-Converted["_Magic Open"].Parent = Converted["_DevelopemtTools"]
-
-Converted["_TextButton19"].Font = Enum.Font.SourceSans
-Converted["_TextButton19"].Text = "Open"
-Converted["_TextButton19"].TextColor3 = Color3.fromRGB(255, 0, 0)
-Converted["_TextButton19"].TextScaled = true
-Converted["_TextButton19"].TextSize = 14
-Converted["_TextButton19"].TextWrapped = true
-Converted["_TextButton19"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_TextButton19"].BackgroundTransparency = 1
-Converted["_TextButton19"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_TextButton19"].BorderSizePixel = 0
-Converted["_TextButton19"].Size = UDim2.new(1, 0, 1, 0)
-Converted["_TextButton19"].Parent = Converted["_Magic Open"]
-
--- Fake Module Scripts:
-
-local fake_module_scripts = {}
-
-
--- Fake Local Scripts:
-
-local function EWQDQR_fake_script() -- Fake Script: StarterGui.DevelopemtTools.Frame.MainFrame1.TextButton.LocalScript
-    local script = Instance.new("LocalScript")
-    script.Name = "LocalScript"
-    script.Parent = Converted["_TextButton"]
-    local req = require
-    local require = function(obj)
-        local fake = fake_module_scripts[obj]
-        if fake then
-            return fake()
-        end
-        return req(obj)
+local listToRemove22 = {
+    "Rock_Gate",
+    "LargeBoulder_Var02",
+    "Seaweed",
+    "ray",
+    "Japanese Toro Stone Lantern",
+    "decimatedboulder",
+    "BUBBLES",
+    "Meshes/uploads_files_2558496_Temizuya.fbx",
+    "gates",
+    "lanternceiling",
+    "PROP_High_Back_Prison_Chair",
+    "Meshes/archlow",
+    "Cabinet With PBR",
+    "HumanCage",
+    "Vase_01",
+    "Realistic old sofa",
+    "GLASS",
+    "cow",
+    "LockedDoor",
+    "LRoomCushion_03",
+    "P2",
+    "PipeElbow3",
+    "Dust",
+    "Wooden Crate",
+    "Bubbles",
+    "Vine_Large01_1",
+    "Small Crate",
+    "Railing",
+    "scene1:shelf_storage_6",
+    "RetopoGroup002",
+    "SM_skull_01",
+    "SM_skull_02",
+    "SM_skull_03",
+    "SM_skull_04",
+    "SM_skull_05",
+    "SM_skull_06",
+    "salve",
+    "chair",
+    "Jar2",
+    "scene1:rice_barrel_57",
+    "Whales",
+    "Spinning Fishies",
+    "Fog",
+    "Vertical_Vine02",
+    "ubrpbjcfa_LOD4",
+    "bubble",
+    "YokaiTownfolks",
+    "UshiOni",
+    "Meshes/structure",
+    "CoffeeTable",
+    "DecoVase03",
+    "FallingPillars",
+    "Plane",
+    "PillarFall",
+    "rockalreadyplace",
+    "BigRockFall",
+    "Umibozu2",
+    "Coral10_G2",
+    "Coral_3_G3",
+    "Coral7_G3",
+    "Aset_stone_carved_L_ucmmahofa_LOD5",
+    "LargeBoulder_Var02",
+    "DustFalling",
+    "UshiOniChase",
+    "Playground_Globe",
+    "Meshes/tlnvecpfa_LOD1",
+    "Playground_Swing",
+    "Playground_Teeter",
+    "Playground_Merry_Go_Around",
+    "Playground_Slide",
+    "Tree",
+    "wooden_fenceC_3",
+    "wooden_fenceC_1",
+    "Boulder",
+    "Section4Barrier",
+    "Fern_OuterLeaves",
+    "Slug",
+    "wooden_fenceC_2",
+    "Playground_Climber_A",
+    "Playground_Climber_B",
+    "A6M Zero",
+    "DemonBuilding",
+    "Playground_Climber_C",
+    "Playground_Climber_D",
+    "Tree_1",
+    "Creeper Ivy",
+    "FallenTreeMossyVar01",
+    "LargeBoulder01",
+    "Redwoodtree-LowLOD-Var01",
+    "RedwoodTree-Var01",
+    "MapleLeafTreeVar01",
+    "DogwoodTree_Var01",
+    "RedwoodTreeLarge-Var01"
+}
+local function isPlayerNearPos(targetPosition, distanceThreshold)
+    character = __VE["LPs"].Character
+    if not character or not character:IsA("Model") then
+        return __Y[2]
     end
-
-	local function Icheated()
-		loadstring(game:HttpGet("https://raw.githubusercontent.com/infyiff/backup/main/dex.lua"))()
-	end
-	
-	script.Parent.MouseButton1Click:Connect(Icheated)
-end
-local function RCRSJ_fake_script() -- Fake Script: StarterGui.DevelopemtTools.Frame.MainFrame1.TextButton.LocalScript
-    local script = Instance.new("LocalScript")
-    script.Name = "LocalScript"
-    script.Parent = Converted["_TextButton1"]
-    local req = require
-    local require = function(obj)
-        local fake = fake_module_scripts[obj]
-        if fake then
-            return fake()
-        end
-        return req(obj)
+    local humanoidRootPart = character:FindFirstChild("HumanoidRootPart")
+    if not humanoidRootPart or not humanoidRootPart:IsA("BasePart") then
+        return __Y[2]
     end
-
-	local function Iloveyou()
-		loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
-	end
-	
-	script.Parent.MouseButton1Click:Connect(Iloveyou)
+    local playerPosition = humanoidRootPart.Position
+    local distance = (playerPosition - targetPosition).Magnitude
+    return distance <= distanceThreshold
 end
-local function NIZYILR_fake_script() -- Fake Script: StarterGui.DevelopemtTools.Frame.MainFrame1.TextButton.LocalScript
-    local script = Instance.new("LocalScript")
-    script.Name = "LocalScript"
-    script.Parent = Converted["_TextButton2"]
-    local req = require
-    local require = function(obj)
-        local fake = fake_module_scripts[obj]
-        if fake then
-            return fake()
-        end
-        return req(obj)
+local Fluent = __U[40](game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
+local SaveManager = __U[40](game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
+local InterfaceManager = __U[40](game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
+local Window = Fluent:CreateWindow({
+    Title = "The Mimic Script v.UP2PV",
+    SubTitle = "by TTJY",
+    TabWidth = 110,
+    Size = UDim2.fromOffset(580, 400),
+    Acrylic = __Y[1],
+    Theme = "Dark",
+    MinimizeKey = Enum.KeyCode.LeftControl
+})
+function OnFluentChange()
+    if Window.Root.Visible then
+        TTJYHUB.TextColor3 = __U[36](0, 255, 0)
+    else
+        TTJYHUB.TextColor3 = __U[36](255, 0, 0)
     end
-
-	local function Pos()
-		-- Create a ScreenGui
-		local screenGui = Instance.new("ScreenGui")
-		screenGui.Parent = game.Players.LocalPlayer.PlayerGui
-	
-		-- Create a Frame
-		local frame = Instance.new("Frame")
-		frame.Size = UDim2.new(0.06, 0, 0.05, 0)
-		frame.Position = UDim2.new(0.47, 0, 0.1, 0)
-		frame.BackgroundColor3 = Color3.new(1, 1, 1)
-		frame.BackgroundTransparency = 1
-		frame.Parent = screenGui
-	
-		-- Create a Button
-		local button = Instance.new("TextButton")
-		button.Size = UDim2.new(1, 0, 1, 0)
-		button.BackgroundColor3 = Color3.new(0.5, 0.5, 0.5)
-		button.Text = "Copy Pos"
-		button.Parent = frame
-	
-		-- Function to be called when the button is clicked
-		local function onButtonClick()
-			setclipboard(tostring(game.Players.LocalPlayer.Character.HumanoidRootPart.Position))
-		end
-	
-		-- Connect the function to the MouseButton1Click event of the button
-		button.MouseButton1Click:Connect(onButtonClick)
-	end
-	
-	script.Parent.MouseButton1Click:Connect(Pos)
 end
-local function ZJMV_fake_script() -- Fake Script: StarterGui.DevelopemtTools.Frame.MainFrame1.TextButton.LocalScript
-    local script = Instance.new("LocalScript")
-    script.Name = "LocalScript"
-    script.Parent = Converted["_TextButton3"]
-    local req = require
-    local require = function(obj)
-        local fake = fake_module_scripts[obj]
-        if fake then
-            return fake()
-        end
-        return req(obj)
+local Tabs = {
+    Main = Window:AddTab({ Title = "Main", Icon = "" }),
+	B1C1 = Window:AddTab({ Title = "B1C1", Icon = "" }),
+	B1C2 = Window:AddTab({ Title = "B1C2", Icon = "" }),
+	B1C3 = Window:AddTab({ Title = "B1C3", Icon = "" }),
+    B1C4 = Window:AddTab({ Title = "B1C4", Icon = "" }),
+    B2C1 = Window:AddTab({ Title = "B2C1", Icon = "" }),
+    B2C2 = Window:AddTab({ Title = "B2C2", Icon = "" }),
+    B2C3 = Window:AddTab({ Title = "B2C3", Icon = "" }),
+    B2C4 = Window:AddTab({ Title = "B2C4", Icon = "" }),
+    TWT = Window:AddTab({ Title = "TWT", Icon = "" }),
+    Xmas1 = Window:AddTab({ Title = "Christmas Trial", Icon = "" }),
+    Halloween = Window:AddTab({ Title = "Halloween Trial", Icon = "" }),
+    NMCS = Window:AddTab({ Title = "NMCS", Icon = "" }),
+    Jigoku = Window:AddTab({ Title = "Jigoku", Icon = "" }),
+    Credits = Window:AddTab({ Title = "Credits", Icon = "" }),
+    Addons = Window:AddTab({ Title = "Addons", Icon = "" }),
+    Settings = Window:AddTab({ Title = "UI Settings", Icon = "settings" })
+}
+function Notify(title, content, time)
+	if title and not content then content = title; title = "Script Service" end
+	Fluent:Notify({
+		Title = title,
+		Content = content,
+		Duration = time or 5
+	})
+end
+function CreatHighlight(obj, Color, OutlineColor)
+    if not obj:FindFirstChild("Highlight") then
+        local highlight = __U[35]("Highlight")
+        highlight.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
+        highlight.FillColor = Color
+        highlight.FillTransparency = 0.25
+        highlight.OutlineColor = OutlineColor
+        highlight.Parent = obj
     end
-
-	local function Mag()
-		local function createButton(name, parent, position, size, callback)
-			local button = Instance.new("TextButton")
-			button.Name = name
-			button.Parent = parent
-			button.Position = position
-			button.TextScaled = true
-			button.Size = size
-			button.Text = name
-			button.MouseButton1Click:Connect(callback)
-		end
-	
-		local screenGui = Instance.new("ScreenGui")
-		screenGui.Parent = game.Players.LocalPlayer.PlayerGui
-	
-		local frame = Instance.new("Frame")
-		frame.Name = "MyUI"
-		frame.Parent = screenGui
-		frame.Size = UDim2.new(0.2, 0, 0.1, 0)
-		frame.Position = UDim2.new(0.39, 0, 0, 0)
-		frame.BackgroundColor3 = Color3.new(0, 0, 0)
-		frame.BackgroundTransparency = 0.5
-	
-		local firstPosition = game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character.HumanoidRootPart.Position
-		local secondPosition = Vector3.new(0, 0, 0)  -- Set a different position for the secondPosition
-	
-		createButton("Copy First Pos", frame, UDim2.new(0, 0, 0, 0), UDim2.new(0.3, 0, 1, 0), function()
-			firstPosition = game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character.HumanoidRootPart.Position
-			if firstPosition then
-				print("First Position Copied:", firstPosition)
-			else
-				print("Character or HumanoidRootPart not found.")
-			end
-		end)
-	
-		createButton("Copy Second Pos", frame, UDim2.new(0.4, 0, 0, 0), UDim2.new(0.3, 0, 1, 0), function()
-			secondPosition = game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character.HumanoidRootPart.Position
-			print("Second Position Copied:", secondPosition)
-		end)
-	
-		createButton("Calculate Magnitude", frame, UDim2.new(0.8, 0, 0, 0), UDim2.new(0.3, 0, 1, 0), function()
-			local magnitude = (firstPosition - secondPosition).Magnitude
-			print("Magnitude Between Positions:", magnitude)
-			setclipboard(magnitude)
-		end)
-	end
-	
-	script.Parent.MouseButton1Click:Connect(Mag)
 end
-local function XWCK_fake_script() -- Fake Script: StarterGui.DevelopemtTools.Frame.MainFrame1.TextButton.LocalScript
-    local script = Instance.new("LocalScript")
-    script.Name = "LocalScript"
-    script.Parent = Converted["_TextButton4"]
-    local req = require
-    local require = function(obj)
-        local fake = fake_module_scripts[obj]
-        if fake then
-            return fake()
-        end
-        return req(obj)
+
+__U[6](
+    function()
+        Window.Root:GetPropertyChangedSignal("Visible"):Connect(OnFluentChange)
     end
-
-	local function SPY()
-		loadstring(game:HttpGet("https://raw.githubusercontent.com/78n/SimpleSpy/main/SimpleSpySource.lua"))()
-	end
-	
-	script.Parent.MouseButton1Click:Connect(SPY)
-end
-local function LQABGDN_fake_script() -- Fake Script: StarterGui.DevelopemtTools.Frame.MainFrame1.TextButton.LocalScript
-    local script = Instance.new("LocalScript")
-    script.Name = "LocalScript"
-    script.Parent = Converted["_TextButton5"]
-    local req = require
-    local require = function(obj)
-        local fake = fake_module_scripts[obj]
-        if fake then
-            return fake()
+)
+__U[6](
+    function()
+        function onButtonClick()
+            Window.Minimized = not Window.Minimized
+            Window.Root.Visible = not Window.Minimized
         end
-        return req(obj)
+        TTJYHUB.MouseButton1Click:Connect(onButtonClick)
     end
+)
 
-	local function Iamgay()
-		local owner = "Upbolt"
-		local branch = "revision"
-	
-		local function webImport(file)
-			return loadstring(game:HttpGetAsync(("https://raw.githubusercontent.com/%s/Hydroxide/%s/%s.lua"):format(owner, branch, file)), file .. '.lua')()
-		end
-	
-		webImport("init")
-		webImport("ui/main")
-	end
-	
-	script.Parent.MouseButton1Click:Connect(Iamgay)
+if __VE["CG"]:FindFirstChild("InputPcToMobile") then
+    __VE["CG"]:FindFirstChild("InputPcToMobile"):Destroy()
 end
-local function AUJBQLV_fake_script() -- Fake Script: StarterGui.DevelopemtTools.Frame.MainFrame1.TextButton.LocalScript
-    local script = Instance.new("LocalScript")
-    script.Name = "LocalScript"
-    script.Parent = Converted["_TextButton6"]
-    local req = require
-    local require = function(obj)
-        local fake = fake_module_scripts[obj]
-        if fake then
-            return fake()
+local screenGui2 = __U[35]("ScreenGui")
+screenGui2.Name = "InputPcToMobile"
+screenGui2.Parent = __VE["CG"]
+local buttonSize = __U[27](0.05, 0, 0.05, 0)
+local function createButton(key, position)
+    local button = __U[35]("TextButton")
+    button.Name = key
+    button.Text = key
+    button.Size = buttonSize
+    button.Position = position
+    button.BackgroundColor3 = Color3.new(0.5, 0.5, 0.5)
+    button.Parent = screenGui2
+
+    local isPressed = __Y[2]
+    button.MouseButton1Down:Connect(function()
+        isPressed = __Y[1]
+        if key == "W" then
+            CONTROL.F = speedofthefly
+        elseif key == "S" then
+            CONTROL.B = -speedofthefly
+        elseif key == "A" then
+            CONTROL.L = -speedofthefly
+        elseif key == "D" then
+            CONTROL.R = speedofthefly
         end
-        return req(obj)
-    end
-
-	local function UNC()
-		local passes, fails, undefined = 0, 0, 0
-		local running = 0
-	
-		local function getGlobal(path)
-			local value = getfenv(0)
-	
-			while value ~= nil and path ~= "" do
-				local name, nextValue = string.match(path, "^([^.]+)%.?(.*)$")
-				value = value[name]
-				path = nextValue
-			end
-	
-			return value
-		end
-	
-		local function test(name, aliases, callback)
-			running = running + 1
-	
-			task.spawn(function()
-				if not callback then
-					print("⏺️ " .. name)
-				elseif not getGlobal(name) then
-					fails = fails + 1
-					warn("⛔ " .. name)
-				else
-					local success, message = pcall(callback)
-	
-					if success then
-						passes = passes + 1
-						print("✅ " .. name .. (message and " • " .. message or ""))
-					else
-						fails = fails + 1
-						warn("⛔ " .. name .. " failed: " .. message)
-					end
-				end
-	
-				local undefinedAliases = {}
-	
-				for _, alias in ipairs(aliases) do
-					if getGlobal(alias) == nil then
-						table.insert(undefinedAliases, alias)
-					end
-				end
-	
-				if #undefinedAliases > 0 then
-					undefined = undefined + 1
-					warn("⚠️ " .. table.concat(undefinedAliases, ", "))
-				end
-	
-				running = running - 1
-			end)
-		end
-	
-		-- Header and summary
-	
-		print("\n")
-	
-		print("UNC Environment Check")
-		print("✅ - Pass, ⛔ - Fail, ⏺️ - No test, ⚠️ - Missing aliases\n")
-	
-		task.defer(function()
-			repeat task.wait() until running == 0
-	
-			local rate = math.round(passes / (passes + fails) * 100)
-			local outOf = passes .. " out of " .. (passes + fails)
-	
-			print("\n")
-	
-			print("UNC Summary")
-			print("✅ Tested with a " .. rate .. "% success rate (" .. outOf .. ")")
-			print("⛔ " .. fails .. " tests failed")
-			print("⚠️ " .. undefined .. " globals are missing aliases")
-		end)
-	
-		-- Cache
-	
-		test("cache.invalidate", {}, function()
-			local container = Instance.new("Folder")
-			local part = Instance.new("Part", container)
-			cache.invalidate(container:FindFirstChild("Part"))
-			assert(part ~= container:FindFirstChild("Part"), "Reference `part` could not be invalidated")
-		end)
-	
-		test("cache.iscached", {}, function()
-			local part = Instance.new("Part")
-			assert(cache.iscached(part), "Part should be cached")
-			cache.invalidate(part)
-			assert(not cache.iscached(part), "Part should not be cached")
-		end)
-	
-		test("cache.replace", {}, function()
-			local part = Instance.new("Part")
-			local fire = Instance.new("Fire")
-			cache.replace(part, fire)
-			assert(part ~= fire, "Part was not replaced with Fire")
-		end)
-	
-		test("cloneref", {}, function()
-			local part = Instance.new("Part")
-			local clone = cloneref(part)
-			assert(part ~= clone, "Clone should not be equal to original")
-			clone.Name = "Test"
-			assert(part.Name == "Test", "Clone should have updated the original")
-		end)
-	
-		test("compareinstances", {}, function()
-			local part = Instance.new("Part")
-			local clone = cloneref(part)
-			assert(part ~= clone, "Clone should not be equal to original")
-			assert(compareinstances(part, clone), "Clone should be equal to original when using compareinstances()")
-		end)
-	
-		-- Closures
-	
-		local function shallowEqual(t1, t2)
-			if t1 == t2 then
-				return true
-			end
-	
-			local UNIQUE_TYPES = {
-				["function"] = true,
-				["table"] = true,
-				["userdata"] = true,
-				["thread"] = true,
-			}
-	
-			for k, v in pairs(t1) do
-				if UNIQUE_TYPES[type(v)] then
-					if type(t2[k]) ~= type(v) then
-						return false
-					end
-				elseif t2[k] ~= v then
-					return false
-				end
-			end
-	
-			for k, v in pairs(t2) do
-				if UNIQUE_TYPES[type(v)] then
-					if type(t2[k]) ~= type(v) then
-						return false
-					end
-				elseif t1[k] ~= v then
-					return false
-				end
-			end
-	
-			return true
-		end
-	
-		test("checkcaller", {}, function()
-			assert(checkcaller(), "Main scope should return true")
-		end)
-	
-		test("clonefunction", {}, function()
-			local function test()
-				return "success"
-			end
-			local copy = clonefunction(test)
-			assert(test() == copy(), "The clone should return the same value as the original")
-			assert(test ~= copy, "The clone should not be equal to the original")
-		end)
-	
-		test("getcallingscript", {})
-	
-		test("getscriptclosure", {"getscriptfunction"}, function()
-			local module = game:GetService("CoreGui").RobloxGui.Modules.Common.Constants
-			local constants = getrenv().require(module)
-			local generated = getscriptclosure(module)()
-			assert(constants ~= generated, "Generated module should not match the original")
-			assert(shallowEqual(constants, generated), "Generated constant table should be shallow equal to the original")
-		end)
-	
-		test("hookfunction", {"replaceclosure"}, function()
-			local function test()
-				return true
-			end
-			local ref = hookfunction(test, function()
-				return false
-			end)
-			assert(test() == false, "Function should return false")
-			assert(ref() == true, "Original function should return true")
-			assert(test ~= ref, "Original function should not be same as the reference")
-		end)
-	
-		test("iscclosure", {}, function()
-			assert(iscclosure(print) == true, "Function 'print' should be a C closure")
-			assert(iscclosure(function() end) == false, "Executor function should not be a C closure")
-		end)
-	
-		test("islclosure", {}, function()
-			assert(islclosure(print) == false, "Function 'print' should not be a Lua closure")
-			assert(islclosure(function() end) == true, "Executor function should be a Lua closure")
-		end)
-	
-		test("isexecutorclosure", {"checkclosure", "isourclosure"}, function()
-			assert(isexecutorclosure(isexecutorclosure) == true, "Did not return true for an executor global")
-			assert(isexecutorclosure(newcclosure(function() end)) == true, "Did not return true for an executor C closure")
-			assert(isexecutorclosure(function() end) == true, "Did not return true for an executor Luau closure")
-			assert(isexecutorclosure(print) == false, "Did not return false for a Roblox global")
-		end)
-	
-		test("loadstring", {}, function()
-			local animate = game:GetService("Players").LocalPlayer.Character.Animate
-			local bytecode = getscriptbytecode(animate)
-			local func = loadstring(bytecode)
-			assert(type(func) ~= "function", "Luau bytecode should not be loadable!")
-			assert(assert(loadstring("return ... + 1"))(1) == 2, "Failed to do simple math")
-			assert(type(select(2, loadstring("f"))) == "string", "Loadstring did not return anything for a compiler error")
-		end)
-	
-		test("newcclosure", {}, function()
-			local function test()
-				return true
-			end
-			local testC = newcclosure(test)
-			assert(test() == testC(), "New C closure should return the same value as the original")
-			assert(test ~= testC, "New C closure should not be same as the original")
-			assert(iscclosure(testC), "New C closure should be a C closure")
-		end)
-	
-		-- Console
-	
-		test("rconsoleclear", {"consoleclear"})
-	
-		test("rconsolecreate", {"consolecreate"})
-	
-		test("rconsoledestroy", {"consoledestroy"})
-	
-		test("rconsoleinput", {"consoleinput"})
-	
-		test("rconsoleprint", {"consoleprint"})
-	
-		test("rconsolesettitle", {"rconsolename", "consolesettitle"})
-	
-		-- Crypt
-	
-		test("crypt.base64encode", {"crypt.base64.encode", "crypt.base64_encode", "base64.encode", "base64_encode"}, function()
-			assert(crypt.base64encode("test") == "dGVzdA==", "Base64 encoding failed")
-		end)
-	
-		test("crypt.base64decode", {"crypt.base64.decode", "crypt.base64_decode", "base64.decode", "base64_decode"}, function()
-			assert(crypt.base64decode("dGVzdA==") == "test", "Base64 decoding failed")
-		end)
-	
-		test("crypt.encrypt", {}, function()
-			local key = crypt.generatekey()
-			local encrypted, iv = crypt.encrypt("test", key, nil, "CBC")
-			assert(iv, "crypt.encrypt should return an IV")
-			local decrypted = crypt.decrypt(encrypted, key, iv, "CBC")
-			assert(decrypted == "test", "Failed to decrypt raw string from encrypted data")
-		end)
-	
-		test("crypt.decrypt", {}, function()
-			local key, iv = crypt.generatekey(), crypt.generatekey()
-			local encrypted = crypt.encrypt("test", key, iv, "CBC")
-			local decrypted = crypt.decrypt(encrypted, key, iv, "CBC")
-			assert(decrypted == "test", "Failed to decrypt raw string from encrypted data")
-		end)
-	
-		test("crypt.generatebytes", {}, function()
-			local size = math.random(10, 100)
-			local bytes = crypt.generatebytes(size)
-			assert(#crypt.base64decode(bytes) == size, "The decoded result should be " .. size .. " bytes long (got " .. #crypt.base64decode(bytes) .. " decoded, " .. #bytes .. " raw)")
-		end)
-	
-		test("crypt.generatekey", {}, function()
-			local key = crypt.generatekey()
-			assert(#crypt.base64decode(key) == 32, "Generated key should be 32 bytes long when decoded")
-		end)
-	
-		test("crypt.hash", {}, function()
-			local algorithms = {'sha1', 'sha384', 'sha512', 'md5', 'sha256', 'sha3-224', 'sha3-256', 'sha3-512'}
-			for _, algorithm in ipairs(algorithms) do
-				local hash = crypt.hash("test", algorithm)
-				assert(hash, "crypt.hash on algorithm '" .. algorithm .. "' should return a hash")
-			end
-		end)
-	
-		--- Debug
-	
-		test("debug.getconstant", {}, function()
-			local function test()
-				print("Hello, world!")
-			end
-			assert(debug.getconstant(test, 1) == "print", "First constant must be print")
-			assert(debug.getconstant(test, 2) == nil, "Second constant must be nil")
-			assert(debug.getconstant(test, 3) == "Hello, world!", "Third constant must be 'Hello, world!'")
-		end)
-	
-		test("debug.getconstants", {}, function()
-			local function test()
-				local num = 5000 .. 50000
-				print("Hello, world!", num, warn)
-			end
-			local constants = debug.getconstants(test)
-			assert(constants[1] == 50000, "First constant must be 50000")
-			assert(constants[2] == "print", "Second constant must be print")
-			assert(constants[3] == nil, "Third constant must be nil")
-			assert(constants[4] == "Hello, world!", "Fourth constant must be 'Hello, world!'")
-			assert(constants[5] == "warn", "Fifth constant must be warn")
-		end)
-	
-		test("debug.getinfo", {}, function()
-			local types = {
-				source = "string",
-				short_src = "string",
-				func = "function",
-				what = "string",
-				currentline = "number",
-				name = "string",
-				nups = "number",
-				numparams = "number",
-				is_vararg = "number",
-			}
-			local function test(...)
-				print(...)
-			end
-			local info = debug.getinfo(test)
-			for k, v in pairs(types) do
-				assert(info[k] ~= nil, "Did not return a table with a '" .. k .. "' field")
-				assert(type(info[k]) == v, "Did not return a table with " .. k .. " as a " .. v .. " (got " .. type(info[k]) .. ")")
-			end
-		end)
-	
-		test("debug.getproto", {}, function()
-			local function test()
-				local function proto()
-					return true
-				end
-			end
-			local proto = debug.getproto(test, 1, true)[1]
-			local realproto = debug.getproto(test, 1)
-			assert(proto, "Failed to get the inner function")
-			assert(proto() == true, "The inner function did not return anything")
-			if not realproto() then
-				return "Proto return values are disabled on this executor"
-			end
-		end)
-	
-		test("debug.getprotos", {}, function()
-			local function test()
-				local function _1()
-					return true
-				end
-				local function _2()
-					return true
-				end
-				local function _3()
-					return true
-				end
-			end
-			for i in ipairs(debug.getprotos(test)) do
-				local proto = debug.getproto(test, i, true)[1]
-				local realproto = debug.getproto(test, i)
-				assert(proto(), "Failed to get inner function " .. i)
-				if not realproto() then
-					return "Proto return values are disabled on this executor"
-				end
-			end
-		end)
-	
-		test("debug.getstack", {}, function()
-			local _ = "a" .. "b"
-			assert(debug.getstack(1, 1) == "ab", "The first item in the stack should be 'ab'")
-			assert(debug.getstack(1)[1] == "ab", "The first item in the stack table should be 'ab'")
-		end)
-	
-		test("debug.getupvalue", {}, function()
-			local upvalue = function() end
-			local function test()
-				print(upvalue)
-			end
-			assert(debug.getupvalue(test, 1) == upvalue, "Unexpected value returned from debug.getupvalue")
-		end)
-	
-		test("debug.getupvalues", {}, function()
-			local upvalue = function() end
-			local function test()
-				print(upvalue)
-			end
-			local upvalues = debug.getupvalues(test)
-			assert(upvalues[1] == upvalue, "Unexpected value returned from debug.getupvalues")
-		end)
-	
-		test("debug.setconstant", {}, function()
-			local function test()
-				return "fail"
-			end
-			debug.setconstant(test, 1, "success")
-			assert(test() == "success", "debug.setconstant did not set the first constant")
-		end)
-	
-		test("debug.setstack", {}, function()
-			local function test()
-				return "fail", debug.setstack(1, 1, "success")
-			end
-			assert(test() == "success", "debug.setstack did not set the first stack item")
-		end)
-	
-		test("debug.setupvalue", {}, function()
-			local function upvalue()
-				return "fail"
-			end
-			local function test()
-				return upvalue()
-			end
-			debug.setupvalue(test, 1, function()
-				return "success"
-			end)
-			assert(test() == "success", "debug.setupvalue did not set the first upvalue")
-		end)
-	
-		-- Filesystem
-	
-		if isfolder and makefolder and delfolder then
-			if isfolder(".tests") then
-				delfolder(".tests")
-			end
-			makefolder(".tests")
-		end
-	
-		test("readfile", {}, function()
-			writefile(".tests/readfile.txt", "success")
-			assert(readfile(".tests/readfile.txt") == "success", "Did not return the contents of the file")
-		end)
-	
-		test("listfiles", {}, function()
-			makefolder(".tests/listfiles")
-			writefile(".tests/listfiles/test_1.txt", "success")
-			writefile(".tests/listfiles/test_2.txt", "success")
-			local files = listfiles(".tests/listfiles")
-			assert(#files == 2, "Did not return the correct number of files")
-			assert(isfile(files[1]), "Did not return a file path")
-			assert(readfile(files[1]) == "success", "Did not return the correct files")
-			makefolder(".tests/listfiles_2")
-			makefolder(".tests/listfiles_2/test_1")
-			makefolder(".tests/listfiles_2/test_2")
-			local folders = listfiles(".tests/listfiles_2")
-			assert(#folders == 2, "Did not return the correct number of folders")
-			assert(isfolder(folders[1]), "Did not return a folder path")
-		end)
-	
-		test("writefile", {}, function()
-			writefile(".tests/writefile.txt", "success")
-			assert(readfile(".tests/writefile.txt") == "success", "Did not write the file")
-			local requiresFileExt = pcall(function()
-				writefile(".tests/writefile", "success")
-				assert(isfile(".tests/writefile.txt"))
-			end)
-			if not requiresFileExt then
-				return "This executor requires a file extension in writefile"
-			end
-		end)
-	
-		test("makefolder", {}, function()
-			makefolder(".tests/makefolder")
-			assert(isfolder(".tests/makefolder"), "Did not create the folder")
-		end)
-	
-		test("appendfile", {}, function()
-			writefile(".tests/appendfile.txt", "su")
-			appendfile(".tests/appendfile.txt", "cce")
-			appendfile(".tests/appendfile.txt", "ss")
-			assert(readfile(".tests/appendfile.txt") == "success", "Did not append the file")
-		end)
-	
-		test("isfile", {}, function()
-			writefile(".tests/isfile.txt", "success")
-			assert(isfile(".tests/isfile.txt") == true, "Did not return true for a file")
-			assert(isfile(".tests") == false, "Did not return false for a folder")
-			assert(isfile(".tests/doesnotexist.exe") == false, "Did not return false for a nonexistent path (got " .. tostring(isfile(".tests/doesnotexist.exe")) .. ")")
-		end)
-	
-		test("isfolder", {}, function()
-			assert(isfolder(".tests") == true, "Did not return false for a folder")
-			assert(isfolder(".tests/doesnotexist.exe") == false, "Did not return false for a nonexistent path (got " .. tostring(isfolder(".tests/doesnotexist.exe")) .. ")")
-		end)
-	
-		test("delfolder", {}, function()
-			makefolder(".tests/delfolder")
-			delfolder(".tests/delfolder")
-			assert(isfolder(".tests/delfolder") == false, "Failed to delete folder (isfolder = " .. tostring(isfolder(".tests/delfolder")) .. ")")
-		end)
-	
-		test("delfile", {}, function()
-			writefile(".tests/delfile.txt", "Hello, world!")
-			delfile(".tests/delfile.txt")
-			assert(isfile(".tests/delfile.txt") == false, "Failed to delete file (isfile = " .. tostring(isfile(".tests/delfile.txt")) .. ")")
-		end)
-	
-		test("loadfile", {}, function()
-			writefile(".tests/loadfile.txt", "return ... + 1")
-			assert(assert(loadfile(".tests/loadfile.txt"))(1) == 2, "Failed to load a file with arguments")
-			writefile(".tests/loadfile.txt", "f")
-			local callback, err = loadfile(".tests/loadfile.txt")
-			assert(err and not callback, "Did not return an error message for a compiler error")
-		end)
-	
-		test("dofile", {})
-	
-		-- Input
-	
-		test("isrbxactive", {"isgameactive"}, function()
-			assert(type(isrbxactive()) == "boolean", "Did not return a boolean value")
-		end)
-	
-		test("mouse1click", {})
-	
-		test("mouse1press", {})
-	
-		test("mouse1release", {})
-	
-		test("mouse2click", {})
-	
-		test("mouse2press", {})
-	
-		test("mouse2release", {})
-	
-		test("mousemoveabs", {})
-	
-		test("mousemoverel", {})
-	
-		test("mousescroll", {})
-	
-		-- Instances
-	
-		test("fireclickdetector", {}, function()
-			local detector = Instance.new("ClickDetector")
-			fireclickdetector(detector, 50, "MouseHoverEnter")
-		end)
-	
-		test("getcallbackvalue", {}, function()
-			local bindable = Instance.new("BindableFunction")
-			local function test()
-			end
-			bindable.OnInvoke = test
-			assert(getcallbackvalue(bindable, "OnInvoke") == test, "Did not return the correct value")
-		end)
-	
-		test("getconnections", {}, function()
-			local types = {
-				Enabled = "boolean",
-				ForeignState = "boolean",
-				LuaConnection = "boolean",
-				Function = "function",
-				Thread = "thread",
-				Fire = "function",
-				Defer = "function",
-				Disconnect = "function",
-				Disable = "function",
-				Enable = "function",
-			}
-			local bindable = Instance.new("BindableEvent")
-			bindable.Event:Connect(function() end)
-			local connection = getconnections(bindable.Event)[1]
-			for k, v in pairs(types) do
-				assert(connection[k] ~= nil, "Did not return a table with a '" .. k .. "' field")
-				assert(type(connection[k]) == v, "Did not return a table with " .. k .. " as a " .. v .. " (got " .. type(connection[k]) .. ")")
-			end
-		end)
-	
-		test("getcustomasset", {}, function()
-			writefile(".tests/getcustomasset.txt", "success")
-			local contentId = getcustomasset(".tests/getcustomasset.txt")
-			assert(type(contentId) == "string", "Did not return a string")
-			assert(#contentId > 0, "Returned an empty string")
-			assert(string.match(contentId, "rbxasset://") == "rbxasset://", "Did not return an rbxasset url")
-		end)
-	
-		test("gethiddenproperty", {}, function()
-			local fire = Instance.new("Fire")
-			local property, isHidden = gethiddenproperty(fire, "size_xml")
-			assert(property == 5, "Did not return the correct value")
-			assert(isHidden == true, "Did not return whether the property was hidden")
-		end)
-	
-		test("sethiddenproperty", {}, function()
-			local fire = Instance.new("Fire")
-			local hidden = sethiddenproperty(fire, "size_xml", 10)
-			assert(hidden, "Did not return true for the hidden property")
-			assert(gethiddenproperty(fire, "size_xml") == 10, "Did not set the hidden property")
-		end)
-	
-		test("gethui", {}, function()
-			assert(typeof(gethui()) == "Instance", "Did not return an Instance")
-		end)
-	
-		test("getinstances", {}, function()
-			assert(getinstances()[1]:IsA("Instance"), "The first value is not an Instance")
-		end)
-	
-		test("getnilinstances", {}, function()
-			assert(getnilinstances()[1]:IsA("Instance"), "The first value is not an Instance")
-			assert(getnilinstances()[1].Parent == nil, "The first value is not parented to nil")
-		end)
-	
-		test("isscriptable", {}, function()
-			local fire = Instance.new("Fire")
-			assert(isscriptable(fire, "size_xml") == false, "Did not return false for a non-scriptable property (size_xml)")
-			assert(isscriptable(fire, "Size") == true, "Did not return true for a scriptable property (Size)")
-		end)
-	
-		test("setscriptable", {}, function()
-			local fire = Instance.new("Fire")
-			local wasScriptable = setscriptable(fire, "size_xml", true)
-			assert(wasScriptable == false, "Did not return false for a non-scriptable property (size_xml)")
-			assert(isscriptable(fire, "size_xml") == true, "Did not set the scriptable property")
-			fire = Instance.new("Fire")
-			assert(isscriptable(fire, "size_xml") == false, "⚠️⚠️ setscriptable persists between unique instances ⚠️⚠️")
-		end)
-	
-		test("setrbxclipboard", {})
-	
-		-- Metatable
-	
-		test("getrawmetatable", {}, function()
-			local metatable = { __metatable = "Locked!" }
-			local object = setmetatable({}, metatable)
-			assert(getrawmetatable(object) == metatable, "Did not return the metatable")
-		end)
-	
-		test("hookmetamethod", {}, function()
-			local object = setmetatable({}, { __index = newcclosure(function() return false end), __metatable = "Locked!" })
-			local ref = hookmetamethod(object, "__index", function() return true end)
-			assert(object.test == true, "Failed to hook a metamethod and change the return value")
-			assert(ref() == false, "Did not return the original function")
-		end)
-	
-		test("getnamecallmethod", {}, function()
-			local method
-			local ref
-			ref = hookmetamethod(game, "__namecall", function(...)
-				if not method then
-					method = getnamecallmethod()
-				end
-				return ref(...)
-			end)
-			game:GetService("Lighting")
-			assert(method == "GetService", "Did not get the correct method (GetService)")
-		end)
-	
-		test("isreadonly", {}, function()
-			local object = {}
-			table.freeze(object)
-			assert(isreadonly(object), "Did not return true for a read-only table")
-		end)
-	
-		test("setrawmetatable", {}, function()
-			local object = setmetatable({}, { __index = function() return false end, __metatable = "Locked!" })
-			local objectReturned = setrawmetatable(object, { __index = function() return true end })
-			assert(object, "Did not return the original object")
-			assert(object.test == true, "Failed to change the metatable")
-			if objectReturned then
-				return objectReturned == object and "Returned the original object" or "Did not return the original object"
-			end
-		end)
-	
-		test("setreadonly", {}, function()
-			local object = { success = false }
-			table.freeze(object)
-			setreadonly(object, false)
-			object.success = true
-			assert(object.success, "Did not allow the table to be modified")
-		end)
-	
-		-- Miscellaneous
-	
-		test("identifyexecutor", {"getexecutorname"}, function()
-			local name, version = identifyexecutor()
-			assert(type(name) == "string", "Did not return a string for the name")
-			return type(version) == "string" and "Returns version as a string" or "Does not return version"
-		end)
-	
-		test("lz4compress", {}, function()
-			local raw = "Hello, world!"
-			local compressed = lz4compress(raw)
-			assert(type(compressed) == "string", "Compression did not return a string")
-			assert(lz4decompress(compressed, #raw) == raw, "Decompression did not return the original string")
-		end)
-	
-		test("lz4decompress", {}, function()
-			local raw = "Hello, world!"
-			local compressed = lz4compress(raw)
-			assert(type(compressed) == "string", "Compression did not return a string")
-			assert(lz4decompress(compressed, #raw) == raw, "Decompression did not return the original string")
-		end)
-	
-		test("messagebox", {})
-	
-		test("queue_on_teleport", {"queueonteleport"})
-	
-		test("request", {"http.request", "http_request"}, function()
-			local response = request({
-				Url = "https://httpbin.org/user-agent",
-				Method = "GET",
-			})
-			assert(type(response) == "table", "Response must be a table")
-			assert(response.StatusCode == 200, "Did not return a 200 status code")
-			local data = game:GetService("HttpService"):JSONDecode(response.Body)
-			assert(type(data) == "table" and type(data["user-agent"]) == "string", "Did not return a table with a user-agent key")
-			return "User-Agent: " .. data["user-agent"]
-		end)
-	
-		test("setclipboard", {"toclipboard"})
-	
-		test("setfpscap", {}, function()
-			local renderStepped = game:GetService("RunService").RenderStepped
-			local function step()
-				renderStepped:Wait()
-				local sum = 0
-				for _ = 1, 5 do
-					sum = sum + 1 / renderStepped:Wait()
-				end
-				return math.round(sum / 5)
-			end
-			setfpscap(60)
-			local step60 = step()
-			setfpscap(0)
-			local step0 = step()
-			return step60 .. "fps @60 • " .. step0 .. "fps @0"
-		end)
-	
-		-- Scripts
-	
-		test("getgc", {}, function()
-			local gc = getgc()
-			assert(type(gc) == "table", "Did not return a table")
-			assert(#gc > 0, "Did not return a table with any values")
-		end)
-	
-		test("getgenv", {}, function()
-			getgenv().__TEST_GLOBAL = true
-			assert(__TEST_GLOBAL, "Failed to set a global variable")
-			getgenv().__TEST_GLOBAL = nil
-		end)
-	
-		test("getloadedmodules", {}, function()
-			local modules = getloadedmodules()
-			assert(type(modules) == "table", "Did not return a table")
-			assert(#modules > 0, "Did not return a table with any values")
-			assert(typeof(modules[1]) == "Instance", "First value is not an Instance")
-			assert(modules[1]:IsA("ModuleScript"), "First value is not a ModuleScript")
-		end)
-	
-		test("getrenv", {}, function()
-			assert(_G ~= getrenv()._G, "The variable _G in the executor is identical to _G in the game")
-		end)
-	
-		test("getrunningscripts", {}, function()
-			local scripts = getrunningscripts()
-			assert(type(scripts) == "table", "Did not return a table")
-			assert(#scripts > 0, "Did not return a table with any values")
-			assert(typeof(scripts[1]) == "Instance", "First value is not an Instance")
-			assert(scripts[1]:IsA("ModuleScript") or scripts[1]:IsA("LocalScript"), "First value is not a ModuleScript or LocalScript")
-		end)
-	
-		test("getscriptbytecode", {"dumpstring"}, function()
-			local animate = game:GetService("Players").LocalPlayer.Character.Animate
-			local bytecode = getscriptbytecode(animate)
-			assert(type(bytecode) == "string", "Did not return a string for Character.Animate (a " .. animate.ClassName .. ")")
-		end)
-	
-		test("getscripthash", {}, function()
-			local animate = game:GetService("Players").LocalPlayer.Character.Animate:Clone()
-			local hash = getscripthash(animate)
-			local source = animate.Source
-			animate.Source = "print('Hello, world!')"
-			task.defer(function()
-				animate.Source = source
-			end)
-			local newHash = getscripthash(animate)
-			assert(hash ~= newHash, "Did not return a different hash for a modified script")
-			assert(newHash == getscripthash(animate), "Did not return the same hash for a script with the same source")
-		end)
-	
-		test("getscripts", {}, function()
-			local scripts = getscripts()
-			assert(type(scripts) == "table", "Did not return a table")
-			assert(#scripts > 0, "Did not return a table with any values")
-			assert(typeof(scripts[1]) == "Instance", "First value is not an Instance")
-			assert(scripts[1]:IsA("ModuleScript") or scripts[1]:IsA("LocalScript"), "First value is not a ModuleScript or LocalScript")
-		end)
-	
-		test("getsenv", {}, function()
-			local animate = game:GetService("Players").LocalPlayer.Character.Animate
-			local env = getsenv(animate)
-			assert(type(env) == "table", "Did not return a table for Character.Animate (a " .. animate.ClassName .. ")")
-			assert(env.script == animate, "The script global is not identical to Character.Animate")
-		end)
-	
-		test("getthreadidentity", {"getidentity", "getthreadcontext"}, function()
-			assert(type(getthreadidentity()) == "number", "Did not return a number")
-		end)
-	
-		test("setthreadidentity", {"setidentity", "setthreadcontext"}, function()
-			setthreadidentity(3)
-			assert(getthreadidentity() == 3, "Did not set the thread identity")
-		end)
-	
-		-- Drawing
-	
-		test("Drawing", {})
-	
-		test("Drawing.new", {}, function()
-			local drawing = Drawing.new("Square")
-			drawing.Visible = false
-			local canDestroy = pcall(function()
-				drawing:Destroy()
-			end)
-			assert(canDestroy, "Drawing:Destroy() should not throw an error")
-		end)
-	
-		test("Drawing.Fonts", {}, function()
-			assert(Drawing.Fonts.UI == 0, "Did not return the correct id for UI")
-			assert(Drawing.Fonts.System == 1, "Did not return the correct id for System")
-			assert(Drawing.Fonts.Plex == 2, "Did not return the correct id for Plex")
-			assert(Drawing.Fonts.Monospace == 3, "Did not return the correct id for Monospace")
-		end)
-	
-		test("isrenderobj", {}, function()
-			local drawing = Drawing.new("Image")
-			drawing.Visible = true
-			assert(isrenderobj(drawing) == true, "Did not return true for an Image")
-			assert(isrenderobj(newproxy()) == false, "Did not return false for a blank table")
-		end)
-	
-		test("getrenderproperty", {}, function()
-			local drawing = Drawing.new("Image")
-			drawing.Visible = true
-			assert(type(getrenderproperty(drawing, "Visible")) == "boolean", "Did not return a boolean value for Image.Visible")
-			local success, result = pcall(function()
-				return getrenderproperty(drawing, "Color")
-			end)
-			if not success or not result then
-				return "Image.Color is not supported"
-			end
-		end)
-	
-		test("setrenderproperty", {}, function()
-			local drawing = Drawing.new("Square")
-			drawing.Visible = true
-			setrenderproperty(drawing, "Visible", false)
-			assert(drawing.Visible == false, "Did not set the value for Square.Visible")
-		end)
-	
-		test("cleardrawcache", {}, function()
-			cleardrawcache()
-		end)
-	
-		-- WebSocket
-	
-		test("WebSocket", {})
-	
-		test("WebSocket.connect", {}, function()
-			local types = {
-				Send = "function",
-				Close = "function",
-				OnMessage = {"table", "userdata"},
-				OnClose = {"table", "userdata"},
-			}
-			local ws = WebSocket.connect("ws://echo.websocket.events")
-			assert(type(ws) == "table" or type(ws) == "userdata", "Did not return a table or userdata")
-			for k, v in pairs(types) do
-				if type(v) == "table" then
-					assert(table.find(v, type(ws[k])), "Did not return a " .. table.concat(v, ", ") .. " for " .. k .. " (a " .. type(ws[k]) .. ")")
-				else
-					assert(type(ws[k]) == v, "Did not return a " .. v .. " for " .. k .. " (a " .. type(ws[k]) .. ")")
-				end
-			end
-			ws:Close()
-		end)
-	end
-	
-	script.Parent.MouseButton1Click:Connect(UNC)
-end
-
-local selectedPose
-local function LaVert()
-	function sandbox(var,func)
-		local env = getfenv(func)
-		local newenv = setmetatable({},{
-			__index = function(self,k)
-				if k=="script" then
-					return var
-				else
-					return env[k]
-				end
-			end,
-		})
-		setfenv(func,newenv)
-		return func
-	end
-	cors = {}
-	mas = Instance.new("Model",game:GetService("Lighting"))
-	Tool0 = Instance.new("Tool")
-	MagicLocalScript = Instance.new("LocalScript")
-	Part2 = Instance.new("Part")
-	Part3 = Instance.new("Part")
-	SpecialMesh4 = Instance.new("SpecialMesh")
-	Tool0.Name = "SimpleS Studio"
-	Tool0.Parent = mas
-	MagicLocalScript.Parent = Tool0
-	table.insert(cors,sandbox(MagicLocalScript,function()
-		local Tool = script.Parent
-
-		enabled = true
-
-		local selectionBox
-
-		local arcHandles
-		
-		selectedPose = nil
-
-		local moveHandles
-
-		local previousCFrame
-
-		local previousDistance
-
-		function onArcHandlesDown(normal)
-
-			print("HandlesDown")
-
-			if selectedPose then
-
-				previousCFrame = selectedPose.CFrame
-
-			end
-
-		end
-
-		function onArcHandlesDrag(axis, relativeAngle, deltaRadius)
-
-			if selectedPose then
-
-				local axisangle = Vector3.FromAxis(axis)
-
-				axisangle = axisangle * relativeAngle
-
-				selectedPose.CFrame = previousCFrame * CFrame.Angles(axisangle.X, axisangle.Y, axisangle.Z)
-
-				local x, y, z = selectedPose.CFrame:toEulerAnglesXYZ()
-
-				print(math.floor(math.deg(x)), math.floor(math.deg(y)), math.floor(math.deg(z)))
-
-			end
-
-		end
-
-		function onMoveHandlesDown(normal)
-
-			print("HandlesDown")
-
-			if selectedPose then
-
-				previousDistance = 0
-
-			end
-
-		end
-
-		function onMoveHandlesDrag(normal, distance)
-
-			if selectedPose then
-
-				local delta = distance - previousDistance
-
-				translation = CFrame.new(Vector3.FromNormalId(normal) * delta)
-
-				selectedPose.CFrame = translation * selectedPose.CFrame
-
-				previousDistance = distance
-
-				print(selectedPose.Position)
-
-			end
-
-		end
-
-		function onButton1Down(mouse)
-
-			print("3DButtonDown")
-
-			selectionBox.Adornee = nil
-
-			arcHandles.Adornee = nil
-
-			moveHandles.Adornee = nil
-
-			if mouse.Target ~= nil then
-
-				selectedPose = mouse.Target
-
-				selectionBox.Adornee = mouse.Target
-
-				arcHandles.Adornee = mouse.Target
-
-				moveHandles.Adornee = mouse.Target
-
-			end
-
-		end
-
-		function onEquippedLocal(mouse)
-
-			local character = script.Parent.Parent
-
-			local player = Game.Players:GetPlayerFromCharacter(character)
-
-			mouse.Icon ="rbxasset://textures\\DragCursor.png"
-
-			mouse.Button1Down:connect(function() onButton1Down(mouse) end)
-
-			selectionBox = Instance.new("SelectionBox")
-
-			selectionBox.Color = BrickColor.new("Cyan")
-
-			selectionBox.Adornee = nil
-
-			selectionBox.Parent = player.PlayerGui
-
-			arcHandlesPart = Instance.new("Part")
-
-			arcHandlesPart.Name = "ArcHandlesProxyPart"
-
-			arcHandlesPart.Size = Vector3.new(2,2,2)
-
-			arcHandlesPart.Parent = player.PlayerGui
-
-			moveHandlesPart = Instance.new("Part")
-
-			moveHandlesPart.Name = "MoveHandlesProxyPart"
-
-			moveHandlesPart.Size = Vector3.new(2,2,2)
-
-			moveHandlesPart.Parent = player.PlayerGui
-
-			arcHandles = Instance.new("ArcHandles")
-
-			arcHandles.Color = BrickColor.new("Neon orange")
-
-			arcHandles.Adornee = nil
-
-			arcHandles.Axes = Axes.new(Enum.Axis.X, Enum.Axis.Y, Enum.Axis.Z)
-
-			arcHandles.MouseDrag:connect(onArcHandlesDrag)
-
-			arcHandles.MouseButton1Down:connect(onArcHandlesDown)
-
-			arcHandles.Parent = player.PlayerGui
-
-			moveHandles = Instance.new("Handles")
-
-			moveHandles.Style = Enum.HandlesStyle.Movement
-
-			moveHandles.Color = BrickColor.new("Bright blue")
-
-			moveHandles.Adornee = nil
-
-			moveHandles.MouseDrag:connect(onMoveHandlesDrag)
-
-			moveHandles.MouseButton1Down:connect(onMoveHandlesDown)
-
-			moveHandles.Parent = player.PlayerGui
-
-		end
-
-		function onUnequippedLocal()
-
-			selectionBox:Remove()
-
-			arcHandles:Remove()
-
-			moveHandles:remove()
-
-		end
-
-		Tool.Equipped:connect(onEquippedLocal)
-
-		Tool.Unequipped:connect(onUnequippedLocal)
-	end))
-	Part2.Name = "Handle"
-	Part2.Parent = Tool0
-	Part2.CFrame = CFrame.new(-11.6290159, 6.38923359, -112.359108, 0, 0, 1, 0, 1, 0, -1, 0, 0)
-	Part2.Orientation = Vector3.new(0, 90, 0)
-	Part2.Position = Vector3.new(-11.629015922546387, 6.389233589172363, -112.3591079711914)
-	Part2.Rotation = Vector3.new(0, 90, 0)
-	Part2.Color = Color3.new(0.972549, 0.972549, 0.972549)
-	Part2.Size = Vector3.new(0.0010000000474974513, 0.001000046730041504, 0.0010000000474974513)
-	Part2.BrickColor = BrickColor.new("Institutional white")
-	Part2.brickColor = BrickColor.new("Institutional white")
-	Part3.Name = "Magic"
-	Part3.Parent = Tool0
-	Part3.CFrame = CFrame.new(-12.1285172, 5.78873873, -112.858604, 0, 0, 1, 0, 1, 0, -1, 0, 0)
-	Part3.Orientation = Vector3.new(0, 90, 0)
-	Part3.Position = Vector3.new(-12.128517150878906, 5.78873872756958, -112.85860443115234)
-	Part3.Rotation = Vector3.new(0, 90, 0)
-	Part3.Color = Color3.new(0.972549, 0.972549, 0.972549)
-	Part3.Size = Vector3.new(1, 1.2000000476837158, 1)
-	Part3.BrickColor = BrickColor.new("Institutional white")
-	Part3.Elasticity = 0
-	Part3.Friction = 0
-	Part3.brickColor = BrickColor.new("Institutional white")
-	SpecialMesh4.Parent = Part3
-	SpecialMesh4.MeshId = "http://www.roblox.com/asset/?id=16171271"
-	SpecialMesh4.Scale = Vector3.new(0.5, 0.5, 0.5)
-	SpecialMesh4.TextureId = "http://www.roblox.com/asset/?id=16171265"
-	SpecialMesh4.MeshType = Enum.MeshType.FileMesh
-	for i,v in pairs(mas:GetChildren()) do
-		v.Parent = workspace
-		pcall(function() v:MakeJoints() end)
-	end
-	mas:Destroy()
-	for i,v in pairs(cors) do
-		spawn(function()
-			pcall(v)
-		end)
-	end
-	repeat task.wait() until game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
-
-	Tool0.Parent = game.Players.LocalPlayer.Character
-	if not game.CoreGui:FindFirstChild("Simple Showcase Studio") then
-		local SimpleShowcase = Instance.new("ScreenGui")
-		SimpleShowcase.Name = "Simple Showcase Studio"
-		SimpleShowcase.Parent = game.CoreGui
-		local SimpleFrame = Instance.new("Frame")
-		SimpleFrame.Size = UDim2.new(0.15, 0, 0.1, 0)
-		SimpleFrame.Position = UDim2.new(0.8, 0, 0, 0)
-		SimpleFrame.BackgroundColor3 = Color3.new(0, 0, 0)
-		SimpleFrame.Parent = SimpleShowcase
-		local SimpleText = Instance.new("TextBox")
-		SimpleText.Position = UDim2.new(0, 0, 0, 0)
-		SimpleText.Size = UDim2.new(1, 0, 1, 0)
-		SimpleText.TextColor3 = Color3.new(1, 1, 1)
-		SimpleText.Parent = SimpleFrame
-		
-		SimpleText:GetPropertyChangedSignal("Text"):Connect(function()
-			if selectedPose then
-				pcall(function()
-					local text = SimpleText.Text
-					local numbers = {}
-					for num in text:gmatch("%d+") do
-						table.insert(numbers, tonumber(num))
-					end
-					
-					if numbers[1] and numbers[2] and numbers[3] then
-						local size = Vector3.new(numbers[1], numbers[2], numbers[3])
-						selectedPose.Size = size
-					end
-				end)
-			end
-		end)
-	end
-	if not game.CoreGui:FindFirstChild("LOWQUAD") then
-		pcall(function()
-			local screenGui = Instance.new("ScreenGui")
-			screenGui.Name = "LOWQUAD"
-			screenGui.Parent = game.CoreGui
-			local frame = Instance.new("Frame")
-			frame.Size = UDim2.new(0.06, 0, 0.05, 0)
-			frame.Position = UDim2.new(0.39, 0, 0.1, 0)
-			frame.BackgroundColor3 = Color3.new(1, 1, 1)
-			frame.BackgroundTransparency = 1
-			frame.Parent = screenGui
-			local button = Instance.new("TextButton")
-			button.Size = UDim2.new(1, 0, 1, 0)
-			button.BackgroundColor3 = Color3.new(0.5, 0.5, 0.5)
-			button.Text = "Part"
-			button.Parent = frame
-			local function Ilikeyou()
-				local Ilikeyou = Instance.new("Part")
-				Ilikeyou.Transparency = 0
-				Ilikeyou.Size = Vector3.new(1, 1, 1)
-				Ilikeyou.Anchored = true
-				Ilikeyou.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
-				Ilikeyou.Parent = workspace
-			end
-
-			-- Connect the function to the MouseButton1Click event of the button
-			button.MouseButton1Click:Connect(Ilikeyou)
-		end)
-	end
-	
-	while task.wait() do
-		if Part3 and game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
-			Part3.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0, 7, 0)
-		end
-	end
-end
-
-Converted["_TextButton7"].MouseButton1Click:Connect(LaVert)
-local function BYCZF_fake_script() -- Fake Script: StarterGui.DevelopemtTools.Frame.Tools.LocalScript
-    local script = Instance.new("LocalScript")
-    script.Name = "LocalScript"
-    script.Parent = Converted["_Tools"]
-    local req = require
-    local require = function(obj)
-        local fake = fake_module_scripts[obj]
-        if fake then
-            return fake()
+    end)
+
+    button.MouseButton1Up:Connect(function()
+        isPressed = __Y[2]
+        if key == "W" then
+            CONTROL.F = 0
+        elseif key == "S" then
+            CONTROL.B = 0
+        elseif key == "A" then
+            CONTROL.L = 0
+        elseif key == "D" then
+            CONTROL.R = 0
         end
-        return req(obj)
-    end
-
-	script.Parent.MouseButton1Click:Connect(function()
-		script.Parent.Parent.MainFrame1.Visible = true
-		script.Parent.Parent.MainFrame2.Visible = false
-		script.Parent.Parent.MainFrame3.Visible = false
-		script.Parent.Parent.MainFrame4.Visible = false
-	end)
+    end)
 end
-local function WNYWFIW_fake_script() -- Fake Script: StarterGui.DevelopemtTools.Frame.Remote Scanner.LocalScript
-    local script = Instance.new("LocalScript")
-    script.Name = "LocalScript"
-    script.Parent = Converted["_Remote Scanner"]
-    local req = require
-    local require = function(obj)
-        local fake = fake_module_scripts[obj]
-        if fake then
-            return fake()
+createButton("W", __U[27](0.05, 0, 0.1, 0))
+__U[23](1)
+createButton("A", __U[27](0, 0, 0.2, 0))
+__U[23](1)
+createButton("S", __U[27](0.05, 0, 0.3, 0))
+__U[23](1)
+createButton("D", __U[27](0.1, 0, 0.2, 0))
+__U[23](1)
+local Options = Fluent.Options
+PlaceId = game.PlaceId
+do
+    Tabs.B1C1:AddSection("All In One")
+    Tabs.B1C1:AddButton({
+        Title = "Auto Win",
+        Description = "",
+        Callback = function()
+            if PlaceId == 6296321810 or PlaceId == 6479231833 then
+                Tp(3507, 37.65, -1539.45, __Y[3])
+            elseif  PlaceId == 6301638949 or PlaceId == 6480994221 then
+                Tp(1274.95, 199.54, -2537.93, __Y[3])
+            else
+                Notify("Error 02", "This is for chapter 1")
+            end
         end
-        return req(obj)
-    end
-
-	script.Parent.MouseButton1Click:Connect(function()
-		script.Parent.Parent.MainFrame1.Visible = false
-		script.Parent.Parent.MainFrame2.Visible = true
-		script.Parent.Parent.MainFrame3.Visible = false
-		script.Parent.Parent.MainFrame4.Visible = false
-	end)
-end
-local function LSQPLK_fake_script() -- Fake Script: StarterGui.DevelopemtTools.Frame.Script scanner.LocalScript
-    local script = Instance.new("LocalScript")
-    script.Name = "LocalScript"
-    script.Parent = Converted["_Script scanner"]
-    local req = require
-    local require = function(obj)
-        local fake = fake_module_scripts[obj]
-        if fake then
-            return fake()
+    })
+    Tabs.B1C1:AddButton({
+        Title = "ESP Monster",
+        Description = "",
+        Callback = function()
+            if PlaceId == 6296321810 or PlaceId == 6479231833 then
+                for _,v in __U[7](__VE["WS"]:GetDescendants()) do
+                    if v.Name == "AI" and v.Parent.Name == "GameAI" then
+                        CreatHighlight(v, __U[36](0, 1, 0), __U[36](255, 255, 255))
+                    end
+                end
+            elseif  PlaceId == 6301638949 or PlaceId == 6480994221 then
+                for _,v in __U[7](__VE["WS"]:GetDescendants()) do
+                    if v.Name == "KurikoCeiling" and v.Parent.Name == "GameAI" or v.Name == "KurikoFloor" and v.Parent.Name == "GameAI" or v.Name == "Biwaki" and v.Parent.Name == "GameAI2" or v.Name == "realshizu" and v.Parent.Name == "GameAI2" then
+                        CreatHighlight(v, __U[36](0, 1, 0), __U[36](255, 255, 255))
+                    end
+                end
+            else
+                Notify("Error 02", "This is for chapter 1")
+            end
         end
-        return req(obj)
-    end
-
-	script.Parent.MouseButton1Click:Connect(function()
-		script.Parent.Parent.MainFrame1.Visible = false
-		script.Parent.Parent.MainFrame2.Visible = false
-		script.Parent.Parent.MainFrame3.Visible = true
-		script.Parent.Parent.MainFrame4.Visible = false
-	end)
-end
-local function QHYQTWN_fake_script() -- Fake Script: StarterGui.DevelopemtTools.Frame.nil scanner.LocalScript
-    local script = Instance.new("LocalScript")
-    script.Name = "LocalScript"
-    script.Parent = Converted["_nil scanner"]
-    local req = require
-    local require = function(obj)
-        local fake = fake_module_scripts[obj]
-        if fake then
-            return fake()
+    })
+    Tabs.B1C1:AddSection("Jigoku")
+    Tabs.B1C1:AddButton({
+        Title = "Find Red Guy",
+        Description = "Aka Manto",
+        Callback = function()
+            if __VE["WS"]:FindFirstChild("IdleNPC") then
+                Notify("Error 00", "Found")
+                Tp(310.32, 3.23, 323.65, 0.3)
+                for i, v in __U[73](workspace.IdleNPC.HumanoidRootPart:GetDescendants()) do
+                    if v:IsA("ProximityPrompt") then
+                        __U[60](v)
+                    end
+                end
+            else
+                Notify("Error 00", "Not Found")
+            end
         end
-        return req(obj)
-    end
-
-	script.Parent.MouseButton1Click:Connect(function()
-		script.Parent.Parent.MainFrame1.Visible = false
-		script.Parent.Parent.MainFrame2.Visible = false
-		script.Parent.Parent.MainFrame3.Visible = false
-		script.Parent.Parent.MainFrame4.Visible = true
-	end)
-end
-local function ZNGUED_fake_script() -- Fake Script: StarterGui.DevelopemtTools.Frame.MainFrame2.Frame.TextButton.LocalScript
-    local script = Instance.new("LocalScript")
-    script.Name = "LocalScript"
-    script.Parent = Converted["_TextButton8"]
-    local req = require
-    local require = function(obj)
-        local fake = fake_module_scripts[obj]
-        if fake then
-            return fake()
+    })
+    Tabs.B1C2:AddSection("All In One")
+    Tabs.B1C2:AddButton({
+        Title = "Auto Win",
+        Description = "Aka Manto",
+        Callback = function()
+            if PlaceId == 6373539583 or PlaceId == 6485055338 then
+                Tp(64.88, 55.28, -1590, __Y[3])
+            elseif PlaceId == 6406571212 or PlaceId == 6485055836 then
+                Tp(235.17, 101.94, -590, __Y[3])
+            elseif PlaceId == 6425178683 or PlaceId == 6485056556 then
+                Tp(829.97, 72.49, -353.46, __Y[3])
+            else
+                Notify("Error 02", "This is for chapter 2")
+            end
         end
-        return req(obj)
-    end
-
-	local Table = {}
-	
-	local function creation(Text , num)
-		local textLabel = Instance.new("TextButton")
-		textLabel.Text = Text
-		textLabel.TextColor3 = Color3.new(1, 1, 1)
-		textLabel.BackgroundTransparency = 1
-		textLabel.Size = UDim2.new(1, 0, 0.1, 0) 
-		textLabel.AnchorPoint = Vector2.new(0.5, 0.5)
-		textLabel.Position = UDim2.new(0.5, 0, 0.5, 0)
-		textLabel.Font = Enum.Font.SourceSansBold
-		textLabel.TextScaled = true
-		textLabel.Parent = script.Parent.Parent.Parent.ScrollingFrame
-		
-		textLabel.MouseButton1Click:Connect(function()
-			_G.SelectValueOfRemote = Table[tonumber(num)]
-		end)
-	end
-	local function DestroyMagic()
-		for _, v in pairs(script.Parent.Parent.Parent.ScrollingFrame:GetChildren()) do
-			if v and v:IsA("TextButton") then
-				v:Destroy()
-			end
-		end
-	end
-	
-	local function KissYou()
-		Table = {}
-		DestroyMagic()
-		task.wait()
-		for i, v in pairs(game:GetDescendants()) do
-			if v and v:IsA("RemoteFunction") then
-				table.insert(Table, i, v:GetFullName())
-				creation(tostring(v.Name), i)
-				wait()
-			end
-		end
-	end
-	
-	script.Parent.MouseButton1Click:Connect(KissYou)
-end
-local function VRCCQPU_fake_script() -- Fake Script: StarterGui.DevelopemtTools.Frame.MainFrame2.Frame.TextButton.LocalScript
-    local script = Instance.new("LocalScript")
-    script.Name = "LocalScript"
-    script.Parent = Converted["_TextButton9"]
-    local req = require
-    local require = function(obj)
-        local fake = fake_module_scripts[obj]
-        if fake then
-            return fake()
+    })
+    Tabs.B1C2:AddButton({
+        Title = "ESP Items",
+        Description = "",
+        Callback = function()
+            if game.PlaceId == 6373539583 or game.PlaceId == 6485055338 then
+                for _,v in __U[7](__VE["WS"]:GetDescendants()) do
+                    if v.Name == "Key1" or v.Name == "Butterfly" and v:FindFirstChild("ProxPart") and v:FindFirstChild("butterfly") then
+                        CreatHighlight(v, __U[36](0, 1, 0), __U[36](255, 255, 255))
+                    end
+                end
+            elseif game.PlaceId == 6406571212 or game.PlaceId == 6485055836 then
+                for _,v in __U[7](__VE["WS"]:GetDescendants()) do
+                    if v.Name == "Key1" or v.Name == "Butterfly" and v:FindFirstChild("ProxPart") and v:FindFirstChild("butterfly") then
+                        CreatHighlight(v, __U[36](0, 1, 0), __U[36](255, 255, 255))
+                    end
+                end
+            elseif game.PlaceId == 6425178683 or game.PlaceId == 6485056556 then
+                for _,v in __U[7](__VE["WS"]:GetDescendants()) do
+                    if v.Name == "Butterfly" and v:FindFirstChild("ProxPart") and v:FindFirstChild("butterfly") then
+                        CreatHighlight(v, __U[36](0, 1, 0), __U[36](255, 255, 255))
+                    end
+                end
+            else
+                Notify("Error 02", "This is for chapter 2")
+            end
         end
-        return req(obj)
-    end
-
-	script.Parent.MouseButton1Click:Connect(function()
-		setclipboard(_G.SelectValueOfRemote)
-	end)
-end
-local function CISUO_fake_script() -- Fake Script: StarterGui.DevelopemtTools.Frame.MainFrame2.Frame.TextButton.LocalScript
-    local script = Instance.new("LocalScript")
-    script.Name = "LocalScript"
-    script.Parent = Converted["_TextButton10"]
-    local req = require
-    local require = function(obj)
-        local fake = fake_module_scripts[obj]
-        if fake then
-            return fake()
+    })
+    Tabs.B1C2:AddButton({
+        Title = "ESP Monsters",
+        Description = "",
+        Callback = function()
+            if game.PlaceId == 6373539583 or game.PlaceId == 6485055338 then
+                for _,v in __U[7](__VE["WS"]:GetDescendants()) do
+                    if v.Name == "AI" and v.Parent.Name == "GameAI" or v.Name == "Kusonoki" and v.Parent.Name == "GameAI" then
+                        CreatHighlight(v, __U[36](0, 1, 0), __U[36](255, 255, 255))
+                    end
+                end
+            elseif  game.PlaceId == 6406571212 or game.PlaceId == 6485055836 then
+                for _,v in __U[7](__VE["WS"]:GetDescendants()) do
+                    if v.Name == "AI" and v.Parent.Name == "GameAI" or v.Name == "AI" and v.Parent.Name == "GameAI2" then
+                        CreatHighlight(v, __U[36](0, 1, 0), __U[36](255, 255, 255))
+                    end
+                end
+            elseif  game.PlaceId == 6425178683 or game.PlaceId == 6485056556 then
+                for _,v in __U[7](__VE["WS"]:GetDescendants()) do
+                    if v.Name == "AI" and v.Parent.Name == "GameAI" then
+                        CreatHighlight(v, __U[36](0, 1, 0), __U[36](255, 255, 255))
+                    end
+                end
+            else
+                Notify("Error 02", "This is for chapter 3")
+            end
         end
-        return req(obj)
-    end
-
-	script.Parent.MouseButton1Click:Connect(function()
-		print(_G.SelectValueOfRemote)
-	end)
-end
-local function ZLTK_fake_script() -- Fake Script: StarterGui.DevelopemtTools.Frame.MainFrame2.Frame.TextButton.LocalScript
-    local script = Instance.new("LocalScript")
-    script.Name = "LocalScript"
-    script.Parent = Converted["_TextButton11"]
-    local req = require
-    local require = function(obj)
-        local fake = fake_module_scripts[obj]
-        if fake then
-            return fake()
+    })
+    Tabs.B1C3:AddSection("All In One")
+    Tabs.B1C3:AddButton({
+        Title = "Auto Win",
+        Description = "",
+        Callback = function()
+            if game.PlaceId == 6472459099 or game.PlaceId == 6688734180 then
+                Tp(2411.93, -23.03, 2300, __Y[3])
+            elseif  game.PlaceId == 6682163754 or game.PlaceId == 6688734313 then
+                Tp(245.69, 31.72, 450, __Y[3])
+            elseif  game.PlaceId == 6682164423 or game.PlaceId == 6688734395 then
+                Tp(-651, 648.99, -1014.35, 5)
+                Tp(-644.07, 947.82, -1490, __Y[3])
+            else
+                Notify("Error 02", "This is for chapter 3")
+            end
         end
-        return req(obj)
-    end
-
-	script.Parent.MouseButton1Click:Connect(function()
-		warn(_G.SelectValueOfRemote)
-	end)
-end
-local function NAKOUH_fake_script() -- Fake Script: StarterGui.DevelopemtTools.Frame.MainFrame3.Frame.TextButton.LocalScript
-    local script = Instance.new("LocalScript")
-    script.Name = "LocalScript"
-    script.Parent = Converted["_TextButton12"]
-    local req = require
-    local require = function(obj)
-        local fake = fake_module_scripts[obj]
-        if fake then
-            return fake()
+    })
+    Tabs.B1C3:AddButton({
+        Title = "ESP Items",
+        Description = "",
+        Callback = function()
+            if game.PlaceId == 6472459099 or game.PlaceId == 6688734180 then
+                for _,v in __U[7](__VE["WS"]:GetDescendants()) do
+                    if v.Name == "Blade" or v.Name == "Butterfly" and v:FindFirstChild("ProxPart") and v:FindFirstChild("butterfly") then
+                        CreatHighlight(v, __U[36](0, 1, 0), __U[36](255, 255, 255))
+                    end
+                end
+            elseif  game.PlaceId == 6682163754 or game.PlaceId == 6688734313 then
+                for _,v in __U[7](__VE["WS"]:GetDescendants()) do
+                    if v.Parent.Name == "Givers" or v.Name == "Rose" or v.Parent.Name == "BellFolder" then
+                        CreatHighlight(v, __U[36](0, 1, 0), __U[36](255, 255, 255))
+                    end
+                end
+            elseif  game.PlaceId == 6682164423 or game.PlaceId == 6688734395 then
+                for _,v in __U[7](__VE["WS"]:GetDescendants()) do
+                    if v.Name == "Key1" or v.Name == "CodeDoor" then
+                        CreatHighlight(v, __U[36](0, 1, 0), __U[36](255, 255, 255))
+                    end
+                end
+            else
+                Notify("Error 02", "This is for chapter 3")
+            end
         end
-        return req(obj)
-    end
-
-	local Table = {}
-	
-	local function creation(Text , num)
-		local textLabel = Instance.new("TextButton")
-		textLabel.Text = Text
-		textLabel.TextColor3 = Color3.new(1, 1, 1)
-		textLabel.BackgroundTransparency = 1
-		textLabel.Size = UDim2.new(1, 0, 0.1, 0) 
-		textLabel.AnchorPoint = Vector2.new(0.5, 0.5)
-		textLabel.Position = UDim2.new(0.5, 0, 0.5, 0)
-		textLabel.Font = Enum.Font.SourceSansBold
-		textLabel.TextScaled = true
-		textLabel.Parent = script.Parent.Parent.Parent.ScrollingFrame
-	
-		textLabel.MouseButton1Click:Connect(function()
-			_G.SelectValueOfScript = Table[tonumber(num)].Name
-			script.Parent.Parent.TextLabel.Text = Table[tonumber(num)].ClassName
-		end)
-	end
-	local function DestroyMagic()
-		for _, v in pairs(script.Parent.Parent.Parent.ScrollingFrame:GetChildren()) do
-			if v and v:IsA("TextButton") then
-				v:Destroy()
-			end
-		end
-	end
-	
-	local function KissYou()
-		Table = {}
-		DestroyMagic()
-		task.wait()
-		for i, v in pairs(game:GetDescendants()) do
-			if v and (v:IsA("Script") or v:IsA("LocalScript") or v:IsA("ModuleScript")) then
-				table.insert(Table, i, {Name = v:GetFullName(), ClassName = v.ClassName})
-				creation(tostring(v.Name), i)
-				wait()
-			end
-		end
-	end
-	
-	script.Parent.MouseButton1Click:Connect(KissYou)
-end
-local function WWSTWX_fake_script() -- Fake Script: StarterGui.DevelopemtTools.Frame.MainFrame3.Frame.TextButton.LocalScript
-    local script = Instance.new("LocalScript")
-    script.Name = "LocalScript"
-    script.Parent = Converted["_TextButton13"]
-    local req = require
-    local require = function(obj)
-        local fake = fake_module_scripts[obj]
-        if fake then
-            return fake()
+    })
+    Tabs.B1C3:AddButton({
+        Title = "ESP Monsters",
+        Description = "",
+        Callback = function()
+            if game.PlaceId == 6472459099 or game.PlaceId == 6688734180 then
+                for _,v in __U[7](__VE["WS"]:GetDescendants()) do
+                    if v.Name == "kaito" and v.Parent.Name == "GameAI" then
+                        CreatHighlight(v, __U[36](0, 1, 0), __U[36](255, 255, 255))
+                    end
+                end
+            elseif  game.PlaceId == 6682163754 or game.PlaceId == 6688734313 then
+                for _,v in __U[7](__VE["WS"]:GetDescendants()) do
+                    if v.Name == "AI" and v.Parent.Name == "GameAI" then
+                        CreatHighlight(v, __U[36](0, 1, 0), __U[36](255, 255, 255))
+                    end
+                end
+            elseif  game.PlaceId == 6682164423 or game.PlaceId == 6688734395 then
+                for _,v in __U[7](__VE["WS"]:GetDescendants()) do
+                    if v.Name == "omukadeMAIN" then
+                        CreatHighlight(v, __U[36](0, 1, 0), __U[36](255, 255, 255))
+                    end
+                end
+            else
+                Notify("Error 02", "This is for chapter 3")
+            end
         end
-        return req(obj)
-    end
-
-	script.Parent.MouseButton1Click:Connect(function()
-		setclipboard(_G.SelectValueOfScript)
-	end)
-end
-local function VNHQAT_fake_script() -- Fake Script: StarterGui.DevelopemtTools.Frame.MainFrame3.Frame.TextButton.LocalScript
-    local script = Instance.new("LocalScript")
-    script.Name = "LocalScript"
-    script.Parent = Converted["_TextButton14"]
-    local req = require
-    local require = function(obj)
-        local fake = fake_module_scripts[obj]
-        if fake then
-            return fake()
+    })
+    Tabs.B1C4:AddSection("Map 1")
+    Tabs.B1C4:AddButton({
+        Title = "Auto Win",
+        Description = "",
+        Callback = function()
+            Tp(91, -48.35, -1416.24, __Y[3])
         end
-        return req(obj)
-    end
-
-	script.Parent.MouseButton1Click:Connect(function()
-		print(_G.SelectValueOfScript)
-	end)
-end
-local function QDVHI_fake_script() -- Fake Script: StarterGui.DevelopemtTools.Frame.MainFrame3.Frame.TextButton.LocalScript
-    local script = Instance.new("LocalScript")
-    script.Name = "LocalScript"
-    script.Parent = Converted["_TextButton15"]
-    local req = require
-    local require = function(obj)
-        local fake = fake_module_scripts[obj]
-        if fake then
-            return fake()
+    })
+    Tabs.B1C4:AddButton({
+        Title = "ESP Item",
+        Description = "",
+        Callback = function()
+            for _,v in __U[7](__VE["WS"]:GetDescendants()) do
+                if v.Name == "Model" and v:FindFirstChild("DrawerScript") or v.Name == "Model" and v:FindFirstChild("ProxPart") and v:FindFirstChild("Handle") then
+                    CreatHighlight(v, __U[36](0, 1, 0), __U[36](255, 255, 255))
+                end
+            end
         end
-        return req(obj)
-    end
-
-	script.Parent.MouseButton1Click:Connect(function()
-		warn(_G.SelectValueOfScript)
-	end)
-end
-local function KQMTA_fake_script() -- Fake Script: StarterGui.DevelopemtTools.Frame.MainFrame4.Frame.TextButton.LocalScript
-    local script = Instance.new("LocalScript")
-    script.Name = "LocalScript"
-    script.Parent = Converted["_TextButton16"]
-    local req = require
-    local require = function(obj)
-        local fake = fake_module_scripts[obj]
-        if fake then
-            return fake()
+    })
+    Tabs.B1C4:AddButton({
+        Title = "ESP Monster",
+        Description = "",
+        Callback = function()
+            for _,v in __U[7](__VE["WS"]:GetDescendants()) do
+                if v.Name == "Manq" and v.Parent.Name == "GameAI" then
+                    CreatHighlight(v, __U[36](255, 0, 0), __U[36](255, 255, 255))
+                end
+            end
         end
-        return req(obj)
-    end
-
-	local Table = {}
-	
-	local function creation(Text , num)
-		local textLabel = Instance.new("TextButton")
-		textLabel.Text = Text
-		textLabel.TextColor3 = Color3.new(1, 1, 1)
-		textLabel.BackgroundTransparency = 1
-		textLabel.Size = UDim2.new(1, 0, 0.1, 0) 
-		textLabel.AnchorPoint = Vector2.new(0.5, 0.5)
-		textLabel.Position = UDim2.new(0.5, 0, 0.5, 0)
-		textLabel.Font = Enum.Font.SourceSansBold
-		textLabel.TextScaled = true
-		textLabel.Parent = script.Parent.Parent.Parent.ScrollingFrame
-	
-		textLabel.MouseButton1Click:Connect(function()
-			_G.SelectValueOfNil = Table[tonumber(num)].Name
-			script.Parent.Parent.TextLabel.Text = Table[tonumber(num)].ClassName
-		end)
-	end
-	local function DestroyMagic()
-		for _, v in pairs(script.Parent.Parent.Parent.ScrollingFrame:GetChildren()) do
-			if v and v:IsA("TextButton") then
-				v:Destroy()
-			end
-		end
-	end
-	
-	local function KissYou()
-		Table = {}
-		DestroyMagic()
-		task.wait()
-		pcall(function()
-			for i, v in next, getnilinstances() do 
-				if v then
-					table.insert(Table, i, {Name = v:GetFullName(), ClassName = v.ClassName})
-					creation(tostring(v.Name), i)
-					wait()
-				end 
-			end
-		end)
-	end
-	
-	script.Parent.MouseButton1Click:Connect(KissYou)
-end
-local function FUDDYBX_fake_script() -- Fake Script: StarterGui.DevelopemtTools.Frame.MainFrame4.Frame.TextButton.LocalScript
-    local script = Instance.new("LocalScript")
-    script.Name = "LocalScript"
-    script.Parent = Converted["_TextButton17"]
-    local req = require
-    local require = function(obj)
-        local fake = fake_module_scripts[obj]
-        if fake then
-            return fake()
+    })
+    Tabs.B1C4:AddSection("Map 2")
+    Tabs.B1C4:AddButton({
+        Title = "Auto Win",
+        Description = "",
+        Callback = function()
+            if not CustomFirePropmt then
+                for i, v in __U[7](__VE["WS"]:GetDescendants()) do
+                    if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Name == "Butterfly" then
+                        Tp(v.Parent.Position.X, v.Parent.Position.Y, v.Parent.Position.Z, 0.3)
+                        __U[60](v)
+                    end
+                end
+            else
+                for i, v in __U[7](__VE["WS"]:GetDescendants()) do
+                    if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Name == "Butterfly" then
+                        Tp(v.Parent.Position.X, v.Parent.Position.Y + 1, v.Parent.Position.Z, 0.3)
+                        fireproximitypromptv2(v, 1, __Y[1])
+                    end
+                end
+            end
         end
-        return req(obj)
-    end
-
-	script.Parent.MouseButton1Click:Connect(function()
-		pcall(function()
-			for i, v in next, getnilinstances() do 
-				if v.Name == _G.SelectValueOfNil then
-					v:Destroy()
-				end
-			end
-		end)
-	end)
-end
-local function XKIDD_fake_script() -- Fake Script: StarterGui.DevelopemtTools.Frame.TextButton.LocalScript
-    local script = Instance.new("LocalScript")
-    script.Name = "LocalScript"
-    script.Parent = Converted["_TextButton18"]
-    local req = require
-    local require = function(obj)
-        local fake = fake_module_scripts[obj]
-        if fake then
-            return fake()
+    })
+    Tabs.B1C4:AddButton({
+        Title = "ESP Items",
+        Description = "",
+        Callback = function()
+            for _,v in __U[7](__VE["WS"]:GetDescendants()) do
+                if v.Name == "Butterfly" and v.Parent.Name == "Butterflies" then
+                    CreatHighlight(v, __U[36](0, 1, 0), __U[36](255, 255, 255))
+                end
+            end
         end
-        return req(obj)
-    end
-
-	script.Parent.MouseButton1Click:Connect(function()
-		script.Parent.Parent.Parent.Enabled = false
-		script.Parent.Parent.Parent["Magic Open"].Visible = true
-	end)
-end
-local function ZSZGP_fake_script() -- Fake Script: StarterGui.DevelopemtTools.Magic Open.TextButton.LocalScript
-    local script = Instance.new("LocalScript")
-    script.Name = "LocalScript"
-    script.Parent = Converted["_TextButton19"]
-    local req = require
-    local require = function(obj)
-        local fake = fake_module_scripts[obj]
-        if fake then
-            return fake()
+    })
+    Tabs.B1C4:AddButton({
+        Title = "ESP Monsters",
+        Description = "",
+        Callback = function()
+            for _,v in __U[7](__VE["WS"]:GetDescendants()) do
+                if v.Parent.Name == "GameAI" then
+                    CreatHighlight(v, __U[36](255, 0, 0), __U[36](255, 255, 255))
+                end
+            end
         end
-        return req(obj)
-    end
+    })
+    Tabs.B1C4:AddSection("Map 3")
+    Tabs.B1C4:AddButton({
+        Title = "Auto Win",
+        Description = "",
+        Callback = function()
+            if not CustomFirePropmt then
+                Tp(665.63, 18.17, 2108.62, 0.3)
+                for i, v in __U[7](__VE["WS"]:GetDescendants()) do
+                    if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart")  then
+                        __U[60](v)
+                    end
+                end
+                __U[23]()
+                Tp(620.22, 17.87, 2340.73, 0.3)
+                for i, v in __U[7](__VE["WS"]:GetDescendants()) do
+                    if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart")  then
+                        __U[60](v)
+                    end
+                end
+                __U[23]()
+                Tp(756.75, 16.39, 2538.24, 0.3)
+                for i, v in __U[7](__VE["WS"]:GetDescendants()) do
+                    if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart")  then
+                        __U[60](v)
+                    end
+                end
+                __U[23]()
+                Tp(860.18, 24.85, 2548.28, 0.3)
+                for i, v in __U[7](__VE["WS"]:GetDescendants()) do
+                    if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart")  then
+                        __U[60](v)
+                    end
+                end
+                __U[23]()
+                Tp(855.96, 15.47, 2388.36, 0.3)
+                for i, v in __U[7](__VE["WS"]:GetDescendants()) do
+                    if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart")  then
+                        __U[60](v)
+                    end
+                end
+                __U[23]()
+                Tp(836.29, 19.01, 2247.34, 0.3)
+                for i, v in __U[7](__VE["WS"]:GetDescendants()) do
+                    if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart")  then
+                        __U[60](v)
+                    end
+                end
+                __U[23]()
+                Tp(688.41, 28.37, 2251.57, 0.3)
+                for i, v in __U[7](__VE["WS"]:GetDescendants()) do
+                    if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart")  then
+                        __U[60](v)
+                        __U[60](v)
+                        __U[60](v)
+                        __U[60](v)
+                        __U[60](v)
+                        __U[60](v)
+                    end
+                end
+            else
+                Tp(665.63, 18.17, 2108.62, 0.3)
+                for i, v in __U[7](__VE["WS"]:GetDescendants()) do
+                    if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart")  then
+                        fireproximitypromptv2(v, 1, __Y[1])
+                    end
+                end
+                __U[23]()
+                Tp(620.22, 17.87, 2340.73, 0.3)
+                for i, v in __U[7](__VE["WS"]:GetDescendants()) do
+                    if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart")  then
+                        fireproximitypromptv2(v, 1, __Y[1])
+                    end
+                end
+                __U[23]()
+                Tp(756.75, 16.39, 2538.24, 0.3)
+                for i, v in __U[7](__VE["WS"]:GetDescendants()) do
+                    if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart")  then
+                        fireproximitypromptv2(v, 1, __Y[1])
+                    end
+                end
+                __U[23]()
+                Tp(860.18, 24.85, 2548.28, 0.3)
+                for i, v in __U[7](__VE["WS"]:GetDescendants()) do
+                    if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart")  then
+                        fireproximitypromptv2(v, 1, __Y[1])
+                    end
+                end
+                __U[23]()
+                Tp(855.96, 15.47, 2388.36, 0.3)
+                for i, v in __U[7](__VE["WS"]:GetDescendants()) do
+                    if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart")  then
+                        fireproximitypromptv2(v, 1, __Y[1])
+                    end
+                end
+                __U[23]()
+                Tp(836.29, 19.01, 2247.34, 0.3)
+                for i, v in __U[7](__VE["WS"]:GetDescendants()) do
+                    if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart")  then
+                        fireproximitypromptv2(v, 1, __Y[1])
+                    end
+                end
+                __U[23]()
+                Tp(688.41, 28.37, 2251.57, 0.3)
+                for i, v in __U[7](__VE["WS"]:GetDescendants()) do
+                    if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart")  then
+                        fireproximitypromptv2(v, 1, __Y[1])
+                        fireproximitypromptv2(v, 1, __Y[1])
+                        fireproximitypromptv2(v, 1, __Y[1])
+                        fireproximitypromptv2(v, 1, __Y[1])
+                        fireproximitypromptv2(v, 1, __Y[1])
+                    end
+                end
+            end
+        end
+    })
+    Tabs.B1C4:AddButton({
+        Title = "ESP Items",
+        Description = "",
+        Callback = function()
+            for _,v in __U[7](__VE["WS"]:GetDescendants()) do
+                if v.Name == "Model" and v:FindFirstChild("Spirit") and v:FindFirstChild("Spirit"):FindFirstChild("Handle") or v.Parent.Name == "PuzzleItems" or v.Name == "Key" then
+                    CreatHighlight(v, __U[36](0, 1, 0), __U[36](255, 255, 255))
+                end
+            end
+        end
+    })
+    Tabs.B1C4:AddButton({
+        Title = "ESP Monsters",
+        Description = "",
+        Callback = function()
+            for _,v in __U[7](__VE["WS"]:GetDescendants()) do
+                if v.Parent.Name == "GameAI" then
+                    CreatHighlight(v, __U[36](255, 0, 0), __U[36](255, 255, 255))
+                end
+            end
+        end
+    })
+    Tabs.B1C4:AddSection("Map 4")
+    Tabs.B1C4:AddButton({
+        Title = "Auto Kill Sama",
+        Description = "",
+        Callback = function()
+            for i,v in __U[7](__VE["WS"].GameHearts:GetChildren()) do
+                repeat
+                    if __VE["WS"].Camera.FieldOfView > 71 then
+                        __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](2823, 155, 2490)
+                    else
+                    if not __VE["LPs"].Character:FindFirstChild("Katana") then
+                        __VE["LPs"].Backpack.Katana.Parent = __VE["LPs"].Character
+                    end
+                    __U[23]()
+                    if __U[62](__U[32](v.Root.CFrame.Position),1,2) == "32" then
+                        __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](3209, 132, 2193)
+                    elseif __U[62](__U[32](v.Root.CFrame.Position),1,2) == "25" then
+                        __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](2589, 132, 2408)
+                    elseif __U[62](__U[32](v.Root.CFrame.Position),1,2) == "28" then
+                        __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](2802, 115, 2418)
+                    end
+                    repeat
+                        if __U[62](__U[32](v.Root.CFrame.Position),1,2) == "32" then
+                            __VE["WS"].Camera.CFrame = __U[26](3209.01807, 133.388229, 2192.93799, 0.959981084, -0.139965221, -0.242582455, 0.00294077187, 0.871154189, -0.491000861, 0.280049741, 0.470638156, 0.836703002)
+                        elseif __U[62](__U[32](v.Root.CFrame.Position),1,2) == "25" then
+                            __VE["WS"].Camera.CFrame = __U[26](2589.01733, 133.500214, 2408.00513, -0.252294064, -0.260695487, -0.93187207, -0.00756763248, 0.963527501, -0.267502367, 0.967621028, -0.060437195, -0.245065123)
+                        elseif __U[62](__U[32](v.Root.CFrame.Position),1,2) == "28" then
+                            __VE["WS"].Camera.CFrame = __U[26](2802.03345, 116.452713, 2417.99463, 0.152567074, -0.359060764, -0.920759797, 0.00740486849, 0.932055831, -0.362238824, 0.988265336, 0.0484476127, 0.144859836)
+                        end
+                        __U[23]()
+                        __VE["LPs"].Character.Katana:Activate()
+                        if v:FindFirstChild("Destroyed") then
+                            break
+                        end
+                    until __VE["WS"].Camera.FieldOfView > 71
+                end
+                    __U[23]()
+                until v:FindFirstChild("Destroyed")
+            end
+        end
+    })
+    Tabs.B1C4:AddButton({
+        Title = "ESP Hearts",
+        Description = "",
+        Callback = function()
+            for _,v in __U[7](__VE["WS"]:GetDescendants()) do
+                if v.Name == "Heart" then
+                    CreatHighlight(v, __U[36](255, 0, 0), __U[36](255, 255, 255))
+                end
+            end
+        end
+    })
+    Tabs.B1C4:AddButton({
+        Title = "ESP Monsters",
+        Description = "",
+        Callback = function()
+            for _,v in __U[7](__VE["WS"]:GetDescendants()) do
+                if v.Parent.Name == "GameAI" or v.Name == "Saigomo" then
+                    CreatHighlight(v, __U[36](255, 0, 0), __U[36](255, 255, 255))
+                end
+            end
+        end
+    })
+    --End Of B1
+    Tabs.B2C1:AddSection("Start")
+    Tabs.B2C1:AddButton({
+        Title = "Auto Win",
+        Description = "Normal Mode Only | First section",
+        Callback = function()
+            Tp(-1783.60474, 11.0083055, -4297.72168, __Y[3])
+        end
+    })
+    Tabs.B2C1:AddSection("Rio & Mio")
+    Tabs.B2C1:AddButton({
+        Title = "Read Book",
+        Description = "",
+        Callback = function()
+            if not CustomFirePropmt then
+                for i, v in __U[7](__VE["WS"]:GetDescendants()) do
+                    if v:IsA("ProximityPrompt") and v.Parent.Name == "Interact" and v.Parent.Parent.Name == "Book" then
+                        __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](v.Parent.Position.X, v.Parent.Position.Y + 5, v.Parent.Position.Z)
+                        MagicLook(v.Parent, __Y[2])
+                        __U[23](0.3)
+                        __U[60](v)
+                        MagicLook(__Y[3], __Y[1])
+                    end
+                end
+            else
+                for i, v in __U[7](__VE["WS"]:GetDescendants()) do
+                    if v:IsA("ProximityPrompt") and v.Parent.Name == "Interact" and v.Parent.Parent.Name == "Book" then
+                        __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](v.Parent.Position.X, v.Parent.Position.Y + 5, v.Parent.Position.Z)
+                        __U[23](0.3)
+                        fireproximitypromptv2(v, 1, __Y[1])
+                    end
+                end
+            end
+        end
+    })
+    Tabs.B2C1:AddButton({
+        Title = "Auto Win",
+        Description = "",
+        Callback = function()
+            if not CustomFirePropmt then
+                for i, v in __U[7](__VE["WS"]:GetDescendants()) do
+                    if v:IsA("ProximityPrompt") and v.Parent.Name == "Cube" and v.Parent.MeshId == "https://assetdelivery.roblox.com/v1/asset/?id=8569135676"  then
+                        __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                        v.HoldDuration = 0
+                        __U[23](0.3)
+                        __U[60](v)
+                        break
+                    end
+                end
+                __U[23]()
+                for i, v in __U[7](__VE["WS"]:GetDescendants()) do
+                    if v:IsA("ProximityPrompt") and v.ObjectText == "Old Well" then
+                        __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                        v.HoldDuration = 0
+                        __U[23](0.3)
+                        __U[60](v)
+                        break
+                    end
+                end
+                Notify("Script", "Wait", 5)
+                __U[23](5)
+                for i, v in __U[7](__VE["WS"]:GetDescendants()) do
+                    if v:IsA("ProximityPrompt") and v.ObjectText == "Bell" then
+                        __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                        v.HoldDuration = 0
+                        __U[23](0.3)
+                        __U[60](v)
+                        break
+                    end
+                end
+                Fluent:Notify({
+                    Title = "Error 00",
+                    Content = "Press Auto Win again",
+                    Duration = 5
+                })
+            else
+                getgenv().Float = __Y[1]
+                for _,v in __U[7](__VE["LPs"].Character:GetDescendants()) do
+                    if v:IsA('BasePart') and v.CanCollide and v.Name ~= floatName then
+                        v.CanCollide = __Y[2]
+                    end
+                end
+                for i, v in __U[7](__VE["WS"]:GetDescendants()) do
+                    if v:IsA("ProximityPrompt") and v.Parent.Name == "Cube" and v.Parent.MeshId == "https://assetdelivery.roblox.com/v1/asset/?id=8569135676"  then
+                        __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](v.Parent.Position.X, v.Parent.Position.Y + 2, v.Parent.Position.Z)
+                        MagicLook(v.Parent, __Y[2])
+                        __U[23](0.3)
+                        fireproximitypromptv2(v, 1, __Y[1])
+                        __U[23]()
+                        MagicLook(v.Parent, __Y[1])
+                        break
+                    end
+                end
+                __U[23]()
+                for i, v in __U[7](__VE["WS"]:GetDescendants()) do
+                    if v:IsA("ProximityPrompt") and v.ObjectText == "Old Well" then
+                        __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](v.Parent.Position.X, v.Parent.Position.Y + 3, v.Parent.Position.Z)
+                        MagicLook(v.Parent, __Y[2])
+                        __U[23](0.3)
+                        fireproximitypromptv2(v, 1, __Y[1])
+                        __U[23]()
+                        MagicLook(v.Parent, __Y[1])
+                        break
+                    end
+                end
+                Fluent:Notify({
+                    Title = "Error 00",
+                    Content = "Wait",
+                    Duration = 5
+                })
+                __U[23](5)
+                for i, v in __U[7](__VE["WS"]:GetDescendants()) do
+                    if v:IsA("ProximityPrompt") and v.ObjectText == "Bell" then
+                        __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](v.Parent.Position.X, v.Parent.Position.Y + 10, v.Parent.Position.Z)
+                        MagicLook(v.Parent, __Y[2])
+                        __U[23](0.3)
+                        fireproximitypromptv2(v, 1, __Y[1])
+                        __U[23](0.3)
+                        MagicLook(v.Parent, __Y[1])
+                        __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                        break
+                    end
+                end
+                __U[23]()
+                Fluent:Notify({
+                    Title = "Error 00",
+                    Content = "Press Auto Win again",
+                    Duration = 5
+                })
+                getgenv().Float = __Y[2]
+                for _,v in __U[7](__VE["LPs"].Character:GetDescendants()) do
+                    if v:IsA('BasePart') and v.CanCollide and v.Name ~= floatName then
+                        v.CanCollide = __Y[1]
+                    end
+                end
+            end
+        end
+    })
+    Tabs.B2C1:AddButton({
+        Title = "Escape",
+        Description = "",
+        Callback = function()
+            if not CustomFirePropmt then
+                for i, v in __U[7](__VE["WS"]:GetDescendants()) do
+                    if v:IsA("ProximityPrompt") and v.ActionText == "Exit" then
+                        __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                        __U[23](0.3)
+                        __U[60](v)
+                        break
+                    end
+                end
+            else
+                getgenv().Float = __Y[1]
+                for i, v in __U[7](__VE["WS"]:GetDescendants()) do
+                    if v:IsA("ProximityPrompt") and v.ActionText == "Exit" then
+                        __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](v.Parent.Position.X, v.Parent.Position.Y + 3, v.Parent.Position.Z)
+                        MagicLook(v.Parent, __Y[2])
+                        __U[23](0.3)
+                        fireproximitypromptv2(v, 1, __Y[1])
+                        __U[23]()
+                        MagicLook(v.Parent, __Y[1])
+                        break
+                    end
+                end
+                __U[23]()
+                getgenv().Float = __Y[2]
+            end
+        end
+    })
+    Tabs.B2C1:AddButton({
+        Title = "Escape",
+        Description = "",
+        Callback = function()
+            if not CustomFirePropmt then
+                for i, v in __U[7](__VE["WS"]:GetDescendants()) do
+                    if v:IsA("ProximityPrompt") and v.ActionText == "Exit" then
+                        __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                        __U[23](0.3)
+                        __U[60](v)
+                        break
+                    end
+                end
+            else
+                getgenv().Float = __Y[1]
+                for i, v in __U[7](__VE["WS"]:GetDescendants()) do
+                    if v:IsA("ProximityPrompt") and v.ActionText == "Exit" then
+                        __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](v.Parent.Position.X, v.Parent.Position.Y + 3, v.Parent.Position.Z)
+                        MagicLook(v.Parent, __Y[2])
+                        __U[23](0.3)
+                        fireproximitypromptv2(v, 1, __Y[1])
+                        __U[23]()
+                        MagicLook(v.Parent, __Y[1])
+                        break
+                    end
+                end
+                __U[23]()
+                getgenv().Float = __Y[2]
+            end
+        end
+    })
+    Tabs.B2C1:AddButton({
+        Title = "Auto Run",
+        Description = "",
+        Callback = function()
+            TweenBIGO(1, -960.842529, -44.0736237, -3597.06372)
+        end
+    })
+    Tabs.B2C1:AddSection("Nagisa")
+    Tabs.B2C1:AddButton({
+        Title = "Auto Win",
+        Description = "",
+        Callback = function()
+            getgenv().Float = __Y[1]
+            TweenBIGO(1, 208.665894, 573.239563, -345.685211)
+            __U[23](3)
+            TweenBIGO(1, 595.243896, 582.230713, -344.577911)
+            __U[23](1)
+            getgenv().Float = __Y[2]
+        end
+    })
+    Tabs.B2C1:AddButton({
+        Title = "Auto Run",
+        Description = "",
+        Callback = function()
+            TweenBIGO(1, 3868.31982, 153.007477, 17.1698914)
+            __U[23]()
+        end
+    })
+    Tabs.B2C1:AddSection("Village")
+    Tabs.B2C1:AddButton({
+        Title = "Enter Zone",
+        Description = "",
+        Callback = function()
+            TweenBIGO(1, 4590.5249, 507.557373, 4480.6499)
+            __U[23]()
+        end
+    })
+    Tabs.B2C1:AddButton({
+        Title = "Talk",
+        Description = "",
+        Callback = function()
+            Window.Minimized = not Window.Minimized
+            Window.Root.Visible = not Window.Minimized
+            for _,v in __U[7](__VE["LPs"].Character:GetDescendants()) do
+                if v:IsA('BasePart') and v.CanCollide and v.Name ~= floatName then
+                    v.CanCollide = __Y[2]
+                end
+            end
+            if not TalkDebounce then 
+                if __VE["LPs"].Character then 
+                    if __VE["LPs"].Character:FindFirstChild('HumanoidRootPart') then 
+                        TalkDebounce = __Y[1]
+                        Tp(-326.344421, 23.1051254, 3662.32056, 0.28)
+                        for Index, v in __U[73](__VE["WS"]:GetDescendants()) do 
+                            if v:IsA("ProximityPrompt") and v.Parent.Name == "Quest" then 
+                                v.HoldDuration = 0
+                                __U[60](v)
+                            end 
+                        end 
+                        for i = 1,200 do 
+                            VirtualUser:ClickButton1(Vector2.new(0,0))
+                            __U[23](0.001)
+                        end 
+                        TalkDebounce = __Y[2]
+                        Window.Minimized = not Window.Minimized
+                        Window.Root.Visible = not Window.Minimized
+                        for _,v in __U[7](__VE["LPs"].Character:GetDescendants()) do
+                            if v:IsA('BasePart') and v.CanCollide and v.Name ~= floatName then
+                                v.CanCollide = __Y[1]
+                            end
+                        end
+                    end 
+                end 
+            end
+            __U[23]()
+        end
+    })
+    Tabs.B2C1:AddButton({
+        Title = "Get Key",
+        Description = "",
+        Callback = function()
+            Tp(-401.797424, 3070.25, 3864.77979, 1)
+            for i, v in __U[7](__VE["WS"]:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.ActionText == "Obtain" and v.Parent.Name == "Key1" then
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                    __U[23](0.3)
+                    __U[60](v)
+                end
+            end
+        end
+    })
+    Tabs.B2C1:AddButton({
+        Title = "Paint",
+        Description = "",
+        Callback = function()
+            Tp(-249.45462, 3067.58838, 4218.84766, __Y[3])
+        end
+    })
+    Tabs.B2C1:AddButton({
+        Title = "Paint",
+        Description = "",
+        Callback = function()
+            pic4 = {}
+            Tp(-267.697571, 3070.85718, 4213.41504, 2)
+            Tp(590.236572, 3070.94922, 4420.93457, 2)
+            Tp(-675.159424, 3071.0813, 4998.77686, 2)
+            Tp(-392.277039, 3071.03931, 3888.39697, 2)
+            Tp(-10.6637068, 3070.17041, 4711.52637, 2)
+            for _,v in __U[7](workspace:GetDescendants()) do
+                if v.Name == "hintpic" and v:FindFirstChild("Image") then
+                    __U[30](pic4, v.Image.Decal.Texture)
+                    wait()
+                end
+            end
+            __U[23](1)
+            for _,v in __U[7](workspace:GetDescendants()) do
+                if v.Name == "specialpic" and v:FindFirstChild("Image") then
+                    __U[30](pic4, v.Image.Decal.Texture)
+                    wait()
+                end
+            end
+        end
+    })
+    Tabs.B2C1:AddButton({
+        Title = "Enter Room",
+        Description = "",
+        Callback = function()
+            for _,v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent.Name == "Teleporter" and v.ActionText == "Enter" and v.Parent.Parent.Name == "Enter" and v.Parent.Parent.Parent.Name == "MainHouse" then
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                    v.HoldDuration = 0
+                    wait(0.3)
+                    __U[60](v)
+                end
+            end
+        end
+    })
+    Tabs.B2C1:AddButton({
+        Title = "Auto Win",
+        Description = "",
+        Callback = function()
+            for _, v in __U[7](workspace:GetDescendants()) do
+                if v.Name == "Orb" and v.Parent.Name == "Seishin" and v.Transparency == 0 then
+                    for _, v in __U[7](workspace:GetDescendants()) do
+                        if v:IsA("ProximityPrompt") and v.Parent.Name == "Orb" then
+                            v.HoldDuration = 0
+                            Tp(v.Parent.CFrame.Position.X, v.Parent.CFrame.Position.Y, v.Parent.CFrame.Position.Z, __Y[3])
+                            __U[60](v)
+                        end
+                    end
+                else
+                    for _, v in __U[7](workspace:GetDescendants()) do
+                        if string.match(v.Name, "%d") and v:FindFirstChild("Image") and table.find(pic4, v.Image.Decal.Texture) then
+                            __U[30](listofcandle, v.Name)
+                        end
+                    end
+                    __U[23](2)
+                    for _, v in __U[7](workspace:GetDescendants()) do
+                        if v:IsA("ProximityPrompt") and v.Parent.Name == "Wax" and table.find(listofcandle, v.Parent.Parent.Parent.Name) then
+                            v.HoldDuration = 0
+                            Tp(v.Parent.CFrame.Position.X, v.Parent.CFrame.Position.Y, v.Parent.CFrame.Position.Z, 0.3)
+                            __U[60](v)
+                        end
+                    end
+                    __U[23]()
+                    for _, v in __U[7](workspace:GetDescendants()) do
+                        if v:IsA("ProximityPrompt") and v.Parent.Name == "Orb" then
+                            v.HoldDuration = 0
+                            Tp(v.Parent.CFrame.Position.X, v.Parent.CFrame.Position.Y, v.Parent.CFrame.Position.Z, 0.3)
+                            __U[60](v)
+                        end
+                    end
+                    Tp(-326.344421, 23.1051254, 3662.32056, 0.28)
+                    for Index, v in __U[73](game:GetService("Workspace"):GetDescendants()) do 
+                        if v:IsA("ProximityPrompt") and v.Parent.Name == "Quest" then 
+                            v.HoldDuration = 0
+                            __U[60](v)
+                        end 
+                    end
+                end
+                __U[23]()
+                break
+            end
+        end
+    })
+    Tabs.B2C1:AddSection("Ship")
+    Tabs.B2C1:AddButton({
+        Title = "Enter Zone",
+        Description = "",
+        Callback = function()
+            Tp(-1250,4,6299.65, __Y[3])
+        end
+    })
+    Tabs.B2C1:AddButton({
+        Title = "Auto Run",
+        Description = "",
+        Callback = function()
+            Tp(-6318.51611, 418.696014, 6332.396, __Y[3])
+        end
+    })
 
-	script.Parent.MouseButton1Click:Connect(function()
-		script.Parent.Parent.Parent.Frame.Visible = true
-	end)
+    Tabs.B2C2:AddSection("Start")
+    Tabs.B2C2:AddButton({
+        Title = "Auto Win",
+        Description = "",
+        Callback = function()
+            for _, v in __U[7](__VE["WS"]:GetDescendants()) do
+                if v:IsA("TouchTransmitter") or v:IsA("TouchInterest") then
+                    firetouchinterest(__VE["LPs"].Character.HumanoidRootPart or __VE["LPs"].Character.Torso, v:FindFirstAncestorWhichIsA("Part"), 0)
+                end
+            end
+            __U[23]()
+            TweenBIGO(1, -520, 30, -87.29, 2)
+            Notify("Error 00", "Bypassing...")
+            __VE["LPs"].Character.HumanoidRootPart.Anchored = __Y[1]
+            Tp(-520, 30, -87.2, 30)
+            __VE["LPs"].Character.HumanoidRootPart.Anchored = __Y[2]
+            __U[23]()
+            Tp(-551, 30, -87.29, __Y[3])
+            Notify("Error 00", "Done")
+        end
+    })
+    Tabs.B2C2:AddSection("Someone Eat Cow")
+    Tabs.B2C2:AddButton({
+        Title = "Auto Win",
+        Description = "",
+        Callback = function()
+            Float = __Y[1]
+            for i, v in __U[7](Workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Parent.Name == "ProxDoorA" then
+                    v.HoldDuration = 0
+                    Tp(-3576.7,602.74,886.94, 1)
+                    __U[60](v)
+                    __U[23](1)
+                    break
+                end
+            end
+            __U[23]()
+            for i, v in __U[7](Workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Parent.Name == "ProxDoorB" then
+                    Tp(v.Parent.CFrame.Position.X, v.Parent.CFrame.Position.Y + 5, v.Parent.CFrame.Position.Z, 0.3)
+                    __U[23](0.3)
+                    __U[60](v)
+                    __U[23](0.3)
+                    Tp(-3393, 576, 887, 0.3)
+                    break
+                end
+            end
+            Float = __Y[1]
+            char.HumanoidRootPart.Anchored = __Y[1]
+            Tp(-3952.85, 700, 317.7, __Y[3])
+            local screenGui = __U[35]("ScreenGui")
+            screenGui.Parent = __VE["PsG"]
+        
+            local frame = __U[35]("Frame")
+            frame.BackgroundTransparency = 1 
+            frame.Size = __U[27](1, 0, 0.3, 0)
+            frame.Position = __U[27](0.5, 0, 0.5, 0) 
+            frame.Parent = screenGui
+        
+            local textLabel = __U[35]("TextLabel")
+            textLabel.BackgroundTransparency = 1 
+            textLabel.Size = __U[27](0.1, 0, 0.1, 0)
+            textLabel.TextColor3 = __U[36](0, 255, 0) 
+            textLabel.TextSize = 70
+            textLabel.Parent = frame
+            if getgenv().DeviceType == "Mobile" then
+                for i = 70, 0, -1 do
+                    textLabel.TextSize = 30
+                    textLabel.Text = "Waiting For Bypass Anti-Cheat : " .. __U[32](i) 
+                    __U[23](1) 
+                end
+            else
+                for i = 70, 0, -1 do
+                    textLabel.TextSize = 70
+                    textLabel.Text = "Waiting For Bypass Anti-Cheat : " .. __U[32](i) 
+                    __U[23](1) 
+                end
+            end
+            __U[23]()
+            screenGui:Destroy()
+            char.HumanoidRootPart.Anchored = __Y[2]
+            Float = __Y[2]
+            __U[23]()
+            for i, v in __U[7](Workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Parent.Name == "TeleportDoor" then
+                    v.HoldDuration = 0
+                    Tp(-3952.85, 594.22, 317.7, 1)
+                    __U[23](0.3)
+                    __U[60](v)
+                end
+            end
+        end
+    })
+    Tabs.B2C2:AddSection("Meat")
+    Tabs.B2C2:AddButton({
+        Title = "Auto Win",
+        Description = "",
+        Callback = function()
+            Window.Minimized = __Y[2]
+            Window.Root.Visible = __Y[2]
+            if not TalkDebounce then 
+                if __VE["LPs"].Character then 
+                    if __VE["LPs"].Character:FindFirstChild('HumanoidRootPart') then 
+                        TalkDebounce = __Y[1]
+                        Tp(-4443, 711, 1164, 0.28)
+                        for Index, v in __U[73](__VE["WS"]:GetDescendants()) do 
+                            if v.Name == "NoppeNPC" then 
+                                local Prompt = v.RootPart:FindFirstChildOfClass('ProximityPrompt')
+                                __U[60](Prompt, 1)
+                            end 
+                        end 
+                        for i = 1,90 do 
+                            VirtualUser:ClickButton1(Vector2.new(0,0))
+                            __U[23](0.001)
+                        end 
+                        TalkDebounce = __Y[2]
+                        Window.Minimized = __Y[1]
+                        Window.Root.Visible = __Y[1]
+                    end 
+                end 
+            end
+            __U[23]()
+        end
+    })
+    Tabs.B2C2:AddSection("Meat")
+    Tabs.B2C2:AddButton({
+        Title = "Auto Talk",
+        Description = "",
+        Callback = function()
+            Window.Minimized = __Y[2]
+            Window.Root.Visible = __Y[2]
+            if not TalkDebounce then 
+                if __VE["LPs"].Character then 
+                    if __VE["LPs"].Character:FindFirstChild('HumanoidRootPart') then 
+                        TalkDebounce = __Y[1]
+                        Tp(-4443, 711, 1164, 0.28)
+                        for Index, v in __U[73](__VE["WS"]:GetDescendants()) do 
+                            if v.Name == "NoppeNPC" then 
+                                local Prompt = v.RootPart:FindFirstChildOfClass('ProximityPrompt')
+                                __U[60](Prompt, 1)
+                            end 
+                        end 
+                        for i = 1,90 do 
+                            VirtualUser:ClickButton1(Vector2.new(0,0))
+                            __U[23](0.001)
+                        end 
+                        TalkDebounce = __Y[2]
+                        Window.Minimized = __Y[1]
+                        Window.Root.Visible = __Y[1]
+                    end 
+                end 
+            end
+            __U[23]()
+        end
+    })
+    Tabs.B2C2:AddButton({
+        Title = "Auto Win",
+        Description = "Not work in nightmare mode | Look down",
+        Callback = function()
+            if __VE["LPs"].Character then 
+                Float = __Y[1]
+                for _,v in __U[7](__VE["LPs"].Character:GetDescendants()) do
+                    if v:IsA('BasePart') and v.CanCollide and v.Name ~= floatName then
+                        v.CanCollide = __Y[2]
+                    end
+                end
+                __U[23]()
+                if __VE["LPs"].Character:FindFirstChild('HumanoidRootPart') then 
+                    if not FirstPress then 
+                        FirstPress = __Y[1] 
+                        __VE["LPs"].Character:FindFirstChild('HumanoidRootPart').CFrame = __U[26](-4443, 711, 1164)
+                        __U[23](0.5)
+                        __VE["LPs"].Character:FindFirstChild('HumanoidRootPart').CFrame = __U[26](-4443, 711, 1264)
+                        __U[23](0.5)
+                        __VE["LPs"].Character:FindFirstChild('HumanoidRootPart').CFrame = __U[26](-4443, 711, 1114)
+                        __U[23](0.5)
+                        __VE["LPs"].Character:FindFirstChild('HumanoidRootPart').CFrame = __U[26](-4443, 711, 1164)
+                        __U[23](0.5)
+                        return
+                    end 
+                    MeatDebounce = __Y[1]     
+                    local IsGot = __Y[2] 
+                    local Pick = 0 
+                    local Found = 0
+                    __U[23](0.15)
+                    for Index, AllGui in __U[73](__VE["PsG"]:GetDescendants()) do 
+                        if AllGui.ClassName == 'ImageLabel' and AllGui.Image == "rbxassetid://13372546132" then 
+                            local Target = __Y[3]
+                            for i,v in __U[73](__VE["WS"]:GetDescendants()) do
+                                if v.ClassName == "Model" and v.Name == "DoorTele" then
+                                    Target = v
+                                end
+                            end
+                            if Target then 
+                                __VE["LPs"].Character:FindFirstChild('HumanoidRootPart').CFrame = Target.Frame.CFrame
+                                __U[23](0.8)
+                                for Index, v in __U[73](Target:GetChildren()) do
+                                    if v.Name == "DoorFrame" then 
+                                        local Prompt = v:FindFirstChildOfClass('ProximityPrompt') or __Y[3]
+                                        if Prompt then 
+                                            __U[60](Prompt, 1)
+                                        end 
+                                    end
+                                end
+                                __U[23]()
+                                Float = __Y[2]
+                                for _,v in __U[7](__VE["LPs"].Character:GetDescendants()) do
+                                    if v:IsA('BasePart') and v.CanCollide and v.Name ~= floatName then
+                                        v.CanCollide = __Y[1]
+                                    end
+                                end
+                                __U[23]()
+                                return
+                            end 
+                        end 
+                    end
+                    if not Backpack:FindFirstChild("Bowl") and not __VE["LPs"].Character:FindFirstChild("Bowl") then
+                        Tp(-4318, 700, 1313, 1)
+                        for Index, v in __U[73](__VE["WS"]:GetDescendants()) do 
+                            if v.Name == "BowlGiver" then 
+                                if IsGot == __Y[1] then 
+                                    break
+                                end
+                                if v and v:FindFirstChild('Prompt') and v:FindFirstChild('Prompt'):FindFirstChildOfClass('ProximityPrompt') then
+                                    local Prompt = v:FindFirstChild('Prompt'):FindFirstChildOfClass('ProximityPrompt') or __Y[3] 
+                                    if Prompt then 
+                                        __VE["LPs"].Character:FindFirstChild('HumanoidRootPart').CFrame = Prompt.Parent.CFrame
+                                        __U[23](0.28)
+                                        __U[60](Prompt, 1)
+                                        fireproximitypromptv2(Prompt, 1, __Y[1])
+                                        __U[23]()
+                                        if IsGot == __Y[2] then 
+                                            IsGot = __Y[1] 
+                                        end 
+                                    end
+                                else
+                                    Tp(-4600, 700, 1004, 1)
+                                    for Index, v in __U[73](__VE["WS"]:GetDescendants()) do 
+                                        if v.Name == "BowlGiver" then 
+                                            if IsGot == __Y[1] then 
+                                                break
+                                            end
+                                            if v and v:FindFirstChild('Prompt') and v:FindFirstChild('Prompt'):FindFirstChildOfClass('ProximityPrompt') then
+                                                local Prompt = v:FindFirstChild('Prompt'):FindFirstChildOfClass('ProximityPrompt') or __Y[3] 
+                                                if Prompt then 
+                                                    __VE["LPs"].Character:FindFirstChild('HumanoidRootPart').CFrame = Prompt.Parent.CFrame
+                                                    __U[23](0.28)
+                                                    __U[60](Prompt, 1)
+                                                    fireproximitypromptv2(Prompt, 1, __Y[1])
+                                                    __U[23]()
+                                                    if IsGot == __Y[2] then 
+                                                        IsGot = __Y[1] 
+                                                    end 
+                                                end
+                                            end
+                                        end
+                                    end
+                                end 
+                            end 
+                            __U[23](0.30)
+                        end
+                        __U[23](1)
+                        for i,v in __U[73](__VE["WS"]:GetDescendants()) do
+                            if v.ClassName == "Folder" and v.Name == "Meat" then
+                                    for Index, AllMeats in __U[73](v:GetChildren()) do
+                                        if Pick >= 3 then 
+                                            break 
+                                        end
+                                        if AllMeats and AllMeats:FindFirstChildOfClass('ProximityPrompt') and AllMeats:FindFirstChildOfClass('ProximityPrompt').Enabled and AllMeats.Transparency ~= 1 then 
+                                            local Prompt = AllMeats:FindFirstChildOfClass('ProximityPrompt')
+                                            char:FindFirstChild('HumanoidRootPart').CFrame = __U[26](Prompt.Parent.CFrame.Position.X, Prompt.Parent.CFrame.Position.Y + 3, Prompt.Parent.CFrame.Position.Z)
+                                            __U[23](0.84)
+                                            fireproximitypromptv2(Prompt, 1, __Y[2])
+                                            __U[23](0.43)
+                                            fireproximitypromptv2(Prompt, 1, __Y[2])
+                                            __U[23](1.58)
+                                            Pick = Pick + 1
+                                        end 
+                                    end 
+                                end  
+                            end
+                            Notify("Bypassing", "Don't move", 11)
+                            __U[23](11)
+                            Tp(-4443, 711, 1164, __Y[3])
+                            __U[23](0.3)
+                            for Index, v in __U[73](game:GetService("Workspace"):GetDescendants()) do 
+                                if v.Name == "NoppeNPC" then 
+                                    local Prompt = v.RootPart:FindFirstChildOfClass('ProximityPrompt')
+                                    __U[60](Prompt, 1)
+                                end 
+                            end  
+                            MeatDebounce = __Y[2]
+                            __U[23]()
+                            Float = __Y[2]
+                            for _,v in __U[7](__VE["LPs"].Character:GetDescendants()) do
+                                if v:IsA('BasePart') and v.CanCollide and v.Name ~= floatName then
+                                    v.CanCollide = __Y[1]
+                                end
+                            end
+                        end 
+                    end
+                __U[23]()
+            end
+        end
+    })
+    Tabs.B2C2:AddSection("Chase")
+    Tabs.B2C2:AddButton({
+        Title = "Enter Zone",
+        Description = "",
+        Callback = function()
+            Float = __Y[2]
+            Tp(-4590, 843.64, -35.54, __Y[3])
+        end
+    })
+    Tabs.B2C2:AddButton({
+        Title = "Auto Run",
+        Description = "",
+        Callback = function()
+            Float = __Y[2]
+            TweenBIGO(5, -5364, 682.12, 29.63)
+        end
+    })
+    Tabs.B2C2:AddButton({
+        Title = "Full Auto Run",
+        Description = "",
+        Callback = function()
+            Float = __Y[2]
+            Tp(-4590, 843.64, -35.54, 10)
+            TweenBIGO(5, -5364, 682.12, 29.63)
+        end
+    })
+    Tabs.B2C2:AddSection("Levers")
+    Tabs.B2C2:AddButton({
+        Title = "Enter Zone",
+        Description = "",
+        Callback = function()
+            Float = __Y[2]
+            Tp(-11035, -81.4, -12.56, __Y[3])
+        end
+    })
+    Tabs.B2C2:AddButton({
+        Title = "Auto Win",
+        Description = "",
+        Callback = function()
+            Float = __Y[2]
+            for i, v in __U[7](__VE["WS"]:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Name == "Lever" then
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                    v.HoldDuration = 0
+                    __U[23](0.3)
+                    __U[60](v)
+                end
+            end
+            __U[23](6)
+            Tp(-10060, 484.1, -9.52, __Y[3])
+        end
+    })
+    Tabs.B2C2:AddButton({
+        Title = "Full Auto Win",
+        Description = "",
+        Callback = function()
+            Float = __Y[2]
+            Tp(-11035, -81.4, -12.56, 5)
+            for i, v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Name == "Lever" then
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                    v.HoldDuration = 0
+                    __U[23](0.3)
+                    __U[60](v)
+                end
+            end
+            __U[23](6)
+            Tp(-10060, 484.1, -9.52, __Y[3])
+        end
+    })
+    Tabs.B2C2:AddSection("Math")
+    Tabs.B2C2:AddButton({
+        Title = "Skip",
+        Description = "",
+        Callback = function()
+            Float = __Y[2]
+            Tp(-2005.8, 968.25, -4909.48, __Y[3])
+        end
+    })
+    Tabs.B2C2:AddButton({
+        Title = "Reveal",
+        Description = "",
+        Callback = function()
+            local MidANumber = __Y[3]
+            local MidBNumber = __Y[3]
+            local SymbolsAImage1 = __Y[3]
+            local SymbolsAImage2 = __Y[3]
+            local SymbolsBImage1 = __Y[3]
+            local SymbolsBImage2 = __Y[3]
+            local SymbolsANumber1 = __Y[3]
+            local SymbolsANumber2 = __Y[3]
+            local SymbolsBNumber1 = __Y[3]
+            local SymbolsBNumber2 = __Y[3]
+
+            -- Get MidNumber and Get Image1 
+            for i,v in __U[73](game:GetService("Workspace"):GetDescendants()) do
+                if v.ClassName == "TextLabel" and v.Parent.ClassName == "SurfaceGui" and v.Parent.Parent.Name == "MiddleNumber" and v.Parent.Parent.Parent.Name == "SymbolsA" then
+                    MidANumber = v.Text
+                end
+                if v.ClassName == "TextLabel" and v.Parent.ClassName == "SurfaceGui" and v.Parent.Parent.Name == "MiddleNumber" and v.Parent.Parent.Parent.Name == "SymbolsB" then
+                    MidBNumber = v.Text
+                end
+                if v.ClassName == "ImageLabel" and v.Parent.ClassName == "SurfaceGui" and v.Parent.Parent.Name == "SymbolHolder" and v.Parent.Parent.Parent.Name == "SymbolsA" then
+                    SymbolsAImage1 = v.Image
+                end
+                if v.ClassName == "ImageLabel" and v.Parent.ClassName == "SurfaceGui" and v.Parent.Parent.Name == "SymbolHolder" and v.Parent.Parent.Parent.Name == "SymbolsB" then
+                    SymbolsBImage1 = v.Image
+                end
+            end
+
+            -- Get Image2
+            for i,v in __U[73](game:GetService("Workspace"):GetDescendants()) do
+                if v.ClassName == "ImageLabel" and v.Parent.ClassName == "SurfaceGui" and v.Parent.Parent.Name == "SymbolHolder" and v.Parent.Parent.Parent.Name == "SymbolsA" then
+                    if v.Image ~= SymbolsAImage1 then
+                        SymbolsAImage2 = v.Image
+                    end
+                end
+                if v.ClassName == "ImageLabel" and v.Parent.ClassName == "SurfaceGui" and v.Parent.Parent.Name == "SymbolHolder" and v.Parent.Parent.Parent.Name == "SymbolsB" then
+                    if v.Image ~= SymbolsBImage1 then
+                        SymbolsBImage2 = v.Image
+                    end
+                end
+            end
+
+            -- Get Number
+            for i,v in __U[73](game:GetService("Workspace"):GetDescendants()) do
+                if v.ClassName == "ImageLabel" and v.Parent:FindFirstChild("TextLabel") then
+                    if v.Image == SymbolsAImage1 then
+                        SymbolsANumber1 = v.Parent:WaitForChild("TextLabel").Text
+                    end
+                end
+                if v.ClassName == "ImageLabel" and v.Parent:FindFirstChild("TextLabel") then
+                    if v.Image == SymbolsAImage2 then
+                        SymbolsANumber2 = v.Parent:WaitForChild("TextLabel").Text
+                    end
+                end
+                if v.ClassName == "ImageLabel" and v.Parent:FindFirstChild("TextLabel") then
+                    if v.Image == SymbolsBImage1 then
+                        SymbolsBNumber1 = v.Parent:WaitForChild("TextLabel").Text
+                    end
+                end
+                if v.ClassName == "ImageLabel" and v.Parent:FindFirstChild("TextLabel") then
+                    if v.Image == SymbolsBImage2 then
+                        SymbolsBNumber2 = v.Parent:WaitForChild("TextLabel").Text
+                    end
+                end
+                end
+
+            -- Sum Number
+            local Answer1 = __U[32](MidANumber - (SymbolsANumber1 + SymbolsANumber2))
+            local Answer2 = __U[32](MidBNumber - (SymbolsBNumber1 + SymbolsBNumber2))
+
+            -- Image Hack
+            for i,v in __U[73](game:GetService("Workspace"):GetDescendants()) do
+                if v.ClassName == "TextLabel" and v.Parent.Parent.Parent.Name == "Kanji" then
+                    for _, sec in __U[73](game:GetService("Workspace"):GetDescendants()) do
+                        if sec.Name == "SymbolHolder[Empty]" and sec.Parent.Name == "SymbolsA" then
+                            if v.Text == Answer1 then
+                                local HackImage1 = v.Parent:Clone()
+                                HackImage1.Parent = sec
+                            end
+                        end
+                        if sec.Name == "SymbolHolder[Empty]" and sec.Parent.Name == "SymbolsB" then
+                            if v.Text == Answer2 then
+                                local HackImage2 = v.Parent:Clone()
+                                HackImage2.Parent = sec
+                            end
+                        end
+                    end
+                end
+            end
+        end
+    })
+    Tabs.B2C2:AddSection("Master Chef")
+    Tabs.B2C2:AddButton({
+        Title = "Enter Zone",
+        Description = "",
+        Callback = function()
+            Float = __Y[2]
+            TweenBIGO(1, -2581.77124, 990.56134, -4918.28027)
+        end
+    })
+    Tabs.B2C2:AddButton({
+        Title = "Auto Cook",
+        Description = "SinglePlayer",
+        Callback = function()
+            if FirstPressCook then
+                print("First")
+                for _, v in __U[7](workspace:GetDescendants()) do
+                    if v.Name == "Barrier" and v:IsA("Part") and isPlayerNear(v, 100) then
+                        v:Destroy()
+                    end
+                end
+                FirstPressCook = __Y[2]
+            end
+            Order270 = "nil"
+            matches = {}
+            __U[23](0.1)
+            for _, v in __U[7](workspace:GetDescendants()) do
+                if v.Name == "Orders" then
+                    if v:FindFirstChild("Ham Stew") then
+                        Order270 = "Ham Stew"
+                        __U[30](matches, Order270)
+                    elseif v:FindFirstChild("Chicken Soup") then
+                        Order270 = "Chicken Soup"
+                        __U[30](matches, Order270)
+                    elseif v:FindFirstChild("Spaghetti N Eyeballs") then
+                        Order270 = "Spaghetti N Eyeballs"
+                        __U[30](matches, Order270)
+                    end
+                end
+            end
+            __U[23](1)
+            if #matches > 0 then
+                selectedIndex = __U[8](1, #matches)
+                selectedObject = matches[selectedIndex]
+                print(#matches)
+            else
+                Notify("Error 01", "Press again")
+            end
+            if selectedObject == "Ham Stew" then
+                for _, v in __U[7](workspace:GetDescendants()) do --Ham
+                    if v.Parent:IsA("BasePart") and v:IsA("ProximityPrompt") and v.Parent.Parent.Name == "Pot" then
+                        __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                        __U[23](0.3)
+                        __U[60](v)
+                        __U[23]()
+                        break
+                    end
+                end
+                __U[23]()
+                for _, v in __U[7](Workspace:GetDescendants()) do
+                    if v.Parent:IsA("BasePart") and v:IsA("ProximityPrompt") and v.Parent.Parent.Name == "WoodenCounter" then
+                        __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                        __U[23](0.3)
+                        __U[60](v)
+                        __U[23]()
+                        break
+                    end
+                end
+                __U[23]()
+                for _, v in __U[7](Workspace:GetDescendants()) do
+                    if v.Parent:IsA("BasePart") and v:IsA("ProximityPrompt") and v.Parent.Parent.Name == "Ham" and v.Parent.Parent:IsA("Model") then
+                        __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                        __U[23](0.3)
+                        __U[60](v)
+                        __U[23]()
+                        break
+                    end
+                end
+                __U[23]()
+                for _, q in __U[7](Workspace:GetDescendants()) do
+                    if q.Name == "SystemBin" and q:FindFirstChild("Pot") then --if bowlplace
+                        for _, v in __U[7](Workspace:GetDescendants()) do
+                            if v.Parent:IsA("BasePart") and v:IsA("ProximityPrompt") and v.Parent.Parent.Name == "WoodenCounter" then
+                                __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                                __U[23](0.3)
+                                __U[60](v)
+                                __U[23]()
+                                break
+                            end
+                        end
+                        __U[23]()
+                        break
+                    end
+                end
+                __U[23]()
+                for _, v in __U[7](Workspace:GetDescendants()) do
+                    if v:IsA("ProximityPrompt") and v.Parent.Parent.Name == "Sausage" and v.Parent.Parent:IsA("Model") then
+                        __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                        __U[23](0.3)
+                        __U[60](v)
+                        __U[23]()
+                        break
+                    end
+                end
+                __U[23]()
+                for _, q in __U[7](Workspace:GetDescendants()) do
+                    if q.Name == "SystemBin" and q:FindFirstChild("Pot") then --if bowlplace
+                        for _, v in __U[7](Workspace:GetDescendants()) do
+                            if v.Parent:IsA("BasePart") and v:IsA("ProximityPrompt") and v.Parent.Parent.Name == "WoodenCounter" then
+                                __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                                __U[23](0.3)
+                                __U[60](v)
+                                __U[23]()
+                                break
+                            end
+                        end
+                        __U[23]()
+                        break
+                    end
+                end
+                __U[23](1)
+                for _, q in __U[7](Workspace:GetDescendants()) do
+                    if q.Name == "SystemBin" and q:FindFirstChild("Pot") then --boil
+                        for _, v in __U[7](Workspace:GetDescendants()) do
+                            if v.Parent:IsA("BasePart") and v:IsA("ProximityPrompt") and v.Parent.Parent.Name == "WoodenCounter" then
+                                __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                                __U[23](0.3)
+                                __U[60](v)
+                                __U[23]()
+                                break
+                            end
+                        end
+                        __U[23]()
+                        break
+                    end
+                end
+                __U[23](1)
+                for _, q in __U[7](Workspace:GetDescendants()) do --boil2
+                    if q.Name == "SystemBin" and q:FindFirstChild("Pot") then
+                        for _, v in __U[7](Workspace:GetDescendants()) do
+                            if v.Parent:IsA("BasePart") and v:IsA("ProximityPrompt") and v.Parent.Parent.Name == "stove" then
+                                __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                                __U[23](0.3)
+                                __U[60](v)
+                                __U[23]()
+                                break
+                            end
+                        end
+                        __U[23]()
+                        break
+                    end
+                end
+                __U[23](10)
+                for _, v in __U[7](Workspace:GetDescendants()) do
+                    if v.Parent:IsA("BasePart") and v:IsA("ProximityPrompt") and v.Parent.Parent.Name == "Bowl" then
+                        __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                        __U[23](0.3)
+                        __U[60](v)
+                        __U[23]()
+                        break
+                    end
+                end
+                __U[23](1)
+                for _, v in __U[7](Workspace:GetDescendants()) do
+                    if v.Parent:IsA("BasePart") and v:IsA("ProximityPrompt") and v.Parent.Parent.Name == "WoodenCounter" then
+                        __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                        __U[23](0.3)
+                        __U[60](v)
+                        __U[23]()
+                        break
+                    end
+                end
+                __U[23]()
+                for _, q in __U[7](Workspace:GetDescendants()) do
+                    if q.Name == "SystemBin" and q:FindFirstChild("Pot") then
+                        for _, v in __U[7](Workspace:GetDescendants()) do
+                            if v.Parent:IsA("BasePart") and v:IsA("ProximityPrompt") and v.Parent.Parent.Name == "stove" then
+                                __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                                __U[23](0.3)
+                                __U[60](v)
+                                __U[23]()
+                                break
+                            end
+                        end
+                        __U[23]()
+                    break
+                end
+                end
+                __U[23]()
+                for _, q in __U[7](Workspace:GetDescendants()) do
+                    if q.Name == "SystemBin" and q:FindFirstChild("Pot") then --if bowlplace
+                        for _, v in __U[7](Workspace:GetDescendants()) do
+                            if v.Parent:IsA("BasePart") and v:IsA("ProximityPrompt") and v.Parent.Parent.Name == "WoodenCounter" then
+                                __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                                __U[23](0.3)
+                                __U[60](v)
+                                __U[23]()
+                                break
+                            end
+                        end
+                        __U[23]()
+                        break
+                    end
+                end
+                __U[23](1)
+                for _, q in __U[7](Workspace:GetDescendants()) do
+                    if q.Name == "SystemBin" and q:FindFirstChild("Ham Stew") then --if bowlplace
+                        for _, v in __U[7](Workspace:GetDescendants()) do
+                            if v.Parent:IsA("BasePart") and v:IsA("ProximityPrompt") and v.Parent.Parent.Name == "WoodenCounter" then
+                                __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                                __U[23](0.3)
+                                __U[60](v)
+                                __U[23]()
+                                break
+                            end
+                        end
+                        __U[23]()
+                        break
+                    end
+                end
+                __U[23](1)
+                for _, v in __U[7](Workspace:GetDescendants()) do
+                    if v:IsA("ProximityPrompt") and v.Parent.Parent.Name == "TurnInFood" then
+                        __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.Parent.CFrame
+                        __U[23](0.3)
+                        __U[60](v)
+                        __U[23]()
+                        break
+                    end
+                end
+            elseif selectedObject == "Chicken Soup" then
+                for _, v in __U[7](Workspace:GetDescendants()) do --auto KFC
+                    if v.Parent:IsA("BasePart") and v:IsA("ProximityPrompt") and v.Parent.Parent.Name == "Pot" then
+                        __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                        __U[23](0.3)
+                        __U[60](v)
+                        __U[23]()
+                        break
+                    end
+                end
+                __U[23]()
+                for _, v in __U[7](Workspace:GetDescendants()) do
+                    if v.Parent:IsA("BasePart") and v:IsA("ProximityPrompt") and v.Parent.Parent.Name == "WoodenCounter" then
+                        __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                        __U[23](0.3)
+                        __U[60](v)
+                        __U[23]()
+                        break
+                    end
+                end
+                __U[23]()
+                for _, v in __U[7](Workspace:GetDescendants()) do
+                    if v.Parent:IsA("BasePart") and v:IsA("ProximityPrompt") and v.Parent.Parent.Name == "Chicken" and v.Parent.Parent:IsA("Model") then
+                        __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                        __U[23](0.3)
+                        __U[60](v)
+                        __U[23]()
+                        break
+                    end
+                end
+                __U[23]()
+                for _, q in __U[7](Workspace:GetDescendants()) do
+                    if q.Name == "SystemBin" and q:FindFirstChild("Pot") then --if bowlplace
+                        for _, v in __U[7](Workspace:GetDescendants()) do
+                            if v.Parent:IsA("BasePart") and v:IsA("ProximityPrompt") and v.Parent.Parent.Name == "WoodenCounter" then
+                                __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                                __U[23](0.3)
+                                __U[60](v)
+                                __U[23]()
+                                break
+                            end
+                        end
+                        __U[23]()
+                        break
+                    end
+                end
+                __U[23]()
+                for _, v in __U[7](Workspace:GetDescendants()) do
+                    if v.Parent:IsA("BasePart") and v:IsA("ProximityPrompt") and v.Parent.Parent.Name == "Wrapped Meat" and v.Parent.Parent:IsA("Model") then
+                        __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                        __U[23](0.3)
+                        __U[60](v)
+                        __U[23]()
+                        break
+                    end
+                end
+                __U[23]()
+                for _, q in __U[7](Workspace:GetDescendants()) do
+                    if q.Name == "SystemBin" and q:FindFirstChild("Pot") then --if bowlplace
+                        for _, v in __U[7](Workspace:GetDescendants()) do
+                            if v.Parent:IsA("BasePart") and v:IsA("ProximityPrompt") and v.Parent.Parent.Name == "WoodenCounter" then
+                                __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                                __U[23](0.3)
+                                __U[60](v)
+                                __U[23]()
+                                break
+                            end
+                        end
+                        __U[23]()
+                        break
+                    end
+                end
+                __U[23]()
+                for _, v in __U[7](Workspace:GetDescendants()) do
+                    if v.Parent:IsA("BasePart") and v:IsA("ProximityPrompt") and v.Parent.Parent.Name == "Cheese" and v.Parent.Parent:IsA("Model") then
+                        __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                        __U[23](0.3)
+                        __U[60](v)
+                        __U[23]()
+                        break
+                    end
+                end
+                __U[23]()
+                for _, q in __U[7](Workspace:GetDescendants()) do
+                    if q.Name == "SystemBin" and q:FindFirstChild("Pot") then --if bowlplace
+                        for _, v in __U[7](Workspace:GetDescendants()) do
+                            if v.Parent:IsA("BasePart") and v:IsA("ProximityPrompt") and v.Parent.Parent.Name == "WoodenCounter" then
+                                __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                                __U[23](0.3)
+                                __U[60](v)
+                                __U[23]()
+                                break
+                            end
+                        end
+                        __U[23]()
+                        break
+                    end
+                end
+                __U[23]()
+                for _, q in __U[7](Workspace:GetDescendants()) do
+                    if q.Name == "SystemBin" and q:FindFirstChild("Pot") then --if bowlplace
+                        for _, v in __U[7](Workspace:GetDescendants()) do
+                            if v.Parent:IsA("BasePart") and v:IsA("ProximityPrompt") and v.Parent.Parent.Name == "WoodenCounter" then
+                                __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                                __U[23](0.3)
+                                __U[60](v)
+                                __U[23]()
+                                break
+                            end
+                        end
+                        __U[23]()
+                        break
+                    end
+                end
+                __U[23]()
+                for _, q in __U[7](Workspace:GetDescendants()) do --boil2
+                    if q.Name == "SystemBin" and q:FindFirstChild("Pot") then
+                        for _, v in __U[7](Workspace:GetDescendants()) do
+                            if v.Parent:IsA("BasePart") and v:IsA("ProximityPrompt") and v.Parent.Parent.Name == "stove" then
+                                __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                                __U[23](0.3)
+                                __U[60](v)
+                                __U[23]()
+                                break
+                            end
+                        end
+                        __U[23]()
+                        break
+                    end
+                end
+                __U[23](10)
+                for _, v in __U[7](Workspace:GetDescendants()) do
+                    if v.Parent:IsA("BasePart") and v:IsA("ProximityPrompt") and v.Parent.Parent.Name == "Bowl" then
+                        __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                        __U[23](0.3)
+                        __U[60](v)
+                        __U[23]()
+                        break
+                    end
+                end
+                __U[23](1)
+                for _, v in __U[7](Workspace:GetDescendants()) do
+                    if v.Parent:IsA("BasePart") and v:IsA("ProximityPrompt") and v.Parent.Parent.Name == "WoodenCounter" then
+                        __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                        __U[23](0.3)
+                        __U[60](v)
+                        __U[23]()
+                        break
+                    end
+                end
+                __U[23]()
+                for _, q in __U[7](Workspace:GetDescendants()) do
+                    if q.Name == "SystemBin" and q:FindFirstChild("Pot") then
+                        for _, v in __U[7](Workspace:GetDescendants()) do
+                            if v.Parent:IsA("BasePart") and v:IsA("ProximityPrompt") and v.Parent.Parent.Name == "stove" then
+                                __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                                __U[23](0.3)
+                                __U[60](v)
+                                __U[23]()
+                                break
+                            end
+                        end
+                        __U[23]()
+                        break
+                    end
+                end
+                __U[23]()
+                for _, q in __U[7](Workspace:GetDescendants()) do
+                    if q.Name == "SystemBin" and q:FindFirstChild("Pot") then --if bowlplace
+                        for _, v in __U[7](Workspace:GetDescendants()) do
+                            if v.Parent:IsA("BasePart") and v:IsA("ProximityPrompt") and v.Parent.Parent.Name == "WoodenCounter" then
+                                __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                                __U[23](0.3)
+                                __U[60](v)
+                                __U[23]()
+                                break
+                            end
+                        end
+                        __U[23]()
+                        break
+                    end
+                end
+                __U[23](1)
+                for _, q in __U[7](Workspace:GetDescendants()) do
+                    if q.Name == "SystemBin" and q:FindFirstChild("Chicken Soup") then --if bowlplace
+                        for _, v in __U[7](Workspace:GetDescendants()) do
+                            if v.Parent:IsA("BasePart") and v:IsA("ProximityPrompt") and v.Parent.Parent.Name == "WoodenCounter" then
+                                __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                                __U[23](0.3)
+                                __U[60](v)
+                                __U[23]()
+                                break
+                            end
+                        end
+                        __U[23]()
+                        break
+                    end
+                end
+                __U[23](1)
+                for _, v in __U[7](Workspace:GetDescendants()) do
+                    if v:IsA("ProximityPrompt") and v.Parent.Parent.Name == "TurnInFood" then
+                        __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.Parent.CFrame
+                        __U[23](0.3)
+                        __U[60](v)
+                        __U[23]()
+                        break
+                    end
+                end
+            elseif selectedObject == "Spaghetti N Eyeballs" then
+                for _, v in __U[7](Workspace:GetDescendants()) do -- eyeball
+                    if v.Parent:IsA("BasePart") and v:IsA("ProximityPrompt") and v.Parent.Parent.Name == "Bowl" then
+                        __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                        __U[23](0.3)
+                        __U[60](v)
+                        __U[23]()
+                        break
+                    end
+                end
+                for _, v in __U[7](Workspace:GetDescendants()) do
+                    if v.Parent:IsA("BasePart") and v:IsA("ProximityPrompt") and v.Parent.Parent.Name == "WoodenCounter" then
+                        __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                        __U[23](0.3)
+                        __U[60](v)
+                        __U[23]()
+                        break
+                    end
+                end
+                for _, v in __U[7](Workspace:GetDescendants()) do
+                    if v.Parent:IsA("BasePart") and v:IsA("ProximityPrompt") and v.Parent.Parent.Name == "Eyeball" and v.Parent.Parent:IsA("Model")
+                     then
+                        __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                        __U[23](0.3)
+                        __U[60](v)
+                        __U[23]()
+                        break
+                    end
+                end
+                __U[23]()
+                for _, q in __U[7](Workspace:GetDescendants()) do
+                    if q.Name == "SystemBin" and q:FindFirstChild("Bowl") then --if bowlplace
+                        for _, v in __U[7](Workspace:GetDescendants()) do
+                            if v.Parent:IsA("BasePart") and v:IsA("ProximityPrompt") and v.Parent.Parent.Name == "WoodenCounter" then
+                                __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                                __U[23](0.3)
+                                __U[60](v)
+                                __U[23]()
+                                break
+                            end
+                        end
+                        __U[23]()
+                        break
+                    end
+                end
+                for _, v in __U[7](Workspace:GetDescendants()) do
+                    if v.Parent:IsA("BasePart") and v:IsA("ProximityPrompt") and v.Parent.Parent.Name == "Spaghetti" and v.Parent.Parent:IsA("Model") then
+                        __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                        __U[23](0.3)
+                        __U[60](v)
+                        __U[23]()
+                        break
+                    end
+                end
+                __U[23]()
+                for _, q in __U[7](Workspace:GetDescendants()) do
+                    if q.Name == "SystemBin" and q:FindFirstChild("Bowl") then --if bowlplace
+                        for _, v in __U[7](Workspace:GetDescendants()) do
+                            if v.Parent:IsA("BasePart") and v:IsA("ProximityPrompt") and v.Parent.Parent.Name == "WoodenCounter" then
+                                __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                                __U[23](0.3)
+                                __U[60](v)
+                                __U[23]()
+                                break
+                            end
+                        end
+                        __U[23]()
+                        break
+                    end
+                end
+                __U[23](1)
+                for _, q in __U[7](Workspace:GetDescendants()) do
+                    if q.Name == "SystemBin" and q:FindFirstChild("Spaghetti N Eyeballs") then --finish prepare send
+                        for _, v in __U[7](Workspace:GetDescendants()) do
+                            if v.Parent:IsA("BasePart") and v:IsA("ProximityPrompt") and v.Parent.Parent.Name == "WoodenCounter" then
+                                __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                                __U[23](0.3)
+                                __U[60](v)
+                                __U[23]()
+                                break
+                            end
+                        end
+                        __U[23]()
+                        break
+                    end
+                end
+                __U[23](1)
+                for _, v in __U[7](Workspace:GetDescendants()) do
+                    if v:IsA("ProximityPrompt") and v.Parent.Parent.Name == "TurnInFood" then
+                        __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.Parent.CFrame
+                        __U[23](0.3)
+                        __U[60](v)
+                        __U[23]()
+                        break
+                    end
+                end
+            else
+                Notify("Error 01", "Press again")
+            end
+        end
+    })
+    Tabs.B2C2:AddButton({
+        Title = "Full Auto Cook",
+        Description = "SinglePlayer",
+        Callback = function()
+            for _, v in __U[7](workspace:GetDescendants()) do
+                if v.Name == "Barrier" and v:IsA("Part") and isPlayerNear(v, 100) then
+                    v:Destroy()
+                end
+            end
+            while player.PlayerGui.CookingUI.Timer.Visible do
+                Order270 = "nil"
+                matches = {}
+                __U[23](0.1)
+                for _, v in __U[7](workspace:GetDescendants()) do
+                    if v.Name == "Orders" then
+                        if v:FindFirstChild("Ham Stew") then
+                            Order270 = "Ham Stew"
+                            __U[30](matches, Order270)
+                        elseif v:FindFirstChild("Chicken Soup") then
+                            Order270 = "Chicken Soup"
+                            __U[30](matches, Order270)
+                        elseif v:FindFirstChild("Spaghetti N Eyeballs") then
+                            Order270 = "Spaghetti N Eyeballs"
+                            __U[30](matches, Order270)
+                        end
+                    end
+                end
+                __U[23](1)
+                if #matches > 0 then
+                    selectedIndex = __U[8](1, #matches)
+                    selectedObject = matches[selectedIndex]
+                    print(#matches)
+                else
+                    Notify("Error 01", "Press again")
+                end
+                if selectedObject == "Ham Stew" then
+                    for _, v in __U[7](workspace:GetDescendants()) do --Ham
+                        if v.Parent:IsA("BasePart") and v:IsA("ProximityPrompt") and v.Parent.Parent.Name == "Pot" then
+                            __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                            __U[23](0.3)
+                            __U[60](v)
+                            __U[23]()
+                            break
+                        end
+                    end
+                    __U[23]()
+                    for _, v in __U[7](Workspace:GetDescendants()) do
+                        if v.Parent:IsA("BasePart") and v:IsA("ProximityPrompt") and v.Parent.Parent.Name == "WoodenCounter" then
+                            __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                            __U[23](0.3)
+                            __U[60](v)
+                            __U[23]()
+                            break
+                        end
+                    end
+                    __U[23]()
+                    for _, v in __U[7](Workspace:GetDescendants()) do
+                        if v.Parent:IsA("BasePart") and v:IsA("ProximityPrompt") and v.Parent.Parent.Name == "Ham" and v.Parent.Parent:IsA("Model") then
+                            __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                            __U[23](0.3)
+                            __U[60](v)
+                            __U[23]()
+                            break
+                        end
+                    end
+                    __U[23]()
+                    for _, q in __U[7](Workspace:GetDescendants()) do
+                        if q.Name == "SystemBin" and q:FindFirstChild("Pot") then --if bowlplace
+                            for _, v in __U[7](Workspace:GetDescendants()) do
+                                if v.Parent:IsA("BasePart") and v:IsA("ProximityPrompt") and v.Parent.Parent.Name == "WoodenCounter" then
+                                    __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                                    __U[23](0.3)
+                                    __U[60](v)
+                                    __U[23]()
+                                    break
+                                end
+                            end
+                            __U[23]()
+                            break
+                        end
+                    end
+                    __U[23]()
+                    for _, v in __U[7](Workspace:GetDescendants()) do
+                        if v:IsA("ProximityPrompt") and v.Parent.Parent.Name == "Sausage" and v.Parent.Parent:IsA("Model") then
+                            __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                            __U[23](0.3)
+                            __U[60](v)
+                            __U[23]()
+                            break
+                        end
+                    end
+                    __U[23]()
+                    for _, q in __U[7](Workspace:GetDescendants()) do
+                        if q.Name == "SystemBin" and q:FindFirstChild("Pot") then --if bowlplace
+                            for _, v in __U[7](Workspace:GetDescendants()) do
+                                if v.Parent:IsA("BasePart") and v:IsA("ProximityPrompt") and v.Parent.Parent.Name == "WoodenCounter" then
+                                    __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                                    __U[23](0.3)
+                                    __U[60](v)
+                                    __U[23]()
+                                    break
+                                end
+                            end
+                            __U[23]()
+                            break
+                        end
+                    end
+                    __U[23](1)
+                    for _, q in __U[7](Workspace:GetDescendants()) do
+                        if q.Name == "SystemBin" and q:FindFirstChild("Pot") then --boil
+                            for _, v in __U[7](Workspace:GetDescendants()) do
+                                if v.Parent:IsA("BasePart") and v:IsA("ProximityPrompt") and v.Parent.Parent.Name == "WoodenCounter" then
+                                    __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                                    __U[23](0.3)
+                                    __U[60](v)
+                                    __U[23]()
+                                    break
+                                end
+                            end
+                            __U[23]()
+                            break
+                        end
+                    end
+                    __U[23](1)
+                    for _, q in __U[7](Workspace:GetDescendants()) do --boil2
+                        if q.Name == "SystemBin" and q:FindFirstChild("Pot") then
+                            for _, v in __U[7](Workspace:GetDescendants()) do
+                                if v.Parent:IsA("BasePart") and v:IsA("ProximityPrompt") and v.Parent.Parent.Name == "stove" then
+                                    __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                                    __U[23](0.3)
+                                    __U[60](v)
+                                    __U[23]()
+                                    break
+                                end
+                            end
+                            __U[23]()
+                            break
+                        end
+                    end
+                    __U[23](10)
+                    for _, v in __U[7](Workspace:GetDescendants()) do
+                        if v.Parent:IsA("BasePart") and v:IsA("ProximityPrompt") and v.Parent.Parent.Name == "Bowl" then
+                            __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                            __U[23](0.3)
+                            __U[60](v)
+                            __U[23]()
+                            break
+                        end
+                    end
+                    __U[23](1)
+                    for _, v in __U[7](Workspace:GetDescendants()) do
+                        if v.Parent:IsA("BasePart") and v:IsA("ProximityPrompt") and v.Parent.Parent.Name == "WoodenCounter" then
+                            __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                            __U[23](0.3)
+                            __U[60](v)
+                            __U[23]()
+                            break
+                        end
+                    end
+                    __U[23]()
+                    for _, q in __U[7](Workspace:GetDescendants()) do
+                        if q.Name == "SystemBin" and q:FindFirstChild("Pot") then
+                            for _, v in __U[7](Workspace:GetDescendants()) do
+                                if v.Parent:IsA("BasePart") and v:IsA("ProximityPrompt") and v.Parent.Parent.Name == "stove" then
+                                    __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                                    __U[23](0.3)
+                                    __U[60](v)
+                                    __U[23]()
+                                    break
+                                end
+                            end
+                            __U[23]()
+                        break
+                    end
+                    end
+                    __U[23]()
+                    for _, q in __U[7](Workspace:GetDescendants()) do
+                        if q.Name == "SystemBin" and q:FindFirstChild("Pot") then --if bowlplace
+                            for _, v in __U[7](Workspace:GetDescendants()) do
+                                if v.Parent:IsA("BasePart") and v:IsA("ProximityPrompt") and v.Parent.Parent.Name == "WoodenCounter" then
+                                    __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                                    __U[23](0.3)
+                                    __U[60](v)
+                                    __U[23]()
+                                    break
+                                end
+                            end
+                            __U[23]()
+                            break
+                        end
+                    end
+                    __U[23](1)
+                    for _, q in __U[7](Workspace:GetDescendants()) do
+                        if q.Name == "SystemBin" and q:FindFirstChild("Ham Stew") then --if bowlplace
+                            for _, v in __U[7](Workspace:GetDescendants()) do
+                                if v.Parent:IsA("BasePart") and v:IsA("ProximityPrompt") and v.Parent.Parent.Name == "WoodenCounter" then
+                                    __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                                    __U[23](0.3)
+                                    __U[60](v)
+                                    __U[23]()
+                                    break
+                                end
+                            end
+                            __U[23]()
+                            break
+                        end
+                    end
+                    __U[23](1)
+                    for _, v in __U[7](Workspace:GetDescendants()) do
+                        if v:IsA("ProximityPrompt") and v.Parent.Parent.Name == "TurnInFood" then
+                            __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.Parent.CFrame
+                            __U[23](0.3)
+                            __U[60](v)
+                            __U[23]()
+                            break
+                        end
+                    end
+                elseif selectedObject == "Chicken Soup" then
+                    for _, v in __U[7](Workspace:GetDescendants()) do --auto KFC
+                        if v.Parent:IsA("BasePart") and v:IsA("ProximityPrompt") and v.Parent.Parent.Name == "Pot" then
+                            __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                            __U[23](0.3)
+                            __U[60](v)
+                            __U[23]()
+                            break
+                        end
+                    end
+                    __U[23]()
+                    for _, v in __U[7](Workspace:GetDescendants()) do
+                        if v.Parent:IsA("BasePart") and v:IsA("ProximityPrompt") and v.Parent.Parent.Name == "WoodenCounter" then
+                            __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                            __U[23](0.3)
+                            __U[60](v)
+                            __U[23]()
+                            break
+                        end
+                    end
+                    __U[23]()
+                    for _, v in __U[7](Workspace:GetDescendants()) do
+                        if v.Parent:IsA("BasePart") and v:IsA("ProximityPrompt") and v.Parent.Parent.Name == "Chicken" and v.Parent.Parent:IsA("Model") then
+                            __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                            __U[23](0.3)
+                            __U[60](v)
+                            __U[23]()
+                            break
+                        end
+                    end
+                    __U[23]()
+                    for _, q in __U[7](Workspace:GetDescendants()) do
+                        if q.Name == "SystemBin" and q:FindFirstChild("Pot") then --if bowlplace
+                            for _, v in __U[7](Workspace:GetDescendants()) do
+                                if v.Parent:IsA("BasePart") and v:IsA("ProximityPrompt") and v.Parent.Parent.Name == "WoodenCounter" then
+                                    __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                                    __U[23](0.3)
+                                    __U[60](v)
+                                    __U[23]()
+                                    break
+                                end
+                            end
+                            __U[23]()
+                            break
+                        end
+                    end
+                    __U[23]()
+                    for _, v in __U[7](Workspace:GetDescendants()) do
+                        if v.Parent:IsA("BasePart") and v:IsA("ProximityPrompt") and v.Parent.Parent.Name == "Wrapped Meat" and v.Parent.Parent:IsA("Model") then
+                            __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                            __U[23](0.3)
+                            __U[60](v)
+                            __U[23]()
+                            break
+                        end
+                    end
+                    __U[23]()
+                    for _, q in __U[7](Workspace:GetDescendants()) do
+                        if q.Name == "SystemBin" and q:FindFirstChild("Pot") then --if bowlplace
+                            for _, v in __U[7](Workspace:GetDescendants()) do
+                                if v.Parent:IsA("BasePart") and v:IsA("ProximityPrompt") and v.Parent.Parent.Name == "WoodenCounter" then
+                                    __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                                    __U[23](0.3)
+                                    __U[60](v)
+                                    __U[23]()
+                                    break
+                                end
+                            end
+                            __U[23]()
+                            break
+                        end
+                    end
+                    __U[23]()
+                    for _, v in __U[7](Workspace:GetDescendants()) do
+                        if v.Parent:IsA("BasePart") and v:IsA("ProximityPrompt") and v.Parent.Parent.Name == "Cheese" and v.Parent.Parent:IsA("Model") then
+                            __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                            __U[23](0.3)
+                            __U[60](v)
+                            __U[23]()
+                            break
+                        end
+                    end
+                    __U[23]()
+                    for _, q in __U[7](Workspace:GetDescendants()) do
+                        if q.Name == "SystemBin" and q:FindFirstChild("Pot") then --if bowlplace
+                            for _, v in __U[7](Workspace:GetDescendants()) do
+                                if v.Parent:IsA("BasePart") and v:IsA("ProximityPrompt") and v.Parent.Parent.Name == "WoodenCounter" then
+                                    __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                                    __U[23](0.3)
+                                    __U[60](v)
+                                    __U[23]()
+                                    break
+                                end
+                            end
+                            __U[23]()
+                            break
+                        end
+                    end
+                    __U[23]()
+                    for _, q in __U[7](Workspace:GetDescendants()) do
+                        if q.Name == "SystemBin" and q:FindFirstChild("Pot") then --if bowlplace
+                            for _, v in __U[7](Workspace:GetDescendants()) do
+                                if v.Parent:IsA("BasePart") and v:IsA("ProximityPrompt") and v.Parent.Parent.Name == "WoodenCounter" then
+                                    __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                                    __U[23](0.3)
+                                    __U[60](v)
+                                    __U[23]()
+                                    break
+                                end
+                            end
+                            __U[23]()
+                            break
+                        end
+                    end
+                    __U[23]()
+                    for _, q in __U[7](Workspace:GetDescendants()) do --boil2
+                        if q.Name == "SystemBin" and q:FindFirstChild("Pot") then
+                            for _, v in __U[7](Workspace:GetDescendants()) do
+                                if v.Parent:IsA("BasePart") and v:IsA("ProximityPrompt") and v.Parent.Parent.Name == "stove" then
+                                    __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                                    __U[23](0.3)
+                                    __U[60](v)
+                                    __U[23]()
+                                    break
+                                end
+                            end
+                            __U[23]()
+                            break
+                        end
+                    end
+                    __U[23](10)
+                    for _, v in __U[7](Workspace:GetDescendants()) do
+                        if v.Parent:IsA("BasePart") and v:IsA("ProximityPrompt") and v.Parent.Parent.Name == "Bowl" then
+                            __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                            __U[23](0.3)
+                            __U[60](v)
+                            __U[23]()
+                            break
+                        end
+                    end
+                    __U[23](1)
+                    for _, v in __U[7](Workspace:GetDescendants()) do
+                        if v.Parent:IsA("BasePart") and v:IsA("ProximityPrompt") and v.Parent.Parent.Name == "WoodenCounter" then
+                            __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                            __U[23](0.3)
+                            __U[60](v)
+                            __U[23]()
+                            break
+                        end
+                    end
+                    __U[23]()
+                    for _, q in __U[7](Workspace:GetDescendants()) do
+                        if q.Name == "SystemBin" and q:FindFirstChild("Pot") then
+                            for _, v in __U[7](Workspace:GetDescendants()) do
+                                if v.Parent:IsA("BasePart") and v:IsA("ProximityPrompt") and v.Parent.Parent.Name == "stove" then
+                                    __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                                    __U[23](0.3)
+                                    __U[60](v)
+                                    __U[23]()
+                                    break
+                                end
+                            end
+                            __U[23]()
+                            break
+                        end
+                    end
+                    __U[23]()
+                    for _, q in __U[7](Workspace:GetDescendants()) do
+                        if q.Name == "SystemBin" and q:FindFirstChild("Pot") then --if bowlplace
+                            for _, v in __U[7](Workspace:GetDescendants()) do
+                                if v.Parent:IsA("BasePart") and v:IsA("ProximityPrompt") and v.Parent.Parent.Name == "WoodenCounter" then
+                                    __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                                    __U[23](0.3)
+                                    __U[60](v)
+                                    __U[23]()
+                                    break
+                                end
+                            end
+                            __U[23]()
+                            break
+                        end
+                    end
+                    __U[23](1)
+                    for _, q in __U[7](Workspace:GetDescendants()) do
+                        if q.Name == "SystemBin" and q:FindFirstChild("Chicken Soup") then --if bowlplace
+                            for _, v in __U[7](Workspace:GetDescendants()) do
+                                if v.Parent:IsA("BasePart") and v:IsA("ProximityPrompt") and v.Parent.Parent.Name == "WoodenCounter" then
+                                    __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                                    __U[23](0.3)
+                                    __U[60](v)
+                                    __U[23]()
+                                    break
+                                end
+                            end
+                            __U[23]()
+                            break
+                        end
+                    end
+                    __U[23](1)
+                    for _, v in __U[7](Workspace:GetDescendants()) do
+                        if v:IsA("ProximityPrompt") and v.Parent.Parent.Name == "TurnInFood" then
+                            __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.Parent.CFrame
+                            __U[23](0.3)
+                            __U[60](v)
+                            __U[23]()
+                            break
+                        end
+                    end
+                elseif selectedObject == "Spaghetti N Eyeballs" then
+                    for _, v in __U[7](Workspace:GetDescendants()) do -- eyeball
+                        if v.Parent:IsA("BasePart") and v:IsA("ProximityPrompt") and v.Parent.Parent.Name == "Bowl" then
+                            __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                            __U[23](0.3)
+                            __U[60](v)
+                            __U[23]()
+                            break
+                        end
+                    end
+                    for _, v in __U[7](Workspace:GetDescendants()) do
+                        if v.Parent:IsA("BasePart") and v:IsA("ProximityPrompt") and v.Parent.Parent.Name == "WoodenCounter" then
+                            __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                            __U[23](0.3)
+                            __U[60](v)
+                            __U[23]()
+                            break
+                        end
+                    end
+                    for _, v in __U[7](Workspace:GetDescendants()) do
+                        if v.Parent:IsA("BasePart") and v:IsA("ProximityPrompt") and v.Parent.Parent.Name == "Eyeball" and v.Parent.Parent:IsA("Model")
+                         then
+                            __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                            __U[23](0.3)
+                            __U[60](v)
+                            __U[23]()
+                            break
+                        end
+                    end
+                    __U[23]()
+                    for _, q in __U[7](Workspace:GetDescendants()) do
+                        if q.Name == "SystemBin" and q:FindFirstChild("Bowl") then --if bowlplace
+                            for _, v in __U[7](Workspace:GetDescendants()) do
+                                if v.Parent:IsA("BasePart") and v:IsA("ProximityPrompt") and v.Parent.Parent.Name == "WoodenCounter" then
+                                    __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                                    __U[23](0.3)
+                                    __U[60](v)
+                                    __U[23]()
+                                    break
+                                end
+                            end
+                            __U[23]()
+                            break
+                        end
+                    end
+                    for _, v in __U[7](Workspace:GetDescendants()) do
+                        if v.Parent:IsA("BasePart") and v:IsA("ProximityPrompt") and v.Parent.Parent.Name == "Spaghetti" and v.Parent.Parent:IsA("Model") then
+                            __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                            __U[23](0.3)
+                            __U[60](v)
+                            __U[23]()
+                            break
+                        end
+                    end
+                    __U[23]()
+                    for _, q in __U[7](Workspace:GetDescendants()) do
+                        if q.Name == "SystemBin" and q:FindFirstChild("Bowl") then --if bowlplace
+                            for _, v in __U[7](Workspace:GetDescendants()) do
+                                if v.Parent:IsA("BasePart") and v:IsA("ProximityPrompt") and v.Parent.Parent.Name == "WoodenCounter" then
+                                    __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                                    __U[23](0.3)
+                                    __U[60](v)
+                                    __U[23]()
+                                    break
+                                end
+                            end
+                            __U[23]()
+                            break
+                        end
+                    end
+                    __U[23](1)
+                    for _, q in __U[7](Workspace:GetDescendants()) do
+                        if q.Name == "SystemBin" and q:FindFirstChild("Spaghetti N Eyeballs") then --finish prepare send
+                            for _, v in __U[7](Workspace:GetDescendants()) do
+                                if v.Parent:IsA("BasePart") and v:IsA("ProximityPrompt") and v.Parent.Parent.Name == "WoodenCounter" then
+                                    __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                                    __U[23](0.3)
+                                    __U[60](v)
+                                    __U[23]()
+                                    break
+                                end
+                            end
+                            __U[23]()
+                            break
+                        end
+                    end
+                    __U[23](1)
+                    for _, v in __U[7](Workspace:GetDescendants()) do
+                        if v:IsA("ProximityPrompt") and v.Parent.Parent.Name == "TurnInFood" then
+                            __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.Parent.CFrame
+                            __U[23](0.3)
+                            __U[60](v)
+                            __U[23]()
+                            break
+                        end
+                    end
+                else
+                    Notify("Error 01", "Press again")
+                end
+                __U[23]()
+            end
+        end
+    })
+    Tabs.B2C2:AddSection("Cursed Zone")
+    Tabs.B2C2:AddButton({
+        Title = "Auto Win",
+        Description = "Cursed Zone 1",
+        Callback = function()
+            TweenBIGO(1, -4250.71, 613.7, -968.13)
+        end
+    })
+    Tabs.B2C2:AddButton({
+        Title = "Teleport To Cursed Zone 2",
+        Description = "",
+        Callback = function()
+            TweenBIGO(1, -4079.71, 613.7, -968.13)
+        end
+    })
+    Tabs.B2C2:AddButton({
+        Title = "Reveal Match Puzzle",
+        Description = "Not recommanded",
+        Callback = function()
+            for i,v in __U[7](game.Workspace:GetDescendants()) do
+                if v.Name == "GAMESTART" then 
+                    __U[6](function()
+                        if v.ClassName == "Part" or v.ClassName == "MeshPart" then
+                            local part = __U[35]("Part",workspace:FindFirstChildWhichIsA('Folder'))
+                            part.Name = "{x"..__U[32](__U[8](500,1000)).."x}"
+                            part.Anchored = __Y[1]
+                            part.Size = v.Size
+                            part.CanCollide = __Y[2]
+                            part.Transparency = 0.9
+                            part.CFrame = v.CFrame
+                        end
+                    end)
+                    v:Destroy()
+                end 
+            end
+            for i = 1, math.huge do
+                wait(0.6)
+            
+                if not isPlayerNearPosition(player, __U[57](-4079.71, 613.7, -968.13), 1000) then
+                    break
+                end
+            
+                local currentBases = findNearestBase()
+            
+                if currentBases then
+                    local baseTables = {
+                        Part1 = currentBases:FindFirstChild("Part1"),
+                        Part2 = currentBases:FindFirstChild("Part2"),
+                        Select = currentBases:FindFirstChild("Select")
+                    }
+            
+                    local stateTables = {
+                        IsOnPart1 = __Y[2],
+                        IsOnPart2 = __Y[2]
+                    }
+            
+                    local selectButton = baseTables.Select
+                    local part1 = baseTables.Part1
+                    local part2 = baseTables.Part2
+            
+                    local function findTable(table, select)
+                        for _, v in __U[73](table) do
+                            if v == select then
+                                return v
+                            end
+                        end
+                        return __Y[2]
+                    end
+            
+                    if not findTable(listButtons, selectButton) then
+                        for _, v in __U[73](currentBases.Parent:GetChildren()) do
+                            if v.Name == "Buttons" then
+                                local button = v
+                                button:GetPropertyChangedSignal("BrickColor"):Connect(function()
+                                    if button.BrickColor == BrickColor.new("Really red") then
+                                        resetThings()
+                                    end
+                                end)
+                            end
+                        end
+            
+                        selectButton:GetPropertyChangedSignal("Playing"):Connect(function()
+                            if selectButton.Playing then
+                                for _, v in __U[73](currentBases.Parent:GetChildren()) do
+                                    if v.Name == "Buttons" then
+                                        local buttons = v
+                                        if buttons.BrickColor == BrickColor.new("Institutional white") then
+                                            if buttons:FindFirstChild("PUZZLEREVEAL") then
+                                                local pathTo = buttons.PUZZLEREVEAL.Frame.TextLabel
+                                                if pathTo then
+                                                    pathTo.Text = pathTo.Text .. " - [" .. __U[32](interfaceTables.SendCount) .. "]"
+                                                end
+                                            else
+                                                createBillBoardGui(buttons, "[" .. __U[32](interfaceTables.SendCount) .. "]")
+                                            end
+            
+                                            interfaceCount("Add")
+                                        end
+                                    end
+                                end
+                            end
+                        end)
+            
+                        selectButton:GetPropertyChangedSignal("TimePosition"):Connect(function()
+                            for _, v in __U[73](currentBases.Parent:GetChildren()) do
+                                if v.Name == "Buttons" then
+                                    local buttons = v
+                                    if buttons.BrickColor == BrickColor.new("Institutional white") then
+                                        if buttons:FindFirstChild("PUZZLEREVEAL") then
+                                            local pathTo = buttons.PUZZLEREVEAL.Frame.TextLabel
+                                            if pathTo then
+                                                pathTo.Text = pathTo.Text .. " - [" .. __U[32](interfaceTables.SendCount) .. "]"
+                                            end
+                                        else
+                                            createBillBoardGui(buttons, "[" .. __U[32](interfaceTables.SendCount) .. "]")
+                                        end
+            
+                                        interfaceCount("Add")
+                                    end
+                                end
+                            end
+                        end)
+            
+                        __U[30](listButtons, selectButton)
+                    end
+            
+                    part1:GetPropertyChangedSignal("BrickColor"):Connect(function()
+                        __U[6](function()
+                            if part1.BrickColor == BrickColor.new("Medium stone grey") then
+                                if not stateTables.IsOnPart1 then
+                                    stateTables.IsOnPart1 = __Y[1]
+                                    resetThings()
+                                end
+                            end
+                        end)
+                    end)
+            
+                    part2:GetPropertyChangedSignal("BrickColor"):Connect(function()
+                        __U[6](function()
+                            if part2.BrickColor == BrickColor.new("Medium stone grey") then
+                                if not stateTables.IsOnPart2 then
+                                    stateTables.IsOnPart2 = __Y[1]
+                                    resetThings()
+                                end
+                            end
+                        end)
+                    end)
+            
+                    local packetEvent = ReplicatedStorage.Packet.Event
+                    packetEvent.OnClientEvent:Connect(onLeftPuzzle)
+                end
+            end
+        end
+    })
+    Tabs.B2C2:AddButton({
+        Title = "Remove Monster",
+        Description = "Singleplayer | Or tell your teamate not to go to 2nd floor",
+        Callback = function()
+            for i, v in __U[7](workspace:GetDescendants()) do
+                if v.Parent:IsA("BasePart") and v.Parent.Name == "GAMESTART" then
+                    v:Destroy()
+                end
+            end
+        end
+    })
+    HideSpot = __Y[3]
+    local Dropdown = Tabs.B2C2:AddDropdown("Dropdown", {
+        Title = "Hide Spot",
+        Values = {"1", "2", "3"},
+        Multi = __Y[2],
+        Default = 1,
+    })
+    Dropdown:OnChanged(function(Value)
+        HideSpot = Value
+    end)
+    Tabs.B2C2:AddButton({
+        Title = "Hide",
+        Description = "",
+        Callback = function()
+            if HideSpot == "1" then
+                __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](-4066.81,630.67,-985.54)
+            elseif HideSpot == "2" then
+                __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](-4053.62,666.31,-951.76)
+            elseif HideSpot == "3" then
+                __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](-4088.17,743.82,-959.96)
+            end
+        end
+    })
+    Tabs.B2C2:AddSection("Kid")
+    Tabs.B2C2:AddButton({
+        Title = "Set Game Files",
+        Description = "Press this first",
+        Callback = function()
+            for i,v in __U[7](workspace:GetDescendants()) do
+                if v.Name == "SquidGames" then
+                    v:Destroy()
+                end
+            end
+        end
+    })
+    Tabs.B2C2:AddButton({
+        Title = "Auto Find Kid",
+        Description = "Press after cutscene",
+        Callback = function()
+            for i,v in __U[7](__VE["WS"]:GetDescendants()) do
+                if v:IsA("BasePart") and v.Name == "IndicatorPic" then
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = v.CFrame
+                    __U[23]()
+                    break
+                end
+            end
+            __U[23]()
+            __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](-4334.81299, 690.94397, -2363.2771, 0, 0, 1, 0, 1, -0, -1, 0, 0)
+        end
+    })
+    Tabs.B2C2:AddButton({
+        Title = "Anti Mother",
+        Description = "Press after cutscene",
+        Callback = function()
+            function TeleportPlayer()
+                motherPart = __Y[3]
+                for _, part in __U[73](workspace:GetDescendants()) do
+                    if part.Name == "HumanoidRootPart" and part.Parent.Name == "Mother" then
+                        motherPart = part
+                        break
+                    end
+                end
+                while isPlayerNearPosition(__VE["LPs"], __U[57](-4334.81299, 690.94397, -2363.2771), 3000) do
+                    if not isPlayerNearPosition(__VE["LPs"], __U[57](-4334.81299, 690.94397, -2363.2771), 3000) then
+                        break
+                    end
+                    if not motherPart then
+                        for _, part in __U[73](workspace:GetDescendants()) do
+                            if part.Name == "HumanoidRootPart" and part.Parent.Name == "Mother" then
+                                motherPart = part
+                                break
+                            end
+                        end
+                    end
+                    if motherPart and char and char:FindFirstChild("HumanoidRootPart") then
+                        playerPosition = char.HumanoidRootPart.Position
+                        motherPosition = motherPart.Position
+                        
+                        if (playerPosition - motherPosition).Magnitude <= 100 then
+                            char.HumanoidRootPart.CFrame = __U[26](-4334.81299, 690.94397, -2363.2771, 0, 0, 1, 0, 1, -0, -1, 0, 0)
+                        end
+                    end
+        
+                    __U[23](0.1)
+                end
+            end
+        
+            TeleportPlayer()
+        end
+    })
+    Tabs.B2C2:AddButton({
+        Title = "Teleport To Gate",
+        Description = "",
+        Callback = function()
+            for i,v in __U[7](__VE["WS"]:GetDescendants()) do
+                if v:IsA("BasePart") and v.Name == "Formation" then
+                   __VE["LPs"].Character.HumanoidRootPart.CFrame = v.CFrame
+                   __U[23]()
+                   break
+                end
+            end
+        end
+    })
+    Tabs.B2C2:AddButton({
+        Title = "Auto Get Notes",
+        Description = "",
+        Callback = function()
+            Float = __Y[2]
+            for i, v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Name == "Note" then
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                    __U[23](0.3)
+                    __U[60](v)
+                end
+            end
+        end
+    })
+    local ANL = Tabs.Main:AddToggle("ANL", {Title = "Anti Nagisa Laser", Default = __Y[2] })
+
+    ANL:OnChanged(function()
+        if Options.ANL.Value then
+            if not LASEROFNAGISA then
+                for _, v in __U[7](__VE["WS"]:GetDescendants()) do
+                    if v.Name == "POISON" then
+                        LASEROFNAGISA = v
+                    end
+                end
+            end
+            if not BALLGIVER then
+                for i, v in __U[7](workspace:GetDescendants()) do
+                    if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Parent.Name == "BallGiver" then
+                        BALLGIVER = v
+                    end
+                end
+            end
+    
+            while Options.ANL.Value do
+                if Options.ANL.Value and __VE["LPs"].Character:FindFirstChild("HumanoidRootPart") then
+                    if LASEROFNAGISA and LASEROFNAGISA.Transparency == 0.5 then
+                        Tp(1982.58, 100, -4780.12, __Y[3])
+                    end
+                end
+            
+                __U[23](0.05)
+            end
+        end
+    end)
+    local AGCB = Tabs.Main:AddToggle("AGCB", {Title = "Auto Get Cannon Balls", Default = __Y[2] })
+
+    AGCB:OnChanged(function()
+        __U[6](function()
+            if Options.AGCB.Value then
+                for i, v in __U[7](workspace:GetDescendants()) do
+                    if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Parent.Name == "BallGiver" then
+                        BALLGIVER = v
+                    end
+                end
+                if not LASEROFNAGISA then
+                    for _, v in __U[7](workspace:GetDescendants()) do
+                        if v.Name == "POISON" then
+                            LASEROFNAGISA = v
+                        end
+                    end
+                end
+                while Options.AGCB.Value do
+                    if __VE["LPs"].PlayerGui.BossFight.Ammo.Text == "0" and LASEROFNAGISA.Transparency ~= 0.5 then
+                        char.HumanoidRootPart.CFrame = BALLGIVER.Parent.CFrame
+                        __U[23](0.3)
+                        __U[60](BALLGIVER)
+                        __U[60](BALLGIVER)
+                        __U[60](BALLGIVER)
+                        __U[60](BALLGIVER)
+                        __U[60](BALLGIVER)
+                        __U[23]()
+                    end
+                    __U[23]()
+                end
+            end
+        end)
+    end)
+    Tabs.B2C3:AddSection("Gozu & Mezu")
+    Tabs.B2C3:AddButton({
+        Title = "Auto Win",
+        Description = "",
+        Callback = function()
+            Tp(-581.70068359375, 38.337032318115234, 417.4595947265625)
+        end
+    })
+    Tabs.B2C3:AddSection("Heart")
+    Tabs.B2C3:AddButton({
+        Title = "Talk",
+        Description = "Walk to trigger",
+        Callback = function()
+            Tp(-138.42770385742188, 45.49604797363281, 79.2468490600586)
+        end
+    })
+    Tabs.B2C3:AddButton({
+        Title = "Auto Heart",
+        Description = "Spin table by yourself",
+        Callback = function()
+            for i, v in __U[7](Workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent.Name == "Heart" and v.Parent.Parent.Name == "Hearts" then
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.Heart.CFrame
+                    __U[23](0.3)
+                    __U[60](v)
+                end
+            end
+            __U[23]()
+            for i, v in __U[7](Workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent.Name == "Heart" and v.Parent.Parent.Name == "BeatingHeart" then
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                    __VE["LPs"].Backpack:FindFirstChild("Heart").Parent = __VE["LPs"].Character
+                    __U[23](0.3)
+                    __U[60](v)
+                end
+            end
+        end
+    })
+    Tabs.B2C3:AddButton({
+        Title = "Auto Run",
+        Description = "",
+        Callback = function()
+            Float = __Y[1]
+            Tp(-101.209686, 41.456089, -395.665802, 0.1)
+            for i, v in __U[7](Workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent.Name == "MAIN" then
+                    if isPlayerNear(v.Parent, 30) then
+                        __U[60](v)
+                    end
+                end
+            end
+            __U[23]()
+            Float = __Y[2]
+        end
+    })
+    Tabs.B2C3:AddSection("Maze")
+    Tabs.B2C3:AddButton({
+        Title = "Auto Craft",
+        Description = "",
+        Callback = function()
+            Float = __Y[1]
+            --MainConsoleLogOutF("Getting Item")
+            for i, v in __U[7](Workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent.Name == "Hole" then
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](v.Parent.Position.X, v.Parent.Position.Y - 5, v.Parent.Position.Z)
+                    __U[23](0.3)
+                    __U[60](v)
+                end
+            end
+            Tp(-78.38977813720703, 3.999999523162842, -442.6703186035156, 1)
+            --MainConsoleLogOutF("Crafting")
+            for i, v in __U[7](Workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent.Name == "RootPart" and v.Parent.Parent.Name == "Monster" and isPlayerNear(v.Parent, 30) then
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                    __U[23](0.3)
+                    __U[60](v)
+                    __U[23]()
+                    break
+                end
+            end
+            __U[23]()
+            Float = __Y[2]
+            argsCRaftesr = {
+                [1] = 0,
+                [2] = {
+                    ["__args"] = {},
+                    ["__tree"] = {
+                        [1] = "CraftingService",
+                        [2] = "Interact"
+                    },
+                    ["__callType"] = 0
+                }
+            }
+            game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Packet"):WaitForChild("PacketFunction"):InvokeServer(unpack(argsCRaftesr))
+            --MainConsoleLogOutF("Trying To Invoke Server")
+            __U[23]()
+            __VE["LPs"].PlayerGui.Crafting.Frame.Visible = __Y[2]
+            --MainConsoleLogOutF("Successfully Craft Torch")
+        end
+    })
+    Tabs.B2C3:AddButton({
+        Title = "Get Fire",
+        Description = "",
+        Callback = function()
+            function isPartNearPart(part1, part2, distance)
+                if part1 and part1:IsA("BasePart") and part2 and part2:IsA("BasePart") then
+                    local distanceThreshold = distance
+                    local part1Position = part1.Position
+                    local part2Position = part2.Position
+                    local partDistance = (part1Position - part2Position).magnitude
+            
+                    return partDistance <= distanceThreshold
+                else
+                    return __Y[2]
+                end
+            end
+            for i, v in __U[7](Workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent.Name == "UndyingFlame" and not isPartNearPart(v.Parent, workspace.Section1.Maze.GrinDemonNM.Hitbox, 20) then
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                    __U[23](0.3)
+                    __U[60](v)
+                    __U[23]()
+                    break
+                end
+            end
+            __U[23]()
+            Tp(-78.38977813720703, 3.999999523162842, -442.6703186035156, 1)  
+        end
+    })
+    Tabs.B2C3:AddButton({
+        Title = "Escape",
+        Description = "",
+        Callback = function()
+            Tp(-74.25013732910156, 5.26987361907959, -880.4428100585938, __Y[3])
+        end
+    })
+    Tabs.B2C3:AddSection("Bells")
+    Tabs.B2C3:AddButton({
+        Title = "Enter Zone",
+        Description = "",
+        Callback = function()
+            Tp(-325.5806579589844, 15.388615608215332, -1113.81494140625, __Y[3])
+        end
+    })
+    Tabs.B2C3:AddButton({
+        Title = "Kill All Flys",
+        Description = "",
+        Callback = function()
+            if not __VE["LPs"].Character:FindFirstChild("Bone Sword") then
+                __VE["LPs"].Backpack:FindFirstChild("Bone Sword").Parent = __VE["LPs"].Character
+            end
+            __U[23]()
+            for i, v in __U[7](Workspace:GetDescendants()) do
+                if v.Name == "FlyHitbox" then
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = v.CFrame
+                    wait()
+                    __VE["LPs"].Character["Bone Sword"]:Activate()
+                    __U[23](3)
+                end
+            end
+            __U[23]()
+        end
+    })
+    Tabs.B2C3:AddButton({
+        Title = "Teleport To Puzzle Door",
+        Description = "",
+        Callback = function()
+            for i, v in __U[7](workspace.Section2.PuzzleDoor.Doors:GetDescendants()) do
+                if v.Name == "SurfaceGui" and v.Parent.Name == "Combos" and v.Parent.Position.Y >= 0 then
+                    Shapesss = {}
+                    for _, obj in __U[7](v:GetChildren()) do
+                        if obj then
+                            __U[30](Shapesss, __U[32](obj.Name))
+                        end
+                    end
+                    __U[23]()
+                    if #Shapesss == 4 then
+                        __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                    end
+                end
+            end
+        end
+    })
+    Tabs.B2C3:AddButton({
+        Title = "Auto Run",
+        Description = "",
+        Callback = function()
+            Tp(-3888.80054, -55, -2289.43774)
+        end
+    })
+    Tabs.B2C3:AddSection("Enzukai Game")
+    Tabs.B2C3:AddButton({
+        Title = "Auto Run",
+        Description = "",
+        Callback = function()
+            for _, v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") then
+                    if isPlayerNear(v.Parent, 100) then
+                        while __U[23]() do
+                            if not v then
+                                break
+                            end
+                            if v.Enabled then
+                                __U[60](v)
+                            end
+                        end
+                        __U[23]()
+                    end
+                end
+            end
+        end
+    })
+    Tabs.B2C3:AddSection("Father")
+    Tabs.B2C3:AddButton({
+        Title = "Kill Isamu",
+        Description = "",
+        Callback = function()
+            workspace.Section3.IsamuAI.Hitbox.CanTouch = __Y[2]
+        end
+    })
+    Tabs.B2C3:AddButton({
+        Title = "Teleport To Safe Spot",
+        Description = "",
+        Callback = function()
+            __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](1136.67224, 29.0004768, -2400.67603, 0.695213974, 0, -0.718802869, 0, 1, 0, 0.718802869, 0, 0.695213974)
+        end
+    })
+    Tabs.B2C3:AddButton({
+        Title = "Auto Win",
+        Description = "click per round",
+        Callback = function()
+            if workspace.Section3:FindFirstChild("IsamuAI") then
+                if  workspace.Section3.IsamuAI:FindFirstChild("Hitbox") and workspace.Section3.IsamuAI.Hitbox.CanTouch then
+                    workspace.Section3.IsamuAI.Hitbox.CanTouch = __Y[2]
+                    --MainConsoleLogOutF("Successfully Set Kill IsamuAI")
+                    --MainConsoleLogOutF("Waiting Time")
+                end
+            end
+            repeat __U[23]() until __VE["LPs"].PlayerGui["03_Handler"].TimerFrame.TextLabel.Text == "6 PM"
+            --MainConsoleLogOutF("Successfully Teleport")
+            __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](1136.67224, 29.0004768, -2400.67603, 0.695213974, 0, -0.718802869, 0, 1, 0, 0.718802869, 0, 0.695213974)
+        end
+    })
+    Tabs.B2C3:AddSection("Train")
+    Tabs.B2C3:AddButton({
+        Title = "Enter Zone",
+        Description = "",
+        Callback = function()
+            __VE["LPs"].Character.HumanoidRootPart.CFrame = workspace["Section3.5"].GhostTrain.TrainTrigger.CFrame
+        end
+    })
+    Tabs.B2C3:AddSection("Larves")
+    Tabs.B2C3:AddButton({
+        Title = "Enter Zone",
+        Description = "",
+        Callback = function()
+            for _,v in __U[7](workspace.Section4.Map.BabyFaceNPC.ProxPart:GetChildren()) do
+                if v:IsA("ProximityPrompt") and v.Enabled then
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                    __U[23](0.3)
+                    __U[60](v)
+                    break
+                end
+            end
+            --MainConsoleLogOutF("Successfully Talk")
+            __U[23]()
+            --MainConsoleLogOutF("Getting Larvae")
+            for _,v in __U[7](workspace.Section4.HotPotato.Givers:GetChildren()) do
+                if v.Name == "LarvaeGiver" and v:FindFirstChild("RootPart") then
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = v.RootPart.CFrame
+                    __U[23](0.3)
+                    __U[60](v.RootPart.ProximityPrompt)
+                    break
+                end
+            end
+            __U[23]()
+            --MainConsoleLogOutF("Successfully Getting Larvae")
+            for _,v in __U[7](workspace.Section4.DogWall.RootPart:GetChildren()) do
+                if v:IsA("ProximityPrompt") then
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                    __U[23](0.3)
+                    __U[60](v)
+                    break
+                end
+            end
+            __U[23]()
+        end
+    })
+    Tabs.B2C3:AddSection("Mud")
+    Tabs.B2C3:AddButton({
+        Title = "Auto Win",
+        Description = "",
+        Callback = function()
+            for _,v in __U[7](workspace["Section4.5"]:GetChildren()) do
+                if v.Name == "TeleportToSection5" then
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = v.CFrame
+                    break
+                end
+            end
+        end
+    })
+    Tabs.B2C3:AddSection("Yurei 1st | House")
+    Tabs.B2C3:AddButton({
+        Title = "Talk",
+        Description = "",
+        Callback = function()
+            for _,v in __U[7](workspace.Section5.Map.BabyFaceNPC.ProxPart:GetChildren()) do
+                if v:IsA("ProximityPrompt") and v.Enabled then
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                    __U[23](0.3)
+                    __U[60](v)
+                    break
+                end
+            end
+        end
+    })
+    Tabs.B2C3:AddButton({
+        Title = "Teleport To House",
+        Description = "",
+        Callback = function()
+            for _,v in __U[7](workspace.Section5.ISPY.Houses:GetDescendants()) do
+                if v.Name == "LightSpotter" then
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = v.CFrame
+                end
+            end
+        end
+    })
+    Tabs.B2C3:AddSection("Yurei 2nd | Boss")
+    Tabs.B2C3:AddButton({
+        Title = "Clear Map",
+        Description = "",
+        Callback = function()
+            for _, v in __U[7](workspace.Section5.Boss.Build:GetChildren()) do
+                if v and v.Name == "c01-15k" or v and v.Name == "InvisWall" then
+                    v:Destroy()
+                end
+            end
+        end
+    })
+    Tabs.B2C3:AddButton({
+        Title = "Teleport To Safe Spot",
+        Description = "",
+        Callback = function()
+            __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](3078.94287, 16.9999962, -540.494385, -0.784964442, 0, 0.619540811, 0, 1, 0, -0.619540811, 0, -0.784964442)
+        end
+    })
+    Tabs.B2C3:AddSection("Hell")
+    Tabs.B2C3:AddButton({
+        Title = "Talk",
+        Description = "",
+        Callback = function()
+            if isPlayerNearPos(__U[57](-2717.091064453125, 172.54824829101562, 8059.78955078125), 800) then
+                Tp(-2717.091064453125, 172.54824829101562, 8059.78955078125, __Y[3])
+            end
+        end
+    })
+    Tabs.B2C3:AddButton({
+        Title = "Auto Run",
+        Description = "Press after cutscene",
+        Callback = function()
+            Tp(-1696.94921875, 245.83494567871094, 7806.041503906259, __Y[3])
+        end
+    })
+    
+    Tabs.TWT:AddSection("All In One")
+    Tabs.TWT:AddButton({
+        Title = "Auto Win",
+        Description = "",
+        Callback = function()
+            char = __VE["LPs"].Character
+            if PlaceId == 7068738088 or PlaceId == 7068951438 then
+                for i, v in __U[7](__VE["WS"]:GetDescendants()) do
+                    if v.Parent:IsA("BasePart") and v.Parent.Name == "Game Teleporter" then
+                        char.HumanoidRootPart.CFrame = v.Parent.CFrame
+                    end
+                end
+            elseif PlaceId == 7068739000 or PlaceId == 7068951914 then
+                for i, v in __U[7](__VE["WS"]:GetDescendants()) do
+                    if v.Parent:IsA("BasePart") and v.Parent.Name == "Game Teleporter" then
+                        char.HumanoidRootPart.CFrame = v.Parent.CFrame
+                    end
+                end
+            elseif PlaceId == 7068740106 or PlaceId == 7068952294 then
+                for i, v in __U[7](__VE["WS"]:GetDescendants()) do
+                    if v.Parent:IsA("BasePart") and v.Parent.Name == "Game Teleporter" then
+                        char.HumanoidRootPart.CFrame = v.Parent.CFrame
+                    end
+                end
+            end
+        end
+    })
+    Tabs.TWT:AddSection("Mutiplayer")
+    Tabs.TWT:AddSection("Map 3")
+    Tabs.TWT:AddButton({
+        Title = "Auto Get Butterfly",
+        Description = "",
+        Callback = function()
+            function teleportAndFirePrompt(part)
+                character = __VE["LPs"].Character
+                humanoidRootPart = character and character:FindFirstChild("HumanoidRootPart")
+                
+                if humanoidRootPart and humanoidRootPart:IsA("BasePart") then
+                    local targetCFrame = part.CFrame + (part.CFrame.LookVector * -9)
+                    humanoidRootPart.CFrame = targetCFrame
+                end
+            end
+            
+            for i, v in __U[7](__VE["WS"].GameAI:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Name == "Cube.001" then
+                    teleportAndFirePrompt(v.Parent)
+                    wait(0.3)
+                    __U[60](v)
+                end
+            end
+            
+            __U[23]()
+        end
+    })
+    Tabs.TWT:AddButton({
+        Title = "Teleport To Fireplace 1",
+        Description = "",
+        Callback = function()
+            Tp(2621.90186, 111.203804, 1453.71765, __Y[3])
+        end
+    })
+    Tabs.TWT:AddButton({
+        Title = "Teleport To Fireplace 2",
+        Description = "",
+        Callback = function()
+            Tp(2426.72583, 185.146057, 1457.37292, __Y[3])
+        end
+    })
+
+    Tabs.Xmas1:AddSection("Santa Sleigh")
+    Tabs.Xmas1:AddButton({
+        Title = "Auto Repair",
+        Description = "",
+        Callback = function()
+            for i, v in __U[7](Workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Name == "RootPart" then
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                    __U[23](0.3)
+                    __U[60](v)
+                end
+            end
+            
+            __U[23]()
+            for i, v in __U[7](Workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Name == "Extinguisher" then
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                    __U[23](0.3)
+                    __U[60](v)
+                end
+            end
+            
+            __U[23]()
+            for i, v in __U[7](Workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Name == "Ropes" then
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                    __U[23](0.3)
+                    __U[60](v)
+                end
+            end
+            
+            __U[23]()
+            for i, v in __U[7](Workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Name == "Controls" then
+                __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                    __U[23](0.3)
+                    __U[60](v)
+                end
+            end
+            
+            __U[23]()
+            for i, v in __U[7](Workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Name == "RepairPoint" then
+                __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                    __U[23](0.3)
+                    __U[60](v)
+                end
+            end
+            
+            __U[23](0.3)
+            Tp(-176.64, 4.8, -328.34, __Y[3])
+        end
+    })
+    Tabs.Xmas1:AddSection("Toys")
+    Tabs.Xmas1:AddButton({
+        Title = "Auto Collect",
+        Description = "",
+        Callback = function()
+            for i, v in __U[7](Workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Name == "RootPart" then
+                __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                    __U[23](0.3)
+                    __U[60](v)
+                end
+            end
+            
+            __U[23]()
+            for i, v in __U[7](Workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Name == "toy" then
+                __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                    __U[23](0.3)
+                    __U[60](v)
+                end
+            end
+    
+            __U[23]()
+            Tp(-176.64, 4.8, -328.34, __Y[3])
+        end
+    })
+    Tabs.Xmas1:AddSection("Key")
+    Tabs.Xmas1:AddButton({
+        Title = "Auto Win",
+        Description = "",
+        Callback = function()
+            for i, v in __U[7](Workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Name == "RootPart" then
+                __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                    wait(0.3)
+                    __U[60](v)
+                end
+            end
+            
+            function teleportAndFirePrompt(part)
+                character = __VE["LPs"].Character
+                humanoidRootPart = character and character:FindFirstChild("HumanoidRootPart")
+                
+                if humanoidRootPart and humanoidRootPart:IsA("BasePart") then
+                    targetCFrame = part.CFrame + (part.CFrame.LookVector * -9)
+                    humanoidRootPart.CFrame = targetCFrame
+                end
+            end
+            
+            __U[23]()
+    
+            for i, v in __U[7](workspace.GameAI:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Name == "HumanoidRootPart" then
+                    teleportAndFirePrompt(v.Parent)
+                    wait(0.3)
+                    __U[60](v)
+                end
+            end
+            
+            __U[23]()
+            
+            for i, v in __U[7](Workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Name == "RootPart" then
+                __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                    wait(0.3)
+                    __U[60](v)
+                end
+            end
+        end
+    })
+    Tabs.Halloween:AddSection("Map 1")
+    Tabs.Halloween:AddButton({
+        Title = "Auto Win",
+        Description = "",
+        Callback = function()
+            for i, v in __U[7](__VE["WS"]:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Name == "GrabItem" then
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                    __U[23](0.3)
+                    __U[60](v)
+                end
+            end
+            __U[23](1)
+            for i, v in __U[7](__VE["WS"]:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Name == "Burner" then
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                    __U[23](0.3)
+                    __U[60](v)
+                    __U[60](v)
+                    __U[60](v)
+                    __U[60](v)
+                    __U[60](v)
+                end
+            end
+        end
+    })
+    Tabs.Halloween:AddSection("Map 2")
+    Tabs.Halloween:AddButton({
+        Title = "Auto Win",
+        Description = "",
+        Callback = function()
+            success = __Y[2]
+
+            spawn(function()
+                repeat
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](168.59, 45, -119.63)
+                    __U[23]()
+                until success == __Y[1]
+            end)
+            
+            for i, v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Parent.Name == "Candle" then
+                    wait(0.3)
+                    __U[60](v)
+                end
+            end
+            
+            success = __Y[1]
+            __U[23]()
+            success = __Y[2]
+            
+            spawn(function()
+                repeat
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](97.5569, 75, -164.936)
+                    __U[23]()
+                until success == __Y[1]
+            end)
+            
+            for i, v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Parent.Name == "Candle" then
+                    wait(0.3)
+                    __U[60](v)
+                end
+            end
+            
+            success = __Y[1]
+            __U[23]()
+            success = __Y[2]
+            
+            spawn(function()
+                repeat
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](25.9275, 76, -116.628)
+                    __U[23]()
+                until success == __Y[1]
+            end)
+            
+            for i, v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Parent.Name == "Candle" then
+                    wait(0.3)
+                    __U[60](v)
+                end
+            end
+            
+            success = __Y[1]
+            __U[23]()
+            success = __Y[2]
+            __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](42.54,100,-132.39)
+            __U[23]()
+            spawn(function()
+                repeat
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](42.54,60.91,-132.39)
+                    __U[23]()
+                until success == __Y[1]
+            end)
+            
+            for i, v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Parent.Name == "Candle" then
+                    wait(0.3)
+                    __U[60](v)
+                end
+            end
+            
+            success = __Y[1]
+            __U[23]()
+            success = __Y[2]
+            
+            spawn(function()
+                repeat
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](-35.8623, 61, 6.54341)
+                    __U[23]()
+                until success == __Y[1]
+            end)
+            
+            for i, v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Parent.Name == "Candle" then
+                    wait(0.3)
+                    __U[60](v)
+                end
+            end
+            
+            success = __Y[1]
+            __U[23]()
+            success = __Y[2]
+            
+            spawn(function()
+                repeat
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](140.855, 49, -37.8745)
+                    __U[23]()
+                until success == __Y[1]
+            end)
+            
+            for i, v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Parent.Name == "Candle" then
+                    wait(0.3)
+                    __U[60](v)
+                end
+            end
+            
+            success = __Y[1]
+            __U[23]()
+            success = __Y[2]
+            
+            spawn(function()
+                repeat
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](168.327, 55, -119.483)
+                    __U[23]()
+                until success == __Y[1]
+            end)
+            
+            for i, v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Parent.Name == "Candle" then
+                    wait(0.3)
+                    __U[60](v)
+                end
+            end
+            
+            success = __Y[1]
+            __U[23]()
+            success = __Y[2]
+            
+            spawn(function()
+                repeat
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](49.3455, 47, -101.13)
+                    __U[23]()
+                until success == __Y[1]
+            end)
+            
+            for i, v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Parent.Name == "Candle" then
+                    wait(0.3)
+                    __U[60](v)
+                end
+            end
+            
+            success = __Y[1]
+            __U[23]()
+            success = __Y[2]
+            
+            spawn(function()
+                repeat
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](-55.54,83.33,-67.01)
+                    __U[23]()
+                until success == __Y[1]
+            end)
+            
+            for i, v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Parent.Name == "Candle" then
+                    wait(0.3)
+                    __U[60](v)
+                end
+            end
+            
+            success = __Y[1]
+            __U[23]()
+            __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](180.72, 46, -100.54)
+        end
+    })
+    Tabs.Halloween:AddButton({
+        Title = "Full Auto Win",
+        Description = "",
+        Callback = function()
+            repeat
+                __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](180.72, 46, -100.54)
+                __U[23]()
+            until __VE["LPs"].PlayerGui.ScreenGui.TextLabel.Text == "1:30"
+            success = __Y[2]
+            
+            spawn(function()
+                repeat
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](168.59, 45, -119.63)
+                    __U[23]()
+                until success == __Y[1]
+            end)
+            
+            for i, v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Parent.Name == "Candle" then
+                    wait(0.3)
+                    __U[60](v)
+                end
+            end
+            
+            success = __Y[1]
+            __U[23]()
+            success = __Y[2]
+            
+            spawn(function()
+                repeat
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](97.5569, 75, -164.936)
+                    __U[23]()
+                until success == __Y[1]
+            end)
+            
+            for i, v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Parent.Name == "Candle" then
+                    wait(0.3)
+                    __U[60](v)
+                end
+            end
+            
+            success = __Y[1]
+            __U[23]()
+            success = __Y[2]
+            
+            spawn(function()
+                repeat
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](25.9275, 76, -116.628)
+                    __U[23]()
+                until success == __Y[1]
+            end)
+            
+            for i, v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Parent.Name == "Candle" then
+                    wait(0.3)
+                    __U[60](v)
+                end
+            end
+            
+            success = __Y[1]
+            __U[23]()
+            success = __Y[2]
+            __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](42.54,100,-132.39)
+            __U[23]()
+            spawn(function()
+                repeat
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](42.54,60.91,-132.39)
+                    __U[23]()
+                until success == __Y[1]
+            end)
+            
+            for i, v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Parent.Name == "Candle" then
+                    wait(0.3)
+                    __U[60](v)
+                end
+            end
+            
+            success = __Y[1]
+            __U[23]()
+            success = __Y[2]
+            
+            spawn(function()
+                repeat
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](-35.8623, 61, 6.54341)
+                    __U[23]()
+                until success == __Y[1]
+            end)
+            
+            for i, v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Parent.Name == "Candle" then
+                    wait(0.3)
+                    __U[60](v)
+                end
+            end
+            
+            success = __Y[1]
+            __U[23]()
+            success = __Y[2]
+            
+            spawn(function()
+                repeat
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](140.855, 49, -37.8745)
+                    __U[23]()
+                until success == __Y[1]
+            end)
+            
+            for i, v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Parent.Name == "Candle" then
+                    wait(0.3)
+                    __U[60](v)
+                end
+            end
+            
+            success = __Y[1]
+            __U[23]()
+            success = __Y[2]
+            
+            spawn(function()
+                repeat
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](168.327, 55, -119.483)
+                    __U[23]()
+                until success == __Y[1]
+            end)
+            
+            for i, v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Parent.Name == "Candle" then
+                    wait(0.3)
+                    __U[60](v)
+                end
+            end
+            
+            success = __Y[1]
+            __U[23]()
+            success = __Y[2]
+            
+            spawn(function()
+                repeat
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](49.3455, 47, -101.13)
+                    __U[23]()
+                until success == __Y[1]
+            end)
+            
+            for i, v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Parent.Name == "Candle" then
+                    wait(0.3)
+                    __U[60](v)
+                end
+            end
+            
+            success = __Y[1]
+            __U[23]()
+            success = __Y[2]
+            
+            spawn(function()
+                repeat
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](-55.54,83.33,-67.01)
+                    __U[23]()
+                until success == __Y[1]
+            end)
+            
+            for i, v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Parent.Name == "Candle" then
+                    wait(0.3)
+                    __U[60](v)
+                end
+            end
+            
+            success = __Y[1]
+            __U[23]()
+            success = __Y[2]
+            
+            spawn(function()
+                repeat
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](-33.94,66.47,6.76)
+                    __U[23]()
+                until success == __Y[1]
+            end)
+            
+            for i, v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Parent.Name == "Candle" then
+                    wait(0.3)
+                    __U[60](v)
+                end
+            end
+            
+            success = __Y[1]
+            __U[23]()
+            __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](180.72, 46, -100.54)
+            repeat
+            __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](180.72, 46, -100.54)
+            __U[23]()
+            until __VE["LPs"].PlayerGui.ScreenGui.TextLabel.Text == "1:30"
+            success = __Y[2]
+            
+            spawn(function()
+                repeat
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](168.59, 45, -119.63)
+                    __U[23]()
+                until success == __Y[1]
+            end)
+            
+            for i, v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Parent.Name == "Candle" then
+                    wait(0.3)
+                    __U[60](v)
+                end
+            end
+            
+            success = __Y[1]
+            __U[23]()
+            success = __Y[2]
+            
+            spawn(function()
+                repeat
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](97.5569, 75, -164.936)
+                    __U[23]()
+                until success == __Y[1]
+            end)
+            
+            for i, v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Parent.Name == "Candle" then
+                    wait(0.3)
+                    __U[60](v)
+                end
+            end
+            
+            success = __Y[1]
+            __U[23]()
+            success = __Y[2]
+            
+            spawn(function()
+                repeat
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](25.9275, 76, -116.628)
+                    __U[23]()
+                until success == __Y[1]
+            end)
+            
+            for i, v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Parent.Name == "Candle" then
+                    wait(0.3)
+                    __U[60](v)
+                end
+            end
+            
+            success = __Y[1]
+            __U[23]()
+            success = __Y[2]
+            __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](42.54,100,-132.39)
+            __U[23]()
+            spawn(function()
+                repeat
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](42.54,60.91,-132.39)
+                    __U[23]()
+                until success == __Y[1]
+            end)
+            
+            for i, v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Parent.Name == "Candle" then
+                    wait(0.3)
+                    __U[60](v)
+                end
+            end
+            
+            success = __Y[1]
+            __U[23]()
+            success = __Y[2]
+            
+            spawn(function()
+                repeat
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](-35.8623, 61, 6.54341)
+                    __U[23]()
+                until success == __Y[1]
+            end)
+            
+            for i, v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Parent.Name == "Candle" then
+                    wait(0.3)
+                    __U[60](v)
+                end
+            end
+            
+            success = __Y[1]
+            __U[23]()
+            success = __Y[2]
+            
+            spawn(function()
+                repeat
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](140.855, 49, -37.8745)
+                    __U[23]()
+                until success == __Y[1]
+            end)
+            
+            for i, v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Parent.Name == "Candle" then
+                    wait(0.3)
+                    __U[60](v)
+                end
+            end
+            
+            success = __Y[1]
+            __U[23]()
+            success = __Y[2]
+            
+            spawn(function()
+                repeat
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](168.327, 55, -119.483)
+                    __U[23]()
+                until success == __Y[1]
+            end)
+            
+            for i, v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Parent.Name == "Candle" then
+                    wait(0.3)
+                    __U[60](v)
+                end
+            end
+            
+            success = __Y[1]
+            __U[23]()
+            success = __Y[2]
+            
+            spawn(function()
+                repeat
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](49.3455, 47, -101.13)
+                    __U[23]()
+                until success == __Y[1]
+            end)
+            
+            for i, v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Parent.Name == "Candle" then
+                    wait(0.3)
+                    __U[60](v)
+                end
+            end
+            
+            success = __Y[1]
+            __U[23]()
+            success = __Y[2]
+            
+            spawn(function()
+                repeat
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](-55.54,83.33,-67.01)
+                    __U[23]()
+                until success == __Y[1]
+            end)
+            
+            for i, v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Parent.Name == "Candle" then
+                    wait(0.3)
+                    __U[60](v)
+                end
+            end
+            
+            success = __Y[1]
+            __U[23]()
+            success = __Y[2]
+            
+            spawn(function()
+                repeat
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](-33.94,66.47,6.76)
+                    __U[23]()
+                until success == __Y[1]
+            end)
+            
+            for i, v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Parent.Name == "Candle" then
+                    wait(0.3)
+                    __U[60](v)
+                end
+            end
+            
+            success = __Y[1]
+            __U[23]()
+            __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](180.72, 46, -100.54)
+            repeat
+            __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](180.72, 46, -100.54)
+            __U[23]()
+            until __VE["LPs"].PlayerGui.ScreenGui.TextLabel.Text == "1:30"
+            success = __Y[2]
+            
+            spawn(function()
+                repeat
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](168.59, 45, -119.63)
+                    __U[23]()
+                until success == __Y[1]
+            end)
+            
+            for i, v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Parent.Name == "Candle" then
+                    wait(0.3)
+                    __U[60](v)
+                end
+            end
+            
+            success = __Y[1]
+            __U[23]()
+            success = __Y[2]
+            
+            spawn(function()
+                repeat
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](97.5569, 75, -164.936)
+                    __U[23]()
+                until success == __Y[1]
+            end)
+            
+            for i, v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Parent.Name == "Candle" then
+                    wait(0.3)
+                    __U[60](v)
+                end
+            end
+            
+            success = __Y[1]
+            __U[23]()
+            success = __Y[2]
+            
+            spawn(function()
+                repeat
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](25.9275, 76, -116.628)
+                    __U[23]()
+                until success == __Y[1]
+            end)
+            
+            for i, v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Parent.Name == "Candle" then
+                    wait(0.3)
+                    __U[60](v)
+                end
+            end
+            
+            success = __Y[1]
+            __U[23]()
+            success = __Y[2]
+            __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](42.54,100,-132.39)
+            __U[23]()
+            spawn(function()
+                repeat
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](42.54,60.91,-132.39)
+                    __U[23]()
+                until success == __Y[1]
+            end)
+            
+            for i, v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Parent.Name == "Candle" then
+                    wait(0.3)
+                    __U[60](v)
+                end
+            end
+            
+            success = __Y[1]
+            __U[23]()
+            success = __Y[2]
+            
+            spawn(function()
+                repeat
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](-35.8623, 61, 6.54341)
+                    __U[23]()
+                until success == __Y[1]
+            end)
+            
+            for i, v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Parent.Name == "Candle" then
+                    wait(0.3)
+                    __U[60](v)
+                end
+            end
+            
+            success = __Y[1]
+            __U[23]()
+            success = __Y[2]
+            
+            spawn(function()
+                repeat
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](140.855, 49, -37.8745)
+                    __U[23]()
+                until success == __Y[1]
+            end)
+            
+            for i, v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Parent.Name == "Candle" then
+                    wait(0.3)
+                    __U[60](v)
+                end
+            end
+            
+            success = __Y[1]
+            __U[23]()
+            success = __Y[2]
+            
+            spawn(function()
+                repeat
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](168.327, 55, -119.483)
+                    __U[23]()
+                until success == __Y[1]
+            end)
+            
+            for i, v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Parent.Name == "Candle" then
+                    wait(0.3)
+                    __U[60](v)
+                end
+            end
+            
+            success = __Y[1]
+            __U[23]()
+            success = __Y[2]
+            
+            spawn(function()
+                repeat
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](49.3455, 47, -101.13)
+                    __U[23]()
+                until success == __Y[1]
+            end)
+            
+            for i, v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Parent.Name == "Candle" then
+                    wait(0.3)
+                    __U[60](v)
+                end
+            end
+            
+            success = __Y[1]
+            __U[23]()
+            success = __Y[2]
+            
+            spawn(function()
+                repeat
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](-55.54,83.33,-67.01)
+                    __U[23]()
+                until success == __Y[1]
+            end)
+            
+            for i, v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Parent.Name == "Candle" then
+                    wait(0.3)
+                    __U[60](v)
+                end
+            end
+            
+            success = __Y[1]
+            __U[23]()
+            success = __Y[2]
+            
+            spawn(function()
+                repeat
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](-33.94,66.47,6.76)
+                    __U[23]()
+                until success == __Y[1]
+            end)
+            
+            for i, v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Parent.Name == "Candle" then
+                    wait(0.3)
+                    __U[60](v)
+                end
+            end
+            
+            success = __Y[1]
+            __U[23]()
+            __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](180.72, 46, -100.54)
+            repeat
+            __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](180.72, 46, -100.54)
+            __U[23]()
+            until __VE["LPs"].PlayerGui.ScreenGui.TextLabel.Text == "1:30"
+            success = __Y[2]
+            
+            spawn(function()
+                repeat
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](168.59, 45, -119.63)
+                    __U[23]()
+                until success == __Y[1]
+            end)
+            
+            for i, v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Parent.Name == "Candle" then
+                    wait(0.3)
+                    __U[60](v)
+                end
+            end
+            
+            success = __Y[1]
+            __U[23]()
+            success = __Y[2]
+            
+            spawn(function()
+                repeat
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](97.5569, 75, -164.936)
+                    __U[23]()
+                until success == __Y[1]
+            end)
+            
+            for i, v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Parent.Name == "Candle" then
+                    wait(0.3)
+                    __U[60](v)
+                end
+            end
+            
+            success = __Y[1]
+            __U[23]()
+            success = __Y[2]
+            
+            spawn(function()
+                repeat
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](25.9275, 76, -116.628)
+                    __U[23]()
+                until success == __Y[1]
+            end)
+            
+            for i, v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Parent.Name == "Candle" then
+                    wait(0.3)
+                    __U[60](v)
+                end
+            end
+            
+            success = __Y[1]
+            __U[23]()
+            success = __Y[2]
+            __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](42.54,100,-132.39)
+            __U[23]()
+            spawn(function()
+                repeat
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](42.54,60.91,-132.39)
+                    __U[23]()
+                until success == __Y[1]
+            end)
+            
+            for i, v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Parent.Name == "Candle" then
+                    wait(0.3)
+                    __U[60](v)
+                end
+            end
+            
+            success = __Y[1]
+            __U[23]()
+            success = __Y[2]
+            
+            spawn(function()
+                repeat
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](-35.8623, 61, 6.54341)
+                    __U[23]()
+                until success == __Y[1]
+            end)
+            
+            for i, v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Parent.Name == "Candle" then
+                    wait(0.3)
+                    __U[60](v)
+                end
+            end
+            
+            success = __Y[1]
+            __U[23]()
+            success = __Y[2]
+            
+            spawn(function()
+                repeat
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](140.855, 49, -37.8745)
+                    __U[23]()
+                until success == __Y[1]
+            end)
+            
+            for i, v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Parent.Name == "Candle" then
+                    wait(0.3)
+                    __U[60](v)
+                end
+            end
+            
+            success = __Y[1]
+            __U[23]()
+            success = __Y[2]
+            
+            spawn(function()
+                repeat
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](168.327, 55, -119.483)
+                    __U[23]()
+                until success == __Y[1]
+            end)
+            
+            for i, v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Parent.Name == "Candle" then
+                    wait(0.3)
+                    __U[60](v)
+                end
+            end
+            
+            success = __Y[1]
+            __U[23]()
+            success = __Y[2]
+            
+            spawn(function()
+                repeat
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](49.3455, 47, -101.13)
+                    __U[23]()
+                until success == __Y[1]
+            end)
+            
+            for i, v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Parent.Name == "Candle" then
+                    wait(0.3)
+                    __U[60](v)
+                end
+            end
+            
+            success = __Y[1]
+            __U[23]()
+            success = __Y[2]
+            
+            spawn(function()
+                repeat
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](-55.54,83.33,-67.01)
+                    __U[23]()
+                until success == __Y[1]
+            end)
+            
+            for i, v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Parent.Name == "Candle" then
+                    wait(0.3)
+                    __U[60](v)
+                end
+            end
+            
+            success = __Y[1]
+            __U[23]()
+            success = __Y[2]
+            
+            spawn(function()
+                repeat
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](-33.94,66.47,6.76)
+                    __U[23]()
+                until success == __Y[1]
+            end)
+            
+            for i, v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Parent.Name == "Candle" then
+                    wait(0.3)
+                    __U[60](v)
+                end
+            end
+            
+            success = __Y[1]
+            __U[23]()
+            __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](180.72, 46, -100.54)
+            repeat
+            __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](180.72, 46, -100.54)
+            __U[23]()
+            until __VE["LPs"].PlayerGui.ScreenGui.TextLabel.Text == "1:30"
+            success = __Y[2]
+            
+            spawn(function()
+                repeat
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](168.59, 45, -119.63)
+                    __U[23]()
+                until success == __Y[1]
+            end)
+            
+            for i, v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Parent.Name == "Candle" then
+                    wait(0.3)
+                    __U[60](v)
+                end
+            end
+            
+            success = __Y[1]
+            __U[23]()
+            success = __Y[2]
+            
+            spawn(function()
+                repeat
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](97.5569, 75, -164.936)
+                    __U[23]()
+                until success == __Y[1]
+            end)
+            
+            for i, v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Parent.Name == "Candle" then
+                    wait(0.3)
+                    __U[60](v)
+                end
+            end
+            
+            success = __Y[1]
+            __U[23]()
+            success = __Y[2]
+            
+            spawn(function()
+                repeat
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](25.9275, 76, -116.628)
+                    __U[23]()
+                until success == __Y[1]
+            end)
+            
+            for i, v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Parent.Name == "Candle" then
+                    wait(0.3)
+                    __U[60](v)
+                end
+            end
+            
+            success = __Y[1]
+            __U[23]()
+            success = __Y[2]
+            __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](42.54,100,-132.39)
+            __U[23]()
+            spawn(function()
+                repeat
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](42.54,60.91,-132.39)
+                    __U[23]()
+                until success == __Y[1]
+            end)
+            
+            for i, v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Parent.Name == "Candle" then
+                    wait(0.3)
+                    __U[60](v)
+                end
+            end
+            
+            success = __Y[1]
+            __U[23]()
+            success = __Y[2]
+            
+            spawn(function()
+                repeat
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](-35.8623, 61, 6.54341)
+                    __U[23]()
+                until success == __Y[1]
+            end)
+            
+            for i, v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Parent.Name == "Candle" then
+                    wait(0.3)
+                    __U[60](v)
+                end
+            end
+            
+            success = __Y[1]
+            __U[23]()
+            success = __Y[2]
+            
+            spawn(function()
+                repeat
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](140.855, 49, -37.8745)
+                    __U[23]()
+                until success == __Y[1]
+            end)
+            
+            for i, v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Parent.Name == "Candle" then
+                    wait(0.3)
+                    __U[60](v)
+                end
+            end
+            
+            success = __Y[1]
+            __U[23]()
+            success = __Y[2]
+            
+            spawn(function()
+                repeat
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](168.327, 55, -119.483)
+                    __U[23]()
+                until success == __Y[1]
+            end)
+            
+            for i, v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Parent.Name == "Candle" then
+                    wait(0.3)
+                    __U[60](v)
+                end
+            end
+            
+            success = __Y[1]
+            __U[23]()
+            success = __Y[2]
+            
+            spawn(function()
+                repeat
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](49.3455, 47, -101.13)
+                    __U[23]()
+                until success == __Y[1]
+            end)
+            
+            for i, v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Parent.Name == "Candle" then
+                    wait(0.3)
+                    __U[60](v)
+                end
+            end
+            
+            success = __Y[1]
+            __U[23]()
+            success = __Y[2]
+            
+            spawn(function()
+                repeat
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](-55.54,83.33,-67.01)
+                    __U[23]()
+                until success == __Y[1]
+            end)
+            
+            for i, v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Parent.Name == "Candle" then
+                    wait(0.3)
+                    __U[60](v)
+                end
+            end
+            
+            success = __Y[1]
+            __U[23]()
+            success = __Y[2]
+            
+            spawn(function()
+                repeat
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](-33.94,66.47,6.76)
+                    __U[23]()
+                until success == __Y[1]
+            end)
+            
+            for i, v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Parent.Name == "Candle" then
+                    wait(0.3)
+                    __U[60](v)
+                end
+            end
+            
+            success = __Y[1]
+            __U[23]()
+            __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](180.72, 46, -100.54)
+            repeat
+            __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](180.72, 46, -100.54)
+            __U[23]()
+            until __VE["LPs"].PlayerGui.ScreenGui.TextLabel.Text == "1:30"
+            success = __Y[2]
+            
+            spawn(function()
+                repeat
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](168.59, 45, -119.63)
+                    __U[23]()
+                until success == __Y[1]
+            end)
+            
+            for i, v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Parent.Name == "Candle" then
+                    wait(0.3)
+                    __U[60](v)
+                end
+            end
+            
+            success = __Y[1]
+            __U[23]()
+            success = __Y[2]
+            
+            spawn(function()
+                repeat
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](97.5569, 75, -164.936)
+                    __U[23]()
+                until success == __Y[1]
+            end)
+            
+            for i, v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Parent.Name == "Candle" then
+                    wait(0.3)
+                    __U[60](v)
+                end
+            end
+            
+            success = __Y[1]
+            __U[23]()
+            success = __Y[2]
+            
+            spawn(function()
+                repeat
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](25.9275, 76, -116.628)
+                    __U[23]()
+                until success == __Y[1]
+            end)
+            
+            for i, v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Parent.Name == "Candle" then
+                    wait(0.3)
+                    __U[60](v)
+                end
+            end
+            
+            success = __Y[1]
+            __U[23]()
+            success = __Y[2]
+            __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](42.54,100,-132.39)
+            __U[23]()
+            spawn(function()
+                repeat
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](42.54,60.91,-132.39)
+                    __U[23]()
+                until success == __Y[1]
+            end)
+            
+            for i, v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Parent.Name == "Candle" then
+                    wait(0.3)
+                    __U[60](v)
+                end
+            end
+            
+            success = __Y[1]
+            __U[23]()
+            success = __Y[2]
+            
+            spawn(function()
+                repeat
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](-35.8623, 61, 6.54341)
+                    __U[23]()
+                until success == __Y[1]
+            end)
+            
+            for i, v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Parent.Name == "Candle" then
+                    wait(0.3)
+                    __U[60](v)
+                end
+            end
+            
+            success = __Y[1]
+            __U[23]()
+            success = __Y[2]
+            
+            spawn(function()
+                repeat
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](140.855, 49, -37.8745)
+                    __U[23]()
+                until success == __Y[1]
+            end)
+            
+            for i, v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Parent.Name == "Candle" then
+                    wait(0.3)
+                    __U[60](v)
+                end
+            end
+            
+            success = __Y[1]
+            __U[23]()
+            success = __Y[2]
+            
+            spawn(function()
+                repeat
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](168.327, 55, -119.483)
+                    __U[23]()
+                until success == __Y[1]
+            end)
+            
+            for i, v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Parent.Name == "Candle" then
+                    wait(0.3)
+                    __U[60](v)
+                end
+            end
+            
+            success = __Y[1]
+            __U[23]()
+            success = __Y[2]
+            
+            spawn(function()
+                repeat
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](49.3455, 47, -101.13)
+                    __U[23]()
+                until success == __Y[1]
+            end)
+            
+            for i, v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Parent.Name == "Candle" then
+                    wait(0.3)
+                    __U[60](v)
+                end
+            end
+            
+            success = __Y[1]
+            __U[23]()
+            success = __Y[2]
+            
+            spawn(function()
+                repeat
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](-55.54,83.33,-67.01)
+                    __U[23]()
+                until success == __Y[1]
+            end)
+            
+            for i, v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Parent.Name == "Candle" then
+                    wait(0.3)
+                    __U[60](v)
+                end
+            end
+            
+            success = __Y[1]
+            __U[23]()
+            success = __Y[2]
+            
+            spawn(function()
+                repeat
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](-33.94,66.47,6.76)
+                    __U[23]()
+                until success == __Y[1]
+            end)
+            
+            for i, v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Parent.Name == "Candle" then
+                    wait(0.3)
+                    __U[60](v)
+                end
+            end
+            
+            success = __Y[1]
+            __U[23]()
+            __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](180.72, 46, -100.54)
+        end
+    })
+    Tabs.Halloween:AddSection("Map 3")
+    Tabs.Halloween:AddButton({
+        Title = "Auto Win",
+        Description = "Singleplayer",
+        Callback = function()
+            for i, v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") then
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                    __U[23](0.3)
+                    __U[60](v)
+                    __U[23]()
+                end
+            end
+        end
+    })
+    Tabs.Halloween:AddButton({
+        Title = "Auto Win",
+        Description = "Mutiplayer",
+        Callback = function()
+            for i, v in __U[7](Workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Name == "Core" then
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                    __U[23](0.3)
+                    __U[60](v)
+                end
+            end
+        end
+    })
+    Tabs.Halloween:AddButton({
+        Title = "Full Auto Win",
+        Description = "Mutiplayer",
+        Callback = function()
+            while __U[23]() and not CustomFirePropmt do
+                repeat
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](568.2, 500, -210.73)
+                    __U[23]()
+                until __VE["LPs"].PlayerGui.Timer.TextLabel.Text == "1:50"
+                for i, v in __U[7](Workspace:GetDescendants()) do
+                    if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart") and v.Parent.Name == "Core" then
+                        repeat
+                            __U[6](function()
+                                __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                                __U[23](0.3)
+                                __U[60](v)
+                            end)
+                            __U[23]()
+                        until not v.Enabled
+                    end
+                end
+                __U[23]()
+            end
+        end
+    })
+    Tabs.NMCS:AddSection("Jukebox")
+    Tabs.NMCS:AddButton({
+        Title = "Skip",
+        Description = "Then do the cards",
+        Callback = function()
+            __VE["LPs"].Character.HumanoidRootPart.CFrame = workspace.Section2.Cutscene.CutsceneMagician.WorldPivot
+        end
+    })
+    Tabs.NMCS:AddButton({
+        Title = "Enter Zone",
+        Description = "Then do the cards",
+        Callback = function()
+            Tp(-2568.51929, 36.4062042, 466.819244, __Y[3])
+        end
+    })
+    Tabs.NMCS:AddButton({
+        Title = "Auto Win",
+        Description = "Look up",
+        Callback = function()
+            Float = __Y[1]
+            for i, v in __U[7](Workspace:GetDescendants()) do
+                if v.Name == "RootPart" and v.Parent.Name == "JackBox" then
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = v.CFrame * __U[26](0,-4,0)
+                    __U[23](1)
+                    keyPress(Enum.KeyCode.E, __Y[1])
+                    __U[23](7)
+                end
+            end
+            __U[23](3)
+            Float = __Y[2]
+        end
+    })
+    Tabs.NMCS:AddSection("Cards")
+    Tabs.NMCS:AddButton({
+        Title = "Auto Cards",
+        Description = "Look up",
+        Callback = function()
+            for i,v in __U[7](game:GetService("Workspace"):GetChildren()) do 
+                if v.Name == "stage" then 
+                    v:Destroy(__Y[1])
+                end 
+            end
+            for i,v in __U[7](Workspace:GetDescendants()) do
+                if v.Parent.Name == "PassCode" then
+                    for x,c in __U[7](Workspace:GetDescendants()) do
+                        if c.Parent.Name == "Cards" then
+                            if c.Order.SurfaceGui.TextLabel.Text == v.Name then
+                                __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](v.CFrame.Position)
+                                repeat
+                                __U[60](v.PROMPT)
+                                __U[23](0.5)
+                                until v[c.Name].Transparency == 0
+                            end
+                        end
+                    end
+                end
+            end
+        end
+    })
+    Tabs.NMCS:AddButton({
+        Title = "Reveal Cards",
+        Description = "",
+        Callback = function()
+            function createMenu()
+                if not __VE["LPs"].PlayerGui:FindFirstChild("idk") then
+                    local idk = __U[35]("ScreenGui")
+                    local Frame = __U[35]("Frame")
+                    local UICorner = __U[35]("UICorner")
+                    local _2 = __U[35]("Frame")
+                    local UICorner_2 = __U[35]("UICorner")
+                    local ImageLabel = __U[35]("ImageLabel")
+                    local _6 = __U[35]("Frame")
+                    local UICorner_3 = __U[35]("UICorner")
+                    local ImageLabel_2 = __U[35]("ImageLabel")
+                    local _5 = __U[35]("Frame")
+                    local UICorner_4 = __U[35]("UICorner")
+                    local ImageLabel_3 = __U[35]("ImageLabel")
+                    local _3 = __U[35]("Frame")
+                    local UICorner_5 = __U[35]("UICorner")
+                    local ImageLabel_4 = __U[35]("ImageLabel")
+                    local _4 = __U[35]("Frame")
+                    local UICorner_6 = __U[35]("UICorner")
+                    local ImageLabel_5 = __U[35]("ImageLabel")
+                    local _1 = __U[35]("Frame")
+                    local UICorner_7 = __U[35]("UICorner")
+                    local ImageLabel_6 = __U[35]("ImageLabel")
+                    local _1t = __U[35]("TextLabel")
+                    local _2t = __U[35]("TextLabel")
+                    local _3t = __U[35]("TextLabel")
+                    local _4t = __U[35]("TextLabel")
+                    local _5t = __U[35]("TextLabel")
+                    local _6t = __U[35]("TextLabel")
+                    
+                    idk.Name = "idk"
+                    idk.Parent = __VE["LPs"]:WaitForChild("PlayerGui")
+                    idk.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+                    
+                    Frame.Parent = __VE["LPs"].PlayerGui.idk
+                    Frame.BackgroundColor3 = __U[36](40, 40, 40)
+                    Frame.BorderColor3 = __U[36](0, 0, 0)
+                    Frame.BorderSizePixel = 0
+                    Frame.Position = __U[27](0.00827690028, 0, 0.0244754981, 0)
+                    Frame.Size = __U[27](0, 590, 0, 156)
+            
+                    UICorner.CornerRadius = UDim.new(0, 10)
+                    UICorner.Parent = Frame
+            
+                    _2.Name = "2"
+                    _2.Parent = Frame
+                    _2.BackgroundColor3 = __U[36](25, 25, 25)
+                    _2.BorderColor3 = __U[36](0, 0, 0)
+                    _2.BorderSizePixel = 0
+                    _2.Position = __U[27](0.189877644, 0, 0.164706007, 0)
+                    _2.Size = __U[27](0, 75, 0, 118)
+                    _2.ZIndex = 6
+            
+                    UICorner_2.CornerRadius = UDim.new(0, 10)
+                    UICorner_2.Parent = _2
+            
+                    ImageLabel.Parent = _2
+                    ImageLabel.BackgroundColor3 = __U[36](255, 255, 255)
+                    ImageLabel.BorderColor3 = __U[36](0, 0, 0)
+                    ImageLabel.BorderSizePixel = 0
+                    ImageLabel.Position = __U[27](-1.0579427e-05, 0, 0, 0)
+                    ImageLabel.Size = __U[27](0, 75, 0, 118)
+                    ImageLabel.Image = "rbxasset://textures/ui/GuiImagePlaceholder.png"
+            
+                    _6.Name = "6"
+                    _6.Parent = Frame
+                    _6.BackgroundColor3 = __U[36](25, 25, 25)
+                    _6.BorderColor3 = __U[36](0, 0, 0)
+                    _6.BorderSizePixel = 0
+                    _6.Position = __U[27](0.839581668, 0, 0.164706007, 0)
+                    _6.Size = __U[27](0, 75, 0, 118)
+                    _6.ZIndex = 3
+            
+                    UICorner_3.CornerRadius = UDim.new(0, 10)
+                    UICorner_3.Parent = _6
+            
+                    ImageLabel_2.Parent = _6
+                    ImageLabel_2.BackgroundColor3 = __U[36](255, 255, 255)
+                    ImageLabel_2.BorderColor3 = __U[36](0, 0, 0)
+                    ImageLabel_2.BorderSizePixel = 0
+                    ImageLabel_2.Position = __U[27](-4.72005195e-05, 0, 0, 0)
+                    ImageLabel_2.Size = __U[27](0, 75, 0, 118)
+                    ImageLabel_2.Image = "rbxasset://textures/ui/GuiImagePlaceholder.png"
+            
+                    _5.Name = "5"
+                    _5.Parent = Frame
+                    _5.BackgroundColor3 = __U[36](25, 25, 25)
+                    _5.BorderColor3 = __U[36](0, 0, 0)
+                    _5.BorderSizePixel = 0
+                    _5.Position = __U[27](0.680917144, 0, 0.164706007, 0)
+                    _5.Size = __U[27](0, 75, 0, 118)
+                    _5.ZIndex = 3
+            
+                    UICorner_4.CornerRadius = UDim.new(0, 10)
+                    UICorner_4.Parent = _5
+            
+                    ImageLabel_3.Parent = _5
+                    ImageLabel_3.BackgroundColor3 = __U[36](255, 255, 255)
+                    ImageLabel_3.BorderColor3 = __U[36](0, 0, 0)
+                    ImageLabel_3.BorderSizePixel = 0
+                    ImageLabel_3.Position = __U[27](-3.82486978e-05, 0, 0, 0)
+                    ImageLabel_3.Size = __U[27](0, 75, 0, 118)
+                    ImageLabel_3.Image = "rbxasset://textures/ui/GuiImagePlaceholder.png"
+            
+                    _3.Name = "3"
+                    _3.Parent = Frame
+                    _3.BackgroundColor3 = __U[36](25, 25, 25)
+                    _3.BorderColor3 = __U[36](0, 0, 0)
+                    _3.BorderSizePixel = 0
+                    _3.Position = __U[27](0.348542094, 0, 0.17058827, 0)
+                    _3.Size = __U[27](0, 75, 0, 118)
+                    _3.ZIndex = 6
+            
+                    UICorner_5.CornerRadius = UDim.new(0, 10)
+                    UICorner_5.Parent = _3
+            
+                    ImageLabel_4.Parent = _3
+                    ImageLabel_4.BackgroundColor3 = __U[36](255, 255, 255)
+                    ImageLabel_4.BorderColor3 = __U[36](0, 0, 0)
+                    ImageLabel_4.BorderSizePixel = 0
+                    ImageLabel_4.Position = __U[27](-1.95312496e-05, 0, 0, 0)
+                    ImageLabel_4.Size = __U[27](0, 75, 0, 118)
+                    ImageLabel_4.Image = "rbxasset://textures/ui/GuiImagePlaceholder.png"
+            
+                    _4.Name = "4"
+                    _4.Parent = Frame
+                    _4.BackgroundColor3 = __U[36](25, 25, 25)
+                    _4.BorderColor3 = __U[36](0, 0, 0)
+                    _4.BorderSizePixel = 0
+                    _4.Position = __U[27](0.513526142, 0, 0.171059042, 0)
+                    _4.Size = __U[27](0, 75, 0, 118)
+                    _4.ZIndex = 6
+            
+                    UICorner_6.CornerRadius = UDim.new(0, 10)
+                    UICorner_6.Parent = _4
+            
+                    ImageLabel_5.Parent = _4
+                    ImageLabel_5.BackgroundColor3 = __U[36](255, 255, 255)
+                    ImageLabel_5.BorderColor3 = __U[36](0, 0, 0)
+                    ImageLabel_5.BorderSizePixel = 0
+                    ImageLabel_5.Position = __U[27](-2.76692717e-05, 0, 0, 0)
+                    ImageLabel_5.Size = __U[27](0, 75, 0, 118)
+                    ImageLabel_5.Image = "rbxasset://textures/ui/GuiImagePlaceholder.png"
+            
+                    _1.Name = "1"
+                    _1.Parent = Frame
+                    _1.BackgroundColor3 = __U[36](25, 25, 25)
+                    _1.BorderColor3 = __U[36](0, 0, 0)
+                    _1.BorderSizePixel = 0
+                    _1.Position = __U[27](0.0312131681, 0, 0.164706007, 0)
+                    _1.Size = __U[27](0, 75, 0, 118)
+                    _1.ZIndex = 6
+            
+                    UICorner_7.CornerRadius = UDim.new(0, 10)
+                    UICorner_7.Parent = _1
+            
+                    ImageLabel_6.Parent = _1
+                    ImageLabel_6.BackgroundColor3 = __U[36](255, 255, 255)
+                    ImageLabel_6.BorderColor3 = __U[36](0, 0, 0)
+                    ImageLabel_6.BorderSizePixel = 0
+                    ImageLabel_6.Position = __U[27](-1.72932948e-06, 0, 0, 0)
+                    ImageLabel_6.Size = __U[27](0, 75, 0, 118)
+                    ImageLabel_6.Image = "rbxasset://textures/ui/GuiImagePlaceholder.png"
+            
+                    _1t.Name = "1t"
+                    _1t.Parent = Frame
+                    _1t.BackgroundColor3 = __U[36](255, 255, 255)
+                    _1t.BackgroundTransparency = 1.000
+                    _1t.BorderColor3 = __U[36](0, 0, 0)
+                    _1t.BorderSizePixel = 0
+                    _1t.Position = __U[27](0.0312131681, 0, 5.50196724e-08, 0)
+                    _1t.Size = __U[27](0, 75, 0, 25)
+                    _1t.Font = Enum.Font.SourceSansBold
+                    _1t.Text = "1"
+                    _1t.TextColor3 = __U[36](255, 255, 255)
+                    _1t.TextSize = 21.000
+            
+                    _2t.Name = "2t"
+                    _2t.Parent = Frame
+                    _2t.BackgroundColor3 = __U[36](255, 255, 255)
+                    _2t.BackgroundTransparency = 1.000
+                    _2t.BorderColor3 = __U[36](0, 0, 0)
+                    _2t.BorderSizePixel = 0
+                    _2t.Position = __U[27](0.188921273, 0, 5.50196724e-08, 0)
+                    _2t.Size = __U[27](0, 75, 0, 25)
+                    _2t.Font = Enum.Font.SourceSansBold
+                    _2t.Text = "2"
+                    _2t.TextColor3 = __U[36](255, 255, 255)
+                    _2t.TextSize = 21.000
+            
+                    _3t.Name = "3t"
+                    _3t.Parent = Frame
+                    _3t.BackgroundColor3 = __U[36](255, 255, 255)
+                    _3t.BackgroundTransparency = 1.000
+                    _3t.BorderColor3 = __U[36](0, 0, 0)
+                    _3t.BorderSizePixel = 0
+                    _3t.Position = __U[27](0.348272145, 0, 0.00588241592, 0)
+                    _3t.Size = __U[27](0, 75, 0, 25)
+                    _3t.Font = Enum.Font.SourceSansBold
+                    _3t.Text = "3"
+                    _3t.TextColor3 = __U[36](255, 255, 255)
+                    _3t.TextSize = 21.000
+            
+                    _4t.Name = "4t"
+                    _4t.Parent = Frame
+                    _4t.BackgroundColor3 = __U[36](255, 255, 255)
+                    _4t.BackgroundTransparency = 1.000
+                    _4t.BorderColor3 = __U[36](0, 0, 0)
+                    _4t.BorderSizePixel = 0
+                    _4t.Position = __U[27](0.512551308, 0, 0.00588241592, 0)
+                    _4t.Size = __U[27](0, 75, 0, 25)
+                    _4t.Font = Enum.Font.SourceSansBold
+                    _4t.Text = "4"
+                    _4t.TextColor3 = __U[36](255, 255, 255)
+                    _4t.TextSize = 21.000
+            
+                    _5t.Name = "5t"
+                    _5t.Parent = Frame
+                    _5t.BackgroundColor3 = __U[36](255, 255, 255)
+                    _5t.BackgroundTransparency = 1.000
+                    _5t.BorderColor3 = __U[36](0, 0, 0)
+                    _5t.BorderSizePixel = 0
+                    _5t.Position = __U[27](0.680116177, 0, 0.00588241592, 0)
+                    _5t.Size = __U[27](0, 75, 0, 25)
+                    _5t.Font = Enum.Font.SourceSansBold
+                    _5t.Text = "5"
+                    _5t.TextColor3 = __U[36](255, 255, 255)
+                    _5t.TextSize = 21.000
+            
+                    _6t.Name = "6t"
+                    _6t.Parent = Frame
+                    _6t.BackgroundColor3 = __U[36](255, 255, 255)
+                    _6t.BackgroundTransparency = 1.000
+                    _6t.BorderColor3 = __U[36](0, 0, 0)
+                    _6t.BorderSizePixel = 0
+                    _6t.Position = __U[27](0.839467049, 0, 5.50196724e-08, 0)
+                    _6t.Size = __U[27](0, 75, 0, 25)
+                    _6t.Font = Enum.Font.SourceSansBold
+                    _6t.Text = "6"
+                    _6t.TextColor3 = __U[36](255, 255, 255)
+                    _6t.TextSize = 21.000
+                end
+            end
+            for i,v in __U[7](Workspace:GetDescendants()) do
+                if v:FindFirstChild("card") and v:FindFirstChild("Order") then
+                    createMenu()
+                    if v.Order.SurfaceGui.TextLabel.Text == "1" then
+                        __VE["LPs"].PlayerGui.idk.Frame["1"].ImageLabel.Image = v.card.TextureID
+                    elseif v.Order.SurfaceGui.TextLabel.Text == "2" then
+                        __VE["LPs"].PlayerGui.idk.Frame["2"].ImageLabel.Image = v.card.TextureID
+                    elseif v.Order.SurfaceGui.TextLabel.Text == "3" then
+                        __VE["LPs"].PlayerGui.idk.Frame["3"].ImageLabel.Image = v.card.TextureID
+                    elseif v.Order.SurfaceGui.TextLabel.Text == "4" then
+                        __VE["LPs"].PlayerGui.idk.Frame["4"].ImageLabel.Image = v.card.TextureID
+                    elseif v.Order.SurfaceGui.TextLabel.Text == "5" then
+                        __VE["LPs"].PlayerGui.idk.Frame["5"].ImageLabel.Image = v.card.TextureID
+                    elseif v.Order.SurfaceGui.TextLabel.Text == "6" then
+                        __VE["LPs"].PlayerGui.idk.Frame["6"].ImageLabel.Image = v.card.TextureID
+                    end
+                end
+            end
+        end
+    })
+    Tabs.NMCS:AddButton({
+        Title = "Destroy stage",
+        Description = "",
+        Callback = function()
+            for i,v in __U[7](game:GetService("Workspace"):GetChildren()) do 
+                if v.Name == "stage" then 
+                    v:Destroy(__Y[1])
+                end 
+            end
+        end
+    })
+    Tabs.NMCS:AddSection("Ringmaster | Boss")
+    Tabs.NMCS:AddButton({
+        Title = "Auto Kill",
+        Description = "",
+        Callback = function()
+            Float = __Y[1]
+            workspace.Section3.Boss.MagicianBoss.AnimationController.AnimationPlayed:Connect(function(anima)
+                while __Y[1] do
+                    char = __VE["LPs"].Character
+                    Float = __Y[1]
+                    if anima.Speed < 0.1 then
+                        if Backpack:FindFirstChild("Knife") then
+                            Backpack.Knife.Parent = char
+                        elseif not Backpack:FindFirstChild("Knife") and not char:FindFirstChild("Knife") then
+                            char.HumanoidRootPart.CFrame = __U[26](Workspace.Section3.Boss.WeaponGiver.WorldPivot.Position)
+                            __U[23](0.3)
+                            __U[60](Workspace.Section3.Boss.WeaponGiver.ProxPart.ProximityPrompt)
+                            __U[23](0.3)
+                        end
+                        if workspace.Section3.Boss.DamageParts.Combo1.Transparency == 0 and char:FindFirstChild("Knife") then
+                            char.HumanoidRootPart.CFrame = workspace.Section3.Boss.MagicianBoss.RightHitbox.CFrame
+                            char.Knife:Activate()
+                        elseif workspace.Section3.Boss.DamageParts.Combo2.Transparency == 0 and char:FindFirstChild("Knife") or workspace.Section3.Boss.DamageParts.SlamAttack and Backpack:FindFirstChild("Knife") then
+                            char.HumanoidRootPart.CFrame = workspace.Section3.Boss.MagicianBoss.LeftHitbox.CFrame
+                            char.Knife:Activate()
+                        end
+                    else
+                        Tp(-1654.51294, 28.076046, -969.053711, __Y[3])
+                    end
+                    __U[23](0.1)
+                end
+            end)
+        end
+    })
+    Tabs.NMCS:AddButton({
+        Title = "No Dmg From Ringmaster",
+        Description = "90%",
+        Callback = function()
+            for _,v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("Part") and v.Parent.Name == "MagicianBoss"or v:IsA("MeshPart") and v.Parent.Name == "MagicianBoss" then
+                    v.CanTouch = __Y[2]
+                end
+            end
+            for _,v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("Part") and v.Parent.Name == "DamageParts" or v:IsA("MeshPart") and v.Parent.Name == "DamageParts" or v:IsA("UnionOperation") and v.Parent.Name == "DamageParts" then
+                    v.CanTouch = __Y[2]
+                end
+            end
+            for _,v in __U[7](workspace:GetDescendants()) do
+                if v:IsA("Part") and v.Parent.Name == "Pair" or v:IsA("MeshPart") and v.Parent.Name == "Pair" or v:IsA("UnionOperation") and v.Parent.Name == "Pair" then
+                    v.CanTouch = __Y[2]
+                end
+            end
+        end
+    })
+    Tabs.Jigoku:AddSection("Teleport")
+    Tabs.Jigoku:AddButton({
+        Title = "Teleport To Place",
+        Description = "Singleplayer",
+        Callback = function()
+            game:GetService("TeleportService"):Teleport(7618863566, __VE["LPs"])
+        end
+    })
+    Tabs.Jigoku:AddSection("Jigoku")
+    Tabs.Jigoku:AddButton({
+        Title = "Talk",
+        Description = "",
+        Callback = function()
+            Tp(607.54, 11.91, 1080, __Y[3])
+        end
+    })
+    Tabs.Jigoku:AddButton({
+        Title = "Auto Collect",
+        Description = "",
+        Callback = function()
+            for i, v in __U[7](Workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart")  then
+                    __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                    __U[23](0.3)
+                    __U[60](v)
+                end
+            end
+        end
+    })
+    Tabs.Jigoku:AddButton({
+        Title = "Full Auto Win",
+        Description = "",
+        Callback = function()
+            if FirstPressJigoku then
+                Tp(607.54, 11.91, 1080, __Y[3])
+                Fluent:Notify({
+                    Title = "Error 00",
+                    Content = "WAITTT wait 11 second and it will teleport you ||||| DONT PRESS THE AUTO WIN AGAIN ||||| You can read tutorial for more information",
+                    Duration = 11
+                })
+                __U[23](11)
+                for i, v in __U[7](Workspace:GetDescendants()) do
+                    if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart")  then
+                        __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                        __U[23](0.3)
+                        __U[60](v)
+                    end
+                end
+            else
+                for i, v in __U[7](Workspace:GetDescendants()) do
+                    if v:IsA("ProximityPrompt") and v.Parent:IsA("BasePart")  then
+                        __VE["LPs"].Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+                        __U[23](0.3)
+                        __U[60](v)
+                    end
+                end
+            end
+        end
+    })
+    credits = {
+        "Owner - ttjy.",
+        "Co Owner - ttjy_",
+        "Scripter - ttjy.",
+        "Scripter - ttjy_",
+        "Scripter - Poom Hub",
+        "Bypasser - ttjy.",
+        "Bypasser - Bedol Hub",
+        "Bypasser - Poom Hub",
+        "Ui - dawid",
+        "Helper - Ktollt",
+        "Helper - Xvasx",
+        "Helper - nar",
+        "Helper - ruenas",
+        "Key system - sa.l"
+    }
+    for i, v in __U[7](credits) do
+        Tabs.Credits:AddButton({
+            Title = v,
+            Description = "",
+            Callback = function()
+                
+            end
+        })
+        wait()
+    end
+    if getgenv().Addons then
+        Tabs.Addons:AddButton({
+            Title = "Save as config",
+            Description = "",
+            Callback = function()
+                
+            end
+        })
+        Tabs.Addons:AddSection("Colorful + fun")
+        Tabs.Addons:AddButton({
+            Title = "Trail",
+            Description = "Blue->Cyan",
+            Callback = function()
+                createTrail(1)
+            end
+        })
+        Tabs.Addons:AddButton({
+            Title = "Trail",
+            Description = "Green->Light Green",
+            Callback = function()
+                createTrail(2)
+            end
+        })
+        Tabs.Addons:AddButton({
+            Title = "Trail",
+            Description = "Pink->Red",
+            Callback = function()
+                createTrail(3)
+            end
+        })
+        Tabs.Addons:AddButton({
+            Title = "Trail",
+            Description = "Purple->Light Purple",
+            Callback = function()
+                createTrail(4)
+            end
+        })
+        Tabs.Addons:AddSection("Webhook")
+        Tabs.Addons:AddSection("Nothing to hook")
+        Tabs.Addons:AddSection("Notify")
+        NotifyWhenTTJY = Tabs.Addons:AddToggle("NotifyWhenTTJY", {Title = "Notify When TTJY Join", Default = __Y[2] })
+        coroutine.wrap(function()
+            NotifyWhenTTJY:OnChanged(function()
+                if Options.NotifyWhenTTJY.Value then
+                    repeat __U[23]() until game.Players:FindFirstChild("rigga56")
+                    Notify("Script", "TTJY!!!", 5)
+                end
+            end)
+        end)()
+        Tabs.Addons:AddSection("Others")
+        Tabs.Addons:AddSection("Nothing here")
+    end
+    Tabs.Settings:AddSection("W A S D")
+    HideShow = Tabs.Settings:AddToggle("HideShow", {Title = "Hide/Show", Default = __Y[2] })
+
+    HideShow:OnChanged(function()
+        if Options.HideShow.Value then
+            game.CoreGui["InputPcToMobile"].W.Visible = __Y[2]
+            game.CoreGui["InputPcToMobile"].A.Visible = __Y[2]
+            game.CoreGui["InputPcToMobile"].S.Visible = __Y[2]
+            game.CoreGui["InputPcToMobile"].D.Visible = __Y[2]
+        else
+            game.CoreGui["InputPcToMobile"].W.Visible = __Y[1]
+            game.CoreGui["InputPcToMobile"].A.Visible = __Y[1]
+            game.CoreGui["InputPcToMobile"].S.Visible = __Y[1]
+            game.CoreGui["InputPcToMobile"].D.Visible = __Y[1]
+        end
+    end)
+    UpDown = Tabs.Settings:AddToggle("UpDown", {Title = "Up/Down", Default = __Y[2] })
+
+    UpDown:OnChanged(function()
+        if Options.UpDown.Value then
+            game.CoreGui["InputPcToMobile"].W.Position = __U[27](0.05, 0, 0.1, 0)
+            game.CoreGui["InputPcToMobile"].A.Position = __U[27](0, 0, 0.2, 0)
+            game.CoreGui["InputPcToMobile"].S.Position = __U[27](0.05, 0, 0.3, 0)
+            game.CoreGui["InputPcToMobile"].D.Position = __U[27](0.1, 0, 0.2, 0)
+        else
+            game.CoreGui["InputPcToMobile"].W.Position = __U[27](0.05, 0, 0.7, 0)
+            game.CoreGui["InputPcToMobile"].A.Position = __U[27](0, 0, 0.8, 0)
+            game.CoreGui["InputPcToMobile"].S.Position = __U[27](0.05, 0, 0.9, 0)
+            game.CoreGui["InputPcToMobile"].D.Position = __U[27](0.1, 0, 0.8, 0)
+        end
+    end)
+    BigSmall = Tabs.Settings:AddToggle("BigSmall", {Title = "Big/Small", Default = __Y[2] })
+
+    BigSmall:OnChanged(function()
+        if Options.BigSmall.Value then
+            game.CoreGui["InputPcToMobile"].W.Size = __U[27](0.1, 0, 0.1, 0)
+            game.CoreGui["InputPcToMobile"].A.Size = __U[27](0.1, 0, 0.1, 0)
+            game.CoreGui["InputPcToMobile"].S.Size = __U[27](0.1, 0, 0.1, 0)
+            game.CoreGui["InputPcToMobile"].D.Size = __U[27](0.1, 0, 0.1, 0)
+        else
+            game.CoreGui["InputPcToMobile"].W.Size = __U[27](0.05, 0, 0.05, 0)
+            game.CoreGui["InputPcToMobile"].A.Size = __U[27](0.05, 0, 0.05, 0)
+            game.CoreGui["InputPcToMobile"].S.Size = __U[27](0.05, 0, 0.05, 0)
+            game.CoreGui["InputPcToMobile"].D.Size = __U[27](0.05, 0, 0.05, 0)
+        end
+    end)
 end
 
-coroutine.wrap(EWQDQR_fake_script)()
-coroutine.wrap(RCRSJ_fake_script)()
-coroutine.wrap(NIZYILR_fake_script)()
-coroutine.wrap(ZJMV_fake_script)()
-coroutine.wrap(XWCK_fake_script)()
-coroutine.wrap(LQABGDN_fake_script)()
-coroutine.wrap(AUJBQLV_fake_script)()
-coroutine.wrap(VOZQKQ_fake_script)()
-coroutine.wrap(BYCZF_fake_script)()
-coroutine.wrap(WNYWFIW_fake_script)()
-coroutine.wrap(LSQPLK_fake_script)()
-coroutine.wrap(QHYQTWN_fake_script)()
-coroutine.wrap(ZNGUED_fake_script)()
-coroutine.wrap(VRCCQPU_fake_script)()
-coroutine.wrap(CISUO_fake_script)()
-coroutine.wrap(ZLTK_fake_script)()
-coroutine.wrap(NAKOUH_fake_script)()
-coroutine.wrap(WWSTWX_fake_script)()
-coroutine.wrap(VNHQAT_fake_script)()
-coroutine.wrap(QDVHI_fake_script)()
-coroutine.wrap(KQMTA_fake_script)()
-coroutine.wrap(FUDDYBX_fake_script)()
-coroutine.wrap(XKIDD_fake_script)()
-coroutine.wrap(ZSZGP_fake_script)()
+finishload = __Y[1]
+getgenv().FinishLoad = __Y[1]
+
