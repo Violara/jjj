@@ -1,3 +1,4 @@
+
 repeat task.wait() until game:IsLoaded()
 __LUABLE = {
     ["Functions"] = loadstring(game:HttpGet("https://raw.githubusercontent.com/Yumiara/Asset/main/api.lua"))()
@@ -106,6 +107,8 @@ if getgenv().Addons then
             AutoPray = __Y[2],
             AutoExtend = __Y[2],
             AutoCraftWhat = __Y[3],
+            AutoCraftPray = __Y[2],
+            AutoCraftWhichPray = __Y[2],
             AutoCraft = __Y[2],
             ESPItems = __Y[2],
         }
@@ -123,6 +126,8 @@ else
         AutoExtend = __Y[2],
         AutoCraftWhat = __Y[3],
         AutoCraft = __Y[2],
+        AutoCraftPray = __Y[2],
+        AutoCraftWhichPray = __Y[2],
         ESPItems = __Y[2],
     }
 end
@@ -317,7 +322,7 @@ do
                         if workspace:FindFirstChild("Pray") or workspace:FindFirstChild("GwaGwa") then
                             KEY_WINPG = workspace:FindFirstChild("Pray") or workspace:FindFirstChild("GwaGwa")
                             if KEY_WINPG and KEY_WINPG:FindFirstChild("Attachment") and KEY_WINPG.Attachment:FindFirstChild("ProximityPrompt") and KEY_WINPG.Attachment.ProximityPrompt.Enabled then
-                                tpwithnewtpbyme2(KEY_WINPG.CFrame, 5)
+                                tpwithnewtpbyme2(KEY_WINPG.CFrame, 1)
                                 task.wait(0.3)
                                 fireproximityprompt(KEY_WINPG.Attachment.ProximityPrompt)
                             end
@@ -368,8 +373,8 @@ do
     Tabs.Main:AddSection("Craft")
     if Setting.AutoCraftWhat == nil then
         AutoCraftWhat = Tabs.Main:AddDropdown("AutoCraftWhat", {
-            Title = "Select Weapon",
-            Values = {"Water Gwa Gwa", "Murder Gwa Gwa", "Darkness Gwa Gwa", "Binary Gwa Gwa", "Planet Gwa Gwa"},
+            Title = "Select Gwa Gwa",
+            Values = {"Water Gwa Gwa", "Murder Gwa Gwa", "Darkness Gwa Gwa", "Binary Gwa Gwa", "Planet Gwa Gwa", "HOPE Gwa Gwa"},
             Multi = false,
             Default = 1,
         })
@@ -377,10 +382,10 @@ do
             Setting.AutoCraftWhat = tostring(Value)
         end)
     else
-        MagicAPPEAR = Setting.AutoCraftWhat
+        MagicAPPEAR = Setting.AutoCraftWhat or "Water Gwa Gwa"
         AutoCraftWhat = Tabs.Main:AddDropdown("AutoCraftWhat", {
             Title = "Select Weapon",
-            Values = {"Water Gwa Gwa", "Murder Gwa Gwa", "Darkness Gwa Gwa", "Binary Gwa Gwa", "Planet Gwa Gwa"},
+            Values = {"Water Gwa Gwa", "Murder Gwa Gwa", "Darkness Gwa Gwa", "Binary Gwa Gwa", "Planet Gwa Gwa", "HOPE Gwa Gwa"},
             Multi = false,
             Default = 1,
         })
@@ -388,6 +393,29 @@ do
             Setting.AutoCraftWhat = tostring(Value)
         end)
         Setting.AutoCraftWhat = MagicAPPEAR
+    end
+    if Setting.AutoCraftWhichPray == nil then
+        AutoCraftWhichPray = Tabs.Main:AddDropdown("AutoCraftWhat", {
+            Title = "Select Gwa Gwa",
+            Values = {"Water Pray", "Darkness Pray", "Recovery Pray", "Lucky Clove"},
+            Multi = false,
+            Default = 1,
+        })
+        AutoCraftWhichPray:OnChanged(function(Value)
+            Setting.AutoCraftWhichPray = tostring(Value)
+        end)
+    else
+        MagicAPPEAR2 = Setting.AutoCraftWhat or "Water Pray"
+        AutoCraftWhichPray = Tabs.Main:AddDropdown("AutoCraftWhat", {
+            Title = "Select Pray",
+            Values = {"Water Pray", "Darkness Pray", "Recovery Pray", "Lucky Clove"},
+            Multi = false,
+            Default = 1,
+        })
+        AutoCraftWhichPray:OnChanged(function(Value)
+            Setting.AutoCraftWhichPray = tostring(Value)
+        end)
+        Setting.AutoCraftWhichPray = MagicAPPEAR2
     end
     getgenv().TextStatus = "Crafting suck yo"
     AutoCraft = Tabs.Main:AddToggle("AutoCraft", {Title = "Auto Craft", Default = Setting.AutoCraft })
@@ -397,41 +425,99 @@ do
             while Setting.AutoCraft do
                 if Setting.AutoCraft then
                     pcall(function()
+                        RNC = game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Craft")
+                        RNCT = game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Crafting")
                         if Setting.AutoCraftWhat == "Water Gwa Gwa" then
                             if not game:GetService("Players").LocalPlayer.PlayerGui.Menu.Craft.Handle.Craft.Lists.ScrollingFrame["Binary Gwa Gwa"].Done.Visible then
-                                game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Craft"):FireServer("Craft")
-                                game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Craft"):FireServer("Button", "")
-                                game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Crafting"):InvokeServer("Water Gwa Gwa", "Gwa Gwa")
-                                game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Crafting"):InvokeServer("Water Gwa Gwa", "WATER")
+                                RNC:FireServer("Craft")
+                                RNC:FireServer("Button", "")
+                                RNCT:InvokeServer("Water Gwa Gwa", "Gwa Gwa")
+                                RNCT:InvokeServer("Water Gwa Gwa", "WATER")
                             end
                         elseif Setting.AutoCraftWhat == "Murder Gwa Gwa" then
                             if not game:GetService("Players").LocalPlayer.PlayerGui.Menu.Craft.Handle.Craft.Lists.ScrollingFrame["Murder Gwa Gwa"].Done.Visible then
-                                game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Craft"):FireServer("Craft")
-                                game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Craft"):FireServer("Button", "")
-                                game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Crafting"):InvokeServer("Murder Gwa Gwa", "Gwa Gwa")
-                                game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Crafting"):InvokeServer("Murder Gwa Gwa", "Murder")
+                                RNC:FireServer("Craft")
+                                RNC:FireServer("Button", "")
+                                RNCT:InvokeServer("Murder Gwa Gwa", "Gwa Gwa")
+                                RNCT:InvokeServer("Murder Gwa Gwa", "Murder")
                             end
                         elseif Setting.AutoCraftWhat == "Darkness Gwa Gwa" then
                             if not game:GetService("Players").LocalPlayer.PlayerGui.Menu.Craft.Handle.Craft.Lists.ScrollingFrame["Darkness Gwa Gwa"].Done.Visible then
-                                game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Craft"):FireServer("Craft")
-                                game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Craft"):FireServer("Button", "")
-                                game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Crafting"):InvokeServer("Darkness Gwa Gwa", "Gwa Gwa")
-                                game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Crafting"):InvokeServer("Darkness Gwa Gwa", "Darkness")
+                                RNC:FireServer("Craft")
+                                RNC:FireServer("Button", "")
+                                RNCT:InvokeServer("Darkness Gwa Gwa", "Gwa Gwa")
+                                RNCT:InvokeServer("Darkness Gwa Gwa", "Darkness")
                             end
                         elseif Setting.AutoCraftWhat == "Binary Gwa Gwa" then
                             if not game:GetService("Players").LocalPlayer.PlayerGui.Menu.Craft.Handle.Craft.Lists.ScrollingFrame["Binary Gwa Gwa"].Done.Visible then
-                                game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Craft"):FireServer("Craft")
-                                game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Craft"):FireServer("Button", "")
-                                game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Crafting"):InvokeServer("Binary Gwa Gwa", "Gwa Gwa")
-                                game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Crafting"):InvokeServer("Binary Gwa Gwa", "BINARYX")
+                                RNC:FireServer("Craft")
+                                RNC:FireServer("Button", "")
+                                RNCT:InvokeServer("Binary Gwa Gwa", "Gwa Gwa")
+                                RNCT:InvokeServer("Binary Gwa Gwa", "BINARYX")
                             end
                         elseif Setting.AutoCraftWhat == "Planet Gwa Gwa" then
                             if not game:GetService("Players").LocalPlayer.PlayerGui.Menu.Craft.Handle.Craft.Lists.ScrollingFrame["Planet Gwa Gwa"].Done.Visible then
-                                game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Craft"):FireServer("Craft")
-                                game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Craft"):FireServer("Button", "")
-                                game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Crafting"):InvokeServer("Planet Gwa Gwa", "Gwa Gwa")
-                                game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Crafting"):InvokeServer("Planet Gwa Gwa", "Planet")
+                                RNC:FireServer("Craft")
+                                RNC:FireServer("Button", "")
+                                RNCT:InvokeServer("Planet Gwa Gwa", "Gwa Gwa")
+                                RNCT:InvokeServer("Planet Gwa Gwa", "Planet")
                             end
+                        elseif Setting.AutoCraftWhat == "HOPE Gwa Gwa" then
+                            if not game:GetService("Players").LocalPlayer.PlayerGui.Menu.Craft.Handle.Craft.Lists.ScrollingFrame["HOPE Gwa Gwa"].Done.Visible then
+                                RNC:FireServer("Craft")
+                                RNC:FireServer("Button", "")
+                                RNCT:InvokeServer("HOPE Gwa Gwa", "Gwa Gwa")
+                                RNCT:InvokeServer("HOPE Gwa Gwa", "HOPE")
+                            end
+                        end
+                    end)
+                end
+                task.wait(0.5)
+            end
+        end)
+    end)()
+    AutoCraftPray = Tabs.Main:AddToggle("AutoCraftPray", {Title = "Auto Craft Pray", Default = Setting.AutoCraft or false })
+    coroutine.wrap(function()
+        AutoCraftPray:OnChanged(function()
+            Setting.AutoCraftPray = Options.AutoCraftPray.Value
+            while Setting.AutoCraftPray do
+                if Setting.AutoCraftPray then
+                    pcall(function()
+                        RNC = game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Craft")
+                        RNCT = game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Crafting")
+                        if Setting.AutoCraftWhichPray == "Water Pray" then
+                            RNC:FireServer("Craft", "Water")
+                            RNC:FireServer("Button", "")
+                            RNCT:InvokeServer("Water Pray", "WATER")
+                            RNCT:InvokeServer("Water Pray", "Pray")
+                        elseif Setting.AutoCraftWhichPray == "Darkness Pray" then
+                            RNC:FireServer("Craft", "Water")
+                            RNC:FireServer("Button", "")
+                            RNCT:InvokeServer("Darkness Pray", "Darkness")
+                            RNCT:InvokeServer("Darkness Pray", "Pray")
+                        elseif Setting.AutoCraftWhichPray == "Recovery Pray" then
+                            RNC:FireServer("Craft", "Water")
+                            RNC:FireServer("Button", "")
+                            RNCT:InvokeServer("Recovery Pray", "Pray")
+                        elseif Setting.AutoCraftWhichPray == "Lucky Clove" then
+                            if not game:GetService("Players").LocalPlayer.PlayerGui.Menu.Windows.Inventory.Handle.Items.Lists.ScrollingFrame:FindFirstChild("Water Pray") then
+                                RNC:FireServer("Craft", "Water")
+                                RNC:FireServer("Button", "")
+                                RNCT:InvokeServer("Water Pray", "WATER")
+                                RNCT:InvokeServer("Water Pray", "Pray")
+                            end
+                            if not game:GetService("Players").LocalPlayer.PlayerGui.Menu.Windows.Inventory.Handle.Items.Lists.ScrollingFrame:FindFirstChild("Darkness Pray") then
+                                RNC:FireServer("Craft", "Water")
+                                RNC:FireServer("Button", "")
+                                RNCT:InvokeServer("Darkness Pray", "Darkness")
+                                RNCT:InvokeServer("Darkness Pray", "Pray")
+                            end
+                            task.wait()
+                            RNC:FireServer("Craft", "Water")
+                            RNC:FireServer("Button", "")
+                            RNCT:InvokeServer("Lucky Clove", "Water Pray")
+                            RNCT:InvokeServer("Lucky Clove", "Darkness Pray")
+                            RNCT:InvokeServer("Lucky Clove", "Pray")
                         end
                     end)
                 end
