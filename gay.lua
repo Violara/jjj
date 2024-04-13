@@ -1,956 +1,552 @@
-repeat task.wait() until game:IsLoaded()
-__LUABLE = {
-    ["Functions"] = loadstring(game:HttpGet("https://raw.githubusercontent.com/Yumiara/Asset/main/api.lua"))()
+local Config = {
+    WindowName = "V.G Hub",
+	Color = Color3.fromRGB(255,128,64),
+	Keybind = Enum.KeyCode.RightControl
 }
-__U = {}
-for i=1,#__LUABLE["Functions"] do
+
+local Players = game:GetService("Players")
+local Player = Players.LocalPlayer
+local RunService = game:GetService("RunService")
+local UserInputService = game:GetService("UserInputService")
+local HttpService = game:GetService("HttpService")
+local TweenService = game:GetService("TweenService")
+local TeleportService = game:GetService("TeleportService")
+local Workspace = game:GetService("Workspace")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local wait = task.wait
+
+
+local Name = "Weaponry.json"
+local Des = {}
+if makefolder and not isfile("V.G Hub") then
+    makefolder("V.G Hub")
+end 
+
+local Settings = nil 
+
+local Pcall = pcall(function()
+    if isfile("V.G Hub//" .. Name) then
+        readfile("V.G Hub//" .. Name)
+    else 
+        writefile("V.G Hub//" .. Name, HttpService:JSONEncode(Des))
+    end 
+end)
+
+if isfile("V.G Hub//" .. Name) and readfile("V.G Hub//" .. Name) then
+    Settings = HttpService:JSONDecode(readfile("V.G Hub//" .. Name))
+end 
+
+local Save = function()
     pcall(function()
-        __U[i] = clonefunction(__LUABLE["Functions"][i])
+        writefile("V.G Hub//" .. Name, HttpService:JSONEncode(Settings))
     end)
+end 
+
+local Circle = Drawing.new("Circle")
+Circle.Color =  Color3.fromRGB(22, 13, 56)
+Circle.Thickness = 1
+Circle.Radius = 250
+Circle.Visible = false
+Circle.NumSides = 1000
+Circle.Filled = false
+Circle.Transparency = 1
+
+RunService.RenderStepped:Connect(function()
+    local Mouse = UserInputService:GetMouseLocation()
+    Circle.Position = Vector2.new(Mouse.X, Mouse.Y)
+end)
+
+Settings = {
+FreeForAll= false,
+WallCheck = false,
+Enabled = false,
+FOV = 250,
+}
+local Shoot = false
+
+function FreeForAll(v)
+    if Settings.FreeForAll == false or Settings.FreeForAll == false then
+        if game.Players.LocalPlayer.Team == v.Team then return false
+        else return true end
+    else return true end
 end
-__VE = {
-    ["Ps"] = game:GetService("Players"),
-    ["LPs"] = game:GetService("Players").LocalPlayer,
-    ["PsG"] = game:GetService("Players").LocalPlayer.PlayerGui
-    
-}
-local Converted = {
-	["_TTJY ASSET"] = __U[35]("ScreenGui");
-	["_TTJY HUB"] = __U[35]("Frame");
-	["_UIStroke"] = __U[35]("UIStroke");
-	["_UICorner"] = __U[35]("UICorner");
-	["_TextButton"] = __U[35]("TextButton");
-	["_UIStroke1"] = __U[35]("UIStroke");
-}
 
--- Properties:
-
-Converted["_TTJY ASSET"].ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-Converted["_TTJY ASSET"].Name = "TTJY ASSET"
-Converted["_TTJY ASSET"].Parent = game:GetService("CoreGui")
-Converted["_TTJY HUB"].BackgroundColor3 = Color3.fromRGB(56.0000042617321, 56.0000042617321, 56.0000042617321)
-Converted["_TTJY HUB"].BackgroundTransparency = 0.4000000059604645
-Converted["_TTJY HUB"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_TTJY HUB"].BorderSizePixel = 0
-Converted["_TTJY HUB"].Position = UDim2.new(0.465000004, 0, -0.1, 0)
-Converted["_TTJY HUB"].Size = UDim2.new(0.0700000003, 0, 0.100000001, 0)
-Converted["_TTJY HUB"].ZIndex = 2
-Converted["_TTJY HUB"].Name = "TTJY HUB"
-Converted["_TTJY HUB"].Parent = Converted["_TTJY ASSET"]
-Converted["_UIStroke"].LineJoinMode = Enum.LineJoinMode.Bevel
-Converted["_UIStroke"].Thickness = 3
-Converted["_UIStroke"].Parent = Converted["_TTJY HUB"]
-Converted["_UICorner"].Parent = Converted["_TTJY HUB"]
-Converted["_TextButton"].Font = Enum.Font.SourceSans
-Converted["_TextButton"].Text = "TTJY HUB"
-Converted["_TextButton"].TextColor3 = Color3.fromRGB(0, 255, 0)
-Converted["_TextButton"].TextScaled = true
-Converted["_TextButton"].TextSize = 14
-Converted["_TextButton"].TextWrapped = true
-Converted["_TextButton"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_TextButton"].BackgroundTransparency = 1
-Converted["_TextButton"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_TextButton"].BorderSizePixel = 0
-Converted["_TextButton"].Size = UDim2.new(1, 0, 1, 0)
-Converted["_TextButton"].Parent = Converted["_TTJY HUB"]
-Converted["_UIStroke1"].LineJoinMode = Enum.LineJoinMode.Bevel
-Converted["_UIStroke1"].Parent = Converted["_TextButton"]
-TTJYHUB = Converted["_TextButton"]
-Fluent = __U[40](game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
-SaveManager = __U[40](game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
-InterfaceManager = __U[40](game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
-__U[6](function()
-    if Fluent and SaveManager and InterfaceManager then
-        __U[1]("No Error")
+function NotObstructing(i, v)
+    if Settings.WallCheck then
+        c = Workspace.CurrentCamera.CFrame.p
+        a = Ray.new(c, i- c)
+        f = Workspace:FindPartOnRayWithIgnoreList(a, v)
+        return f == nil
     else
-        Fluent = __U[40](game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
-        SaveManager = __U[40](game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
-        InterfaceManager = __U[40](game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
+        return true
+    end
+end
+UserInputService.InputBegan:Connect(function(v)
+    if v.UserInputType == Enum.UserInputType.MouseButton2 then
+        Shoot = true
     end
 end)
-__X = {true,false,nil,0,1} ;  __Y ={} ; for i=1,#__X do __U[6](function() __Y[i] = __X[i] end) end
-__M = {2,3,5,7,11,13,17,10} ;  __N ={} ; for i=1,#__M do __U[6](function() __N[i] = __M[i] end) end
-__VE["WS"] , __VE["RuS"] , __VE["RlS"] = game:GetService("Workspace"), game:GetService("RunService") , game:GetService("ReplicatedStorage")
-__VE["VIM"] , __VE["UIS"] = game:GetService("VirtualInputManager"), game:GetService("UserInputService")
-__VE["Lg"] , __VE["TS"], __VE["GMos"] = game:GetService("Lighting") ,game:GetService("TweenService") ,  game:GetService("Players").LocalPlayer:GetMouse()
-__VE["VU"],__VE["CG"] = game:GetService("VirtualUser") ,game:GetService("CoreGui")
-__VE["HS"] = game:GetService("HttpService")
-Float = __Y[2]
-Noclip = __Y[2]
-CONTROL = {F = 0, B = 0, L = 0, R = 0, Q = 0, E = 0}
-WalkSpeedSet = 16
-JumpPowerSet = 30
-WalkSpeedRequest = __Y[2]
-JumpPowerRequest = __Y[2]
-cmdm = __VE["GMos"]
-speedofthevfly = 1
-speedofthefly = 1
-Worlds = {}
-Healing = {}
-foods = {}
-list = {}
-Dragons = {}
-ss1 = {}
-Setting = __Y[3]
-serializedSetting = __Y[3]
-if getgenv().Addons then
-    if not isfolder("Setting") then
-        makefolder("Setting")
+
+UserInputService.InputEnded:Connect(function(v)
+    if v.UserInputType == Enum.UserInputType.MouseButton2 then
+        Shoot = false
     end
-    if isfolder("Setting") and not isfile("Setting/DragonAdventure.json") then
-        print("no file")
-        Setting = {
-            
-        }
-        allowtoserialized = __Y[1]
-    elseif __U[49]("Setting") and __U[50]("Setting/DragonAdventure.json") then
-        __U[1]("file")
-        __U[23]()
-        Setting = game.HttpService:JSONDecode(__U[51]("Setting/DragonAdventure.json"))
-    end
-else
-    Setting = {
-        
-    }
-end
-local credits = {
-    {Title = "Owner", Content = "ttjy."},
-    {Title = "Co Owner", Content = "ttjy_"},
-    {Title = "Key System", Content = "sa.l"},
-    {Title = "UI", Content = "dawid"},
-}
-function OnFluentChange()
-    if Window.Root.Visible then
-        TTJYHUB.TextColor3  = __U[36](0, 255, 0)
-    else
-        TTJYHUB.TextColor3  = __U[36](255, 0, 0)
-    end
-end
-local GetConnections = function(A, B)
-    for i,v in pairs(__U[47](A[__U[32](B)])) do
-        v:Fire()
-    end
-end
-local function SetDragonStatus(Stat, Value)
-    for i,v in next, __VE["LPs"].Character.Dragons:GetChildren() do
-        if v:IsA("Model") and v:FindFirstChild("Data") then
-            local NewStat = v.Data:FindFirstChild(Stat, true)
-            NewStat.Value = Value
-        end
-    end
-end
-function Mag(Pos1, Pos2)
-    return (Pos1.Position - Pos2.Position).Magnitude
-end
-local function GetMob()
-    local Target, MaxDistance = __Y[3], math.huge
-    for _,v in next, __VE["WS"].Interactions.Nodes.Mobs.ActiveMobs.Global:GetChildren() do
-        if v:IsA("BasePart") and __VE["LPs"].Character.Humanoid.SeatPart then
-            local Mag = Mag(v, __VE["LPs"].Character.HumanoidRootPart)
-            if Mag < MaxDistance then
-                MaxDistance = Mag
-                Target = v
+end)
+
+
+function GetClosestToCuror()
+    Closest = math.huge
+    Target = nil
+    for _,v in pairs(Players:GetPlayers()) do
+        if FreeForAll(v) then
+            if v ~= game.Players.LocalPlayer and v.Character and v.Character:FindFirstChild("HumanoidRootPart") and v.Character:FindFirstChild("Humanoid") and v.Character.Humanoid.Health ~= 0  then
+                Point,OnScreen = Workspace.CurrentCamera:WorldToViewportPoint(v.Character.HumanoidRootPart.Position)
+                if OnScreen and NotObstructing(v.Character.HumanoidRootPart.Position,{game.Players.LocalPlayer.Character,v.Character}) then
+                    Distance = (Vector2.new(Point.X,Point.Y) - Vector2.new(game.Players.LocalPlayer:GetMouse().X, game.Players.LocalPlayer:GetMouse().Y)).magnitude
+                      if Distance <= Settings.FOV then
+                          Closest = Distance
+                       Target = v
+                     end
+                  end
+               end
             end
-        end
-    end
+         end
     return Target
-end
-local RF, RE
-for i,v in next, getgc() do
-    if type(v) == "function" and islclosure(v) then
-        if debug.getinfo(v).name == "GetRemoteFunction" then
-            RF = v 
-        elseif debug.getinfo(v).name == "GetRemoteEvent" then
-            RE = v
-        end
-    end
-end
-for i, v in next, __U[24](__VE["RlS"].Storage.Worlds.Worlds) do
-    if not __U[68](Worlds, v.Name .. " " .. v.GameId) then
-        __U[30](Worlds, v.Name .. " " .. v.GameId)
-    end
-end
+end 
 
-for i,v in next, __VE["RlS"].Storage.Items.Items.Healing:GetChildren() do
-    if v:IsA("ModuleScript") then
-        for i,v in next, __U[24](v) do
-            __U[30](Healing, i)
-        end
-    end
-end
 
-for i, v in next, __VE["RlS"].Storage.Items.Items.Food:GetChildren() do
-    if v:IsA("ModuleScript") then
-        for i, _ in next, __U[24](v) do
-            __U[30](foods, i)
-        end
-    end
-end
-for i, v in next, __VE["RlS"].Storage.Items.Items.Food:GetChildren() do
-    if v:IsA("ModuleScript") then
-        for i, v in next, __U[24](v) do
-            __U[30](list, i)
-        end
-    end
-end
 
-for i, v in next, __VE["LPs"].Data.Dragons:GetChildren() do
-    if v:FindFirstChild("Age") then
-        __U[30](Dragons, v.Value)
-    end
-end
-for i, v in next, __VE["RlS"].Storage.Items.Items.Eggs:GetChildren() do
-    if v:IsA("ModuleScript") then
-        for i,v in next, __U[24](v) do
-            __U[30](ss1, i)
-        end
-    end
-end
-__VE["PsG"].NodeGui.BoostFrame.ChildAdded:Connect(function(v)
-    if v:IsA("Frame") and v:FindFirstChild("ClickButton") then
-        task.wait(0.5)
-        GetConnections(v.ClickShadowButton.MouseButton1Down, "MouseButton1Down")
-    end
+game:GetService('RunService').Stepped:connect(function()
+pcall(function()
+    if Settings.Enabled == false or Shoot == false then return end
+    ClosestPlayer = GetClosestToCuror()
+    if ClosestPlayer then
+     Workspace.CurrentCamera.CFrame = CFrame.new(Workspace.CurrentCamera.CFrame.p,ClosestPlayer.Character[Settings.AimPart].CFrame.p)
+    end 
 end)
-if __VE["CG"]:FindFirstChild("InputPcToMobile") then
-    __VE["CG"]:FindFirstChild("InputPcToMobile"):Destroy()
-end
-local screenGui2 = __U[35]("ScreenGui")
-screenGui2.Name = "InputPcToMobile"
-screenGui2.Parent = __VE["CG"]
-local buttonSize = __U[27](0.05, 0, 0.05, 0)
-local function createButton(key, position)
-    local button = __U[35]("TextButton")
-    button.Name = key
-    button.Text = key
-    button.Size = buttonSize
-    button.Position = position
-    button.BackgroundColor3 = __U[70](0.5, 0.5, 0.5)
-    button.Parent = screenGui2
-    local isPressed = __Y[2]
-    button.MouseButton1Down:Connect(function()
-        isPressed = true
-        if key == "W" then
-            CONTROL.F = speedofthefly
-        elseif key == "S" then
-            CONTROL.B = -speedofthefly
-        elseif key == "A" then
-            CONTROL.L = -speedofthefly
-        elseif key == "D" then
-            CONTROL.R = speedofthefly
-        end
-    end)
-
-    button.MouseButton1Up:Connect(function()
-        isPressed = __Y[2]
-        if key == "W" then
-            CONTROL.F = 0
-        elseif key == "S" then
-            CONTROL.B = 0
-        elseif key == "A" then
-            CONTROL.L = 0
-        elseif key == "D" then
-            CONTROL.R = 0
-        end
-    end)
-end
-
-createButton("W", __U[27](0.05, 0, 0.1, 0))
-task.wait()
-createButton("A", __U[27](0, 0, 0.2, 0))
-task.wait()
-createButton("S", __U[27](0.05, 0, 0.3, 0))
-task.wait()
-createButton("D", __U[27](0.1, 0, 0.2, 0))
-task.wait()
-Window = nil
-repeat
-    __U[6](function()
-        Window = Fluent:CreateWindow({
-            Title = "Dragon Adventure Script v.UP2FV",
-            SubTitle = "by TTJY",
-            TabWidth = 160,
-            Size = __U[69](580, 460),
-            Acrylic = __Y[2],
-            Theme = "Dark",
-            MinimizeKey = Enum.KeyCode.LeftControl
-        })
-    end)
-    __U[1]("Window Loaded")
-    __U[23](5)
-until Window ~= nil
-
-local Tabs = {
-    Main = Window:AddTab({ Title = "Main", Icon = "home" }),
-    Player = Window:AddTab({ Title = "Player", Icon = "" }),
-    Dragon = Window:AddTab({ Title = "Dragon", Icon = "" }),
-    ESP = Window:AddTab({ Title = "ESP", Icon = "briefcase" }),
-    ChangeLog = Window:AddTab({ Title = "ChangeLog", Icon = "book" }),
-    Credits = Window:AddTab({ Title = "Credits", Icon = "book" }),
-    Addons = Window:AddTab({ Title = "Addons", Icon = "book" }),
-    Settings = Window:AddTab({ Title = "Settings", Icon = "settings" })
-}
-local Options = Fluent.Options
-__U[6](function()
-    Window.Root:GetPropertyChangedSignal("Visible"):Connect(OnFluentChange)
 end)
-__U[6](function()
-    function onButtonClick()
-        Window.Minimized = not Window.Minimized
-        Window.Root.Visible = not Window.Minimized
+
+
+local Aim = false
+UserInputService.InputBegan:connect(function(v)
+   if v.UserInputType  == Enum.UserInputType.MouseButton2 and Settings.Enabled then
+       Aim = true
+       while Aim do wait()
+           if Players.LocalPlayer:GetMouse().Target and Players:FindFirstChild(Players.LocalPlayer:GetMouse().Target.Parent.Name) then
+            local Person = Players:FindFirstChild(Players.LocalPlayer:GetMouse().Target.Parent.Name)
+               if Person.Team ~= Players.LocalPlayer.Team or not Settings.TeamCheck then
+                   if Settings.Delay > 0 then wait(Settings.Delay) end
+                   mouse1press(); wait(); mouse1release()
+               end
+           end
+           if not Settings.Enabled then break end
+       end
+   end
+end)
+
+UserInputService.InputEnded:connect(function(v)
+   if v.KeyCode == Enum.UserInputType.MouseButton2 and Settings.Enabled then
+       Aim = false
+   end
+end)
+local function Go(i, v)
+    return (v - i).Unit * 1000
+end
+
+
+
+
+
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/1201for/V.G-Hub/main/test"))()
+local Window = Library:CreateWindow(Config, game:GetService("CoreGui"))
+
+local Tab1 = Window:CreateTab("Weponry")
+local Tab2 = Window:CreateTab("UI Settings")
+
+local Section1 = Tab1:CreateSection("")
+local Section2 = Tab1:CreateSection("")
+local Section5 = Tab1:CreateSection("")
+local Section3 = Tab2:CreateSection("Menu")
+local Section4 = Tab2:CreateSection("Background")
+
+local Toggle1 = Section1:CreateToggle("Aimbot", nil, function(State)
+    Settings.Enabled = State
+end)
+
+
+local Dropdown1 = Section1:CreateDropdown("HitPart", {"HumanoidRootPart","Head","UpperTorso","LowerTorso","Random"}, function(String)
+	Settings.AimPart = String
+end)
+Dropdown1:AddToolTip("Select AimPart")
+Dropdown1:SetOption("HumanoidRootPart")
+
+
+local Toggle1 = Section1:CreateToggle("FreeForAll", Settings.TeamCheck, function(State)
+    Settings.TeamCheck = State
+    Settings.TeamCheck = Settings.FreeForAll
+end)
+
+local Toggle1 = Section1:CreateToggle("TriggerBot", Settings.Enabled, function(State)
+    Settings.Enabled = State
+end)
+
+local Toggle1 = Section1:CreateToggle("WallCheck", Settings.WallCheck, function(State)
+    Settings.WallCheck = State
+end)
+
+local Slider2 = Section1:CreateSlider("Aimbot Radius", 0,1000,Circle.Radius,false, function(Value)
+    Circle.Radius = Value
+    Circle.Radius =  Settings.FOV
+end)
+
+local Toggle1 = Section1:CreateToggle("Circle Visible", Circle.Visible, function(State)
+   Circle.Visible = State
+end)
+
+local Colorpicker3 = Section1:CreateColorpicker("Circle Color", function(Color)
+    Circle.Color = Color
+end)
+
+
+local Toggle1 = Section2:CreateToggle("Enable WalkSpeed/JumpPower", Settings.Go, function(State)
+Settings.Go = State
+RunService.Stepped:connect(
+    function()
+        if Settings.Go then
+            Player.Character:WaitForChild("Humanoid").WalkSpeed = Settings.WalkSpeed
+            Player.Character:WaitForChild("Humanoid").JumpPower = Settings.JumpPower
+            if not UserInputService.WindowFocusReleased then
+                setfpscap(Settings.Fps)
+            end
+        end
     end
-    TTJYHUB.MouseButton1Click:Connect(onButtonClick)
-end)
-do
-    Tabs.Main:AddSection("Events")
-    local Toggle = Tabs.Main:AddToggle("AutoEasterEvent2024", {Title = "Auto EasterEvent2024", Default = false})
-    Toggle:OnChanged(function()
-        Setting.AutoEasterEvent2024 = Options.AutoEasterEvent2024.Value
-    end)
+)
 
-    if game.PlaceId == 3475397644 then
-        Tabs.Main:AddSection("Base")
-        Tabs.Main:AddButton({Title = "Teleport to base",Description = "",Callback = function()
-            for i, v in next, __VE["WS"].Interactions:GetDescendants() do
-                if v:IsA("TextLabel") and v.Name:match("Player")  then
-                    if  v.Text == __VE["LPs"].PlayerGui.WorkspaceGui[__VE["LPs"].Name .. "_DisplayGui"].ContainerFrame.NameLabel.Text then
-                        firetouchinterest(__VE["LPs"].Character.HumanoidRootPart, v.Parent.Parent.Parent.TeleportPart, 0)
+end)
+
+local TextBox1 = Section2:CreateTextBox("Fps Cap", "Only numbers", true, function(Value)
+    Settings.Fps = Value
+end)
+
+local TextBox1 = Section2:CreateTextBox("WalkSpeed", "Only numbers", true, function(Value)
+    Settings.WalkSpeed = Value
+end)
+local TextBox1 = Section2:CreateTextBox("JumpPower", "Only numbers", true, function(Value)
+    Settings.JumpPower = Value
+end)
+
+local TextBox1 = Section2:CreateTextBox("Seconds Until ServerHop", "Only numbers", true, function(Value)
+    Settings.Seconds = Value
+end)
+
+
+
+local Toggle1 = Section2:CreateToggle("Infinite Jump", Settings.InfiniteJump, function(State)
+Settings.InfiniteJump = State
+UserInputService.JumpRequest:connect(
+    function()
+        if Settings.InfiniteJump then
+            game:GetService "Players".LocalPlayer.Character:FindFirstChildOfClass "Humanoid":ChangeState("Jumping")
+        end
+    end
+)
+end)
+
+local Toggle1 = Section2:CreateToggle("Invisicam", Settings.Sorry, function(State)
+Settings.Sorry = State
+if Settings.Sorry then
+    Player.DevCameraOcclusionMode = "Invisicam"
+else
+    Player.DevCameraOcclusionMode = "Zoom"
+end
+end)
+
+
+local Toggle1 = Section2:CreateToggle("N Noclip", Settings.Sex1, function(State)
+noclips = false
+Settings.Sex1 = State
+Player:GetMouse().KeyDown:connect(
+    function(v)
+        if v == "n" then
+            if Settings.Sex1 then
+                noclips = not noclips
+                for i, v in pairs(Player.Character:GetChildren()) do
+                    if v:IsA("BasePart") then
+                        v.CanCollide = false
                     end
                 end
             end
-        end})
-        
-        Tabs.Main:AddSection("Economy")
-        local Toggle = Tabs.Main:AddToggle("SellAllFoods", {Title = "Sell All Foods", Default = Setting.SellAllFoods or false})
-        coroutine.wrap(function()
-            Toggle:OnChanged(function()
-                Setting.SellAllFoods = Options.SellAllFoods.Value
-                while Setting.SellAllFoods do
-                    for _, v in next, __VE["LPs"].Data.Resources:GetChildren() do
-                        if table.find(foods,v.Name) and v.Value ~= 0 and Setting.SellAllFoods then task.wait(0.5)
-                            RE("SellItemRemote"):FireServer({["Amount"] = v.Value, ["ItemName"] = v.Name})
-                        end
-                    end
-                    task.wait(3)
-                end
-            end)
-        end)()
+        end
     end
-
-    Tabs.Main:AddSection("Auto")
-    local Toggle = Tabs.AutoFarm:AddToggle("AutoFish", {Title = "Auto Fish", Default = false})
-    Toggle:OnChanged(function()
-        Setting.AutoFish = Options.AutoFish.Value
-        spawn(function()
-            while task.wait() and Setting.AutoFish do
-                pcall(function()
-                    if __VE["PsG"].FishingGui.ContainerFrame.Visible and Setting.AutoFish then
-                        local Fish = require(__VE["RlS"]["_replicationFolder"].FishingClient)
-                        local StartCasting = Fish.StartCasting
-                        local No = __VE["PsG"].FishingGui.ContainerFrame.ReelingFrame.SpinRingFrame.SpinSmallSegment
-                        local Yes = __VE["PsG"].FishingGui.ContainerFrame.ReelingFrame.SpinReelLabel
-                        local Bad = __VE["PsG"].FishingGui.ContainerFrame.ReelingFrame.SpinRingFrame.SpinLargeSegment
-                        local Click = Fish.Click
-                        StartCasting(Fish, StartCasting)
-                        if Fish.Snagged and Setting.AutoFish then
-                            Fish.ReelSignal:Fire()
-                            if (Yes.AbsoluteRotation >= Bad.AbsoluteRotation and No.AbsoluteRotation <= Bad.AbsoluteRotation) and Setting.AutoFish then
-                                Click(Fish, Fish.Click)
-                            end
-                        end
-                    end
-                end)
+)
+RunService.Stepped:connect(
+    function()
+        if noclips then
+            for i, v in pairs(Player.Character:GetChildren()) do
+                if v:IsA("BasePart") then
+                    v.CanCollide = false
+                end
             end
-        end)
-    end)
-    local Toggle = Tabs.Main:AddToggle("AutoEgg", {Title = "Auto Egg", Default = false})
-    Toggle:OnChanged(function()
-        Setting.AutoEgg = Options.AutoEgg.Value
-        spawn(function()
-            while Setting.AutoEgg do task.wait()
-                pcall(function()
-                    GrabEgg()
-                end)
-            end
-        end)
-    end)
-    local Dropdown = Tabs.Main:AddDropdown("CollectionItem", {Title = "Select To Collect",Values = {"Food", "Magic", "Resources"},Multi = false,Default = tostring(Setting.CollectionItem) or 1,})
+        end
+    end
+)
 
-    Dropdown:OnChanged(function(Value)
-        Setting.CollectionItem = Value
-    end)
-    local Toggle = Tabs.Main:AddToggle("AutoCollect", {Title = "Auto Collect", Default = Setting.AutoCollect or false})
-    Toggle:OnChanged(function()
-        Setting.AutoCollect = Options.AutoCollect.Value
-        spawn(function()
-            while Setting.AutoCollect do task.wait(0.1)
-                if __VE["LPs"].Character.Humanoid.SeatPart then
-                    pcall(function()
-                        for _, v in next, __VE["LPs"].Interactions.Nodes[CollectionItem]:GetChildren() do
-                            if v:IsA("Model") and v:FindFirstChild("Hitbox") and __VE["LPs"].Character.Humanoid.SeatPart and Setting.AutoCollect then
-                                if v:FindFirstChild("BillboardPart", true) and v.BillboardPart.Health.Value ~= 0 and Setting.AutoCollect then
-                                    __VE["LPs"].Character:SetPrimaryPartCFrame(CFrame.new(v.Hitbox.Position) * CFrame.new(0, 10, 0))
-                                    for i=1, 10 do task.wait(0.3)
-                                        GetConnections(__VE["PsG"].HUDGui.BottomFrame.CurrentDragonFrame.DragonControlsFrame.Other.Bite.MouseButton1Down)
-                                    end
-                                    for _,v in next, __VE["WS"].Camera:GetChildren() do
-                                        if v:FindFirstChild("Handle") and Setting.AutoCollect then 
-                                            __VE["LPs"].Character:SetPrimaryPartCFrame(CFrame.new(v.Handle.Position) * CFrame.new(0, 0, 0))
-                                        end
-                                    end
-                                    break
+end)
+
+local Toggle1 = Section2:CreateToggle("G Noclip", Settings.Sex, function(State)
+Settings.Sex = State
+noclip = false
+RunService.Stepped:connect(
+    function()
+        if noclip then
+            Player.Character.Humanoid:ChangeState(11)
+        end
+    end
+)
+mouse = Player:GetMouse()
+Player:GetMouse().KeyDown:connect(
+    function(v)
+        if v == "g" then
+            if Settings.Sex then
+                noclip = not noclip
+                Player.Character.Humanoid:ChangeState(11)
+            end
+        end
+    end
+)
+end)
+local Toggle1 = Section2:CreateToggle("H Fly", Settings.Sex2, function(State)
+Settings.Sex2 = State
+local Max = 0
+local Players = game.Players
+local LP = Players.LocalPlayer
+local Mouse = LP:GetMouse()
+Mouse.KeyDown:connect(
+    function(k)
+        if k:lower() == "h" then
+            Max = Max + 1
+            getgenv().Fly = false
+            if Settings.Sex2 then
+                local T =  LP.Character:FindFirstChildWhichIsA("Humanoid").RigType == Enum.HumanoidRigType.R6 and LP.Character:FindFirstChild("HumanoidRootPart") or LP.Character:FindFirstChildWhichIsA("Humanoid").RigType == Enum.HumanoidRigType.R15 and LP.Character:FindFirstChild("UpperTorso")
+                local S = {
+                    F = 0,
+                    B = 0,
+                    L = 0,
+                    R = 0
+                }
+                local S2 = {
+                    F = 0,
+                    B = 0,
+                    L = 0,
+                    R = 0
+                }
+                local SPEED = 5
+                local function FLY()
+                    getgenv().Fly = true
+                    local BodyGyro = Instance.new("BodyGyro", T)
+                    local BodyVelocity = Instance.new("BodyVelocity", T)
+                    BodyGyro.P = 9e4
+                    BodyGyro.maxTorque = Vector3.new(9e9, 9e9, 9e9)
+                    BodyGyro.cframe = T.CFrame
+                    BodyVelocity.velocity = Vector3.new(0, 0.1, 0)
+                    BodyVelocity.maxForce = Vector3.new(9e9, 9e9, 9e9)
+                    spawn(
+                        function()
+                            repeat
+                                wait()
+                                LP.Character.Humanoid.PlatformStand = true
+                                if S.L + S.R ~= 0 or S.F + S.B ~= 0 then
+                                    SPEED = 200
+                                elseif not (S.L + S.R ~= 0 or S.F + S.B ~= 0) and SPEED ~= 0 then
+                                    SPEED = 0
                                 end
-                            end
-                        end
-                    end)
-                end
-            end
-        end)
-    end)
-    local Toggle = Tabs.Main:AddToggle("AutoFarmMob", {Title = "Auto Farm Mob", Default = false})
-    Toggle:OnChanged(function()
-        Setting.AutoFarmMob = Options.AutoFarmMob.Value
-        spawn(function()
-            while Setting.AutoFarmMob do task.wait(0.5)
-                pcall(function()
-                    for _,v in next, __VE["LPs"].Camera:GetChildren() do
-                        if v:FindFirstChild("Handle") and Setting.AutoFarmMob then
-                            __VE["LPs"].Character:SetPrimaryPartCFrame(CFrame.new(v.Handle.Position) * CFrame.new(0, 0, 0))
-                        end
-                    end
-                    OriginBiteValue = __VE["LPs"].Character.Humanoid.SeatPart.Parent.Data.CombatStats.BiteCooldown.Value
-                    __VE["LPs"].Character:SetPrimaryPartCFrame(CFrame.new(GetMob().Position + Vector3.new(0,5,0)))
-                    __VE["LPs"].Character.Humanoid.SeatPart.Parent.Data.CombatStats.BiteCooldown.Value = 0.001
-                            
-                    for i=1, 10 do task.wait(0.1)
-                        GetConnections(__VE["LPs"].PlayerGui.HUDGui.BottomFrame.CurrentDragonFrame.DragonControlsFrame.Other.Bite.MouseButton1Down)
-                    end
-                    __VE["LPs"].Character.Humanoid.SeatPart.Parent.Data.CombatStats.BiteCooldown.Value = OriginBiteValue
-                end)
-            end
-        end)
-    end)
-    Tabs.Dragon:AddSection("OP Dragon")
-    local Input = Tabs.Dragon:AddInput("Input", {
-        Title = "DashCooldown",
-        Default = "0", Placeholder = "Placeholder", Numeric = true, Finished = false,
-        Callback = function(Value)
-            pcall(function()
-                SetDragonStatus("DashCooldown", tonumber(Value))
-            end)
-        end
-    })
-    Input:OnChanged(function(Value) pcall(function() SetDragonStatus("DashCooldown", tonumber(Value)) end) end)
-    local Input = Tabs.Dragon:AddInput("Input", {
-        Title = "FlyDashCooldown",
-        Default = "0", Placeholder = "Placeholder", Numeric = true, Finished = false,
-        Callback = function(Value)
-            pcall(function()
-                SetDragonStatus("FlyDashCooldown", tonumber(Value))
-            end)
-        end
-    })
-    Input:OnChanged(function(Value) pcall(function() SetDragonStatus("FlyDashCooldown", tonumber(Value)) end) end)
-    local Input = Tabs.Dragon:AddInput("Input", {
-        Title = "TurnSpeed",
-        Default = "0", Placeholder = "Placeholder", Numeric = true, Finished = false,
-        Callback = function(Value)
-            pcall(function()
-                SetDragonStatus("TurnSpeed", tonumber(Value))
-            end)
-        end
-    })
-    Input:OnChanged(function(Value) pcall(function() SetDragonStatus("TurnSpeed", tonumber(Value)) end) end)
-    local Input = Tabs.Dragon:AddInput("Input", {
-        Title = "FlySpeed",
-        Default = "0", Placeholder = "Placeholder", Numeric = true, Finished = false,
-        Callback = function(Value)
-            pcall(function()
-                SetDragonStatus("FlySpeed", tonumber(Value))
-            end)
-        end
-    })
-    Input:OnChanged(function(Value) pcall(function() SetDragonStatus("FlySpeed", Value) end) end)
-    local Input = Tabs.Dragon:AddInput("Input", {
-        Title = "WalkSpeed",
-        Default = "0", Placeholder = "Placeholder", Numeric = true, Finished = false,
-        Callback = function(Value)
-            pcall(function()
-                SetDragonStatus("WalkSpeed", Value)
-            end)
-        end
-    })
-    Input:OnChanged(function(Value) pcall(function() SetDragonStatus("WalkSpeed", tonumber(Value)) end) end)
-    local Input = Tabs.Dragon:AddInput("Input", {
-        Title = "FlyTurnSpeed",
-        Default = "0", Placeholder = "Placeholder", Numeric = true, Finished = false,
-        Callback = function(Value)
-            pcall(function()
-                SetDragonStatus("FlyTurnSpeed", tonumber(Value))
-            end)
-        end
-    })
-    Input:OnChanged(function(Value) pcall(function() SetDragonStatus("FlyTurnSpeed", tonumber(Value)) end) end)
-    local Input = Tabs.Dragon:AddInput("Input", {
-        Title = "Dash3TimeUseCooldown",
-        Default = "0", Placeholder = "Placeholder", Numeric = true, Finished = false,
-        Callback = function(Value)
-            pcall(function()
-                SetDragonStatus("Dash3TimeUseCooldown", tonumber(Value))
-            end)
-        end
-    })
-    Input:OnChanged(function(Value) pcall(function() SetDragonStatus("Dash3TimeUseCooldown", tonumber(Value)) end) end)
-    local Input = Tabs.Dragon:AddInput("Input", {
-        Title = "BiteCooldown",
-        Default = "0", Placeholder = "Placeholder", Numeric = true, Finished = false,
-        Callback = function(Value)
-            pcall(function()
-                SetDragonStatus("BiteCooldown", tonumber(Value))
-            end)
-        end
-    })
-    Input:OnChanged(function(Value) pcall(function() SetDragonStatus("BiteCooldown", tonumber(Value)) end) end)
-    Tabs.Dragon:AddSection("Main")
-    local Dropdown = Tabs.Misc:AddDropdown("SelectDragon", {Title = "Select Dragon",Values = Dragons,Multi = false, Default = 1,})
-    Dropdown:OnChanged(function(Value)
-        Setting.SelectDragon = Value
-    end)
-    Tabs.Dragon:AddButton({Title = "Equip Dragon",Description = "Equips Selected Dragon",Callback = function()
-        for i,v in next, __VE["LPs"].Data.Dragons:GetDescendants() do
-            if  v.ClassName == 'StringValue' and  v.Value == Setting.SelectDragon and v:FindFirstChild("Stats") then 
-                RF("EquipDragonRemote"):InvokeServer(v.Name)
-                break
-            end
-        end
-    end})
-    Tabs.Dragon:AddButton({Title = "Uneqip Dragon",Description = "Unequips Selected Dragon",Callback = function()
-        for i, v in next, __VE["LPs"].Character.Dragons:GetDescendants() do
-            if v.ClassName == 'StringValue' and  v.Value == Setting.SelectDragon and v:FindFirstChild("Stats")  then
-                RF("UnequipDragonRemote"):InvokeServer(v.Name)
-            end
-        end
-    end})
-    Tabs.Dragon:AddButton({Title = "Unequip All Dragons",Description = "",Callback = function()
-        for i, v in next, __VE["LPs"].Character.Dragons:GetDescendants() do
-            if v:IsA("Model") and v:FindFirstChild("ID") then
-                RF("UnequipDragonRemote"):InvokeServer(v.Name)
-            end
-        end
-    end})
-    local Dropdown = Tabs.Dragon:AddDropdown("SelectFood", {Title = "Select Food",Values = list,Multi = false,Default = tostring(Setting.SelectFood) or 1,})
-
-    Dropdown:OnChanged(function(Value)
-        Setting.SelectFood = Value
-    end)
-    local Toggle = Tabs.Dragon:AddToggle("AutoFeed", {Title = "Auto Feed Dragons", Default = false})
-    Toggle:OnChanged(function()
-        Setting.AutoFeed = Options.AutoFeed.Value
-        spawn(function()
-            while Setting.AutoFeed do task.wait()
-                if Setting.AutoFeed then
-                    pcall(function()
-                        for i, v in next, __VE["LPs"].Character.Dragons:GetChildren() do
-                            if v.ClassName == "Model" and v:FindFirstChild("ID") and Setting.AutoFeed then
-                                RF("FeedDragonRemote"):InvokeServer(v.Name, {["Amount"] = 1, ["ItemName"] = Setting.SelectFood})
-                                task.wait(1)
-                            end
-                        end
-                    end)
-                end
-            end
-        end)
-    end)
-    local Toggle = Tabs.Dragon:AddToggle("AutoGrow", {Title = "Auto Grow", Default = false})
-    Toggle:OnChanged(function()
-        Setting.AutoGrow = Options.AutoGrow.Value
-        spawn(function()
-            while Setting.AutoGrow do task.wait()
-                if Setting.AutoGrow then
-                    pcall(function()
-                        for i, v in pairs(__VE["LPs"].Character.Dragons:GetDescendants()) do
-                            if v.ClassName == "Model" and v:FindFirstChild("ID") then task.wait(5)
-                                RF("GrowDragonRemote"):InvokeServer(tostring(v.Name))
-                            end
-                        end
-                    end)
-                end
-            end
-        end)
-    end)
-    Tabs.Dragon:AddSection("Heal")
-    local Dropdown = Tabs.Dragon:AddDropdown("HealingItem", {Title = "Select Healings",Values = Healing,Multi = false,Default = tostring(Setting.HealingItem) or 1,})
-    Dropdown:OnChanged(function(Value)
-        Setting.HealingItem = Value
-    end)
-    local Toggle = Tabs.Dragon:AddToggle("AutoHeal", {Title = "Auto Heal Dragons", Default = false})
-    Toggle:OnChanged(function()
-        Setting.AutoHeal = Options.AutoHeal.Value
-        if Setting.AutoHeal then
-            spawn(function()
-                while Setting.AutoHeal do task.wait(0.1)
-                    if AutoHeal then
-                        pcall(function()
-                            for i, v in pairs(__VE["LPs"].Character.Dragons:GetChildren()) do
-                                if v.ClassName == "Model" and v:FindFirstChild("ID") and Setting.AutoHeal then
-                                    RF("HealDragonRemote"):InvokeServer(tostring(v.Name),HealingItem)
-                                    task.wait(1)
+                                if (S.L + S.R) ~= 0 or (S.F + S.B) ~= 0 then
+                                    BodyVelocity.velocity =
+                                        ((Workspace.CurrentCamera.CoordinateFrame.lookVector * (S.F + S.B)) +
+                                        ((Workspace.CurrentCamera.CoordinateFrame *
+                                            CFrame.new(S.L + S.R, (S.F + S.B) * 0.2, 0).p) -
+                                            Workspace.CurrentCamera.CoordinateFrame.p)) *
+                                        SPEED
+                                    S2 = {
+                                        F = S.F,
+                                        B = S.B,
+                                        L = S.L,
+                                        R = S.R
+                                    }
+                                elseif (S.L + S.R) == 0 and (S.F + S.B) == 0 and SPEED ~= 0 then
+                                    BodyVelocity.velocity =
+                                        ((Workspace.CurrentCamera.CoordinateFrame.lookVector * (S2.F + S2.B)) +
+                                        ((Workspace.CurrentCamera.CoordinateFrame *
+                                            CFrame.new(S2.L + S2.R, (S2.F + S2.B) * 0.2, 0).p) -
+                                            Workspace.CurrentCamera.CoordinateFrame.p)) *
+                                        SPEED
+                                else
+                                    BodyVelocity.velocity = Vector3.new(0, 0.1, 0)
                                 end
-                            end
-                        end)
-                    end
-                end
-            end)
-        end
-    end)
-    FloatT = Tabs.Player:AddToggle("FloatT", {Title = "Float", Default = __Y[2] })
-    FloatT:OnChanged(function()
-        Float = Options.FloatT.Value
-    end)
-    NoClipT = Tabs.Player:AddToggle("NoClipT", {Title = "Noclip", Default = __Y[2] })
-    NoClipT:OnChanged(function()
-        Noclip = Options.NoClipT.Value
-    end)
-    local FLysss = Tabs.Player:AddToggle("FLysss", {Title = "Fly", Default = __Y[2] })
-
-    FLysss:OnChanged(function()
-        if Options.FLysss.Value then
-            FLYING = Options.FLysss.Value
-            while not __VE["LPs"] or not __VE["LPs"].Character or not __VE["LPs"].Character:FindFirstChild('HumanoidRootPart') or not __VE["LPs"].Character:FindFirstChild('Humanoid') or not cmdm do
-                wait()
-            end
-
-            local T = __VE["LPs"].Character.HumanoidRootPart
-            local SPEED = 0
-
-            function FLY()
-                local BG = __U[35]('BodyGyro', T)
-                local BV = __U[35]('BodyVelocity', T)
-                BG.P = 9e4
-                BG.maxTorque = __U[57](9e9, 9e9, 9e9)
-                BG.cframe = T.CFrame
-                BV.velocity = __U[57](0, 0, 0)
-                BV.maxForce = __U[57](9e9, 9e9, 9e9)
-
-                spawn(function()
-                    while FLYING do
-                        if CONTROL.L + CONTROL.R ~= 0 or CONTROL.F + CONTROL.B ~= 0 or CONTROL.Q + CONTROL.E ~= 0 then
-                            SPEED = 50
-                        elseif not (CONTROL.L + CONTROL.R ~= 0 or CONTROL.F + CONTROL.B ~= 0 or CONTROL.Q + CONTROL.E ~= 0) and SPEED ~= 0 then
+                                BodyGyro.cframe = Workspace.CurrentCamera.CoordinateFrame
+                            until not getgenv().Fly
+                            S = {
+                                F = 0,
+                                B = 0,
+                                L = 0,
+                                R = 0
+                            }
+                            S2 = {
+                                F = 0,
+                                B = 0,
+                                L = 0,
+                                R = 0
+                            }
                             SPEED = 0
+                            BodyGyro:destroy()
+                            BodyVelocity:destroy()
+                            LP.Character.Humanoid.PlatformStand = false
                         end
-
-                        if (CONTROL.L + CONTROL.R) ~= 0 or (CONTROL.F + CONTROL.B) ~= 0 or (CONTROL.Q + CONTROL.E) ~= 0 then
-                            BV.velocity = ((__VE["WS"].CurrentCamera.CoordinateFrame.lookVector * (CONTROL.F + CONTROL.B)) + ((__VE["WS"].CurrentCamera.CoordinateFrame * __U[26](CONTROL.L + CONTROL.R, (CONTROL.F + CONTROL.B + CONTROL.Q + CONTROL.E) * 0.2, 0).p) - __VE["WS"].CurrentCamera.CoordinateFrame.p)) * SPEED
-                        else
-                            BV.velocity = __U[57](0, 0, 0)
+                    )
+                end
+                Mouse.KeyDown:connect(
+                    function(k)
+                        if k:lower() == "w" then
+                            S.F = 1
+                        elseif k:lower() == "s" then
+                            S.B = -1
+                        elseif k:lower() == "a" then
+                            S.L = -1
+                        elseif k:lower() == "d" then
+                            S.R = 1
                         end
-
-                        BG.cframe = __VE["WS"].CurrentCamera.CoordinateFrame
-                        wait()
                     end
-
-                    CONTROL = {F = 0, B = 0, L = 0, R = 0, Q = 0, E = 0}
-                    SPEED = 0
-
-                    BG:Destroy()
-                    BV:Destroy()
-                    __VE["LPs"].Character.Humanoid.PlatformStand = __Y[2]
-                end)
+                )
+                Mouse.KeyUp:connect(
+                    function(k)
+                        if k:lower() == "w" then
+                            S.F = 0
+                        elseif k:lower() == "s" then
+                            S.B = 0
+                        elseif k:lower() == "a" then
+                            S.L = 0
+                        elseif k:lower() == "d" then
+                            S.R = 0
+                        end
+                    end
+                )
+                FLY()
+                if Max == 2 then
+                    getgenv().Fly = false
+                    Max = 0
+                end
             end
-
-            cmdm.KeyDown:connect(function(KEY)
-                if KEY:lower() == 'w' then
-                    if vfly then
-                        CONTROL.F = speedofthevfly
-                    else
-                        CONTROL.F = speedofthefly
-                    end
-                elseif KEY:lower() == 's' then
-                    if vfly then
-                        CONTROL.B = -speedofthevfly
-                    else
-                        CONTROL.B = -speedofthefly
-                    end
-                elseif KEY:lower() == 'a' then
-                    if vfly then
-                        CONTROL.L = -speedofthevfly
-                    else
-                        CONTROL.L = -speedofthefly
-                    end
-                elseif KEY:lower() == 'd' then
-                    if vfly then
-                        CONTROL.R = speedofthevfly
-                    else
-                        CONTROL.R = speedofthefly
-                    end
-                elseif KEY:lower() == 'y' then
-                    if vfly then
-                        CONTROL.Q = speedofthevfly * 2
-                    else
-                        CONTROL.Q = speedofthefly * 2
-                    end
-                elseif KEY:lower() == 't' then
-                    if vfly then
-                        CONTROL.E = -speedofthevfly * 2
-                    else
-                        CONTROL.E = -speedofthefly * 2
-                    end
-                end
-            end)
-
-            cmdm.KeyUp:connect(function(KEY)
-                if KEY:lower() == 'w' then
-                    CONTROL.F = 0
-                elseif KEY:lower() == 's' then
-                    CONTROL.B = 0
-                elseif KEY:lower() == 'a' then
-                    CONTROL.L = 0
-                elseif KEY:lower() == 'd' then
-                    CONTROL.R = 0
-                elseif KEY:lower() == 'y' then
-                    CONTROL.Q = 0
-                elseif KEY:lower() == 't' then
-                    CONTROL.E = 0
-                end
-            end)
-
-            FLY()
-        else
-            FLYING = Options.FLysss.Value
         end
-    end)
-    local pfly = Tabs.Player:AddSlider("pfly", {
-        Title = "Fly Speed",
-        Description = "",
-        Default = 6,
-        Min = 1,
-        Max = 50,
-        Rounding = 0,
-        Callback = function(Value)
-            speedofthefly = Value
-            speedofthevfly = Value
-        end
-    })
-    local WalkSpeedS = Tabs.Player:AddSlider("WalkSpeedS", {
-        Title = "WalkSpeed",
-        Description = "",
-        Default = 16,
-        Min = 0,
-        Max = 300,
-        Rounding = 1,
-        Callback = function(Value)
-            WalkSpeedSet = Value
-        end
-    })
+    end
+)
+end)
 
-    WalkSpeedS:OnChanged(function(Value)
-        WalkSpeedSet = Value
-    end)
-    local JumpPowerS = Tabs.Player:AddSlider("JumpPowerS", {
-        Title = "JumpPower",
-        Description = "",
-        Default = 30,
-        Min = 0,
-        Max = 300,
-        Rounding = 1,
-        Callback = function(Value)
-            JumpPowerSet = Value
-        end
-    })
-
-    JumpPowerS:OnChanged(function(Value)
-        JumpPowerSet = Value
-    end)
-    WalkSpeedT = Tabs.Player:AddToggle("WalkSpeedT", {Title = "Toggle WalkSpeed", Default = false })
-    coroutine.wrap(function()
-        WalkSpeedT:OnChanged(function()
-            pcall(function()
-                WalkSpeedRequest = Options.WalkSpeedT.Value
-            end)
+local Button1 = Section2:CreateButton("Server Hop", function()
+spawn(function()
+    while wait(4) do
+        pcall(function()
+            local Servers = HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. game.PlaceId .. '/servers/Public?sortOrder=Asc&limit=100'))
+            for i,v in pairs(Servers.data) do
+                local Max = v.maxPlayers - 2
+                if v.ping < 80 and Max > v.playing then
+                    TeleportService:TeleportToPlaceInstance(game.PlaceId, v.id, Player)
+                    break
+                end 
+            end 
         end)
-    end)()
-    JumpPowerT = Tabs.Player:AddToggle("JumpPowerT", {Title = "Toggle JumpPower", Default = false })
-    coroutine.wrap(function()
-        JumpPowerT:OnChanged(function()
-            pcall(function()
-                JumpPowerRequest = Options.JumpPowerT.Value
-            end)
-        end)
-    end)()
-
-    Tabs.ChangeLog:AddParagraph({
-        Title = "Change Log",
-        Content = "11/4/2024\n# Main\n> Added Auto Easter Event\n> Added Teleport To base\n> Added Sell All Foods\n> Added Auto Fish\n> Added Auto Egg\n> Added Auto Collect\n> Added Auto Farm Mob\n> Added Dragon Dash Cooldown\n> Added Fly Dash Cooldown\n> Added Turn Speed\n> Added Fly Speed\n> Added WalkSpeed\n> Added Fly Turn Speed\n> Added Dash3Time use Cooddown\n> Add Bite Cooldown\n> Added Select Dragon\n> Added Equip Dragon\n> Added Unequip Dragon\n> Added Unequip All Dragons\n> Added Select Food\n> Added Auto Feed\n> Added Auto Grow\n> Added Auto Heal\n# Player\n> Added Float, Noclip, Fly, WalkSpeed, JumpPower"
-    })
-    for i, v in ipairs(credits) do
-        Tabs.Credits:AddButton({
-            Title = v.Title,
-            Description = v.Content,
-            Callback = function()
-                serializedSetting = game.HttpService:JSONEncode(Setting)
-                writefile("Setting/DragonAdventure.json", serializedSetting)
-            end
-        })
-    end
-
-    if getgenv().Addons then
-        Tabs.Addons:AddButton({
-            Title = "Save as config",
-            Description = "",
-            Callback = function()
-                
-            end
-        })
-        Tabs.Addons:AddSection("Colorful + fun")
-        Tabs.Addons:AddButton({
-            Title = "Trail",
-            Description = "Blue->Cyan",
-            Callback = function()
-                createTrail(1)
-            end
-        })
-        Tabs.Addons:AddButton({
-            Title = "Trail",
-            Description = "Green->Light Green",
-            Callback = function()
-                createTrail(2)
-            end
-        })
-        Tabs.Addons:AddButton({
-            Title = "Trail",
-            Description = "Pink->Red",
-            Callback = function()
-                createTrail(3)
-            end
-        })
-        Tabs.Addons:AddButton({
-            Title = "Trail",
-            Description = "Purple->Light Purple",
-            Callback = function()
-                createTrail(4)
-            end
-        })
-        Tabs.Addons:AddSection("Webhook")
-        Tabs.Addons:AddSection("Soon")
-        Tabs.Addons:AddSection("Notify")
-        NotifyWhenTTJY = Tabs.Addons:AddToggle("NotifyWhenTTJY", {Title = "Notify When TTJY Join", Default = __Y[2] })
-        coroutine.wrap(function()
-            NotifyWhenTTJY:OnChanged(function()
-                if Options.NotifyWhenTTJY.Value then
-                    repeat __U[23]() until game.Players:FindFirstChild("rigga56")
-                    Notify("Script", "TTJY!!!", 5)
-                end
-            end)
-        end)()
-        Tabs.Addons:AddSection("Others")
-        Tabs.Addons:AddSection("Nothing here")
-    end
-    Tabs.Settings:AddSection("W A S D")
-    HideShow = Tabs.Settings:AddToggle("HideShow", {Title = "Hide/Show", Default = __Y[2] })
-
-    HideShow:OnChanged(function()
-        if Options.HideShow.Value then
-            game.CoreGui["InputPcToMobile"].W.Visible = __Y[2]
-            game.CoreGui["InputPcToMobile"].A.Visible = __Y[2]
-            game.CoreGui["InputPcToMobile"].S.Visible = __Y[2]
-            game.CoreGui["InputPcToMobile"].D.Visible = __Y[2]
-        else
-            game.CoreGui["InputPcToMobile"].W.Visible = __Y[1]
-            game.CoreGui["InputPcToMobile"].A.Visible = __Y[1]
-            game.CoreGui["InputPcToMobile"].S.Visible = __Y[1]
-            game.CoreGui["InputPcToMobile"].D.Visible = __Y[1]
+    end 
+end)
+end)
+local Button1 = Section2:CreateButton("Anti Lag", function()
+for _, v in pairs(Workspace:GetDescendants()) do
+    if v:IsA("BasePart") and not v.Parent:FindFirstChild("Humanoid") then
+        v.Material = Enum.Material.SmoothPlastic
+        if v:IsA("Texture") then
+            v:Destroy()
         end
-    end)
-    UpDown = Tabs.Settings:AddToggle("UpDown", {Title = "Up/Down", Default = __Y[2] })
-
-    UpDown:OnChanged(function()
-        if Options.UpDown.Value then
-            game.CoreGui["InputPcToMobile"].W.Position = __U[27](0.05, 0, 0.1, 0)
-            game.CoreGui["InputPcToMobile"].A.Position = __U[27](0, 0, 0.2, 0)
-            game.CoreGui["InputPcToMobile"].S.Position = __U[27](0.05, 0, 0.3, 0)
-            game.CoreGui["InputPcToMobile"].D.Position = __U[27](0.1, 0, 0.2, 0)
-        else
-            game.CoreGui["InputPcToMobile"].W.Position = __U[27](0.05, 0, 0.7, 0)
-            game.CoreGui["InputPcToMobile"].A.Position = __U[27](0, 0, 0.8, 0)
-            game.CoreGui["InputPcToMobile"].S.Position = __U[27](0.05, 0, 0.9, 0)
-            game.CoreGui["InputPcToMobile"].D.Position = __U[27](0.1, 0, 0.8, 0)
-        end
-    end)
-    BigSmall = Tabs.Settings:AddToggle("BigSmall", {Title = "Big/Small", Default = __Y[2] })
-
-    BigSmall:OnChanged(function()
-        if Options.BigSmall.Value then
-            game.CoreGui["InputPcToMobile"].W.Size = __U[27](0.1, 0, 0.1, 0)
-            game.CoreGui["InputPcToMobile"].A.Size = __U[27](0.1, 0, 0.1, 0)
-            game.CoreGui["InputPcToMobile"].S.Size = __U[27](0.1, 0, 0.1, 0)
-            game.CoreGui["InputPcToMobile"].D.Size = __U[27](0.1, 0, 0.1, 0)
-        else
-            game.CoreGui["InputPcToMobile"].W.Size = __U[27](0.05, 0, 0.05, 0)
-            game.CoreGui["InputPcToMobile"].A.Size = __U[27](0.05, 0, 0.05, 0)
-            game.CoreGui["InputPcToMobile"].S.Size = __U[27](0.05, 0, 0.05, 0)
-            game.CoreGui["InputPcToMobile"].D.Size = __U[27](0.05, 0, 0.05, 0)
-        end
-    end)
-end
-
-local WalkSpeedSignal
-coroutine.wrap(function()
-    while true do
-        wait(0.1)
-        
-        character = __VE["LPs"].Character
-        if character and character:FindFirstChild("Humanoid") and WalkSpeedRequest and character.Humanoid.WalkSpeed ~= tonumber(WalkSpeedSet) then
-            if WalkSpeedSignal then
-                WalkSpeedSignal:Disconnect()
-            end
-            
-            WalkSpeedSignal = character.Humanoid:GetPropertyChangedSignal("WalkSpeed"):Connect(function()
-                character.Humanoid.WalkSpeed = tonumber(WalkSpeedSet)
-            end)
-        end
-    end
-end)()
-coroutine.wrap(function()
-    game:GetService("RunService").Heartbeat:Connect(function()
-        if __VE["LPs"].Character and __VE["LPs"].Character:FindFirstChild("Humanoid") and JumpPowerRequest then
-            __VE["LPs"].Character.Humanoid.JumpPower = tonumber(JumpPowerSet)
-        end
-    end)
-end)()
-local Part = Instance.new("Part")
-Part.Size = Vector3.new(2, 0.2, 1.5)
-Part.Material = Enum.Material.Grass
-Part.Anchored = true
-Part.Transparency = 1
-Part.Parent = workspace
-local function updatePartPosition()
-    character = __VE["LPs"].Character
-    local humanoidRootPart = character and character:FindFirstChild("HumanoidRootPart")
-    
-    if humanoidRootPart and Float then
-        Part.CFrame = humanoidRootPart.CFrame * CFrame.new(0, -3.1, 0)
-    else
-        Part.CFrame = CFrame.new(0, -10000, 0)
     end
 end
-game:GetService("RunService").RenderStepped:Connect(updatePartPosition)
-local function NoclipLoop()
-	if Noclip and __VE["LPs"].Character ~= nil then
-		for _, child in pairs(__VE["LPs"].Character:GetChildren()) do
-			if child:IsA("BasePart") and child.CanCollide == true then
-				child.CanCollide = false
-			end
-		end
+end)
+
+local Button1 = Section2:CreateButton("Teleport to RandomPlayer", function()
+local randomPlayer = game.Players:GetPlayers()[math.random(1, #game.Players:GetPlayers())]
+
+Player.Character.HumanoidRootPart.CFrame =
+    CFrame.new(
+    Vector3.new(
+        randomPlayer.Character.Head.Position.X,
+        randomPlayer.Character.Head.Position.Y,
+        randomPlayer.Character.Head.Position.Z
+    )
+)
+end)
+local Button1 = Section2:CreateButton("Lag Switch F3", function()
+local ass = false
+local bitch = settings()
+
+game:service "UserInputService".InputEnded:connect(
+    function(i)
+        if i.KeyCode == Enum.KeyCode.F3 then
+            ass = not ass
+            bitch.Network.IncomingReplicationLag = ass and 10 or 0
+        end
+    end
+)
+end) 
+
+local Button1 = Section2:CreateButton("Rejoin", function()
+TeleportService:Teleport(game.PlaceId, Player) end)
+
+
+local Button1 = Section2:CreateButton("Save Settings", function()
+Save()
+end)
+local Toggle3 = Section3:CreateToggle("UI Toggle", nil, function(State)
+	Window:Toggle(State)
+end)
+Toggle3:CreateKeybind(tostring(Config.Keybind):gsub("Enum.KeyCode.", ""), function(Key)
+	Config.Keybind = Enum.KeyCode[Key]
+end)
+Toggle3:SetState(true)
+Section3:CreateLabel("Credits DekuDimz#7960")
+Section3:CreateLabel("Credits AlexR32#3232 Ui")
+Section3:CreateLabel("Credits bye...")
+local Colorpicker3 = Section3:CreateColorpicker("UI Color", function(Color)
+	Window:ChangeColor(Color)
+end)
+Colorpicker3:UpdateColor(Config.Color)
+
+-- credits to jan for patterns
+local Dropdown3 = Section4:CreateDropdown("Image", {"Default","Hearts","Abstract","Hexagon","Circles","Lace With Flowers","Floral"}, function(Name)
+	if Name == "Default" then
+		Window:SetBackground("2151741365")
+	elseif Name == "Hearts" then
+		Window:SetBackground("6073763717")
+	elseif Name == "Abstract" then
+		Window:SetBackground("6073743871")
+	elseif Name == "Hexagon" then
+		Window:SetBackground("6073628839")
+	elseif Name == "Circles" then
+		Window:SetBackground("6071579801")
+	elseif Name == "Lace With Flowers" then
+		Window:SetBackground("6071575925")
+	elseif Name == "Floral" then
+		Window:SetBackground("5553946656")
 	end
-	task.wait()
-end
-game:GetService("RunService").Stepped:Connect(NoclipLoop)
-task.wait(0.05)
-if allowtoserialized then
-    serializedSetting = game.HttpService:JSONEncode(Setting)
-    writefile("Setting/DragonAdventure.json", serializedSetting)
-end
-task.wait(5)
-finishload = true
-getgenv().FinishLoad = true
+end)
+Dropdown3:SetOption("Default")
+
+local Colorpicker4 = Section4:CreateColorpicker("Color", function(Color)
+	Window:SetBackgroundColor(Color)
+end)
+Colorpicker4:UpdateColor(Color3.new(1,1,1))
+
+local Slider3 = Section4:CreateSlider("Transparency",0,1,nil,false, function(Value)
+	Window:SetBackgroundTransparency(Value)
+end)
+Slider3:SetValue(0)
+
+local Slider4 = Section4:CreateSlider("Tile Scale",0,1,nil,false, function(Value)
+	Window:SetTileScale(Value)
+end)
+Slider4:SetValue(0.5)
