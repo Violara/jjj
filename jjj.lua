@@ -391,7 +391,7 @@ do
                                 if v:FindFirstChild("BillboardPart", true) and v.BillboardPart.Health.Value ~= 0 and Setting.AutoCollect then
                                     __VE["LPs"].Character:SetPrimaryPartCFrame(CFrame.new(v.Hitbox.Position) * CFrame.new(0, 10, 0))
                                     for i=1, 10 do task.wait(0.3)
-                                        GetConnections(__VE["PsG"].HUDGui.BottomFrame.CurrentDragonFrame.DragonControlsFrame.Other.Bite.MouseButton1Down)
+                                        GetConnections(__VE["PsG"].HUDGui.BottomFrame.CurrentDragonFrame.DragonControlsFrame.Other.Bite, "MouseButton1Down")
                                     end
                                     for _,v in next, __VE["WS"].Camera:GetChildren() do
                                         if v:FindFirstChild("Handle") and Setting.AutoCollect then 
@@ -423,7 +423,7 @@ do
                     __VE["LPs"].Character.Humanoid.SeatPart.Parent.Data.CombatStats.BiteCooldown.Value = 0.001
                             
                     for i=1, 10 do task.wait(0.1)
-                        GetConnections(__VE["LPs"].PlayerGui.HUDGui.BottomFrame.CurrentDragonFrame.DragonControlsFrame.Other.Bite.MouseButton1Down)
+                        GetConnections(__VE["LPs"].PlayerGui.HUDGui.BottomFrame.CurrentDragonFrame.DragonControlsFrame.Other.Bite, "MouseButton1Down")
                     end
                     __VE["LPs"].Character.Humanoid.SeatPart.Parent.Data.CombatStats.BiteCooldown.Value = OriginBiteValue
                 end)
@@ -647,6 +647,7 @@ do
                         end
 
                         BG.cframe = __VE["WS"].CurrentCamera.CoordinateFrame
+                        __VE["LPs"].Character.Humanoid.PlatformStand = true
                         wait()
                     end
 
