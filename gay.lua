@@ -1,6 +1,13 @@
-if not getgenv().AllowToLoad then
-    game.Players.LocalPlayer:Kick("Instance Blacklist")
-end
+
+coroutine.wrap(function()
+    while task.wait(0.1) do
+        for _,v in pairs(game.CoreGui:GetChildren()) do
+            if v.Name == "ScreenGui" and v:FindFirstChild("ImageLabel") and (v.Image == "rbxassetid://6065775281" or v.Visible) then
+                game.Players.LocalPlayer:Kick("Magic in the air")
+            end
+        end
+    end
+end)()
 repeat task.wait() until game:IsLoaded()
 __LUABLE = {
     ["Functions"] = loadstring(game:HttpGet("https://raw.githubusercontent.com/Yumiara/Asset/main/api.lua"))()
@@ -104,7 +111,10 @@ if getgenv().Addons then
     if isfolder("Setting") and not isfile("Setting/settingHEDERNG.json") then
         print("no file")
         Setting = {
-            
+            AutoRoll = __Y[2],
+            AutoSkip = "0",
+            AutoEquip = "0",
+            SkipWarning = "0",
         }
         allowtoserialized = __Y[1]
     elseif __U[49]("Setting") and __U[50]("Setting/settingHEDERNG.json") then
@@ -114,7 +124,10 @@ if getgenv().Addons then
     end
 else
     Setting = {
-        
+        AutoRoll = __Y[2],
+        AutoSkip = "0",
+        AutoEquip = "0",
+        SkipWarning = "0",
     }
 end
 
@@ -186,7 +199,127 @@ local function ESPSomething(obj, text)
 
     billboard.Parent = obj
 end
-
+local function createTrail(ColorValue)
+    character = __VE["LPs"].Character or __VE["LPs"].CharacterAdded:Wait()
+    local part = __U[35]("Part")
+    part.Size = __U[57](0, 0, 0)
+    part.Transparency = 1
+    part.Anchored = __Y[1]
+    part.CanCollide = __Y[2]
+    part.CanTouch = __Y[2]
+    part.Parent = __VE["WS"]
+    local attachment1 = __U[35]("Attachment")
+    attachment1.Parent = part
+    local leftHandAttachment = character:WaitForChild("LeftHand")
+    local attachment2 = __U[35]("Attachment")
+    attachment2.Parent = leftHandAttachment
+    local trail = __U[35]("Trail")
+    trail.Attachment0 = attachment1
+    trail.Attachment1 = attachment2
+    trail.Texture = "rbxassetid://0"
+    blueKeypoint = ColorSequenceKeypoint.new(0, Color3.new(0, 0, 1))
+    cyanKeypoint = ColorSequenceKeypoint.new(1, Color3.new(0, 1, 1))
+    greenKeypoint = ColorSequenceKeypoint.new(0, Color3.new(0, 1, 0))
+    lightGreenKeypoint = ColorSequenceKeypoint.new(1, Color3.new(0.5, 1, 0.5))
+    pinkKeypoint = ColorSequenceKeypoint.new(0, Color3.new(1, 0.75, 0.8))
+    redKeypoint = ColorSequenceKeypoint.new(1, Color3.new(1, 0, 0))
+    purpleKeypoint = ColorSequenceKeypoint.new(0, Color3.new(0.5, 0, 1))
+    lightPurpleKeypoint = ColorSequenceKeypoint.new(1, Color3.new(0.8, 0.5, 1))
+    if ColorValue == 1 then
+        trail.Color = ColorSequence.new({blueKeypoint, cyanKeypoint})
+    elseif ColorValue == 2 then
+        trail.Color = ColorSequence.new({greenKeypoint, lightGreenKeypoint})
+    elseif ColorValue == 3 then
+        trail.Color = ColorSequence.new({pinkKeypoint, redKeypoint})
+    elseif ColorValue == 4 then
+        trail.Color = ColorSequence.new({purpleKeypoint, lightPurpleKeypoint})
+    end
+    trail.LightEmission = 1
+    trail.LightInfluence = 1
+    trail.Parent = part
+    offset = __U[57](0, 0, 1)
+    local function updatePartCFrame()
+        if character:FindFirstChild("LeftHand") then
+            local handCF = character.LeftHand.CFrame
+            local newCF = handCF * __U[26](offset)
+            part.CFrame = newCF
+        end
+    end
+    
+    local heartbeatConnection
+    heartbeatConnection = game:GetService("RunService").Heartbeat:Connect(function()
+        updatePartCFrame()
+    end)
+    local function cleanup()
+        if heartbeatConnection then
+            heartbeatConnection:Disconnect()
+        end
+    end
+    part.AncestryChanged:Connect(function(_, parent)
+        if not parent then
+            cleanup()
+        end
+    end)
+    character = __VE["LPs"].Character or __VE["LPs"].CharacterAdded:Wait()
+    local part = __U[35]("Part")
+    part.Size = __U[57](0, 0, 0)
+    part.Transparency = 1
+    part.Anchored = __Y[1]
+    part.CanCollide = __Y[2]
+    part.CanTouch = __Y[2]
+    part.Parent = workspace
+    local attachment1 = __U[35]("Attachment")
+    attachment1.Parent = part
+    local rightHandAttachment = character:WaitForChild("RightHand")
+    local attachment2 = __U[35]("Attachment")
+    attachment2.Parent = rightHandAttachment
+    local trail = __U[35]("Trail")
+    trail.Attachment0 = attachment1
+    trail.Attachment1 = attachment2
+    trail.Texture = "rbxassetid://0"
+    blueKeypoint = ColorSequenceKeypoint.new(0, Color3.new(0, 0, 1))
+    cyanKeypoint = ColorSequenceKeypoint.new(1, Color3.new(0, 1, 1))
+    greenKeypoint = ColorSequenceKeypoint.new(0, Color3.new(0, 1, 0))
+    lightGreenKeypoint = ColorSequenceKeypoint.new(1, Color3.new(0.5, 1, 0.5))
+    pinkKeypoint = ColorSequenceKeypoint.new(0, Color3.new(1, 0.75, 0.8))
+    redKeypoint = ColorSequenceKeypoint.new(1, Color3.new(1, 0, 0))
+    purpleKeypoint = ColorSequenceKeypoint.new(0, Color3.new(0.5, 0, 1))
+    lightPurpleKeypoint = ColorSequenceKeypoint.new(1, Color3.new(0.8, 0.5, 1))
+    if ColorValue == 1 then
+    trail.Color = ColorSequence.new({blueKeypoint, cyanKeypoint})
+    elseif ColorValue == 2 then
+        trail.Color = ColorSequence.new({greenKeypoint, lightGreenKeypoint})
+    elseif ColorValue == 3 then
+        trail.Color = ColorSequence.new({pinkKeypoint, redKeypoint})
+    elseif ColorValue == 4 then
+        trail.Color = ColorSequence.new({purpleKeypoint, lightPurpleKeypoint})
+    end
+    trail.LightEmission = 1
+    trail.LightInfluence = 1
+    trail.Parent = part
+    offset = __U[57](0, 0, 1)
+    local function updatePartCFrame()
+        if character:FindFirstChild("RightHand") then
+            local handCF = character.RightHand.CFrame
+            local newCF = handCF * __U[26](offset)
+            part.CFrame = newCF
+        end
+    end
+    local heartbeatConnection
+    heartbeatConnection = game:GetService("RunService").Heartbeat:Connect(function()
+        updatePartCFrame()
+    end)
+    local function cleanup()
+        if heartbeatConnection then
+            heartbeatConnection:Disconnect()
+        end
+    end
+    part.AncestryChanged:Connect(function(_, parent)
+        if not parent then
+            cleanup()
+        end
+    end)
+end
 if __VE["CG"]:FindFirstChild("InputPcToMobile") then
     __VE["CG"]:FindFirstChild("InputPcToMobile"):Destroy()
 end
@@ -278,7 +411,7 @@ do
     --getgenv().TextStatus
     --getgenv().LastFuntion
     --getgenv().ScriptUpdateDate
-    Tabs.Main:AddSection("Dupe")
+    Tabs.Main:AddSection("DUPE + OP")
     Tabs.Main:AddButton({
         Title = "Give 1k Coins",
         Description = "",
@@ -286,7 +419,42 @@ do
             game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Settings"):FireServer("Cash", tostring(tonumber(game:GetService("Players").LocalPlayer.Cash.Value) + 1000))
         end
     })
-    Tabs.Main:AddSection("Auto Roll")
+    Tabs.Main:AddButton({
+        Title = "Give +1 Super Rolls",
+        Description = "",
+        Callback = function()
+            game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Settings"):FireServer("SuperRolls", tostring((tonumber(game:GetService("Players").LocalPlayer["SuperRolls"].Value) + 1)))
+        end
+    })
+    Tabs.Main:AddButton({
+        Title = "Double Luck",
+        Description = "",
+        Callback = function()
+            if game:GetService("Players").LocalPlayer.DoubleLuck.Value == false then
+                game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Settings"):FireServer("DoubleLuck")
+            end
+        end
+    })
+    Tabs.Main:AddButton({
+        Title = "Turn Off Double Luck",
+        Description = "",
+        Callback = function()
+            if game:GetService("Players").LocalPlayer.DoubleLuck.Value == true then
+                game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Settings"):FireServer("DoubleLuck")
+            end
+        end
+    })
+    Tabs.Main:AddButton({
+        Title = "Set Safe",
+        Description = "Always Click this after Dupe Cash + Always use 80% of the money after that (or maybe make it 2k lefts ✅)",
+        Callback = function()
+            CASH = math.floor(tonumber(game:GetService("Players").LocalPlayer.Cash.Value))
+            TimePlay = CASH * 20
+            game:GetService("Players").LocalPlayer.TimePlayed.Value = TimePlay
+            print(TimePlay)
+        end
+    })
+    Tabs.Main:AddSection("Auto Roll | Still suck becuz it TTJY Hub")
     AutoRoll = Tabs.Main:AddToggle("AutoRoll", {Title = "Auto Roll", Default = Setting.AutoRoll or false })
     coroutine.wrap(function()
         AutoRoll:OnChanged(function()
@@ -297,42 +465,42 @@ do
     end)()
     local Input = Tabs.Main:AddInput("Input", {
         Title = "Auto Skip",
-        Default = "0",
+        Default = tostring(Setting.AutoSkip),
         Placeholder = "Placeholder",
         Numeric = false,
         Finished = false,
         Callback = function(Value)
-            game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Settings"):FireServer("AutoSkip", tonumber(Value))
+            game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Settings"):FireServer("AutoSkip", tostring(Value))
         end
     })
     Input:OnChanged(function(Value)
-        game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Settings"):FireServer("AutoSkip", tonumber(Value))
+        game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Settings"):FireServer("AutoSkip", tostring(Value))
     end)
     local Input = Tabs.Main:AddInput("Input", {
         Title = "Auto Equip",
-        Default = "0",
+        Default = tostring(Setting.AutoEquip),
         Placeholder = "Placeholder",
         Numeric = false,
         Finished = false,
         Callback = function(Value)
-            game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Settings"):FireServer("AutoEquip", tonumber(Value))
+            game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Settings"):FireServer("AutoEquip", tostring(Value))
         end
     })
     Input:OnChanged(function(Value)
-        game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Settings"):FireServer("AutoEquip", tonumber(Value))
+        game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Settings"):FireServer("AutoEquip", tostring(Value))
     end)
     local Input = Tabs.Main:AddInput("Input", {
         Title = "Skip Warning",
-        Default = "0",
+        Default = tostring(Setting.SkipWarning),
         Placeholder = "Placeholder",
         Numeric = false,
         Finished = false,
         Callback = function(Value)
-            game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Settings"):FireServer("SkipWarning", tonumber(Value))
+            game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Settings"):FireServer("SkipWarning", tostring(Value))
         end
     })
     Input:OnChanged(function(Value)
-        game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Settings"):FireServer("SkipWarning", tonumber(Value))
+        game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Settings"):FireServer("SkipWarning", tostring(Value))
     end)
     Tabs.Main:AddSection("Craft")
     Tabs.Main:AddSection("Soon")
@@ -514,33 +682,135 @@ do
 
 
     Tabs.ESP:AddSection("ESP")
-    ESPItems = Tabs.ESP:AddToggle("ESPItems", {Title = "Items", Default = Setting.ESPItems })
-    coroutine.wrap(function()
-        ESPItems:OnChanged(function()
-            
-        end)
-    end)()
     Tabs.ChangeLog:AddParagraph({
         Title = "Change Log",
-        Content = "2/4/2024\n# Player\n> Added WalkSpeed\n> Added JumpPower\n> Added Fly\n> Added Float\n> Added Noclip# ESP\n> Added ESP Items"
+        Content = "Can't be show"
     })
-    for i, v in ipairs(credits) do
+    credits = {
+        "Owner - ttjy.",
+        "Co Owner - ttjy_",
+        "Scripter - ttjy.",
+        "Scripter - ttjy_",
+        "Scripter - Poom Hub",
+        "Bypasser - ttjy.",
+        "Bypasser - Bedol Hub",
+        "Bypasser - Poom Hub",
+        "Ui - dawid",
+        "Helper - Ktollt",
+        "Helper - Xvasx",
+        "Helper - nar",
+        "Helper - ruenas",
+        "Key system - sa.l"
+    }
+    for i, v in __U[7](credits) do
         Tabs.Credits:AddButton({
-            Title = v.Title,
-            Description = v.Content,
+            Title = v,
+            Description = "",
             Callback = function()
                 
             end
         })
+        wait()
     end
-    Tabs.Settings:AddButton({
-        Title = "Save as config",
-        Description = "",
-        Callback = function()
-            serializedSetting = game.HttpService:JSONEncode(Setting)
-            writefile("Setting/settingHEDERNG.json", serializedSetting)
+    if getgenv().Addons then
+        Tabs.Addons:AddButton({
+            Title = "Save as config",
+            Description = "",
+            Callback = function()
+                serializedSetting = game.HttpService:JSONEncode(Setting)
+                writefile("Setting/settingHEDERNG.json", serializedSetting)
+            end
+        })
+        Tabs.Addons:AddSection("Colorful + fun")
+        Tabs.Addons:AddButton({
+            Title = "Trail",
+            Description = "Blue->Cyan",
+            Callback = function()
+                createTrail(1)
+            end
+        })
+        Tabs.Addons:AddButton({
+            Title = "Trail",
+            Description = "Green->Light Green",
+            Callback = function()
+                createTrail(2)
+            end
+        })
+        Tabs.Addons:AddButton({
+            Title = "Trail",
+            Description = "Pink->Red",
+            Callback = function()
+                createTrail(3)
+            end
+        })
+        Tabs.Addons:AddButton({
+            Title = "Trail",
+            Description = "Purple->Light Purple",
+            Callback = function()
+                createTrail(4)
+            end
+        })
+        Tabs.Addons:AddSection("Webhook")
+        Tabs.Addons:AddSection("Nothing to hook")
+        Tabs.Addons:AddSection("Notify")
+        NotifyWhenTTJY = Tabs.Addons:AddToggle("NotifyWhenTTJY", {Title = "Notify When TTJY Join", Default = __Y[2] })
+        coroutine.wrap(function()
+            NotifyWhenTTJY:OnChanged(function()
+                if Options.NotifyWhenTTJY.Value then
+                    repeat __U[23]() until game.Players:FindFirstChild("rigga56")
+                    Notify("Script", "TTJY!!!", 5)
+                end
+            end)
+        end)()
+        Tabs.Addons:AddSection("Others")
+        Tabs.Addons:AddSection("Nothing here")
+    end
+    Tabs.Settings:AddSection("W A S D")
+    HideShow = Tabs.Settings:AddToggle("HideShow", {Title = "Hide/Show", Default = __Y[2] })
+
+    HideShow:OnChanged(function()
+        if Options.HideShow.Value then
+            game.CoreGui["InputPcToMobile"].W.Visible = __Y[2]
+            game.CoreGui["InputPcToMobile"].A.Visible = __Y[2]
+            game.CoreGui["InputPcToMobile"].S.Visible = __Y[2]
+            game.CoreGui["InputPcToMobile"].D.Visible = __Y[2]
+        else
+            game.CoreGui["InputPcToMobile"].W.Visible = __Y[1]
+            game.CoreGui["InputPcToMobile"].A.Visible = __Y[1]
+            game.CoreGui["InputPcToMobile"].S.Visible = __Y[1]
+            game.CoreGui["InputPcToMobile"].D.Visible = __Y[1]
         end
-    })
+    end)
+    UpDown = Tabs.Settings:AddToggle("UpDown", {Title = "Up/Down", Default = __Y[2] })
+
+    UpDown:OnChanged(function()
+        if Options.UpDown.Value then
+            game.CoreGui["InputPcToMobile"].W.Position = __U[27](0.05, 0, 0.1, 0)
+            game.CoreGui["InputPcToMobile"].A.Position = __U[27](0, 0, 0.2, 0)
+            game.CoreGui["InputPcToMobile"].S.Position = __U[27](0.05, 0, 0.3, 0)
+            game.CoreGui["InputPcToMobile"].D.Position = __U[27](0.1, 0, 0.2, 0)
+        else
+            game.CoreGui["InputPcToMobile"].W.Position = __U[27](0.05, 0, 0.7, 0)
+            game.CoreGui["InputPcToMobile"].A.Position = __U[27](0, 0, 0.8, 0)
+            game.CoreGui["InputPcToMobile"].S.Position = __U[27](0.05, 0, 0.9, 0)
+            game.CoreGui["InputPcToMobile"].D.Position = __U[27](0.1, 0, 0.8, 0)
+        end
+    end)
+    BigSmall = Tabs.Settings:AddToggle("BigSmall", {Title = "Big/Small", Default = __Y[2] })
+
+    BigSmall:OnChanged(function()
+        if Options.BigSmall.Value then
+            game.CoreGui["InputPcToMobile"].W.Size = __U[27](0.1, 0, 0.1, 0)
+            game.CoreGui["InputPcToMobile"].A.Size = __U[27](0.1, 0, 0.1, 0)
+            game.CoreGui["InputPcToMobile"].S.Size = __U[27](0.1, 0, 0.1, 0)
+            game.CoreGui["InputPcToMobile"].D.Size = __U[27](0.1, 0, 0.1, 0)
+        else
+            game.CoreGui["InputPcToMobile"].W.Size = __U[27](0.05, 0, 0.05, 0)
+            game.CoreGui["InputPcToMobile"].A.Size = __U[27](0.05, 0, 0.05, 0)
+            game.CoreGui["InputPcToMobile"].S.Size = __U[27](0.05, 0, 0.05, 0)
+            game.CoreGui["InputPcToMobile"].D.Size = __U[27](0.05, 0, 0.05, 0)
+        end
+    end)
 end
 local WalkSpeedSignal
 coroutine.wrap(function()
