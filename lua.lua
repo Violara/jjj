@@ -247,21 +247,6 @@ local VirtualInputManager = game:GetService('VirtualInputManager')
 function keyPress(Key, Press)
    VirtualInputManager:SendKeyEvent(Press, Key, false, game)
 end
-local function GrabEgg()
-    for i,v in next, __VE["WS"].Interactions.Nodes.Eggs.ActiveNodes:GetChildren() do
-        if v and v:FindFirstChild("EggModel") then
-            if v.EggModel:FindFirstChild("CurrentPlayer") and v.EggModel:FindFirstChild("CurrentBoosts") then
-                __VE["LPs"].Character.HumanoidRootPart.CFrame = v.EggModel.Egg.CFrame * CFrame.new(0,5,0)
-                task.wait(0.3)
-                keyPress(Enum.KeyCode.E, true)
-                v.EggModel.CurrentBoosts.Value = 9
-                v.EggModel.Harvested.Value = true
-            end
-            task.wait()
-            break
-        end
-    end
-end
 if __VE["CG"]:FindFirstChild("InputPcToMobile") then
     __VE["CG"]:FindFirstChild("InputPcToMobile"):Destroy()
 end
@@ -417,10 +402,26 @@ do
     Toggle:OnChanged(function()
         Setting.AutoEgg = Options.AutoEgg.Value
         spawn(function()
-            while Setting.AutoEgg do task.wait()
+            while Setting.AutoEgg do
                 pcall(function()
-                    GrabEgg()
+                    for i,v in next, __VE["WS"].Interactions.Nodes.Eggs.ActiveNodes:GetChildren() do
+                        if v and v:FindFirstChild("EggModel") then
+                            if v.EggModel:FindFirstChild("CurrentPlayer") and v.EggModel:FindFirstChild("CurrentBoosts") then
+                                __VE["LPs"].Character.HumanoidRootPart.CFrame = v.EggModel.Egg.CFrame * CFrame.new(30,5,30)
+                                task.wait()
+                                __VE["LPs"].Character.Humanoid:MoveTo(v.EggModel.Egg.CFrame * CFrame.new(15,0,10))
+                                __VE["LPs"].Character.Humanoid.MoveToFinished:Wait()
+                                task.wait(0.5)
+                                keyPress(Enum.KeyCode.E, true)
+                                v.EggModel.CurrentBoosts.Value = 9
+                                v.EggModel.Harvested.Value = true
+                            end
+                            task.wait(1.5)
+                            break
+                        end
+                    end
                 end)
+                task.wait()
             end
         end)
     end)
