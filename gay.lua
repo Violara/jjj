@@ -107,7 +107,18 @@ if getgenv().Addons then
     if isfolder("Setting") and not isfile("Setting/DragonAdventure.json") then
         print("no file")
         Setting = {
-            
+            SellAllFoods = __Y[2],
+            AutoFish = __Y[2],
+            AutoEgg = __Y[2],
+            CollectionItem = __Y[3],
+            AutoCollect = __Y[2],
+            AutoFarmMob = __Y[2],
+            SelectDragon = __Y[3],
+            SelectFood = __Y[3],
+            AutoFeed = __Y[2],
+            AutoGrow = __Y[2],
+            HealingItem = __Y[3],
+            AutoHeal = __Y[2],
         }
         allowtoserialized = __Y[1]
     elseif __U[49]("Setting") and __U[50]("Setting/DragonAdventure.json") then
@@ -117,7 +128,18 @@ if getgenv().Addons then
     end
 else
     Setting = {
-        
+        SellAllFoods = __Y[2],
+        AutoFish = __Y[2],
+        AutoEgg = __Y[2],
+        CollectionItem = __Y[3],
+        AutoCollect = __Y[2],
+        AutoFarmMob = __Y[2],
+        SelectDragon = __Y[3],
+        SelectFood = __Y[3],
+        AutoFeed = __Y[2],
+        AutoGrow = __Y[2],
+        HealingItem = __Y[3],
+        AutoHeal = __Y[2],
     }
 end
 local credits = {
@@ -633,6 +655,8 @@ do
             function FLY()
                 local BG = __U[35]('BodyGyro', T)
                 local BV = __U[35]('BodyVelocity', T)
+                BG.Name = "Body"
+                BV.Name = "Body"
                 BG.P = 9e4
                 BG.maxTorque = __U[57](9e9, 9e9, 9e9)
                 BG.cframe = T.CFrame
