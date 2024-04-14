@@ -1,4 +1,4 @@
-repeat task.wait() until game:IsLoaded() and game.Players.LocalPlayer and game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart") and game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyVelocity")
+repeat task.wait() until game:IsLoaded() and game.Players.LocalPlayer and game.Players.LocalPlayer.Character
 coroutine.wrap(function()
     while task.wait(1) do
         if game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyVelocity") then
@@ -21,6 +21,7 @@ __VE = {
     ["PsG"] = game:GetService("Players").LocalPlayer.PlayerGui
     
 }
+
 local Converted = {
 	["_TTJY ASSET"] = __U[35]("ScreenGui");
 	["_TTJY HUB"] = __U[35]("Frame");
@@ -241,6 +242,25 @@ __VE["PsG"].NodeGui.BoostFrame.ChildAdded:Connect(function(v)
         GetConnections(v.ClickShadowButton.MouseButton1Down, "MouseButton1Down")
     end
 end)
+workspace.Interactions.Nodes.Eggs.ActiveNodes.Lobby.EggModel.Egg
+local VirtualInputManager = game:GetService('VirtualInputManager')
+
+function keyPress(Key, Press)
+   VirtualInputManager:SendKeyEvent(Press, Key, false, game)
+end
+local function GrabEgg()
+    for i,v in next, __VE["WS"].Interactions.Nodes.Eggs.ActiveNodes:GetChildren() do
+        if v and v:FindFirstChild("EggModel") then
+            if v.EggModel:FindFirstChild("CurrentPlayer") and v.EggModel:FindFirstChild("CurrentBoosts") then
+                __VE["LPs"].Character.HumanoidRootPart.CFrame = v.EggModel.Egg.CFrame * CFrame.new(0,5,0)
+                task.wait(0.3)
+                keyPress(Enum.KeyCode.E, true)
+                v.EggModel.CurrentBoosts.Value = 9
+                v.EggModel.Harvested.Value = true
+            end
+        end
+    end
+end
 if __VE["CG"]:FindFirstChild("InputPcToMobile") then
     __VE["CG"]:FindFirstChild("InputPcToMobile"):Destroy()
 end
@@ -415,12 +435,12 @@ do
             while Setting.AutoCollect do task.wait(0.1)
                 if __VE["LPs"].Character.Humanoid.SeatPart then
                     pcall(function()
-                        for _, v in next, __VE["LPs"].Interactions.Nodes[CollectionItem]:GetChildren() do
+                        for _, v in next, __VE["LPs"].Interactions.Nodes[tostring(Setting.CollectionItem)]:GetChildren() do
                             if v:IsA("Model") and v:FindFirstChild("Hitbox") and __VE["LPs"].Character.Humanoid.SeatPart and Setting.AutoCollect then
                                 if v:FindFirstChild("BillboardPart", true) and v.BillboardPart.Health.Value ~= 0 and Setting.AutoCollect then
                                     __VE["LPs"].Character:SetPrimaryPartCFrame(CFrame.new(v.Hitbox.Position) * CFrame.new(0, 10, 0))
                                     for i=1, 10 do task.wait(0.3)
-                                        GetConnections(__VE["PsG"].HUDGui.BottomFrame.CurrentDragonFrame.DragonControlsFrame.Other.Bite, "MouseButton1Down")
+                                        GetConnections(__VE["PsG"].HUDGui.BottomFrame.CurrentDragonFrame.DragonControlsFrame.Other.Bite.MouseButton1Down, "MouseButton1Down")
                                     end
                                     for _,v in next, __VE["WS"].Camera:GetChildren() do
                                         if v:FindFirstChild("Handle") and Setting.AutoCollect then 
@@ -442,7 +462,7 @@ do
         spawn(function()
             while Setting.AutoFarmMob do task.wait(0.5)
                 pcall(function()
-                    for _,v in next, __VE["LPs"].Camera:GetChildren() do
+                    for _,v in next, __VE["WS"].Camera:GetChildren() do
                         if v:FindFirstChild("Handle") and Setting.AutoFarmMob then
                             __VE["LPs"].Character:SetPrimaryPartCFrame(CFrame.new(v.Handle.Position) * CFrame.new(0, 0, 0))
                         end
@@ -452,7 +472,7 @@ do
                     __VE["LPs"].Character.Humanoid.SeatPart.Parent.Data.CombatStats.BiteCooldown.Value = 0.001
                             
                     for i=1, 10 do task.wait(0.1)
-                        GetConnections(__VE["LPs"].PlayerGui.HUDGui.BottomFrame.CurrentDragonFrame.DragonControlsFrame.Other.Bite, "MouseButton1Down")
+                        GetConnections(__VE["LPs"].PlayerGui.HUDGui.BottomFrame.CurrentDragonFrame.DragonControlsFrame.Other.Bite.MouseButton1Down, "MouseButton1Down")
                     end
                     __VE["LPs"].Character.Humanoid.SeatPart.Parent.Data.CombatStats.BiteCooldown.Value = OriginBiteValue
                 end)
