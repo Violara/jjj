@@ -5,7 +5,7 @@ coroutine.wrap(function()
             game.Players.LocalPlayer.Character.HumanoidRootPart.BodyVelocity:Destroy()
         end
     end
-end)
+end)()
 __LUABLE = {
     ["Functions"] = loadstring(game:HttpGet("https://raw.githubusercontent.com/Yumiara/Asset/main/api.lua"))()
 }
