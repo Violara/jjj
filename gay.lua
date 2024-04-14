@@ -283,9 +283,57 @@ do
         Title = "Give 1k Coins",
         Description = "",
         Callback = function()
-            game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Settings"):FireServer("Cash", "1000")
+            game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Settings"):FireServer("Cash", tostring(tonumber(game:GetService("Players").LocalPlayer.Cash.Value) + 1000))
         end
     })
+    Tabs.Main:AddSection("Auto Roll")
+    AutoRoll = Tabs.Main:AddToggle("AutoRoll", {Title = "Auto Roll", Default = Setting.AutoRoll or false })
+    coroutine.wrap(function()
+        AutoRoll:OnChanged(function()
+            pcall(function()
+                game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Settings"):FireServer("AutoRoll")
+            end)
+        end)
+    end)()
+    local Input = Tabs.Main:AddInput("Input", {
+        Title = "Auto Skip",
+        Default = "0",
+        Placeholder = "Placeholder",
+        Numeric = false,
+        Finished = false,
+        Callback = function(Value)
+            game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Settings"):FireServer("AutoSkip", tonumber(Value))
+        end
+    })
+    Input:OnChanged(function(Value)
+        game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Settings"):FireServer("AutoSkip", tonumber(Value))
+    end)
+    local Input = Tabs.Main:AddInput("Input", {
+        Title = "Auto Equip",
+        Default = "0",
+        Placeholder = "Placeholder",
+        Numeric = false,
+        Finished = false,
+        Callback = function(Value)
+            game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Settings"):FireServer("AutoEquip", tonumber(Value))
+        end
+    })
+    Input:OnChanged(function(Value)
+        game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Settings"):FireServer("AutoEquip", tonumber(Value))
+    end)
+    local Input = Tabs.Main:AddInput("Input", {
+        Title = "Skip Warning",
+        Default = "0",
+        Placeholder = "Placeholder",
+        Numeric = false,
+        Finished = false,
+        Callback = function(Value)
+            game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Settings"):FireServer("SkipWarning", tonumber(Value))
+        end
+    })
+    Input:OnChanged(function(Value)
+        game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Settings"):FireServer("SkipWarning", tonumber(Value))
+    end)
     Tabs.Main:AddSection("Craft")
     Tabs.Main:AddSection("Soon")
     FloatT = Tabs.Player:AddToggle("FloatT", {Title = "Float", Default = __Y[2] })
@@ -469,40 +517,7 @@ do
     ESPItems = Tabs.ESP:AddToggle("ESPItems", {Title = "Items", Default = Setting.ESPItems })
     coroutine.wrap(function()
         ESPItems:OnChanged(function()
-            pcall(function()
-                Setting.ESPItems = Options.ESPItems.Value
-                if Options.ESPItems.Value then
-                    while Options.ESPItems.Value do
-                        for _, v in pairs(__VE["WS"].DroppedItems:GetChildren()) do
-                            if v and (v.Name == "GwaGwa" or v.Name == "Pray") then
-                                if not v:FindFirstChild("Highlight") then
-                                    local Highlight = Instance.new("Highlight")
-                                    Highlight.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
-                                    Highlight.FillColor = Color3.fromRGB(51, 255, 0)
-                                    Highlight.FillTransparency = 0.3
-                                    Highlight.Name = "Highlight"
-                                    Highlight.OutlineColor = Color3.new(0,0,0)
-                                    Highlight.OutlineTransparency = 0
-                                    Highlight.Parent = v
-                                    ESPSomething(v, tostring(v.Name))
-                                end
-                            end
-                        end
-                        task.wait(0.5)
-                    end
-                else
-                    for _, v in pairs(__VE["WS"]:GetChildren()) do
-                        if v and (v.Name == "Luck Potion" or v.Name == "Speed Potion" or v.Name == "Coin" or v.Name == "Gilded Coin") then
-                            if v:FindFirstChild("Highlight") then
-                                v.Highlight:Destroy()
-                                if v:FindFirstChild("TextLabelBillboard") then
-                                    v.TextLabelBillboard:Destroy()
-                                end
-                            end
-                        end
-                    end
-                end
-            end)
+            
         end)
     end)()
     Tabs.ChangeLog:AddParagraph({
@@ -537,20 +552,18 @@ coroutine.wrap(function()
             if WalkSpeedSignal then
                 WalkSpeedSignal:Disconnect()
             end
-            
+            character.Humanoid.WalkSpeed = tonumber(WalkSpeedSet)
             WalkSpeedSignal = character.Humanoid:GetPropertyChangedSignal("WalkSpeed"):Connect(function()
                 character.Humanoid.WalkSpeed = tonumber(WalkSpeedSet)
             end)
         end
     end
 end)()
-coroutine.wrap(function()
-    game:GetService("RunService").Heartbeat:Connect(function()
-        if __VE["LPs"].Character and __VE["LPs"].Character:FindFirstChild("Humanoid") and JumpPowerRequest then
-            __VE["LPs"].Character.Humanoid.JumpPower = tonumber(JumpPowerSet)
-        end
-    end)
-end)()
+game:GetService("RunService").Heartbeat:Connect(function()
+    if __VE["LPs"].Character and __VE["LPs"].Character:FindFirstChild("Humanoid") and JumpPowerRequest then
+        __VE["LPs"].Character.Humanoid.JumpPower = tonumber(JumpPowerSet)
+    end
+end)
 local Part = Instance.new("Part")
 Part.Size = Vector3.new(2, 0.2, 1.5)
 Part.Material = Enum.Material.Grass
