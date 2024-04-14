@@ -247,27 +247,6 @@ local VirtualInputManager = game:GetService('VirtualInputManager')
 function keyPress(Key, Press)
    VirtualInputManager:SendKeyEvent(Press, Key, false, game)
 end
-local function GrabEgg()
-    for i,v in next, __VE["WS"].Interactions.Nodes.Eggs.ActiveNodes:GetChildren() do
-        if v and v:FindFirstChild("EggModel") then
-            if v.EggModel:FindFirstChild("CurrentPlayer") and v.EggModel:FindFirstChild("CurrentBoosts") then
-                __VE["LPs"].Character.HumanoidRootPart.CFrame = v.EggModel.Egg.CFrame * CFrame.new(13,5,10)
-                task.wait(0.1)
-                __VE["LPs"].Character.HumanoidRootPart.CFrame = v.EggModel.Egg.CFrame * CFrame.new(10,5,5)
-                task.wait(0.1)
-                __VE["LPs"].Character.HumanoidRootPart.CFrame = v.EggModel.Egg.CFrame * CFrame.new(10,5,0)
-                task.wait(0.1)
-                __VE["LPs"].Character.HumanoidRootPart.CFrame = v.EggModel.Egg.CFrame * CFrame.new(10,5,0)
-                task.wait(0.5)
-                keyPress(Enum.KeyCode.E, true)
-                v.EggModel.CurrentBoosts.Value = 9
-                v.EggModel.Harvested.Value = true
-            end
-            task.wait(1.1)
-            break
-        end
-    end
-end
 if __VE["CG"]:FindFirstChild("InputPcToMobile") then
     __VE["CG"]:FindFirstChild("InputPcToMobile"):Destroy()
 end
@@ -423,10 +402,24 @@ do
     Toggle:OnChanged(function()
         Setting.AutoEgg = Options.AutoEgg.Value
         spawn(function()
-            while Setting.AutoEgg do task.wait()
+            while Setting.AutoEgg do
                 pcall(function()
-                    GrabEgg()
+                    for i,v in next, __VE["WS"].Interactions.Nodes.Eggs.ActiveNodes:GetChildren() do
+                        if v and v:FindFirstChild("EggModel") then
+                            if v.EggModel:FindFirstChild("CurrentPlayer") and v.EggModel:FindFirstChild("CurrentBoosts") then
+                                game.Players.LocalPlayer.Character:PivotTo(CFrame.new(v.EggModel:GetModelCFrame().Position + Vector3.new(15,0,10)))
+                                game.Players.LocalPlayer.Character.Humanoid:MoveTo(v.EggModel:GetModelCFrame().Position)
+                                game.Players.LocalPlayer.Character.Humanoid.MoveToFinished:Wait()
+                                keyPress(Enum.KeyCode.E, true)
+                                v.EggModel.CurrentBoosts.Value = 9
+                                v.EggModel.Harvested.Value = true
+                            end
+                            task.wait(1.5)
+                            break
+                        end
+                    end
                 end)
+                task.wait()
             end
         end)
     end)
@@ -441,7 +434,7 @@ do
         spawn(function()
             while Setting.AutoCollect do task.wait(0.1)
                 if __VE["LPs"].Character.Humanoid.SeatPart then
-                    pcall(function()
+
                         for _, v in next, __VE["LPs"].Interactions.Nodes[tostring(Setting.CollectionItem)]:GetChildren() do
                             if v:IsA("Model") and v:FindFirstChild("Hitbox") and __VE["LPs"].Character.Humanoid.SeatPart and Setting.AutoCollect then
                                 if v:FindFirstChild("BillboardPart", true) and v.BillboardPart.Health.Value ~= 0 and Setting.AutoCollect then
@@ -457,7 +450,7 @@ do
                                     break
                                 end
                             end
-                        end
+
                     end)
                 end
             end
