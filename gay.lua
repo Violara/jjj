@@ -95,6 +95,7 @@ __VE["Lg"] , __VE["TS"], __VE["GMos"] = game:GetService("Lighting") ,game:GetSer
 __VE["VU"],__VE["CG"] = game:GetService("VirtualUser") ,game:GetService("CoreGui")
 __VE["HS"] = game:GetService("HttpService")
 __VE["RET"] = __VE["RlS"]:WaitForChild("Events"):WaitForChild("To_Server")
+CodeArgs, DailyArgs, GroupArgs, VIPArgs, UseArg = __Y[3]
 Float = false
 Noclip = false
 CONTROL = {F = 0, B = 0, L = 0, R = 0, Q = 0, E = 0}
@@ -114,7 +115,14 @@ if getgenv().Addons then
     if isfolder("Setting") and not isfile("Setting/settingHEDERNG.json") then
         print("no file")
         Setting = {
-            
+            AutoCollectCoins = __Y[2],
+            AutoCollectPotion = __Y[2],
+            AutoCollectGreenStar = __Y[2],
+            AutoDailyChest = __Y[2],
+            AutoGroupChest = __Y[2],
+            AutoVIPChest = __Y[2],
+            SelectedItem = __[3],
+            AutoUseSelectedItem = __Y[3]
         }
         allowtoserialized = __Y[1]
     elseif __U[49]("Setting") and __U[50]("Setting/settingHEDERNG.json") then
@@ -124,7 +132,14 @@ if getgenv().Addons then
     end
 else
     Setting = {
-        
+        AutoCollectCoins = __Y[2],
+        AutoCollectPotion = __Y[2],
+        AutoCollectGreenStar = __Y[2],
+        AutoDailyChest = __Y[2],
+        AutoGroupChest = __Y[2],
+        AutoVIPChest = __Y[2],
+        SelectedItem = __[3],
+        AutoUseSelectedItem = __Y[3]
     }
 end
 
@@ -444,14 +459,39 @@ do
     --getgenv().LastFuntion
     getgenv().TextStatus = "Normal Load"
     getgenv().ScriptUpdateDate = "17/04/24"
+    Code = {
+        "shutdown1",
+        "shutdown2",
+        "shutdown3",
+        "15KLIKES",
+        "Update8",
+        "3MVISITS",
+        "9500FAV"
+    }
+    Tabs.Main:AddSection("Codes")
+    Tabs.Main:AddButton({Title = "Redeem All Codes", Description = "",
+        Callback = function()
+            for i = 1, 7 do
+                getgenv().LastFuntion = "Redeen All Codes"
+                CodeArgs = {
+                    [1] = {
+                        ["Action"] = "Redeem_Code",
+                        ["Text"] = tostring(Code[i])
+                    }
+                }
+                game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("To_Server"):FireServer(unpack(CodeArgs))
+                wait()
+            end
+        end
+    })
     Tabs.Main:AddSection("Auto Farm")
     AutoCollectCoins = Tabs.Main:AddToggle("AutoCollectCoins", {Title = "Coins", Default = Setting.AutoCollectCoins or __Y[2] })
     coroutine.wrap(function()
         AutoCollectCoins:OnChanged(function()
             pcall(function()
-                getgenv().LastFuntion = "AutoCollectCoins"
                 Setting.AutoCollectCoins = Options.AutoCollectCoins.Value
                 while Setting.AutoCollectCoins do task.wait(0.5)
+                    getgenv().LastFuntion = "AutoCollectCoins"
                     for _, v in pairs(workspace.Debris.Pickup_Debris.Coins:GetChildren()) do
                         if v and v:FindFirstChild("ProximityPrompt") and __VE["LPs"].Character and __VE["LPs"].Character:FindFirstChild("HumanoidRootPart") and Setting.AutoCollectCoins then
                             Tp2(v.CFrame)
@@ -467,9 +507,9 @@ do
     coroutine.wrap(function()
         AutoCollectPotion:OnChanged(function()
             pcall(function()
-                getgenv().LastFuntion = "AutoCollectPotion"
                 Setting.AutoCollectPotion = Options.AutoCollectPotion.Value
                 while Setting.AutoCollectPotion do task.wait(0.5)
+                    getgenv().LastFuntion = "AutoCollectPotion"
                     for _, v in pairs(workspace.Debris.Pickup_Debris.Potions:GetChildren()) do
                         if v and v:FindFirstChild("ProximityPrompt") and __VE["LPs"].Character and __VE["LPs"].Character:FindFirstChild("HumanoidRootPart") and Setting.AutoCollectPotion then
                             Tp2(v.CFrame)
@@ -485,9 +525,9 @@ do
     coroutine.wrap(function()
         AutoCollectGreenStar:OnChanged(function()
             pcall(function()
-                getgenv().LastFuntion = "AutoCollectGreenStar"
                 Setting.AutoCollectGreenStar = Options.AutoCollectGreenStar.Value
                 while Setting.AutoCollectGreenStar do task.wait(0.5)
+                    getgenv().LastFuntion = "AutoCollectGreenStar"
                     if workspace.Debris.Pickup_Orbs:FindFirstChild("Green_Orb") and Setting.AutoCollectGreenStar then
                         Tp2(workspace.Debris.Pickup_Orbs.Green_Orb.Star.CFrame)
                     end
@@ -495,14 +535,41 @@ do
             end)
         end)
     end)()
+    Tabs.Main:AddSection("Items")
+    local SelectedItem = Tabs.Main:AddDropdown("SelectedItem", {
+        Title = "Select Items",
+        Values = {},
+        Multi = false,
+        Default = 1,
+    })
+    SelectedItem:OnChanged(function(Value)
+        Setting.SelectedItem = tostring(Value)
+    end)
+    local AutoUseSelectedItem = Tabs.Main:AddToggle("AutoUseSelectedItem", {Title = "Toggle", Default = __Y[2] })
+    coroutine.wrap(function()
+        AutoUseSelectedItem:OnChanged(function()
+            pcall(function()
+                while Options.AutoUseSelectedItem.Value do task.wait(0.5)
+                    UseArg = {
+                        ["Selected"] = {
+                            [1] = tostring(Setting.SelectedItem)
+                        },
+                        ["Action"] = "Use",
+                        ["Category"] = "Resources"
+                    }
+                    game:GetService("ReplicatedStorage").Events.Inventory:FireServer(UseArg)
+                end
+            end)
+        end)
+    end)
     Tabs.Main:AddSection("Reward")
     AutoDailyChest = Tabs.Main:AddToggle("AutoDailyChest", {Title = "Auto Daily Chest", Default = Setting.AutoDailyChest or __Y[2] })
     coroutine.wrap(function()
         AutoDailyChest:OnChanged(function()
             pcall(function()
-                getgenv().LastFuntion = "AutoDailyChest"
                 Setting.AutoDailyChest = Options.AutoDailyChest.Value
                 while Setting.AutoDailyChest do task.wait(1)
+                    getgenv().LastFuntion = "AutoDailyChest"
                     Chest("Daily")
                 end
             end)
@@ -512,9 +579,9 @@ do
     coroutine.wrap(function()
         AutoGroupChest:OnChanged(function()
             pcall(function()
-                getgenv().LastFuntion = "AutoGroupChest"
                 Setting.AutoGroupChest = Options.AutoGroupChest.Value
                 while Setting.AutoGroupChest do task.wait(1)
+                    getgenv().LastFuntion = "AutoGroupChest"
                     Chest("Group")
                 end
             end)
@@ -524,9 +591,9 @@ do
     coroutine.wrap(function()
         AutoGroupChest:OnChanged(function()
             pcall(function()
-                getgenv().LastFuntion = "AutoVIPChest"
                 Setting.AutoVIPChest = Options.AutoVIPChest.Value
                 while Setting.AutoVIPChest do task.wait(1)
+                    getgenv().LastFuntion = "AutoVIPChest"
                     Chest("VIP")
                 end
             end)
