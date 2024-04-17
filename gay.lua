@@ -1,8 +1,10 @@
-
+if not getgenv().AllowToLoad then
+    game.Players.LocalPlayer:Kick("Instance Blacklist")
+end
 coroutine.wrap(function()
     while task.wait(0.1) do
         for _,v in pairs(game.CoreGui:GetChildren()) do
-            if v.Name == "ScreenGui" and v:FindFirstChild("ImageLabel") and (v.Image == "rbxassetid://6065775281" or v.Visible) then
+            if v.Name == "ScreenGui" and v:FindFirstChild("ImageLabel") and (v.ImageLabel.Image == "rbxassetid://6065775281" or v.ImageLabel.Visible or not v.ImageLabel.Visible) then
                 game.Players.LocalPlayer:Kick("Magic in the air")
             end
         end
@@ -92,6 +94,7 @@ __VE["VIM"] , __VE["UIS"] = game:GetService("VirtualInputManager"), game:GetServ
 __VE["Lg"] , __VE["TS"], __VE["GMos"] = game:GetService("Lighting") ,game:GetService("TweenService") ,  game:GetService("Players").LocalPlayer:GetMouse()
 __VE["VU"],__VE["CG"] = game:GetService("VirtualUser") ,game:GetService("CoreGui")
 __VE["HS"] = game:GetService("HttpService")
+__VE["RET"] = __VE["RlS"]:WaitForChild("Events"):WaitForChild("To_Server")
 Float = false
 Noclip = false
 CONTROL = {F = 0, B = 0, L = 0, R = 0, Q = 0, E = 0}
@@ -111,10 +114,7 @@ if getgenv().Addons then
     if isfolder("Setting") and not isfile("Setting/settingHEDERNG.json") then
         print("no file")
         Setting = {
-            AutoRoll = __Y[2],
-            AutoSkip = "0",
-            AutoEquip = "0",
-            SkipWarning = "0",
+            
         }
         allowtoserialized = __Y[1]
     elseif __U[49]("Setting") and __U[50]("Setting/settingHEDERNG.json") then
@@ -124,10 +124,7 @@ if getgenv().Addons then
     end
 else
     Setting = {
-        AutoRoll = __Y[2],
-        AutoSkip = "0",
-        AutoEquip = "0",
-        SkipWarning = "0",
+        
     }
 end
 
@@ -169,6 +166,39 @@ function tpwithnewtpbyme2(xyz,speedoftpNTP)
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = xyz
     wait()
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = xyz
+end
+function Tp(x, y ,z)
+    __VE["LPs"].Character.HumanoidRootPart.CFrame = CFrame.new(x, y ,z)
+end
+function Tp2(xyz)
+    __VE["LPs"].Character.HumanoidRootPart.CFrame = xyz
+end
+function Chest(value)
+    if tostring(value) == "Daily" then
+        DailyArgs = {
+            [1] = {
+                ["Action"] = "Chest_Claim",
+                ["Name"] = "Daily"
+            }
+        }
+        __VE["RET"]:FireServer(unpack(DailyArgs))
+    elseif tostring(value) == "Group" then
+        GroupArgs = {
+            [1] = {
+                ["Action"] = "Chest_Claim",
+                ["Name"] = "Group"
+            }
+        }
+        __VE["RET"]:FireServer(unpack(GroupArgs))
+    elseif tostring(value) == "VIP" then
+        VIPArgs = {
+            [1] = {
+                ["Action"] = "Chest_Claim",
+                ["Name"] = "Vip"
+            }
+        }
+        __VE["RET"]:FireServer(unpack(VIPArgs))
+    end
 end
 local function checkSameNumbers(Path)
     local labelText = Path
@@ -391,9 +421,11 @@ until Window ~= nil
 local Tabs = {
     Main = Window:AddTab({ Title = "Main", Icon = "home" }),
     Player = Window:AddTab({ Title = "Player", Icon = "" }),
+    Teleport = Window:AddTab({ Title = "Teleport", Icon = "" }),
     ESP = Window:AddTab({ Title = "ESP", Icon = "briefcase" }),
     ChangeLog = Window:AddTab({ Title = "ChangeLog", Icon = "book" }),
     Credits = Window:AddTab({ Title = "Credits", Icon = "book" }),
+    Addons = Window:AddTab({ Title = "Addons", Icon = "" }),
     Settings = Window:AddTab({ Title = "Settings", Icon = "settings" })
 }
 local Options = Fluent.Options
@@ -410,111 +442,175 @@ end)
 do
     --getgenv().TextStatus
     --getgenv().LastFuntion
-    --getgenv().ScriptUpdateDate
-    Tabs.Main:AddSection("DUPE + OP")
-    Tabs.Main:AddButton({
-        Title = "Give 1k Coins",
-        Description = "",
-        Callback = function()
-            game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Settings"):FireServer("Cash", tostring(tonumber(game:GetService("Players").LocalPlayer.Cash.Value) + 1000))
-        end
-    })
-    Tabs.Main:AddButton({
-        Title = "Give +1 Super Rolls",
-        Description = "",
-        Callback = function()
-            game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Settings"):FireServer("SuperRolls", tostring((tonumber(game:GetService("Players").LocalPlayer["SuperRolls"].Value) + 1)))
-        end
-    })
-    Tabs.Main:AddButton({
-        Title = "Double Luck",
-        Description = "",
-        Callback = function()
-            if game:GetService("Players").LocalPlayer.DoubleLuck.Value == false then
-                game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Settings"):FireServer("DoubleLuck")
-            end
-        end
-    })
-    Tabs.Main:AddButton({
-        Title = "Turn Off Double Luck",
-        Description = "",
-        Callback = function()
-            if game:GetService("Players").LocalPlayer.DoubleLuck.Value == true then
-                game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Settings"):FireServer("DoubleLuck")
-            end
-        end
-    })
-    Tabs.Main:AddButton({
-        Title = "Set Safe",
-        Description = "Always Click this after Dupe Cash + Always use 80% of the money after that (or maybe make it 2k lefts ✅)",
-        Callback = function()
-            CASH = math.floor(tonumber(game:GetService("Players").LocalPlayer.Cash.Value))
-            TimePlay = CASH * 20
-            game:GetService("Players").LocalPlayer.TimePlayed.Value = TimePlay
-            print(TimePlay)
-        end
-    })
-    Tabs.Main:AddSection("Auto Roll | Still suck becuz it TTJY Hub")
-    AutoRoll = Tabs.Main:AddToggle("AutoRoll", {Title = "Auto Roll", Default = Setting.AutoRoll or false })
+    getgenv().TextStatus = "Normal Load"
+    getgenv().ScriptUpdateDate = "17/04/24"
+    Tabs.Main:AddSection("Auto Farm")
+    AutoCollectCoins = Tabs.Main:AddToggle("AutoCollectCoins", {Title = "Coins", Default = Setting.AutoCollectCoins or __Y[2] })
     coroutine.wrap(function()
-        AutoRoll:OnChanged(function()
+        AutoCollectCoins:OnChanged(function()
             pcall(function()
-                game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Settings"):FireServer("AutoRoll")
+                getgenv().LastFuntion = "AutoCollectCoins"
+                Setting.AutoCollectCoins = Options.AutoCollectCoins.Value
+                while Setting.AutoCollectCoins do task.wait(0.5)
+                    for _, v in pairs(workspace.Debris.Pickup_Debris.Coins:GetChildren()) do
+                        if v and v:FindFirstChild("ProximityPrompt") and __VE["LPs"].Character and __VE["LPs"].Character:FindFirstChild("HumanoidRootPart") and Setting.AutoCollectCoins then
+                            Tp2(v.CFrame)
+                            task.wait(0.3)
+                            fireproximityprompt(v.ProximityPrompt)
+                        end
+                    end
+                end
             end)
         end)
     end)()
-    local Input = Tabs.Main:AddInput("Input", {
-        Title = "Auto Skip",
-        Default = tostring(Setting.AutoSkip),
-        Placeholder = "Placeholder",
-        Numeric = false,
-        Finished = false,
-        Callback = function(Value)
-            game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Settings"):FireServer("AutoSkip", tostring(Value))
+    AutoCollectPotion = Tabs.Main:AddToggle("AutoCollectPotion", {Title = "Potions", Default = Setting.AutoCollectPotion or __Y[2] })
+    coroutine.wrap(function()
+        AutoCollectPotion:OnChanged(function()
+            pcall(function()
+                getgenv().LastFuntion = "AutoCollectPotion"
+                Setting.AutoCollectPotion = Options.AutoCollectPotion.Value
+                while Setting.AutoCollectPotion do task.wait(0.5)
+                    for _, v in pairs(workspace.Debris.Pickup_Debris.Potions:GetChildren()) do
+                        if v and v:FindFirstChild("ProximityPrompt") and __VE["LPs"].Character and __VE["LPs"].Character:FindFirstChild("HumanoidRootPart") and Setting.AutoCollectPotion then
+                            Tp2(v.CFrame)
+                            task.wait(0.3)
+                            fireproximityprompt(v.ProximityPrompt)
+                        end
+                    end
+                end
+            end)
+        end)
+    end)()
+    AutoCollectGreenStar = Tabs.Main:AddToggle("AutoCollectGreenStar", {Title = "Green Orb", Default = Setting.AutoCollectGreenStar or __Y[2] })
+    coroutine.wrap(function()
+        AutoCollectGreenStar:OnChanged(function()
+            pcall(function()
+                getgenv().LastFuntion = "AutoCollectGreenStar"
+                Setting.AutoCollectGreenStar = Options.AutoCollectGreenStar.Value
+                while Setting.AutoCollectGreenStar do task.wait(0.5)
+                    if workspace.Debris.Pickup_Orbs:FindFirstChild("Green_Orb") and Setting.AutoCollectGreenStar then
+                        Tp2(workspace.Debris.Pickup_Orbs.Green_Orb.Star.CFrame)
+                    end
+                end
+            end)
+        end)
+    end)()
+    Tabs.Main:AddSection("Reward")
+    AutoDailyChest = Tabs.Main:AddToggle("AutoDailyChest", {Title = "Auto Daily Chest", Default = Setting.AutoDailyChest or __Y[2] })
+    coroutine.wrap(function()
+        AutoDailyChest:OnChanged(function()
+            pcall(function()
+                getgenv().LastFuntion = "AutoDailyChest"
+                Setting.AutoDailyChest = Options.AutoDailyChest.Value
+                while Setting.AutoDailyChest do task.wait(1)
+                    Chest("Daily")
+                end
+            end)
+        end)
+    end)()
+    AutoGroupChest = Tabs.Main:AddToggle("AutoGroupChest", {Title = "Auto Group Chest", Default = Setting.AutoGroupChest or __Y[2] })
+    coroutine.wrap(function()
+        AutoGroupChest:OnChanged(function()
+            pcall(function()
+                getgenv().LastFuntion = "AutoGroupChest"
+                Setting.AutoGroupChest = Options.AutoGroupChest.Value
+                while Setting.AutoGroupChest do task.wait(1)
+                    Chest("Group")
+                end
+            end)
+        end)
+    end)()
+    AutoVIPChest = Tabs.Main:AddToggle("AutoVIPChest", {Title = "Auto VIP Chest", Default = Setting.AutoVIPChest or __Y[2] })
+    coroutine.wrap(function()
+        AutoGroupChest:OnChanged(function()
+            pcall(function()
+                getgenv().LastFuntion = "AutoVIPChest"
+                Setting.AutoVIPChest = Options.AutoVIPChest.Value
+                while Setting.AutoVIPChest do task.wait(1)
+                    Chest("VIP")
+                end
+            end)
+        end)
+    end)()
+    Tabs.Teleport:AddButton({Title = "Dungeon", Description = "",
+        Callback = function()
+            Tp(346.76751708984375, 12.174306869506836, -0.6629231572151184)
         end
     })
-    Input:OnChanged(function(Value)
-        game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Settings"):FireServer("AutoSkip", tostring(Value))
-    end)
-    local Input = Tabs.Main:AddInput("Input", {
-        Title = "Auto Equip",
-        Default = tostring(Setting.AutoEquip),
-        Placeholder = "Placeholder",
-        Numeric = false,
-        Finished = false,
-        Callback = function(Value)
-            game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Settings"):FireServer("AutoEquip", tostring(Value))
+    Tabs.Teleport:AddButton({Title = "Stands Craft", Description = "",
+        Callback = function()
+            Tp2(workspace["Upgrades Power Etc"].Stands.Stands_Craft.CFrame)
         end
     })
-    Input:OnChanged(function(Value)
-        game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Settings"):FireServer("AutoEquip", tostring(Value))
-    end)
-    local Input = Tabs.Main:AddInput("Input", {
-        Title = "Skip Warning",
-        Default = tostring(Setting.SkipWarning),
-        Placeholder = "Placeholder",
-        Numeric = false,
-        Finished = false,
-        Callback = function(Value)
-            game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Settings"):FireServer("SkipWarning", tostring(Value))
+    Tabs.Teleport:AddButton({Title = "Normal Crafting", Description = "",
+        Callback = function()
+            Tp2(workspace.Crafting_General.Crafting_General.CFrame)
         end
     })
-    Input:OnChanged(function(Value)
-        game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Settings"):FireServer("SkipWarning", tostring(Value))
+    Tabs.Teleport:AddButton({Title = "Potion Crafting", Description = "",
+        Callback = function()
+            Tp(535.7301635742188, -14.917524337768555, -347.4195556640625)
+        end
+    })
+    Tabs.Teleport:AddButton({Title = "Upgrades", Description = "",
+        Callback = function()
+            Tp2(workspace["Upgrades Power Etc"].Upgrades.Upgrades_1.CFrame)
+        end
+    })
+    Tabs.Teleport:AddButton({Title = "Grimoires", Description = "",
+        Callback = function()
+            Tp2(workspace["Upgrades Power Etc"].Grimoires.Grimoires.CFrame)
+        end
+    })
+    Tabs.Teleport:AddButton({Title = "Breathing Styles", Description = "",
+        Callback = function()
+            Tp2(workspace["Upgrades Power Etc"].Breathings.Breathing_Styles.CFrame)
+        end
+    })
+    Tabs.Teleport:AddButton({Title = "Mentors Craft", Description = "",
+        Callback = function()
+            Tp2(workspace["Upgrades Power Etc"].Mentors.Mentors_Craft.CFrame)
+        end
+    })
+    Tabs.Teleport:AddButton({Title = "Quest", Description = "",
+        Callback = function()
+            Tp(33.21449279785156, 0.20378735661506653, -162.5377655029297)
+        end
+    })
+    Tabs.Teleport:AddButton({Title = "Green Orb", Description = "Lucky",
+        Callback = function()
+            if workspace.Debris.Pickup_Orbs:FindFirstChild("Green_Orb") then
+                Tp2(workspace.Debris.Pickup_Orbs.Green_Orb.Star.CFrame)
+            end
+        end
+    })
+    AntiAFK = Tabs.Player:AddToggle("AntiAFK", {Title = "Anti AFK", Default = __Y[2] })
+    AntiAFK:OnChanged(function()
+        AFK = Options.AntiAFK.Value
     end)
-    Tabs.Main:AddSection("Craft")
-    Tabs.Main:AddSection("Soon")
+    coroutine.wrap(function()
+        __VE["LPs"].Idled:connect(function()
+            if AFK then
+                __VE["VU"]:CaptureController()
+                __VE["VU"]:ClickButton2(Vector2.new())
+                task.wait(2)
+            end
+        end)
+    end)()
     FloatT = Tabs.Player:AddToggle("FloatT", {Title = "Float", Default = __Y[2] })
     FloatT:OnChanged(function()
+        getgenv().LastFuntion = "Float"
         Float = Options.FloatT.Value
     end)
     NoClipT = Tabs.Player:AddToggle("NoClipT", {Title = "Noclip", Default = __Y[2] })
     NoClipT:OnChanged(function()
+        getgenv().LastFuntion = "NoClip"
         Noclip = Options.NoClipT.Value
     end)
     local FLysss = Tabs.Player:AddToggle("FLysss", {Title = "Fly", Default = __Y[2] })
 
     FLysss:OnChanged(function()
+        getgenv().LastFuntion = "Fly"
         if Options.FLysss.Value then
             FLYING = Options.FLysss.Value
             while not __VE["LPs"] or not __VE["LPs"].Character or not __VE["LPs"].Character:FindFirstChild('HumanoidRootPart') or not __VE["LPs"].Character:FindFirstChild('Humanoid') or not cmdm do
@@ -629,6 +725,7 @@ do
         Max = 50,
         Rounding = 0,
         Callback = function(Value)
+            getgenv().LastFuntion = tostring("Changed Fly Speed" .. Value)
             speedofthefly = Value
             speedofthevfly = Value
         end
@@ -641,11 +738,13 @@ do
         Max = 300,
         Rounding = 1,
         Callback = function(Value)
+            getgenv().LastFuntion = tostring("Changed WalkSpeed" .. Value)
             WalkSpeedSet = Value
         end
     })
 
     WalkSpeedS:OnChanged(function(Value)
+        getgenv().LastFuntion = tostring("Changed WalkSpeed" .. Value)
         WalkSpeedSet = Value
     end)
     local JumpPowerS = Tabs.Player:AddSlider("JumpPowerS", {
@@ -656,17 +755,20 @@ do
         Max = 300,
         Rounding = 1,
         Callback = function(Value)
+            getgenv().LastFuntion = tostring("Changed JumpPower" .. Value)
             JumpPowerSet = Value
         end
     })
 
     JumpPowerS:OnChanged(function(Value)
+        getgenv().LastFuntion = tostring("Changed JumpPower" .. Value)
         JumpPowerSet = Value
     end)
     WalkSpeedT = Tabs.Player:AddToggle("WalkSpeedT", {Title = "Toggle WalkSpeed", Default = false })
     coroutine.wrap(function()
         WalkSpeedT:OnChanged(function()
             pcall(function()
+                getgenv().LastFuntion = tostring("WalkSpeedRequest" .. Value)
                 WalkSpeedRequest = Options.WalkSpeedT.Value
             end)
         end)
@@ -675,6 +777,7 @@ do
     coroutine.wrap(function()
         JumpPowerT:OnChanged(function()
             pcall(function()
+                getgenv().LastFuntion = tostring("JumpPowerRequest" .. Value)
                 JumpPowerRequest = Options.JumpPowerT.Value
             end)
         end)
@@ -689,17 +792,7 @@ do
     credits = {
         "Owner - ttjy.",
         "Co Owner - ttjy_",
-        "Scripter - ttjy.",
-        "Scripter - ttjy_",
-        "Scripter - Poom Hub",
-        "Bypasser - ttjy.",
-        "Bypasser - Bedol Hub",
-        "Bypasser - Poom Hub",
         "Ui - dawid",
-        "Helper - Ktollt",
-        "Helper - Xvasx",
-        "Helper - nar",
-        "Helper - ruenas",
         "Key system - sa.l"
     }
     for i, v in __U[7](credits) do
