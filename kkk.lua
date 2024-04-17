@@ -122,7 +122,7 @@ if getgenv().Addons then
             AutoGroupChest = __Y[2],
             AutoVIPChest = __Y[2],
             SelectedItem = __Y[3],
-            AutoUseSelectedItem = __Y[2]
+            AutoUseSelectedItem = __Y[2],
         }
         allowtoserialized = __Y[1]
     elseif __U[49]("Setting") and __U[50]("Setting/settingHEDERNG.json") then
@@ -139,7 +139,7 @@ else
         AutoGroupChest = __Y[2],
         AutoVIPChest = __Y[2],
         SelectedItem = __Y[3],
-        AutoUseSelectedItem = __Y[2]
+        AutoUseSelectedItem = __Y[2],
     }
 end
 
@@ -536,16 +536,30 @@ do
         end)
     end)()
     Tabs.Main:AddSection("Items")
+    Items = {
+        "Lucky_Potion_I",
+        "Lucky_Potion_II",
+        "Lucky_Potion_III",
+        "Speed_Potion_I",
+        "Speed_Potion_II",
+        "Speed_Potion_III",
+        "Coins_Potion_I",
+        "Coins_Potion_II",
+        "Coins_Potion_III",
+        "Damage_Potion_I",
+        "Damage_Potion_II",
+        "Damage_Potion_III",
+    }
     local SelectedItem = Tabs.Main:AddDropdown("SelectedItem", {
         Title = "Select Items",
-        Values = {},
+        Values = Items,
         Multi = false,
         Default = 1,
     })
     SelectedItem:OnChanged(function(Value)
-        Setting.SelectedItem = tostring(Value)
+        Setting.SelectedItem = Value
     end)
-    local AutoUseSelectedItem = Tabs.Main:AddToggle("AutoUseSelectedItem", {Title = "Toggle", Default = __Y[2] })
+    local AutoUseSelectedItem = Tabs.Main:AddToggle("AutoUseSelectedItem", {Title = "Auto Use", Default = __Y[2] })
     coroutine.wrap(function()
         AutoUseSelectedItem:OnChanged(function()
             pcall(function()
@@ -561,7 +575,7 @@ do
                 end
             end)
         end)
-    end)
+    end)()
     Tabs.Main:AddSection("Reward")
     AutoDailyChest = Tabs.Main:AddToggle("AutoDailyChest", {Title = "Auto Daily Chest", Default = Setting.AutoDailyChest or __Y[2] })
     coroutine.wrap(function()
@@ -589,7 +603,7 @@ do
     end)()
     AutoVIPChest = Tabs.Main:AddToggle("AutoVIPChest", {Title = "Auto VIP Chest", Default = Setting.AutoVIPChest or __Y[2] })
     coroutine.wrap(function()
-        AutoGroupChest:OnChanged(function()
+        AutoVIPChest:OnChanged(function()
             pcall(function()
                 Setting.AutoVIPChest = Options.AutoVIPChest.Value
                 while Setting.AutoVIPChest do task.wait(1)
