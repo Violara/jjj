@@ -121,8 +121,8 @@ if getgenv().Addons then
             AutoDailyChest = __Y[2],
             AutoGroupChest = __Y[2],
             AutoVIPChest = __Y[2],
-            SelectedItem = __[3],
-            AutoUseSelectedItem = __Y[3]
+            SelectedItem = __Y[3],
+            AutoUseSelectedItem = __Y[2]
         }
         allowtoserialized = __Y[1]
     elseif __U[49]("Setting") and __U[50]("Setting/settingHEDERNG.json") then
@@ -138,8 +138,8 @@ else
         AutoDailyChest = __Y[2],
         AutoGroupChest = __Y[2],
         AutoVIPChest = __Y[2],
-        SelectedItem = __[3],
-        AutoUseSelectedItem = __Y[3]
+        SelectedItem = __Y[3],
+        AutoUseSelectedItem = __Y[2]
     }
 end
 
@@ -494,7 +494,7 @@ do
                     getgenv().LastFuntion = "AutoCollectCoins"
                     for _, v in pairs(workspace.Debris.Pickup_Debris.Coins:GetChildren()) do
                         if v and v:FindFirstChild("ProximityPrompt") and __VE["LPs"].Character and __VE["LPs"].Character:FindFirstChild("HumanoidRootPart") and Setting.AutoCollectCoins then
-                            Tp2(v.CFrame)
+                            Tp2(v.Coin.CFrame)
                             task.wait(0.3)
                             fireproximityprompt(v.ProximityPrompt)
                         end
@@ -512,7 +512,7 @@ do
                     getgenv().LastFuntion = "AutoCollectPotion"
                     for _, v in pairs(workspace.Debris.Pickup_Debris.Potions:GetChildren()) do
                         if v and v:FindFirstChild("ProximityPrompt") and __VE["LPs"].Character and __VE["LPs"].Character:FindFirstChild("HumanoidRootPart") and Setting.AutoCollectPotion then
-                            Tp2(v.CFrame)
+                            Tp2(v.Main.CFrame)
                             task.wait(0.3)
                             fireproximityprompt(v.ProximityPrompt)
                         end
@@ -536,9 +536,23 @@ do
         end)
     end)()
     Tabs.Main:AddSection("Items")
+    Items = {
+        "Lucky_Potion_I",
+        "Lucky_Potion_II",
+        "Lucky_Potion_III",
+        "Speed_Potion_I",
+        "Speed_Potion_II",
+        "Speed_Potion_III",
+        "Coins_Potion_I",
+        "Coins_Potion_II",
+        "Coins_Potion_III",
+        "Damage_Potion_I",
+        "Damage_Potion_II",
+        "Damage_Potion_III",
+    }
     local SelectedItem = Tabs.Main:AddDropdown("SelectedItem", {
         Title = "Select Items",
-        Values = {},
+        Values = Items,
         Multi = false,
         Default = 1,
     })
