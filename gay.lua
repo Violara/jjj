@@ -308,9 +308,7 @@ local function createTrail(ColorValue)
             heartbeatConnection2:Disconnect()
         end
     end
-    __VE["LPs"].Character.ChildRemoved:Connect(function()
-        cleanu2p()
-    end)
+    __VE["LPs"].CharacterRemoving:Connect(cleanup2)
     character = __VE["LPs"].Character or __VE["LPs"].CharacterAdded:Wait()
     local part = __U[35]("Part")
     part.Size = __U[57](0, 0, 0)
@@ -365,9 +363,7 @@ local function createTrail(ColorValue)
             heartbeatConnection:Disconnect()
         end
     end
-    __VE["LPs"].Character.ChildRemoved:Connect(function()
-        cleanup()
-    end)
+    __VE["LPs"].CharacterRemoving:Connect(cleanup)
 end
 if __VE["CG"]:FindFirstChild("InputPcToMobile") then
     __VE["CG"]:FindFirstChild("InputPcToMobile"):Destroy()
