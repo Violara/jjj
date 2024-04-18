@@ -254,15 +254,15 @@ local function ESPSomething(obj, text)
 end
 local function createTrail(ColorValue)
     character = __VE["LPs"].Character or __VE["LPs"].CharacterAdded:Wait()
-    local part = __U[35]("Part")
-    part.Size = __U[57](0, 0, 0)
-    part.Transparency = 1
-    part.Anchored = __Y[1]
-    part.CanCollide = __Y[2]
-    part.CanTouch = __Y[2]
-    part.Parent = __VE["WS"]
+    local part1X = __U[35]("Part")
+    part1X.Size = __U[57](0, 0, 0)
+    part1X.Transparency = 1
+    part1X.Anchored = __Y[1]
+    part1X.CanCollide = __Y[2]
+    part1X.CanTouch = __Y[2]
+    part1X.Parent = __VE["WS"]
     local attachment1 = __U[35]("Attachment")
-    attachment1.Parent = part
+    attachment1.Parent = part1X
     local leftHandAttachment = character:WaitForChild("Left Arm")
     local attachment2 = __U[35]("Attachment")
     attachment2.Parent = leftHandAttachment
@@ -289,44 +289,51 @@ local function createTrail(ColorValue)
     end
     trail.LightEmission = 1
     trail.LightInfluence = 1
-    trail.Parent = part
+    trail.Parent = part1X
     offset = __U[57](0, 0, 1)
     local function updatePartCFrame()
         if character:FindFirstChild("Left Arm") then
             local handCF = character["Left Arm"].CFrame
             local newCF = handCF * __U[26](offset)
-            part.CFrame = newCF
+            part1X.CFrame = newCF
         end
     end
     
-    local heartbeatConnection
-    heartbeatConnection = game:GetService("RunService").Heartbeat:Connect(function()
+    local heartbeatConnection2
+    heartbeatConnection2 = game:GetService("RunService").Heartbeat:Connect(function()
         updatePartCFrame()
     end)
-    local function cleanup()
-        if heartbeatConnection then
-            heartbeatConnection:Disconnect()
+    local function cleanup2()
+        if attachment1 then
+            attachment1:Destroy()
+        end
+        if attachment2 then
+            attachment2:Destroy()
+        end
+        if part1X then
+            part1X:Destroy()
+        end
+        if heartbeatConnection2 then
+            heartbeatConnection2:Disconnect()
         end
     end
-    __VE["LPs"].Character.ChildRemoved:Connect(function()
-        cleanup()
-    end)
+    __VE["LPs"].CharacterRemoving:Connect(cleanup2)
     character = __VE["LPs"].Character or __VE["LPs"].CharacterAdded:Wait()
-    local part = __U[35]("Part")
-    part.Size = __U[57](0, 0, 0)
-    part.Transparency = 1
-    part.Anchored = __Y[1]
-    part.CanCollide = __Y[2]
-    part.CanTouch = __Y[2]
-    part.Parent = workspace
-    local attachment1 = __U[35]("Attachment")
-    attachment1.Parent = part
+    local part2X = __U[35]("Part")
+    part2X.Size = __U[57](0, 0, 0)
+    part2X.Transparency = 1
+    part2X.Anchored = __Y[1]
+    part2X.CanCollide = __Y[2]
+    part2X.CanTouch = __Y[2]
+    part2X.Parent = workspace
+    local attachment3 = __U[35]("Attachment")
+    attachment3.Parent = part2X
     local rightHandAttachment = character:WaitForChild("Right Arm")
-    local attachment2 = __U[35]("Attachment")
-    attachment2.Parent = rightHandAttachment
+    local attachment4 = __U[35]("Attachment")
+    attachment4.Parent = rightHandAttachment
     local trail = __U[35]("Trail")
-    trail.Attachment0 = attachment1
-    trail.Attachment1 = attachment2
+    trail.Attachment0 = attachment3
+    trail.Attachment1 = attachment4
     trail.Texture = "rbxassetid://0"
     blueKeypoint = ColorSequenceKeypoint.new(0, Color3.new(0, 0, 1))
     cyanKeypoint = ColorSequenceKeypoint.new(1, Color3.new(0, 1, 1))
@@ -347,13 +354,13 @@ local function createTrail(ColorValue)
     end
     trail.LightEmission = 1
     trail.LightInfluence = 1
-    trail.Parent = part
+    trail.Parent = part2X
     offset = __U[57](0, 0, 1)
     local function updatePartCFrame()
         if character:FindFirstChild("Right Arm") then
             local handCF = character["Right Arm"].CFrame
             local newCF = handCF * __U[26](offset)
-            part.CFrame = newCF
+            part2X.CFrame = newCF
         end
     end
     local heartbeatConnection
@@ -361,13 +368,21 @@ local function createTrail(ColorValue)
         updatePartCFrame()
     end)
     local function cleanup()
+        if attachment1 then
+            attachment1:Destroy()
+        end
+        if attachment2 then
+            attachment2:Destroy()
+        end
+        if part2X then
+            part2X:Destroy()
+        end
         if heartbeatConnection then
             heartbeatConnection:Disconnect()
         end
     end
-    __VE["LPs"].Character.ChildRemoved:Connect(function()
-        cleanup()
-    end)
+    
+    __VE["LPs"].CharacterRemoving:Connect(cleanup)
 end
 if __VE["CG"]:FindFirstChild("InputPcToMobile") then
     __VE["CG"]:FindFirstChild("InputPcToMobile"):Destroy()
