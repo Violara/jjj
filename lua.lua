@@ -188,6 +188,14 @@ end
 function Tp2(xyz)
     __VE["LPs"].Character.HumanoidRootPart.CFrame = xyz
 end
+function Notify(title, content, time)
+	if title and not content then content = title; title = "Script Service" end
+	Fluent:Notify({
+		Title = title,
+		Content = content,
+		Duration = time or 5
+	})
+end
 function Chest(value)
     if tostring(value) == "Daily" then
         DailyArgs = {
@@ -255,7 +263,7 @@ local function createTrail(ColorValue)
     part.Parent = __VE["WS"]
     local attachment1 = __U[35]("Attachment")
     attachment1.Parent = part
-    local leftHandAttachment = character:WaitForChild("LeftHand")
+    local leftHandAttachment = character:WaitForChild("Left Arm")
     local attachment2 = __U[35]("Attachment")
     attachment2.Parent = leftHandAttachment
     local trail = __U[35]("Trail")
@@ -284,8 +292,8 @@ local function createTrail(ColorValue)
     trail.Parent = part
     offset = __U[57](0, 0, 1)
     local function updatePartCFrame()
-        if character:FindFirstChild("LeftHand") then
-            local handCF = character.LeftHand.CFrame
+        if character:FindFirstChild("Left Arm") then
+            local handCF = character["Left Arm"].CFrame
             local newCF = handCF * __U[26](offset)
             part.CFrame = newCF
         end
@@ -315,7 +323,7 @@ local function createTrail(ColorValue)
     part.Parent = workspace
     local attachment1 = __U[35]("Attachment")
     attachment1.Parent = part
-    local rightHandAttachment = character:WaitForChild("RightHand")
+    local rightHandAttachment = character:WaitForChild("Right Arm")
     local attachment2 = __U[35]("Attachment")
     attachment2.Parent = rightHandAttachment
     local trail = __U[35]("Trail")
@@ -344,8 +352,8 @@ local function createTrail(ColorValue)
     trail.Parent = part
     offset = __U[57](0, 0, 1)
     local function updatePartCFrame()
-        if character:FindFirstChild("RightHand") then
-            local handCF = character.RightHand.CFrame
+        if character:FindFirstChild("Right Arm") then
+            local handCF = character["Right Arm"].CFrame
             local newCF = handCF * __U[26](offset)
             part.CFrame = newCF
         end
@@ -603,7 +611,7 @@ do
     end)()
     AutoVIPChest = Tabs.Main:AddToggle("AutoVIPChest", {Title = "Auto VIP Chest", Default = Setting.AutoVIPChest or __Y[2] })
     coroutine.wrap(function()
-        AutoGroupChest:OnChanged(function()
+        AutoVIPChest:OnChanged(function()
             pcall(function()
                 Setting.AutoVIPChest = Options.AutoVIPChest.Value
                 while Setting.AutoVIPChest do task.wait(1)
