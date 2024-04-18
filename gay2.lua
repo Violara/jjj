@@ -10,369 +10,217 @@ coroutine.wrap(function()
         end
     end
 end)()
-repeat task.wait() until game:IsLoaded()
+repeat
+    task.wait()
+until game:IsLoaded()
 __LUABLE = {
-    ["Functions"] = loadstring(game:HttpGet("https://raw.githubusercontent.com/Yumiara/Asset/main/api.lua"))()
+    ["Functions"] = loadstring(
+        game:HttpGet("https://raw.githubusercontent.com/Yumiara/Asset/main/api.lua")
+    )()
 }
 __U = {}
-for i=1,#__LUABLE["Functions"] do
-    pcall(function()
-        __U[i] = clonefunction(__LUABLE["Functions"][i])
-    end)
+for a = 1, #__LUABLE["Functions"] do
+    pcall(
+        function()
+            __U[a] = clonefunction(__LUABLE["Functions"][a])
+        end
+    )
 end
 __VE = {
     ["Ps"] = game:GetService("Players"),
     ["LPs"] = game:GetService("Players").LocalPlayer,
     ["PsG"] = game:GetService("Players").LocalPlayer.PlayerGui
-    
 }
-local Converted = {
-	["_TTJY ASSET"] = Instance.new("ScreenGui");
-	["_TTJY HUB"] = Instance.new("Frame");
-	["_UIStroke"] = Instance.new("UIStroke");
-	["_UICorner"] = Instance.new("UICorner");
-	["_TextButton"] = Instance.new("TextButton");
-	["_UIStroke1"] = Instance.new("UIStroke");
+local b = {
+    ["_TTJY ASSET"] = __U[35]("ScreenGui"),
+    ["_TTJY HUB"] = __U[35]("Frame"),
+    ["_UIStroke"] = __U[35]("UIStroke"),
+    ["_UICorner"] = __U[35]("UICorner"),
+    ["_TextButton"] = __U[35]("TextButton"),
+    ["_UIStroke1"] = __U[35]("UIStroke")
 }
-
--- Properties:
-
-Converted["_TTJY ASSET"].ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-Converted["_TTJY ASSET"].Name = "TTJY ASSET"
-Converted["_TTJY ASSET"].Parent = game:GetService("CoreGui")
-
-Converted["_TTJY HUB"].BackgroundColor3 = Color3.fromRGB(56.0000042617321, 56.0000042617321, 56.0000042617321)
-Converted["_TTJY HUB"].BackgroundTransparency = 0.4000000059604645
-Converted["_TTJY HUB"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_TTJY HUB"].BorderSizePixel = 0
-Converted["_TTJY HUB"].Position = UDim2.new(0.465000004, 0, -0.1, 0)
-Converted["_TTJY HUB"].Size = UDim2.new(0.0700000003, 0, 0.100000001, 0)
-Converted["_TTJY HUB"].ZIndex = 2
-Converted["_TTJY HUB"].Name = "TTJY HUB"
-Converted["_TTJY HUB"].Parent = Converted["_TTJY ASSET"]
-
-Converted["_UIStroke"].LineJoinMode = Enum.LineJoinMode.Bevel
-Converted["_UIStroke"].Thickness = 3
-Converted["_UIStroke"].Parent = Converted["_TTJY HUB"]
-
-Converted["_UICorner"].Parent = Converted["_TTJY HUB"]
-
-Converted["_TextButton"].Font = Enum.Font.SourceSans
-Converted["_TextButton"].Text = "TTJY HUB"
-Converted["_TextButton"].TextColor3 = Color3.fromRGB(0, 255, 0)
-Converted["_TextButton"].TextScaled = true
-Converted["_TextButton"].TextSize = 14
-Converted["_TextButton"].TextWrapped = true
-Converted["_TextButton"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_TextButton"].BackgroundTransparency = 1
-Converted["_TextButton"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_TextButton"].BorderSizePixel = 0
-Converted["_TextButton"].Size = UDim2.new(1, 0, 1, 0)
-Converted["_TextButton"].Parent = Converted["_TTJY HUB"]
-
-Converted["_UIStroke1"].LineJoinMode = Enum.LineJoinMode.Bevel
-Converted["_UIStroke1"].Parent = Converted["_TextButton"]
-
-TTJYHUB = Converted["_TextButton"]
-
-Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
-SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
-InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
+b["_TTJY ASSET"].ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+b["_TTJY ASSET"].Name = "TTJY ASSET"
+b["_TTJY ASSET"].Parent = game:GetService("CoreGui")
+b["_TTJY HUB"].BackgroundColor3 = Color3.fromRGB(56.0000042617321, 56.0000042617321, 56.0000042617321)
+b["_TTJY HUB"].BackgroundTransparency = 0.4000000059604645
+b["_TTJY HUB"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+b["_TTJY HUB"].BorderSizePixel = 0
+b["_TTJY HUB"].Position = UDim2.new(0.4620000004, 0, -0.1, 0)
+b["_TTJY HUB"].Size = UDim2.new(0.0700000003, 0, 0.100000001, 0)
+b["_TTJY HUB"].ZIndex = 2
+b["_TTJY HUB"].Name = "TTJY HUB"
+b["_TTJY HUB"].Parent = b["_TTJY ASSET"]
+b["_UIStroke"].LineJoinMode = Enum.LineJoinMode.Bevel
+b["_UIStroke"].Thickness = 3
+b["_UIStroke"].Parent = b["_TTJY HUB"]
+b["_UICorner"].Parent = b["_TTJY HUB"]
+b["_TextButton"].Font = Enum.Font.SourceSans
+b["_TextButton"].Text = "TTJY HUB"
+b["_TextButton"].TextColor3 = Color3.fromRGB(0, 255, 0)
+b["_TextButton"].TextScaled = true
+b["_TextButton"].TextSize = 14
+b["_TextButton"].TextWrapped = true
+b["_TextButton"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+b["_TextButton"].BackgroundTransparency = 1
+b["_TextButton"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+b["_TextButton"].BorderSizePixel = 0
+b["_TextButton"].Size = UDim2.new(1, 0, 1, 0)
+b["_TextButton"].Parent = b["_TTJY HUB"]
+b["_UIStroke1"].LineJoinMode = Enum.LineJoinMode.Bevel
+b["_UIStroke1"].Parent = b["_TextButton"]
+TTJYHUB = b["_TextButton"]
+Fluent = __U[40](game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
+SaveManager = __U[40](game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
+InterfaceManager = __U[40](game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
 __U[6](function()
     if Fluent and SaveManager and InterfaceManager then
         __U[1]("No Error")
     else
         Fluent = __U[40](game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
         SaveManager = __U[40](game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
-        InterfaceManager = __U[40](game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
+        InterfaceManager =__U[40](game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
     end
 end)
-__X = {true,false,nil,0,1} ;  __Y ={} ; for i=1,#__X do __U[6](function() __Y[i] = __X[i] end) end
-__M = {2,3,5,7,11,13,17,10} ;  __N ={} ; for i=1,#__M do __U[6](function() __N[i] = __M[i] end) end
-__VE["WS"] , __VE["RuS"] , __VE["RlS"] = game:GetService("Workspace"), game:GetService("RunService") , game:GetService("ReplicatedStorage")
-__VE["VIM"] , __VE["UIS"] = game:GetService("VirtualInputManager"), game:GetService("UserInputService")
-__VE["Lg"] , __VE["TS"], __VE["GMos"] = game:GetService("Lighting") ,game:GetService("TweenService") ,  game:GetService("Players").LocalPlayer:GetMouse()
-__VE["VU"],__VE["CG"] = game:GetService("VirtualUser") ,game:GetService("CoreGui")
+__X = {true, false, nil, 0, 1}
+__Y = {}
+for a = 1, #__X do
+    __U[6](
+        function()
+            __Y[a] = __X[a]
+        end
+    )
+end
+__M = {2, 3, 5, 7, 11, 13, 17, 10}
+__N = {}
+for a = 1, #__M do
+    __U[6](
+        function()
+            __N[a] = __M[a]
+        end
+    )
+end
+__VE["WS"], __VE["RuS"], __VE["RlS"] = game:GetService("Workspace"),  game:GetService("RunService"), game:GetService("ReplicatedStorage")
+__VE["VIM"], __VE["UIS"] = game:GetService("VirtualInputManager"), game:GetService("UserInputService")
+__VE["Lg"], __VE["TS"], __VE["GMos"] = game:GetService("Lighting"), game:GetService("TweenService"), game:GetService("Players").LocalPlayer:GetMouse()
+__VE["VU"], __VE["CG"] = game:GetService("VirtualUser"), game:GetService("CoreGui")
 __VE["HS"] = game:GetService("HttpService")
-__VE["RET"] = __VE["RlS"]:WaitForChild("Events"):WaitForChild("To_Server")
-CodeArgs, DailyArgs, GroupArgs, VIPArgs, UseArg = __Y[3]
+__VE["IBFS"] = workspace:WaitForChild("ItemBoughtFromShop")
+originalWalkSpeed = __VE["LPs"].Character.Humanoid.WalkSpeed
+originalJumpPower = __VE["LPs"].Character.Humanoid.JumpPower
+CONTROL = {F = 0, B = 0, L = 0, R = 0, Q = 0, E = 0}
 Float = false
 Noclip = false
-CONTROL = {F = 0, B = 0, L = 0, R = 0, Q = 0, E = 0}
-WalkSpeedSet = 16
-JumpPowerSet = 30
-WalkSpeedRequest = __Y[2]
-JumpPowerRequest = __Y[2]
 cmdm = __VE["GMos"]
 speedofthevfly = 1
 speedofthefly = 1
-Setting = __Y[3]
-serializedSetting = __Y[3]
-if getgenv().Addons then
-    if not isfolder("Setting") then
-        makefolder("Setting")
-    end
-    if isfolder("Setting") and not isfile("Setting/settingHEDERNG.json") then
-        print("no file")
-        Setting = {
-            AutoCollectCoins = __Y[2],
-            AutoCollectPotion = __Y[2],
-            AutoCollectGreenStar = __Y[2],
-            AutoDailyChest = __Y[2],
-            AutoGroupChest = __Y[2],
-            AutoVIPChest = __Y[2],
-            SelectedItem = __Y[3],
-            AutoUseSelectedItem = __Y[2],
-        }
-        allowtoserialized = __Y[1]
-    elseif __U[49]("Setting") and __U[50]("Setting/settingHEDERNG.json") then
-        __U[1]("file")
-        __U[23]()
-        Setting = game.HttpService:JSONDecode(__U[51]("Setting/settingHEDERNG.json"))
-    end
-else
-    Setting = {
-        AutoCollectCoins = __Y[2],
-        AutoCollectPotion = __Y[2],
-        AutoCollectGreenStar = __Y[2],
-        AutoDailyChest = __Y[2],
-        AutoGroupChest = __Y[2],
-        AutoVIPChest = __Y[2],
-        SelectedItem = __Y[3],
-        AutoUseSelectedItem = __Y[2],
-    }
+Setting = nil
+serializedSetting = nil
+if not isfolder("Setting") then
+    makefolder("Setting")
 end
-
-local credits = {
+if isfolder("Setting") and not isfile("Setting/settingBABFT.json") then
+    print("no file")
+    Setting = {
+		autofarming = __Y[2],
+		stayatyvalue = 55,
+		aspeed = 1000,
+		antireport = __Y[2],
+		waituntil = 15,
+		CommonChest = __Y[2],
+		UncommonChest = __Y[2],
+		RareChest = __Y[2],
+		EpicChest = __Y[2],
+		LegendaryChest = __Y[2]
+	}
+    allowtoserialized = __Y[1]
+elseif __U[49]("Setting") and __U[50]("Setting/settingBABFT.json") then
+    __U[1]("file")
+    __U[23]()
+    Setting = game.HttpService:JSONDecode(__U[51]("Setting/settingBABFT.json"))
+end
+local c = {
     {Title = "Owner", Content = "ttjy."},
+    {Title = "VIP", Content = "x2neptune - Alchemy Hub"},
     {Title = "Co Owner", Content = "ttjy_"},
     {Title = "Scripter", Content = "ttjy."},
     {Title = "Scripter", Content = "ttjy_"},
+    {Title = "Scripter", Content = "x2neptune - Alchemy Hub"},
+    {Title = "Bypasser", Content = "???"},
+    {Title = "Bypasser", Content = "ttjy."},
+    {Title = "Bypasser", Content = "x2neptune - Alchemy Hub"},
     {Title = "Key System", Content = "sa.l"},
-    {Title = "UI", Content = "dawid"},
+    {Title = "UI", Content = "dawid"}
 }
-
-function OnFluentChange()
-    if Window.Root.Visible then
-        TTJYHUB.TextColor3  = __U[36](0, 255, 0)
-    else
-        TTJYHUB.TextColor3  = __U[36](255, 0, 0)
-    end
-end
 function tpwithnewtpbyme2(xyz,speedoftpNTP)
-    local hrd = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local hrd = __VE["LPs"].Character.HumanoidRootPart
     local p = hrd.Position
-    local currentPos = Vector3.new(p.x, p.y, p.z)
+    local currentPos = __U[57](p.x, p.y, p.z)
     local targetPos = xyz.Position
     local saveY = p.y
 
     local direction = (targetPos - currentPos).Unit
     local distance = (targetPos - currentPos).Magnitude
-    local steps = math.floor(distance / speedoftpNTP)
+    local steps = __U[39](distance / speedoftpNTP)
     for i = 1, steps do
-        if not game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") then
-            repeat task.wait(0.175) until game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
+        if not __VE["LPs"].Character:FindFirstChild("Humanoid") then
+            repeat __U[23](0.175) until __VE["LPs"].Character:FindFirstChild("Humanoid")
         end
         currentPos = currentPos + direction * speedoftpNTP 
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(currentPos)
-        task.wait()
+        __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](currentPos)
+        __U[23]()
     end
-    task.wait(0.1)
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = xyz
-    wait()
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = xyz
 end
-function Tp(x, y ,z)
-    __VE["LPs"].Character.HumanoidRootPart.CFrame = CFrame.new(x, y ,z)
+local Fluent = __U[40](game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
+local SaveManager = __U[40](game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
+local InterfaceManager = __U[40](game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
+local Window = Fluent:CreateWindow({
+    Title = "Build a boat for teasure v.UP1PV",
+    SubTitle = "by TTJY",
+    TabWidth = 110,
+    Size = UDim2.fromOffset(580, 400),
+    Acrylic = true,
+    Theme = "Dark",
+    MinimizeKey = Enum.KeyCode.LeftControl
+})
+function OnFluentChange()
+    if Window.Root.Visible then
+        TTJYHUB.TextColor3 = __U[36](0, 255, 0)
+    else
+        TTJYHUB.TextColor3 = __U[36](255, 0, 0)
+    end
 end
-function Tp2(xyz)
-    __VE["LPs"].Character.HumanoidRootPart.CFrame = xyz
-end
-function Notify(title, content, time)
+local Tabs = {
+    Main = Window:AddTab({ Title = "Main", Icon = "" }),
+	AutoQuest = Window:AddTab({ Title = "Auto Quest", Icon = "" }),
+	Player = Window:AddTab({ Title = "Player", Icon = "" }),
+	asettings = Window:AddTab({ Title = "AutoFarm Settings", Icon = "settings" }),
+    Settings = Window:AddTab({ Title = "UI Settings", Icon = "settings" })
+}
+function notify(title, content)
 	if title and not content then content = title; title = "Script Service" end
 	Fluent:Notify({
 		Title = title,
 		Content = content,
-		Duration = time or 5
+		Duration = 5
 	})
 end
-function Chest(value)
-    if tostring(value) == "Daily" then
-        DailyArgs = {
-            [1] = {
-                ["Action"] = "Chest_Claim",
-                ["Name"] = "Daily"
-            }
-        }
-        __VE["RET"]:FireServer(unpack(DailyArgs))
-    elseif tostring(value) == "Group" then
-        GroupArgs = {
-            [1] = {
-                ["Action"] = "Chest_Claim",
-                ["Name"] = "Group"
-            }
-        }
-        __VE["RET"]:FireServer(unpack(GroupArgs))
-    elseif tostring(value) == "VIP" then
-        VIPArgs = {
-            [1] = {
-                ["Action"] = "Chest_Claim",
-                ["Name"] = "Vip"
-            }
-        }
-        __VE["RET"]:FireServer(unpack(VIPArgs))
-    end
-end
-local function checkSameNumbers(Path)
-    local labelText = Path
-    local firstNumber, secondNumber = labelText:match("(%d+) / (%d+)")
-    if firstNumber and secondNumber then
-        return tonumber(firstNumber) == tonumber(secondNumber)
-    else
-        return false
-    end
-end
-local function ESPSomething(obj, text)
-    local billboard = Instance.new("BillboardGui")
-    billboard.Name = "TextLabelBillboard"
-    billboard.Adornee = obj
-    billboard.Size = UDim2.new(0, 100, 0, 50)
-    billboard.StudsOffset = Vector3.new(0, 2, 0)
-    billboard.AlwaysOnTop = true
 
-    local textLabel = Instance.new("TextLabel")
-    textLabel.Name = "Text"
-    textLabel.Parent = billboard
-    textLabel.Text = tostring(text)
-    textLabel.TextColor3 = Color3.fromRGB(255, 0, 0)
-    textLabel.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
-    textLabel.TextStrokeTransparency = 0.082
-    textLabel.BackgroundTransparency = 1
-    textLabel.Size = UDim2.new(1, 0, 1, 0)
+__U[6](
+    function()
+        Window.Root:GetPropertyChangedSignal("Visible"):Connect(OnFluentChange)
+    end
+)
+__U[6](
+    function()
+        function onButtonClick()
+            Window.Minimized = not Window.Minimized
+            Window.Root.Visible = not Window.Minimized
+        end
+        TTJYHUB.MouseButton1Click:Connect(onButtonClick)
+    end
+)
 
-    billboard.Parent = obj
-end
-local function createTrail(ColorValue)
-    character = __VE["LPs"].Character or __VE["LPs"].CharacterAdded:Wait()
-    local part = __U[35]("Part")
-    part.Size = __U[57](0, 0, 0)
-    part.Transparency = 1
-    part.Anchored = __Y[1]
-    part.CanCollide = __Y[2]
-    part.CanTouch = __Y[2]
-    part.Parent = __VE["WS"]
-    local attachment1 = __U[35]("Attachment")
-    attachment1.Parent = part
-    local leftHandAttachment = character:WaitForChild("Left Arm")
-    local attachment2 = __U[35]("Attachment")
-    attachment2.Parent = leftHandAttachment
-    local trail = __U[35]("Trail")
-    trail.Attachment0 = attachment1
-    trail.Attachment1 = attachment2
-    trail.Texture = "rbxassetid://0"
-    blueKeypoint = ColorSequenceKeypoint.new(0, Color3.new(0, 0, 1))
-    cyanKeypoint = ColorSequenceKeypoint.new(1, Color3.new(0, 1, 1))
-    greenKeypoint = ColorSequenceKeypoint.new(0, Color3.new(0, 1, 0))
-    lightGreenKeypoint = ColorSequenceKeypoint.new(1, Color3.new(0.5, 1, 0.5))
-    pinkKeypoint = ColorSequenceKeypoint.new(0, Color3.new(1, 0.75, 0.8))
-    redKeypoint = ColorSequenceKeypoint.new(1, Color3.new(1, 0, 0))
-    purpleKeypoint = ColorSequenceKeypoint.new(0, Color3.new(0.5, 0, 1))
-    lightPurpleKeypoint = ColorSequenceKeypoint.new(1, Color3.new(0.8, 0.5, 1))
-    if ColorValue == 1 then
-        trail.Color = ColorSequence.new({blueKeypoint, cyanKeypoint})
-    elseif ColorValue == 2 then
-        trail.Color = ColorSequence.new({greenKeypoint, lightGreenKeypoint})
-    elseif ColorValue == 3 then
-        trail.Color = ColorSequence.new({pinkKeypoint, redKeypoint})
-    elseif ColorValue == 4 then
-        trail.Color = ColorSequence.new({purpleKeypoint, lightPurpleKeypoint})
-    end
-    trail.LightEmission = 1
-    trail.LightInfluence = 1
-    trail.Parent = part
-    offset = __U[57](0, 0, 1)
-    local function updatePartCFrame()
-        if character:FindFirstChild("Left Arm") then
-            local handCF = character["Left Arm"].CFrame
-            local newCF = handCF * __U[26](offset)
-            part.CFrame = newCF
-        end
-    end
-    
-    local heartbeatConnection
-    heartbeatConnection = game:GetService("RunService").Heartbeat:Connect(function()
-        updatePartCFrame()
-    end)
-    local function cleanup()
-        if heartbeatConnection then
-            heartbeatConnection:Disconnect()
-        end
-    end
-    __VE["LPs"].Character.Humanoid:GetPropertyChangedSignal("Health"):Connect(function(value)
-        if value <= 0 then
-            cleanup()
-        end
-    end)
-    character = __VE["LPs"].Character or __VE["LPs"].CharacterAdded:Wait()
-    local part = __U[35]("Part")
-    part.Size = __U[57](0, 0, 0)
-    part.Transparency = 1
-    part.Anchored = __Y[1]
-    part.CanCollide = __Y[2]
-    part.CanTouch = __Y[2]
-    part.Parent = workspace
-    local attachment1 = __U[35]("Attachment")
-    attachment1.Parent = part
-    local rightHandAttachment = character:WaitForChild("Right Arm")
-    local attachment2 = __U[35]("Attachment")
-    attachment2.Parent = rightHandAttachment
-    local trail = __U[35]("Trail")
-    trail.Attachment0 = attachment1
-    trail.Attachment1 = attachment2
-    trail.Texture = "rbxassetid://0"
-    blueKeypoint = ColorSequenceKeypoint.new(0, Color3.new(0, 0, 1))
-    cyanKeypoint = ColorSequenceKeypoint.new(1, Color3.new(0, 1, 1))
-    greenKeypoint = ColorSequenceKeypoint.new(0, Color3.new(0, 1, 0))
-    lightGreenKeypoint = ColorSequenceKeypoint.new(1, Color3.new(0.5, 1, 0.5))
-    pinkKeypoint = ColorSequenceKeypoint.new(0, Color3.new(1, 0.75, 0.8))
-    redKeypoint = ColorSequenceKeypoint.new(1, Color3.new(1, 0, 0))
-    purpleKeypoint = ColorSequenceKeypoint.new(0, Color3.new(0.5, 0, 1))
-    lightPurpleKeypoint = ColorSequenceKeypoint.new(1, Color3.new(0.8, 0.5, 1))
-    if ColorValue == 1 then
-    trail.Color = ColorSequence.new({blueKeypoint, cyanKeypoint})
-    elseif ColorValue == 2 then
-        trail.Color = ColorSequence.new({greenKeypoint, lightGreenKeypoint})
-    elseif ColorValue == 3 then
-        trail.Color = ColorSequence.new({pinkKeypoint, redKeypoint})
-    elseif ColorValue == 4 then
-        trail.Color = ColorSequence.new({purpleKeypoint, lightPurpleKeypoint})
-    end
-    trail.LightEmission = 1
-    trail.LightInfluence = 1
-    trail.Parent = part
-    offset = __U[57](0, 0, 1)
-    local function updatePartCFrame()
-        if character:FindFirstChild("Right Arm") then
-            local handCF = character["Right Arm"].CFrame
-            local newCF = handCF * __U[26](offset)
-            part.CFrame = newCF
-        end
-    end
-    local heartbeatConnection
-    heartbeatConnection = game:GetService("RunService").Heartbeat:Connect(function()
-        updatePartCFrame()
-    end)
-    local function cleanup()
-        if heartbeatConnection then
-            heartbeatConnection:Disconnect()
-        end
-    end
-    __VE["LPs"].Character.Humanoid:GetPropertyChangedSignal("Health"):Connect(function(value)
-        if value <= 0 then
-            cleanup()
-        end
-    end)
-end
 if __VE["CG"]:FindFirstChild("InputPcToMobile") then
     __VE["CG"]:FindFirstChild("InputPcToMobile"):Destroy()
 end
@@ -388,17 +236,22 @@ local function createButton(key, position)
     button.Position = position
     button.BackgroundColor3 = Color3.new(0.5, 0.5, 0.5)
     button.Parent = screenGui2
+
     local isPressed = __Y[2]
     button.MouseButton1Down:Connect(function()
         isPressed = true
         if key == "W" then
             CONTROL.F = speedofthefly
+            print("W")
         elseif key == "S" then
             CONTROL.B = -speedofthefly
+            print("S")
         elseif key == "A" then
             CONTROL.L = -speedofthefly
+            print("A")
         elseif key == "D" then
             CONTROL.R = speedofthefly
+            print("D")
         end
     end)
 
@@ -416,606 +269,589 @@ local function createButton(key, position)
     end)
 end
 
+-- Create buttons for W, A, S, D
 createButton("W", UDim2.new(0.05, 0, 0.1, 0))
-task.wait()
+task.wait(1)
 createButton("A", UDim2.new(0, 0, 0.2, 0))
-task.wait()
+task.wait(1)
 createButton("S", UDim2.new(0.05, 0, 0.3, 0))
-task.wait()
+task.wait(1)
 createButton("D", UDim2.new(0.1, 0, 0.2, 0))
-task.wait()
-Window = nil
-repeat
-    __U[6](function()
-        Window = Fluent:CreateWindow({
-            Title = "Anime RNG Script v.UP1FV",
-            SubTitle = "by TTJY",
-            TabWidth = 160,
-            Size = UDim2.fromOffset(580, 460),
-            Acrylic = false,
-            Theme = "Dark",
-            MinimizeKey = Enum.KeyCode.LeftControl
-        })
-    end)
-    print("Window Loaded")
-    __U[23](5)
-until Window ~= nil
-
-local Tabs = {
-    Main = Window:AddTab({ Title = "Main", Icon = "home" }),
-    Player = Window:AddTab({ Title = "Player", Icon = "person-standing" }),
-    Teleport = Window:AddTab({ Title = "Teleport", Icon = "globe" }),
-    ESP = Window:AddTab({ Title = "ESP", Icon = "inspect" }),
-    ChangeLog = Window:AddTab({ Title = "ChangeLog", Icon = "book" }),
-    Credits = Window:AddTab({ Title = "Credits", Icon = "book" }),
-    Addons = Window:AddTab({ Title = "Addons", Icon = "gem" }),
-    Settings = Window:AddTab({ Title = "Settings", Icon = "settings" })
-}
+task.wait(1)
 local Options = Fluent.Options
-__U[6](function()
-    Window.Root:GetPropertyChangedSignal("Visible"):Connect(OnFluentChange)
-end)
-__U[6](function()
-    function onButtonClick()
-        Window.Minimized = not Window.Minimized
-        Window.Root.Visible = not Window.Minimized
-    end
-    TTJYHUB.MouseButton1Click:Connect(onButtonClick)
-end)
-do
-    --getgenv().TextStatus
-    --getgenv().LastFuntion
-    getgenv().TextStatus = "Normal Load"
-    getgenv().ScriptUpdateDate = "17/04/24"
-    Code = {
-        "shutdown1",
-        "shutdown2",
-        "shutdown3",
-        "15KLIKES",
-        "Update8",
-        "3MVISITS",
-        "9500FAV"
-    }
-    Tabs.Main:AddSection("Codes")
-    Tabs.Main:AddButton({Title = "Redeem All Codes", Description = "",
-        Callback = function()
-            for i = 1, 7 do
-                getgenv().LastFuntion = "Redeen All Codes"
-                CodeArgs = {
-                    [1] = {
-                        ["Action"] = "Redeem_Code",
-                        ["Text"] = tostring(Code[i])
-                    }
-                }
-                game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("To_Server"):FireServer(unpack(CodeArgs))
-                wait()
-            end
-        end
-    })
-    Tabs.Main:AddSection("Auto Farm")
-    AutoCollectCoins = Tabs.Main:AddToggle("AutoCollectCoins", {Title = "Coins", Default = Setting.AutoCollectCoins or __Y[2] })
-    coroutine.wrap(function()
-        AutoCollectCoins:OnChanged(function()
-            pcall(function()
-                Setting.AutoCollectCoins = Options.AutoCollectCoins.Value
-                while Setting.AutoCollectCoins do task.wait(0.5)
-                    getgenv().LastFuntion = "AutoCollectCoins"
-                    for _, v in pairs(workspace.Debris.Pickup_Debris.Coins:GetChildren()) do
-                        if v and v:FindFirstChild("ProximityPrompt") and __VE["LPs"].Character and __VE["LPs"].Character:FindFirstChild("HumanoidRootPart") and Setting.AutoCollectCoins then
-                            Tp2(v.Coin.CFrame)
-                            task.wait(0.3)
-                            fireproximityprompt(v.ProximityPrompt)
-                        end
-                    end
-                end
-            end)
-        end)
-    end)()
-    AutoCollectPotion = Tabs.Main:AddToggle("AutoCollectPotion", {Title = "Potions", Default = Setting.AutoCollectPotion or __Y[2] })
-    coroutine.wrap(function()
-        AutoCollectPotion:OnChanged(function()
-            pcall(function()
-                Setting.AutoCollectPotion = Options.AutoCollectPotion.Value
-                while Setting.AutoCollectPotion do task.wait(0.5)
-                    getgenv().LastFuntion = "AutoCollectPotion"
-                    for _, v in pairs(workspace.Debris.Pickup_Debris.Potions:GetChildren()) do
-                        if v and v:FindFirstChild("ProximityPrompt") and __VE["LPs"].Character and __VE["LPs"].Character:FindFirstChild("HumanoidRootPart") and Setting.AutoCollectPotion then
-                            Tp2(v.Main.CFrame)
-                            task.wait(0.3)
-                            fireproximityprompt(v.ProximityPrompt)
-                        end
-                    end
-                end
-            end)
-        end)
-    end)()
-    AutoCollectGreenStar = Tabs.Main:AddToggle("AutoCollectGreenStar", {Title = "Green Orb", Default = Setting.AutoCollectGreenStar or __Y[2] })
-    coroutine.wrap(function()
-        AutoCollectGreenStar:OnChanged(function()
-            pcall(function()
-                Setting.AutoCollectGreenStar = Options.AutoCollectGreenStar.Value
-                while Setting.AutoCollectGreenStar do task.wait(0.5)
-                    getgenv().LastFuntion = "AutoCollectGreenStar"
-                    if workspace.Debris.Pickup_Orbs:FindFirstChild("Green_Orb") and Setting.AutoCollectGreenStar then
-                        Tp2(workspace.Debris.Pickup_Orbs.Green_Orb.Star.CFrame)
-                    end
-                end
-            end)
-        end)
-    end)()
-    Tabs.Main:AddSection("Items")
-    Items = {
-        "Lucky_Potion_I",
-        "Lucky_Potion_II",
-        "Lucky_Potion_III",
-        "Speed_Potion_I",
-        "Speed_Potion_II",
-        "Speed_Potion_III",
-        "Coins_Potion_I",
-        "Coins_Potion_II",
-        "Coins_Potion_III",
-        "Damage_Potion_I",
-        "Damage_Potion_II",
-        "Damage_Potion_III",
-    }
-    local SelectedItem = Tabs.Main:AddDropdown("SelectedItem", {
-        Title = "Select Items",
-        Values = Items,
-        Multi = false,
-        Default = 1,
-    })
-    SelectedItem:OnChanged(function(Value)
-        Setting.SelectedItem = Value
-    end)
-    local AutoUseSelectedItem = Tabs.Main:AddToggle("AutoUseSelectedItem", {Title = "Auto Use", Default = __Y[2] })
-    coroutine.wrap(function()
-        AutoUseSelectedItem:OnChanged(function()
-            pcall(function()
-                while Options.AutoUseSelectedItem.Value do task.wait(0.5)
-                    UseArg = {
-                        ["Selected"] = {
-                            [1] = tostring(Setting.SelectedItem)
-                        },
-                        ["Action"] = "Use",
-                        ["Category"] = "Resources"
-                    }
-                    game:GetService("ReplicatedStorage").Events.Inventory:FireServer(UseArg)
-                end
-            end)
-        end)
-    end)()
-    Tabs.Main:AddSection("Reward")
-    AutoDailyChest = Tabs.Main:AddToggle("AutoDailyChest", {Title = "Auto Daily Chest", Default = Setting.AutoDailyChest or __Y[2] })
-    coroutine.wrap(function()
-        AutoDailyChest:OnChanged(function()
-            pcall(function()
-                Setting.AutoDailyChest = Options.AutoDailyChest.Value
-                while Setting.AutoDailyChest do task.wait(1)
-                    getgenv().LastFuntion = "AutoDailyChest"
-                    Chest("Daily")
-                end
-            end)
-        end)
-    end)()
-    AutoGroupChest = Tabs.Main:AddToggle("AutoGroupChest", {Title = "Auto Group Chest", Default = Setting.AutoGroupChest or __Y[2] })
-    coroutine.wrap(function()
-        AutoGroupChest:OnChanged(function()
-            pcall(function()
-                Setting.AutoGroupChest = Options.AutoGroupChest.Value
-                while Setting.AutoGroupChest do task.wait(1)
-                    getgenv().LastFuntion = "AutoGroupChest"
-                    Chest("Group")
-                end
-            end)
-        end)
-    end)()
-    AutoVIPChest = Tabs.Main:AddToggle("AutoVIPChest", {Title = "Auto VIP Chest", Default = Setting.AutoVIPChest or __Y[2] })
-    coroutine.wrap(function()
-        AutoVIPChest:OnChanged(function()
-            pcall(function()
-                Setting.AutoVIPChest = Options.AutoVIPChest.Value
-                while Setting.AutoVIPChest do task.wait(1)
-                    getgenv().LastFuntion = "AutoVIPChest"
-                    Chest("VIP")
-                end
-            end)
-        end)
-    end)()
-    Tabs.Teleport:AddButton({Title = "Dungeon", Description = "",
-        Callback = function()
-            Tp(346.76751708984375, 12.174306869506836, -0.6629231572151184)
-        end
-    })
-    Tabs.Teleport:AddButton({Title = "Stands Craft", Description = "",
-        Callback = function()
-            Tp2(workspace["Upgrades Power Etc"].Stands.Stands_Craft.CFrame)
-        end
-    })
-    Tabs.Teleport:AddButton({Title = "Normal Crafting", Description = "",
-        Callback = function()
-            Tp2(workspace.Crafting_General.Crafting_General.CFrame)
-        end
-    })
-    Tabs.Teleport:AddButton({Title = "Potion Crafting", Description = "",
-        Callback = function()
-            Tp(535.7301635742188, -14.917524337768555, -347.4195556640625)
-        end
-    })
-    Tabs.Teleport:AddButton({Title = "Upgrades", Description = "",
-        Callback = function()
-            Tp2(workspace["Upgrades Power Etc"].Upgrades.Upgrades_1.CFrame)
-        end
-    })
-    Tabs.Teleport:AddButton({Title = "Grimoires", Description = "",
-        Callback = function()
-            Tp2(workspace["Upgrades Power Etc"].Grimoires.Grimoires.CFrame)
-        end
-    })
-    Tabs.Teleport:AddButton({Title = "Breathing Styles", Description = "",
-        Callback = function()
-            Tp2(workspace["Upgrades Power Etc"].Breathings.Breathing_Styles.CFrame)
-        end
-    })
-    Tabs.Teleport:AddButton({Title = "Mentors Craft", Description = "",
-        Callback = function()
-            Tp2(workspace["Upgrades Power Etc"].Mentors.Mentors_Craft.CFrame)
-        end
-    })
-    Tabs.Teleport:AddButton({Title = "Quest", Description = "",
-        Callback = function()
-            Tp(33.21449279785156, 0.20378735661506653, -162.5377655029297)
-        end
-    })
-    Tabs.Teleport:AddButton({Title = "Green Orb", Description = "Lucky",
-        Callback = function()
-            if workspace.Debris.Pickup_Orbs:FindFirstChild("Green_Orb") then
-                Tp2(workspace.Debris.Pickup_Orbs.Green_Orb.Star.CFrame)
-            end
-        end
-    })
-    AntiAFK = Tabs.Player:AddToggle("AntiAFK", {Title = "Anti AFK", Default = __Y[2] })
-    AntiAFK:OnChanged(function()
-        AFK = Options.AntiAFK.Value
-    end)
-    coroutine.wrap(function()
-        __VE["LPs"].Idled:connect(function()
-            if AFK then
-                __VE["VU"]:CaptureController()
-                __VE["VU"]:ClickButton2(Vector2.new())
-                task.wait(2)
-            end
-        end)
-    end)()
-    FloatT = Tabs.Player:AddToggle("FloatT", {Title = "Float", Default = __Y[2] })
-    FloatT:OnChanged(function()
-        getgenv().LastFuntion = "Float"
-        Float = Options.FloatT.Value
-    end)
-    NoClipT = Tabs.Player:AddToggle("NoClipT", {Title = "Noclip", Default = __Y[2] })
-    NoClipT:OnChanged(function()
-        getgenv().LastFuntion = "NoClip"
-        Noclip = Options.NoClipT.Value
-    end)
-    local FLysss = Tabs.Player:AddToggle("FLysss", {Title = "Fly", Default = __Y[2] })
-
-    FLysss:OnChanged(function()
-        getgenv().LastFuntion = "Fly"
-        if Options.FLysss.Value then
-            FLYING = Options.FLysss.Value
-            while not __VE["LPs"] or not __VE["LPs"].Character or not __VE["LPs"].Character:FindFirstChild('HumanoidRootPart') or not __VE["LPs"].Character:FindFirstChild('Humanoid') or not cmdm do
-                wait()
-            end
-
-            local T = __VE["LPs"].Character.HumanoidRootPart
-            local SPEED = 0
-
-            function FLY()
-                local BG = __U[35]('BodyGyro', T)
-                local BV = __U[35]('BodyVelocity', T)
-                BG.P = 9e4
-                BG.maxTorque = __U[57](9e9, 9e9, 9e9)
-                BG.cframe = T.CFrame
-                BV.velocity = __U[57](0, 0, 0)
-                BV.maxForce = __U[57](9e9, 9e9, 9e9)
-
-                spawn(function()
-                    while FLYING do
-                        if CONTROL.L + CONTROL.R ~= 0 or CONTROL.F + CONTROL.B ~= 0 or CONTROL.Q + CONTROL.E ~= 0 then
-                            SPEED = 50
-                        elseif not (CONTROL.L + CONTROL.R ~= 0 or CONTROL.F + CONTROL.B ~= 0 or CONTROL.Q + CONTROL.E ~= 0) and SPEED ~= 0 then
-                            SPEED = 0
-                        end
-
-                        if (CONTROL.L + CONTROL.R) ~= 0 or (CONTROL.F + CONTROL.B) ~= 0 or (CONTROL.Q + CONTROL.E) ~= 0 then
-                            BV.velocity = ((__VE["WS"].CurrentCamera.CoordinateFrame.lookVector * (CONTROL.F + CONTROL.B)) + ((__VE["WS"].CurrentCamera.CoordinateFrame * __U[26](CONTROL.L + CONTROL.R, (CONTROL.F + CONTROL.B + CONTROL.Q + CONTROL.E) * 0.2, 0).p) - __VE["WS"].CurrentCamera.CoordinateFrame.p)) * SPEED
-                        else
-                            BV.velocity = __U[57](0, 0, 0)
-                        end
-
-                        BG.cframe = __VE["WS"].CurrentCamera.CoordinateFrame
-                        wait()
-                    end
-
-                    CONTROL = {F = 0, B = 0, L = 0, R = 0, Q = 0, E = 0}
-                    SPEED = 0
-
-                    BG:Destroy()
-                    BV:Destroy()
-                    __VE["LPs"].Character.Humanoid.PlatformStand = __Y[2]
-                end)
-            end
-
-            cmdm.KeyDown:connect(function(KEY)
-                if KEY:lower() == 'w' then
-                    if vfly then
-                        CONTROL.F = speedofthevfly
-                    else
-                        CONTROL.F = speedofthefly
-                    end
-                elseif KEY:lower() == 's' then
-                    if vfly then
-                        CONTROL.B = -speedofthevfly
-                    else
-                        CONTROL.B = -speedofthefly
-                    end
-                elseif KEY:lower() == 'a' then
-                    if vfly then
-                        CONTROL.L = -speedofthevfly
-                    else
-                        CONTROL.L = -speedofthefly
-                    end
-                elseif KEY:lower() == 'd' then
-                    if vfly then
-                        CONTROL.R = speedofthevfly
-                    else
-                        CONTROL.R = speedofthefly
-                    end
-                elseif KEY:lower() == 'y' then
-                    if vfly then
-                        CONTROL.Q = speedofthevfly * 2
-                    else
-                        CONTROL.Q = speedofthefly * 2
-                    end
-                elseif KEY:lower() == 't' then
-                    if vfly then
-                        CONTROL.E = -speedofthevfly * 2
-                    else
-                        CONTROL.E = -speedofthefly * 2
-                    end
-                end
-            end)
-
-            cmdm.KeyUp:connect(function(KEY)
-                if KEY:lower() == 'w' then
-                    CONTROL.F = 0
-                elseif KEY:lower() == 's' then
-                    CONTROL.B = 0
-                elseif KEY:lower() == 'a' then
-                    CONTROL.L = 0
-                elseif KEY:lower() == 'd' then
-                    CONTROL.R = 0
-                elseif KEY:lower() == 'y' then
-                    CONTROL.Q = 0
-                elseif KEY:lower() == 't' then
-                    CONTROL.E = 0
-                end
-            end)
-
-            FLY()
-        else
-            FLYING = Options.FLysss.Value
-        end
-    end)
-    local pfly = Tabs.Player:AddSlider("pfly", {
-        Title = "Fly Speed",
-        Description = "",
-        Default = 6,
-        Min = 1,
-        Max = 50,
-        Rounding = 0,
-        Callback = function(Value)
-            getgenv().LastFuntion = tostring("Changed Fly Speed" .. Value)
-            speedofthefly = Value
-            speedofthevfly = Value
-        end
-    })
-    local WalkSpeedS = Tabs.Player:AddSlider("WalkSpeedS", {
-        Title = "WalkSpeed",
-        Description = "",
-        Default = 16,
-        Min = 0,
-        Max = 300,
-        Rounding = 1,
-        Callback = function(Value)
-            getgenv().LastFuntion = tostring("Changed WalkSpeed" .. Value)
-            WalkSpeedSet = Value
-        end
-    })
-
-    WalkSpeedS:OnChanged(function(Value)
-        getgenv().LastFuntion = tostring("Changed WalkSpeed" .. Value)
-        WalkSpeedSet = Value
-    end)
-    local JumpPowerS = Tabs.Player:AddSlider("JumpPowerS", {
-        Title = "JumpPower",
-        Description = "",
-        Default = 30,
-        Min = 0,
-        Max = 300,
-        Rounding = 1,
-        Callback = function(Value)
-            getgenv().LastFuntion = tostring("Changed JumpPower" .. Value)
-            JumpPowerSet = Value
-        end
-    })
-
-    JumpPowerS:OnChanged(function(Value)
-        getgenv().LastFuntion = tostring("Changed JumpPower" .. Value)
-        JumpPowerSet = Value
-    end)
-    WalkSpeedT = Tabs.Player:AddToggle("WalkSpeedT", {Title = "Toggle WalkSpeed", Default = false })
-    coroutine.wrap(function()
-        WalkSpeedT:OnChanged(function()
-            pcall(function()
-                getgenv().LastFuntion = tostring("WalkSpeedRequest" .. Value)
-                WalkSpeedRequest = Options.WalkSpeedT.Value
-            end)
-        end)
-    end)()
-    JumpPowerT = Tabs.Player:AddToggle("JumpPowerT", {Title = "Toggle JumpPower", Default = false })
-    coroutine.wrap(function()
-        JumpPowerT:OnChanged(function()
-            pcall(function()
-                getgenv().LastFuntion = tostring("JumpPowerRequest" .. Value)
-                JumpPowerRequest = Options.JumpPowerT.Value
-            end)
-        end)
-    end)()
-
-
-    Tabs.ESP:AddSection("ESP")
-    Tabs.ChangeLog:AddParagraph({
-        Title = "Change Log",
-        Content = "Can't be show"
-    })
-    credits = {
-        "Owner - ttjy.",
-        "Co Owner - ttjy_",
-        "Ui - dawid",
-        "Key system - sa.l"
-    }
-    for i, v in __U[7](credits) do
-        Tabs.Credits:AddButton({
-            Title = v,
-            Description = "",
-            Callback = function()
-                
-            end
-        })
-        wait()
-    end
-    if getgenv().Addons then
-        Tabs.Addons:AddButton({
-            Title = "Save as config",
-            Description = "",
-            Callback = function()
-                serializedSetting = game.HttpService:JSONEncode(Setting)
-                writefile("Setting/settingHEDERNG.json", serializedSetting)
-            end
-        })
-        Tabs.Addons:AddSection("Colorful + fun")
-        Tabs.Addons:AddButton({
-            Title = "Trail",
-            Description = "Blue->Cyan",
-            Callback = function()
-                createTrail(1)
-            end
-        })
-        Tabs.Addons:AddButton({
-            Title = "Trail",
-            Description = "Green->Light Green",
-            Callback = function()
-                createTrail(2)
-            end
-        })
-        Tabs.Addons:AddButton({
-            Title = "Trail",
-            Description = "Pink->Red",
-            Callback = function()
-                createTrail(3)
-            end
-        })
-        Tabs.Addons:AddButton({
-            Title = "Trail",
-            Description = "Purple->Light Purple",
-            Callback = function()
-                createTrail(4)
-            end
-        })
-        Tabs.Addons:AddSection("Webhook")
-        Tabs.Addons:AddSection("Nothing to hook")
-        Tabs.Addons:AddSection("Notify")
-        NotifyWhenTTJY = Tabs.Addons:AddToggle("NotifyWhenTTJY", {Title = "Notify When TTJY Join", Default = __Y[2] })
-        coroutine.wrap(function()
-            NotifyWhenTTJY:OnChanged(function()
-                if Options.NotifyWhenTTJY.Value then
-                    repeat __U[23]() until game.Players:FindFirstChild("rigga56")
-                    Notify("Script", "TTJY!!!", 5)
-                end
-            end)
-        end)()
-        Tabs.Addons:AddSection("Others")
-        Tabs.Addons:AddSection("Nothing here")
-    end
-    Tabs.Settings:AddSection("W A S D")
-    HideShow = Tabs.Settings:AddToggle("HideShow", {Title = "Hide/Show", Default = __Y[2] })
-
-    HideShow:OnChanged(function()
-        if Options.HideShow.Value then
-            game.CoreGui["InputPcToMobile"].W.Visible = __Y[2]
-            game.CoreGui["InputPcToMobile"].A.Visible = __Y[2]
-            game.CoreGui["InputPcToMobile"].S.Visible = __Y[2]
-            game.CoreGui["InputPcToMobile"].D.Visible = __Y[2]
-        else
-            game.CoreGui["InputPcToMobile"].W.Visible = __Y[1]
-            game.CoreGui["InputPcToMobile"].A.Visible = __Y[1]
-            game.CoreGui["InputPcToMobile"].S.Visible = __Y[1]
-            game.CoreGui["InputPcToMobile"].D.Visible = __Y[1]
-        end
-    end)
-    UpDown = Tabs.Settings:AddToggle("UpDown", {Title = "Up/Down", Default = __Y[2] })
-
-    UpDown:OnChanged(function()
-        if Options.UpDown.Value then
-            game.CoreGui["InputPcToMobile"].W.Position = __U[27](0.05, 0, 0.1, 0)
-            game.CoreGui["InputPcToMobile"].A.Position = __U[27](0, 0, 0.2, 0)
-            game.CoreGui["InputPcToMobile"].S.Position = __U[27](0.05, 0, 0.3, 0)
-            game.CoreGui["InputPcToMobile"].D.Position = __U[27](0.1, 0, 0.2, 0)
-        else
-            game.CoreGui["InputPcToMobile"].W.Position = __U[27](0.05, 0, 0.7, 0)
-            game.CoreGui["InputPcToMobile"].A.Position = __U[27](0, 0, 0.8, 0)
-            game.CoreGui["InputPcToMobile"].S.Position = __U[27](0.05, 0, 0.9, 0)
-            game.CoreGui["InputPcToMobile"].D.Position = __U[27](0.1, 0, 0.8, 0)
-        end
-    end)
-    BigSmall = Tabs.Settings:AddToggle("BigSmall", {Title = "Big/Small", Default = __Y[2] })
-
-    BigSmall:OnChanged(function()
-        if Options.BigSmall.Value then
-            game.CoreGui["InputPcToMobile"].W.Size = __U[27](0.1, 0, 0.1, 0)
-            game.CoreGui["InputPcToMobile"].A.Size = __U[27](0.1, 0, 0.1, 0)
-            game.CoreGui["InputPcToMobile"].S.Size = __U[27](0.1, 0, 0.1, 0)
-            game.CoreGui["InputPcToMobile"].D.Size = __U[27](0.1, 0, 0.1, 0)
-        else
-            game.CoreGui["InputPcToMobile"].W.Size = __U[27](0.05, 0, 0.05, 0)
-            game.CoreGui["InputPcToMobile"].A.Size = __U[27](0.05, 0, 0.05, 0)
-            game.CoreGui["InputPcToMobile"].S.Size = __U[27](0.05, 0, 0.05, 0)
-            game.CoreGui["InputPcToMobile"].D.Size = __U[27](0.05, 0, 0.05, 0)
-        end
-    end)
+local speedofthefly = 6
+local speedofthevfly =  6
+function tp(x, y, z, speed)
+	pcall(function()
+		local maxForce = __U[57](math.huge, math.huge, math.huge)
+		local velocity = __U[35]("BodyVelocity")
+		velocity.MaxForce = maxForce
+		velocity.Velocity = __U[57](0, 0, 0)
+		velocity.Parent = __VE["LPs"].Character.HumanoidRootPart
+		local targetPosition = __U[57](x, y, z)
+		local dochange = __Y[2]
+		if not speed then dochange = true end
+		while true do
+			if not Setting.autofarming then
+				velocity:Destroy()
+				break
+			end
+			local currentPos = __VE["LPs"].Character.HumanoidRootPart.Position
+			local direction = (targetPosition - currentPos).unit
+			local distance = (targetPosition - currentPos).magnitude
+			if dochange then
+				speed = Setting.aspeed
+			end
+			local distanceCheck = speed/30
+			if distance >= distanceCheck then
+				velocity.Velocity = direction * speed
+			else
+				velocity:Destroy()
+				for i = 1, 20 do
+					__VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](targetPosition)
+					__VE["LPs"].Character.HumanoidRootPart.Velocity = __U[57](0, 0, 0)
+					task.wait()
+				end
+				break
+			end
+			wait()
+		end
+	end)
 end
-local WalkSpeedSignal
-coroutine.wrap(function()
-    while true do
-        wait(0.1)
-        
-        character = __VE["LPs"].Character
-        if character and character:FindFirstChild("Humanoid") and WalkSpeedRequest and character.Humanoid.WalkSpeed ~= tonumber(WalkSpeedSet) then
-            if WalkSpeedSignal then
-                WalkSpeedSignal:Disconnect()
-            end
-            character.Humanoid.WalkSpeed = tonumber(WalkSpeedSet)
-            WalkSpeedSignal = character.Humanoid:GetPropertyChangedSignal("WalkSpeed"):Connect(function()
-                character.Humanoid.WalkSpeed = tonumber(WalkSpeedSet)
-            end)
-        end
-    end
-end)()
-game:GetService("RunService").Heartbeat:Connect(function()
-    if __VE["LPs"].Character and __VE["LPs"].Character:FindFirstChild("Humanoid") and JumpPowerRequest then
-        __VE["LPs"].Character.Humanoid.JumpPower = tonumber(JumpPowerSet)
-    end
+local isfirstrun = true
+local autofarm = Tabs.Main:AddToggle("autofarm", {Title = "Auto Farm", Default = __Y[2] })
+autofarm:OnChanged(function()
+	Setting.autofarming = Options.autofarm.Value
+	if Setting.autofarming then
+		notify("Autofarm started.")
+		while task.wait() do
+			if Setting.autofarming then
+				if __VE["LPs"].Character:FindFirstChild("HumanoidRootPart") then
+					local water = __VE["WS"].BoatStages.NormalStages.CaveStage1.Water
+					local waterp = water.Position
+					local lastwater = __VE["WS"].BoatStages.NormalStages.CaveStage10.Water
+					local lastwaterp = lastwater.Position
+					local chest = __VE["WS"].BoatStages.NormalStages.TheEnd.GoldenChest.Trigger
+					local success = pcall(function()
+						__VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](waterp.x, waterp.y + Setting.stayatyvalue, waterp.z)
+						tp(lastwaterp.x, waterp.y + Setting.stayatyvalue, lastwaterp.z, nil)
+						for i = 1, 5 do
+							__VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](chest.Position.x, chest.Position.y + 20, chest.Position.z)
+							task.wait(0.05)
+							__VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](chest.Position.x, chest.Position.y, chest.Position.z)
+							task.wait(0.05)
+						end
+						__VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](chest.Position.x, chest.Position.y + 30, chest.Position.z)
+						notify("Waiting 20 seconds...")
+						task.wait(Setting.waituntil)
+					end)
+					if not success then
+						notify("ER Activated, Return to player")
+					end
+				end
+			else
+				break
+			end
+		end
+	else
+		if isfirstrun then
+			isfirstrun = __Y[2]
+		else
+			notify("Autofarm Stop")
+		end
+	end
 end)
+Tabs.Main:AddSection("Auto Chest")
+CommonChest = Tabs.Main:AddToggle("CommonChest", {Title = "Common", Default = Setting.CommonChest })
+
+CommonChest:OnChanged(function()
+	Setting.CommonChest = Options.CommonChest.Value
+	while Options.CommonChest.Value do
+    	__VE["IBFS"]:InvokeServer("Common Chest", 1)
+		task.wait(0.1)
+	end
+end)
+UncommonChest = Tabs.Main:AddToggle("UncommonChest", {Title = "Uncommon", Default = Setting.UncommonChest })
+
+UncommonChest:OnChanged(function()
+	Setting.UncommonChest = Options.UncommonChest.Value
+	while Options.UncommonChest.Value do
+    	__VE["IBFS"]:InvokeServer("Uncommon Chest", 1)
+		task.wait(0.1)
+	end
+end)
+RareChest = Tabs.Main:AddToggle("RareChest", {Title = "Rare", Default = Setting.RareChest })
+
+RareChest:OnChanged(function()
+	Setting.RareChest = Options.RareChest.Value
+	while Options.RareChest.Value do
+    	__VE["IBFS"]:InvokeServer("Rare Chest", 1)
+		task.wait(0.1)
+	end
+end)
+EpicChest = Tabs.Main:AddToggle("EpicChest", {Title = "Epic", Default = Setting.EpicChest })
+
+EpicChest:OnChanged(function()
+	Setting.EpicChest = Options.EpicChest.Value
+	while Options.EpicChest.Value do
+    	__VE["IBFS"]:InvokeServer("Epic Chest", 1)
+		task.wai(0.1)
+	end
+end)
+LegendaryChest = Tabs.Main:AddToggle("LegendaryChest", {Title = "Legendary", Default = Setting.LegendaryChest })
+
+LegendaryChest:OnChanged(function()
+	Setting.LegendaryChest = Options.LegendaryChest.Value
+	while Options.LegendaryChest.Value do
+    	__VE["IBFS"]:InvokeServer("Legendary Chest", 1)
+		task.wai(0.1)
+	end
+end)
+
+Tabs.AutoQuest:AddSection("Simple Scriptz")
+Tabs.AutoQuest:AddButton({
+	Title = "Cloud",
+	Description = "WARNINN, THE SCRIPT WILL CLEAR ALL BLOCKS",
+	Callback = function()
+        pcall(function()
+            workspace.QuestMakerEvent:FireServer(0)
+            task.wait(0.5)
+            ResetRequest = 0
+            teamColor = game.Players.LocalPlayer.Team.TeamColor.Name
+            teamZone = teamColor.."Zone"
+            workspace.ClearAllPlayersBoatParts:FireServer()
+            task.wait(0.5)
+			print("START")
+            workspace.QuestMakerEvent:FireServer(1)
+            repeat
+				workspace.QuestMakerEvent:FireServer(1)
+                ResetRequest = ResetRequest + 1
+                task.wait(0.1) 
+            until ResetRequest == 20000 or (workspace[tostring(teamZone)]:FindFirstChild("Quest") and workspace[tostring(teamZone)].Quest:FindFirstChild("Cloud") and workspace[tostring(teamZone)].Quest.Cloud:FindFirstChild("Part2"))
+            __VE["LPs"].Character.HumanoidRootPart.CFrame = workspace[tostring(teamZone)].Quest.Cloud.Part2.CFrame
+        end)
+    end
+})
+Tabs.AutoQuest:AddButton({
+	Title = "Target",
+	Description = "WARNINN, THE SCRIPT WILL CLEAR ALL BLOCKS",
+	Callback = function()
+        pcall(function()
+            workspace.QuestMakerEvent:FireServer(0)
+            task.wait(0.5)
+            ResetRequest = 0
+            teamColor = game.Players.LocalPlayer.Team.TeamColor.Name
+            teamZone = teamColor.."Zone"
+            workspace.ClearAllPlayersBoatParts:FireServer()
+            task.wait(0.5)
+            workspace.QuestMakerEvent:FireServer(2)
+            repeat
+				workspace.QuestMakerEvent:FireServer(2)
+                ResetRequest = ResetRequest + 1
+                task.wait(0.1) 
+            until ResetRequest == 20000 or (workspace[tostring(teamZone)]:FindFirstChild("Quest") and workspace[tostring(teamZone)].Quest:FindFirstChild("Target") and workspace[tostring(teamZone)].Quest.Target:FindFirstChild("Part"))
+            __VE["LPs"].Character.HumanoidRootPart.CFrame = workspace[tostring(teamZone)].Quest.Target.Part.CFrame
+        end)
+    end
+})
+Tabs.AutoQuest:AddButton({
+	Title = "Ramp",
+	Description = "WARNINN, THE SCRIPT WILL CLEAR ALL BLOCKS",
+	Callback = function()
+        pcall(function()
+            workspace.QuestMakerEvent:FireServer(0)
+			task.wait(0.5)
+			ResetRequest = 0
+			teamColor = game.Players.LocalPlayer.Team.TeamColor.Name
+			teamZone = teamColor.."Zone"
+			workspace.ClearAllPlayersBoatParts:FireServer()
+			task.wait(0.5)
+			workspace.QuestMakerEvent:FireServer(3)
+			repeat
+				workspace.QuestMakerEvent:FireServer(3)
+				ResetRequest = ResetRequest + 1
+				task.wait(0.1) 
+			until ResetRequest == 20000 or (workspace[tostring(teamZone)]:FindFirstChild("Quest") and workspace[tostring(teamZone)].Quest:FindFirstChild("Ramp") and workspace[tostring(teamZone)].Quest.Ramp:FindFirstChild("Part"))
+			for _, v in pairs(workspace[tostring(teamZone)].Quest.Ramp:GetChildren()) do
+				if v and v:FindFirstChild("TouchInterest") and v.Name ~= "Lava" then
+					__VE["LPs"].Character.HumanoidRootPart.CFrame = v.CFrame
+				end
+			end
+        end)
+    end
+})
+Tabs.AutoQuest:AddButton({
+	Title = "Find Me",
+	Description = "WARNINN, THE SCRIPT WILL CLEAR ALL BLOCKS",
+	Callback = function()
+        pcall(function()
+            workspace.QuestMakerEvent:FireServer(0)
+            task.wait(0.5)
+            ResetRequest = 0
+            teamColor = game.Players.LocalPlayer.Team.TeamColor.Name
+            teamZone = teamColor.."Zone"
+            workspace.ClearAllPlayersBoatParts:FireServer()
+            task.wait(0.5)
+            workspace.QuestMakerEvent:FireServer(4)
+            repeat
+				workspace.QuestMakerEvent:FireServer(4)
+                ResetRequest = ResetRequest + 1
+                task.wait(0.1) 
+            until ResetRequest == 20000 or (workspace[tostring(teamZone)]:FindFirstChild("Quest") and workspace[tostring(teamZone)].Quest:FindFirstChild("Butter") and workspace[tostring(teamZone)].Quest.Butter:FindFirstChild("PPart"))
+            repeat
+				__VE["LPs"].Character.HumanoidRootPart.CFrame = workspace[tostring(teamZone)].Quest.Butter.PPart.CFrame
+                fireclickdetector(workspace[tostring(teamZone)].Quest.Butter.PPart.ClickDetector, 5)
+				task.wait(0.1)
+            until not workspace[tostring(teamZone)].Quest:FindFirstChild("Butter") or (workspace[tostring(teamZone)].Quest:FindFirstChild("Butter") and not workspace[tostring(teamZone)].Quest.Butter:FindFirstChild("PPart"))
+        end)
+    end
+})
+Tabs.AutoQuest:AddButton({
+	Title = "Thin Ice",
+	Description = "WARNINN, THE SCRIPT WILL CLEAR ALL BLOCKS",
+	Callback = function()
+        pcall(function()
+            workspace.QuestMakerEvent:FireServer(0)
+            task.wait(0.5)
+            ResetRequest = 0
+            teamColor = game.Players.LocalPlayer.Team.TeamColor.Name
+            teamZone = teamColor.."Zone"
+            workspace.ClearAllPlayersBoatParts:FireServer()
+            task.wait(0.5)
+            workspace.QuestMakerEvent:FireServer(9)
+            repeat
+				workspace.QuestMakerEvent:FireServer(9)
+                ResetRequest = ResetRequest + 1
+                task.wait(0.1) 
+            until ResetRequest == 20000 or (workspace[tostring(teamZone)]:FindFirstChild("Quest") and workspace[tostring(teamZone)].Quest:FindFirstChild("ThinIce"))
+            workspace[tostring(teamZone)].VoteLaunchRE:FireServer()
+			Setting.autofarming = true
+            task.wait(0.5)
+			pcall(function()
+				if __VE["LPs"].Character:FindFirstChild("HumanoidRootPart") then
+					local water = __VE["WS"].BoatStages.NormalStages.CaveStage1.Water
+					local waterp = water.Position
+					local lastwater = __VE["WS"].BoatStages.NormalStages.CaveStage10.Water
+					local lastwaterp = lastwater.Position
+					local chest = __VE["WS"].BoatStages.NormalStages.TheEnd.GoldenChest.Trigger
+					local success = pcall(function()
+						__VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](waterp.x, waterp.y + Setting.stayatyvalue, waterp.z)
+						tp(lastwaterp.x, waterp.y + Setting.stayatyvalue, lastwaterp.z, nil)
+						for i = 1, 5 do
+							__VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](chest.Position.x, chest.Position.y + 20, chest.Position.z)
+							task.wait(0.05)
+							__VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](chest.Position.x, chest.Position.y, chest.Position.z)
+							task.wait(0.05)
+						end
+						__VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](chest.Position.x, chest.Position.y + 30, chest.Position.z)
+						task.wait(Setting.waituntil)
+					end)
+					if not success then
+						notify("ER Activated, Return to player")
+					end
+				end
+			end)
+			Setting.autofarming = false
+        end)
+    end
+})
+WaterGodmode = Tabs.Player:AddToggle("WaterGodmode", {Title = "Water Godmode", Default = __Y[2] })
+WaterGodmode:OnChanged(function()
+	if Options.WaterGodmode.Value then
+		for _, v in pairs(__VE["WS"]:GetDescendants()) do
+			if v and v:IsA("BasePart") and v.Name == "Water" then
+				v.CanTouch = false
+			end
+		end
+	end
+end)
+AntiAFK = Tabs.Player:AddToggle("AntiAFK", {Title = "Anti AFK", Default = __Y[2] })
+AntiAFK:OnChanged(function()
+	AFK = Options.AntiAFK.Value
+end)
+coroutine.wrap(function()
+	__VE["LPs"].Idled:connect(function()
+		if AFK then
+			print("1")
+			__VE["VU"]:CaptureController()
+			__VE["VU"]:ClickButton2(Vector2.new())
+			task.wait(2)
+		end
+	end)
+end)()
+
+FloatT = Tabs.Player:AddToggle("FloatT", {Title = "Float", Default = __Y[2] })
+FloatT:OnChanged(function()
+	Float = Options.FloatT.Value
+end)
+NoClipT = Tabs.Player:AddToggle("NoClipT", {Title = "Noclip", Default = __Y[2] })
+NoClipT:OnChanged(function()
+	Noclip = Options.NoClipT.Value
+end)
+local FLysss = Tabs.Player:AddToggle("FLysss", {Title = "Fly", Default = __Y[2] })
+
+FLysss:OnChanged(function()
+	if Options.FLysss.Value then
+		FLYING = Options.FLysss.Value
+		while not __VE["LPs"] or not __VE["LPs"].Character or not __VE["LPs"].Character:FindFirstChild('HumanoidRootPart') or not __VE["LPs"].Character:FindFirstChild('Humanoid') or not cmdm do
+			wait()
+		end
+
+		local T = __VE["LPs"].Character.HumanoidRootPart
+		local SPEED = 0
+
+		function FLY()
+			local BG = __U[35]('BodyGyro', T)
+			local BV = __U[35]('BodyVelocity', T)
+			BG.P = 9e4
+			BG.maxTorque = __U[57](9e9, 9e9, 9e9)
+			BG.cframe = T.CFrame
+			BV.velocity = __U[57](0, 0, 0)
+			BV.maxForce = __U[57](9e9, 9e9, 9e9)
+
+			spawn(function()
+				while FLYING do
+					if CONTROL.L + CONTROL.R ~= 0 or CONTROL.F + CONTROL.B ~= 0 or CONTROL.Q + CONTROL.E ~= 0 then
+						SPEED = 50
+					elseif not (CONTROL.L + CONTROL.R ~= 0 or CONTROL.F + CONTROL.B ~= 0 or CONTROL.Q + CONTROL.E ~= 0) and SPEED ~= 0 then
+						SPEED = 0
+					end
+
+					if (CONTROL.L + CONTROL.R) ~= 0 or (CONTROL.F + CONTROL.B) ~= 0 or (CONTROL.Q + CONTROL.E) ~= 0 then
+						BV.velocity = ((__VE["WS"].CurrentCamera.CoordinateFrame.lookVector * (CONTROL.F + CONTROL.B)) + ((__VE["WS"].CurrentCamera.CoordinateFrame * __U[26](CONTROL.L + CONTROL.R, (CONTROL.F + CONTROL.B + CONTROL.Q + CONTROL.E) * 0.2, 0).p) - __VE["WS"].CurrentCamera.CoordinateFrame.p)) * SPEED
+					else
+						BV.velocity = __U[57](0, 0, 0)
+					end
+
+					BG.cframe = __VE["WS"].CurrentCamera.CoordinateFrame
+					wait()
+				end
+
+				CONTROL = {F = 0, B = 0, L = 0, R = 0, Q = 0, E = 0}
+				SPEED = 0
+
+				BG:Destroy()
+				BV:Destroy()
+				__VE["LPs"].Character.Humanoid.PlatformStand = __Y[2]
+			end)
+		end
+
+		cmdm.KeyDown:connect(function(KEY)
+			if KEY:lower() == 'w' then
+				if vfly then
+					CONTROL.F = speedofthevfly
+				else
+					CONTROL.F = speedofthefly
+				end
+			elseif KEY:lower() == 's' then
+				if vfly then
+					CONTROL.B = -speedofthevfly
+				else
+					CONTROL.B = -speedofthefly
+				end
+			elseif KEY:lower() == 'a' then
+				if vfly then
+					CONTROL.L = -speedofthevfly
+				else
+					CONTROL.L = -speedofthefly
+				end
+			elseif KEY:lower() == 'd' then
+				if vfly then
+					CONTROL.R = speedofthevfly
+				else
+					CONTROL.R = speedofthefly
+				end
+			elseif KEY:lower() == 'y' then
+				if vfly then
+					CONTROL.Q = speedofthevfly * 2
+				else
+					CONTROL.Q = speedofthefly * 2
+				end
+			elseif KEY:lower() == 't' then
+				if vfly then
+					CONTROL.E = -speedofthevfly * 2
+				else
+					CONTROL.E = -speedofthefly * 2
+				end
+			end
+		end)
+
+		cmdm.KeyUp:connect(function(KEY)
+			if KEY:lower() == 'w' then
+				CONTROL.F = 0
+			elseif KEY:lower() == 's' then
+				CONTROL.B = 0
+			elseif KEY:lower() == 'a' then
+				CONTROL.L = 0
+			elseif KEY:lower() == 'd' then
+				CONTROL.R = 0
+			elseif KEY:lower() == 'y' then
+				CONTROL.Q = 0
+			elseif KEY:lower() == 't' then
+				CONTROL.E = 0
+			end
+		end)
+
+		FLY()
+	else
+		FLYING = Options.FLysss.Value
+	end
+end)
+local afspeed = Tabs.asettings:AddSlider("afspeed", {
+	Title = "Autofarm Speed",
+	Description = "Changes the Autofarm Speed",
+	Default = Setting.aspeed,
+	Min = 100,
+	Max = 10000,
+	Rounding = 0,
+	Callback = function(Value)
+		Setting.aspeed = Value
+	end
+})
+
+afspeed:OnChanged(function(Value)
+	Setting.aspeed = Value
+end)
+
+local stayat = Tabs.asettings:AddSlider("stayat", {
+	Title = "Stay at Y Value",
+	Description = "Stays at the given Y Value (height)",
+	Default = Setting.stayatyvalue,
+	Min = 55,
+	Max = 100,
+	Rounding = 0,
+	Callback = function(Value)
+		Setting.stayatyvalue = Value
+	end
+})
+local wai = Tabs.asettings:AddSlider("wai", {
+	Title = "Wait until AutoFarm starts again",
+	Description = "Waits ... seconds until AutoFarm starts again",
+	Default = Setting.waituntil,
+	Min = 10,
+	Max = 60,
+	Rounding = 0,
+	Callback = function(Value)
+		Setting.waituntil = Value
+	end
+})
+
+wai:OnChanged(function(Value)
+	Setting.waituntil = Value
+end)
+local pfly = Tabs.Player:AddSlider("pfly", {
+	Title = "Fly Speed",
+	Description = "",
+	Default = 6,
+	Min = 1,
+	Max = 50,
+	Rounding = 0,
+	Callback = function(Value)
+		speedofthefly = Value
+		speedofthevfly = Value
+	end
+})
+
+local walk = Tabs.Player:AddSlider("walk", {
+	Title = "WalkSpeed",
+	Description = "Changes the WalkSpeed of the Player",
+	Default = 16,
+	Min = 16,
+	Max = 1000,
+	Rounding = 0,
+	Callback = function(Value)
+		__VE["LPs"].Character.Humanoid.WalkSpeed = Value
+	end
+})
+walk:OnChanged(function(Value)
+	__VE["LPs"].Character.Humanoid.WalkSpeed = Value
+end)
+local jump = Tabs.Player:AddSlider("jump", {
+	Title = "JumpPower",
+	Description = "Changes the JumpPower of the Player",
+	Default = 50,
+	Min = 50,
+	Max = 1000,
+	Rounding = 0,
+	Callback = function(Value)
+		__VE["LPs"].Character.Humanoid.JumpPower = Value
+	end
+})
+jump:OnChanged(function(Value)
+	__VE["LPs"].Character.Humanoid.JumpPower = Value
+end)
+
+Tabs.Settings:AddButton({
+	Title = "Save as config",
+	Description = "",
+	Callback = function()
+		serializedSetting = game.HttpService:JSONEncode(Setting)
+		writefile("Setting/settingBABFT.json", serializedSetting)
+    end
+})
+Tabs.Settings:AddSection("W A S D Buttons")
+Tabs.Settings:AddButton({
+	Title = "Big Button",
+	Description = "",
+	Callback = function()
+		__VE["CG"]["InputPcToMobile"].W.Size = UDim2.new(0.1, 0, 0.1, 0)
+		__VE["CG"]["InputPcToMobile"].A.Size = UDim2.new(0.1, 0, 0.1, 0)
+		__VE["CG"]["InputPcToMobile"].S.Size = UDim2.new(0.1, 0, 0.1, 0)
+		__VE["CG"]["InputPcToMobile"].D.Size = UDim2.new(0.1, 0, 0.1, 0)
+	end
+})
+Tabs.Settings:AddButton({
+	Title = "Small Button",
+	Description = "",
+	Callback = function()
+		__VE["CG"]["InputPcToMobile"].W.Size = UDim2.new(0.05, 0, 0.05, 0)
+		__VE["CG"]["InputPcToMobile"].A.Size = UDim2.new(0.05, 0, 0.05, 0)
+		__VE["CG"]["InputPcToMobile"].S.Size = UDim2.new(0.05, 0, 0.05, 0)
+		__VE["CG"]["InputPcToMobile"].D.Size = UDim2.new(0.05, 0, 0.05, 0)
+	end
+})
+Tabs.Settings:AddButton({
+	Title = "Up",
+	Description = "",
+	Callback = function()
+		__VE["CG"]["InputPcToMobile"].W.Position = UDim2.new(0.05, 0, 0.1, 0)
+		__VE["CG"]["InputPcToMobile"].A.Position = UDim2.new(0, 0, 0.2, 0)
+		__VE["CG"]["InputPcToMobile"].S.Position = UDim2.new(0.05, 0, 0.3, 0)
+		__VE["CG"]["InputPcToMobile"].D.Position = UDim2.new(0.1, 0, 0.2, 0)
+	end
+})
+Tabs.Settings:AddButton({
+	Title = "Down",
+	Description = "",
+	Callback = function()
+		__VE["CG"]["InputPcToMobile"].W.Position = UDim2.new(0.05, 0, 0.7, 0)
+		__VE["CG"]["InputPcToMobile"].A.Position = UDim2.new(0, 0, 0.8, 0)
+		__VE["CG"]["InputPcToMobile"].S.Position = UDim2.new(0.05, 0, 0.9, 0)
+		__VE["CG"]["InputPcToMobile"].D.Position = UDim2.new(0.1, 0, 0.8, 0)
+	end
+})
+Tabs.Settings:AddButton({
+	Title = "Hide",
+	Description = "",
+	Callback = function()
+		__VE["CG"]["InputPcToMobile"].W.Visible = __Y[2]
+		__VE["CG"]["InputPcToMobile"].A.Visible = __Y[2]
+		__VE["CG"]["InputPcToMobile"].S.Visible = __Y[2]
+		__VE["CG"]["InputPcToMobile"].D.Visible = __Y[2]
+	end
+})
+Tabs.Settings:AddButton({
+	Title = "Show",
+	Description = "",
+	Callback = function()
+		__VE["CG"]["InputPcToMobile"].W.Visible = true
+		__VE["CG"]["InputPcToMobile"].A.Visible = true
+		__VE["CG"]["InputPcToMobile"].S.Visible = true
+		__VE["CG"]["InputPcToMobile"].D.Visible = true
+	end
+})
+
+
 local Part = Instance.new("Part")
 Part.Size = Vector3.new(2, 0.2, 1.5)
 Part.Material = Enum.Material.Grass
@@ -1023,7 +859,7 @@ Part.Anchored = true
 Part.Transparency = 1
 Part.Parent = workspace
 local function updatePartPosition()
-    character = __VE["LPs"].Character
+    local character = __VE["LPs"].Character
     local humanoidRootPart = character and character:FindFirstChild("HumanoidRootPart")
     
     if humanoidRootPart and Float then
@@ -1047,8 +883,9 @@ game:GetService("RunService").Stepped:Connect(NoclipLoop)
 task.wait(0.05)
 if allowtoserialized then
     serializedSetting = game.HttpService:JSONEncode(Setting)
-    writefile("Setting/settingHEDERNG.json", serializedSetting)
+    writefile("Setting/settingBABFT.json", serializedSetting)
 end
 task.wait(5)
 finishload = true
 getgenv().FinishLoad = true
+warn("Simple Showcase TBC")
