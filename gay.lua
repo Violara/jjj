@@ -122,7 +122,7 @@ if getgenv().Addons then
             AutoGroupChest = __Y[2],
             AutoVIPChest = __Y[2],
             SelectedItem = __Y[3],
-            AutoUseSelectedItem = __Y[2]
+            AutoUseSelectedItem = __Y[2],
         }
         allowtoserialized = __Y[1]
     elseif __U[49]("Setting") and __U[50]("Setting/settingHEDERNG.json") then
@@ -139,7 +139,7 @@ else
         AutoGroupChest = __Y[2],
         AutoVIPChest = __Y[2],
         SelectedItem = __Y[3],
-        AutoUseSelectedItem = __Y[2]
+        AutoUseSelectedItem = __Y[2],
     }
 end
 
@@ -187,6 +187,14 @@ function Tp(x, y ,z)
 end
 function Tp2(xyz)
     __VE["LPs"].Character.HumanoidRootPart.CFrame = xyz
+end
+function Notify(title, content, time)
+	if title and not content then content = title; title = "Script Service" end
+	Fluent:Notify({
+		Title = title,
+		Content = content,
+		Duration = time or 5
+	})
 end
 function Chest(value)
     if tostring(value) == "Daily" then
@@ -255,7 +263,7 @@ local function createTrail(ColorValue)
     part.Parent = __VE["WS"]
     local attachment1 = __U[35]("Attachment")
     attachment1.Parent = part
-    local leftHandAttachment = character:WaitForChild("LeftHand")
+    local leftHandAttachment = character:WaitForChild("Left Arm")
     local attachment2 = __U[35]("Attachment")
     attachment2.Parent = leftHandAttachment
     local trail = __U[35]("Trail")
@@ -315,7 +323,7 @@ local function createTrail(ColorValue)
     part.Parent = workspace
     local attachment1 = __U[35]("Attachment")
     attachment1.Parent = part
-    local rightHandAttachment = character:WaitForChild("RightHand")
+    local rightHandAttachment = character:WaitForChild("Right Arm")
     local attachment2 = __U[35]("Attachment")
     attachment2.Parent = rightHandAttachment
     local trail = __U[35]("Trail")
@@ -557,9 +565,9 @@ do
         Default = 1,
     })
     SelectedItem:OnChanged(function(Value)
-        Setting.SelectedItem = tostring(Value)
+        Setting.SelectedItem = Value
     end)
-    local AutoUseSelectedItem = Tabs.Main:AddToggle("AutoUseSelectedItem", {Title = "Toggle", Default = __Y[2] })
+    local AutoUseSelectedItem = Tabs.Main:AddToggle("AutoUseSelectedItem", {Title = "Auto Use", Default = __Y[2] })
     coroutine.wrap(function()
         AutoUseSelectedItem:OnChanged(function()
             pcall(function()
@@ -575,7 +583,7 @@ do
                 end
             end)
         end)
-    end)
+    end)()
     Tabs.Main:AddSection("Reward")
     AutoDailyChest = Tabs.Main:AddToggle("AutoDailyChest", {Title = "Auto Daily Chest", Default = Setting.AutoDailyChest or __Y[2] })
     coroutine.wrap(function()
@@ -603,7 +611,7 @@ do
     end)()
     AutoVIPChest = Tabs.Main:AddToggle("AutoVIPChest", {Title = "Auto VIP Chest", Default = Setting.AutoVIPChest or __Y[2] })
     coroutine.wrap(function()
-        AutoGroupChest:OnChanged(function()
+        AutoVIPChest:OnChanged(function()
             pcall(function()
                 Setting.AutoVIPChest = Options.AutoVIPChest.Value
                 while Setting.AutoVIPChest do task.wait(1)
