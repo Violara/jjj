@@ -299,20 +299,18 @@ local function createTrail(ColorValue)
         end
     end
     
-    local heartbeatConnection
-    heartbeatConnection = game:GetService("RunService").Heartbeat:Connect(function()
+    local heartbeatConnection2
+    heartbeatConnection2 = game:GetService("RunService").Heartbeat:Connect(function()
         updatePartCFrame()
     end)
-    local function cleanup()
-        if heartbeatConnection then
-            heartbeatConnection:Disconnect()
+    local function cleanup2()
+        warn("1")
+        if heartbeatConnection2 then
+            print("1")
+            heartbeatConnection2:Disconnect()
         end
     end
-    part.AncestryChanged:Connect(function(_, parent)
-        if not parent then
-            cleanup()
-        end
-    end)
+    __VE["LPs"].CharacterRemoving:Connect(cleanup2)
     character = __VE["LPs"].Character or __VE["LPs"].CharacterAdded:Wait()
     local part = __U[35]("Part")
     part.Size = __U[57](0, 0, 0)
@@ -367,11 +365,8 @@ local function createTrail(ColorValue)
             heartbeatConnection:Disconnect()
         end
     end
-    part.AncestryChanged:Connect(function(_, parent)
-        if not parent then
-            cleanup()
-        end
-    end)
+    
+    __VE["LPs"].CharacterRemoving:Connect(cleanup)
 end
 if __VE["CG"]:FindFirstChild("InputPcToMobile") then
     __VE["CG"]:FindFirstChild("InputPcToMobile"):Destroy()
@@ -443,12 +438,12 @@ until Window ~= nil
 
 local Tabs = {
     Main = Window:AddTab({ Title = "Main", Icon = "home" }),
-    Player = Window:AddTab({ Title = "Player", Icon = "" }),
-    Teleport = Window:AddTab({ Title = "Teleport", Icon = "" }),
-    ESP = Window:AddTab({ Title = "ESP", Icon = "briefcase" }),
+    Player = Window:AddTab({ Title = "Player", Icon = "person-standing" }),
+    Teleport = Window:AddTab({ Title = "Teleport", Icon = "globe" }),
+    ESP = Window:AddTab({ Title = "ESP", Icon = "inspect" }),
     ChangeLog = Window:AddTab({ Title = "ChangeLog", Icon = "book" }),
     Credits = Window:AddTab({ Title = "Credits", Icon = "book" }),
-    Addons = Window:AddTab({ Title = "Addons", Icon = "" }),
+    Addons = Window:AddTab({ Title = "Addons", Icon = "gem" }),
     Settings = Window:AddTab({ Title = "Settings", Icon = "settings" })
 }
 local Options = Fluent.Options
