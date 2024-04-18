@@ -292,26 +292,24 @@ local function createTrail(ColorValue)
     trail.Parent = part
     offset = __U[57](0, 0, 1)
     local function updatePartCFrame()
-        if character:FindFirstChild("LeftHand") then
-            local handCF = character.LeftHand.CFrame
+        if character:FindFirstChild("Left Arm") then
+            local handCF = character["Left Arm"].CFrame
             local newCF = handCF * __U[26](offset)
             part.CFrame = newCF
         end
     end
     
-    local heartbeatConnection
-    heartbeatConnection = game:GetService("RunService").Heartbeat:Connect(function()
+    local heartbeatConnection2
+    heartbeatConnection2 = game:GetService("RunService").Heartbeat:Connect(function()
         updatePartCFrame()
     end)
-    local function cleanup()
-        if heartbeatConnection then
-            heartbeatConnection:Disconnect()
+    local function cleanup2()
+        if heartbeatConnection2 then
+            heartbeatConnection2:Disconnect()
         end
     end
-    part.AncestryChanged:Connect(function(_, parent)
-        if not parent then
-            cleanup()
-        end
+    __VE["LPs"].Character.ChildRemoved:Connect(function()
+        cleanu2p()
     end)
     character = __VE["LPs"].Character or __VE["LPs"].CharacterAdded:Wait()
     local part = __U[35]("Part")
@@ -352,8 +350,8 @@ local function createTrail(ColorValue)
     trail.Parent = part
     offset = __U[57](0, 0, 1)
     local function updatePartCFrame()
-        if character:FindFirstChild("RightHand") then
-            local handCF = character.RightHand.CFrame
+        if character:FindFirstChild("Right Arm") then
+            local handCF = character["Right Arm"].CFrame
             local newCF = handCF * __U[26](offset)
             part.CFrame = newCF
         end
@@ -367,10 +365,8 @@ local function createTrail(ColorValue)
             heartbeatConnection:Disconnect()
         end
     end
-    part.AncestryChanged:Connect(function(_, parent)
-        if not parent then
-            cleanup()
-        end
+    __VE["LPs"].Character.ChildRemoved:Connect(function()
+        cleanup()
     end)
 end
 if __VE["CG"]:FindFirstChild("InputPcToMobile") then
@@ -443,12 +439,12 @@ until Window ~= nil
 
 local Tabs = {
     Main = Window:AddTab({ Title = "Main", Icon = "home" }),
-    Player = Window:AddTab({ Title = "Player", Icon = "" }),
-    Teleport = Window:AddTab({ Title = "Teleport", Icon = "" }),
-    ESP = Window:AddTab({ Title = "ESP", Icon = "briefcase" }),
+    Player = Window:AddTab({ Title = "Player", Icon = "person-standing" }),
+    Teleport = Window:AddTab({ Title = "Teleport", Icon = "globe" }),
+    ESP = Window:AddTab({ Title = "ESP", Icon = "inspect" }),
     ChangeLog = Window:AddTab({ Title = "ChangeLog", Icon = "book" }),
     Credits = Window:AddTab({ Title = "Credits", Icon = "book" }),
-    Addons = Window:AddTab({ Title = "Addons", Icon = "" }),
+    Addons = Window:AddTab({ Title = "Addons", Icon = "gem" }),
     Settings = Window:AddTab({ Title = "Settings", Icon = "settings" })
 }
 local Options = Fluent.Options
