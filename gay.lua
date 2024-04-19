@@ -1,1 +1,916 @@
-if not getgenv().AllowToLoad then game.Players.LocalPlayer:Kick("Instance Blacklist")end;coroutine.wrap(function()while task.wait(0.1)do for a,b in pairs(game.CoreGui:GetChildren())do if b.Name=="ScreenGui"and b:FindFirstChild("ImageLabel")and(b.ImageLabel.Image=="rbxassetid://6065775281"or b.ImageLabel.Visible or not b.ImageLabel.Visible)then game.Players.LocalPlayer:Kick("Magic in the air")end end end end)()repeat task.wait()until game:IsLoaded()__LUABLE={["Functions"]=loadstring(game:HttpGet("https://raw.githubusercontent.com/Yumiara/Asset/main/api.lua"))()}__U={}for c=1,#__LUABLE["Functions"]do pcall(function()__U[c]=clonefunction(__LUABLE["Functions"][c])end)end;__VE={["Ps"]=game:GetService("Players"),["LPs"]=game:GetService("Players").LocalPlayer,["PsG"]=game:GetService("Players").LocalPlayer.PlayerGui}local d={["_TTJY ASSET"]=Instance.new("ScreenGui"),["_TTJY HUB"]=Instance.new("Frame"),["_UIStroke"]=Instance.new("UIStroke"),["_UICorner"]=Instance.new("UICorner"),["_TextButton"]=Instance.new("TextButton"),["_UIStroke1"]=Instance.new("UIStroke")}d["_TTJY ASSET"].ZIndexBehavior=Enum.ZIndexBehavior.Sibling;d["_TTJY ASSET"].Name="TTJY ASSET"d["_TTJY ASSET"].Parent=game:GetService("CoreGui")d["_TTJY HUB"].BackgroundColor3=Color3.fromRGB(56.0000042617321,56.0000042617321,56.0000042617321)d["_TTJY HUB"].BackgroundTransparency=0.4000000059604645;d["_TTJY HUB"].BorderColor3=Color3.fromRGB(0,0,0)d["_TTJY HUB"].BorderSizePixel=0;d["_TTJY HUB"].Position=UDim2.new(0.465000004,0,-0.1,0)d["_TTJY HUB"].Size=UDim2.new(0.0700000003,0,0.100000001,0)d["_TTJY HUB"].ZIndex=2;d["_TTJY HUB"].Name="TTJY HUB"d["_TTJY HUB"].Parent=d["_TTJY ASSET"]d["_UIStroke"].LineJoinMode=Enum.LineJoinMode.Bevel;d["_UIStroke"].Thickness=3;d["_UIStroke"].Parent=d["_TTJY HUB"]d["_UICorner"].Parent=d["_TTJY HUB"]d["_TextButton"].Font=Enum.Font.SourceSans;d["_TextButton"].Text="TTJY HUB"d["_TextButton"].TextColor3=Color3.fromRGB(0,255,0)d["_TextButton"].TextScaled=true;d["_TextButton"].TextSize=14;d["_TextButton"].TextWrapped=true;d["_TextButton"].BackgroundColor3=Color3.fromRGB(255,255,255)d["_TextButton"].BackgroundTransparency=1;d["_TextButton"].BorderColor3=Color3.fromRGB(0,0,0)d["_TextButton"].BorderSizePixel=0;d["_TextButton"].Size=UDim2.new(1,0,1,0)d["_TextButton"].Parent=d["_TTJY HUB"]d["_UIStroke1"].LineJoinMode=Enum.LineJoinMode.Bevel;d["_UIStroke1"].Parent=d["_TextButton"]TTJYHUB=d["_TextButton"]Fluent=loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()SaveManager=loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()InterfaceManager=loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()__U[6](function()if Fluent and SaveManager and InterfaceManager then __U[1]("No Error")else Fluent=__U[40](game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()SaveManager=__U[40](game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()InterfaceManager=__U[40](game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()end end)__X={true,false,nil,0,1}__Y={}for c=1,#__X do __U[6](function()__Y[c]=__X[c]end)end;__M={2,3,5,7,11,13,17,10}__N={}for c=1,#__M do __U[6](function()__N[c]=__M[c]end)end;__VE["WS"],__VE["RuS"],__VE["RlS"]=game:GetService("Workspace"),game:GetService("RunService"),game:GetService("ReplicatedStorage")__VE["VIM"],__VE["UIS"]=game:GetService("VirtualInputManager"),game:GetService("UserInputService")__VE["Lg"],__VE["TS"],__VE["GMos"]=game:GetService("Lighting"),game:GetService("TweenService"),game:GetService("Players").LocalPlayer:GetMouse()__VE["VU"],__VE["CG"]=game:GetService("VirtualUser"),game:GetService("CoreGui")__VE["HS"]=game:GetService("HttpService")__VE["RPKSTRGB"]=game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("TitleService"):WaitForChild("RF"):WaitForChild("GetStorageBounds")__VE["RPKSTRGC"]=game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("TitleService"):WaitForChild("RF"):WaitForChild("GetStorageCost")__VE["RPKSTEB"]=game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("TitleService"):WaitForChild("RE"):WaitForChild("BuyStorage")CodeArgs,DailyArgs,GroupArgs,VIPArgs,UseArg=__Y[3]Float=false;Noclip=false;CONTROL={F=0,B=0,L=0,R=0,Q=0,E=0}WalkSpeedSet=16;JumpPowerSet=30;WalkSpeedRequest=__Y[2]JumpPowerRequest=__Y[2]cmdm=__VE["GMos"]speedofthevfly=1;speedofthefly=1;Setting=__Y[3]serializedSetting=__Y[3]if getgenv().Addons then if not isfolder("Setting")then makefolder("Setting")end;if isfolder("Setting")and not isfile("Setting/settingHEDERNG.json")then print("no file")Setting={AutoCollectItems=__Y[2],AutoBuyStorage=__Y[2]}allowtoserialized=__Y[1]elseif __U[49]("Setting")and __U[50]("Setting/settingHEDERNG.json")then __U[1]("file")__U[23]()Setting=game.HttpService:JSONDecode(__U[51]("Setting/settingHEDERNG.json"))end else Setting={AutoCollectItems=__Y[2],AutoBuyStorage=__Y[2]}end;local e={{Title="Owner",Content="ttjy."},{Title="Co Owner",Content="ttjy_"},{Title="Scripter",Content="ttjy."},{Title="Scripter",Content="ttjy_"},{Title="Key System",Content="sa.l"},{Title="UI",Content="dawid"}}function OnFluentChange()if Window.Root.Visible then TTJYHUB.TextColor3=__U[36](0,255,0)else TTJYHUB.TextColor3=__U[36](255,0,0)end end;function tpwithnewtpbyme2(f,g)local h=game.Players.LocalPlayer.Character.HumanoidRootPart;local i=h.Position;local j=Vector3.new(i.x,i.y,i.z)local k=f.Position;local l=i.y;local m=(k-j).Unit;local n=(k-j).Magnitude;local o=math.floor(n/g)for c=1,o do if not game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")then repeat task.wait(0.175)until game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")end;j=j+m*g;game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame=CFrame.new(j)task.wait()end;task.wait(0.1)game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame=f;wait()game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame=f end;function Tp(p,q,r)__VE["LPs"].Character.HumanoidRootPart.CFrame=CFrame.new(p,q,r)end;function Tp2(f)__VE["LPs"].Character.HumanoidRootPart.CFrame=f end;function Notify(s,t,u)if s and not t then t=s;s="Script Service"end;Fluent:Notify({Title=s,Content=t,Duration=u or 5})end;local function v(w)local x=w;local y,z=x:match("(%d+) / (%d+)")if y and z then return tonumber(y)==tonumber(z)else return false end end;local function A(B,C)local D=Instance.new("BillboardGui")D.Name="TextLabelBillboard"D.Adornee=B;D.Size=UDim2.new(0,100,0,50)D.StudsOffset=Vector3.new(0,2,0)D.AlwaysOnTop=true;local E=Instance.new("TextLabel")E.Name="Text"E.Parent=D;E.Text=tostring(C)E.TextColor3=Color3.fromRGB(255,0,0)E.TextStrokeColor3=Color3.fromRGB(0,0,0)E.TextStrokeTransparency=0.082;E.BackgroundTransparency=1;E.Size=UDim2.new(1,0,1,0)D.Parent=B end;local function F(G)character=__VE["LPs"].Character or __VE["LPs"].CharacterAdded:Wait()local H=__U[35]("Part")H.Size=__U[57](0,0,0)H.Transparency=1;H.Anchored=__Y[1]H.CanCollide=__Y[2]H.CanTouch=__Y[2]H.Parent=__VE["WS"]local I=__U[35]("Attachment")I.Parent=H;local J=character:WaitForChild("Left Arm")local K=__U[35]("Attachment")K.Parent=J;local L=__U[35]("Trail")L.Attachment0=I;L.Attachment1=K;L.Texture="rbxassetid://0"blueKeypoint=ColorSequenceKeypoint.new(0,Color3.new(0,0,1))cyanKeypoint=ColorSequenceKeypoint.new(1,Color3.new(0,1,1))greenKeypoint=ColorSequenceKeypoint.new(0,Color3.new(0,1,0))lightGreenKeypoint=ColorSequenceKeypoint.new(1,Color3.new(0.5,1,0.5))pinkKeypoint=ColorSequenceKeypoint.new(0,Color3.new(1,0.75,0.8))redKeypoint=ColorSequenceKeypoint.new(1,Color3.new(1,0,0))purpleKeypoint=ColorSequenceKeypoint.new(0,Color3.new(0.5,0,1))lightPurpleKeypoint=ColorSequenceKeypoint.new(1,Color3.new(0.8,0.5,1))if G==1 then L.Color=ColorSequence.new({blueKeypoint,cyanKeypoint})elseif G==2 then L.Color=ColorSequence.new({greenKeypoint,lightGreenKeypoint})elseif G==3 then L.Color=ColorSequence.new({pinkKeypoint,redKeypoint})elseif G==4 then L.Color=ColorSequence.new({purpleKeypoint,lightPurpleKeypoint})end;L.LightEmission=1;L.LightInfluence=1;L.Parent=H;offset=__U[57](0,0,1)local function M()if character:FindFirstChild("Left Arm")then local N=character["Left Arm"].CFrame;local O=N*__U[26](offset)H.CFrame=O end end;local P;P=game:GetService("RunService").Heartbeat:Connect(function()M()end)local function Q()if I then I:Destroy()end;if K then K:Destroy()end;if H then H:Destroy()end;if P then P:Disconnect()end end;__VE["LPs"].CharacterRemoving:Connect(Q)character=__VE["LPs"].Character or __VE["LPs"].CharacterAdded:Wait()local R=__U[35]("Part")R.Size=__U[57](0,0,0)R.Transparency=1;R.Anchored=__Y[1]R.CanCollide=__Y[2]R.CanTouch=__Y[2]R.Parent=workspace;local S=__U[35]("Attachment")S.Parent=R;local T=character:WaitForChild("Right Arm")local U=__U[35]("Attachment")U.Parent=T;local L=__U[35]("Trail")L.Attachment0=S;L.Attachment1=U;L.Texture="rbxassetid://0"blueKeypoint=ColorSequenceKeypoint.new(0,Color3.new(0,0,1))cyanKeypoint=ColorSequenceKeypoint.new(1,Color3.new(0,1,1))greenKeypoint=ColorSequenceKeypoint.new(0,Color3.new(0,1,0))lightGreenKeypoint=ColorSequenceKeypoint.new(1,Color3.new(0.5,1,0.5))pinkKeypoint=ColorSequenceKeypoint.new(0,Color3.new(1,0.75,0.8))redKeypoint=ColorSequenceKeypoint.new(1,Color3.new(1,0,0))purpleKeypoint=ColorSequenceKeypoint.new(0,Color3.new(0.5,0,1))lightPurpleKeypoint=ColorSequenceKeypoint.new(1,Color3.new(0.8,0.5,1))if G==1 then L.Color=ColorSequence.new({blueKeypoint,cyanKeypoint})elseif G==2 then L.Color=ColorSequence.new({greenKeypoint,lightGreenKeypoint})elseif G==3 then L.Color=ColorSequence.new({pinkKeypoint,redKeypoint})elseif G==4 then L.Color=ColorSequence.new({purpleKeypoint,lightPurpleKeypoint})end;L.LightEmission=1;L.LightInfluence=1;L.Parent=R;offset=__U[57](0,0,1)local function M()if character:FindFirstChild("Right Arm")then local N=character["Right Arm"].CFrame;local O=N*__U[26](offset)R.CFrame=O end end;local V;V=game:GetService("RunService").Heartbeat:Connect(function()M()end)local function W()if I then I:Destroy()end;if K then K:Destroy()end;if R then R:Destroy()end;if V then V:Disconnect()end end;__VE["LPs"].CharacterRemoving:Connect(W)end;if __VE["CG"]:FindFirstChild("InputPcToMobile")then __VE["CG"]:FindFirstChild("InputPcToMobile"):Destroy()end;local X=__U[35]("ScreenGui")X.Name="InputPcToMobile"X.Parent=__VE["CG"]local Y=UDim2.new(0.05,0,0.05,0)local function Z(_,a0)local a1=__U[35]("TextButton")a1.Name=_;a1.Text=_;a1.Size=Y;a1.Position=a0;a1.BackgroundColor3=Color3.new(0.5,0.5,0.5)a1.Parent=X;local a2=__Y[2]a1.MouseButton1Down:Connect(function()a2=true;if _=="W"then CONTROL.F=speedofthefly elseif _=="S"then CONTROL.B=-speedofthefly elseif _=="A"then CONTROL.L=-speedofthefly elseif _=="D"then CONTROL.R=speedofthefly end end)a1.MouseButton1Up:Connect(function()a2=__Y[2]if _=="W"then CONTROL.F=0 elseif _=="S"then CONTROL.B=0 elseif _=="A"then CONTROL.L=0 elseif _=="D"then CONTROL.R=0 end end)end;Z("W",UDim2.new(0.05,0,0.1,0))task.wait()Z("A",UDim2.new(0,0,0.2,0))task.wait()Z("S",UDim2.new(0.05,0,0.3,0))task.wait()Z("D",UDim2.new(0.1,0,0.2,0))task.wait()Window=nil;repeat __U[6](function()Window=Fluent:CreateWindow({Title="Anime Roulette Script v.UP1FV",SubTitle="by TTJY",TabWidth=160,Size=UDim2.fromOffset(580,460),Acrylic=false,Theme="Dark",MinimizeKey=Enum.KeyCode.LeftControl})end)print("Window Loaded")__U[23](5)until Window~=nil;local a3={Main=Window:AddTab({Title="Main",Icon="home"}),Player=Window:AddTab({Title="Player",Icon="person-standing"}),ESP=Window:AddTab({Title="ESP",Icon="inspect"}),ChangeLog=Window:AddTab({Title="ChangeLog",Icon="book"}),Credits=Window:AddTab({Title="Credits",Icon="book"}),Addons=Window:AddTab({Title="Addons",Icon="gem"}),Settings=Window:AddTab({Title="Settings",Icon="settings"})}local a4=Fluent.Options;__U[6](function()Window.Root:GetPropertyChangedSignal("Visible"):Connect(OnFluentChange)end)__U[6](function()function onButtonClick()Window.Minimized=not Window.Minimized;Window.Root.Visible=not Window.Minimized end;TTJYHUB.MouseButton1Click:Connect(onButtonClick)end)do getgenv().TextStatus="Normal Load"getgenv().ScriptUpdateDate="18/04/24"Codes={"WANOISREAL","WANOHERE","ELEVENMILLION","FORTYTHOUSANDLIKES","SORRYFORTHEWAITTWO","TWENTYTHOUSANDLIKES","ESPADA","TWOMILLIONVISITS","TENTHOUSANDLIKES","ONEMILLIONVISITS","SEVENTHOUSANDLIKES","THEFINEST","Release","Showtime"}a3.Main:AddSection("Codes")a3.Main:AddButton({Title="Redeem All Codes",Description="",Callback=function()for c=1,14 do getgenv().LastFuntion="Redeem All Codes"CodeArgs={[1]=Codes[c]}game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("DataService"):WaitForChild("RF"):WaitForChild("ClaimCode"):InvokeServer(unpack(CodeArgs))wait()end end})a3.Main:AddSection("Items")AutoCollectItems=a3.Main:AddToggle("AntiAFK",{Title="Auto Collect Items",Default=Setting.AutoCollectItems})coroutine.wrap(function()AutoCollectItems:OnChanged(function()pcall(function()Setting.AutoCollectItems=a4.AutoCollectItems.Value;while Setting.AutoCollectItems do task.wait(0.5)for a,b in pairs(__VE["WS"].World.Spawnables:GetChildren())do if b and b:FindFirstChild("ProximityPrompt")and Setting.AutoCollectItems then if __VE["LPs"]and __VE["LPs"].Character and __VE["LPs"].Character:FindFirstChild("HumanoidRootPart")and Setting.AutoCollectItems then __VE["LPs"].Character.HumanoidRootPart.CFrame=b.CFrame;__U[23](0.3)fireproximityprompt(b.ProximityPrompt)end end end end end)end)end)()AutoBuyStorage=a3.Main:AddToggle("AutoBuyStorage",{Title="Auto Buy Storage",Setting.AutoBuyStorage})coroutine.wrap(function()AutoBuyStorage:OnChanged(function()pcall(function()getgenv().LastFuntion="AutoBuyStorage"Setting.AutoBuyStorage=a4.AutoBuyStorage.Value;while Setting.AutoBuyStorage do task.wait(0.5)__VE["RPKSTRGB"]:InvokeServer()__VE["RPKSTRGC"]:InvokeServer()__VE["RPKSTEB"]:FireServer()end end)end)end)()QuickRoll=a3.Main:AddToggle("QuickRoll",{Title="Auto Buy Storage",__VE["LPs"]:WaitForChild("PlayerValues"):WaitForChild("SkipRoll").Value or __Y[2]})QuickRoll:OnChanged(function()pcall(function()getgenv().LastFuntion="QuickRoll"__VE["LPs"].PlayerValues.SkipRoll.Value=a4.QuickRoll.Value end)end)AntiAFK=a3.Player:AddToggle("AntiAFK",{Title="Anti AFK",Default=__Y[2]})AntiAFK:OnChanged(function()AFK=a4.AntiAFK.Value end)coroutine.wrap(function()__VE["LPs"].Idled:connect(function()if AFK then __VE["VU"]:CaptureController()__VE["VU"]:ClickButton2(Vector2.new())task.wait(2)end end)end)()FloatT=a3.Player:AddToggle("FloatT",{Title="Float",Default=__Y[2]})FloatT:OnChanged(function()getgenv().LastFuntion="Float"Float=a4.FloatT.Value end)NoClipT=a3.Player:AddToggle("NoClipT",{Title="Noclip",Default=__Y[2]})NoClipT:OnChanged(function()getgenv().LastFuntion="NoClip"Noclip=a4.NoClipT.Value end)local a5=a3.Player:AddToggle("FLysss",{Title="Fly",Default=__Y[2]})a5:OnChanged(function()getgenv().LastFuntion="Fly"if a4.FLysss.Value then FLYING=a4.FLysss.Value;while not __VE["LPs"]or not __VE["LPs"].Character or not __VE["LPs"].Character:FindFirstChild('HumanoidRootPart')or not __VE["LPs"].Character:FindFirstChild('Humanoid')or not cmdm do wait()end;local a6=__VE["LPs"].Character.HumanoidRootPart;local a7=0;function FLY()local a8=__U[35]('BodyGyro',a6)local a9=__U[35]('BodyVelocity',a6)a8.P=9e4;a8.maxTorque=__U[57](9e9,9e9,9e9)a8.cframe=a6.CFrame;a9.velocity=__U[57](0,0,0)a9.maxForce=__U[57](9e9,9e9,9e9)spawn(function()while FLYING do if CONTROL.L+CONTROL.R~=0 or CONTROL.F+CONTROL.B~=0 or CONTROL.Q+CONTROL.E~=0 then a7=50 elseif not(CONTROL.L+CONTROL.R~=0 or CONTROL.F+CONTROL.B~=0 or CONTROL.Q+CONTROL.E~=0)and a7~=0 then a7=0 end;if CONTROL.L+CONTROL.R~=0 or CONTROL.F+CONTROL.B~=0 or CONTROL.Q+CONTROL.E~=0 then a9.velocity=(__VE["WS"].CurrentCamera.CoordinateFrame.lookVector*(CONTROL.F+CONTROL.B)+__VE["WS"].CurrentCamera.CoordinateFrame*__U[26](CONTROL.L+CONTROL.R,(CONTROL.F+CONTROL.B+CONTROL.Q+CONTROL.E)*0.2,0).p-__VE["WS"].CurrentCamera.CoordinateFrame.p)*a7 else a9.velocity=__U[57](0,0,0)end;a8.cframe=__VE["WS"].CurrentCamera.CoordinateFrame;wait()end;CONTROL={F=0,B=0,L=0,R=0,Q=0,E=0}a7=0;a8:Destroy()a9:Destroy()__VE["LPs"].Character.Humanoid.PlatformStand=__Y[2]end)end;cmdm.KeyDown:connect(function(aa)if aa:lower()=='w'then if vfly then CONTROL.F=speedofthevfly else CONTROL.F=speedofthefly end elseif aa:lower()=='s'then if vfly then CONTROL.B=-speedofthevfly else CONTROL.B=-speedofthefly end elseif aa:lower()=='a'then if vfly then CONTROL.L=-speedofthevfly else CONTROL.L=-speedofthefly end elseif aa:lower()=='d'then if vfly then CONTROL.R=speedofthevfly else CONTROL.R=speedofthefly end elseif aa:lower()=='y'then if vfly then CONTROL.Q=speedofthevfly*2 else CONTROL.Q=speedofthefly*2 end elseif aa:lower()=='t'then if vfly then CONTROL.E=-speedofthevfly*2 else CONTROL.E=-speedofthefly*2 end end end)cmdm.KeyUp:connect(function(aa)if aa:lower()=='w'then CONTROL.F=0 elseif aa:lower()=='s'then CONTROL.B=0 elseif aa:lower()=='a'then CONTROL.L=0 elseif aa:lower()=='d'then CONTROL.R=0 elseif aa:lower()=='y'then CONTROL.Q=0 elseif aa:lower()=='t'then CONTROL.E=0 end end)FLY()else FLYING=a4.FLysss.Value end end)local ab=a3.Player:AddSlider("pfly",{Title="Fly Speed",Description="",Default=6,Min=1,Max=50,Rounding=0,Callback=function(Value)getgenv().LastFuntion=tostring("Changed Fly Speed"..Value)speedofthefly=Value;speedofthevfly=Value end})local ac=a3.Player:AddSlider("WalkSpeedS",{Title="WalkSpeed",Description="",Default=16,Min=0,Max=300,Rounding=1,Callback=function(Value)getgenv().LastFuntion=tostring("Changed WalkSpeed"..Value)WalkSpeedSet=Value end})ac:OnChanged(function(Value)getgenv().LastFuntion=tostring("Changed WalkSpeed"..Value)WalkSpeedSet=Value end)local ad=a3.Player:AddSlider("JumpPowerS",{Title="JumpPower",Description="",Default=30,Min=0,Max=300,Rounding=1,Callback=function(Value)getgenv().LastFuntion=tostring("Changed JumpPower"..Value)JumpPowerSet=Value end})ad:OnChanged(function(Value)getgenv().LastFuntion=tostring("Changed JumpPower"..Value)JumpPowerSet=Value end)WalkSpeedT=a3.Player:AddToggle("WalkSpeedT",{Title="Toggle WalkSpeed",Default=false})coroutine.wrap(function()WalkSpeedT:OnChanged(function()pcall(function()getgenv().LastFuntion=tostring("WalkSpeedRequest"..Value)WalkSpeedRequest=a4.WalkSpeedT.Value end)end)end)()JumpPowerT=a3.Player:AddToggle("JumpPowerT",{Title="Toggle JumpPower",Default=false})coroutine.wrap(function()JumpPowerT:OnChanged(function()pcall(function()getgenv().LastFuntion=tostring("JumpPowerRequest"..Value)JumpPowerRequest=a4.JumpPowerT.Value end)end)end)()a3.ESP:AddSection("ESP")a3.ChangeLog:AddParagraph({Title="Change Log",Content="Can't be show"})e={"Owner - ttjy.","Co Owner - ttjy_","Ui - dawid","Key system - sa.l"}for c,b in __U[7](e)do a3.Credits:AddButton({Title=b,Description="",Callback=function()end})wait()end;if getgenv().Addons then a3.Addons:AddButton({Title="Save as config",Description="",Callback=function()serializedSetting=game.HttpService:JSONEncode(Setting)writefile("Setting/settingHEDERNG.json",serializedSetting)end})a3.Addons:AddSection("Colorful + fun")a3.Addons:AddButton({Title="Trail",Description="Blue->Cyan",Callback=function()F(1)end})a3.Addons:AddButton({Title="Trail",Description="Green->Light Green",Callback=function()F(2)end})a3.Addons:AddButton({Title="Trail",Description="Pink->Red",Callback=function()F(3)end})a3.Addons:AddButton({Title="Trail",Description="Purple->Light Purple",Callback=function()F(4)end})a3.Addons:AddSection("Webhook")a3.Addons:AddSection("Nothing to hook")a3.Addons:AddSection("Notify")NotifyWhenTTJY=a3.Addons:AddToggle("NotifyWhenTTJY",{Title="Notify When TTJY Join",Default=__Y[2]})coroutine.wrap(function()NotifyWhenTTJY:OnChanged(function()if a4.NotifyWhenTTJY.Value then repeat __U[23]()until game.Players:FindFirstChild("rigga56")Notify("Script","TTJY!!!",5)end end)end)()a3.Addons:AddSection("Others")a3.Addons:AddSection("Nothing here")end;a3.Settings:AddSection("W A S D")HideShow=a3.Settings:AddToggle("HideShow",{Title="Hide/Show",Default=__Y[2]})HideShow:OnChanged(function()if a4.HideShow.Value then game.CoreGui["InputPcToMobile"].W.Visible=__Y[2]game.CoreGui["InputPcToMobile"].A.Visible=__Y[2]game.CoreGui["InputPcToMobile"].S.Visible=__Y[2]game.CoreGui["InputPcToMobile"].D.Visible=__Y[2]else game.CoreGui["InputPcToMobile"].W.Visible=__Y[1]game.CoreGui["InputPcToMobile"].A.Visible=__Y[1]game.CoreGui["InputPcToMobile"].S.Visible=__Y[1]game.CoreGui["InputPcToMobile"].D.Visible=__Y[1]end end)UpDown=a3.Settings:AddToggle("UpDown",{Title="Up/Down",Default=__Y[2]})UpDown:OnChanged(function()if a4.UpDown.Value then game.CoreGui["InputPcToMobile"].W.Position=__U[27](0.05,0,0.1,0)game.CoreGui["InputPcToMobile"].A.Position=__U[27](0,0,0.2,0)game.CoreGui["InputPcToMobile"].S.Position=__U[27](0.05,0,0.3,0)game.CoreGui["InputPcToMobile"].D.Position=__U[27](0.1,0,0.2,0)else game.CoreGui["InputPcToMobile"].W.Position=__U[27](0.05,0,0.7,0)game.CoreGui["InputPcToMobile"].A.Position=__U[27](0,0,0.8,0)game.CoreGui["InputPcToMobile"].S.Position=__U[27](0.05,0,0.9,0)game.CoreGui["InputPcToMobile"].D.Position=__U[27](0.1,0,0.8,0)end end)BigSmall=a3.Settings:AddToggle("BigSmall",{Title="Big/Small",Default=__Y[2]})BigSmall:OnChanged(function()if a4.BigSmall.Value then game.CoreGui["InputPcToMobile"].W.Size=__U[27](0.1,0,0.1,0)game.CoreGui["InputPcToMobile"].A.Size=__U[27](0.1,0,0.1,0)game.CoreGui["InputPcToMobile"].S.Size=__U[27](0.1,0,0.1,0)game.CoreGui["InputPcToMobile"].D.Size=__U[27](0.1,0,0.1,0)else game.CoreGui["InputPcToMobile"].W.Size=__U[27](0.05,0,0.05,0)game.CoreGui["InputPcToMobile"].A.Size=__U[27](0.05,0,0.05,0)game.CoreGui["InputPcToMobile"].S.Size=__U[27](0.05,0,0.05,0)game.CoreGui["InputPcToMobile"].D.Size=__U[27](0.05,0,0.05,0)end end)end;local ae;coroutine.wrap(function()while true do wait(0.1)character=__VE["LPs"].Character;if character and character:FindFirstChild("Humanoid")and WalkSpeedRequest and character.Humanoid.WalkSpeed~=tonumber(WalkSpeedSet)then if ae then ae:Disconnect()end;character.Humanoid.WalkSpeed=tonumber(WalkSpeedSet)ae=character.Humanoid:GetPropertyChangedSignal("WalkSpeed"):Connect(function()character.Humanoid.WalkSpeed=tonumber(WalkSpeedSet)end)end end end)()game:GetService("RunService").Heartbeat:Connect(function()if __VE["LPs"].Character and __VE["LPs"].Character:FindFirstChild("Humanoid")and JumpPowerRequest then __VE["LPs"].Character.Humanoid.JumpPower=tonumber(JumpPowerSet)end end)local af=Instance.new("Part")af.Size=Vector3.new(2,0.2,1.5)af.Material=Enum.Material.Grass;af.Anchored=true;af.Transparency=1;af.Parent=workspace;local function ag()character=__VE["LPs"].Character;local ah=character and character:FindFirstChild("HumanoidRootPart")if ah and Float then af.CFrame=ah.CFrame*CFrame.new(0,-3.1,0)else af.CFrame=CFrame.new(0,-10000,0)end end;game:GetService("RunService").RenderStepped:Connect(ag)local function ai()if Noclip and __VE["LPs"].Character~=nil then for a,aj in pairs(__VE["LPs"].Character:GetChildren())do if aj:IsA("BasePart")and aj.CanCollide==true then aj.CanCollide=false end end end;task.wait()end;game:GetService("RunService").Stepped:Connect(ai)task.wait(0.05)if allowtoserialized then serializedSetting=game.HttpService:JSONEncode(Setting)writefile("Setting/settingHEDERNG.json",serializedSetting)end;task.wait(5)finishload=true;getgenv().FinishLoad=true
+if not getgenv().AllowToLoad then
+    game.Players.LocalPlayer:Kick("Instance Blacklist")
+end
+coroutine.wrap(function()
+    while task.wait(0.1) do
+        for _,v in pairs(game.CoreGui:GetChildren()) do
+            if v.Name == "ScreenGui" and v:FindFirstChild("ImageLabel") and (v.ImageLabel.Image == "rbxassetid://6065775281" or v.ImageLabel.Visible or not v.ImageLabel.Visible) then
+                game.Players.LocalPlayer:Kick("Magic in the air")
+            end
+        end
+    end
+end)()
+repeat task.wait() until game:IsLoaded()
+__LUABLE = {
+    ["Functions"] = loadstring(game:HttpGet("https://raw.githubusercontent.com/Yumiara/Asset/main/api.lua"))()
+}
+__U = {}
+for i=1,#__LUABLE["Functions"] do
+    pcall(function()
+        __U[i] = clonefunction(__LUABLE["Functions"][i])
+    end)
+end
+__VE = {
+    ["Ps"] = game:GetService("Players"),
+    ["LPs"] = game:GetService("Players").LocalPlayer,
+    ["PsG"] = game:GetService("Players").LocalPlayer.PlayerGui
+    
+}
+local Converted = {
+	["_TTJY ASSET"] = Instance.new("ScreenGui");
+	["_TTJY HUB"] = Instance.new("Frame");
+	["_UIStroke"] = Instance.new("UIStroke");
+	["_UICorner"] = Instance.new("UICorner");
+	["_TextButton"] = Instance.new("TextButton");
+	["_UIStroke1"] = Instance.new("UIStroke");
+}
+
+-- Properties:
+
+Converted["_TTJY ASSET"].ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+Converted["_TTJY ASSET"].Name = "TTJY ASSET"
+Converted["_TTJY ASSET"].Parent = game:GetService("CoreGui")
+
+Converted["_TTJY HUB"].BackgroundColor3 = Color3.fromRGB(56.0000042617321, 56.0000042617321, 56.0000042617321)
+Converted["_TTJY HUB"].BackgroundTransparency = 0.4000000059604645
+Converted["_TTJY HUB"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_TTJY HUB"].BorderSizePixel = 0
+Converted["_TTJY HUB"].Position = UDim2.new(0.465000004, 0, -0.1, 0)
+Converted["_TTJY HUB"].Size = UDim2.new(0.0700000003, 0, 0.100000001, 0)
+Converted["_TTJY HUB"].ZIndex = 2
+Converted["_TTJY HUB"].Name = "TTJY HUB"
+Converted["_TTJY HUB"].Parent = Converted["_TTJY ASSET"]
+
+Converted["_UIStroke"].LineJoinMode = Enum.LineJoinMode.Bevel
+Converted["_UIStroke"].Thickness = 3
+Converted["_UIStroke"].Parent = Converted["_TTJY HUB"]
+
+Converted["_UICorner"].Parent = Converted["_TTJY HUB"]
+
+Converted["_TextButton"].Font = Enum.Font.SourceSans
+Converted["_TextButton"].Text = "TTJY HUB"
+Converted["_TextButton"].TextColor3 = Color3.fromRGB(0, 255, 0)
+Converted["_TextButton"].TextScaled = true
+Converted["_TextButton"].TextSize = 14
+Converted["_TextButton"].TextWrapped = true
+Converted["_TextButton"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_TextButton"].BackgroundTransparency = 1
+Converted["_TextButton"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_TextButton"].BorderSizePixel = 0
+Converted["_TextButton"].Size = UDim2.new(1, 0, 1, 0)
+Converted["_TextButton"].Parent = Converted["_TTJY HUB"]
+
+Converted["_UIStroke1"].LineJoinMode = Enum.LineJoinMode.Bevel
+Converted["_UIStroke1"].Parent = Converted["_TextButton"]
+
+TTJYHUB = Converted["_TextButton"]
+
+Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
+SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
+InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
+__U[6](function()
+    if Fluent and SaveManager and InterfaceManager then
+        __U[1]("No Error")
+    else
+        Fluent = __U[40](game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
+        SaveManager = __U[40](game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
+        InterfaceManager = __U[40](game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
+    end
+end)
+__X = {true,false,nil,0,1} ;  __Y ={} ; for i=1,#__X do __U[6](function() __Y[i] = __X[i] end) end
+__M = {2,3,5,7,11,13,17,10} ;  __N ={} ; for i=1,#__M do __U[6](function() __N[i] = __M[i] end) end
+__VE["WS"] , __VE["RuS"] , __VE["RlS"] = game:GetService("Workspace"), game:GetService("RunService") , game:GetService("ReplicatedStorage")
+__VE["VIM"] , __VE["UIS"] = game:GetService("VirtualInputManager"), game:GetService("UserInputService")
+__VE["Lg"] , __VE["TS"], __VE["GMos"] = game:GetService("Lighting") ,game:GetService("TweenService") ,  game:GetService("Players").LocalPlayer:GetMouse()
+__VE["VU"],__VE["CG"] = game:GetService("VirtualUser") ,game:GetService("CoreGui")
+__VE["HS"] = game:GetService("HttpService")
+__VE["RPKSTRGB"] = game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("TitleService"):WaitForChild("RF"):WaitForChild("GetStorageBounds")
+__VE["RPKSTRGC"] = game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("TitleService"):WaitForChild("RF"):WaitForChild("GetStorageCost")
+__VE["RPKSTEB"] = game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("TitleService"):WaitForChild("RE"):WaitForChild("BuyStorage")
+CodeArgs, DailyArgs, GroupArgs, VIPArgs, UseArg = __Y[3]
+Float = false
+Noclip = false
+CONTROL = {F = 0, B = 0, L = 0, R = 0, Q = 0, E = 0}
+WalkSpeedSet = 16
+JumpPowerSet = 30
+WalkSpeedRequest = __Y[2]
+JumpPowerRequest = __Y[2]
+cmdm = __VE["GMos"]
+speedofthevfly = 1
+speedofthefly = 1
+Setting = __Y[3]
+serializedSetting = __Y[3]
+if getgenv().Addons then
+    if not isfolder("Setting") then
+        makefolder("Setting")
+    end
+    if isfolder("Setting") and not isfile("Setting/settingAnimeRoulette.json") then
+        print("no file")
+        Setting = {
+            AutoCollectItems = __Y[2],
+            AutoBuyStorage = __Y[2],
+            AutoClaimAchievement = __Y[2]
+        }
+        allowtoserialized = __Y[1]
+    elseif __U[49]("Setting") and __U[50]("Setting/settingAnimeRoulette.json") then
+        __U[1]("file")
+        __U[23]()
+        Setting = game.HttpService:JSONDecode(__U[51]("Setting/settingAnimeRoulette.json"))
+    end
+else
+    Setting = {
+        AutoCollectItems = __Y[2],
+        AutoBuyStorage = __Y[2],
+        AutoClaimAchievement = __Y[2]
+    }
+end
+
+local credits = {
+    {Title = "Owner", Content = "ttjy."},
+    {Title = "Co Owner", Content = "ttjy_"},
+    {Title = "Scripter", Content = "ttjy."},
+    {Title = "Scripter", Content = "ttjy_"},
+    {Title = "Key System", Content = "sa.l"},
+    {Title = "UI", Content = "dawid"},
+}
+
+function OnFluentChange()
+    if Window.Root.Visible then
+        TTJYHUB.TextColor3  = __U[36](0, 255, 0)
+    else
+        TTJYHUB.TextColor3  = __U[36](255, 0, 0)
+    end
+end
+function tpwithnewtpbyme2(xyz,speedoftpNTP)
+    local hrd = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local p = hrd.Position
+    local currentPos = Vector3.new(p.x, p.y, p.z)
+    local targetPos = xyz.Position
+    local saveY = p.y
+
+    local direction = (targetPos - currentPos).Unit
+    local distance = (targetPos - currentPos).Magnitude
+    local steps = math.floor(distance / speedoftpNTP)
+    for i = 1, steps do
+        if not game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") then
+            repeat task.wait(0.175) until game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
+        end
+        currentPos = currentPos + direction * speedoftpNTP 
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(currentPos)
+        task.wait()
+    end
+    task.wait(0.1)
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = xyz
+    wait()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = xyz
+end
+function Tp(x, y ,z)
+    __VE["LPs"].Character.HumanoidRootPart.CFrame = CFrame.new(x, y ,z)
+end
+function Tp2(xyz)
+    __VE["LPs"].Character.HumanoidRootPart.CFrame = xyz
+end
+function Notify(title, content, time)
+	if title and not content then content = title; title = "Script Service" end
+	Fluent:Notify({
+		Title = title,
+		Content = content,
+		Duration = time or 5
+	})
+end
+local function checkSameNumbers(Path)
+    local labelText = Path
+    local firstNumber, secondNumber = labelText:match("(%d+) / (%d+)")
+    if firstNumber and secondNumber then
+        return tonumber(firstNumber) == tonumber(secondNumber)
+    else
+        return false
+    end
+end
+local function ESPSomething(obj, text)
+    local billboard = Instance.new("BillboardGui")
+    billboard.Name = "TextLabelBillboard"
+    billboard.Adornee = obj
+    billboard.Size = UDim2.new(0, 100, 0, 50)
+    billboard.StudsOffset = Vector3.new(0, 2, 0)
+    billboard.AlwaysOnTop = true
+
+    local textLabel = Instance.new("TextLabel")
+    textLabel.Name = "Text"
+    textLabel.Parent = billboard
+    textLabel.Text = tostring(text)
+    textLabel.TextColor3 = Color3.fromRGB(255, 0, 0)
+    textLabel.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
+    textLabel.TextStrokeTransparency = 0.082
+    textLabel.BackgroundTransparency = 1
+    textLabel.Size = UDim2.new(1, 0, 1, 0)
+
+    billboard.Parent = obj
+end
+local function createTrail(ColorValue)
+    character = __VE["LPs"].Character or __VE["LPs"].CharacterAdded:Wait()
+    local part1X = __U[35]("Part")
+    part1X.Size = __U[57](0, 0, 0)
+    part1X.Transparency = 1
+    part1X.Anchored = __Y[1]
+    part1X.CanCollide = __Y[2]
+    part1X.CanTouch = __Y[2]
+    part1X.Parent = __VE["WS"]
+    local attachment1 = __U[35]("Attachment")
+    attachment1.Parent = part1X
+    local leftHandAttachment = character:WaitForChild("Left Arm")
+    local attachment2 = __U[35]("Attachment")
+    attachment2.Parent = leftHandAttachment
+    local trail = __U[35]("Trail")
+    trail.Attachment0 = attachment1
+    trail.Attachment1 = attachment2
+    trail.Texture = "rbxassetid://0"
+    blueKeypoint = ColorSequenceKeypoint.new(0, Color3.new(0, 0, 1))
+    cyanKeypoint = ColorSequenceKeypoint.new(1, Color3.new(0, 1, 1))
+    greenKeypoint = ColorSequenceKeypoint.new(0, Color3.new(0, 1, 0))
+    lightGreenKeypoint = ColorSequenceKeypoint.new(1, Color3.new(0.5, 1, 0.5))
+    pinkKeypoint = ColorSequenceKeypoint.new(0, Color3.new(1, 0.75, 0.8))
+    redKeypoint = ColorSequenceKeypoint.new(1, Color3.new(1, 0, 0))
+    purpleKeypoint = ColorSequenceKeypoint.new(0, Color3.new(0.5, 0, 1))
+    lightPurpleKeypoint = ColorSequenceKeypoint.new(1, Color3.new(0.8, 0.5, 1))
+    if ColorValue == 1 then
+        trail.Color = ColorSequence.new({blueKeypoint, cyanKeypoint})
+    elseif ColorValue == 2 then
+        trail.Color = ColorSequence.new({greenKeypoint, lightGreenKeypoint})
+    elseif ColorValue == 3 then
+        trail.Color = ColorSequence.new({pinkKeypoint, redKeypoint})
+    elseif ColorValue == 4 then
+        trail.Color = ColorSequence.new({purpleKeypoint, lightPurpleKeypoint})
+    end
+    trail.LightEmission = 1
+    trail.LightInfluence = 1
+    trail.Parent = part1X
+    offset = __U[57](0, 0, 1)
+    local function updatePartCFrame()
+        if character:FindFirstChild("Left Arm") then
+            local handCF = character["Left Arm"].CFrame
+            local newCF = handCF * __U[26](offset)
+            part1X.CFrame = newCF
+        end
+    end
+    
+    local heartbeatConnection2
+    heartbeatConnection2 = game:GetService("RunService").Heartbeat:Connect(function()
+        updatePartCFrame()
+    end)
+    local function cleanup2()
+        if attachment1 then
+            attachment1:Destroy()
+        end
+        if attachment2 then
+            attachment2:Destroy()
+        end
+        if part1X then
+            part1X:Destroy()
+        end
+        if heartbeatConnection2 then
+            heartbeatConnection2:Disconnect()
+        end
+    end
+    __VE["LPs"].CharacterRemoving:Connect(cleanup2)
+    character = __VE["LPs"].Character or __VE["LPs"].CharacterAdded:Wait()
+    local part2X = __U[35]("Part")
+    part2X.Size = __U[57](0, 0, 0)
+    part2X.Transparency = 1
+    part2X.Anchored = __Y[1]
+    part2X.CanCollide = __Y[2]
+    part2X.CanTouch = __Y[2]
+    part2X.Parent = workspace
+    local attachment3 = __U[35]("Attachment")
+    attachment3.Parent = part2X
+    local rightHandAttachment = character:WaitForChild("Right Arm")
+    local attachment4 = __U[35]("Attachment")
+    attachment4.Parent = rightHandAttachment
+    local trail = __U[35]("Trail")
+    trail.Attachment0 = attachment3
+    trail.Attachment1 = attachment4
+    trail.Texture = "rbxassetid://0"
+    blueKeypoint = ColorSequenceKeypoint.new(0, Color3.new(0, 0, 1))
+    cyanKeypoint = ColorSequenceKeypoint.new(1, Color3.new(0, 1, 1))
+    greenKeypoint = ColorSequenceKeypoint.new(0, Color3.new(0, 1, 0))
+    lightGreenKeypoint = ColorSequenceKeypoint.new(1, Color3.new(0.5, 1, 0.5))
+    pinkKeypoint = ColorSequenceKeypoint.new(0, Color3.new(1, 0.75, 0.8))
+    redKeypoint = ColorSequenceKeypoint.new(1, Color3.new(1, 0, 0))
+    purpleKeypoint = ColorSequenceKeypoint.new(0, Color3.new(0.5, 0, 1))
+    lightPurpleKeypoint = ColorSequenceKeypoint.new(1, Color3.new(0.8, 0.5, 1))
+    if ColorValue == 1 then
+    trail.Color = ColorSequence.new({blueKeypoint, cyanKeypoint})
+    elseif ColorValue == 2 then
+        trail.Color = ColorSequence.new({greenKeypoint, lightGreenKeypoint})
+    elseif ColorValue == 3 then
+        trail.Color = ColorSequence.new({pinkKeypoint, redKeypoint})
+    elseif ColorValue == 4 then
+        trail.Color = ColorSequence.new({purpleKeypoint, lightPurpleKeypoint})
+    end
+    trail.LightEmission = 1
+    trail.LightInfluence = 1
+    trail.Parent = part2X
+    offset = __U[57](0, 0, 1)
+    local function updatePartCFrame()
+        if character:FindFirstChild("Right Arm") then
+            local handCF = character["Right Arm"].CFrame
+            local newCF = handCF * __U[26](offset)
+            part2X.CFrame = newCF
+        end
+    end
+    local heartbeatConnection
+    heartbeatConnection = game:GetService("RunService").Heartbeat:Connect(function()
+        updatePartCFrame()
+    end)
+    local function cleanup()
+        if attachment1 then
+            attachment1:Destroy()
+        end
+        if attachment2 then
+            attachment2:Destroy()
+        end
+        if part2X then
+            part2X:Destroy()
+        end
+        if heartbeatConnection then
+            heartbeatConnection:Disconnect()
+        end
+    end
+    
+    __VE["LPs"].CharacterRemoving:Connect(cleanup)
+end
+if __VE["CG"]:FindFirstChild("InputPcToMobile") then
+    __VE["CG"]:FindFirstChild("InputPcToMobile"):Destroy()
+end
+local screenGui2 = __U[35]("ScreenGui")
+screenGui2.Name = "InputPcToMobile"
+screenGui2.Parent = __VE["CG"]
+local buttonSize = UDim2.new(0.05, 0, 0.05, 0)
+local function createButton(key, position)
+    local button = __U[35]("TextButton")
+    button.Name = key
+    button.Text = key
+    button.Size = buttonSize
+    button.Position = position
+    button.BackgroundColor3 = Color3.new(0.5, 0.5, 0.5)
+    button.Parent = screenGui2
+    local isPressed = __Y[2]
+    button.MouseButton1Down:Connect(function()
+        isPressed = true
+        if key == "W" then
+            CONTROL.F = speedofthefly
+        elseif key == "S" then
+            CONTROL.B = -speedofthefly
+        elseif key == "A" then
+            CONTROL.L = -speedofthefly
+        elseif key == "D" then
+            CONTROL.R = speedofthefly
+        end
+    end)
+
+    button.MouseButton1Up:Connect(function()
+        isPressed = __Y[2]
+        if key == "W" then
+            CONTROL.F = 0
+        elseif key == "S" then
+            CONTROL.B = 0
+        elseif key == "A" then
+            CONTROL.L = 0
+        elseif key == "D" then
+            CONTROL.R = 0
+        end
+    end)
+end
+
+createButton("W", UDim2.new(0.05, 0, 0.1, 0))
+task.wait()
+createButton("A", UDim2.new(0, 0, 0.2, 0))
+task.wait()
+createButton("S", UDim2.new(0.05, 0, 0.3, 0))
+task.wait()
+createButton("D", UDim2.new(0.1, 0, 0.2, 0))
+task.wait()
+Window = nil
+repeat
+    __U[6](function()
+        Window = Fluent:CreateWindow({
+            Title = "Anime Roulette Script v.UP1FV",
+            SubTitle = "by TTJY",
+            TabWidth = 160,
+            Size = UDim2.fromOffset(580, 460),
+            Acrylic = false,
+            Theme = "Dark",
+            MinimizeKey = Enum.KeyCode.LeftControl
+        })
+    end)
+    print("Window Loaded")
+    __U[23](5)
+until Window ~= nil
+
+local Tabs = {
+    Main = Window:AddTab({ Title = "Main", Icon = "home" }),
+    Player = Window:AddTab({ Title = "Player", Icon = "person-standing" }),
+    ESP = Window:AddTab({ Title = "ESP", Icon = "inspect" }),
+    ChangeLog = Window:AddTab({ Title = "ChangeLog", Icon = "book" }),
+    Credits = Window:AddTab({ Title = "Credits", Icon = "book" }),
+    Addons = Window:AddTab({ Title = "Addons", Icon = "gem" }),
+    Settings = Window:AddTab({ Title = "Settings", Icon = "settings" })
+}
+local Options = Fluent.Options
+__U[6](function()
+    Window.Root:GetPropertyChangedSignal("Visible"):Connect(OnFluentChange)
+end)
+__U[6](function()
+    function onButtonClick()
+        Window.Minimized = not Window.Minimized
+        Window.Root.Visible = not Window.Minimized
+    end
+    TTJYHUB.MouseButton1Click:Connect(onButtonClick)
+end)
+do
+    --getgenv().TextStatus
+    --getgenv().LastFuntion
+    getgenv().TextStatus = "Normal Load"
+    getgenv().ScriptUpdateDate = "18/04/24"
+    Codes = {
+        "WANOISREAL",
+        "WANOHERE",
+        "ELEVENMILLION",
+        "FORTYTHOUSANDLIKES",
+        "SORRYFORTHEWAITTWO",
+        "TWENTYTHOUSANDLIKES",
+        "ESPADA",
+        "TWOMILLIONVISITS",
+        "TENTHOUSANDLIKES",
+        "ONEMILLIONVISITS",
+        "SEVENTHOUSANDLIKES",
+        "THEFINEST",
+        "Release",
+        "Showtime",
+    }
+    Tabs.Main:AddSection("Codes")
+    Tabs.Main:AddButton({Title = "Redeem All Codes", Description = "",
+        Callback = function()
+            for i = 1, 14 do
+                getgenv().LastFuntion = "Redeem All Codes"
+                CodeArgs = {
+                    [1] = Codes[i]
+                }
+                
+                game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("DataService"):WaitForChild("RF"):WaitForChild("ClaimCode"):InvokeServer(unpack(CodeArgs))
+                wait()
+            end
+        end
+    })
+    Tabs.Main:AddSection("Items")
+    AutoCollectItems = Tabs.Main:AddToggle("AutoCollectItems", {Title = "Auto Collect Items", Default = Setting.AutoCollectItems })
+    coroutine.wrap(function()
+        AutoCollectItems:OnChanged(function()
+            pcall(function()
+                Setting.AutoCollectItems = Options.AutoCollectItems.Value
+                while Setting.AutoCollectItems do
+                    task.wait(0.5)
+                    for _, v in pairs(__VE["WS"].World.Spawnables:GetChildren()) do
+                        if v and v:FindFirstChild("ProximityPrompt") and Setting.AutoCollectItems then
+                            if __VE["LPs"] and __VE["LPs"].Character and __VE["LPs"].Character:FindFirstChild("HumanoidRootPart") and Setting.AutoCollectItems then
+                                getgenv().LastFuntion = "AutoCollectItems"
+                                __VE["LPs"].Character.HumanoidRootPart.CFrame = v.ClickPart.CFrame
+                                task.wait(0.3)
+                                fireproximityprompt(v.ProximityPrompt)
+                            end
+                        end
+                    end
+                end
+            end)
+        end)
+    end)()
+    AutoBuyStorage = Tabs.Main:AddToggle("AutoBuyStorage", {Title = "Auto Buy Storage", Setting.AutoBuyStorage })
+    coroutine.wrap(function()
+        AutoBuyStorage:OnChanged(function()
+            pcall(function()
+                getgenv().LastFuntion = "AutoBuyStorage"
+                Setting.AutoBuyStorage = Options.AutoBuyStorage.Value
+                while Setting.AutoBuyStorage do task.wait(0.5)
+                    __VE["RPKSTRGB"]:InvokeServer()
+                    __VE["RPKSTRGC"]:InvokeServer()
+                    __VE["RPKSTEB"]:FireServer()
+                end
+            end)
+        end)
+    end)()
+    AutoClaimAchievement = Tabs.Main:AddToggle("AutoClaimAchievement", {Title = "Auto Claim Achievement", Setting.AutoClaimAchievement })
+    coroutine.wrap(function()
+        AutoClaimAchievement:OnChanged(function()
+            pcall(function()
+                getgenv().LastFuntion = "AutoClaimAchievement"
+                Setting.AutoClaimAchievement = Options.AutoClaimAchievement.Value
+                while Setting.AutoClaimAchievement do task.wait(0.5)
+                    for _, v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.SylasGui.AchievementFrame.MainFrame.AchieveFrame.Frame.ScrollingFrame:GetChildren()) do
+                        if v:IsA("Frame") and v:FindFirstChild("Complete") and v.Complete:FindFirstChild("Title") and Setting.AutoClaimAchievement then
+                            if v.Complete.Title.Text == "CLAIMABLE" then
+                                TargetReward = v.Name
+                            
+                                game:GetService("ReplicatedStorage").Packages.Knit.Services.GoalService.RE.ClaimAchievement:FireServer(TargetReward)
+                            end
+                        end
+                    end
+                end
+            end)
+        end)
+    end)()
+    QuickRoll = Tabs.Main:AddToggle("QuickRoll", {Title = "Quick Roll", __VE["LPs"]:WaitForChild("PlayerValues"):WaitForChild("SkipRoll").Value or __Y[2] })
+    QuickRoll:OnChanged(function()
+        pcall(function()
+            getgenv().LastFuntion = "QuickRoll"
+            __VE["LPs"].PlayerValues.SkipRoll.Value = Options.QuickRoll.Value
+        end)
+    end)
+    AntiAFK = Tabs.Player:AddToggle("AntiAFK", {Title = "Anti AFK", Default = __Y[2] })
+    AntiAFK:OnChanged(function()
+        AFK = Options.AntiAFK.Value
+    end)
+    coroutine.wrap(function()
+        __VE["LPs"].Idled:connect(function()
+            if AFK then
+                __VE["VU"]:CaptureController()
+                __VE["VU"]:ClickButton2(Vector2.new())
+                task.wait(2)
+            end
+        end)
+    end)()
+    FloatT = Tabs.Player:AddToggle("FloatT", {Title = "Float", Default = __Y[2] })
+    FloatT:OnChanged(function()
+        getgenv().LastFuntion = "Float"
+        Float = Options.FloatT.Value
+    end)
+    NoClipT = Tabs.Player:AddToggle("NoClipT", {Title = "Noclip", Default = __Y[2] })
+    NoClipT:OnChanged(function()
+        getgenv().LastFuntion = "NoClip"
+        Noclip = Options.NoClipT.Value
+    end)
+    local FLysss = Tabs.Player:AddToggle("FLysss", {Title = "Fly", Default = __Y[2] })
+
+    FLysss:OnChanged(function()
+        getgenv().LastFuntion = "Fly"
+        if Options.FLysss.Value then
+            FLYING = Options.FLysss.Value
+            while not __VE["LPs"] or not __VE["LPs"].Character or not __VE["LPs"].Character:FindFirstChild('HumanoidRootPart') or not __VE["LPs"].Character:FindFirstChild('Humanoid') or not cmdm do
+                wait()
+            end
+
+            local T = __VE["LPs"].Character.HumanoidRootPart
+            local SPEED = 0
+
+            function FLY()
+                local BG = __U[35]('BodyGyro', T)
+                local BV = __U[35]('BodyVelocity', T)
+                BG.P = 9e4
+                BG.maxTorque = __U[57](9e9, 9e9, 9e9)
+                BG.cframe = T.CFrame
+                BV.velocity = __U[57](0, 0, 0)
+                BV.maxForce = __U[57](9e9, 9e9, 9e9)
+
+                spawn(function()
+                    while FLYING do
+                        if CONTROL.L + CONTROL.R ~= 0 or CONTROL.F + CONTROL.B ~= 0 or CONTROL.Q + CONTROL.E ~= 0 then
+                            SPEED = 50
+                        elseif not (CONTROL.L + CONTROL.R ~= 0 or CONTROL.F + CONTROL.B ~= 0 or CONTROL.Q + CONTROL.E ~= 0) and SPEED ~= 0 then
+                            SPEED = 0
+                        end
+
+                        if (CONTROL.L + CONTROL.R) ~= 0 or (CONTROL.F + CONTROL.B) ~= 0 or (CONTROL.Q + CONTROL.E) ~= 0 then
+                            BV.velocity = ((__VE["WS"].CurrentCamera.CoordinateFrame.lookVector * (CONTROL.F + CONTROL.B)) + ((__VE["WS"].CurrentCamera.CoordinateFrame * __U[26](CONTROL.L + CONTROL.R, (CONTROL.F + CONTROL.B + CONTROL.Q + CONTROL.E) * 0.2, 0).p) - __VE["WS"].CurrentCamera.CoordinateFrame.p)) * SPEED
+                        else
+                            BV.velocity = __U[57](0, 0, 0)
+                        end
+
+                        BG.cframe = __VE["WS"].CurrentCamera.CoordinateFrame
+                        wait()
+                    end
+
+                    CONTROL = {F = 0, B = 0, L = 0, R = 0, Q = 0, E = 0}
+                    SPEED = 0
+
+                    BG:Destroy()
+                    BV:Destroy()
+                    __VE["LPs"].Character.Humanoid.PlatformStand = __Y[2]
+                end)
+            end
+
+            cmdm.KeyDown:connect(function(KEY)
+                if KEY:lower() == 'w' then
+                    if vfly then
+                        CONTROL.F = speedofthevfly
+                    else
+                        CONTROL.F = speedofthefly
+                    end
+                elseif KEY:lower() == 's' then
+                    if vfly then
+                        CONTROL.B = -speedofthevfly
+                    else
+                        CONTROL.B = -speedofthefly
+                    end
+                elseif KEY:lower() == 'a' then
+                    if vfly then
+                        CONTROL.L = -speedofthevfly
+                    else
+                        CONTROL.L = -speedofthefly
+                    end
+                elseif KEY:lower() == 'd' then
+                    if vfly then
+                        CONTROL.R = speedofthevfly
+                    else
+                        CONTROL.R = speedofthefly
+                    end
+                elseif KEY:lower() == 'y' then
+                    if vfly then
+                        CONTROL.Q = speedofthevfly * 2
+                    else
+                        CONTROL.Q = speedofthefly * 2
+                    end
+                elseif KEY:lower() == 't' then
+                    if vfly then
+                        CONTROL.E = -speedofthevfly * 2
+                    else
+                        CONTROL.E = -speedofthefly * 2
+                    end
+                end
+            end)
+
+            cmdm.KeyUp:connect(function(KEY)
+                if KEY:lower() == 'w' then
+                    CONTROL.F = 0
+                elseif KEY:lower() == 's' then
+                    CONTROL.B = 0
+                elseif KEY:lower() == 'a' then
+                    CONTROL.L = 0
+                elseif KEY:lower() == 'd' then
+                    CONTROL.R = 0
+                elseif KEY:lower() == 'y' then
+                    CONTROL.Q = 0
+                elseif KEY:lower() == 't' then
+                    CONTROL.E = 0
+                end
+            end)
+
+            FLY()
+        else
+            FLYING = Options.FLysss.Value
+        end
+    end)
+    local pfly = Tabs.Player:AddSlider("pfly", {
+        Title = "Fly Speed",
+        Description = "",
+        Default = 6,
+        Min = 1,
+        Max = 50,
+        Rounding = 0,
+        Callback = function(Value)
+            getgenv().LastFuntion = tostring("Changed Fly Speed" .. Value)
+            speedofthefly = Value
+            speedofthevfly = Value
+        end
+    })
+    local WalkSpeedS = Tabs.Player:AddSlider("WalkSpeedS", {
+        Title = "WalkSpeed",
+        Description = "",
+        Default = 16,
+        Min = 0,
+        Max = 300,
+        Rounding = 1,
+        Callback = function(Value)
+            getgenv().LastFuntion = tostring("Changed WalkSpeed" .. Value)
+            WalkSpeedSet = Value
+        end
+    })
+
+    WalkSpeedS:OnChanged(function(Value)
+        getgenv().LastFuntion = tostring("Changed WalkSpeed" .. Value)
+        WalkSpeedSet = Value
+    end)
+    local JumpPowerS = Tabs.Player:AddSlider("JumpPowerS", {
+        Title = "JumpPower",
+        Description = "",
+        Default = 30,
+        Min = 0,
+        Max = 300,
+        Rounding = 1,
+        Callback = function(Value)
+            getgenv().LastFuntion = tostring("Changed JumpPower" .. Value)
+            JumpPowerSet = Value
+        end
+    })
+
+    JumpPowerS:OnChanged(function(Value)
+        getgenv().LastFuntion = tostring("Changed JumpPower" .. Value)
+        JumpPowerSet = Value
+    end)
+    WalkSpeedT = Tabs.Player:AddToggle("WalkSpeedT", {Title = "Toggle WalkSpeed", Default = false })
+    coroutine.wrap(function()
+        WalkSpeedT:OnChanged(function()
+            pcall(function()
+                getgenv().LastFuntion = tostring("WalkSpeedRequest" .. Value)
+                WalkSpeedRequest = Options.WalkSpeedT.Value
+            end)
+        end)
+    end)()
+    JumpPowerT = Tabs.Player:AddToggle("JumpPowerT", {Title = "Toggle JumpPower", Default = false })
+    coroutine.wrap(function()
+        JumpPowerT:OnChanged(function()
+            pcall(function()
+                getgenv().LastFuntion = tostring("JumpPowerRequest" .. Value)
+                JumpPowerRequest = Options.JumpPowerT.Value
+            end)
+        end)
+    end)()
+
+
+    Tabs.ESP:AddSection("ESP")
+    Tabs.ChangeLog:AddParagraph({
+        Title = "Change Log",
+        Content = "Can't be show"
+    })
+    credits = {
+        "Owner - ttjy.",
+        "Co Owner - ttjy_",
+        "Ui - dawid",
+        "Key system - sa.l"
+    }
+    for i, v in __U[7](credits) do
+        Tabs.Credits:AddButton({
+            Title = v,
+            Description = "",
+            Callback = function()
+                
+            end
+        })
+        wait()
+    end
+    if getgenv().Addons then
+        Tabs.Addons:AddButton({
+            Title = "Save as config",
+            Description = "",
+            Callback = function()
+                serializedSetting = game.HttpService:JSONEncode(Setting)
+                writefile("Setting/settingAnimeRoulette.json", serializedSetting)
+            end
+        })
+        Tabs.Addons:AddSection("Colorful + fun")
+        Tabs.Addons:AddButton({
+            Title = "Trail",
+            Description = "Blue->Cyan",
+            Callback = function()
+                createTrail(1)
+            end
+        })
+        Tabs.Addons:AddButton({
+            Title = "Trail",
+            Description = "Green->Light Green",
+            Callback = function()
+                createTrail(2)
+            end
+        })
+        Tabs.Addons:AddButton({
+            Title = "Trail",
+            Description = "Pink->Red",
+            Callback = function()
+                createTrail(3)
+            end
+        })
+        Tabs.Addons:AddButton({
+            Title = "Trail",
+            Description = "Purple->Light Purple",
+            Callback = function()
+                createTrail(4)
+            end
+        })
+        Tabs.Addons:AddSection("Webhook")
+        Tabs.Addons:AddSection("Nothing to hook")
+        Tabs.Addons:AddSection("Notify")
+        NotifyWhenTTJY = Tabs.Addons:AddToggle("NotifyWhenTTJY", {Title = "Notify When TTJY Join", Default = __Y[2] })
+        coroutine.wrap(function()
+            NotifyWhenTTJY:OnChanged(function()
+                if Options.NotifyWhenTTJY.Value then
+                    repeat __U[23]() until game.Players:FindFirstChild("rigga56")
+                    Notify("Script", "TTJY!!!", 5)
+                end
+            end)
+        end)()
+        Tabs.Addons:AddSection("Others")
+        Tabs.Addons:AddSection("Nothing here")
+    end
+    Tabs.Settings:AddSection("W A S D")
+    HideShow = Tabs.Settings:AddToggle("HideShow", {Title = "Hide/Show", Default = __Y[2] })
+
+    HideShow:OnChanged(function()
+        if Options.HideShow.Value then
+            game.CoreGui["InputPcToMobile"].W.Visible = __Y[2]
+            game.CoreGui["InputPcToMobile"].A.Visible = __Y[2]
+            game.CoreGui["InputPcToMobile"].S.Visible = __Y[2]
+            game.CoreGui["InputPcToMobile"].D.Visible = __Y[2]
+        else
+            game.CoreGui["InputPcToMobile"].W.Visible = __Y[1]
+            game.CoreGui["InputPcToMobile"].A.Visible = __Y[1]
+            game.CoreGui["InputPcToMobile"].S.Visible = __Y[1]
+            game.CoreGui["InputPcToMobile"].D.Visible = __Y[1]
+        end
+    end)
+    UpDown = Tabs.Settings:AddToggle("UpDown", {Title = "Up/Down", Default = __Y[2] })
+
+    UpDown:OnChanged(function()
+        if Options.UpDown.Value then
+            game.CoreGui["InputPcToMobile"].W.Position = __U[27](0.05, 0, 0.1, 0)
+            game.CoreGui["InputPcToMobile"].A.Position = __U[27](0, 0, 0.2, 0)
+            game.CoreGui["InputPcToMobile"].S.Position = __U[27](0.05, 0, 0.3, 0)
+            game.CoreGui["InputPcToMobile"].D.Position = __U[27](0.1, 0, 0.2, 0)
+        else
+            game.CoreGui["InputPcToMobile"].W.Position = __U[27](0.05, 0, 0.7, 0)
+            game.CoreGui["InputPcToMobile"].A.Position = __U[27](0, 0, 0.8, 0)
+            game.CoreGui["InputPcToMobile"].S.Position = __U[27](0.05, 0, 0.9, 0)
+            game.CoreGui["InputPcToMobile"].D.Position = __U[27](0.1, 0, 0.8, 0)
+        end
+    end)
+    BigSmall = Tabs.Settings:AddToggle("BigSmall", {Title = "Big/Small", Default = __Y[2] })
+
+    BigSmall:OnChanged(function()
+        if Options.BigSmall.Value then
+            game.CoreGui["InputPcToMobile"].W.Size = __U[27](0.1, 0, 0.1, 0)
+            game.CoreGui["InputPcToMobile"].A.Size = __U[27](0.1, 0, 0.1, 0)
+            game.CoreGui["InputPcToMobile"].S.Size = __U[27](0.1, 0, 0.1, 0)
+            game.CoreGui["InputPcToMobile"].D.Size = __U[27](0.1, 0, 0.1, 0)
+        else
+            game.CoreGui["InputPcToMobile"].W.Size = __U[27](0.05, 0, 0.05, 0)
+            game.CoreGui["InputPcToMobile"].A.Size = __U[27](0.05, 0, 0.05, 0)
+            game.CoreGui["InputPcToMobile"].S.Size = __U[27](0.05, 0, 0.05, 0)
+            game.CoreGui["InputPcToMobile"].D.Size = __U[27](0.05, 0, 0.05, 0)
+        end
+    end)
+end
+local WalkSpeedSignal
+coroutine.wrap(function()
+    while true do
+        wait(0.1)
+        
+        character = __VE["LPs"].Character
+        if character and character:FindFirstChild("Humanoid") and WalkSpeedRequest and character.Humanoid.WalkSpeed ~= tonumber(WalkSpeedSet) then
+            if WalkSpeedSignal then
+                WalkSpeedSignal:Disconnect()
+            end
+            character.Humanoid.WalkSpeed = tonumber(WalkSpeedSet)
+            WalkSpeedSignal = character.Humanoid:GetPropertyChangedSignal("WalkSpeed"):Connect(function()
+                character.Humanoid.WalkSpeed = tonumber(WalkSpeedSet)
+            end)
+        end
+    end
+end)()
+game:GetService("RunService").Heartbeat:Connect(function()
+    if __VE["LPs"].Character and __VE["LPs"].Character:FindFirstChild("Humanoid") and JumpPowerRequest then
+        __VE["LPs"].Character.Humanoid.JumpPower = tonumber(JumpPowerSet)
+    end
+end)
+local Part = Instance.new("Part")
+Part.Size = Vector3.new(2, 0.2, 1.5)
+Part.Material = Enum.Material.Grass
+Part.Anchored = true
+Part.Transparency = 1
+Part.Parent = workspace
+local function updatePartPosition()
+    character = __VE["LPs"].Character
+    local humanoidRootPart = character and character:FindFirstChild("HumanoidRootPart")
+    
+    if humanoidRootPart and Float then
+        Part.CFrame = humanoidRootPart.CFrame * CFrame.new(0, -3.1, 0)
+    else
+        Part.CFrame = CFrame.new(0, -10000, 0)
+    end
+end
+game:GetService("RunService").RenderStepped:Connect(updatePartPosition)
+local function NoclipLoop()
+	if Noclip and __VE["LPs"].Character ~= nil then
+		for _, child in pairs(__VE["LPs"].Character:GetChildren()) do
+			if child:IsA("BasePart") and child.CanCollide == true then
+				child.CanCollide = false
+			end
+		end
+	end
+	task.wait()
+end
+game:GetService("RunService").Stepped:Connect(NoclipLoop)
+task.wait(0.05)
+if allowtoserialized then
+    serializedSetting = game.HttpService:JSONEncode(Setting)
+    writefile("Setting/settingAnimeRoulette.json", serializedSetting)
+end
+task.wait(5)
+finishload = true
+getgenv().FinishLoad = true
