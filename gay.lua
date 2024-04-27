@@ -1,6 +1,4 @@
-if not getgenv().AllowToLoad then
-    game.Players.LocalPlayer:Kick("Instance Blacklist")
-end
+
 coroutine.wrap(function()
     while task.wait(0.1) do
         for _,v in pairs(game.CoreGui:GetChildren()) do
@@ -94,10 +92,7 @@ __VE["VIM"] , __VE["UIS"] = game:GetService("VirtualInputManager"), game:GetServ
 __VE["Lg"] , __VE["TS"], __VE["GMos"] = game:GetService("Lighting") ,game:GetService("TweenService") ,  game:GetService("Players").LocalPlayer:GetMouse()
 __VE["VU"],__VE["CG"] = game:GetService("VirtualUser") ,game:GetService("CoreGui")
 __VE["HS"] = game:GetService("HttpService")
-__VE["RPKSTRGB"] = game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("TitleService"):WaitForChild("RF"):WaitForChild("GetStorageBounds")
-__VE["RPKSTRGC"] = game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("TitleService"):WaitForChild("RF"):WaitForChild("GetStorageCost")
-__VE["RPKSTEB"] = game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("TitleService"):WaitForChild("RE"):WaitForChild("BuyStorage")
-CodeArgs, DailyArgs, GroupArgs, VIPArgs, UseArg = __Y[3]
+
 Float = false
 Noclip = false
 CONTROL = {F = 0, B = 0, L = 0, R = 0, Q = 0, E = 0}
@@ -114,27 +109,65 @@ if getgenv().Addons then
     if not isfolder("Setting") then
         makefolder("Setting")
     end
-    if isfolder("Setting") and not isfile("Setting/settingAnimeRoulette.json") then
+    if isfolder("Setting") and not isfile("Setting/settingFTF.json") then
         print("no file")
         Setting = {
-            AutoCollectItems = __Y[2],
-            AutoBuyStorage = __Y[2],
-            AutoClaimAchievement = __Y[2]
+            PlayerESP = __Y[2],
+        ComputersESP = __Y[2],
+        PodsESP = __Y[2],
+        ExitdoorsESP = __Y[2],
+        DoorsESP = __Y[2],
+        VentsESP = __Y[2],
+        AlwaysSuccess = __Y[2]
         }
         allowtoserialized = __Y[1]
-    elseif __U[49]("Setting") and __U[50]("Setting/settingAnimeRoulette.json") then
+    elseif __U[49]("Setting") and __U[50]("Setting/settingFTF.json") then
         __U[1]("file")
         __U[23]()
-        Setting = game.HttpService:JSONDecode(__U[51]("Setting/settingAnimeRoulette.json"))
+        Setting = game.HttpService:JSONDecode(__U[51]("Setting/settingFTF.json"))
     end
 else
     Setting = {
-        AutoCollectItems = __Y[2],
-        AutoBuyStorage = __Y[2],
-        AutoClaimAchievement = __Y[2]
+        PlayerESP = __Y[2],
+        ComputersESP = __Y[2],
+        PodsESP = __Y[2],
+        ExitdoorsESP = __Y[2],
+        DoorsESP = __Y[2],
+        VentsESP = __Y[2],
+        AlwaysSuccess = __Y[2]
     }
 end
-
+--Update Data Start
+if rawget(Setting, "ComputersESP") == nil then
+    Setting = {
+        PlayerESP = __Y[2],
+        ComputersESP = __Y[2],
+        PodsESP = __Y[2],
+        ExitdoorsESP = __Y[2],
+        DoorsESP = __Y[2],
+        VentsESP = __Y[2],
+        AlwaysSuccess = __Y[2]
+    }
+    if getgenv().Addons then
+        allowtoserialized = __Y[1]
+    end
+    game:GetService("StarterGui"):SetCore("SendNotification", {
+        Title = "Script Data",
+        Text = "Error at finding AutoCollectTempLuck.Value",
+        Duration = 5
+    })
+    game:GetService("StarterGui"):SetCore("SendNotification", {
+        Title = "Script Data",
+        Text = "Reseting...",
+        Duration = 5
+    })
+    game:GetService("StarterGui"):SetCore("SendNotification", {
+        Title = "Script Data",
+        Text = "Finish",
+        Duration = 5
+    })
+end
+--Update Data End
 local credits = {
     {Title = "Owner", Content = "ttjy."},
     {Title = "Co Owner", Content = "ttjy_"},
@@ -441,100 +474,16 @@ do
     --getgenv().TextStatus
     --getgenv().LastFuntion
     getgenv().TextStatus = "Normal Load"
-    getgenv().ScriptUpdateDate = "18/04/24"
-    Codes = {
-        "WANOISREAL",
-        "WANOHERE",
-        "ELEVENMILLION",
-        "FORTYTHOUSANDLIKES",
-        "SORRYFORTHEWAITTWO",
-        "TWENTYTHOUSANDLIKES",
-        "ESPADA",
-        "TWOMILLIONVISITS",
-        "TENTHOUSANDLIKES",
-        "ONEMILLIONVISITS",
-        "SEVENTHOUSANDLIKES",
-        "THEFINEST",
-        "Release",
-        "Showtime",
-    }
-    Tabs.Main:AddSection("Codes")
-    Tabs.Main:AddButton({Title = "Redeem All Codes", Description = "",
-        Callback = function()
-            for i = 1, 14 do
-                getgenv().LastFuntion = "Redeem All Codes"
-                CodeArgs = {
-                    [1] = Codes[i]
-                }
-                
-                game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("DataService"):WaitForChild("RF"):WaitForChild("ClaimCode"):InvokeServer(unpack(CodeArgs))
-                wait()
+    getgenv().ScriptUpdateDate = "26/04/24"
+    a0 = Tabs.Player:AddToggle("a0", {Title = "Always Hack Success", Default = Setting.AlwaysSuccess })
+    coroutine.wrap(function()
+    	a0:OnChanged(function()
+    		Setting.AlwaysSuccess = Options.a0.Value
+        	while Setting.AlwaysSuccess do task.wait()
+            	game.ReplicatedStorage.RemoteEvent:FireServer("SetPlayerMinigameResult",true)
             end
-        end
-    })
-    Tabs.Main:AddSection("Items")
-    AutoCollectItems = Tabs.Main:AddToggle("AutoCollectItems", {Title = "Auto Collect Items", Default = Setting.AutoCollectItems })
-    coroutine.wrap(function()
-        AutoCollectItems:OnChanged(function()
-            pcall(function()
-                Setting.AutoCollectItems = Options.AutoCollectItems.Value
-                while Setting.AutoCollectItems do
-                    task.wait(0.5)
-                    for _, v in pairs(__VE["WS"].World.Spawnables:GetChildren()) do
-                        if v and v:FindFirstChild("ProximityPrompt") and Setting.AutoCollectItems then
-                            if __VE["LPs"] and __VE["LPs"].Character and __VE["LPs"].Character:FindFirstChild("HumanoidRootPart") and Setting.AutoCollectItems then
-                                getgenv().LastFuntion = "AutoCollectItems"
-                                __VE["LPs"].Character.HumanoidRootPart.CFrame = v.ClickPart.CFrame
-                                task.wait(0.3)
-                                fireproximityprompt(v.ProximityPrompt)
-                            end
-                        end
-                    end
-                end
-            end)
-        end)
+    	end)
     end)()
-    AutoBuyStorage = Tabs.Main:AddToggle("AutoBuyStorage", {Title = "Auto Buy Storage", Setting.AutoBuyStorage })
-    coroutine.wrap(function()
-        AutoBuyStorage:OnChanged(function()
-            pcall(function()
-                getgenv().LastFuntion = "AutoBuyStorage"
-                Setting.AutoBuyStorage = Options.AutoBuyStorage.Value
-                while Setting.AutoBuyStorage do task.wait(0.5)
-                    __VE["RPKSTRGB"]:InvokeServer()
-                    __VE["RPKSTRGC"]:InvokeServer()
-                    __VE["RPKSTEB"]:FireServer()
-                end
-            end)
-        end)
-    end)()
-    AutoClaimAchievement = Tabs.Main:AddToggle("AutoClaimAchievement", {Title = "Auto Claim Achievement", Setting.AutoClaimAchievement })
-    coroutine.wrap(function()
-        AutoClaimAchievement:OnChanged(function()
-            pcall(function()
-                getgenv().LastFuntion = "AutoClaimAchievement"
-                Setting.AutoClaimAchievement = Options.AutoClaimAchievement.Value
-                while Setting.AutoClaimAchievement do task.wait(0.5)
-                    for _, v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.SylasGui.AchievementFrame.MainFrame.AchieveFrame.Frame.ScrollingFrame:GetChildren()) do
-                        if v:IsA("Frame") and v:FindFirstChild("Complete") and v.Complete:FindFirstChild("Title") and Setting.AutoClaimAchievement then
-                            if v.Complete.Title.Text == "CLAIMABLE" then
-                                TargetReward = v.Name
-                            
-                                game:GetService("ReplicatedStorage").Packages.Knit.Services.GoalService.RE.ClaimAchievement:FireServer(TargetReward)
-                            end
-                        end
-                    end
-                end
-            end)
-        end)
-    end)()
-    QuickRoll = Tabs.Main:AddToggle("QuickRoll", {Title = "Quick Roll", __VE["LPs"]:WaitForChild("PlayerValues"):WaitForChild("SkipRoll").Value or __Y[2] })
-    QuickRoll:OnChanged(function()
-        pcall(function()
-            getgenv().LastFuntion = "QuickRoll"
-            __VE["LPs"].PlayerValues.SkipRoll.Value = Options.QuickRoll.Value
-        end)
-    end)
     AntiAFK = Tabs.Player:AddToggle("AntiAFK", {Title = "Anti AFK", Default = __Y[2] })
     AntiAFK:OnChanged(function()
         AFK = Options.AntiAFK.Value
@@ -736,6 +685,286 @@ do
 
 
     Tabs.ESP:AddSection("ESP")
+    a1 = Tabs.ESP:AddToggle("a1", {Title = "Players", Default = Setting.PlayerESP })
+    a1:OnChanged(function()
+        Setting.PlayerESP = Options.a1.Value
+    end)
+    a2 = Tabs.ESP:AddToggle("a2", {Title = "Computers", Default = Setting.ComputersESP })
+    a2:OnChanged(function()
+        Setting.ComputersESP = Options.a2.Value
+    end)
+    a3 = Tabs.ESP:AddToggle("a3", {Title = "Pods", Default = Setting.PodsESP })
+    a3:OnChanged(function()
+        Setting.PodsESP = Options.a3.Value
+    end)
+    a4 = Tabs.ESP:AddToggle("a4", {Title = "Exit doors", Default = Setting.ExitdoorsESP })
+    a4:OnChanged(function()
+        Setting.ExitdoorsESP = Options.a4.Value
+    end)
+    a5 = Tabs.ESP:AddToggle("a5", {Title = "Doors", Default = Setting.DoorsESP })
+    a5:OnChanged(function()
+        Setting.DoorsESP = Options.a5.Value
+    end)
+    a6 = Tabs.ESP:AddToggle("a6", {Title = "Vents", Default = Setting.VentsESP })
+    a6:OnChanged(function()
+        Setting.VentsESP = Options.a6.Value
+    end)
+    Tabs.ESP:AddButton({
+        Title = "Reload",
+        Description = "",
+        Callback = function()
+            game.Lighting.FogEnd = 10000000
+
+            if workspace:findFirstChild("ESP") then
+                workspace.ESP:remove()
+            end
+
+            if workspace:findFirstChild("ESPComputer") then
+                workspace.ESPComputer:remove()
+            end
+
+            if workspace:findFirstChild("ESPPod") then
+                workspace.ESPPod:remove()
+            end
+
+            if workspace:findFirstChild("ESPExitDoor") then
+                workspace.ESPExitDoor:remove()
+            end
+
+            if workspace:findFirstChild("ESPDoors") then
+                workspace.ESPDoors:remove()
+            end
+
+            if workspace:findFirstChild("ESPVents") then
+                workspace.ESPVents:remove()
+            end
+
+
+            function GetSizeOfObject(Obj)
+                if Obj:IsA("BasePart") then
+                    return Obj.Size
+                elseif Obj:IsA("Model") then
+                    return Obj:GetExtentsSize()
+                end
+            end
+
+            local ESP = Instance.new("Folder",workspace)
+            ESP.Name = "ESP"
+
+
+
+            function CreateESPPart(BodyPart,r,g,b)
+                local ESPPartparent = BodyPart
+                local Box = Instance.new("BoxHandleAdornment")
+                Box.Size = GetSizeOfObject(ESPPartparent) + Vector3.new(0.1, 0.1, 0.1)
+                Box.Name = "ESPPart"
+                Box.Adornee = ESPPartparent
+                Box.Color3 = Color3.fromRGB(r,g,b)
+                Box.AlwaysOnTop = true
+                Box.ZIndex = 5
+                Box.Transparency = 0.4
+                Box.Parent = ESP
+                if BodyPart.Parent.Name == game.Players.LocalPlayer.Name then
+                    Box:remove()
+                    spawn(function()
+                        while task.wait(0.1) do
+                            if BodyPart ~= nil then
+                                Box:remove()
+                            end
+                        end
+                    end)
+                end
+            end
+
+
+            local player = game.Players:GetChildren()
+            for i =1, #player do
+                local bodyparts = player[i].Character:GetChildren()
+                for i =1, #bodyparts do
+                    if bodyparts[i].ClassName == "Part" then
+                        if bodyparts[i].Parent:findFirstChild("BeastPowers") then
+                            CreateESPPart(bodyparts[i],255,0,0)
+                        else
+                            CreateESPPart(bodyparts[i],170,170,255)
+                        end
+                    end
+                end
+            end
+
+
+            local ESPPC = Instance.new("Folder",workspace)
+            ESPPC.Name = "ESPComputer"
+
+            local ESPPod = Instance.new("Folder",workspace)
+            ESPPod.Name = "ESPPod"
+
+            local ESPExitDoor = Instance.new("Folder",workspace)
+            ESPExitDoor.Name = "ESPExitDoor"
+
+            local ESPDoors = Instance.new("Folder",workspace)
+            ESPDoors.Name = "ESPDoors"
+
+            local ESPVents = Instance.new("Folder",workspace)
+            ESPVents.Name = "ESPVents"
+
+
+            local map = workspace:findFirstChild(tostring(game.ReplicatedStorage.CurrentMap.Value))
+            local children = map:GetChildren()
+            for i =1, #children do
+                if children[i].Name == "ComputerTable" then 
+                    local Box = Instance.new("BoxHandleAdornment")
+                    Box.Size = GetSizeOfObject(children[i].Screen) + Vector3.new(-0.5, -0.5, -0.5)
+                    Box.Name = "ESPPart"
+                    Box.Adornee = children[i].Screen
+                    spawn(function()
+                        while task.wait(0.1) do
+                            Box.Color3 = children[i].Screen.Color
+                        end
+                    end)
+                    Box.AlwaysOnTop = true
+                    Box.ZIndex = 5
+                    Box.Transparency = 0.4
+                    Box.Parent = ESPPC
+                end
+                if children[i].Name == "FreezePod" then 
+                    local Box = Instance.new("BoxHandleAdornment")
+                    Box.Size = GetSizeOfObject(children[i].BasePart) + Vector3.new(0.1, 5, 0.1)
+                    Box.Name = "ESPPart"
+                    Box.Adornee = children[i].BasePart
+                    Box.Color3 = Color3.fromRGB(0,0,255)
+                    Box.AlwaysOnTop = true
+                    Box.ZIndex = 5
+                    Box.Transparency = 0.8
+                    Box.Parent = ESPPod
+                end
+                if children[i].Name == "ExitDoor" then 
+                    local Box = Instance.new("BoxHandleAdornment")
+                    Box.Size = GetSizeOfObject(children[i].ExitDoorTrigger) + Vector3.new(-1, 5, -1)
+                    Box.Name = "ESPPart"
+                    Box.Adornee = children[i].ExitDoorTrigger
+                    Box.Color3 = Color3.fromRGB(255,255,0)
+                    Box.AlwaysOnTop = true
+                    Box.ZIndex = 5
+                    Box.Transparency = 0.8
+                    Box.Parent = ESPExitDoor
+                end
+                if children[i].Name == "SingleDoor" then 
+                    local Box = Instance.new("BoxHandleAdornment")
+                    if children[i].Door:findFirstChild("DoorBoard") then
+                        Box.Size = GetSizeOfObject(children[i].Door.DoorBoard) + Vector3.new(0.1, 0.1, 0.1)
+                        Box.Name = "ESPPart"
+                        Box.Adornee = children[i].Door.DoorBoard
+                        Box.Color3 = Color3.fromRGB(204,142,105)
+                        Box.AlwaysOnTop = true
+                        Box.ZIndex = 5
+                        Box.Transparency = 0.8
+                        Box.Parent = ESPDoors
+                    end
+                end
+                if children[i].Name == "DoubleDoor" then 
+                    local Box = Instance.new("BoxHandleAdornment")
+                    if children[i].DoorL:findFirstChild("DoorBoard") then
+                        Box.Size = GetSizeOfObject(children[i].DoorL.DoorBoard) + Vector3.new(0.1, 0.1, 0.1)
+                        Box.Name = "ESPPart"
+                        Box.Adornee = children[i].DoorL.DoorBoard
+                        Box.Color3 = Color3.fromRGB(204,142,105)
+                        Box.AlwaysOnTop = true
+                        Box.ZIndex = 5
+                        Box.Transparency = 0.8
+                        Box.Parent = ESPDoors
+                    end
+                end
+                if children[i].Name == "DoubleDoor" then 
+                    local Box = Instance.new("BoxHandleAdornment")
+                        if children[i].DoorR:findFirstChild("DoorBoard") then
+                        Box.Size = GetSizeOfObject(children[i].DoorR.DoorBoard) + Vector3.new(0.1, 0.1, 0.1)
+                        Box.Name = "ESPPart"
+                        Box.Adornee = children[i].DoorR.DoorBoard
+                        Box.Color3 = Color3.fromRGB(204,142,105)
+                        Box.AlwaysOnTop = true
+                        Box.ZIndex = 5
+                        Box.Transparency = 0.8
+                        Box.Parent = ESPDoors
+                    end
+                end
+                if children[i].Name == "SingleDoor" then 
+                    local Box = Instance.new("BoxHandleAdornment")
+                    if children[i].Door:findFirstChild("DoorBoard") == false then
+                        Box.Size = GetSizeOfObject(children[i].Door.Part) + Vector3.new(0.1, 0.1, 0.1)
+                        Box.Name = "ESPPart"
+                        Box.Adornee = children[i].Door.Part
+                        Box.Color3 = Color3.fromRGB(204,142,105)
+                        Box.AlwaysOnTop = true
+                        Box.ZIndex = 5
+                        Box.Transparency = 0.8
+                        Box.Parent = ESPDoors
+                    end
+                end
+                if children[i].Name == "DoubleDoor" then 
+                    local Box = Instance.new("BoxHandleAdornment")
+                    if children[i].DoorR:findFirstChild("DoorBoard") == false then
+                        Box.Size = GetSizeOfObject(children[i].DoorL.Part) + Vector3.new(0.1, 0.1, 0.1)
+                        Box.Name = "ESPPart"
+                        Box.Adornee = children[i].DoorL.Part
+                        Box.Color3 = Color3.fromRGB(204,142,105)
+                        Box.AlwaysOnTop = true
+                        Box.ZIndex = 5
+                        Box.Transparency = 0.8
+                        Box.Parent = ESPDoors
+                    end
+                end
+                if children[i].Name == "DoubleDoor" then 
+                    local Box = Instance.new("BoxHandleAdornment")
+                    if children[i].DoorR:findFirstChild("DoorBoard") == false then
+                        Box.Size = GetSizeOfObject(children[i].DoorR.Part) + Vector3.new(0.1, 0.1, 0.1)
+                        Box.Name = "ESPPart"
+                        Box.Adornee = children[i].DoorR.Part
+                        Box.Color3 = Color3.fromRGB(204,142,105)
+                        Box.AlwaysOnTop = true
+                        Box.ZIndex = 5
+                        Box.Transparency = 0.8
+                        Box.Parent = ESPDoors
+                    end
+                end
+
+                if children[i].Name == "AirVent" then 
+                    local Box = Instance.new("BoxHandleAdornment")
+                    Box.Size = GetSizeOfObject(children[i].Part) + Vector3.new(4, 0.1, 4)
+                    Box.Name = "ESPPart"
+                    Box.Adornee = children[i].Part
+                    Box.Color3 = Color3.fromRGB(100,100,100)
+                    Box.AlwaysOnTop = true
+                    Box.ZIndex = 5
+                    Box.Transparency = 0.8
+                    Box.Parent = ESPVents
+                end
+            end
+
+            if Setting.PlayerESP == false then
+                workspace.ESP:remove()
+            end
+
+            if Setting.ComputersESP == false then
+                workspace.ESPComputer:remove()
+            end
+
+            if Setting.PodsESP == false then
+                workspace.ESPPod:remove()
+            end
+
+            if Setting.ExitdoorsESP == false then
+                workspace.ESPExitDoor:remove()
+            end
+
+            if Setting.DoorsESP == false then
+                workspace.ESPDoors:remove()
+            end
+
+            if Setting.VentsESP == false then
+                workspace.ESPVents:remove()
+            end
+        end
+    })
     Tabs.ChangeLog:AddParagraph({
         Title = "Change Log",
         Content = "Can't be show"
@@ -762,7 +991,7 @@ do
             Description = "",
             Callback = function()
                 serializedSetting = game.HttpService:JSONEncode(Setting)
-                writefile("Setting/settingAnimeRoulette.json", serializedSetting)
+                writefile("Setting/settingFTF.json", serializedSetting)
             end
         })
         Tabs.Addons:AddSection("Colorful + fun")
