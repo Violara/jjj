@@ -1,891 +1,1470 @@
-if not getgenv().AllowToLoad then
-    game.Players.LocalPlayer:Kick("Instance Blacklist")
+task.wait(3)
+if BedolIsRunning then
+	print([[
+		execute this for use bedol hub
+		
+		getfenv()['BedolIsRunning'] = false;
+	]])
+	return
 end
-coroutine.wrap(function()
-    while task.wait(0.1) do
-        for _,v in pairs(game.CoreGui:GetChildren()) do
-            if v.Name == "ScreenGui" and v:FindFirstChild("ImageLabel") and (v.ImageLabel.Image == "rbxassetid://6065775281" or v.ImageLabel.Visible or not v.ImageLabel.Visible) then
-                game.Players.LocalPlayer:Kick("Magic in the air")
-            end
-        end
-    end
-end)()
-repeat
-    task.wait()
-until game:IsLoaded()
-__LUABLE = {
-    ["Functions"] = loadstring(
-        game:HttpGet("https://raw.githubusercontent.com/Yumiara/Asset/main/api.lua")
-    )()
+
+local DefaultData = {
+	['Combat'] = {
+		['Auto Parry'] = false,
+		['Clash Mode'] = false,
+		['Parry Method'] = 'Normal',
+		['Auto Ability'] = false,
+		['Visaulize'] = false,
+		['AI'] = false,
+		['Clash Stack'] = 5,
+	},
+
+	['Particle'] = {
+		['No Particle'] = false,
+		['Fps'] = 60,
+	},
+
+	['Client'] = {
+		['WalkSpeed'] = 36,
+		['JumpPower'] = 50,
+		['WsToggle'] = false,
+		['JpToggle'] = false,
+		['Aimbot'] = false,
+		['Status'] = false,
+	},
+
+	["ESP"] = {
+		["Ball"] = false,
+		["Target"] = false,
+	},
+
+	['Funny'] = {
+		['Night'] = false,
+		['Sick'] = false
+	},
 }
-__U = {}
-for a = 1, #__LUABLE["Functions"] do
-    pcall(
-        function()
-            __U[a] = clonefunction(__LUABLE["Functions"][a])
-        end
-    )
-end
-__VE = {
-    ["Ps"] = game:GetService("Players"),
-    ["LPs"] = game:GetService("Players").LocalPlayer,
-    ["PsG"] = game:GetService("Players").LocalPlayer.PlayerGui
-}
-local b = {
-    ["_TTJY ASSET"] = __U[35]("ScreenGui"),
-    ["_TTJY HUB"] = __U[35]("Frame"),
-    ["_UIStroke"] = __U[35]("UIStroke"),
-    ["_UICorner"] = __U[35]("UICorner"),
-    ["_TextButton"] = __U[35]("TextButton"),
-    ["_UIStroke1"] = __U[35]("UIStroke")
-}
-b["_TTJY ASSET"].ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-b["_TTJY ASSET"].Name = "TTJY ASSET"
-b["_TTJY ASSET"].Parent = game:GetService("CoreGui")
-b["_TTJY HUB"].BackgroundColor3 = Color3.fromRGB(56.0000042617321, 56.0000042617321, 56.0000042617321)
-b["_TTJY HUB"].BackgroundTransparency = 0.4000000059604645
-b["_TTJY HUB"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-b["_TTJY HUB"].BorderSizePixel = 0
-b["_TTJY HUB"].Position = UDim2.new(0.4620000004, 0, -0.1, 0)
-b["_TTJY HUB"].Size = UDim2.new(0.0700000003, 0, 0.100000001, 0)
-b["_TTJY HUB"].ZIndex = 2
-b["_TTJY HUB"].Name = "TTJY HUB"
-b["_TTJY HUB"].Parent = b["_TTJY ASSET"]
-b["_UIStroke"].LineJoinMode = Enum.LineJoinMode.Bevel
-b["_UIStroke"].Thickness = 3
-b["_UIStroke"].Parent = b["_TTJY HUB"]
-b["_UICorner"].Parent = b["_TTJY HUB"]
-b["_TextButton"].Font = Enum.Font.SourceSans
-b["_TextButton"].Text = "TTJY HUB"
-b["_TextButton"].TextColor3 = Color3.fromRGB(0, 255, 0)
-b["_TextButton"].TextScaled = true
-b["_TextButton"].TextSize = 14
-b["_TextButton"].TextWrapped = true
-b["_TextButton"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-b["_TextButton"].BackgroundTransparency = 1
-b["_TextButton"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-b["_TextButton"].BorderSizePixel = 0
-b["_TextButton"].Size = UDim2.new(1, 0, 1, 0)
-b["_TextButton"].Parent = b["_TTJY HUB"]
-b["_UIStroke1"].LineJoinMode = Enum.LineJoinMode.Bevel
-b["_UIStroke1"].Parent = b["_TextButton"]
-TTJYHUB = b["_TextButton"]
-Fluent = __U[40](game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
-SaveManager = __U[40](game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
-InterfaceManager = __U[40](game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
-__U[6](function()
-    if Fluent and SaveManager and InterfaceManager then
-        __U[1]("No Error")
-    else
-        Fluent = __U[40](game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
-        SaveManager = __U[40](game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
-        InterfaceManager =__U[40](game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
-    end
-end)
-__X = {true, false, nil, 0, 1}
-__Y = {}
-for a = 1, #__X do
-    __U[6](
-        function()
-            __Y[a] = __X[a]
-        end
-    )
-end
-__M = {2, 3, 5, 7, 11, 13, 17, 10}
-__N = {}
-for a = 1, #__M do
-    __U[6](
-        function()
-            __N[a] = __M[a]
-        end
-    )
-end
-__VE["WS"], __VE["RuS"], __VE["RlS"] = game:GetService("Workspace"),  game:GetService("RunService"), game:GetService("ReplicatedStorage")
-__VE["VIM"], __VE["UIS"] = game:GetService("VirtualInputManager"), game:GetService("UserInputService")
-__VE["Lg"], __VE["TS"], __VE["GMos"] = game:GetService("Lighting"), game:GetService("TweenService"), game:GetService("Players").LocalPlayer:GetMouse()
-__VE["VU"], __VE["CG"] = game:GetService("VirtualUser"), game:GetService("CoreGui")
-__VE["HS"] = game:GetService("HttpService")
-__VE["IBFS"] = workspace:WaitForChild("ItemBoughtFromShop")
-originalWalkSpeed = __VE["LPs"].Character.Humanoid.WalkSpeed
-originalJumpPower = __VE["LPs"].Character.Humanoid.JumpPower
-CONTROL = {F = 0, B = 0, L = 0, R = 0, Q = 0, E = 0}
-Float = false
-Noclip = false
-cmdm = __VE["GMos"]
-speedofthevfly = 1
-speedofthefly = 1
-Setting = nil
-serializedSetting = nil
-if not isfolder("Setting") then
-    makefolder("Setting")
-end
-if isfolder("Setting") and not isfile("Setting/settingBABFT.json") then
-    print("no file")
-    Setting = {
-		autofarming = __Y[2],
-		stayatyvalue = 55,
-		aspeed = 1000,
-		antireport = __Y[2],
-		waituntil = 15,
-		CommonChest = __Y[2],
-		UncommonChest = __Y[2],
-		RareChest = __Y[2],
-		EpicChest = __Y[2],
-		LegendaryChest = __Y[2]
-	}
-    allowtoserialized = __Y[1]
-elseif __U[49]("Setting") and __U[50]("Setting/settingBABFT.json") then
-    __U[1]("file")
-    __U[23]()
-    Setting = game.HttpService:JSONDecode(__U[51]("Setting/settingBABFT.json"))
-end
-local c = {
-    {Title = "Owner", Content = "ttjy."},
-    {Title = "VIP", Content = "x2neptune - Alchemy Hub"},
-    {Title = "Co Owner", Content = "ttjy_"},
-    {Title = "Scripter", Content = "ttjy."},
-    {Title = "Scripter", Content = "ttjy_"},
-    {Title = "Scripter", Content = "x2neptune - Alchemy Hub"},
-    {Title = "Bypasser", Content = "???"},
-    {Title = "Bypasser", Content = "ttjy."},
-    {Title = "Bypasser", Content = "x2neptune - Alchemy Hub"},
-    {Title = "Key System", Content = "sa.l"},
-    {Title = "UI", Content = "dawid"}
-}
-function tpwithnewtpbyme2(xyz,speedoftpNTP)
-    local hrd = __VE["LPs"].Character.HumanoidRootPart
-    local p = hrd.Position
-    local currentPos = __U[57](p.x, p.y, p.z)
-    local targetPos = xyz.Position
-    local saveY = p.y
 
-    local direction = (targetPos - currentPos).Unit
-    local distance = (targetPos - currentPos).Magnitude
-    local steps = __U[39](distance / speedoftpNTP)
-    for i = 1, steps do
-        if not __VE["LPs"].Character:FindFirstChild("Humanoid") then
-            repeat __U[23](0.175) until __VE["LPs"].Character:FindFirstChild("Humanoid")
-        end
-        currentPos = currentPos + direction * speedoftpNTP 
-        __VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](currentPos)
-        __U[23]()
-    end
-end
-local Fluent = __U[40](game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
-local SaveManager = __U[40](game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
-local InterfaceManager = __U[40](game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
-local Window = Fluent:CreateWindow({
-    Title = "Build a boat for teasure v.UP1PV",
-    SubTitle = "by TTJY",
-    TabWidth = 110,
-    Size = UDim2.fromOffset(580, 400),
-    Acrylic = true,
-    Theme = "Dark",
-    MinimizeKey = Enum.KeyCode.LeftControl
-})
-function OnFluentChange()
-    if Window.Root.Visible then
-        TTJYHUB.TextColor3 = __U[36](0, 255, 0)
-    else
-        TTJYHUB.TextColor3 = __U[36](255, 0, 0)
-    end
-end
-local Tabs = {
-    Main = Window:AddTab({ Title = "Main", Icon = "" }),
-	AutoQuest = Window:AddTab({ Title = "Auto Quest", Icon = "" }),
-	Player = Window:AddTab({ Title = "Player", Icon = "" }),
-	asettings = Window:AddTab({ Title = "AutoFarm Settings", Icon = "settings" }),
-    Settings = Window:AddTab({ Title = "UI Settings", Icon = "settings" })
-}
-function notify(title, content)
-	if title and not content then content = title; title = "Script Service" end
-	Fluent:Notify({
-		Title = title,
-		Content = content,
-		Duration = 5
-	})
-end
+getfenv()['BedolIsRunning'] = true
 
-__U[6](
-    function()
-        Window.Root:GetPropertyChangedSignal("Visible"):Connect(OnFluentChange)
-    end
-)
-__U[6](
-    function()
-        function onButtonClick()
-            Window.Minimized = not Window.Minimized
-            Window.Root.Visible = not Window.Minimized
-        end
-        TTJYHUB.MouseButton1Click:Connect(onButtonClick)
-    end
-)
+getfenv()['BEDO_HUB'] = getfenv()['BEDO_HUB'] or DefaultData
 
-if __VE["CG"]:FindFirstChild("InputPcToMobile") then
-    __VE["CG"]:FindFirstChild("InputPcToMobile"):Destroy()
-end
-local screenGui2 = __U[35]("ScreenGui")
-screenGui2.Name = "InputPcToMobile"
-screenGui2.Parent = __VE["CG"]
-local buttonSize = UDim2.new(0.05, 0, 0.05, 0)
-local function createButton(key, position)
-    local button = __U[35]("TextButton")
-    button.Name = key
-    button.Text = key
-    button.Size = buttonSize
-    button.Position = position
-    button.BackgroundColor3 = Color3.new(0.5, 0.5, 0.5)
-    button.Parent = screenGui2
+getfenv()['BEDO_HUB'] = getfenv()['BEDO_HUB'] or {}
 
-    local isPressed = __Y[2]
-    button.MouseButton1Down:Connect(function()
-        isPressed = true
-        if key == "W" then
-            CONTROL.F = speedofthefly
-            print("W")
-        elseif key == "S" then
-            CONTROL.B = -speedofthefly
-            print("S")
-        elseif key == "A" then
-            CONTROL.L = -speedofthefly
-            print("A")
-        elseif key == "D" then
-            CONTROL.R = speedofthefly
-            print("D")
-        end
-    end)
+getfenv()['BEDO_HUB'].Combat = getfenv()['BEDO_HUB'].Combat or {}
+getfenv()['BEDO_HUB'].Particle = getfenv()['BEDO_HUB'].Particle or {}
+getfenv()['BEDO_HUB'].Client = getfenv()['BEDO_HUB'].Client or {}
+getfenv()['BEDO_HUB'].ESP = getfenv()['BEDO_HUB'].ESP or {}
+getfenv()['BEDO_HUB'].Funny = getfenv()['BEDO_HUB'].Funny or {}
 
-    button.MouseButton1Up:Connect(function()
-        isPressed = __Y[2]
-        if key == "W" then
-            CONTROL.F = 0
-        elseif key == "S" then
-            CONTROL.B = 0
-        elseif key == "A" then
-            CONTROL.L = 0
-        elseif key == "D" then
-            CONTROL.R = 0
-        end
-    end)
-end
-
--- Create buttons for W, A, S, D
-createButton("W", UDim2.new(0.05, 0, 0.1, 0))
-task.wait(1)
-createButton("A", UDim2.new(0, 0, 0.2, 0))
-task.wait(1)
-createButton("S", UDim2.new(0.05, 0, 0.3, 0))
-task.wait(1)
-createButton("D", UDim2.new(0.1, 0, 0.2, 0))
-task.wait(1)
-local Options = Fluent.Options
-local speedofthefly = 6
-local speedofthevfly =  6
-function tp(x, y, z, speed)
-	pcall(function()
-		local maxForce = __U[57](math.huge, math.huge, math.huge)
-		local velocity = __U[35]("BodyVelocity")
-		velocity.MaxForce = maxForce
-		velocity.Velocity = __U[57](0, 0, 0)
-		velocity.Parent = __VE["LPs"].Character.HumanoidRootPart
-		local targetPosition = __U[57](x, y, z)
-		local dochange = __Y[2]
-		if not speed then dochange = true end
-		while true do
-			if not Setting.autofarming then
-				velocity:Destroy()
-				break
-			end
-			local currentPos = __VE["LPs"].Character.HumanoidRootPart.Position
-			local direction = (targetPosition - currentPos).unit
-			local distance = (targetPosition - currentPos).magnitude
-			if dochange then
-				speed = Setting.aspeed
-			end
-			local distanceCheck = speed/30
-			if distance >= distanceCheck then
-				velocity.Velocity = direction * speed
-			else
-				velocity:Destroy()
-				for i = 1, 20 do
-					__VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](targetPosition)
-					__VE["LPs"].Character.HumanoidRootPart.Velocity = __U[57](0, 0, 0)
-					task.wait()
-				end
-				break
-			end
-			wait()
+local function from_base64(data)
+	local b = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'
+	data = string.gsub(data, '[^'..b..'=]', '')
+	return (data:gsub('.', function(x)
+		if (x == '=') then
+			return ''
 		end
+
+		local r,f='',(b:find(x)-1)
+		for i=6,1,-1 do
+			r=r..(f%2^i-f%2^(i-1)>0 and '1' or '0')
+		end
+		return r;
+	end):gsub('%d%d%d?%d?%d?%d?%d?%d?', function(x)
+		if (#x ~= 8) then
+			return ''
+		end
+		local c=0
+
+		for i=1,8 do
+			c=c+(x:sub(i,i)=='1' and 2^(8-i) or 0) 
+
+		end
+
+		return string.char(c)
+	end))
+end
+
+
+function ByteKey(text)
+	local Chars = 1
+
+	local numb = text:gsub('.',function(hex)
+		local byte = hex:byte()
+
+		Chars = Chars + byte
+
+		return tostring(math.ceil(byte / 2))
 	end)
+
+	local number = tonumber(numb) or 1.5
+	local obfuscation = number + #text + Chars
+
+	return obfuscation
 end
-local isfirstrun = true
-local autofarm = Tabs.Main:AddToggle("autofarm", {Title = "Auto Farm", Default = __Y[2] })
-autofarm:OnChanged(function()
-	Setting.autofarming = Options.autofarm.Value
-	if Setting.autofarming then
-		notify("Autofarm started.")
-		while task.wait() do
-			if Setting.autofarming then
-				if __VE["LPs"].Character:FindFirstChild("HumanoidRootPart") then
-					local water = __VE["WS"].BoatStages.NormalStages.CaveStage1.Water
-					local waterp = water.Position
-					local lastwater = __VE["WS"].BoatStages.NormalStages.CaveStage10.Water
-					local lastwaterp = lastwater.Position
-					local chest = __VE["WS"].BoatStages.NormalStages.TheEnd.GoldenChest.Trigger
-					local success = pcall(function()
-						__VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](waterp.x, waterp.y + Setting.stayatyvalue, waterp.z)
-						tp(lastwaterp.x, waterp.y + Setting.stayatyvalue, lastwaterp.z, nil)
-						for i = 1, 5 do
-							__VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](chest.Position.x, chest.Position.y + 20, chest.Position.z)
-							task.wait(0.05)
-							__VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](chest.Position.x, chest.Position.y, chest.Position.z)
-							task.wait(0.05)
-						end
-						__VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](chest.Position.x, chest.Position.y + 30, chest.Position.z)
-						notify("Waiting 20 seconds...")
-						task.wait(Setting.waituntil)
-					end)
-					if not success then
-						notify("ER Activated, Return to player")
-					end
+
+function Encryption(text, key)
+	local result = ""
+	local keylau = ByteKey(key)
+	local num = 1
+
+	result = text:gsub('.',function(char)
+
+		local keyChar = key:sub(1,1)
+		local encodedChar = string.char(bit32.bxor(char:byte() , keyChar:byte()))
+
+		return encodedChar
+	end)
+
+	return result:reverse()
+end
+
+
+function JSONEncode(tbl)
+	print('Running Custom JSON')
+
+	local function escape_str(str)
+		str = string.gsub(str, "([\"\\])", "\\%1")
+		str = string.gsub(str, "[\b]", "\\b")
+		str = string.gsub(str, "[\f]", "\\f")
+		str = string.gsub(str, "[\n]", "\\n")
+		str = string.gsub(str, "[\r]", "\\r")
+		str = string.gsub(str, "[\t]", "\\t")
+		return str
+	end
+
+	local function recurse(tbl)
+		local json = ""
+		local t = type(tbl)
+
+		if t == "table" then
+			json = json .. "{"
+			local isFirst = true
+			for k, v in pairs(tbl) do task.wait()
+				if not isFirst then
+					json = json .. ","
 				end
-			else
-				break
+				isFirst = false
+				json = json .. "\"" .. escape_str(tostring(k)) .. "\":"
+				json = json .. recurse(v)
 			end
-		end
-	else
-		if isfirstrun then
-			isfirstrun = __Y[2]
+			json = json .. "}"
+		elseif t == "string" then
+			json = json .. "\"" .. escape_str(tbl) .. "\""
+		elseif t == "number" or t == "boolean" then
+			json = json .. tostring(tbl)
 		else
-			notify("Autofarm Stop")
+			json = json .. "null"
+		end
+
+		return json
+	end
+
+	return recurse(tbl)
+end
+
+
+function JSONDecode(jsonString)
+	local index = 1
+	local parseObject
+	local parseNumber
+	local parseArray
+	local parseString
+
+	print('Decoding Json ...')
+
+	local function skipWhitespace()
+		while index <= #jsonString do
+			local char = jsonString:sub(index, index)
+
+			if char ~= ' ' and char ~= '\t' and char ~= '\n' and char ~= '\r' then
+				break
+			end
+
+			index = index + 1;
 		end
 	end
-end)
-Tabs.Main:AddSection("Auto Chest")
-CommonChest = Tabs.Main:AddToggle("CommonChest", {Title = "Common", Default = Setting.CommonChest })
 
-CommonChest:OnChanged(function()
-	Setting.CommonChest = Options.CommonChest.Value
-	while Options.CommonChest.Value do
-    	__VE["IBFS"]:InvokeServer("Common Chest", 1)
-		task.wait(0.1)
+	local function parseValue()
+		skipWhitespace()
+
+		local char = jsonString:sub(index, index)
+
+		if char == '{' then
+
+			return parseObject()
+		elseif char == '[' then
+
+			return parseArray()
+		elseif char == '"' then
+
+			return parseString()
+		elseif char == '-' or tonumber(char) then
+
+			return parseNumber()
+		elseif jsonString:sub(index, index + 3) == "true" then
+
+			index = index + 4;
+			return true
+		elseif jsonString:sub(index, index + 4) == "false" then
+
+			index = index + 5;
+			return false
+		elseif jsonString:sub(index, index + 3) == "null" then
+
+			index = index + 4;
+			return nil
+		else
+			error("Invalid JSON")
+		end
+	end
+
+	parseObject = function()
+		local obj = {}
+		index = index + 1
+		while true do task.wait()
+			skipWhitespace()
+
+			local char = jsonString:sub(index, index)
+
+			if char == '}' then
+
+				index = index + 1
+				break
+			elseif char == ',' then
+
+				index = index + 1
+			else
+				local key = parseString()
+
+				skipWhitespace()
+
+				if jsonString:sub(index, index) ~= ':' then
+					error("Invalid JSON")
+				end
+
+				index = index + 1
+
+				local value = parseValue()
+
+				obj[key] = value
+			end
+		end
+
+		return obj
+	end
+
+	parseArray = function()
+		local arr = {}
+
+		index = index + 1
+
+		while true do task.wait()
+
+			skipWhitespace()
+
+			local char = jsonString:sub(index, index)
+
+			if char == ']' then
+
+				index = index + 1
+				break
+			elseif char == ',' then
+
+				index = index + 1;
+			else
+
+				local value = parseValue()
+
+				table.insert(arr, value)
+			end
+		end
+
+		return arr
+	end
+
+	parseString = function()
+		index = index + 1;
+
+		local endIndex = jsonString:find('"', index, true)
+
+		if not endIndex then
+
+			error("Invalid JSON: Unterminated string")
+		end
+
+		local str = jsonString:sub(index, endIndex - 1)
+
+		index = endIndex + 1
+
+		return str;
+	end
+
+	parseNumber = function()
+		local start = index
+
+		local char = jsonString:sub(index, index)
+
+		if char == '-' then
+			index = index + 1
+		end
+
+		while tonumber(jsonString:sub(index, index)) do task.wait()
+			index = index + 1
+		end
+
+		local numStr = jsonString:sub(start, index - 1)
+
+		return tonumber(numStr)
+	end
+
+	return parseValue()
+end
+
+local GetKeyUI = loadstring(game:HttpGet("https://raw.githubusercontent.com/3345-c-a-t-s-u-s/New-C4-Remote.lua/main/Version/get_key.ws"))()
+
+local SitAnimation = "http://www.roblox.com/asset/?id=178130996"
+
+local Notification = loadstring(game:HttpGet("https://raw.githubusercontent.com/Jxereas/UI-Libraries/main/notification_gui_library.lua", true))()
+task.wait()
+
+Notification.new("success", "BEDOL HUB","[1/3] Require Https ...",true,1.5)
+task.wait()
+local LocalPlayer = game:GetService('Players').LocalPlayer
+
+local VersionEncode = game:HttpGet("https://raw.githubusercontent.com/3345-c-a-t-s-u-s/New-C4-Remote.lua/main/Version/Version_checker.ruby")
+
+local HttpService = game:GetService('HttpService')
+
+local loader = loadstring(game:HttpGet('https://raw.githubusercontent.com/3345-c-a-t-s-u-s/New-C4-Remote.lua/main/UILoading.dll'))()
+
+local NoHyper = loadstring(game:HttpGet('https://raw.githubusercontent.com/3345-c-a-t-s-u-s/NoHyperLib/main/source.dll'))()
+local AntiTim = {"H","C","A","I","T","L","A","W","E","P","R","0","i","p","e","c","q","2","m","g"}
+local current = {
+	AntiTim[1],
+	AntiTim[4],
+	AntiTim[5],
+	AntiTim[6],
+	AntiTim[9],
+	AntiTim[11]
+}
+task.wait()
+local seckey = ""
+
+for i,v in ipairs(current) do
+	seckey = seckey..v:lower()
+
+	local k = string.lower(AntiTim[math.random(1,#AntiTim)])
+
+	print("decrypt",k)
+end
+
+function randomString(length)
+	local charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+	local randomStringloader = ""
+
+	for i = 1, length do task.wait()
+		local randomIndex = math.random(1, #charset)
+		randomStringloader = randomStringloader .. string.sub(charset, randomIndex, randomIndex)
+	end
+
+	return randomStringloader
+end
+
+task.wait()
+local BedolHubFinshLoaded = false
+local SettingFileName = "BladeBall_Hazard.json"
+local Animation_init = Instance.new('Animation')
+local httprequest = (syn and syn.request) or (http and http.request) or http_request or (fluxus and fluxus.request) or request
+local DefaultWalk = 36
+local DefaultJump = 50
+local FileNameKeySystem = "BedolConfig_System.bedol.txt"
+local spoferusername = "bedol-on-top"
+local CurrentCamera = workspace.CurrentCamera
+local TweenService = game:GetService('TweenService')
+local RunService = game:GetService('RunService')
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local StatsService = game:GetService("Stats")
+local RunService = game:GetService("RunService")
+local PlayerService = game:GetService('Players')
+local AliveFolder = workspace:FindFirstChild("Alive")
+local FloatFolder = workspace:FindFirstChild("Runtime")
+local BallFolder = workspace:FindFirstChild('Balls')
+local RemoteFolders = ReplicatedStorage:WaitForChild("Remotes")
+local StoreFolder = RemoteFolders:WaitForChild("Store")
+local AbilityButtonPress = RemoteFolders:WaitForChild('AbilityButtonPress')
+local ParryAttemptEvent = game:GetService("AdService"):WaitForChild("\10\10\10\10\10\10")
+local ParryButtonPress = game:GetService("ReplicatedStorage").Remotes.ParryButtonPress
+local stealSetLook
+local realball 
+local fakeball
+local MyPosition
+local lastplayeerTarget
+local BallSpeedView = 0
+local ParryTimeNow = tick()
+local ParryLastTime = ParryTimeNow
+local ParryTimeViewr = 5
+local calaTimeClash = 0.3
+local IsLookAt = true
+local HidenCFrame = CFrame.new(-100000000000000000000000000000000,-100000000000000000000000000000000,-100000000000000000000000)
+local BedolConfig
+local SitAnimationCollect = {}
+local ESPCreation = {}
+local clipboard_Func = setclipboard or toclipboard
+local ServiceID = "bedol_serv"
+local Secta2 = "\83\65\76\95\83\69\82\86\73\67\69\95\77\74\83\95\76\67"
+local secta = "\66\69\68\79\76\45\76\79\67\75\45\67\72\73\76\68\61\90\71\86\106\98\50\82\108\73\68\48\103\101\87\57\49\73\71\70\121\90\83\66\117\97\87\100\110\89\81"
+local HidenKey = randomString(3)
+local LoopStack = {
+	Loop1 = false,
+	Loop2 = false,
+	Loop3 = false,
+	Loop4 = false,
+	Loop5 = false,
+	Loop6 = false,
+	Loop7 = false,
+	Loop8 = false,
+	Loop9 = false,
+	Loop10 = false,
+}
+
+local function LoadSetting()
+	if isfile(SettingFileName) then
+
+		print('Load Config')
+		return HttpService:JSONDecode(readfile(SettingFileName))
+	end
+
+	print('No Config Use Default')
+	return DefaultData
+end
+
+local function SaveSetting()
+	local maindata = getfenv()['BEDO_HUB'] or DefaultData
+	local Encode = HttpService:JSONEncode(maindata)
+
+	writefile(SettingFileName,tostring(Encode))
+end
+
+pcall(SaveSetting)
+
+local function gethwid()
+	local fingerprint = httprequest({
+		Url = "https://pandadevelopment.net/fingerprint",
+		Method = "GET"
+	})
+
+	if (fingerprint.Success and fingerprint.Body ~= "") then
+		return fingerprint.Body;
+	else
+		return game:GetService('RbxAnalyticsService'):GetClientId()
+	end
+end
+
+local Hwid = gethwid()
+
+pcall(function()
+	if isfile(FileNameKeySystem) then
+		BedolConfig = HttpService:JSONDecode(readfile(FileNameKeySystem))
+	else
+		writefile(FileNameKeySystem,HttpService:JSONEncode({
+			['Key'] = 'Idk',
+			["Time"] = tick()
+		}))
+
+		BedolConfig = {
+			Key = 'None',
+			Time = tick()
+		}
+
+		print("Executor can't writefile")
 	end
 end)
-UncommonChest = Tabs.Main:AddToggle("UncommonChest", {Title = "Uncommon", Default = Setting.UncommonChest })
 
-UncommonChest:OnChanged(function()
-	Setting.UncommonChest = Options.UncommonChest.Value
-	while Options.UncommonChest.Value do
-    	__VE["IBFS"]:InvokeServer("Uncommon Chest", 1)
-		task.wait(0.1)
+if not BedolConfig then
+	warn("Can't writefile bruh")
+
+	writefile(FileNameKeySystem,HttpService:JSONEncode({
+		['Key'] = 'Idk',
+		["Time"] = tick()
+	}))
+
+	BedolConfig = {
+		Key = 'None',
+		["Time"] = tick()
+	}
+end
+
+local function GetKeyLink()
+	return "https://pandadevelopment.net/getkey?service=bedol_serv&hwid="..tostring(Hwid)
+end
+
+BedolConfig.Time = BedolConfig.Time or 1
+
+local status = Instance.new("ScreenGui")
+local TextLabel = Instance.new("TextLabel")
+
+status.Name = "status"
+status.Parent = game:FindFirstChild('CoreGui')
+status.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+TextLabel.Parent = status
+TextLabel.AnchorPoint = Vector2.new(0, 1)
+TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.BackgroundTransparency = 1.000
+TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel.BorderSizePixel = 0
+TextLabel.Position = UDim2.new(0.00999995135, 0, 0.99000001, 0)
+TextLabel.Size = UDim2.new(0.990000069, 0, 0.0180651769, 0)
+TextLabel.Font = Enum.Font.GothamBold
+TextLabel.Text = "Target: realosuplayerfnf , IsClash: false , FPS: 60 , Effect: 0"
+TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.TextScaled = true
+TextLabel.TextSize = 14.000
+TextLabel.TextTransparency = 0.400
+TextLabel.TextWrapped = true
+TextLabel.TextXAlignment = Enum.TextXAlignment.Left
+
+local function ESP_UI()
+	local Esp = Instance.new("BillboardGui")
+	local Icon = Instance.new("ImageLabel")
+
+	Esp.Name = "Esp"
+	Esp.Parent = game:FindFirstChild('CoreGui') or LocalPlayer.PlayerGui
+	Esp.Active = true
+	Esp.AlwaysOnTop = true
+	Esp.LightInfluence = 1.000
+	Esp.Size = UDim2.new(5.5, 0, 5.5, 0)
+	Esp.ResetOnSpawn = false
+
+	Icon.Name = "Icon"
+	Icon.Parent = Esp
+	Icon.AnchorPoint = Vector2.new(0.5, 0.5)
+	Icon.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Icon.BackgroundTransparency = 1.000
+	Icon.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	Icon.BorderSizePixel = 0
+	Icon.Position = UDim2.new(0.5, 0, 0.5, 0)
+	Icon.Size = UDim2.new(0.899999976, 0, 0.899999976, 0)
+	Icon.Image = "rbxassetid://10928806245"
+
+	return Esp,Icon
+end
+
+local function SettupESP()
+	for i,v in ipairs(ESPCreation) do
+		if v then
+			v:Destroy()
+		end
+	end
+
+	local Esp,Image = ESP_UI()
+	local EspForPlayer,ImageForPlayer = ESP_UI()
+
+	EspForPlayer.Size = UDim2.fromScale(8,8)
+	ImageForPlayer.ImageColor3 = Color3.fromRGB(68, 255, 0)
+	Image.ImageColor3 = Color3.fromRGB(255, 0, 4)
+
+	getfenv()['ESP_UI_FOR_BALL'] = Esp 
+	getfenv()['ESP_UI_FOR_PLAYER'] = EspForPlayer 
+
+	table.insert(ESPCreation,Esp)
+	table.insert(ESPCreation,EspForPlayer)
+end
+
+task.spawn(SettupESP)
+
+Notification.new("success", "BEDOL HUB","[2/3] Loading Instances ...",true,1.5)
+
+local function DeleteEffect()
+	local childToRemove = workspace:FindFirstChild('clash') or workspace:FindFirstChild('shine')
+	if childToRemove then
+		childToRemove.Anchored = true
+		childToRemove.CFrame = CFrame.new(0,-100000000000000000000000000000000,0)
+		childToRemove.Size = Vector3.new(0,0,0)
+		childToRemove:Destroy(true)
+		childToRemove = nil
+		game:GetService("Debris"):AddItem(childToRemove, 0)
+	end
+end
+
+local IsClash = false
+local ClashText
+local Bestrender = 15
+
+local function GetPart(Color)
+	local Part = Instance.new('Part')
+
+	Part.Color = Color
+	Part.Material = Enum.Material.ForceField
+	Part.CanCollide = false
+	Part.Shape = Enum.PartType.Ball
+	Part.Anchored = true
+	Part.Parent = workspace
+	Part.CastShadow = false
+
+	return Part
+end
+
+pcall(function()
+	local ScreenGui = Instance.new("ScreenGui")
+	local TextLabel = Instance.new("TextLabel")
+
+	ScreenGui.Parent = game:FindFirstChild('CoreGui')
+	ScreenGui.ResetOnSpawn = false
+	ScreenGui.IgnoreGuiInset = true
+
+	TextLabel.Parent = ScreenGui
+	TextLabel.AnchorPoint = Vector2.new(0.5, 0)
+	TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	TextLabel.BackgroundTransparency = 1.000
+	TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	TextLabel.BorderSizePixel = 0
+	TextLabel.Position = UDim2.new(0.5, 0, 0, 0)
+	TextLabel.Size = UDim2.new(0, 377, 0, 14)
+	TextLabel.Font = Enum.Font.SourceSansBold
+	TextLabel.Text = "CLASH: 600/sec and FPS: 60"
+	TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+	TextLabel.TextScaled = true
+	TextLabel.TextSize = 14.000
+	TextLabel.TextWrapped = true
+
+	ClashText = TextLabel
+	ClashText.Visible = false
+end)
+
+local ArchPart = GetPart(Color3.fromRGB(26, 255, 0))
+local Theme = getfenv().Theme or 'bedol'
+
+Notification.new("success", "BEDOL HUB","[3/3] Loading UI ...",true,1.5)
+
+NoHyper.set_theme(Theme)
+
+pcall(SaveSetting)
+
+pcall(function()
+	local status,data = pcall(LoadSetting)
+
+	if status and data then
+		getfenv()['BEDO_HUB'] = data
 	end
 end)
-RareChest = Tabs.Main:AddToggle("RareChest", {Title = "Rare", Default = Setting.RareChest })
 
-RareChest:OnChanged(function()
-	Setting.RareChest = Options.RareChest.Value
-	while Options.RareChest.Value do
-    	__VE["IBFS"]:InvokeServer("Rare Chest", 1)
-		task.wait(0.1)
+getfenv()['BEDO_HUB'] = getfenv()['BEDO_HUB'] or {}
+getfenv()['BEDO_HUB'].Combat = getfenv()['BEDO_HUB'].Combat or {}
+getfenv()['BEDO_HUB'].Particle = getfenv()['BEDO_HUB'].Particle or {}
+getfenv()['BEDO_HUB'].Client = getfenv()['BEDO_HUB'].Client or {}
+getfenv()['BEDO_HUB'].ESP = getfenv()['BEDO_HUB'].ESP or {}
+getfenv()['BEDO_HUB'].Funny = getfenv()['BEDO_HUB'].Funny or {}
+
+local fireserver = ParryAttemptEvent.FireServer
+local Window = NoHyper.new("BLADE BALL : BETA : V1.1.4","rbxassetid://16763260622",'Hello '..LocalPlayer.DisplayName..' Welcome back! : Script By CAT_SUS : Support 40 FPS+')
+Window:NewSize(UDim2.new(0.1,430,0.1,300))
+
+Window:AddYoutube('https://www.youtube.com/@x2CAT_SUS/featured')
+Window:AddWebsite('https://bedolhub.netlify.app/')
+Window:AddDiscord('https://discord.gg/8reSB6VrW5')
+
+local General = Window:NewTab('General','earth')
+local About = Window:NewTab('About','link')
+
+local CombatStion = General:NewSection('Combat','ads','left')
+local ParticleStion = General:NewSection('Particle','option','right')
+local ClientStion = General:NewSection('Client','crown','left')
+local FunnyStion = General:NewSection('Funny','moon','right')
+local AiStion = General:NewSection('AI','cpu','right')
+local ESPStion = General:NewSection('ESP','ads','right')
+local ConactStion = About:NewSection('Contact / Report bug','wallet','left')
+local InfoStion = About:NewSection('Info','cpu','right')
+
+local function fixui()
+	FunnyStion.update()
+	ClientStion.update()
+	CombatStion.update()
+	ParticleStion.update()
+	ESPStion.update()
+
+	pcall(SaveSetting)
+end
+
+fixui()
+
+ConactStion:AddButton('Discord',function()
+	local httprequest = (syn and syn.request) or (http and http.request) or http_request or (fluxus and fluxus.request) or request
+	if httprequest then
+		httprequest({
+			Url = 'http://127.0.0.1:6463/rpc?v=1',
+			Method = 'POST',
+			Headers = {
+				['Content-Type'] = 'application/json',
+				Origin = 'https://discord.com'
+			},
+			Body = HttpService:JSONEncode({
+				cmd = 'INVITE_BROWSER',
+				nonce = HttpService:GenerateGUID(false),
+				args = {code = '8reSB6VrW5'}
+			})
+		})
 	end
-end)
-EpicChest = Tabs.Main:AddToggle("EpicChest", {Title = "Epic", Default = Setting.EpicChest })
 
-EpicChest:OnChanged(function()
-	Setting.EpicChest = Options.EpicChest.Value
-	while Options.EpicChest.Value do
-    	__VE["IBFS"]:InvokeServer("Epic Chest", 1)
-		task.wai(0.1)
+	pcall(SaveSetting)
+end)
+
+InfoStion:AddButton("Version: 1.1.4")
+InfoStion:AddButton("Beta: true")
+InfoStion:AddButton("Log: true")
+InfoStion:AddButton("Key System: true")
+InfoStion:AddButton("JobId: "..tostring(game.JobId),function()
+	clipboard_Func(tostring(game.JobId))
+	pcall(SaveSetting)
+end)
+
+AiStion:AddToggle("AI",BEDO_HUB.Combat['AI'],function(val)
+	BEDO_HUB.Combat['AI'] = val
+end)
+
+CombatStion:AddToggle('Auto Parry',BEDO_HUB.Combat['Auto Parry'],function(value)
+	BEDO_HUB.Combat['Auto Parry'] = value
+	fixui()
+end)
+
+CombatStion:AddToggle('Clash Mode',BEDO_HUB.Combat['Clash Mode'],function(value)
+	BEDO_HUB.Combat['Clash Mode'] = value
+	fixui()
+end)
+
+CombatStion:AddSlider('Clash Stack',{Min = 1,Max = 10,Default = BEDO_HUB.Combat["Clash Stack"] or DefaultData.Combat["Clash Stack"],ValueT = 'Lv'},function(v)
+	BEDO_HUB.Combat["Clash Stack"] = v
+end)
+
+CombatStion:AddDropdown('Method',{'Normal','Teleport','Follow'},BEDO_HUB.Combat['Parry Method'],function(value)
+	BEDO_HUB.Combat['Parry Method'] = value
+	fixui()
+end)
+
+CombatStion:AddToggle('Auto Ability',BEDO_HUB.Combat['Auto Ability'],function(value)
+	BEDO_HUB.Combat['Auto Ability'] = value
+	fixui()
+
+	pcall(SaveSetting)
+end)
+
+ESPStion:AddToggle('ESP Ball',BEDO_HUB.ESP['Ball'],function(value)
+	BEDO_HUB.ESP['Ball'] = value
+
+	pcall(SaveSetting)
+end)
+
+
+ESPStion:AddToggle('ESP Target',BEDO_HUB.ESP['Target'],function(value)
+	BEDO_HUB.ESP['Target'] = value
+
+	pcall(SaveSetting)
+end)
+
+
+CombatStion:AddToggle('Visaulize Part',BEDO_HUB.Combat['Visaulize'],function(val)
+	BEDO_HUB.Combat['Visaulize'] = val
+	fixui()
+
+	pcall(SaveSetting)
+end)
+
+CombatStion:AddButton('Fucking Clash',function()
+	_G.StartFuckingClash()
+end)
+
+ParticleStion:AddToggle('No Particle',BEDO_HUB.Particle['No Particle'],function(v)
+	BEDO_HUB.Particle['No Particle'] = v
+
+	pcall(SaveSetting)
+end)
+
+ParticleStion:AddSlider('FPS',{Min = 5,Max = 144,Default = BEDO_HUB.Particle['Fps'] or DefaultData.Particle.Fps,ValueT = 's'},function(v)
+	BEDO_HUB.Particle['Fps'] = v
+	setfpscap(v)
+end)
+
+ClientStion:AddToggle("Enable",BEDO_HUB['Client']['WsToggle'],function(val)
+	BEDO_HUB['Client']['WsToggle'] = val
+
+	if not val then
+		task.wait()
+		LocalPlayer.Character:FindFirstChildWhichIsA('Humanoid').WalkSpeed = DefaultWalk
 	end
-end)
-LegendaryChest = Tabs.Main:AddToggle("LegendaryChest", {Title = "Legendary", Default = Setting.LegendaryChest })
 
-LegendaryChest:OnChanged(function()
-	Setting.LegendaryChest = Options.LegendaryChest.Value
-	while Options.LegendaryChest.Value do
-    	__VE["IBFS"]:InvokeServer("Legendary Chest", 1)
-		task.wai(0.1)
+	pcall(SaveSetting)
+end)
+
+ClientStion:AddSlider('WalkSpeed',{Min = 5,Max = 100,Default = BEDO_HUB['Client']['WalkSpeed'] or DefaultData.Client.WalkSpeed,ValueT = '%'},function(cc)
+	BEDO_HUB['Client']['WalkSpeed'] = cc
+end)
+
+ClientStion:AddToggle("Enable",BEDO_HUB['Client']['JpToggle'],function(val)
+	BEDO_HUB['Client']['JpToggle'] = val
+
+	if not val then
+		task.wait()
+		LocalPlayer.Character:FindFirstChildWhichIsA('Humanoid').JumpPower = DefaultJump
 	end
+
+	pcall(SaveSetting)
 end)
 
-Tabs.AutoQuest:AddSection("Simple Scriptz")
-Tabs.AutoQuest:AddButton({
-	Title = "Cloud",
-	Description = "WARNINN, THE SCRIPT WILL CLEAR ALL BLOCKS",
-	Callback = function()
-        pcall(function()
-            workspace.QuestMakerEvent:FireServer(0)
-            task.wait(0.5)
-            ResetRequest = 0
-            teamColor = game.Players.LocalPlayer.Team.TeamColor.Name
-            teamZone = teamColor.."Zone"
-            workspace.ClearAllPlayersBoatParts:FireServer()
-            task.wait(0.5)
-			print("START")
-            workspace.QuestMakerEvent:FireServer(1)
-            repeat
-				workspace.QuestMakerEvent:FireServer(1)
-                ResetRequest = ResetRequest + 1
-                task.wait(0.1) 
-            until ResetRequest == 20000 or (workspace[tostring(teamZone)]:FindFirstChild("Quest") and workspace[tostring(teamZone)].Quest:FindFirstChild("Cloud") and workspace[tostring(teamZone)].Quest.Cloud:FindFirstChild("Part2"))
-            __VE["LPs"].Character.HumanoidRootPart.CFrame = workspace[tostring(teamZone)].Quest.Cloud.Part2.CFrame
-        end)
+ClientStion:AddSlider('JumpPower',{Min = 5,Max = 450,Default = BEDO_HUB['Client']['JumpPower'] or DefaultData.Client.JumpPower,ValueT = '%'},function(cc)
+	BEDO_HUB['Client']['JumpPower'] = cc
+
+	pcall(SaveSetting)
+end)
+
+ClientStion:AddToggle('Status',BEDO_HUB['Client'].Status,function(cc)
+	BEDO_HUB['Client'].Status = cc
+	fixui()
+end)
+
+FunnyStion:AddToggle('Gaming chair',BEDO_HUB['Funny'].Sick,function(val)
+	BEDO_HUB['Funny'].Sick = val
+end)
+
+FunnyStion:AddButton("Launch",function()
+	if IsLaunchFuncMode then
+		Notification.new("warning", "BEDOL HUB",'...',true,1.5)
+		return
+	end
+
+	Notification.new("warning", "BEDOL HUB",'Launch: Blade Ball funny (lag)',true,1.5)
+
+	getfenv().IsLaunchFuncMode = true
+
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/3345-c-a-t-s-u-s/-beta-/main/BladeBall_Troll.lua"))()
+end)
+
+Notification.new("success", "BEDOL HUB","Loaded!",true,1.5)
+
+local old 
+old = hookmetamethod(game, "__namecall", function(self, ...)
+	local namecall = getnamecallmethod()
+	if namecall == "FireServer" then
+		local arges = {...}
+
+		if tostring(self) == "SetLook" then
+			stealSetLook = arges[1]
+		end
+
+		if tostring(self) == "RemoteEvent" then
+			return wait(9e9)
+		end
+	end
+
+	if namecall == "Kick" then
+		return wait(9e9)
+	end
+
+	return old(self,...)
+end)
+
+local function getPing()
+	return StatsService.Network.ServerStatsItem["Data Ping"]:GetValue()
+end
+
+local function ExecuteParry()
+	fireserver(ParryAttemptEvent,unpack(ParryData))
+end
+
+_G.StartFuckingClash = function()
+    for i=1,100 do task.wait()
+        task.spawn(ExecuteParry)
     end
-})
-Tabs.AutoQuest:AddButton({
-	Title = "Target",
-	Description = "WARNINN, THE SCRIPT WILL CLEAR ALL BLOCKS",
-	Callback = function()
-        pcall(function()
-            workspace.QuestMakerEvent:FireServer(0)
-            task.wait(0.5)
-            ResetRequest = 0
-            teamColor = game.Players.LocalPlayer.Team.TeamColor.Name
-            teamZone = teamColor.."Zone"
-            workspace.ClearAllPlayersBoatParts:FireServer()
-            task.wait(0.5)
-            workspace.QuestMakerEvent:FireServer(2)
-            repeat
-				workspace.QuestMakerEvent:FireServer(2)
-                ResetRequest = ResetRequest + 1
-                task.wait(0.1) 
-            until ResetRequest == 20000 or (workspace[tostring(teamZone)]:FindFirstChild("Quest") and workspace[tostring(teamZone)].Quest:FindFirstChild("Target") and workspace[tostring(teamZone)].Quest.Target:FindFirstChild("Part"))
-            __VE["LPs"].Character.HumanoidRootPart.CFrame = workspace[tostring(teamZone)].Quest.Target.Part.CFrame
-        end)
-    end
-})
-Tabs.AutoQuest:AddButton({
-	Title = "Ramp",
-	Description = "WARNINN, THE SCRIPT WILL CLEAR ALL BLOCKS",
-	Callback = function()
-        pcall(function()
-            workspace.QuestMakerEvent:FireServer(0)
-			task.wait(0.5)
-			ResetRequest = 0
-			teamColor = game.Players.LocalPlayer.Team.TeamColor.Name
-			teamZone = teamColor.."Zone"
-			workspace.ClearAllPlayersBoatParts:FireServer()
-			task.wait(0.5)
-			workspace.QuestMakerEvent:FireServer(3)
-			repeat
-				workspace.QuestMakerEvent:FireServer(3)
-				ResetRequest = ResetRequest + 1
-				task.wait(0.1) 
-			until ResetRequest == 20000 or (workspace[tostring(teamZone)]:FindFirstChild("Quest") and workspace[tostring(teamZone)].Quest:FindFirstChild("Ramp") and workspace[tostring(teamZone)].Quest.Ramp:FindFirstChild("Part"))
-			for _, v in pairs(workspace[tostring(teamZone)].Quest.Ramp:GetChildren()) do
-				if v and v:FindFirstChild("TouchInterest") and v.Name ~= "Lava" then
-					__VE["LPs"].Character.HumanoidRootPart.CFrame = v.CFrame
+end
+
+local function GetBallFuture(start)
+	if realball then
+		start = start
+		return realball.Position + (Vector3.new(realball.Velocity.X,0,realball.Velocity.Z) / start)
+	end
+end
+
+local function getallPlayerData()
+	local events = {}
+
+	for i,v in ipairs(PlayerService:GetPlayers()) do task.wait()
+		if v.Character.Parent.Name == "Alive" then
+			events[v.Name] = CurrentCamera:WorldToScreenPoint(v.Character.HumanoidRootPart.Position)
+		end
+	end
+
+	PlayerCollection = events
+end
+
+local function get_dstance(target)
+	local maxunp = 150
+	local oldayper = LocalPlayer.Character:FindFirstChild('HumanoidRootPart').Velocity
+
+	if not target then
+		return (LocalPlayer.Character:FindFirstChild('HumanoidRootPart').Position - (oldayper / maxunp))
+	end
+
+	local distance = ((LocalPlayer.Character:FindFirstChild('HumanoidRootPart').Position - (oldayper / maxunp)) - target).Magnitude
+
+	return distance
+end
+
+local function RootPart()
+	return (LocalPlayer.Character and LocalPlayer.Character:FindFirstChild('HumanoidRootPart')) 
+end
+
+local function BALL_IS_LOOK_AT(Ball)
+	local Object = LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+	local BallFuturePosition = (Ball.Position + (Vector3.new(Ball.Velocity.X,0,Ball.Velocity.Z) / 3))
+	local Distance = Object and (Object.Position - realball.Position)
+	local Look = (CFrame.lookAt(Ball.Position,BallFuturePosition)).LookVector
+	local DotProduct = Distance.Unit:Dot(Look)
+
+	if (BallFuturePosition - Object.Position).Magnitude <= (BallSpeedView / 1.25) then
+		return true
+	end
+
+	if IsClash then
+		return true
+	end
+
+	if DotProduct >= 0.1 or (realball:GetAttribute('target') == tostring(LocalPlayer) and Distance.Magnitude <= 30) then 
+		return true
+	end
+
+	return false
+end
+
+local function IsWalkBetter(target)
+	local rootpart = RootPart()
+	local veloci = rootpart.Velocity / 6
+	local Normal = rootpart.Position
+	local feture = Normal + Vector3.new(veloci.X,0,veloci.Z)
+	local dis1 = (target - Normal).Magnitude
+	local dis2 = (target - feture).Magnitude
+
+	if dis1 < dis2 then
+		return false
+	else
+		return true
+	end
+end
+
+local function Updateball()
+	local valls = BallFolder:GetChildren()
+	for i,v in ipairs(valls) do task.wait()
+		if v:GetAttribute('realBall') == true then
+
+			if v:GetAttribute('RBX') then
+				v:SetAttribute('RBX',true)
+
+				local lastername = ""
+
+				if _G.Signaltarget then
+					_G.Signaltarget:Disconnect()
+				end
+
+				_G.Signaltarget = v:GetAttributeChangedSignal("target"):Connect(function()
+					if v and tostring(v:GetAttribute('target')) ~= tostring(LocalPlayer) and v:GetAttribute('target') ~= spoferusername then
+						lastplayeerTarget = PlayerService:FindFirstChild(v:GetAttribute('target')) or AliveFolder:FindFirstChild(v:GetAttribute('target'))
+					else
+						local BallDistance = get_dstance(v.Position)
+
+						if BallDistance <= 10 and IsLookAt then
+							if BEDO_HUB.Combat['Auto Parry'] then
+								ExecuteParry()
+							end
+						end
+
+					end
+
+
+				end)
+			end
+
+			realball = v
+		else
+			fakeball = v
+
+			if MainFunction then
+				if not v:GetAttribute('RBX') then
+					v:SetAttribute('RBX',true)
+
+					if _G.SignalPosition then
+						_G.SignalPosition:Disconnect()
+					end
+
+					_G.SignalPosition = v:GetPropertyChangedSignal('Position'):Connect(MainFunction)
 				end
 			end
-        end)
-    end
-})
-Tabs.AutoQuest:AddButton({
-	Title = "Find Me",
-	Description = "WARNINN, THE SCRIPT WILL CLEAR ALL BLOCKS",
-	Callback = function()
-        pcall(function()
-            workspace.QuestMakerEvent:FireServer(0)
-            task.wait(0.5)
-            ResetRequest = 0
-            teamColor = game.Players.LocalPlayer.Team.TeamColor.Name
-            teamZone = teamColor.."Zone"
-            workspace.ClearAllPlayersBoatParts:FireServer()
-            task.wait(0.5)
-            workspace.QuestMakerEvent:FireServer(4)
-            repeat
-				workspace.QuestMakerEvent:FireServer(4)
-                ResetRequest = ResetRequest + 1
-                task.wait(0.1) 
-            until ResetRequest == 20000 or (workspace[tostring(teamZone)]:FindFirstChild("Quest") and workspace[tostring(teamZone)].Quest:FindFirstChild("Butter") and workspace[tostring(teamZone)].Quest.Butter:FindFirstChild("PPart"))
-            repeat
-				__VE["LPs"].Character.HumanoidRootPart.CFrame = workspace[tostring(teamZone)].Quest.Butter.PPart.CFrame
-                fireclickdetector(workspace[tostring(teamZone)].Quest.Butter.PPart.ClickDetector, 5)
-				task.wait(0.1)
-            until not workspace[tostring(teamZone)].Quest:FindFirstChild("Butter") or (workspace[tostring(teamZone)].Quest:FindFirstChild("Butter") and not workspace[tostring(teamZone)].Quest.Butter:FindFirstChild("PPart"))
-        end)
-    end
-})
-Tabs.AutoQuest:AddButton({
-	Title = "Thin Ice",
-	Description = "WARNINN, THE SCRIPT WILL CLEAR ALL BLOCKS",
-	Callback = function()
-        pcall(function()
-            workspace.QuestMakerEvent:FireServer(0)
-            task.wait(0.5)
-            ResetRequest = 0
-            teamColor = game.Players.LocalPlayer.Team.TeamColor.Name
-            teamZone = teamColor.."Zone"
-            workspace.ClearAllPlayersBoatParts:FireServer()
-            task.wait(0.5)
-            workspace.QuestMakerEvent:FireServer(9)
-            repeat
-				workspace.QuestMakerEvent:FireServer(9)
-                ResetRequest = ResetRequest + 1
-                task.wait(0.1) 
-            until ResetRequest == 20000 or (workspace[tostring(teamZone)]:FindFirstChild("Quest") and workspace[tostring(teamZone)].Quest:FindFirstChild("ThinIce"))
-            workspace[tostring(teamZone)].VoteLaunchRE:FireServer()
-			Setting.autofarming = true
-            task.wait(0.5)
-			pcall(function()
-				if __VE["LPs"].Character:FindFirstChild("HumanoidRootPart") then
-					local water = __VE["WS"].BoatStages.NormalStages.CaveStage1.Water
-					local waterp = water.Position
-					local lastwater = __VE["WS"].BoatStages.NormalStages.CaveStage10.Water
-					local lastwaterp = lastwater.Position
-					local chest = __VE["WS"].BoatStages.NormalStages.TheEnd.GoldenChest.Trigger
-					local success = pcall(function()
-						__VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](waterp.x, waterp.y + Setting.stayatyvalue, waterp.z)
-						tp(lastwaterp.x, waterp.y + Setting.stayatyvalue, lastwaterp.z, nil)
-						for i = 1, 5 do
-							__VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](chest.Position.x, chest.Position.y + 20, chest.Position.z)
-							task.wait(0.05)
-							__VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](chest.Position.x, chest.Position.y, chest.Position.z)
-							task.wait(0.05)
-						end
-						__VE["LPs"].Character.HumanoidRootPart.CFrame = __U[26](chest.Position.x, chest.Position.y + 30, chest.Position.z)
-						task.wait(Setting.waituntil)
-					end)
-					if not success then
-						notify("ER Activated, Return to player")
+		end
+	end
+
+	if #valls <= 0 then
+		IsClash = false
+	end
+end
+
+task.spawn(function()
+	while true do task.wait()
+		pcall(function()
+			if not ESP_UI_FOR_BALL or not ESP_UI_FOR_PLAYER then
+				SettupESP()
+			end
+
+			if BEDO_HUB.ESP['Ball'] then
+				if realball and ESP_UI_FOR_BALL then
+					ESP_UI_FOR_BALL.Adornee = realball
+					ESP_UI_FOR_BALL.Parent = realball
+				end
+			end
+
+			if BEDO_HUB.ESP['Target'] then
+				if ESP_UI_FOR_PLAYER and realball then
+					local name = realball:GetAttribute('target')
+
+					if AliveFolder:FindFirstChild(name) then
+						ESP_UI_FOR_PLAYER.Adornee = AliveFolder:FindFirstChild(name):FindFirstChild('HumanoidRootPart')
+						ESP_UI_FOR_PLAYER.Parent = workspace.Camera
 					end
 				end
-			end)
-			Setting.autofarming = false
-        end)
-    end
-})
-WaterGodmode = Tabs.Player:AddToggle("WaterGodmode", {Title = "Water Godmode", Default = __Y[2] })
-WaterGodmode:OnChanged(function()
-	if Options.WaterGodmode.Value then
-		for _, v in pairs(__VE["WS"]:GetDescendants()) do
-			if v and v:IsA("BasePart") and v.Name == "Water" then
-				v.CanTouch = false
 			end
-		end
+		end)
 	end
 end)
-AntiAFK = Tabs.Player:AddToggle("AntiAFK", {Title = "Anti AFK", Default = __Y[2] })
-AntiAFK:OnChanged(function()
-	AFK = Options.AntiAFK.Value
+
+task.spawn(function()
+	local fixuit = tick() + 7;
+
+	while true do task.wait()	
+		pcall(function()
+			getallPlayerData()
+
+			ParryData = {
+				tonumber(1.5),
+
+				stealSetLook,
+
+				PlayerCollection,
+				{
+
+					CurrentCamera.ViewportSize.X / 2,
+					CurrentCamera.ViewportSize.Y / 2
+
+				},
+
+				false,
+			}
+
+		end) 
+	end
 end)
-coroutine.wrap(function()
-	__VE["LPs"].Idled:connect(function()
-		if AFK then
-			print("1")
-			__VE["VU"]:CaptureController()
-			__VE["VU"]:ClickButton2(Vector2.new())
-			task.wait(2)
+
+
+spawn(function() -- Clash Function
+	task.wait()
+
+	fixui()
+
+	local perframe = 0
+	local precheck = tick()
+
+	local function ClashLoop(types)
+		if IsClash then
+			ExecuteParry()
+		end
+
+		ClashText.Visible = BEDO_HUB.Combat['Clash Mode']
+
+		if tick() >= precheck then
+			ClashText.Text = "CLASH FRAMES: "..tostring(perframe).." | FPS: "..tostring(UserFPS or "nil").." | IS CLASH: "..tostring(IsClash).." | CLASH LEVEL: "..tostring(BEDO_HUB.Combat["Clash Stack"])
+			precheck = tick() + 1
+			perframe = 0
+		end
+
+		perframe += 1
+	end
+
+	game:GetService('RunService').RenderStepped:Connect(function()
+		LoopStack.Loop1 = true
+		ClashLoop("Loop1")
+		LoopStack.Loop1 = false
+	end)
+
+	game:GetService('RunService').Stepped:Connect(function()
+		if not LoopStack.Loop1 then
+			LoopStack.Loop2 = true
+			ClashLoop("Loop2")
+			LoopStack.Loop2 = false
 		end
 	end)
-end)()
 
-FloatT = Tabs.Player:AddToggle("FloatT", {Title = "Float", Default = __Y[2] })
-FloatT:OnChanged(function()
-	Float = Options.FloatT.Value
-end)
-NoClipT = Tabs.Player:AddToggle("NoClipT", {Title = "Noclip", Default = __Y[2] })
-NoClipT:OnChanged(function()
-	Noclip = Options.NoClipT.Value
-end)
-local FLysss = Tabs.Player:AddToggle("FLysss", {Title = "Fly", Default = __Y[2] })
-
-FLysss:OnChanged(function()
-	if Options.FLysss.Value then
-		FLYING = Options.FLysss.Value
-		while not __VE["LPs"] or not __VE["LPs"].Character or not __VE["LPs"].Character:FindFirstChild('HumanoidRootPart') or not __VE["LPs"].Character:FindFirstChild('Humanoid') or not cmdm do
-			wait()
+	game:GetService('RunService').Heartbeat:Connect(function()
+		if not LoopStack.Loop2 and not LoopStack.Loop1 and BEDO_HUB.Combat["Clash Stack"] >= 2 then
+			LoopStack.Loop3 = true
+			ClashLoop("Loop3")
+			LoopStack.Loop3 = false
 		end
+	end)
 
-		local T = __VE["LPs"].Character.HumanoidRootPart
-		local SPEED = 0
+	game:GetService('RunService').PostSimulation:Connect(function()
+		if not LoopStack.Loop3 and not LoopStack.Loop2 and not LoopStack.Loop1 and BEDO_HUB.Combat["Clash Stack"] >= 3 then
+			LoopStack.Loop4 = true
+			ClashLoop("Loop4")
+			LoopStack.Loop4 = false
+		end
+	end)
 
-		function FLY()
-			local BG = __U[35]('BodyGyro', T)
-			local BV = __U[35]('BodyVelocity', T)
-			BG.P = 9e4
-			BG.maxTorque = __U[57](9e9, 9e9, 9e9)
-			BG.cframe = T.CFrame
-			BV.velocity = __U[57](0, 0, 0)
-			BV.maxForce = __U[57](9e9, 9e9, 9e9)
+	game:GetService('RunService').PreRender:Connect(function()
+		if not LoopStack.Loop4 and not LoopStack.Loop3 and not LoopStack.Loop2 and not LoopStack.Loop1 and BEDO_HUB.Combat["Clash Stack"] >= 4 then
+			LoopStack.Loop5 = true
+			ClashLoop("Loop5")
+			LoopStack.Loop5 = false
+		end
+	end)
 
-			spawn(function()
-				while FLYING do
-					if CONTROL.L + CONTROL.R ~= 0 or CONTROL.F + CONTROL.B ~= 0 or CONTROL.Q + CONTROL.E ~= 0 then
-						SPEED = 50
-					elseif not (CONTROL.L + CONTROL.R ~= 0 or CONTROL.F + CONTROL.B ~= 0 or CONTROL.Q + CONTROL.E ~= 0) and SPEED ~= 0 then
-						SPEED = 0
-					end
-
-					if (CONTROL.L + CONTROL.R) ~= 0 or (CONTROL.F + CONTROL.B) ~= 0 or (CONTROL.Q + CONTROL.E) ~= 0 then
-						BV.velocity = ((__VE["WS"].CurrentCamera.CoordinateFrame.lookVector * (CONTROL.F + CONTROL.B)) + ((__VE["WS"].CurrentCamera.CoordinateFrame * __U[26](CONTROL.L + CONTROL.R, (CONTROL.F + CONTROL.B + CONTROL.Q + CONTROL.E) * 0.2, 0).p) - __VE["WS"].CurrentCamera.CoordinateFrame.p)) * SPEED
-					else
-						BV.velocity = __U[57](0, 0, 0)
-					end
-
-					BG.cframe = __VE["WS"].CurrentCamera.CoordinateFrame
-					wait()
+	spawn(function()
+		while true do game:GetService('RunService').Heartbeat:Wait()
+			pcall(function()
+				if not LoopStack.Loop5 and not LoopStack.Loop4 and not LoopStack.Loop3 and not LoopStack.Loop2 and not LoopStack.Loop1 and BEDO_HUB.Combat["Clash Stack"] >= 5 then
+					LoopStack.Loop6 = true
+					ClashLoop("Loop6")
+					LoopStack.Loop6 = false
 				end
-
-				CONTROL = {F = 0, B = 0, L = 0, R = 0, Q = 0, E = 0}
-				SPEED = 0
-
-				BG:Destroy()
-				BV:Destroy()
-				__VE["LPs"].Character.Humanoid.PlatformStand = __Y[2]
 			end)
 		end
+	end)
 
-		cmdm.KeyDown:connect(function(KEY)
-			if KEY:lower() == 'w' then
-				if vfly then
-					CONTROL.F = speedofthevfly
-				else
-					CONTROL.F = speedofthefly
+	spawn(function()
+		while true do game:GetService('RunService').RenderStepped:Wait()
+			pcall(function()
+				if not LoopStack.Loop6 and not LoopStack.Loop5 and not LoopStack.Loop4 and not LoopStack.Loop3 and not LoopStack.Loop2 and not LoopStack.Loop1 and BEDO_HUB.Combat["Clash Stack"] >= 6 then
+					LoopStack.Loop7 = true
+					ClashLoop("Loop7")
+					LoopStack.Loop7 = false
 				end
-			elseif KEY:lower() == 's' then
-				if vfly then
-					CONTROL.B = -speedofthevfly
-				else
-					CONTROL.B = -speedofthefly
-				end
-			elseif KEY:lower() == 'a' then
-				if vfly then
-					CONTROL.L = -speedofthevfly
-				else
-					CONTROL.L = -speedofthefly
-				end
-			elseif KEY:lower() == 'd' then
-				if vfly then
-					CONTROL.R = speedofthevfly
-				else
-					CONTROL.R = speedofthefly
-				end
-			elseif KEY:lower() == 'y' then
-				if vfly then
-					CONTROL.Q = speedofthevfly * 2
-				else
-					CONTROL.Q = speedofthefly * 2
-				end
-			elseif KEY:lower() == 't' then
-				if vfly then
-					CONTROL.E = -speedofthevfly * 2
-				else
-					CONTROL.E = -speedofthefly * 2
-				end
-			end
-		end)
+			end)
+		end
+	end)
 
-		cmdm.KeyUp:connect(function(KEY)
-			if KEY:lower() == 'w' then
-				CONTROL.F = 0
-			elseif KEY:lower() == 's' then
-				CONTROL.B = 0
-			elseif KEY:lower() == 'a' then
-				CONTROL.L = 0
-			elseif KEY:lower() == 'd' then
-				CONTROL.R = 0
-			elseif KEY:lower() == 'y' then
-				CONTROL.Q = 0
-			elseif KEY:lower() == 't' then
-				CONTROL.E = 0
-			end
-		end)
+	spawn(function()
+		while true do game:GetService('RunService').Stepped:Wait()
+			pcall(function()
+				if not LoopStack.Loop7 and not LoopStack.Loop6 and not LoopStack.Loop5 and not LoopStack.Loop4 and not LoopStack.Loop3 and not LoopStack.Loop2 and not LoopStack.Loop1 and BEDO_HUB.Combat["Clash Stack"] >= 7 then
+					LoopStack.Loop8 = true
+					ClashLoop("Loop8")
+					LoopStack.Loop8 = false
+				end
+			end)
+		end
+	end)
 
-		FLY()
-	else
-		FLYING = Options.FLysss.Value
-	end
-end)
-local afspeed = Tabs.asettings:AddSlider("afspeed", {
-	Title = "Autofarm Speed",
-	Description = "Changes the Autofarm Speed",
-	Default = Setting.aspeed,
-	Min = 100,
-	Max = 10000,
-	Rounding = 0,
-	Callback = function(Value)
-		Setting.aspeed = Value
-	end
-})
+	spawn(function()
+		while true do game:GetService('RunService').PostSimulation:Wait()
+			pcall(function()
+				if not LoopStack.Loop8 and not LoopStack.Loop7 and not LoopStack.Loop6 and not LoopStack.Loop5 and not LoopStack.Loop4 and not LoopStack.Loop3 and not LoopStack.Loop2 and not LoopStack.Loop1 and BEDO_HUB.Combat["Clash Stack"] >= 8 then
+					LoopStack.Loop9 = true
+					ClashLoop("Loop9")
+					LoopStack.Loop9 = false
+				end
+			end)
+		end
+	end)
 
-afspeed:OnChanged(function(Value)
-	Setting.aspeed = Value
+	spawn(function()
+		while true do task.wait()
+			pcall(function()
+				if not LoopStack.Loop9 and not LoopStack.Loop8 and not LoopStack.Loop7 and not LoopStack.Loop6 and not LoopStack.Loop5 and not LoopStack.Loop4 and not LoopStack.Loop3 and not LoopStack.Loop2 and not LoopStack.Loop1 and BEDO_HUB.Combat["Clash Stack"] >= 9 then
+					LoopStack.Loop10 = true
+					ClashLoop("Loop10")
+					LoopStack.Loop10 = false
+				end
+
+				if lastplayeerTarget then
+					local distance = get_dstance(lastplayeerTarget.Position)
+
+					calaTimeClash = math.clamp((95 / distance),0,1.1)
+				end
+			end)
+		end
+	end)
 end)
 
-local stayat = Tabs.asettings:AddSlider("stayat", {
-	Title = "Stay at Y Value",
-	Description = "Stays at the given Y Value (height)",
-	Default = Setting.stayatyvalue,
-	Min = 55,
-	Max = 100,
-	Rounding = 0,
-	Callback = function(Value)
-		Setting.stayatyvalue = Value
-	end
-})
-local wai = Tabs.asettings:AddSlider("wai", {
-	Title = "Wait until AutoFarm starts again",
-	Description = "Waits ... seconds until AutoFarm starts again",
-	Default = Setting.waituntil,
-	Min = 10,
-	Max = 60,
-	Rounding = 0,
-	Callback = function(Value)
-		Setting.waituntil = Value
-	end
-})
+local function GetCD()
+	local ParryOffset = LocalPlayer.PlayerGui:WaitForChild('Hotbar'):WaitForChild('Block'):WaitForChild('UIGradient')
 
-wai:OnChanged(function(Value)
-	Setting.waituntil = Value
-end)
-local pfly = Tabs.Player:AddSlider("pfly", {
-	Title = "Fly Speed",
-	Description = "",
-	Default = 6,
-	Min = 1,
-	Max = 50,
-	Rounding = 0,
-	Callback = function(Value)
-		speedofthefly = Value
-		speedofthevfly = Value
+	if not ParryOffset:GetAttribute('RBX') then
+		ParryOffset:SetAttribute('RBXd',true)
 	end
-})
 
-local walk = Tabs.Player:AddSlider("walk", {
-	Title = "WalkSpeed",
-	Description = "Changes the WalkSpeed of the Player",
-	Default = 16,
-	Min = 16,
-	Max = 1000,
-	Rounding = 0,
-	Callback = function(Value)
-		__VE["LPs"].Character.Humanoid.WalkSpeed = Value
-	end
-})
-walk:OnChanged(function(Value)
-	__VE["LPs"].Character.Humanoid.WalkSpeed = Value
-end)
-local jump = Tabs.Player:AddSlider("jump", {
-	Title = "JumpPower",
-	Description = "Changes the JumpPower of the Player",
-	Default = 50,
-	Min = 50,
-	Max = 1000,
-	Rounding = 0,
-	Callback = function(Value)
-		__VE["LPs"].Character.Humanoid.JumpPower = Value
-	end
-})
-jump:OnChanged(function(Value)
-	__VE["LPs"].Character.Humanoid.JumpPower = Value
-end)
-
-Tabs.Settings:AddButton({
-	Title = "Save as config",
-	Description = "",
-	Callback = function()
-		serializedSetting = game.HttpService:JSONEncode(Setting)
-		writefile("Setting/settingBABFT.json", serializedSetting)
-    end
-})
-Tabs.Settings:AddSection("W A S D Buttons")
-Tabs.Settings:AddButton({
-	Title = "Big Button",
-	Description = "",
-	Callback = function()
-		__VE["CG"]["InputPcToMobile"].W.Size = UDim2.new(0.1, 0, 0.1, 0)
-		__VE["CG"]["InputPcToMobile"].A.Size = UDim2.new(0.1, 0, 0.1, 0)
-		__VE["CG"]["InputPcToMobile"].S.Size = UDim2.new(0.1, 0, 0.1, 0)
-		__VE["CG"]["InputPcToMobile"].D.Size = UDim2.new(0.1, 0, 0.1, 0)
-	end
-})
-Tabs.Settings:AddButton({
-	Title = "Small Button",
-	Description = "",
-	Callback = function()
-		__VE["CG"]["InputPcToMobile"].W.Size = UDim2.new(0.05, 0, 0.05, 0)
-		__VE["CG"]["InputPcToMobile"].A.Size = UDim2.new(0.05, 0, 0.05, 0)
-		__VE["CG"]["InputPcToMobile"].S.Size = UDim2.new(0.05, 0, 0.05, 0)
-		__VE["CG"]["InputPcToMobile"].D.Size = UDim2.new(0.05, 0, 0.05, 0)
-	end
-})
-Tabs.Settings:AddButton({
-	Title = "Up",
-	Description = "",
-	Callback = function()
-		__VE["CG"]["InputPcToMobile"].W.Position = UDim2.new(0.05, 0, 0.1, 0)
-		__VE["CG"]["InputPcToMobile"].A.Position = UDim2.new(0, 0, 0.2, 0)
-		__VE["CG"]["InputPcToMobile"].S.Position = UDim2.new(0.05, 0, 0.3, 0)
-		__VE["CG"]["InputPcToMobile"].D.Position = UDim2.new(0.1, 0, 0.2, 0)
-	end
-})
-Tabs.Settings:AddButton({
-	Title = "Down",
-	Description = "",
-	Callback = function()
-		__VE["CG"]["InputPcToMobile"].W.Position = UDim2.new(0.05, 0, 0.7, 0)
-		__VE["CG"]["InputPcToMobile"].A.Position = UDim2.new(0, 0, 0.8, 0)
-		__VE["CG"]["InputPcToMobile"].S.Position = UDim2.new(0.05, 0, 0.9, 0)
-		__VE["CG"]["InputPcToMobile"].D.Position = UDim2.new(0.1, 0, 0.8, 0)
-	end
-})
-Tabs.Settings:AddButton({
-	Title = "Hide",
-	Description = "",
-	Callback = function()
-		__VE["CG"]["InputPcToMobile"].W.Visible = __Y[2]
-		__VE["CG"]["InputPcToMobile"].A.Visible = __Y[2]
-		__VE["CG"]["InputPcToMobile"].S.Visible = __Y[2]
-		__VE["CG"]["InputPcToMobile"].D.Visible = __Y[2]
-	end
-})
-Tabs.Settings:AddButton({
-	Title = "Show",
-	Description = "",
-	Callback = function()
-		__VE["CG"]["InputPcToMobile"].W.Visible = true
-		__VE["CG"]["InputPcToMobile"].A.Visible = true
-		__VE["CG"]["InputPcToMobile"].S.Visible = true
-		__VE["CG"]["InputPcToMobile"].D.Visible = true
-	end
-})
-
-
-local Part = Instance.new("Part")
-Part.Size = Vector3.new(2, 0.2, 1.5)
-Part.Material = Enum.Material.Grass
-Part.Anchored = true
-Part.Transparency = 1
-Part.Parent = workspace
-local function updatePartPosition()
-    local character = __VE["LPs"].Character
-    local humanoidRootPart = character and character:FindFirstChild("HumanoidRootPart")
-    
-    if humanoidRootPart and Float then
-        Part.CFrame = humanoidRootPart.CFrame * CFrame.new(0, -3.1, 0)
-    else
-        Part.CFrame = CFrame.new(0, -10000, 0)
-    end
+	return ParryOffset.Offset.Y
 end
-game:GetService("RunService").RenderStepped:Connect(updatePartPosition)
-local function NoclipLoop()
-	if Noclip and __VE["LPs"].Character ~= nil then
-		for _, child in pairs(__VE["LPs"].Character:GetChildren()) do
-			if child:IsA("BasePart") and child.CanCollide == true then
-				child.CanCollide = false
+
+LocalPlayer.CharacterAdded:Connect(function()
+	IsClash = false;
+	calaTimeClash = 0.3;
+end)
+
+local updateball = tick() + 0.4
+local MyParryTime = tick()
+local sickfelay = tick() + 0.15
+
+local function __main__()
+	if tick() > updateball then
+		task.spawn(Updateball)
+		updateball = tick()
+	end
+
+	if LocalPlayer.Character then
+		MyPosition = RootPart().Position
+	end
+
+	if realball and fakeball and BEDO_HUB.Combat['Auto Parry'] and realball:FindFirstChild('zoomies') then
+		local ping = tonumber(getPing()) 
+		local cd = GetCD()
+		local BallSpeedReal = realball.zoomies.VectorVelocity.Magnitude
+		local RealBallSpeed = math.max(BallSpeedReal / math.clamp((500 / ping),0,3.15), 15.5)
+		local BallPosition = GetBallFuture(45)
+		local OldVelo = get_dstance()
+		local BallDistance = get_dstance(BallPosition)
+
+		local IsCurrectCD = tonumber(cd) > -0.25 or tonumber(cd) == -0.5
+
+		BallSpeedView = RealBallSpeed
+
+		if BEDO_HUB.Combat['Visaulize'] then
+			ArchPart.CFrame = CFrame.new(OldVelo)
+			ArchPart.Size = Vector3.new(RealBallSpeed,RealBallSpeed,RealBallSpeed)
+		else
+			ArchPart.CFrame = CFrame.new(MyPosition) * CFrame.new(0,-10000000000000,0)
+			ArchPart.Size = Vector3.new(0,0,0)
+		end
+
+		if tonumber(ping) <= 450 then
+			IsLookAt = BALL_IS_LOOK_AT(realball)
+		else 
+			IsLookAt = true
+		end
+
+		if BEDO_HUB.Combat['Auto Ability'] then
+			if tonumber(cd) <= -0.25 and tonumber(cd) ~= -0.5 then
+				AbilityButtonPress:Fire()
+			end
+		end
+
+		if BallSpeedReal <= 0.5 then
+			if realball:GetAttribute('target') == spoferusername then
+				task.spawn(realball.SetAttribute,realball,'target',tostring(LocalPlayer))
+			end
+		end
+
+		if BEDO_HUB.Combat['Parry Method'] == "Normal" then
+			if BallDistance <= RealBallSpeed then
+				if not IsClash then
+					ArchPart.Color = Color3.fromRGB(255, 0, 0)
+				end
+
+				if (realball:GetAttribute('target') == tostring(LocalPlayer)) and BallSpeedReal > 0 and IsLookAt then
+
+					task.spawn(realball.SetAttribute,realball,'target',spoferusername)
+					ExecuteParry()
+
+					MyParryTime = tick()
+
+				end
+			else
+				if not IsClash then
+					ArchPart.Color = Color3.fromRGB(26, 255, 0)
+				end
+
+				if PlayerService:FindFirstChild(realball:GetAttribute('target')) then
+					local Player = PlayerService:FindFirstChild(realball:GetAttribute('target'))
+					local character = Player.Character
+
+					if character:FindFirstChild("HumanoidRootPart"):FindFirstChildWhichIsA('BasePart') then
+						local Position = character:FindFirstChild("HumanoidRootPart").Position
+						local Distance = get_dstance(Position)
+
+						if Distance <= (RealBallSpeed / 2) and (tick() - MyParryTime <= (calaTimeClash + 0.1)) and IsWalkBetter(Position) then
+							ExecuteParry()
+							MyParryTime = tick()
+						end
+					end
+				end
+			end
+
+			CurrentCamera.CameraSubject = LocalPlayer.Character:FindFirstChildWhichIsA('Humanoid')
+
+		elseif BEDO_HUB.Combat['Parry Method'] == "Teleport"  then
+			if realball:GetAttribute('target') == tostring(LocalPlayer) and BallSpeedReal >= 0.5 and IsLookAt then
+				RootPart().CFrame = realball.CFrame
+
+				task.spawn(ExecuteParry)
+				task.spawn(realball.SetAttribute,realball,'target',spoferusername)
+			end
+
+			CurrentCamera.CameraSubject = LocalPlayer.Character:FindFirstChildWhichIsA('Humanoid')
+		else
+			local size = {-15,15}
+			local X = size[math.random(1,2)];
+			local Y = 15;
+			local Z = size[math.random(1,2)];
+
+			if IsCurrectCD then
+				RootPart().CFrame = realball.CFrame * CFrame.new(X,Y,Z)
+			else
+				RootPart().CFrame = realball.CFrame * CFrame.new(0,20,0)
+			end
+
+			if realball:GetAttribute('target') == tostring(LocalPlayer) and BallSpeedReal >= 0.5 and (tonumber(cd) > -0.25 or tonumber(cd) == -0.5) then
+				ExecuteParry()
+				task.spawn(realball.SetAttribute,realball,'target',spoferusername)
+			end
+
+			CurrentCamera.CameraSubject = fakeball or (LocalPlayer.Character and LocalPlayer.Character:FindFirstChildWhichIsA('Humanoid'))
+		end
+
+		if ParryTimeViewr <= calaTimeClash and BallSpeedReal >= 0.5 and BallDistance <= (RealBallSpeed / 1.1) then
+			if tick() <= (ParryTimeNow + calaTimeClash + 0.1) then
+				IsClash = true
+			else
+				IsClash = false
+			end
+		else
+			IsClash = false
+		end
+
+		if IsClash then
+			ArchPart.Color = Color3.fromRGB(136, 0, 255)
+
+			if BEDO_HUB.Combat['AI'] then
+				local ran = Vector3.new(math.random(-5,5),math.random(-5,5),math.random(-5,5))
+				LocalPlayer.Character:FindFirstChildWhichIsA('Humanoid'):MoveTo(BallPosition + ran)
+				LocalPlayer.Character:FindFirstChildWhichIsA('Humanoid').Jump = true
+			end
+		else
+			if BEDO_HUB.Combat['AI'] then
+				if BallDistance >= 60 then
+					local ran = Vector3.new(math.random(-5,5),math.random(-5,5),math.random(-5,5))
+					LocalPlayer.Character:FindFirstChildWhichIsA('Humanoid'):MoveTo(BallPosition + ran)
+				end
+			end
+		end
+	else
+		if LocalPlayer.Character then
+			CurrentCamera.CameraSubject = LocalPlayer.Character:FindFirstChildWhichIsA('Humanoid')
+		end
+	end
+
+	if LocalPlayer.Character then
+		if BEDO_HUB['Client']['WsToggle'] then
+			LocalPlayer.Character:FindFirstChildWhichIsA('Humanoid').WalkSpeed = BEDO_HUB['Client']['WalkSpeed']
+		end
+
+		if BEDO_HUB['Client']['JpToggle'] then
+			LocalPlayer.Character:FindFirstChildWhichIsA('Humanoid').JumpPower = BEDO_HUB['Client']['JumpPower']
+		end
+
+		if BEDO_HUB['Funny'].Sick then
+			if not SitAnimationCollect[LocalPlayer.Character:FindFirstChild('Humanoid')] then
+				Animation_init.AnimationId = SitAnimation
+				SitAnimationCollect[LocalPlayer.Character:FindFirstChild('Humanoid')] = LocalPlayer.Character:FindFirstChildWhichIsA('Humanoid'):LoadAnimation(Animation_init)
+				SitAnimationCollect[LocalPlayer.Character:FindFirstChild('Humanoid')].Priority = Enum.AnimationPriority.Action4
+			else
+				if not SitAnimationCollect[LocalPlayer.Character:FindFirstChild('Humanoid')].IsPlaying then
+					SitAnimationCollect[LocalPlayer.Character:FindFirstChild('Humanoid')]:Play(0.1)
+				end
+			end
+		else
+			if SitAnimationCollect[LocalPlayer.Character:FindFirstChild('Humanoid')] then
+				SitAnimationCollect[LocalPlayer.Character:FindFirstChild('Humanoid')]:Stop(0.1)
+			end
+		end
+
+	end
+
+	if BEDO_HUB['Client'].Status then
+		status.Enabled = true
+		local target = realball:GetAttribute('target')
+		local fps 
+
+		if UserFPS then
+			if UserFPS <= 15 then
+				fps = tostring(UserFPS).." (BAD)"
+			elseif UserFPS <= 30 then
+				fps = tostring(UserFPS).." (okay)"
+			elseif UserFPS <= 45 then
+				fps = tostring(UserFPS).." (Good)"
+			elseif UserFPS <= 60 then
+				fps = tostring(UserFPS).." (Very Good)"
+			else
+				fps = tostring(UserFPS).." (🗣️ 60+)"
+			end
+		else
+			fps = "Loading"
+		end
+
+		TextLabel.Text = "		Target: "..tostring(target)..' , Clash: '..tostring(IsClash)..' , FPS: '..tostring(fps)
+	else
+		status.Enabled = false
+	end
+
+	if BEDO_HUB.Particle['No Particle'] then
+		if LocalPlayer.Character:FindFirstChild('HumanoidRootPart') then
+			local part = LocalPlayer.Character:FindFirstChild('HumanoidRootPart'):FindFirstChildWhichIsA('BasePart')
+
+			if part and part.Name == "SlashEffect" then
+				part.Anchored = true
+				part.CFrame = HidenCFrame
 			end
 		end
 	end
-	task.wait()
 end
-game:GetService("RunService").Stepped:Connect(NoclipLoop)
-task.wait(0.05)
-if allowtoserialized then
-    serializedSetting = game.HttpService:JSONEncode(Setting)
-    writefile("Setting/settingBABFT.json", serializedSetting)
-end
-task.wait(5)
-finishload = true
-getgenv().FinishLoad = true
-warn("Simple Showcase TBC")
+
+
+task.spawn(function()
+	BedolHubFinshLoaded = true
+
+	local fps = 60
+	local wal = tick()
+	local frames = 0
+
+	RunService.RenderStepped:Connect(__main__)
+
+	RunService.RenderStepped:Connect(function()
+		if tick() > wal then
+			getfenv()['UserFPS'] = frames
+			frames = 0
+			wal = tick() + 1
+
+		else
+			frames += 1
+		end
+	end)
+
+	local destroy = game.Destroy
+
+	workspace.ChildAdded:Connect(function(child)
+		if BEDO_HUB.Particle['No Particle'] then
+			local call = tostring(child)
+
+			if call == "clash" or call == "shine" then
+				child.Anchored = true
+				child.CFrame = HidenCFrame
+				child.Size = Vector3.new(1,1,1)
+				child = nil
+			end
+		end
+	end)
+
+	getfenv()['MainFunction'] = __main__
+end)
+
+-- Clash
+
+RemoteFolders.ParrySuccessAll.OnClientEvent:Connect(function(a1,MyCharacter)
+	if LocalPlayer.Character:FindFirstChild('HumanoidRootPart') == MyCharacter then
+		ParryTimeNow = tick()
+		ParryTimeViewr = (ParryTimeNow - ParryLastTime)
+		ParryLastTime = ParryTimeNow 
+	end
+end)
