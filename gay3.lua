@@ -328,7 +328,7 @@ local Notification = loadstring(game:HttpGet("https://raw.githubusercontent.com/
 task.wait()
 
 Notification.new("success", "BEDOL HUB","[1/3] Require Https ...",true,1.5)
-task.wait()
+task.wait(0.1)
 local LocalPlayer = game:GetService('Players').LocalPlayer
 
 local VersionEncode = game:HttpGet("https://raw.githubusercontent.com/3345-c-a-t-s-u-s/New-C4-Remote.lua/main/Version/Version_checker.ruby")
@@ -336,7 +336,7 @@ local VersionEncode = game:HttpGet("https://raw.githubusercontent.com/3345-c-a-t
 local HttpService = game:GetService('HttpService')
 
 local loader = loadstring(game:HttpGet('https://raw.githubusercontent.com/3345-c-a-t-s-u-s/New-C4-Remote.lua/main/UILoading.dll'))()
-
+task.wait(0.1)
 local NoHyper = loadstring(game:HttpGet('https://raw.githubusercontent.com/3345-c-a-t-s-u-s/NoHyperLib/main/source.dll'))()
 local AntiTim = {"H","C","A","I","T","L","A","W","E","P","R","0","i","p","e","c","q","2","m","g"}
 local current = {
@@ -347,7 +347,7 @@ local current = {
 	AntiTim[9],
 	AntiTim[11]
 }
-task.wait()
+task.wait(0.1)
 local seckey = ""
 
 for i,v in ipairs(current) do
@@ -370,7 +370,7 @@ function randomString(length)
 	return randomStringloader
 end
 
-task.wait()
+task.wait(0.1)
 local BedolHubFinshLoaded = false
 local SettingFileName = "BladeBall_Hazard.json"
 local Animation_init = Instance.new('Animation')
@@ -426,7 +426,7 @@ local LoopStack = {
 	Loop9 = false,
 	Loop10 = false,
 }
-
+task.wait(0.1)
 local function LoadSetting()
 	if isfile(SettingFileName) then
 
@@ -461,7 +461,7 @@ local function gethwid()
 end
 
 local Hwid = gethwid()
-
+task.wait(0.2)
 pcall(function()
 	if isfile(FileNameKeySystem) then
 		BedolConfig = HttpService:JSONDecode(readfile(FileNameKeySystem))
@@ -572,9 +572,9 @@ local function SettupESP()
 end
 
 task.spawn(SettupESP)
-
+task.wait(0.3)
 Notification.new("success", "BEDOL HUB","[2/3] Loading Instances ...",true,1.5)
-
+task.wait(0.3)
 local function DeleteEffect()
 	local childToRemove = workspace:FindFirstChild('clash') or workspace:FindFirstChild('shine')
 	if childToRemove then
@@ -711,7 +711,7 @@ ConactStion:AddButton('Discord',function()
 	pcall(SaveSetting)
 end)
 
-InfoStion:AddButton("Version: 1.1.4")
+InfoStion:AddButton("Version: UP0VS")
 InfoStion:AddButton("Beta: true")
 InfoStion:AddButton("Log: true")
 InfoStion:AddButton("Key System: true")
@@ -748,6 +748,9 @@ CombatStion:AddToggle('Auto Ability',BEDO_HUB.Combat['Auto Ability'],function(va
 	fixui()
 
 	pcall(SaveSetting)
+end)
+CombatStion:AddToggle('Auto Fucking Clash (TTJY Hub)',false,function(value)
+	SPR_Func = value
 end)
 
 ESPStion:AddToggle('ESP Ball',BEDO_HUB.ESP['Ball'],function(value)
@@ -1422,7 +1425,7 @@ local function __main__()
 	end
 end
 
-
+task.wait()
 task.spawn(function()
 	BedolHubFinshLoaded = true
 
@@ -1471,37 +1474,68 @@ RemoteFolders.ParrySuccessAll.OnClientEvent:Connect(function(a1,MyCharacter)
 	end
 end)
 
-BREAKER = false
-RunService.Heartbeat:Connect(function()
-	if lastplayeerTarget then
-		local distance129 = get_dstance(lastplayeerTarget.Position)
-		if not IsClash or distance129 >= 20 then
-			BREAKER = true
-		elseif IsClash and realball and realball.zoomies.VectorVelocity.Magnitude >= 500 then
-			repeat
-				TROUBLEPING = true
-				task.wait(6)
-				TROUBLEPING = false
-			until not realball or not IsClash or distance129 >= 20
-			TROUBLEPING = false
-		else
-			BREAKER = false
-			TROUBLEPING = false
-		end
-	end
-end)
-RunService.RenderStepped:Connect(function()
-	local valls = BallFolder:GetChildren()
-	for i,v in ipairs(valls) do task.wait()
-		if v:GetAttribute('realBall') == true then
-			local BallDistance = get_dstance(v.Position)
-			if BallDistance <= 50 and IsClash and not BREAKER and realball and realball:FindFirstChild("zoomies") and realball.zoomies.VectorVelocity and realball.zoomies.VectorVelocity.Magnitude >= 28 and not TROUBLEPING then
-				for i=1,50 do task.wait()
-					if BREAKER then break end
-					if TROUBLEPING then break end
-					task.spawn(ExecuteParry)
+local RHC
+local RRC
+while task.wait(0.5) do
+	if SPR_Func then
+		BREAKER = false
+		DO_IT = false
+		if RHC == nil then
+			RHC = RunService.Heartbeat:Connect(function()
+				if lastplayeerTarget then
+					local distance129 = get_dstance(lastplayeerTarget.Position)
+					if UserFPS <= 20 and (distance129 >= 10 or distance129 >= 15) then
+						DO_IT = true
+					else
+						local distance127 = get_dstance(lastplayeerTarget.Position)
+						if distance127 <= 6 then
+							DO_It = true
+						else
+							DO_IT = false
+							if not IsClash or distance129 >= 15 then
+								BREAKER = true
+							elseif IsClash and realball and realball.zoomies.VectorVelocity.Magnitude >= 700 then
+								repeat
+									TROUBLEPING = true
+									task.wait(6)
+									TROUBLEPING = false
+								until not realball or not IsClash or distance129 >= 15
+								TROUBLEPING = false
+							else
+								BREAKER = false
+								TROUBLEPING = false
+							end
+						end
+					end
 				end
+			end)
+		end
+		if RRC == nil then
+			RRC = RunService.RenderStepped:Connect(function()
+				local valls = BallFolder:GetChildren()
+				for i,v in ipairs(valls) do task.wait()
+					if v:GetAttribute('realBall') == true then
+						local BallDistance = get_dstance(v.Position)
+						if (BallDistance <= 15 and IsClash and not BREAKER and realball and realball:FindFirstChild("zoomies") and realball.zoomies.VectorVelocity and realball.zoomies.VectorVelocity.Magnitude >= 28 and not TROUBLEPING) or DO_IT then
+							warn("CLASH")
+							for i=1,50 do task.wait()
+								if BREAKER and not DO_IT then break end
+								if TROUBLEPING and not DO_IT then break end
+								task.spawn(ExecuteParry)
+							end
+						end
+					end
+				end
+			end)
+		end
+	else
+		if not SPR_Func then
+			if RHC then
+				RHC:Disconnect()
+			end
+			if RRC then
+				RRC:Disconnect()
 			end
 		end
 	end
-end)
+end
