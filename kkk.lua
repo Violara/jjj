@@ -1479,14 +1479,14 @@ RunService.Heartbeat:Connect(function()
 		if UserFPS <= 20 and (distance129 >= 10 or distance129 >= 15) then
 			DO_IT = true
 		else
-			if not IsClash or distance129 >= 20 then
+			if not IsClash or distance129 >= 15 then
 				BREAKER = true
 			elseif IsClash and realball and realball.zoomies.VectorVelocity.Magnitude >= 500 then
 				repeat
 					TROUBLEPING = true
 					task.wait(6)
 					TROUBLEPING = false
-				until not realball or not IsClash or distance129 >= 20
+				until not realball or not IsClash or distance129 >= 15
 				TROUBLEPING = false
 			else
 				BREAKER = false
@@ -1500,7 +1500,7 @@ RunService.RenderStepped:Connect(function()
 	for i,v in ipairs(valls) do task.wait()
 		if v:GetAttribute('realBall') == true then
 			local BallDistance = get_dstance(v.Position)
-			if (BallDistance <= 50 and IsClash and not BREAKER and realball and realball:FindFirstChild("zoomies") and realball.zoomies.VectorVelocity and realball.zoomies.VectorVelocity.Magnitude >= 28 and not TROUBLEPING) or DO_IT then
+			if (BallDistance <= 15 and IsClash and not BREAKER and realball and realball:FindFirstChild("zoomies") and realball.zoomies.VectorVelocity and realball.zoomies.VectorVelocity.Magnitude >= 28 and not TROUBLEPING) or DO_IT then
 				for i=1,50 do task.wait()
 					if BREAKER and not DO_IT then break end
 					if TROUBLEPING and not DO_IT then break end
