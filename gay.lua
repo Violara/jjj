@@ -1476,64 +1476,85 @@ end)
 
 local RHC
 local RRC
-while task.wait() do
-	if SPR_Func then
-		BREAKER = false
-		DO_IT = false
-		if RHC == nil then
-			RHC = RunService.Heartbeat:Connect(function()
-				if lastplayeerTarget then
-					local distance129 = get_dstance(lastplayeerTarget.Position)
-					if UserFPS <= 20 and (distance129 >= 10 or distance129 >= 15) then
-						DO_IT = true
-					else
-						local distance127 = get_dstance(lastplayeerTarget.Position)
-						if distance127 <= 6 then
-							DO_It = true
-						else
-							DO_IT = false
-							if not IsClash or distance129 >= 15 then
-								BREAKER = true
-							elseif IsClash and realball and realball.zoomies.VectorVelocity.Magnitude >= 700 then
-								repeat
-									TROUBLEPING = true
-									task.wait(6)
-									TROUBLEPING = false
-								until not realball or not IsClash or distance129 >= 15
-								TROUBLEPING = false
+task.spawn(function()
+	while task.wait(0.5) do
+		pcall(function()
+			if SPR_Func then
+				BREAKER = false
+				DO_IT = false
+				if RHC == nil then
+					RHC = RunService.Heartbeat:Connect(function()
+						if lastplayeerTarget then
+							local distance129 = get_dstance(lastplayeerTarget.Position)
+							if UserFPS <= 20 and (distance129 >= 10 or distance129 >= 15) then
+								DO_IT = true
 							else
-								BREAKER = false
-								TROUBLEPING = false
+								local distance127 = get_dstance(lastplayeerTarget.Position)
+								if distance127 <= 6 then
+									DO_It = true
+								else
+									DO_IT = false
+									if not IsClash or distance129 >= 15 then
+										BREAKER = true
+									elseif IsClash and realball and realball.zoomies.VectorVelocity.Magnitude >= 700 then
+										repeat
+											TROUBLEPING = true
+											task.wait(6)
+											TROUBLEPING = false
+										until not realball or not IsClash or distance129 >= 15
+										TROUBLEPING = false
+									else
+										BREAKER = false
+										TROUBLEPING = false
+									end
+								end
 							end
 						end
-					end
+					end)
 				end
-			end)
-		end
-		if RRC == nil then
-			RunService.RenderStepped:Connect(function()
-				local valls = BallFolder:GetChildren()
-				for i,v in ipairs(valls) do task.wait()
-					if v:GetAttribute('realBall') == true then
-						local BallDistance = get_dstance(v.Position)
-						if (BallDistance <= 15 and IsClash and not BREAKER and realball and realball:FindFirstChild("zoomies") and realball.zoomies.VectorVelocity and realball.zoomies.VectorVelocity.Magnitude >= 28 and not TROUBLEPING) or DO_IT then
-							warn("CLASH")
-							for i=1,50 do task.wait()
-								if BREAKER and not DO_IT then break end
-								if TROUBLEPING and not DO_IT then break end
-								task.spawn(ExecuteParry)
+				if RRC == nil then
+					RRC = RunService.RenderStepped:Connect(function()
+						local valls = BallFolder:GetChildren()
+						for i,v in ipairs(valls) do task.wait()
+							if v:GetAttribute('realBall') == true then
+								local BallDistance = get_dstance(v.Position)
+								if (BallDistance <= 15 and IsClash and not BREAKER and realball and realball:FindFirstChild("zoomies") and realball.zoomies.VectorVelocity and realball.zoomies.VectorVelocity.Magnitude >= 28 and not TROUBLEPING) or DO_IT then
+									for i=1,100 do task.wait()
+										if BREAKER and not DO_IT then break end
+										if TROUBLEPING and not DO_IT then break end
+										task.spawn(ExecuteParry)
+									end
+								end
 							end
 						end
+					end)
+				end
+			else
+				if not SPR_Func then
+					if RHC then
+						RHC:Disconnect()
+					end
+					if RRC then
+						RRC:Disconnect()
 					end
 				end
-			end)
-		end
-	else
-		if RHC then
-			RHC:Disconnect()
-		end
-		if RRC then
-			RRC:Disconnect()
-		end
+			end
+		end)
 	end
-end
+end)
+AllowSQR = false
+RunService.Heartbeat:Connect(function()
+	pcall(function()
+		local distance129 = get_dstance(lastplayeerTarget.Position)
+		if UserFPS <= 30 and (distance129 >= 10 or distance129 >= 15) and realball.zoomies.VectorVelocity.Magnitude >= 30 then
+			AllowSQR = true
+		else
+			AllowSQR = false
+		end
+	end)
+end)
+RunService.Heartbeat:Connect(function()
+	if AllowSQR then
+		task.spawn(ExecuteParry)
+	end
+end)
