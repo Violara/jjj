@@ -1,3 +1,4 @@
+task.wait(3)
 if BedolIsRunning then
 	print([[
 		execute this for use bedol hub
@@ -324,9 +325,10 @@ local GetKeyUI = loadstring(game:HttpGet("https://raw.githubusercontent.com/3345
 local SitAnimation = "http://www.roblox.com/asset/?id=178130996"
 
 local Notification = loadstring(game:HttpGet("https://raw.githubusercontent.com/Jxereas/UI-Libraries/main/notification_gui_library.lua", true))()
+task.wait()
 
 Notification.new("success", "BEDOL HUB","[1/3] Require Https ...",true,1.5)
-
+task.wait()
 local LocalPlayer = game:GetService('Players').LocalPlayer
 
 local VersionEncode = game:HttpGet("https://raw.githubusercontent.com/3345-c-a-t-s-u-s/New-C4-Remote.lua/main/Version/Version_checker.ruby")
@@ -345,7 +347,7 @@ local current = {
 	AntiTim[9],
 	AntiTim[11]
 }
-
+task.wait()
 local seckey = ""
 
 for i,v in ipairs(current) do
@@ -368,6 +370,7 @@ function randomString(length)
 	return randomStringloader
 end
 
+task.wait()
 local BedolHubFinshLoaded = false
 local SettingFileName = "BladeBall_Hazard.json"
 local Animation_init = Instance.new('Animation')
@@ -1078,7 +1081,7 @@ spawn(function() -- Clash Function
 			perframe = 0
 		end
 
-		perframe += 1
+		perframe = perframe + 1
 	end
 
 	game:GetService('RunService').RenderStepped:Connect(function()
@@ -1434,7 +1437,7 @@ task.spawn(function()
 			wal = tick() + 1
 
 		else
-			frames += 1
+			frames = frames + 1
 		end
 	end)
 
@@ -1463,5 +1466,40 @@ RemoteFolders.ParrySuccessAll.OnClientEvent:Connect(function(a1,MyCharacter)
 		ParryTimeNow = tick()
 		ParryTimeViewr = (ParryTimeNow - ParryLastTime)
 		ParryLastTime = ParryTimeNow 
+	end
+end)
+
+BREAKER = false
+game.RunService.Heartbeat:Connect(function()
+	if lastplayeerTarget then
+		local distance129 = get_dstance(lastplayeerTarget.Position)
+		if not IsClash or distance129 >= 20 then
+			BREAKER = true
+		elseif IsClash and realball and realball.zoomies.VectorVelocity.Magnitude >= 500 then
+			repeat
+				TROUBLEPING = true
+				task.wait(6)
+				TROUBLEPING = false
+			until not realball or not IsClash or distance129 >= 20
+			TROUBLEPING = false
+		else
+			BREAKER = false
+			TROUBLEPING = false
+		end
+	end
+end)
+game.RunService.RenderStepped:Connect(function()
+	local valls = BallFolder:GetChildren()
+	for i,v in ipairs(valls) do task.wait()
+		if v:GetAttribute('realBall') == true then
+			local BallDistance = get_dstance(v.Position)
+			if BallDistance <= 50 and IsClash and not BREAKER and realball and realball:FindFirstChild("zoomies") and realball.zoomies.VectorVelocity and realball.zoomies.VectorVelocity.Magnitude >= 28 and not TROUBLEPING then
+				for i=1,50 do task.wait()
+					if BREAKER then break end
+					if TROUBLEPING then break end
+					task.spawn(ExecuteParry)
+				end
+			end
+		end
 	end
 end)
