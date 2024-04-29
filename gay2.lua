@@ -1081,7 +1081,7 @@ spawn(function() -- Clash Function
 			perframe = 0
 		end
 
-		perframe += 1
+		perframe = perframe + 1
 	end
 
 	game:GetService('RunService').RenderStepped:Connect(function()
@@ -1437,7 +1437,7 @@ task.spawn(function()
 			wal = tick() + 1
 
 		else
-			frames += 1
+			frames = frames + 1
 		end
 	end)
 
@@ -1466,5 +1466,40 @@ RemoteFolders.ParrySuccessAll.OnClientEvent:Connect(function(a1,MyCharacter)
 		ParryTimeNow = tick()
 		ParryTimeViewr = (ParryTimeNow - ParryLastTime)
 		ParryLastTime = ParryTimeNow 
+	end
+end)
+
+BREAKER = false
+RunService.Heartbeat:Connect(function()
+	if lastplayeerTarget then
+		local distance129 = get_dstance(lastplayeerTarget.Position)
+		if not IsClash or distance129 >= 20 then
+			BREAKER = true
+		elseif IsClash and realball and realball.zoomies.VectorVelocity.Magnitude >= 500 then
+			repeat
+				TROUBLEPING = true
+				task.wait(6)
+				TROUBLEPING = false
+			until not realball or not IsClash or distance129 >= 20
+			TROUBLEPING = false
+		else
+			BREAKER = false
+			TROUBLEPING = false
+		end
+	end
+end)
+RunService.RenderStepped:Connect(function()
+	local valls = BallFolder:GetChildren()
+	for i,v in ipairs(valls) do task.wait()
+		if v:GetAttribute('realBall') == true then
+			local BallDistance = get_dstance(v.Position)
+			if BallDistance <= 50 and IsClash and not BREAKER and realball and realball:FindFirstChild("zoomies") and realball.zoomies.VectorVelocity and realball.zoomies.VectorVelocity.Magnitude >= 28 and not TROUBLEPING then
+				for i=1,50 do task.wait()
+					if BREAKER then break end
+					if TROUBLEPING then break end
+					task.spawn(ExecuteParry)
+				end
+			end
+		end
 	end
 end)
