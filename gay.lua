@@ -1486,26 +1486,31 @@ task.spawn(function()
 					RHC = RunService.Heartbeat:Connect(function()
 						if lastplayeerTarget then
 							local distance129 = get_dstance(lastplayeerTarget.Position)
-							if UserFPS <= 20 and (distance129 >= 10 or distance129 >= 15) then
-								DO_IT = true
+							if math.abs(distance129 - BallDistance) > 10 then
+								BREAKER = true
 							else
-								local distance127 = get_dstance(lastplayeerTarget.Position)
-								if distance127 <= 6 then
-									DO_It = true
+								BREAKER = false
+								if UserFPS <= 20 and (distance129 >= 10 or distance129 >= 15) then
+									DO_IT = true
 								else
-									DO_IT = false
-									if not IsClash or distance129 >= 15 then
-										BREAKER = true
-									elseif IsClash and realball and realball.zoomies.VectorVelocity.Magnitude >= 700 then
-										repeat
-											TROUBLEPING = true
-											task.wait(6)
-											TROUBLEPING = false
-										until not realball or not IsClash or distance129 >= 15
-										TROUBLEPING = false
+									local distance127 = get_dstance(lastplayeerTarget.Position)
+									if distance127 <= 6 then
+										DO_It = true
 									else
-										BREAKER = false
-										TROUBLEPING = false
+										DO_IT = false
+										if not IsClash or distance129 >= 15 then
+											BREAKER = true
+										elseif IsClash and realball and realball.zoomies.VectorVelocity.Magnitude >= 700 then
+											repeat
+												TROUBLEPING = true
+												task.wait(6)
+												TROUBLEPING = false
+											until not realball or not IsClash or distance129 >= 15
+											TROUBLEPING = false
+										else
+											BREAKER = false
+											TROUBLEPING = false
+										end
 									end
 								end
 							end
