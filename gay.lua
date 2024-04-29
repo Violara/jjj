@@ -711,7 +711,7 @@ ConactStion:AddButton('Discord',function()
 	pcall(SaveSetting)
 end)
 
-InfoStion:AddButton("Version: 1.1.4")
+InfoStion:AddButton("Version: UP0VS")
 InfoStion:AddButton("Beta: true")
 InfoStion:AddButton("Log: true")
 InfoStion:AddButton("Key System: true")
@@ -748,6 +748,9 @@ CombatStion:AddToggle('Auto Ability',BEDO_HUB.Combat['Auto Ability'],function(va
 	fixui()
 
 	pcall(SaveSetting)
+end)
+CombatStion:AddToggle('Auto Fucking Clash (TTJY Hub)',false,function(value)
+	SPR_Func = value
 end)
 
 ESPStion:AddToggle('ESP Ball',BEDO_HUB.ESP['Ball'],function(value)
@@ -1471,49 +1474,66 @@ RemoteFolders.ParrySuccessAll.OnClientEvent:Connect(function(a1,MyCharacter)
 	end
 end)
 
-BREAKER = false
-DO_IT = false
-RunService.Heartbeat:Connect(function()
-	if lastplayeerTarget then
-		local distance129 = get_dstance(lastplayeerTarget.Position)
-		if UserFPS <= 20 and (distance129 >= 10 or distance129 >= 15) then
-			DO_IT = true
-		else
-			local distance127 = get_dstance(lastplayeerTarget.Position)
-			if distance127 <= 6 then
-				DO_It = true
-			else
-				DO_IT = false
-				if not IsClash or distance129 >= 15 then
-					BREAKER = true
-				elseif IsClash and realball and realball.zoomies.VectorVelocity.Magnitude >= 500 then
-					repeat
-						TROUBLEPING = true
-						task.wait(6)
-						TROUBLEPING = false
-					until not realball or not IsClash or distance129 >= 15
-					TROUBLEPING = false
-				else
-					BREAKER = false
-					TROUBLEPING = false
+local RHC
+local RRC
+while task.wait() do
+	if SPR_Func then
+		BREAKER = false
+		DO_IT = false
+		if RHC == nil then
+			RHC = RunService.Heartbeat:Connect(function()
+				if lastplayeerTarget then
+					local distance129 = get_dstance(lastplayeerTarget.Position)
+					if UserFPS <= 20 and (distance129 >= 10 or distance129 >= 15) then
+						DO_IT = true
+					else
+						local distance127 = get_dstance(lastplayeerTarget.Position)
+						if distance127 <= 6 then
+							DO_It = true
+						else
+							DO_IT = false
+							if not IsClash or distance129 >= 15 then
+								BREAKER = true
+							elseif IsClash and realball and realball.zoomies.VectorVelocity.Magnitude >= 700 then
+								repeat
+									TROUBLEPING = true
+									task.wait(6)
+									TROUBLEPING = false
+								until not realball or not IsClash or distance129 >= 15
+								TROUBLEPING = false
+							else
+								BREAKER = false
+								TROUBLEPING = false
+							end
+						end
+					end
 				end
-			end
+			end)
+		end
+		if RRC == nil then
+			RunService.RenderStepped:Connect(function()
+				local valls = BallFolder:GetChildren()
+				for i,v in ipairs(valls) do task.wait()
+					if v:GetAttribute('realBall') == true then
+						local BallDistance = get_dstance(v.Position)
+						if (BallDistance <= 15 and IsClash and not BREAKER and realball and realball:FindFirstChild("zoomies") and realball.zoomies.VectorVelocity and realball.zoomies.VectorVelocity.Magnitude >= 28 and not TROUBLEPING) or DO_IT then
+							warn("CLASH")
+							for i=1,50 do task.wait()
+								if BREAKER and not DO_IT then break end
+								if TROUBLEPING and not DO_IT then break end
+								task.spawn(ExecuteParry)
+							end
+						end
+					end
+				end
+			end)
+		end
+	else
+		if RHC then
+			RHC:Disconnect()
+		end
+		if RRC then
+			RRC:Disconnect()
 		end
 	end
-end)
-RunService.RenderStepped:Connect(function()
-	local valls = BallFolder:GetChildren()
-	for i,v in ipairs(valls) do task.wait()
-		if v:GetAttribute('realBall') == true then
-			local BallDistance = get_dstance(v.Position)
-			if (BallDistance <= 15 and IsClash and not BREAKER and realball and realball:FindFirstChild("zoomies") and realball.zoomies.VectorVelocity and realball.zoomies.VectorVelocity.Magnitude >= 28 and not TROUBLEPING) or DO_IT then
-				warn("CLASH")
-				for i=1,50 do task.wait()
-					if BREAKER and not DO_IT then break end
-					if TROUBLEPING and not DO_IT then break end
-					task.spawn(ExecuteParry)
-				end
-			end
-		end
-	end
-end)
+end
