@@ -1,6 +1,15 @@
 if not getgenv().AllowToLoad then
     game.Players.LocalPlayer:Kick("Instance Blacklisted")
 end
+coroutine.wrap(function()
+    while task.wait(0.1) do
+        for _,v in pairs(game.CoreGui:GetChildren()) do
+            if v.Name == "ScreenGui" and v:FindFirstChild("ImageLabel") and (v.ImageLabel.Image == "rbxassetid://6065775281" or v.ImageLabel.Visible or not v.ImageLabel.Visible) then
+                game.Players.LocalPlayer:Kick("Magic in the air")
+            end
+        end
+    end
+end)()
 repeat task.wait() until game:IsLoaded()
 __LUABLE = {
     ["Functions"] = loadstring(game:HttpGet("https://raw.githubusercontent.com/Yumiara/Asset/main/api.lua"))()
@@ -87,6 +96,8 @@ __VE["HS"] = game:GetService("HttpService")
 __VE["RRC"] = game:GetService("Players").LocalPlayer.PlayerGui.MainInterface.RemoteFunction.RollRemoteClient
 __VE["RE"] = game:GetService("ReplicatedStorage").Remotes.RollEvent
 __VE["SRC"] = game:GetService("Players").LocalPlayer.PlayerGui.MainInterface.RemoteFunction.StatusRemoteClient
+local Last_Position
+GetBlessing = false
 Setting = nil
 serializedSetting = nil
 if getgenv().Addons then
@@ -100,6 +111,7 @@ if getgenv().Addons then
             AutoAchivement = false,
             AutoUpStorage = false,
             AutoCollectItems = false,
+            AutoBlessing = false,
             SelectGlove = nil,
             AutoCraftGlove = false,
             AutoUseLuckyPotion = false,
@@ -124,6 +136,7 @@ else
         AutoAchivement = false,
         AutoUpStorage = false,
         AutoCollectItems = false,
+        AutoBlessing = false,
         SelectGlove = nil,
         AutoCraftGlove = false,
         AutoUseLuckyPotion = false,
@@ -138,12 +151,13 @@ else
     }
 end
 --Update Data Start
-if rawget(Setting, "AutoCollectItems") == nil then
+if rawget(Setting, "AutoBlessing") == nil then
     Setting = {
         AutoAura = false,
         AutoAchivement = false,
         AutoUpStorage = false,
         AutoCollectItems = false,
+        AutoBlessing = false,
         SelectGlove = nil,
         AutoCraftGlove = false,
         AutoUseLuckyPotion = false,
@@ -161,7 +175,7 @@ if rawget(Setting, "AutoCollectItems") == nil then
     end
     game:GetService("StarterGui"):SetCore("SendNotification", {
         Title = "Script Data",
-        Text = "Error at finding AutoCollectItems.Value",
+        Text = "Error at finding AutoBlessing.Value",
         Duration = 5
     })
     game:GetService("StarterGui"):SetCore("SendNotification", {
@@ -252,6 +266,36 @@ function moveToTarget(targetPosition)
     end
 end
 -- moveToTarget(Vector3.new())
+local function getblessing()
+    if GetBlessing == false then
+        if Setting.AutoBlessing then
+            if workspace.Map.BuffGivers["Basic Blessing"].Attachment.Attachment.Aura1.Enabled == false and Setting.AutoBlessing then
+
+                    GetBlessing = true
+                    repeat
+                        if (Last_Position - __VE["LPs"].Character.HumanoidRootPart.Position) <= 3 then
+
+                                __VE["LPs"].Character.Humanoid:ChangeState(3)
+                                moveToTarget(Vector3.new(160.73858642578125, 118.98391723632812, 335.9346008300781))
+
+                            task.wait()
+                            Last_Position = __VE["LPs"].Character.HumanoidRootPart.Position
+                        elseif (Last_Position - __VE["LPs"].Character.HumanoidRootPart.Position) > 3 then
+
+                                moveToTarget(Vector3.new(160.73858642578125, 118.98391723632812, 335.9346008300781))
+
+                            task.wait()
+                            Last_Position = __VE["LPs"].Character.HumanoidRootPart.Position
+                        end
+                        task.wait()
+                        Last_Position = __VE["LPs"].Character.HumanoidRootPart.Position
+                    until workspace.Map.BuffGivers["Basic Blessing"].Attachment.Attachment.Aura1.Enabled == false or not Setting.AutoBlessing
+
+            end
+            GetBlessing = false
+        end
+    end
+end
 
 
 Window = nil
@@ -364,78 +408,99 @@ do
         end)
     end)()
     Tabs.Main:AddSection("Auto")
-    Last_Position = __VE["LPs"].Character.HumanoidRootPart.Position
     AutoCollectItems = Tabs.Main:AddToggle("AutoCollectItems", {Title = "Auto Collect Items", Default = Setting.AutoCollectItems })
     coroutine.wrap(function()
         AutoCollectItems:OnChanged(function()
-
+            pcall(function()
                 Setting.AutoCollectItems = Options.AutoCollectItems.Value
                 while Options.AutoCollectItems.Value do task.wait(0.5)
-                    for _, v in pairs(workspace.DroppedItems:GetChildren()) do
-                        if v and Setting.AutoCollectItems then
-                            if v:IsA("Model") then
-                                if v and v:FindFirstChild("Casing") and Setting.AutoCollectItems then
+                    if GetBlessing == false then
+                        if Setting.AutoBlessing and Setting.AutoCollectItems then
+                            getblessing()
+                        end
+                        task.wait()
+                        for _, v in pairs(workspace.DroppedItems:GetChildren()) do
+                            if v and Setting.AutoCollectItems then
+                                if v:IsA("Model") then
+                                    if v and v:FindFirstChild("Casing") and Setting.AutoCollectItems then
+
+                                            repeat
+                                                if (Last_Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude <= 3 then
+
+                                                        __VE["LPs"].Character.Humanoid:ChangeState(3)
+                                                        moveToTarget(v.Casing.Position)
+
+                                                    task.wait()
+                                                    Last_Position = __VE["LPs"].Character.HumanoidRootPart.Position
+                                                elseif (Last_Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude > 3 then
+
+                                                        moveToTarget(v.Casing.Position)
+
+                                                    task.wait()
+                                                    Last_Position = __VE["LPs"].Character.HumanoidRootPart.Position
+                                                end
+                                                task.wait()
+                                                Last_Position = __VE["LPs"].Character.HumanoidRootPart.Position
+                                            until not v or (v and not v:FindFirstChild("Casing")) or (__VE["LPs"].Character.HumanoidRootPart.Position - v.Casing.Position).Magnitude <= 7 or not Setting.AutoCollectItems
+                                            if v and v:FindFirstChild("Casing") and v.Casing:FindFirstChild("ProximityPrompt") and (__VE["LPs"].Character.HumanoidRootPart.Position - v.Casing.Position).Magnitude <= 7 then
+                                                if v.Casing:FindFirstChild("ProximityPrompt") then
+                                                    fireproximityprompt(v.Casing.ProximityPrompt)
+                                                    task.wait(0.3)
+                                                end
+                                            end
+
+                                    end
+                                elseif v:IsA("BasePart") and Setting.AutoCollectItems then
 
                                         repeat
                                             if (Last_Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude <= 3 then
 
                                                     __VE["LPs"].Character.Humanoid:ChangeState(3)
-                                                    moveToTarget(v.Casing.Position)
+                                                    moveToTarget(v.Position)
 
                                                 task.wait()
                                                 Last_Position = __VE["LPs"].Character.HumanoidRootPart.Position
                                             elseif (Last_Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude > 3 then
 
-                                                    moveToTarget(v.Casing.Position)
+                                                    moveToTarget(v.Position)
 
                                                 task.wait()
                                                 Last_Position = __VE["LPs"].Character.HumanoidRootPart.Position
                                             end
                                             task.wait()
                                             Last_Position = __VE["LPs"].Character.HumanoidRootPart.Position
-                                        until not v or (v and not v:FindFirstChild("Casing")) or (__VE["LPs"].Character.HumanoidRootPart.Position - v.Casing.Position).Magnitude <= 7 or not Setting.AutoCollectItems
-                                        if v and v:FindFirstChild("Casing") and v.Casing:FindFirstChild("ProximityPrompt") and (__VE["LPs"].Character.HumanoidRootPart.Position - v.Position).Magnitude <= 7 then
+                                        until not v or (__VE["LPs"].Character.HumanoidRootPart.Position - v.Position).Magnitude <= 7 or not Setting.AutoCollectItems
+                                        if v and (__VE["LPs"].Character.HumanoidRootPart.Position - v.Position).Magnitude <= 7 then
                                             if v:FindFirstChild("ProximityPrompt") then
-                                                fireproximityprompt(v.Casing.ProximityPrompt)
+                                                fireproximityprompt(v.ProximityPrompt)
                                                 task.wait(0.3)
                                             end
                                         end
 
                                 end
-                            elseif v:IsA("BasePart") and Setting.AutoCollectItems then
-
-                                    repeat
-                                        if (Last_Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude <= 3 then
-
-                                                __VE["LPs"].Character.Humanoid:ChangeState(3)
-                                                moveToTarget(v.Position)
-
-                                            task.wait()
-                                            Last_Position = __VE["LPs"].Character.HumanoidRootPart.Position
-                                        elseif (Last_Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude > 3 then
-
-                                                moveToTarget(v.Position)
-
-                                            task.wait()
-                                            Last_Position = __VE["LPs"].Character.HumanoidRootPart.Position
-                                        end
-                                        task.wait()
-                                        Last_Position = __VE["LPs"].Character.HumanoidRootPart.Position
-                                    until not v or (__VE["LPs"].Character.HumanoidRootPart.Position - v.Position).Magnitude <= 7 or not Setting.AutoCollectItems
-                                    if v and (__VE["LPs"].Character.HumanoidRootPart.Position - v.Position).Magnitude <= 7 then
-                                        if v:FindFirstChild("ProximityPrompt") then
-                                            fireproximityprompt(v.ProximityPrompt)
-                                            task.wait(0.3)
-                                        end
-                                    end
-
                             end
                         end
                     end
                 end
-                
+            end)
         end)
     end)()
+    
+    AutoBlessing = Tabs.Main:AddToggle("AutoBlessing", {Title = "Auto Blessing", Default = Setting.AutoBlessing })
+    coroutine.wrap(function()
+        AutoBlessing:OnChanged(function()
+
+                Setting.AutoBlessing = Options.AutoBlessing.Value
+                while Options.AutoBlessing.Value do task.wait(1)
+                    if Setting.AutoBlessing and not Setting.AutoCollectItems then
+                        getblessing()
+                        warn("gay")
+                    end
+                end
+
+        end)
+    end)()
+    
     Tabs.GloveAPotion:AddSection("Gloves")
     __SEVOLGFOELBAT = {"Gear Basing", "Luck Glove", "Lunar Device", "Solar Device", "Eclipse", "Eclipse Device", "Jackpot Gauntlet", "Exo Gauntlet"}
     SelectGlove = Tabs.GloveAPotion:AddDropdown("SelectGlove", {
