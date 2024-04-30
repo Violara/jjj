@@ -266,21 +266,21 @@ function moveToTarget(targetPosition)
     end
 end
 -- moveToTarget(Vector3.new())
-local function getblessing()
-    if GetBlessing == false then
+function getblessing()
+    if not GetBlessing then
         if Setting.AutoBlessing then
-            if workspace.Map.BuffGivers["Basic Blessing"].Attachment.Attachment.Aura1.Enabled == false and Setting.AutoBlessing then
+            if workspace.Map.BuffGivers["Basic Blessing"].Attachment.Attachment.Aura1.Enabled and Setting.AutoBlessing then
 
                     GetBlessing = true
                     repeat
-                        if (Last_Position - __VE["LPs"].Character.HumanoidRootPart.Position) <= 3 then
+                        if Last_Position and (Last_Position - __VE["LPs"].Character.HumanoidRootPart.Position) <= 3 then
 
                                 __VE["LPs"].Character.Humanoid:ChangeState(3)
                                 moveToTarget(Vector3.new(160.73858642578125, 118.98391723632812, 335.9346008300781))
 
                             task.wait()
                             Last_Position = __VE["LPs"].Character.HumanoidRootPart.Position
-                        elseif (Last_Position - __VE["LPs"].Character.HumanoidRootPart.Position) > 3 then
+                        elseif Last_Position and (Last_Position - __VE["LPs"].Character.HumanoidRootPart.Position) > 3 then
 
                                 moveToTarget(Vector3.new(160.73858642578125, 118.98391723632812, 335.9346008300781))
 
@@ -289,7 +289,7 @@ local function getblessing()
                         end
                         task.wait()
                         Last_Position = __VE["LPs"].Character.HumanoidRootPart.Position
-                    until workspace.Map.BuffGivers["Basic Blessing"].Attachment.Attachment.Aura1.Enabled == false or not Setting.AutoBlessing
+                    until not workspace.Map.BuffGivers["Basic Blessing"].Attachment.Attachment.Aura1.Enabled or not Setting.AutoBlessing
 
             end
             GetBlessing = false
@@ -414,7 +414,7 @@ do
             pcall(function()
                 Setting.AutoCollectItems = Options.AutoCollectItems.Value
                 while Options.AutoCollectItems.Value do task.wait(0.5)
-                    if GetBlessing == false then
+                    if not GetBlessing then
                         if Setting.AutoBlessing and Setting.AutoCollectItems then
                             getblessing()
                         end
@@ -423,19 +423,19 @@ do
                             if v and Setting.AutoCollectItems then
                                 if v:IsA("Model") then
                                     if v and v:FindFirstChild("Casing") and Setting.AutoCollectItems then
-
+                                        pcall(function()
                                             repeat
-                                                if (Last_Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude <= 3 then
-
+                                                if Last_Position and (Last_Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude <= 3 then
+                                                    pcall(function()
                                                         __VE["LPs"].Character.Humanoid:ChangeState(3)
                                                         moveToTarget(v.Casing.Position)
-
+                                                    end)
                                                     task.wait()
                                                     Last_Position = __VE["LPs"].Character.HumanoidRootPart.Position
-                                                elseif (Last_Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude > 3 then
-
+                                                elseif Last_Position and (Last_Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude > 3 then
+                                                    pcall(function()
                                                         moveToTarget(v.Casing.Position)
-
+                                                    end)
                                                     task.wait()
                                                     Last_Position = __VE["LPs"].Character.HumanoidRootPart.Position
                                                 end
@@ -448,22 +448,22 @@ do
                                                     task.wait(0.3)
                                                 end
                                             end
-
+                                        end)
                                     end
                                 elseif v:IsA("BasePart") and Setting.AutoCollectItems then
-
+                                    pcall(function()
                                         repeat
-                                            if (Last_Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude <= 3 then
-
+                                            if Last_Position and (Last_Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude <= 3 then
+                                                pcall(function()
                                                     __VE["LPs"].Character.Humanoid:ChangeState(3)
                                                     moveToTarget(v.Position)
-
+                                                end)
                                                 task.wait()
                                                 Last_Position = __VE["LPs"].Character.HumanoidRootPart.Position
-                                            elseif (Last_Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude > 3 then
-
+                                            elseif Last_Position and (Last_Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude > 3 then
+                                                pcall(function()
                                                     moveToTarget(v.Position)
-
+                                                end)
                                                 task.wait()
                                                 Last_Position = __VE["LPs"].Character.HumanoidRootPart.Position
                                             end
@@ -476,7 +476,7 @@ do
                                                 task.wait(0.3)
                                             end
                                         end
-
+                                    end)
                                 end
                             end
                         end
