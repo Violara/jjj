@@ -96,7 +96,7 @@ __VE["HS"] = game:GetService("HttpService")
 __VE["RRC"] = game:GetService("Players").LocalPlayer.PlayerGui.MainInterface.RemoteFunction.RollRemoteClient
 __VE["RE"] = game:GetService("ReplicatedStorage").Remotes.RollEvent
 __VE["SRC"] = game:GetService("Players").LocalPlayer.PlayerGui.MainInterface.RemoteFunction.StatusRemoteClient
-Last_Position = nil
+local Last_Position
 GetBlessing = false
 Setting = nil
 serializedSetting = nil
@@ -266,21 +266,21 @@ function moveToTarget(targetPosition)
     end
 end
 -- moveToTarget(Vector3.new())
-local function getblessing()
+function getblessing()
     if GetBlessing == false then
         if Setting.AutoBlessing then
             if workspace.Map.BuffGivers["Basic Blessing"].Attachment.Attachment.Aura1.Enabled == false and Setting.AutoBlessing then
                 pcall(function()
                     GetBlessing = true
                     repeat
-                        if (Last_Position - __VE["LPs"].Character.HumanoidRootPart.Position) <= 3 then
+                        if Last_Position and (Last_Position - __VE["LPs"].Character.HumanoidRootPart.Position) <= 3 then
                             pcall(function()
                                 __VE["LPs"].Character.Humanoid:ChangeState(3)
                                 moveToTarget(Vector3.new(160.73858642578125, 118.98391723632812, 335.9346008300781))
                             end)
                             task.wait()
                             Last_Position = __VE["LPs"].Character.HumanoidRootPart.Position
-                        elseif (Last_Position - __VE["LPs"].Character.HumanoidRootPart.Position) > 3 then
+                        elseif Last_Position and (Last_Position - __VE["LPs"].Character.HumanoidRootPart.Position) > 3 then
                             pcall(function()
                                 moveToTarget(Vector3.new(160.73858642578125, 118.98391723632812, 335.9346008300781))
                             end)
@@ -418,21 +418,23 @@ do
                         if Setting.AutoBlessing and Setting.AutoCollectItems then
                             getblessing()
                         end
-                        print(GetBlessing)
+                        task.wait()
+                        print("1")
                         for _, v in pairs(workspace.DroppedItems:GetChildren()) do
                             if v and Setting.AutoCollectItems then
                                 if v:IsA("Model") then
+                                    print("2")
                                     if v and v:FindFirstChild("Casing") and Setting.AutoCollectItems then
                                         pcall(function()
                                             repeat
-                                                if (Last_Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude <= 3 then
+                                                if Last_Position and (Last_Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude <= 3 then
                                                     pcall(function()
                                                         __VE["LPs"].Character.Humanoid:ChangeState(3)
                                                         moveToTarget(v.Casing.Position)
                                                     end)
                                                     task.wait()
                                                     Last_Position = __VE["LPs"].Character.HumanoidRootPart.Position
-                                                elseif (Last_Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude > 3 then
+                                                elseif Last_Position and (Last_Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude > 3 then
                                                     pcall(function()
                                                         moveToTarget(v.Casing.Position)
                                                     end)
@@ -453,14 +455,14 @@ do
                                 elseif v:IsA("BasePart") and Setting.AutoCollectItems then
                                     pcall(function()
                                         repeat
-                                            if (Last_Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude <= 3 then
+                                            if Last_Position and (Last_Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude <= 3 then
                                                 pcall(function()
                                                     __VE["LPs"].Character.Humanoid:ChangeState(3)
                                                     moveToTarget(v.Position)
                                                 end)
                                                 task.wait()
                                                 Last_Position = __VE["LPs"].Character.HumanoidRootPart.Position
-                                            elseif (Last_Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude > 3 then
+                                            elseif Last_Position and (Last_Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude > 3 then
                                                 pcall(function()
                                                     moveToTarget(v.Position)
                                                 end)
@@ -482,9 +484,10 @@ do
                         end
                     end
                 end
-            end)
+
         end)
     end)()
+    
     AutoBlessing = Tabs.Main:AddToggle("AutoBlessing", {Title = "Auto Blessing", Default = Setting.AutoBlessing })
     coroutine.wrap(function()
         AutoBlessing:OnChanged(function()
@@ -499,6 +502,7 @@ do
             end)
         end)
     end)()
+    
     Tabs.GloveAPotion:AddSection("Gloves")
     __SEVOLGFOELBAT = {"Gear Basing", "Luck Glove", "Lunar Device", "Solar Device", "Eclipse", "Eclipse Device", "Jackpot Gauntlet", "Exo Gauntlet"}
     SelectGlove = Tabs.GloveAPotion:AddDropdown("SelectGlove", {
