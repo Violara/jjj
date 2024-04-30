@@ -96,7 +96,7 @@ __VE["HS"] = game:GetService("HttpService")
 __VE["RRC"] = game:GetService("Players").LocalPlayer.PlayerGui.MainInterface.RemoteFunction.RollRemoteClient
 __VE["RE"] = game:GetService("ReplicatedStorage").Remotes.RollEvent
 __VE["SRC"] = game:GetService("Players").LocalPlayer.PlayerGui.MainInterface.RemoteFunction.StatusRemoteClient
-Last_Position = nil
+local Last_Position
 GetBlessing = false
 Setting = nil
 serializedSetting = nil
@@ -267,27 +267,33 @@ function moveToTarget(targetPosition)
 end
 -- moveToTarget(Vector3.new())
 function getblessing()
-    if Setting.AutoBlessing then
-        if workspace.Map.BuffGivers["Basic Blessing"].Attachment.Attachment.Aura1.Enabled and Setting.AutoBlessing then
-            GetBlessing = true
-            repeat
-                if (Last_Position - __VE["LPs"].Character.HumanoidRootPart.Position) <= 3 then
-                    pcall(function()
-                        __VE["LPs"].Character.Humanoid:ChangeState(3)
-                        moveToTarget(Vector3.new(160.73858642578125, 118.98391723632812, 335.9346008300781))
-                    end)
-                    task.wait()
-                    Last_Position = __VE["LPs"].Character.HumanoidRootPart.Position
-                elseif (Last_Position - __VE["LPs"].Character.HumanoidRootPart.Position) > 3 then
-                    pcall(function()
-                        moveToTarget(Vector3.new(160.73858642578125, 118.98391723632812, 335.9346008300781))
-                    end)
-                    task.wait()
-                    Last_Position = __VE["LPs"].Character.HumanoidRootPart.Position
-                end
-            until not workspace.Map.BuffGivers["Basic Blessing"].Attachment.Attachment.Aura1.Enabled or not Setting.AutoBlessing
+    if GetBlessing == false then
+        if Setting.AutoBlessing then
+            if workspace.Map.BuffGivers["Basic Blessing"].Attachment.Attachment.Aura1.Enabled == false and Setting.AutoBlessing then
+
+                    GetBlessing = true
+                    repeat
+                        if (Last_Position - __VE["LPs"].Character.HumanoidRootPart.Position) <= 3 then
+
+                                __VE["LPs"].Character.Humanoid:ChangeState(3)
+                                moveToTarget(Vector3.new(160.73858642578125, 118.98391723632812, 335.9346008300781))
+
+                            task.wait()
+                            Last_Position = __VE["LPs"].Character.HumanoidRootPart.Position
+                        elseif (Last_Position - __VE["LPs"].Character.HumanoidRootPart.Position) > 3 then
+
+                                moveToTarget(Vector3.new(160.73858642578125, 118.98391723632812, 335.9346008300781))
+
+                            task.wait()
+                            Last_Position = __VE["LPs"].Character.HumanoidRootPart.Position
+                        end
+                        task.wait()
+                        Last_Position = __VE["LPs"].Character.HumanoidRootPart.Position
+                    until workspace.Map.BuffGivers["Basic Blessing"].Attachment.Attachment.Aura1.Enabled == false or not Setting.AutoBlessing
+
+            end
+            GetBlessing = false
         end
-        GetBlessing = false
     end
 end
 
@@ -408,27 +414,30 @@ do
             pcall(function()
                 Setting.AutoCollectItems = Options.AutoCollectItems.Value
                 while Options.AutoCollectItems.Value do task.wait(0.5)
-                    if not GetBlessing then
+                    if GetBlessing == false then
                         if Setting.AutoBlessing and Setting.AutoCollectItems then
                             getblessing()
                         end
+                        task.wait()
+                        print("1")
                         for _, v in pairs(workspace.DroppedItems:GetChildren()) do
                             if v and Setting.AutoCollectItems then
                                 if v:IsA("Model") then
+                                    print("2")
                                     if v and v:FindFirstChild("Casing") and Setting.AutoCollectItems then
-                                        pcall(function()
+
                                             repeat
                                                 if (Last_Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude <= 3 then
-                                                    pcall(function()
+
                                                         __VE["LPs"].Character.Humanoid:ChangeState(3)
                                                         moveToTarget(v.Casing.Position)
-                                                    end)
+
                                                     task.wait()
                                                     Last_Position = __VE["LPs"].Character.HumanoidRootPart.Position
                                                 elseif (Last_Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude > 3 then
-                                                    pcall(function()
+
                                                         moveToTarget(v.Casing.Position)
-                                                    end)
+
                                                     task.wait()
                                                     Last_Position = __VE["LPs"].Character.HumanoidRootPart.Position
                                                 end
@@ -441,35 +450,38 @@ do
                                                     task.wait(0.3)
                                                 end
                                             end
-                                        end)
+
                                     end
                                 elseif v:IsA("BasePart") and Setting.AutoCollectItems then
-                                    pcall(function()
+                                    print("3")
                                         repeat
                                             if (Last_Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude <= 3 then
-                                                pcall(function()
+                                                warn("3")
                                                     __VE["LPs"].Character.Humanoid:ChangeState(3)
                                                     moveToTarget(v.Position)
-                                                end)
+
                                                 task.wait()
                                                 Last_Position = __VE["LPs"].Character.HumanoidRootPart.Position
                                             elseif (Last_Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude > 3 then
-                                                pcall(function()
+                                                warn("3,3")
                                                     moveToTarget(v.Position)
-                                                end)
+
                                                 task.wait()
                                                 Last_Position = __VE["LPs"].Character.HumanoidRootPart.Position
                                             end
+                                            warn("4")
                                             task.wait()
                                             Last_Position = __VE["LPs"].Character.HumanoidRootPart.Position
                                         until not v or (__VE["LPs"].Character.HumanoidRootPart.Position - v.Position).Magnitude <= 7 or not Setting.AutoCollectItems
+                                        warn("5")
                                         if v and (__VE["LPs"].Character.HumanoidRootPart.Position - v.Position).Magnitude <= 7 then
                                             if v:FindFirstChild("ProximityPrompt") then
                                                 fireproximityprompt(v.ProximityPrompt)
                                                 task.wait(0.3)
                                             end
                                         end
-                                    end)
+                                        warn("6")
+
                                 end
                             end
                         end
@@ -478,19 +490,22 @@ do
             end)
         end)
     end)()
-    AutoBlessing = Tabs.Main:AddToggle("AutoBlessing", {Title = "Auto Collect Items", Default = Setting.AutoBlessing })
+    
+    AutoBlessing = Tabs.Main:AddToggle("AutoBlessing", {Title = "Auto Blessing", Default = Setting.AutoBlessing })
     coroutine.wrap(function()
         AutoBlessing:OnChanged(function()
-            pcall(function()
+
                 Setting.AutoBlessing = Options.AutoBlessing.Value
                 while Options.AutoBlessing.Value do task.wait(1)
                     if Setting.AutoBlessing and not Setting.AutoCollectItems then
                         getblessing()
+                        warn("gay")
                     end
                 end
-            end)
+
         end)
     end)()
+    
     Tabs.GloveAPotion:AddSection("Gloves")
     __SEVOLGFOELBAT = {"Gear Basing", "Luck Glove", "Lunar Device", "Solar Device", "Eclipse", "Eclipse Device", "Jackpot Gauntlet", "Exo Gauntlet"}
     SelectGlove = Tabs.GloveAPotion:AddDropdown("SelectGlove", {
