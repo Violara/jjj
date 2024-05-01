@@ -423,11 +423,11 @@ do
                     while Setting.AutoCollectItems do task.wait(0.5)
                         getgenv().LastFuntion = "AutoCollectItems"
                         if Setting.AutoCollectItems then
-                            for _, v in pairs(workspace:GetChildren()) do
+                            for _, v in pairs(__VE["WS"]:GetChildren()) do
                                 if v and Setting.AutoCollectItems then
                                     for _, a in pairs(v:GetChildren()) do
                                         if (a:FindFirstChild("Collect") or a:FindFirstChild("FalseCollect")) and (a.Position - Vector3.new(-927.2256469726562, 74.73796081542969, 501.1764221191406)).Magnitude < 3000 and Setting.AutoCollectItems then
-                                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = a.CFrame
+                                            __VE["LPs"].Character.HumanoidRootPart.CFrame = a.CFrame
                                             task.wait(0.3)
                                             local Prox = a:FindFirstChild("Collect") or a:FindFirstChild("FalseCollect")
                                             if Prox ~= nil and Setting.AutoCollectItems then
@@ -442,7 +442,7 @@ do
                 end)
             end)
         end)
-    end)
+    end)()
     ESPItems = Tabs.ESP:AddToggle("ESPItems", {Title = "ESPItems", Default = Setting.ESPItems })
     coroutine.wrap(function()
         pcall(function()
@@ -480,7 +480,7 @@ do
                 end)
             end)
         end)
-    end)
+    end)()
     AntiAFK = Tabs.Player:AddToggle("AntiAFK", {Title = "Anti AFK", Default = __Y[2] })
     AntiAFK:OnChanged(function()
         AFK = Options.AntiAFK.Value
