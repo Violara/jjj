@@ -1,6 +1,4 @@
-if not getgenv().AllowToLoad then
-    game.Players.LocalPlayer:Kick("Instance Blacklisted")
-end
+
 coroutine.wrap(function()
     while task.wait(0.1) do
         for _,v in pairs(game.CoreGui:GetChildren()) do
@@ -74,6 +72,7 @@ Converted["_UIStroke1"].LineJoinMode = Enum.LineJoinMode.Bevel
 Converted["_UIStroke1"].Parent = Converted["_TextButton"]
 
 TTJYHUB = Converted["_TextButton"]
+
 Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
 SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
 InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
@@ -93,89 +92,52 @@ __VE["VIM"] , __VE["UIS"] = game:GetService("VirtualInputManager"), game:GetServ
 __VE["Lg"] , __VE["TS"], __VE["GMos"] = game:GetService("Lighting") ,game:GetService("TweenService") ,  game:GetService("Players").LocalPlayer:GetMouse()
 __VE["VU"],__VE["CG"] = game:GetService("VirtualUser") ,game:GetService("CoreGui")
 __VE["HS"] = game:GetService("HttpService")
-__VE["RRC"] = game:GetService("Players").LocalPlayer.PlayerGui.MainInterface.RemoteFunction.RollRemoteClient
-__VE["RE"] = game:GetService("ReplicatedStorage").Remotes.RollEvent
-__VE["SRC"] = game:GetService("Players").LocalPlayer.PlayerGui.MainInterface.RemoteFunction.StatusRemoteClient
-local Last_Position
-GetBlessing = false
-Setting = nil
-serializedSetting = nil
+Float = false
+Noclip = false
+CONTROL = {F = 0, B = 0, L = 0, R = 0, Q = 0, E = 0}
+WalkSpeedSet = 16
+JumpPowerSet = 30
+WalkSpeedRequest = __Y[2]
+JumpPowerRequest = __Y[2]
+cmdm = __VE["GMos"]
+speedofthevfly = 1
+speedofthefly = 1
+Setting = __Y[3]
+serializedSetting = __Y[3]
 if getgenv().Addons then
     if not isfolder("Setting") then
         makefolder("Setting")
     end
-    if isfolder("Setting") and not isfile("Setting/settingSOLRNG.json") then
+    if isfolder("Setting") and not isfile("Setting/settingJujutsuChronicles.json") then
         print("no file")
         Setting = {
-            AutoAura = false,
-            AutoAchivement = false,
-            AutoUpStorage = false,
-            AutoCollectItems = false,
-            AutoBlessing = false,
-            SelectGlove = nil,
-            AutoCraftGlove = false,
-            AutoUseLuckyPotion = false,
-            AutoUseSpeedPotion = false,
-            AutoUseCoin = false,
-            AutoUseGildedCoin = false,
-            IncreaseWalkSpeed = false,
-            RemoveFog = false,
-            SetDay = false,
-            SetNight = false,
-            ESPItems = false,
+            AutoCollectItems = __Y[2],
+            ESPItems = __Y[2],
         }
         allowtoserialized = __Y[1]
-    elseif __U[49]("Setting") and __U[50]("Setting/settingSOLRNG.json") then
+    elseif __U[49]("Setting") and __U[50]("Setting/settingJujutsuChronicles.json") then
         __U[1]("file")
         __U[23]()
-        Setting = game.HttpService:JSONDecode(__U[51]("Setting/settingSOLRNG.json"))
+        Setting = game.HttpService:JSONDecode(__U[51]("Setting/settingJujutsuChronicles.json"))
     end
 else
     Setting = {
-        AutoAura = false,
-        AutoAchivement = false,
-        AutoUpStorage = false,
-        AutoCollectItems = false,
-        AutoBlessing = false,
-        SelectGlove = nil,
-        AutoCraftGlove = false,
-        AutoUseLuckyPotion = false,
-        AutoUseSpeedPotion = false,
-        AutoUseCoin = false,
-        AutoUseGildedCoin = false,
-        IncreaseWalkSpeed = false,
-        RemoveFog = false,
-        SetDay = false,
-        SetNight = false,
-        ESPItems = false,
+        AutoCollectItems = __Y[2],
+        ESPItems = __Y[2],
     }
 end
 --Update Data Start
-if rawget(Setting, "AutoBlessing") == nil then
+if rawget(Setting, "ESPItems") == nil then
     Setting = {
-        AutoAura = false,
-        AutoAchivement = false,
-        AutoUpStorage = false,
-        AutoCollectItems = false,
-        AutoBlessing = false,
-        SelectGlove = nil,
-        AutoCraftGlove = false,
-        AutoUseLuckyPotion = false,
-        AutoUseSpeedPotion = false,
-        AutoUseCoin = false,
-        AutoUseGildedCoin = false,
-        IncreaseWalkSpeed = false,
-        RemoveFog = false,
-        SetDay = false,
-        SetNight = false,
-        ESPItems = false,
+        AutoCollectItems = __Y[2],
+        ESPItems = __Y[2],
     }
     if getgenv().Addons then
         allowtoserialized = __Y[1]
     end
     game:GetService("StarterGui"):SetCore("SendNotification", {
         Title = "Script Data",
-        Text = "Error at finding AutoBlessing.Value",
+        Text = "Error at finding ESPItems.Value",
         Duration = 5
     })
     game:GetService("StarterGui"):SetCore("SendNotification", {
@@ -192,18 +154,12 @@ end
 --Update Data End
 local credits = {
     {Title = "Owner", Content = "ttjy."},
-    {Title = "VIP", Content = "x2neptune - Alchemy Hub"},
     {Title = "Co Owner", Content = "ttjy_"},
     {Title = "Scripter", Content = "ttjy."},
     {Title = "Scripter", Content = "ttjy_"},
-    {Title = "Scripter", Content = "x2neptune - Alchemy Hub"},
-    {Title = "Bypasser", Content = "???"},
-    {Title = "Bypasser", Content = "ttjy."},
-    {Title = "Bypasser", Content = "x2neptune - Alchemy Hub"},
     {Title = "Key System", Content = "sa.l"},
     {Title = "UI", Content = "dawid"},
 }
-
 function OnFluentChange()
     if Window.Root.Visible then
         TTJYHUB.TextColor3  = __U[36](0, 255, 0)
@@ -231,79 +187,196 @@ local function ESPSomething(obj, text)
 
     billboard.Parent = obj
 end
-PathfindingService = game:GetService("PathfindingService")
-targetPosition = Vector3.new(160.73858642578125, 118.98391723632812, 335.9346008300781)
-pathAgentParameters = {
-    AgentRadius = 2,
-    AgentHeight = 5,
-    AgentCanJump = true,
-    AgentJumpHeight = 5,
-    AgentMaxSlope = 45,
-}
-function moveToTarget(targetPosition)
-    path = PathfindingService:CreatePath({
-        AgentRadius = pathAgentParameters.AgentRadius,
-        AgentHeight = pathAgentParameters.AgentHeight,
-        AgentCanJump = pathAgentParameters.AgentCanJump,
-        AgentJumpHeight = pathAgentParameters.AgentJumpHeight,
-        AgentMaxSlope = pathAgentParameters.AgentMaxSlope,
-        WaypointSpacing = 2,
-        Costs = {},
-    })
-    path:ComputeAsync(game.Players.LocalPlayer.Character.PrimaryPart.Position, targetPosition)
-    if path.Status == Enum.PathStatus.Success then
-        waypoints = path:GetWaypoints()
-        for _, waypoint in ipairs(waypoints) do
-            if waypoint.Action == Enum.PathWaypointAction.Jump then
-                __VE["LPs"].Character.Humanoid:MoveTo(waypoint.Position)
-            else
-                __VE["LPs"].Character.Humanoid:MoveTo(waypoint.Position)
-            end
-            __VE["LPs"].Character.Humanoid.MoveToFinished:Wait()
+if getgenv().Addons then
+    local function createTrail(ColorValue)
+        character = __VE["LPs"].Character or __VE["LPs"].CharacterAdded:Wait()
+        local part1X = __U[35]("Part")
+        part1X.Size = __U[57](0, 0, 0)
+        part1X.Transparency = 1
+        part1X.Anchored = __Y[1]
+        part1X.CanCollide = __Y[2]
+        part1X.CanTouch = __Y[2]
+        part1X.Parent = __VE["WS"]
+        local attachment1 = __U[35]("Attachment")
+        attachment1.Parent = part1X
+        local leftHandAttachment = character:WaitForChild("Left Arm")
+        local attachment2 = __U[35]("Attachment")
+        attachment2.Parent = leftHandAttachment
+        local trail = __U[35]("Trail")
+        trail.Attachment0 = attachment1
+        trail.Attachment1 = attachment2
+        trail.Texture = "rbxassetid://0"
+        blueKeypoint = ColorSequenceKeypoint.new(0, Color3.new(0, 0, 1))
+        cyanKeypoint = ColorSequenceKeypoint.new(1, Color3.new(0, 1, 1))
+        greenKeypoint = ColorSequenceKeypoint.new(0, Color3.new(0, 1, 0))
+        lightGreenKeypoint = ColorSequenceKeypoint.new(1, Color3.new(0.5, 1, 0.5))
+        pinkKeypoint = ColorSequenceKeypoint.new(0, Color3.new(1, 0.75, 0.8))
+        redKeypoint = ColorSequenceKeypoint.new(1, Color3.new(1, 0, 0))
+        purpleKeypoint = ColorSequenceKeypoint.new(0, Color3.new(0.5, 0, 1))
+        lightPurpleKeypoint = ColorSequenceKeypoint.new(1, Color3.new(0.8, 0.5, 1))
+        if ColorValue == 1 then
+            trail.Color = ColorSequence.new({blueKeypoint, cyanKeypoint})
+        elseif ColorValue == 2 then
+            trail.Color = ColorSequence.new({greenKeypoint, lightGreenKeypoint})
+        elseif ColorValue == 3 then
+            trail.Color = ColorSequence.new({pinkKeypoint, redKeypoint})
+        elseif ColorValue == 4 then
+            trail.Color = ColorSequence.new({purpleKeypoint, lightPurpleKeypoint})
         end
-    else
-        warn("Pathfinding failed to compute a path to the target position.")
+        trail.LightEmission = 1
+        trail.LightInfluence = 1
+        trail.Parent = part1X
+        offset = __U[57](0, 0, 1)
+        local function updatePartCFrame()
+            if character:FindFirstChild("Left Arm") then
+                local handCF = character["Left Arm"].CFrame
+                local newCF = handCF * __U[26](offset)
+                part1X.CFrame = newCF
+            end
+        end
+        
+        local heartbeatConnection2
+        heartbeatConnection2 = game:GetService("RunService").Heartbeat:Connect(function()
+            updatePartCFrame()
+        end)
+        local function cleanup2()
+            if attachment1 then
+                attachment1:Destroy()
+            end
+            if attachment2 then
+                attachment2:Destroy()
+            end
+            if part1X then
+                part1X:Destroy()
+            end
+            if heartbeatConnection2 then
+                heartbeatConnection2:Disconnect()
+            end
+        end
+        __VE["LPs"].CharacterRemoving:Connect(cleanup2)
+        character = __VE["LPs"].Character or __VE["LPs"].CharacterAdded:Wait()
+        local part2X = __U[35]("Part")
+        part2X.Size = __U[57](0, 0, 0)
+        part2X.Transparency = 1
+        part2X.Anchored = __Y[1]
+        part2X.CanCollide = __Y[2]
+        part2X.CanTouch = __Y[2]
+        part2X.Parent = workspace
+        local attachment3 = __U[35]("Attachment")
+        attachment3.Parent = part2X
+        local rightHandAttachment = character:WaitForChild("Right Arm")
+        local attachment4 = __U[35]("Attachment")
+        attachment4.Parent = rightHandAttachment
+        local trail = __U[35]("Trail")
+        trail.Attachment0 = attachment3
+        trail.Attachment1 = attachment4
+        trail.Texture = "rbxassetid://0"
+        blueKeypoint = ColorSequenceKeypoint.new(0, Color3.new(0, 0, 1))
+        cyanKeypoint = ColorSequenceKeypoint.new(1, Color3.new(0, 1, 1))
+        greenKeypoint = ColorSequenceKeypoint.new(0, Color3.new(0, 1, 0))
+        lightGreenKeypoint = ColorSequenceKeypoint.new(1, Color3.new(0.5, 1, 0.5))
+        pinkKeypoint = ColorSequenceKeypoint.new(0, Color3.new(1, 0.75, 0.8))
+        redKeypoint = ColorSequenceKeypoint.new(1, Color3.new(1, 0, 0))
+        purpleKeypoint = ColorSequenceKeypoint.new(0, Color3.new(0.5, 0, 1))
+        lightPurpleKeypoint = ColorSequenceKeypoint.new(1, Color3.new(0.8, 0.5, 1))
+        if ColorValue == 1 then
+        trail.Color = ColorSequence.new({blueKeypoint, cyanKeypoint})
+        elseif ColorValue == 2 then
+            trail.Color = ColorSequence.new({greenKeypoint, lightGreenKeypoint})
+        elseif ColorValue == 3 then
+            trail.Color = ColorSequence.new({pinkKeypoint, redKeypoint})
+        elseif ColorValue == 4 then
+            trail.Color = ColorSequence.new({purpleKeypoint, lightPurpleKeypoint})
+        end
+        trail.LightEmission = 1
+        trail.LightInfluence = 1
+        trail.Parent = part2X
+        offset = __U[57](0, 0, 1)
+        local function updatePartCFrame()
+            if character:FindFirstChild("Right Arm") then
+                local handCF = character["Right Arm"].CFrame
+                local newCF = handCF * __U[26](offset)
+                part2X.CFrame = newCF
+            end
+        end
+        local heartbeatConnection
+        heartbeatConnection = game:GetService("RunService").Heartbeat:Connect(function()
+            updatePartCFrame()
+        end)
+        local function cleanup()
+            if attachment1 then
+                attachment1:Destroy()
+            end
+            if attachment2 then
+                attachment2:Destroy()
+            end
+            if part2X then
+                part2X:Destroy()
+            end
+            if heartbeatConnection then
+                heartbeatConnection:Disconnect()
+            end
+        end
+        
+        __VE["LPs"].CharacterRemoving:Connect(cleanup)
     end
 end
--- moveToTarget(Vector3.new())
-function getblessing()
-    if GetBlessing == false then
-        if Setting.AutoBlessing then
-            if workspace.Map.BuffGivers["Basic Blessing"].Attachment.Attachment.Aura1.Enabled == true and Setting.AutoBlessing then
-                pcall(function()
-                    GetBlessing = true
-                    repeat
-                        if Last_Position and (Last_Position - __VE["LPs"].Character.HumanoidRootPart.Position) <= 3 then
-                            pcall(function()
-                                __VE["LPs"].Character.Humanoid:ChangeState(3)
-                                moveToTarget(Vector3.new(160.73858642578125, 118.98391723632812, 335.9346008300781))
-                            end)
-                            task.wait()
-                            Last_Position = __VE["LPs"].Character.HumanoidRootPart.Position
-                        elseif Last_Position and (Last_Position - __VE["LPs"].Character.HumanoidRootPart.Position) > 3 then
-                            pcall(function()
-                                moveToTarget(Vector3.new(160.73858642578125, 118.98391723632812, 335.9346008300781))
-                            end)
-                            task.wait()
-                            Last_Position = __VE["LPs"].Character.HumanoidRootPart.Position
-                        end
-                        task.wait()
-                        Last_Position = __VE["LPs"].Character.HumanoidRootPart.Position
-                    until workspace.Map.BuffGivers["Basic Blessing"].Attachment.Attachment.Aura1.Enabled == false or not Setting.AutoBlessing
-                end)
-            end
-            GetBlessing = false
-        end
-    end
+if __VE["CG"]:FindFirstChild("InputPcToMobile") then
+    __VE["CG"]:FindFirstChild("InputPcToMobile"):Destroy()
 end
+local screenGui2 = __U[35]("ScreenGui")
+screenGui2.Name = "InputPcToMobile"
+screenGui2.Parent = __VE["CG"]
+local buttonSize = UDim2.new(0.05, 0, 0.05, 0)
+local function createButton(key, position)
+    local button = __U[35]("TextButton")
+    button.Name = key
+    button.Text = key
+    button.Size = buttonSize
+    button.Position = position
+    button.BackgroundColor3 = Color3.new(0.5, 0.5, 0.5)
+    button.Parent = screenGui2
+    local isPressed = __Y[2]
+    button.MouseButton1Down:Connect(function()
+        isPressed = true
+        if key == "W" then
+            CONTROL.F = speedofthefly
+        elseif key == "S" then
+            CONTROL.B = -speedofthefly
+        elseif key == "A" then
+            CONTROL.L = -speedofthefly
+        elseif key == "D" then
+            CONTROL.R = speedofthefly
+        end
+    end)
 
-
+    button.MouseButton1Up:Connect(function()
+        isPressed = __Y[2]
+        if key == "W" then
+            CONTROL.F = 0
+        elseif key == "S" then
+            CONTROL.B = 0
+        elseif key == "A" then
+            CONTROL.L = 0
+        elseif key == "D" then
+            CONTROL.R = 0
+        end
+    end)
+end
+createButton("W", UDim2.new(0.05, 0, 0.1, 0))
+task.wait()
+createButton("A", UDim2.new(0, 0, 0.2, 0))
+task.wait()
+createButton("S", UDim2.new(0.05, 0, 0.3, 0))
+task.wait()
+createButton("D", UDim2.new(0.1, 0, 0.2, 0))
+task.wait()
 Window = nil
 repeat
     __U[6](function()
         Window = Fluent:CreateWindow({
-            Title = "Sol's RNG Script v.UP1FV",
-            SubTitle = "by TTJY & ",
+            Title = "Jujutsu Chronicles Script v.UP1FV",
+            SubTitle = "by TTJY",
             TabWidth = 160,
             Size = UDim2.fromOffset(580, 460),
             Acrylic = false,
@@ -317,12 +390,11 @@ until Window ~= nil
 
 local Tabs = {
     Main = Window:AddTab({ Title = "Main", Icon = "home" }),
-    GloveAPotion = Window:AddTab({ Title = "Gloves & Potion", Icon = "gauge" }),
-    Items = Window:AddTab({ Title = "Items", Icon = "" }),
-    Player = Window:AddTab({ Title = "Player", Icon = "" }),
-    ESP = Window:AddTab({ Title = "ESP", Icon = "briefcase" }),
-    ChangeLog = Window:AddTab({ Title = "ChangeLog", Icon = "" }),
+    Player = Window:AddTab({ Title = "Player", Icon = "person-standing" }),
+    ESP = Window:AddTab({ Title = "ESP", Icon = "inspect" }),
+    ChangeLog = Window:AddTab({ Title = "ChangeLog", Icon = "book" }),
     Credits = Window:AddTab({ Title = "Credits", Icon = "book" }),
+    Addons = Window:AddTab({ Title = "Addons", Icon = "gem" }),
     Settings = Window:AddTab({ Title = "Settings", Icon = "settings" })
 }
 local Options = Fluent.Options
@@ -336,703 +408,454 @@ __U[6](function()
     end
     TTJYHUB.MouseButton1Click:Connect(onButtonClick)
 end)
-local var = nil
-for _, v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.MainInterface.RemoteFunction:GetChildren()) do
-    if string.match(v.Name, "Craft\n%d+Client") then
-        var = tostring(v.Name)
-        print("Found RemoteFunction:", v.Name)
-    end
-end
-task.wait()
-local Arg = {
-    ["Action"] = "Equip",
-    ["IsAutoAction"] = true
-}
 do
-    Tabs.Main:AddSection("Aura")
-    AutoAura = Tabs.Main:AddToggle("AutoAura", {Title = "Auto Roll Aura | Faster than normal", Default = Setting.AutoAura })
-    coroutine.wrap(function()
-        AutoAura:OnChanged(function()
-            pcall(function()
-                Setting.AutoAura = Options.AutoAura.Value
-                while Options.AutoAura.Value do
-                    __VE["RRC"]:FireServer("Roll")
-                    __VE["RE"]:FireServer("Choice", Arg)
-                    __VE["SRC"]:FireServer("GetCooltime")
-                    task.wait(0.5)
-                end
-            end)
-        end)
-    end)()
-    Tabs.Main:AddSection("Achivement")
-    AutoAchivement = Tabs.Main:AddToggle("AutoAchivement", {Title = "Auto Achivement", Default = Setting.AutoAchivement })
-    coroutine.wrap(function()
-        AutoAchivement:OnChanged(function()
-            pcall(function()
-                Setting.AutoAchivement = Options.AutoAchivement.Value
-                while Options.AutoAchivement.Value do
-                    for _, v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.MainInterface.AchievementFrame.Achievements.AchievementGrid.ScrollingFrame:GetChildren()) do
-                        if v and v:IsA("Frame") and v:FindFirstChild("Holder") and v.Holder:FindFirstChild("Title") and v.Holder.Title:FindFirstChild("Completed") then
-                            local matchingOrigin = v.Holder.Progress.ProgressText
-                            local firstNumber, secondNumber = matchingOrigin.Text:match("(%d+) / (%d+)")
-                            if v and firstNumber and secondNumber and tonumber(firstNumber) >= tonumber(secondNumber) then
-                                game.ReplicatedStorage.Remotes.Achievement:FireServer("Claim", tostring(v.Holder.Title.Text))
-                            end
-                        end
-                    end
-                    task.wait(0.5)
-                end
-            end)
-        end)
-    end)()
-    Tabs.Main:AddSection("Storage")
-    AutoUpStorage = Tabs.Main:AddToggle("AutoUpStorage", {Title = "Auto Upgrade Storage", Default = Setting.AutoUpStorage })
-    coroutine.wrap(function()
-        AutoUpStorage:OnChanged(function()
-            pcall(function()
-                Setting.AutoUpStorage = Options.AutoUpStorage.Value
-                while Options.AutoUpStorage.Value do
-                    textAUS1 = __VE["PsG"].MainInterface.AuraInventory.Index.SelectionCorners.StorageUpgrade.Text
-                    patternAUS1 = "%d+"
-                    numberAUS1 = tonumber(string.match(textAUS1, patternAUS1))
-
-                    textAUS2 = __VE["PsG"].MainInterface.Coin.Text
-                    cleanedTextAUS2 = textAUS2:gsub("[^%d]", "")
-                    numberAUS2 = tonumber(cleanedText)
-                    if numberAUS1 == numberAUS1 then
-                        game:GetService("ReplicatedStorage").Remotes.AuraStorage:FireServer("UpgradeStorage")
-                    end
-                    task.wait(0.5)
-                end
-            end)
-        end)
-    end)()
-    Tabs.Main:AddSection("Auto")
+    --getgenv().TextStatus
+    --getgenv().LastFuntion
+    getgenv().TextStatus = "Normal Load"
+    getgenv().ScriptUpdateDate = "01/05/24"
+    Tabs.Main:AddSection("Main")
     AutoCollectItems = Tabs.Main:AddToggle("AutoCollectItems", {Title = "Auto Collect Items", Default = Setting.AutoCollectItems })
     coroutine.wrap(function()
-        AutoCollectItems:OnChanged(function()
-            pcall(function()
-                Setting.AutoCollectItems = Options.AutoCollectItems.Value
-                while Options.AutoCollectItems.Value do task.wait(0.5)
-                    if GetBlessing == false then
-                        if Setting.AutoBlessing and Setting.AutoCollectItems then
-                            getblessing()
-                        end
-                        task.wait()
-                        print("1")
-                        for _, v in pairs(workspace.DroppedItems:GetChildren()) do
-                            if v and Setting.AutoCollectItems then
-                                if v:IsA("Model") then
-                                    print("2")
-                                    if v and v:FindFirstChild("Casing") and Setting.AutoCollectItems then
-                                        pcall(function()
-                                            repeat
-                                                if Last_Position and (Last_Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude <= 3 then
-                                                    pcall(function()
-                                                        __VE["LPs"].Character.Humanoid:ChangeState(3)
-                                                        moveToTarget(v.Casing.Position)
-                                                    end)
-                                                    task.wait()
-                                                    Last_Position = __VE["LPs"].Character.HumanoidRootPart.Position
-                                                elseif Last_Position and (Last_Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude > 3 then
-                                                    pcall(function()
-                                                        moveToTarget(v.Casing.Position)
-                                                    end)
-                                                    task.wait()
-                                                    Last_Position = __VE["LPs"].Character.HumanoidRootPart.Position
-                                                end
-                                                task.wait()
-                                                Last_Position = __VE["LPs"].Character.HumanoidRootPart.Position
-                                            until not v or (v and not v:FindFirstChild("Casing")) or (__VE["LPs"].Character.HumanoidRootPart.Position - v.Casing.Position).Magnitude <= 7 or not Setting.AutoCollectItems
-                                            if v and v:FindFirstChild("Casing") and v.Casing:FindFirstChild("ProximityPrompt") and (__VE["LPs"].Character.HumanoidRootPart.Position - v.Casing.Position).Magnitude <= 7 then
-                                                if v.Casing:FindFirstChild("ProximityPrompt") then
-                                                    fireproximityprompt(v.Casing.ProximityPrompt)
-                                                    task.wait(0.3)
-                                                end
-                                            end
-                                        end)
-                                    end
-                                elseif v:IsA("BasePart") and Setting.AutoCollectItems then
-                                    pcall(function()
-                                        repeat
-                                            if Last_Position and (Last_Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude <= 3 then
-                                                pcall(function()
-                                                    __VE["LPs"].Character.Humanoid:ChangeState(3)
-                                                    moveToTarget(v.Position)
-                                                end)
-                                                task.wait()
-                                                Last_Position = __VE["LPs"].Character.HumanoidRootPart.Position
-                                            elseif Last_Position and (Last_Position - __VE["LPs"].Character.HumanoidRootPart.Position).Magnitude > 3 then
-                                                pcall(function()
-                                                    moveToTarget(v.Position)
-                                                end)
-                                                task.wait()
-                                                Last_Position = __VE["LPs"].Character.HumanoidRootPart.Position
-                                            end
-                                            task.wait()
-                                            Last_Position = __VE["LPs"].Character.HumanoidRootPart.Position
-                                        until not v or (__VE["LPs"].Character.HumanoidRootPart.Position - v.Position).Magnitude <= 7 or not Setting.AutoCollectItems
-                                        if v and (__VE["LPs"].Character.HumanoidRootPart.Position - v.Position).Magnitude <= 7 then
-                                            if v:FindFirstChild("ProximityPrompt") then
-                                                fireproximityprompt(v.ProximityPrompt)
-                                                task.wait(0.3)
+        pcall(function()
+            AutoCollectItems:OnChanged(function()
+                pcall(function()
+                    Setting.AutoCollectItems = Options.AutoCollectItems.Value
+                    while Setting.AutoCollectItems do task.wait(0.5)
+                        getgenv().LastFuntion = "AutoCollectItems"
+                        if Setting.AutoCollectItems then
+                            for _, v in pairs(workspace:GetChildren()) do
+                                if v and Setting.AutoCollectItems then
+                                    for _, a in pairs(v:GetChildren()) do
+                                        if (a:FindFirstChild("Collect") or a:FindFirstChild("FalseCollect")) and (a.Position - Vector3.new(-927.2256469726562, 74.73796081542969, 501.1764221191406)).Magnitude < 3000 and Setting.AutoCollectItems then
+                                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = a.CFrame
+                                            task.wait(0.3)
+                                            local Prox = a:FindFirstChild("Collect") or a:FindFirstChild("FalseCollect")
+                                            if Prox ~= nil and Setting.AutoCollectItems then
+                                                fireproximityprompt(Prox)
                                             end
                                         end
-                                    end)
+                                    end
                                 end
                             end
                         end
                     end
-                end
+                end)
             end)
-        end)
-    end)()
-    
-    AutoBlessing = Tabs.Main:AddToggle("AutoBlessing", {Title = "Auto Blessing", Default = Setting.AutoBlessing })
-    coroutine.wrap(function()
-        AutoBlessing:OnChanged(function()
-            pcall(function()
-                Setting.AutoBlessing = Options.AutoBlessing.Value
-                while Options.AutoBlessing.Value do task.wait(1)
-                    if Setting.AutoBlessing and not Setting.AutoCollectItems then
-                        getblessing()
-                        warn("gay")
-                    end
-                end
-            end)
-        end)
-    end)()
-    
-    Tabs.GloveAPotion:AddSection("Gloves")
-    __SEVOLGFOELBAT = {"Gear Basing", "Luck Glove", "Lunar Device", "Solar Device", "Eclipse", "Eclipse Device", "Jackpot Gauntlet", "Exo Gauntlet"}
-    SelectGlove = Tabs.GloveAPotion:AddDropdown("SelectGlove", {
-        Title = "Select Glove",
-        Values = __SEVOLGFOELBAT,
-        Multi = false,
-        Default = Setting.SelectGlove,
-    })
-    SelectGlove:OnChanged(function(Value)
-        pcall(function()
-            Setting.SelectGlove = tostring(Value)
         end)
     end)
-    AutoCraftGlove = Tabs.GloveAPotion:AddToggle("AutoCraftGlove", {Title = "Auto Craft Glove [Pactehd]", Default = Setting.AutoCraftGlove })
+    ESPItems = Tabs.ESP:AddToggle("ESPItems", {Title = "ESPItems", Default = Setting.ESPItems })
     coroutine.wrap(function()
-        AutoCraftGlove:OnChanged(function()
-            pcall(function()
-                Setting.AutoCraftGlove = Options.AutoCraftGlove.Value
-                while Options.AutoCraftGlove.Value do
-                    IIS = game:GetService("Players").LocalPlayer.PlayerGui.MainInterface.Inventory.Items.ItemGrid.ScrollingFrame
-                    MRF = game:GetService("Players").LocalPlayer.PlayerGui.MainInterface.RemoteFunction
-                    if Setting.SelectGlove == "Gear Basing" then
-                        if not IIS:FindFirstChild("Gear Basing") then
-                            MRF[var]:FireServer("Insert", "Gear Basing", "Common")
-                            MRF[var]:FireServer("Insert", "Gear Basing", "Uncommon")
-                            MRF[var]:FireServer("Insert", "Gear Basing", "Rare")
-                            MRF[var]:FireServer("Insert", "Gear Basing", "Good")
-                            task.wait()
-                            MRF[var]:FireServer("Craft", "Gear Basing")
-                        end
-                    elseif Setting.SelectGlove == "Luck Glove" then
-                        if not IIS:FindFirstChild("Luck Glove") then
-                            if not IIS:FindFirstChild("Gear Basing") then
-                                MRF[var]:FireServer("Insert", "Gear Basing", "Common")
-                                MRF[var]:FireServer("Insert", "Gear Basing", "Uncommon")
-                                MRF[var]:FireServer("Insert", "Gear Basing", "Rare")
-                                MRF[var]:FireServer("Insert", "Gear Basing", "Good")
-                                task.wait()
-                                MRF[var]:FireServer("Craft", "Gear Basing")
-                            else
-                                MRF[var]:FireServer("Insert", "Luck Glove", "Gear Basing")
-                                MRF[var]:FireServer("Insert", "Luck Glove", "Divinus")
-                                MRF[var]:FireServer("Insert", "Luck Glove", "Crystallized")
-                                MRF[var]:FireServer("Insert", "Luck Glove", "Rare")
-                                task.wait()
-                                MRF[var]:FireServer("Craft", "Luck Glove")
-                            end
-                        end
-                    elseif Setting.SelectGlove == "Lunar Device" then
-                        if not IIS:FindFirstChild("Lunar Device") then
-                            if not IIS:FindFirstChild("Gear Basing") then
-                                MRF[var]:FireServer("Insert", "Gear Basing", "Common")
-                                MRF[var]:FireServer("Insert", "Gear Basing", "Uncommon")
-                                MRF[var]:FireServer("Insert", "Gear Basing", "Rare")
-                                MRF[var]:FireServer("Insert", "Gear Basing", "Good")
-                                task.wait()
-                                MRF[var]:FireServer("Craft", "Gear Basing")
-                            else
-                                MRF[var]:FireServer("Insert", "Lunar Device", "Gear Basing")
-                                MRF[var]:FireServer("Insert", "Lunar Device", "Rare")
-                                MRF[var]:FireServer("Insert", "Lunar Device", "Divinus")
-                                MRF[var]:FireServer("Insert", "Lunar Device", "Lunar")
-                                task.wait()
-                                MRF[var]:FireServer("Craft", "Lunar Device")
-                            end
-                        end
-                    elseif Setting.SelectGlove == "Solar Device" then
-                        if not IIS:FindFirstChild("Solar Device") then
-                            if not IIS:FindFirstChild("Gear Basing") then
-                                MRF[var]:FireServer("Insert", "Gear Basing", "Common")
-                                MRF[var]:FireServer("Insert", "Gear Basing", "Uncommon")
-                                MRF[var]:FireServer("Insert", "Gear Basing", "Rare")
-                                MRF[var]:FireServer("Insert", "Gear Basing", "Good")
-                                task.wait()
-                                MRF[var]:FireServer("Craft", "Gear Basing")
-                            else
-                                MRF[var]:FireServer("Insert", "Solar Device", "Gear Basing")
-                                MRF[var]:FireServer("Insert", "Solar Device", "Solar")
-                                MRF[var]:FireServer("Insert", "Solar Device", "Divinus")
-                                MRF[var]:FireServer("Insert", "Solar Device", "Rare")
-                                task.wait()
-                                MRF[var]:FireServer("Craft", "Solar Device")
-                            end
-                        end
-                    elseif Setting.SelectGlove == "Eclipse" then
-                        if not IIS:FindFirstChild("Eclipse") then
-                            MRF[var]:FireServer("Insert", "Eclipse", "Divinus")
-                            MRF[var]:FireServer("Insert", "Eclipse", "Solar")
-                            MRF[var]:FireServer("Insert", "Eclipse", "Lunar")
-                            task.wait()
-                            MRF[var]:FireServer("Craft", "Eclipse")
-                        end
-                    elseif Setting.SelectGlove == "Eclipse Device" then
-                        if not IIS:FindFirstChild("Eclipse Device") then
-                            if not IIS:FindFirstChild("Eclipse") then
-                                MRF[var]:FireServer("Insert", "Eclipse", "Divinus")
-                                MRF[var]:FireServer("Insert", "Eclipse", "Solar")
-                                MRF[var]:FireServer("Insert", "Eclipse", "Lunar")
-                                task.wait()
-                                MRF[var]:FireServer("Craft", "Eclipse")
-                            end
-                            if not IIS:FindFirstChild("Lunar Device") then
-                                if not IIS:FindFirstChild("Gear Basing") then
-                                    MRF[var]:FireServer("Insert", "Gear Basing", "Common")
-                                    MRF[var]:FireServer("Insert", "Gear Basing", "Uncommon")
-                                    MRF[var]:FireServer("Insert", "Gear Basing", "Rare")
-                                    MRF[var]:FireServer("Insert", "Gear Basing", "Good")
-                                    task.wait()
-                                    MRF[var]:FireServer("Craft", "Gear Basing")
-                                else
-                                    MRF[var]:FireServer("Insert", "Lunar Device", "Gear Basing")
-                                    MRF[var]:FireServer("Insert", "Lunar Device", "Rare")
-                                    MRF[var]:FireServer("Insert", "Lunar Device", "Divinus")
-                                    MRF[var]:FireServer("Insert", "Lunar Device", "Lunar")
-                                    task.wait()
-                                    MRF[var]:FireServer("Craft", "Lunar Device")
+        pcall(function()
+            ESPItems:OnChanged(function()
+                pcall(function()
+                    Setting.ESPItems = Options.ESPItems.Value
+                    if Setting.ESPItems then
+                        while Setting.ESPItems do task.wait(0.5)
+                            getgenv().LastFuntion = "ESPItems"
+                            if Setting.ESPItems then
+                                for _, v in pairs(workspace:GetChildren()) do
+                                    if v and Setting.ESPItems then
+                                        for _, a in pairs(v:GetChildren()) do
+                                            if (a:FindFirstChild("Collect") or a:FindFirstChild("FalseCollect")) and (a.Position - Vector3.new(-927.2256469726562, 74.73796081542969, 501.1764221191406)).Magnitude < 3000 and not v:FindFirstChild("TextLabelBillboard") then
+                                                ESPSomething(v, v.Name)
+                                            end
+                                        end
+                                    end
                                 end
                             end
-                            if not IIS:FindFirstChild("Solar Device") then
-                                if not IIS:FindFirstChild("Gear Basing") then
-                                    MRF[var]:FireServer("Insert", "Gear Basing", "Common")
-                                    MRF[var]:FireServer("Insert", "Gear Basing", "Uncommon")
-                                    MRF[var]:FireServer("Insert", "Gear Basing", "Rare")
-                                    MRF[var]:FireServer("Insert", "Gear Basing", "Good")
-                                    task.wait()
-                                    MRF[var]:FireServer("Craft", "Gear Basing")
-                                else
-                                    MRF[var]:FireServer("Insert", "Solar Device", "Gear Basing")
-                                    MRF[var]:FireServer("Insert", "Solar Device", "Solar")
-                                    MRF[var]:FireServer("Insert", "Solar Device", "Divinus")
-                                    MRF[var]:FireServer("Insert", "Solar Device", "Rare")
-                                    task.wait()
-                                    MRF[var]:FireServer("Craft", "Solar Device")
+                        end
+                    else
+                        for _, v in pairs(workspace:GetChildren()) do
+                            if v and not Setting.ESPItems then
+                                for _, a in pairs(v:GetChildren()) do
+                                    if (a:FindFirstChild("Collect") or a:FindFirstChild("FalseCollect")) and (a.Position - Vector3.new(-927.2256469726562, 74.73796081542969, 501.1764221191406)).Magnitude < 3000 then
+                                        if v:FindFirstChild("TextLabelBillboard") then
+                                            v.TextLabelBillboard:Destroy()
+                                        end
+                                    end
                                 end
                             end
-                            if IIS:FindFirstChild("Solar Device") and IIS:FindFirstChild("Lunar Device") and IIS:FindFirstChild("Eclipse") then
-                                MRF[var]:FireServer("Insert", "Eclipse Device", "Solar Device")
-                                MRF[var]:FireServer("Insert", "Eclipse Device", "Lunar Device")
-                                MRF[var]:FireServer("Insert", "Eclipse Device", "Eclipse")
-                                task.wait()
-                                MRF[var]:FireServer("Craft", "Eclipse Device")
-                            end
                         end
-                    elseif Setting.SelectGlove == "Jackpot Gauntlet" then
-                        if not IIS:FindFirstChild("Jackpot Gauntlet") then
-                            if not IIS:FindFirstChild("Gear Basing") then
-                                MRF[var]:FireServer("Insert", "Gear Basing", "Common")
-                                MRF[var]:FireServer("Insert", "Gear Basing", "Uncommon")
-                                MRF[var]:FireServer("Insert", "Gear Basing", "Rare")
-                                MRF[var]:FireServer("Insert", "Gear Basing", "Good")
-                                task.wait()
-                                MRF[var]:FireServer("Craft", "Gear Basing")
-                            end
-                            MRF[var]:FireServer("Insert", "Jackpot Gauntlet", "Jackpot")
-                            MRF[var]:FireServer("Insert", "Jackpot Gauntlet", "Gilded")
-                            MRF[var]:FireServer("Insert", "Jackpot Gauntlet", "Rare")
-                            task.wait()
-                            MRF[var]:FireServer("Craft", "Jackpot Gauntlet")
-                        end
-                    elseif Setting.SelectGlove == "Exo Gauntlet" then
-                        if not IIS:FindFirstChild("Exo Gauntlet") then
-                            if not IIS:FindFirstChild("Gear Basing") then
-                                MRF[var]:FireServer("Insert", "Gear Basing", "Common")
-                                MRF[var]:FireServer("Insert", "Gear Basing", "Uncommon")
-                                MRF[var]:FireServer("Insert", "Gear Basing", "Rare")
-                                MRF[var]:FireServer("Insert", "Gear Basing", "Good")
-                                task.wait()
-                                MRF[var]:FireServer("Craft", "Gear Basing")
-                            end
-                        end
-                        MRF[var]:FireServer("Insert", "Exo Gauntlet", "Gilded")
-                        MRF[var]:FireServer("Insert", "Exo Gauntlet", "Precious")
-                        MRF[var]:FireServer("Insert", "Exo Gauntlet", "Undead")
-                        MRF[var]:FireServer("Insert", "Exo Gauntlet", "Exotic")
-                        task.wait()
-                        MRF[var]:FireServer("Craft", "Exo Gauntlet")
                     end
-                    task.wait()
-                end
+                end)
             end)
         end)
+    end)
+    AntiAFK = Tabs.Player:AddToggle("AntiAFK", {Title = "Anti AFK", Default = __Y[2] })
+    AntiAFK:OnChanged(function()
+        AFK = Options.AntiAFK.Value
+    end)
+    coroutine.wrap(function()
+        __VE["LPs"].Idled:connect(function()
+            if AFK then
+                __VE["VU"]:CaptureController()
+                __VE["VU"]:ClickButton2(Vector2.new())
+                task.wait(2)
+            end
+        end)
     end)()
+    FloatT = Tabs.Player:AddToggle("FloatT", {Title = "Float", Default = __Y[2] })
+    FloatT:OnChanged(function()
+        getgenv().LastFuntion = "Float"
+        Float = Options.FloatT.Value
+    end)
+    NoClipT = Tabs.Player:AddToggle("NoClipT", {Title = "Noclip", Default = __Y[2] })
+    NoClipT:OnChanged(function()
+        getgenv().LastFuntion = "NoClip"
+        Noclip = Options.NoClipT.Value
+    end)
+    local FLysss = Tabs.Player:AddToggle("FLysss", {Title = "Fly", Default = __Y[2] })
 
-    Tabs.GloveAPotion:AddButton({
-        Title = "Get Luck Glove",
-        Description = "",
-        Callback = function()
-            MRF = game:GetService("Players").LocalPlayer.PlayerGui.MainInterface.RemoteFunction
-            MRF[var]:FireServer("Craft", "Luck Glove")
-        end
-    })
-    Tabs.GloveAPotion:AddButton({
-        Title = "Get Lunar Device",
-        Description = "",
-        Callback = function()
-            MRF = game:GetService("Players").LocalPlayer.PlayerGui.MainInterface.RemoteFunction
-            MRF[var]:FireServer("Craft", "Lunar Device")
-        end
-    })
-    Tabs.GloveAPotion:AddButton({
-        Title = "Get Solar Device",
-        Description = "",
-        Callback = function()
-            MRF = game:GetService("Players").LocalPlayer.PlayerGui.MainInterface.RemoteFunction
-            MRF[var]:FireServer("Craft", "Solar Device")
-        end
-    })
-    Tabs.GloveAPotion:AddButton({
-        Title = "Get Eclipse Device",
-        Description = "",
-        Callback = function()
-            MRF = game:GetService("Players").LocalPlayer.PlayerGui.MainInterface.RemoteFunction
-            MRF[var]:FireServer("Craft", "Eclipse Device")
-        end
-    })
-    Tabs.GloveAPotion:AddButton({
-        Title = "Get Exo Gauntlet",
-        Description = "",
-        Callback = function()
-            MRF = game:GetService("Players").LocalPlayer.PlayerGui.MainInterface.RemoteFunction
-            MRF[var]:FireServer("Craft", "Exo Gauntlet")
-        end
-    })
-    Tabs.GloveAPotion:AddButton({
-        Title = "Get Jackpot Gauntlet",
-        Description = "",
-        Callback = function()
-            MRF = game:GetService("Players").LocalPlayer.PlayerGui.MainInterface.RemoteFunction
-            MRF[var]:FireServer("Craft", "Jackpot Gauntlet")
-        end
-    })
-    Tabs.GloveAPotion:AddButton({
-        Title = "Get Subzero Device",
-        Description = "",
-        Callback = function()
-            MRF = game:GetService("Players").LocalPlayer.PlayerGui.MainInterface.RemoteFunction
-            MRF[var]:FireServer("Craft", "Subzero Device")
-        end
-    })
-    Tabs.GloveAPotion:AddButton({
-        Title = "Get Gravitational Device",
-        Description = "",
-        Callback = function()
-            MRF = game:GetService("Players").LocalPlayer.PlayerGui.MainInterface.RemoteFunction
-            MRF[var]:FireServer("Craft", "Gravitational Device")
-        end
-    })
-    Tabs.GloveAPotion:AddButton({
-        Title = "Get Windstorm Device",
-        Description = "",
-        Callback = function()
-            MRF = game:GetService("Players").LocalPlayer.PlayerGui.MainInterface.RemoteFunction
-            MRF[var]:FireServer("Craft", "Windstorm Device")
-        end
-    })
-    Tabs.GloveAPotion:AddButton({
-        Title = "Get Galactic Device",
-        Description = "",
-        Callback = function()
-            MRF = game:GetService("Players").LocalPlayer.PlayerGui.MainInterface.RemoteFunction
-            MRF[var]:FireServer("Craft", "Galactic Device")
-        end
-    })
-    Tabs.GloveAPotion:AddSection("Potion")
-    Tabs.Items:AddButton({
-        Title = "Dupe Coin",
-        Description = "will kick",
-        Callback = function()
-            MRF = game:GetService("Players").LocalPlayer.PlayerGui.MainInterface.RemoteFunction
-            HBDupe = game:GetService("RunService").Heartbeat:Connect(function()
-                MRF[var]:FireServer("Craft", "Gilded Coin")
-            end)
-        end
-    })
-    AutoUseLuckyPotion = Tabs.Items:AddToggle("AutoUseLuckyPotion", {Title = "Auto use Luck Potion", Default = Setting.AutoUseLuckyPotion })
-    coroutine.wrap(function()
-        AutoUseLuckyPotion:OnChanged(function()
-            pcall(function()
-                Setting.AutoUseLuckyPotion = Options.AutoUseLuckyPotion.Value
-                while Options.AutoUseLuckyPotion.Value do
-                    BL = game:GetService("Players").LocalPlayer.PlayerGui.MainInterface.BuffsHolder.Lucky
-                    if not BL.Visible then
-                        game.ReplicatedStorage.Modules.Inventory.UseItem:FireServer("Lucky Potion", 1)
-                        task.wait(0.1)
-                    end
-                    task.wait(0.5)
-                end
-            end)
-        end)
-    end)()
-    AutoUseSpeedPotion = Tabs.Items:AddToggle("AutoUseSpeedPotion", {Title = "Auto use Speed Potion", Default = Setting.AutoUseSpeedPotion })
-    coroutine.wrap(function()
-        AutoUseSpeedPotion:OnChanged(function()
-            pcall(function()
-                Setting.AutoUseSpeedPotion = Options.AutoUseSpeedPotion.Value
-                while Options.AutoUseSpeedPotion.Value do
-                    BQ = game:GetService("Players").LocalPlayer.PlayerGui.MainInterface.BuffsHolder.QuickRoll
-                    if not BQ.Visible then
-                        game.ReplicatedStorage.Modules.Inventory.UseItem:FireServer("Speed Potion", 1)
-                        task.wait(0.1)
-                    end
-                    task.wait(0.5)
-                end
-            end)
-        end)
-    end)()
-    Tabs.Items:AddSection("Use")
-    AutoUseCoin = Tabs.Items:AddToggle("AutoUseCoin", {Title = "Auto Use Coin", Default = Setting.AutoUseCoin })
-    coroutine.wrap(function()
-        AutoUseCoin:OnChanged(function()
-            pcall(function()
-                Setting.AutoUseCoin = Options.AutoUseCoin.Value
-                while Options.AutoUseCoin.Value do
-                    game.ReplicatedStorage.Modules.Inventory.UseItem:FireServer("Coin", 1)
-                    task.wait(0.1)
-                end
-                task.wait(0.5)
-            end)
-        end)
-    end)()
-    AutoUseGildedCoin = Tabs.Items:AddToggle("AutoUseGildedCoin", {Title = "Auto Use Gilded Coin", Default = Setting.AutoUseGildedCoin })
-    coroutine.wrap(function()
-        AutoUseGildedCoin:OnChanged(function()
-            pcall(function()
-                Setting.AutoUseGildedCoin = Options.AutoUseGildedCoin.Value
-                while Options.AutoUseGildedCoin.Value do
-                    game.ReplicatedStorage.Modules.Inventory.UseItem:FireServer("Gilded Coin", 1)
-                    task.wait(0.1)
-                end
-                task.wait(0.5)
-            end)
-        end)
-    end)()
-    Tabs.Items:AddSection("Auto Collect")
-    Tabs.Items:AddSection("AI Engine")
-    Tabs.Items:AddSection("Work in progress")
+    FLysss:OnChanged(function()
+        getgenv().LastFuntion = "Fly"
+        if Options.FLysss.Value then
+            FLYING = Options.FLysss.Value
+            while not __VE["LPs"] or not __VE["LPs"].Character or not __VE["LPs"].Character:FindFirstChild('HumanoidRootPart') or not __VE["LPs"].Character:FindFirstChild('Humanoid') or not cmdm do
+                wait()
+            end
 
-    Tabs.Player:AddSection("Main")
-    IncreaseWalkSpeed = Tabs.Player:AddToggle("IncreaseWalkSpeed", {Title = "Increase WalkSpeed", Default = Setting.IncreaseWalkSpeed })
-    coroutine.wrap(function()
-        IncreaseWalkSpeed:OnChanged(function()
-            pcall(function()
-                Setting.IncreaseWalkSpeed = Options.IncreaseWalkSpeed.Value
-                if Options.IncreaseWalkSpeed.Value then
-                    while Options.IncreaseWalkSpeed.Value do
-                        if Options.IncreaseWalkSpeed.Value then
-                            __VE["LPs"].Character.Humanoid.WalkSpeed = 18
+            local T = __VE["LPs"].Character.HumanoidRootPart
+            local SPEED = 0
+
+            function FLY()
+                local BG = __U[35]('BodyGyro', T)
+                local BV = __U[35]('BodyVelocity', T)
+                BG.P = 9e4
+                BG.maxTorque = __U[57](9e9, 9e9, 9e9)
+                BG.cframe = T.CFrame
+                BV.velocity = __U[57](0, 0, 0)
+                BV.maxForce = __U[57](9e9, 9e9, 9e9)
+
+                spawn(function()
+                    while FLYING do
+                        if CONTROL.L + CONTROL.R ~= 0 or CONTROL.F + CONTROL.B ~= 0 or CONTROL.Q + CONTROL.E ~= 0 then
+                            SPEED = 50
+                        elseif not (CONTROL.L + CONTROL.R ~= 0 or CONTROL.F + CONTROL.B ~= 0 or CONTROL.Q + CONTROL.E ~= 0) and SPEED ~= 0 then
+                            SPEED = 0
+                        end
+
+                        if (CONTROL.L + CONTROL.R) ~= 0 or (CONTROL.F + CONTROL.B) ~= 0 or (CONTROL.Q + CONTROL.E) ~= 0 then
+                            BV.velocity = ((__VE["WS"].CurrentCamera.CoordinateFrame.lookVector * (CONTROL.F + CONTROL.B)) + ((__VE["WS"].CurrentCamera.CoordinateFrame * __U[26](CONTROL.L + CONTROL.R, (CONTROL.F + CONTROL.B + CONTROL.Q + CONTROL.E) * 0.2, 0).p) - __VE["WS"].CurrentCamera.CoordinateFrame.p)) * SPEED
                         else
-                            __VE["LPs"].Character.Humanoid.WalkSpeed = 16
+                            BV.velocity = __U[57](0, 0, 0)
                         end
-                        task.wait(0.5)
+
+                        BG.cframe = __VE["WS"].CurrentCamera.CoordinateFrame
+                        wait()
                     end
-                else
-                    __VE["LPs"].Character.Humanoid.WalkSpeed = 16
+
+                    CONTROL = {F = 0, B = 0, L = 0, R = 0, Q = 0, E = 0}
+                    SPEED = 0
+
+                    BG:Destroy()
+                    BV:Destroy()
+                    __VE["LPs"].Character.Humanoid.PlatformStand = __Y[2]
+                end)
+            end
+
+            cmdm.KeyDown:connect(function(KEY)
+                if KEY:lower() == 'w' then
+                    if vfly then
+                        CONTROL.F = speedofthevfly
+                    else
+                        CONTROL.F = speedofthefly
+                    end
+                elseif KEY:lower() == 's' then
+                    if vfly then
+                        CONTROL.B = -speedofthevfly
+                    else
+                        CONTROL.B = -speedofthefly
+                    end
+                elseif KEY:lower() == 'a' then
+                    if vfly then
+                        CONTROL.L = -speedofthevfly
+                    else
+                        CONTROL.L = -speedofthefly
+                    end
+                elseif KEY:lower() == 'd' then
+                    if vfly then
+                        CONTROL.R = speedofthevfly
+                    else
+                        CONTROL.R = speedofthefly
+                    end
+                elseif KEY:lower() == 'y' then
+                    if vfly then
+                        CONTROL.Q = speedofthevfly * 2
+                    else
+                        CONTROL.Q = speedofthefly * 2
+                    end
+                elseif KEY:lower() == 't' then
+                    if vfly then
+                        CONTROL.E = -speedofthevfly * 2
+                    else
+                        CONTROL.E = -speedofthefly * 2
+                    end
                 end
             end)
-        end)
-    end)()
-    RemoveFog = Tabs.Player:AddToggle("RemoveFog", {Title = "Remove Fog", Default = Setting.RemoveFog })
-    coroutine.wrap(function()
-        RemoveFog:OnChanged(function()
-            pcall(function()
-                Setting.RemoveFog = Options.RemoveFog.Value
-                if Options.RemoveFog.Value then
-                    for _, v in pairs(game:GetService("Lighting"):GetChildren()) do
-                        if v and not v:IsA("Script") then
-                            v.Parent = game:GetService("MaterialService")
-                        end
-                    end
-                else
-                    for _, v in pairs(game:GetService("MaterialService"):GetChildren()) do
-                        if v then
-                            v.Parent = game:GetService("Lighting")
-                        end
-                    end
+
+            cmdm.KeyUp:connect(function(KEY)
+                if KEY:lower() == 'w' then
+                    CONTROL.F = 0
+                elseif KEY:lower() == 's' then
+                    CONTROL.B = 0
+                elseif KEY:lower() == 'a' then
+                    CONTROL.L = 0
+                elseif KEY:lower() == 'd' then
+                    CONTROL.R = 0
+                elseif KEY:lower() == 'y' then
+                    CONTROL.Q = 0
+                elseif KEY:lower() == 't' then
+                    CONTROL.E = 0
                 end
             end)
-        end)
-    end)()
-    SetDay = Tabs.Player:AddToggle("SetDay", {Title = "Day Time", Default = Setting.SetDay })
+
+            FLY()
+        else
+            FLYING = Options.FLysss.Value
+        end
+    end)
+    local pfly = Tabs.Player:AddSlider("pfly", {
+        Title = "Fly Speed",
+        Description = "",
+        Default = 6,
+        Min = 1,
+        Max = 50,
+        Rounding = 0,
+        Callback = function(Value)
+            getgenv().LastFuntion = tostring("Changed Fly Speed" .. Value)
+            speedofthefly = Value
+            speedofthevfly = Value
+        end
+    })
+    local WalkSpeedS = Tabs.Player:AddSlider("WalkSpeedS", {
+        Title = "WalkSpeed",
+        Description = "",
+        Default = 16,
+        Min = 0,
+        Max = 300,
+        Rounding = 1,
+        Callback = function(Value)
+            getgenv().LastFuntion = tostring("Changed WalkSpeed" .. Value)
+            WalkSpeedSet = Value
+        end
+    })
+
+    WalkSpeedS:OnChanged(function(Value)
+        getgenv().LastFuntion = tostring("Changed WalkSpeed" .. Value)
+        WalkSpeedSet = Value
+    end)
+    local JumpPowerS = Tabs.Player:AddSlider("JumpPowerS", {
+        Title = "JumpPower",
+        Description = "",
+        Default = 30,
+        Min = 0,
+        Max = 300,
+        Rounding = 1,
+        Callback = function(Value)
+            getgenv().LastFuntion = tostring("Changed JumpPower" .. Value)
+            JumpPowerSet = Value
+        end
+    })
+
+    JumpPowerS:OnChanged(function(Value)
+        getgenv().LastFuntion = tostring("Changed JumpPower" .. Value)
+        JumpPowerSet = Value
+    end)
+    WalkSpeedT = Tabs.Player:AddToggle("WalkSpeedT", {Title = "Toggle WalkSpeed", Default = false })
     coroutine.wrap(function()
-        SetDay:OnChanged(function()
+        WalkSpeedT:OnChanged(function()
             pcall(function()
-                Setting.SetDay = Options.SetDay.Value
+                getgenv().LastFuntion = tostring("WalkSpeedRequest" .. Value)
+                WalkSpeedRequest = Options.WalkSpeedT.Value
+                __VE["LPs"].Character.Humanoid.WalkSpeed = WalkSpeedSet
             end)
         end)
     end)()
-    SetNight = Tabs.Player:AddToggle("SetNight", {Title = "Night Time", Default = Setting.SetNight })
+    JumpPowerT = Tabs.Player:AddToggle("JumpPowerT", {Title = "Toggle JumpPower", Default = false })
     coroutine.wrap(function()
-        SetNight:OnChanged(function()
+        JumpPowerT:OnChanged(function()
             pcall(function()
-                Setting.SetNight = Options.SetNight.Value
+                getgenv().LastFuntion = tostring("JumpPowerRequest" .. Value)
+                JumpPowerRequest = Options.JumpPowerT.Value
             end)
         end)
     end)()
+
 
     Tabs.ESP:AddSection("ESP")
-    ESPItems = Tabs.ESP:AddToggle("ESPItems", {Title = "Items", Default = Setting.ESPItems })
-    coroutine.wrap(function()
-        ESPItems:OnChanged(function()
-            pcall(function()
-                Setting.ESPItems = Options.ESPItems.Value
-                if Options.ESPItems.Value then
-                    while Options.ESPItems.Value do
-                        for _, v in pairs(__VE["WS"].DroppedItems:GetChildren()) do
-                            if v and (v.Name == "Luck Potion" or v.Name == "Speed Potion" or v.Name == "Coin" or v.Name == "Gilded Coin") then
-                                if not v:FindFirstChild("Highlight") then
-                                    local Highlight = Instance.new("Highlight")
-                                    Highlight.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
-                                    Highlight.FillColor = Color3.fromRGB(51, 255, 0)
-                                    Highlight.FillTransparency = 0.3
-                                    Highlight.Name = "Highlight"
-                                    Highlight.OutlineColor = Color3.new(0,0,0)
-                                    Highlight.OutlineTransparency = 0
-                                    Highlight.Parent = v
-                                    ESPSomething(v, tostring(v.Name))
-                                end
-                            end
-                        end
-                        task.wait(0.5)
-                    end
-                else
-                    for _, v in pairs(__VE["WS"]:GetChildren()) do
-                        if v and (v.Name == "Luck Potion" or v.Name == "Speed Potion" or v.Name == "Coin" or v.Name == "Gilded Coin") then
-                            if v:FindFirstChild("Highlight") then
-                                v.Highlight:Destroy()
-                                if v:FindFirstChild("TextLabelBillboard") then
-                                    v.TextLabelBillboard:Destroy()
-                                end
-                            end
-                        end
-                    end
-                end
-            end)
-        end)
-    end)()
-
-    
     Tabs.ChangeLog:AddParagraph({
         Title = "Change Log",
-        Content = "# Main\n- Added Auto Rolls\n- Added Auto Upgrade Storage\n- Added Auto Claim Achievement\n# Gloves & Potion\n- Added Auto Craft Gloves\n- Added Auto Use Potions\n# Items\n- Added Auto Use Coins\n- Added Auto Use Gilded Coins\n# Player\n- Added Full Bright\n- Added No Fog (Can be back if you want fog)\n- Added Player Speed\n- Added Anti  AFK\n# ESP\n- Added Items ESP\n# Credits\n- Added Credits\n# Setting\n- Added Save As Config\n\n-->SOON<--\n# Items\n- Add Auto Collect\n- Add Auto Blessing\n# Gloves & Potion\n- Add Open UI"
+        Content = "Can't be show"
     })
-
-    for i, v in ipairs(credits) do
+    credits = {
+        "Owner - ttjy.",
+        "Co Owner - ttjy_",
+        "Ui - dawid",
+        "Key system - sa.l"
+    }
+    for i, v in __U[7](credits) do
         Tabs.Credits:AddButton({
-            Title = v.Title,
-            Description = v.Content,
+            Title = v,
+            Description = "",
             Callback = function()
                 
             end
         })
+        wait()
     end
-    Tabs.Settings:AddButton({
-        Title = "Save as config",
-        Description = "",
-        Callback = function()
-            serializedSetting = game.HttpService:JSONEncode(Setting)
-            writefile("Setting/settingSOLRNG.json", serializedSetting)
-        end
-    })
-end
+    if getgenv().Addons then
+        Tabs.Addons:AddButton({
+            Title = "Save as config",
+            Description = "",
+            Callback = function()
+                serializedSetting = game.HttpService:JSONEncode(Setting)
+                writefile("Setting/settingJujutsuChronicles.json", serializedSetting)
+            end
+        })
+        Tabs.Addons:AddSection("Colorful + fun")
+        Tabs.Addons:AddButton({
+            Title = "Trail",
+            Description = "Blue->Cyan",
+            Callback = function()
+                createTrail(1)
+            end
+        })
+        Tabs.Addons:AddButton({
+            Title = "Trail",
+            Description = "Green->Light Green",
+            Callback = function()
+                createTrail(2)
+            end
+        })
+        Tabs.Addons:AddButton({
+            Title = "Trail",
+            Description = "Pink->Red",
+            Callback = function()
+                createTrail(3)
+            end
+        })
+        Tabs.Addons:AddButton({
+            Title = "Trail",
+            Description = "Purple->Light Purple",
+            Callback = function()
+                createTrail(4)
+            end
+        })
+        Tabs.Addons:AddSection("Webhook")
+        Tabs.Addons:AddSection("Nothing to hook")
+        Tabs.Addons:AddSection("Notify")
+        NotifyWhenTTJY = Tabs.Addons:AddToggle("NotifyWhenTTJY", {Title = "Notify When TTJY Join", Default = __Y[2] })
+        coroutine.wrap(function()
+            NotifyWhenTTJY:OnChanged(function()
+                if Options.NotifyWhenTTJY.Value then
+                    repeat __U[23]() until game.Players:FindFirstChild("rigga56")
+                    Notify("Script", "TTJY!!!", 5)
+                end
+            end)
+        end)()
+        Tabs.Addons:AddSection("Others")
+        Tabs.Addons:AddSection("Nothing here")
+    end
+    Tabs.Settings:AddSection("W A S D")
+    HideShow = Tabs.Settings:AddToggle("HideShow", {Title = "Hide/Show", Default = __Y[2] })
 
-local function onHeartbeat()
-    game:GetService("Lighting").ClockTime = 0
+    HideShow:OnChanged(function()
+        if Options.HideShow.Value then
+            game.CoreGui["InputPcToMobile"].W.Visible = __Y[2]
+            game.CoreGui["InputPcToMobile"].A.Visible = __Y[2]
+            game.CoreGui["InputPcToMobile"].S.Visible = __Y[2]
+            game.CoreGui["InputPcToMobile"].D.Visible = __Y[2]
+        else
+            game.CoreGui["InputPcToMobile"].W.Visible = __Y[1]
+            game.CoreGui["InputPcToMobile"].A.Visible = __Y[1]
+            game.CoreGui["InputPcToMobile"].S.Visible = __Y[1]
+            game.CoreGui["InputPcToMobile"].D.Visible = __Y[1]
+        end
+    end)
+    UpDown = Tabs.Settings:AddToggle("UpDown", {Title = "Up/Down", Default = __Y[2] })
+
+    UpDown:OnChanged(function()
+        if Options.UpDown.Value then
+            game.CoreGui["InputPcToMobile"].W.Position = __U[27](0.05, 0, 0.1, 0)
+            game.CoreGui["InputPcToMobile"].A.Position = __U[27](0, 0, 0.2, 0)
+            game.CoreGui["InputPcToMobile"].S.Position = __U[27](0.05, 0, 0.3, 0)
+            game.CoreGui["InputPcToMobile"].D.Position = __U[27](0.1, 0, 0.2, 0)
+        else
+            game.CoreGui["InputPcToMobile"].W.Position = __U[27](0.05, 0, 0.7, 0)
+            game.CoreGui["InputPcToMobile"].A.Position = __U[27](0, 0, 0.8, 0)
+            game.CoreGui["InputPcToMobile"].S.Position = __U[27](0.05, 0, 0.9, 0)
+            game.CoreGui["InputPcToMobile"].D.Position = __U[27](0.1, 0, 0.8, 0)
+        end
+    end)
+    BigSmall = Tabs.Settings:AddToggle("BigSmall", {Title = "Big/Small", Default = __Y[2] })
+
+    BigSmall:OnChanged(function()
+        if Options.BigSmall.Value then
+            game.CoreGui["InputPcToMobile"].W.Size = __U[27](0.1, 0, 0.1, 0)
+            game.CoreGui["InputPcToMobile"].A.Size = __U[27](0.1, 0, 0.1, 0)
+            game.CoreGui["InputPcToMobile"].S.Size = __U[27](0.1, 0, 0.1, 0)
+            game.CoreGui["InputPcToMobile"].D.Size = __U[27](0.1, 0, 0.1, 0)
+        else
+            game.CoreGui["InputPcToMobile"].W.Size = __U[27](0.05, 0, 0.05, 0)
+            game.CoreGui["InputPcToMobile"].A.Size = __U[27](0.05, 0, 0.05, 0)
+            game.CoreGui["InputPcToMobile"].S.Size = __U[27](0.05, 0, 0.05, 0)
+            game.CoreGui["InputPcToMobile"].D.Size = __U[27](0.05, 0, 0.05, 0)
+        end
+    end)
 end
+local WalkSpeedSignal
+coroutine.wrap(function()
+    while task.wait(0.1) do        
+        character = __VE["LPs"].Character
+        if character and character:FindFirstChild("Humanoid") and WalkSpeedRequest and character.Humanoid.WalkSpeed ~= tonumber(WalkSpeedSet) then
+            if WalkSpeedSignal then
+                WalkSpeedSignal:Disconnect()
+            end
+            character.Humanoid.WalkSpeed = tonumber(WalkSpeedSet)
+            WalkSpeedSignal = character.Humanoid:GetPropertyChangedSignal("WalkSpeed"):Connect(function()
+                character.Humanoid.WalkSpeed = tonumber(WalkSpeedSet)
+            end)
+        end
+    end
+end)()
 game:GetService("RunService").Heartbeat:Connect(function()
-    if Setting.SetDay and not Setting.SetNight then
-        game:GetService("Lighting").ClockTime = 10
-    elseif Setting.SetNight and not Setting.SetDay then
-        game:GetService("Lighting").ClockTime = 0
+    if __VE["LPs"].Character and __VE["LPs"].Character:FindFirstChild("Humanoid") and JumpPowerRequest then
+        __VE["LPs"].Character.Humanoid.JumpPower = tonumber(JumpPowerSet)
     end
 end)
-
+local Part = Instance.new("Part")
+Part.Size = Vector3.new(2, 0.2, 1.5)
+Part.Material = Enum.Material.Grass
+Part.Anchored = true
+Part.Transparency = 1
+Part.Parent = workspace
+local function updatePartPosition()
+    character = __VE["LPs"].Character
+    local humanoidRootPart = character and character:FindFirstChild("HumanoidRootPart")
+    
+    if humanoidRootPart and Float then
+        Part.CFrame = humanoidRootPart.CFrame * CFrame.new(0, -3.1, 0)
+    else
+        Part.CFrame = CFrame.new(0, -10000, 0)
+    end
+end
+game:GetService("RunService").RenderStepped:Connect(updatePartPosition)
+local function NoclipLoop()
+	if Noclip and __VE["LPs"].Character ~= nil then
+		for _, child in pairs(__VE["LPs"].Character:GetChildren()) do
+			if child:IsA("BasePart") and child.CanCollide == true then
+				child.CanCollide = false
+			end
+		end
+	end
+	task.wait()
+end
+game:GetService("RunService").Stepped:Connect(NoclipLoop)
 task.wait(0.05)
 if allowtoserialized then
     serializedSetting = game.HttpService:JSONEncode(Setting)
-    writefile("Setting/settingSOLRNG.json", serializedSetting)
+    writefile("Setting/settingJujutsuChronicles.json", serializedSetting)
 end
 task.wait(5)
 finishload = true
 getgenv().FinishLoad = true
-
-local function createParts(Size, CFrame)
-    local size = Size
-    local cframe = CFrame
-
-    local part = Instance.new("Part")
-    part.Size = size
-    part.CFrame = cframe
-    part.Anchored = true
-    part.CanCollide = true
-    part.Transparency = 1
-    part.Color = Color3.fromRGB(255, 0, 0)
-
-    part.Parent = workspace
-end
-createParts(Vector3.new(15, 1, 45), CFrame.new(237.287537, 98.6303635, 145.430832, -0.0137257231, 0.009610896, 0.999859631, 0.573576331, 0.819152057, -3.57042147e-08, -0.81903708, 0.573495865, -0.0167560373))
-createParts(Vector3.new(10, 1, 5), CFrame.new(230.05275, 107.451981, 91.0173264, -0.561256826, -3.43324125e-08, 0.827641666, -1.24129595e-08, 1, 3.30644916e-08, -0.827641666, 8.28418933e-09, -0.561256826))
-createParts(Vector3.new(10, 1, 13), CFrame.new(235.806305, 104.051987, 87.6975632, -0.511800706, 0.49276188, 0.70373702, -1.12890657e-08, 0.819152117, -0.573576391, -0.859104216, -0.293556809, -0.41924262))
-createParts(Vector3.new(10, 30, 10), CFrame.new(359.000305, 115.484596, 87, 0, 0, 1, 0, 1, 0, -1, 0, 0))
-createParts(Vector3.new(9, 1, 8), CFrame.new(180.467911, 113.209999, 343.603333, 0.295654118, -0.050372228, 0.953966141, 0.0149116851, 0.99873054, 0.0481144786, -0.955178678, -9.17659171e-10, 0.296029925))
-createParts(Vector3.new(17.354660034179688, 21.770000457763672, 5.948921203613281), CFrame.new(260.816833, 104.585175, 143.018829, 1, 0, 0, 0, 1, 0, 0, 0, 1))
-createParts(Vector3.new(6, 1, 11), CFrame.new(266.380005, 106.480003, 202.100006, -0.258818954, 2.26266721e-08, 0.965925872, 1.71866702e-07, 1, 2.26266721e-08, -0.965925872, 1.71866702e-07, -0.258818954))
-createParts(Vector3.new(6, 1, 13), CFrame.new(255.550003, 105.980003, 210.759995, 0.866025388, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025388))
-createParts(Vector3.new(6, 1, 12), CFrame.new(245.179993, 107.18, 221.949997, -1.1313336e-08, 0.258818954, -0.965925872, 1.48942902e-09, 0.965925872, 0.258818954, 1, 1.48942902e-09, -1.1313336e-08))
-createParts(Vector3.new(6, 1, 10), CFrame.new(230.110001, 109.379997, 223.729996, 0.49999997, 0, -0.866025448, 0, 1, 0, 0.866025448, 0, 0.49999997))
-createParts(Vector3.new(8, 1, 10), CFrame.new(219.220001, 110.919998, 232.130005, 1, 0, 0, 0, 0.965925813, 0.258819044, 0, -0.258819044, 0.965925813))
-createParts(Vector3.new(7.5, 1, 11), CFrame.new(216.600006, 110.379997, 247.259995, 1, 0, 0, 0, 0.965925813, -0.258819044, 0, 0.258819044, 0.965925813))
-createParts(Vector3.new(7, 1, 8.5), CFrame.new(216.649994, 110.379997, 257.959991, 1, 0, 0, 0, 0.965925813, 0.258819044, 0, -0.258819044, 0.965925813))
-createParts(Vector3.new(12.5, 1, 15), CFrame.new(370.109985, 116.480003, 77.3399963, -2.18556924e-08, -0.49999997, 0.866025448, -5.85621507e-09, 0.866025448, 0.49999997, -1, 5.85621507e-09, -2.18556924e-08))
-createParts(Vector3.new(8, 1, 30.5), CFrame.new(391.220001, 117.260002, 44.7299995, 0.98478049, 0.160381705, 0.0669704825, -0.126897544, 0.926788926, -0.353495657, -0.118761733, 0.339617223, 0.933035731))
-createParts(Vector3.new(9, 1, 19.5), CFrame.new(413.660004, 129.979996, 23.4300003, 0.258818954, 0, -0.965925872, 0, 1, 0, 0.965925872, 0, 0.258818954))
-createParts(Vector3.new(6.5, 1, 26), CFrame.new(436.540009, 127.690002, 21.2099991, -1.1313336e-08, 0.258818954, -0.965925872, 1.48942902e-09, 0.965925872, 0.258818954, 1, 1.48942902e-09, -1.1313336e-08))
-createParts(Vector3.new(4, 1, 22.5), CFrame.new(468.540009, 127.040001, 27.6100006, -0.0085140178, -0.250065982, -0.968191385, 0.0669334978, 0.965912461, -0.250065982, 0.997721076, -0.0669334978, 0.00851399638))
-createParts(Vector3.new(4, 1, 23.5), CFrame.new(489.549988, 145.520004, 31.3799992, 1, 0, 0, 0, 0.0697565079, 0.997564077, 0, -0.997564077, 0.0697565079))
-createParts(Vector3.new(4, 1, 13), CFrame.new(461.350006, 157.720001, 27.2900009, 0.701819181, 0.366278559, 0.61097455, -0.121790856, 0.906750441, -0.40369612, -0.701866686, 0.208910555, 0.680984199))
-createParts(Vector3.new(4, 1, 16.5), CFrame.new(443.559998, 161.75, 26.7000008, 0.258874089, 0.483000576, -0.836477518, -3.37660313e-05, 0.866003036, 0.500038803, 0.96591109, -0.12941882, 0.224202067))
-createParts(Vector3.new(10, 1, 38), CFrame.new(238.979996, 104.25, 112.010002, 0.866025388, 0.5, 0, -0.5, 0.866025388, 0, 0, 0, 1))
-createParts(Vector3.new(13, 1, 38), CFrame.new(225.470001, 110.5, 110.970001, 0.866025388, 0.5, 0, -0.5, 0.866025388, 0, 0, 0, 1))
-createParts(Vector3.new(9, 1, 59), CFrame.new(208.380005, 116, 111.459999, 0.866025388, 0.5, 0, -0.5, 0.866025388, 0, 0, 0, 1))
-createParts(Vector3.new(56, 1, 8), CFrame.new(201.899994, 104.75, 46.7700005, 0.967301726, 0.11876972, -0.224100664, 0.00952259451, 0.865948796, 0.500041962, 0.253449559, -0.485825449, 0.83650279))
-createParts(Vector3.new(40, 1, 20), CFrame.new(184.960007, 110.75, 63.0900002, 1, 0, 0, 0, 0.707106769, 0.707106769, 0, -0.707106769, 0.707106769))
-createParts(Vector3.new(21, 1, 9), CFrame.new(216.729996, 108, 65.8600006, 0.707088113, 0.35362041, -0.612355232, -0.000103294849, 0.866029918, 0.499992162, 0.707125425, -0.353475273, 0.612396002))
-createParts(Vector3.new(7, 9, 7), CFrame.new(208.470001, 114.25, 79.6800003, 1, 0, 0, 0, 1, 0, 0, 0, 1))
-createParts(Vector3.new(6, 1, 9), CFrame.new(220.009995, 112.940002, 289.850006, 0.866025388, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025388))
-createParts(Vector3.new(8, 1, 11), CFrame.new(228.009995, 112.980003, 302.040009, 0.866025388, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025388))
-createParts(Vector3.new(6, 1, 11), CFrame.new(233.649994, 112.980003, 315.339996, 0.965925813, 0, 0.258819044, 0, 1, 0, -0.258819044, 0, 0.965925813))
-createParts(Vector3.new(8, 1, 12), CFrame.new(231.779999, 113.980003, 329.450012, 0.866025388, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025388))
-createParts(Vector3.new(6, 1, 12), CFrame.new(221.720001, 113.309998, 341.859985, 0.707103789, -0.183001146, -0.683018923, 2.81333923e-05, 0.965937793, -0.25877443, 0.707109809, 0.182961166, 0.683023393))
-createParts(Vector3.new(7, 1, 12), CFrame.new(207.789993, 112.980003, 346.980011, -4.37113883e-08, 0, -1, 0, 1, 0, 1, 0, -4.37113883e-08))
-createParts(Vector3.new(6, 1, 15), CFrame.new(192.009995, 113.980003, 345.549988, -0.258818954, -2.26266721e-08, -0.965925872, -2.97885805e-09, 1, -2.26266721e-08, 0.965925872, -2.97885805e-09, -0.258818954))
-createParts(Vector3.new(11, 40, 0.5), CFrame.new(403.288513, 132.293076, 97.2181244, 0.0372838341, 0.738148034, -0.673607647, -0.0198841505, 0.674490809, 0.738015354, 0.999106884, -0.0141219236, 0.039825052))
-createParts(Vector3.new(10, 10, 10), CFrame.new(423.114075, 140.952286, 97.4066162, 0.999686301, -5.19877874e-09, 0.0250473171, 2.99662628e-09, 1, 8.79572966e-08, -0.0250473171, -8.78546373e-08, 0.999686301))
