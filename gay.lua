@@ -206,8 +206,16 @@ __VE["VIM"] , __VE["UIS"] = game:GetService("VirtualInputManager"), game:GetServ
 __VE["Lg"] , __VE["TS"], __VE["GMos"] = game:GetService("Lighting") ,game:GetService("TweenService") ,  game:GetService("Players").LocalPlayer:GetMouse()
 __VE["VU"],__VE["CG"] = game:GetService("VirtualUser") ,game:GetService("CoreGui")
 __VE["HS"] = game:GetService("HttpService")
-speedofthefly = 1
+Float = false
+Noclip = false
+CONTROL = {F = 0, B = 0, L = 0, R = 0, Q = 0, E = 0}
+WalkSpeedSet = 16
+JumpPowerSet = 30
+WalkSpeedRequest = __Y[2]
+JumpPowerRequest = __Y[2]
+cmdm = __VE["GMos"]
 speedofthevfly = 1
+speedofthefly = 1
 local function checkPlatform()
     if __VE["UIS"].TouchEnabled then
         warn("User is on a Mobile.")
@@ -284,7 +292,7 @@ task.wait()
 local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
 local Window
 local RunServiceWindow
-RunServiceWindow = game.RunService.Heartbeat:Connect(function()
+RunServiceWindow = game:GetService("RunService").Heartbeat:Connect(function()
     if Window then
         Window.Root.Parent.Name = "TTJY Hub Fluent UI"
         Window.Minimized = false
@@ -418,7 +426,7 @@ do
         while Options.LoopBringVase.Value do task.wait(0.3)
             if Options.LoopBringVase.Value then
                 for _, v in pairs(game.Workspace:GetChildren()) do
-                    if (v.Name == "vaz" or v.Name == "vaze" )then
+                    if (v.Name == "vaz" or v.Name == "vaze" or v.Name == "vase" or v.Name == "vaza")then
                         v:PivotTo(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(40, 0, 0))
                     end
                 end
@@ -774,7 +782,12 @@ do
         getgenv().LastFuntion = tostring("Changed JumpPower" .. Value)
         game.Players.LocalPlayer.Character.Humanoid.JumpPower = Value
     end)
-
+    credits = {
+        "Owner - ttjy.",
+        "Co Owner - ttjy_",
+        "Ui - dawid",
+        "Key system - sa.l"
+    }
     for i, v in __U[7](credits) do
         Tabs.Credits:AddButton({
             Title = v,
